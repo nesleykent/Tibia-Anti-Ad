@@ -1,0 +1,80 @@
+! Title: TibiaRing – self-contained uBOL filters
+! Description: Blocks ads (AdSense / AdX + Auto ads: anchor, vignette, side rail, in-content), Google Funding Choices (consent + ad-block recovery), ad-quality/ID-sync beacons, analytics and social trackers on tibiaring.com, and hides every leftover slot and the cookie bar. Works without EasyList/EasyPrivacy.
+! Compatibility: uBlock Origin Lite (Safari, Chrome); also valid uBlock Origin syntax. Set the site to Optimal or Complete filtering mode for cosmetic rules.
+! Last modified: 2026-10-21 (revision 2)
+! Homepage: https://www.tibiaring.com
+!
+! Keep working (intentionally NOT blocked):
+!   accounts.google.com/gsi  – "Sign in with Google" button (auto_prompt is off, so no One Tap pop-up)
+!   connect.facebook.net / www.facebook.com – Facebook comments on character pages (site feature)
+!   challenges.cloudflare.com – Cloudflare bot check; blocking it locks you out of the site
+!   #tr_banner – first-party "The DUEL" promo linking to duel.php (site content, not an ad)
+
+! ===== Network: Google ads (AdSense / AdX / DoubleClick) =====
+||pagead2.googlesyndication.com^
+||googlesyndication.com^
+||googleads.g.doubleclick.net^
+||doubleclick.net^
+||googleadservices.com^
+||2mdn.net^
+! Ad-traffic-quality / SODAR beacons loaded by show_ads_impl
+||adtrafficquality.google^
+
+! ===== Network: Funding Choices (consent dialog + ad-block recovery wall) =====
+! Blocking the loader prevents both the consent popup and the "allow ads" recovery message.
+||fundingchoicesmessages.google.com^
+
+! ===== Network: AdX demand / ID-sync seen in rendered creatives =====
+||criteo.com^
+||criteo.net^
+||adkernel.com^
+||adnxs.com^
+||rubiconproject.com^
+||3lift.com^
+||onetag-sys.com^
+||smartadserver.com^
+||amazon-adsystem.com^
+
+! ===== Network: analytics / telemetry =====
+||googletagmanager.com^
+||google-analytics.com^
+||analytics.google.com^
+||static.cloudflareinsights.com^
+
+! ===== Network: social share trackers (share buttons only; no site function lost) =====
+||platform.twitter.com^$3p
+||syndication.twitter.com^
+||www.facebook.com/tr^
+! Uncomment to also drop Facebook Like buttons + comments (removes the comments feature):
+! ||connect.facebook.net^$3p
+
+! ===== Cosmetic: ad slots (plain CSS, no :has) =====
+! Manual units: left rail 160x600 (nav#frt > div), top leaderboard ins#gt, 300x600 in .indexshow
+tibiaring.com##ins.adsbygoogle
+! Auto ads: in-content wrappers, mobile pedestal/anchor container, iframe hosts
+tibiaring.com##.google-auto-placed
+tibiaring.com###google_pedestal_container
+tibiaring.com##div[id^="aswift_"][id$="_host"]
+tibiaring.com##iframe[id^="aswift_"]
+tibiaring.com##iframe[id^="google_ads_iframe"]
+tibiaring.com###google_esf
+! Vignette (full-screen interstitial) – unverified: only seen as an ins.adsbygoogle node, covered above
+tibiaring.com##ins[data-vignette-loaded]
+tibiaring.com##ins[data-anchor-status]
+
+! ===== Cosmetic: Funding Choices UI (unverified – not rendered in tests; standard FC markup) =====
+tibiaring.com##.fc-consent-root
+tibiaring.com##.fc-ab-root
+tibiaring.com##.fc-dialog-overlay
+
+! ===== Cosmetic: social share buttons (backup for the network rules; Safari rev-1 screenshot still showed "X Post") =====
+tibiaring.com##iframe.twitter-share-button
+tibiaring.com##a.twitter-share-button
+
+! ===== Cosmetic: annoyances =====
+! Site cookie bar (inline-styled div appended to <body> by tr000.js; auto-hides after 10 s)
+tibiaring.com##body > div[style*="position: fixed"][style*="bottom: 0px"][style*="z-index: 1000"]
+! Backup (procedural in uBO; Lite may skip it)
+tibiaring.com##body > div:has(> #CookieAlertClose)
+! "Remove ads" upsell box (#fads, filled by tr000.js) – unverified: not shown to anonymous visitors
+tibiaring.com###fads

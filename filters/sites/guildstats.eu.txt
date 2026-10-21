@@ -1,0 +1,65 @@
+! Title: GuildStats.eu – uBOL custom filters
+! Description: Self-contained list for guildstats.eu: Google AdSense (manual slots + Auto Ads anchor/vignette/in-page), Ad Traffic Quality telemetry, Funding Choices consent/ad-block-recovery, GA4, Cloudflare Web Analytics, and the "Please turn off your AdBlock" background (images/bad.png) behind every ad slot. Keeps search, nav, compare widget, theme toggle, reCAPTCHA/Turnstile.
+! Compatibility: uBlock Origin Lite (Safari, Chrome), Optimal/Complete mode required for cosmetic rules. Plain CSS only, no :has()/scriptlets. Also valid in uBO.
+! Last modified: 2026-10-21  Revision: 3 (rev2: ad-intents bar #google-anno-sa; rev3: in-text chips .google-anno-sc)
+! Homepage: https://guildstats.eu
+
+! ===== Ads: Google AdSense / DoubleClick =====
+||pagead2.googlesyndication.com^
+||tpc.googlesyndication.com^
+||googlesyndication.com^
+||googleads.g.doubleclick.net^
+||securepubads.g.doubleclick.net^
+||stats.g.doubleclick.net^
+||adservice.google.com^
+! Ad Traffic Quality (ep1/ep2 fingerprint/spam telemetry loaded by AdSense)
+||adtrafficquality.google^
+! gtag/AdSense conversion pings on www.google.com
+||www.google.com/pagead/$3p
+||www.google.com/ccm/$3p
+
+! ===== Consent + ad-blocking recovery (Google Funding Choices) =====
+! Serves the CMP (FCCDCF/FCNEC cookies) and the "allow ads" recovery message.
+||fundingchoicesmessages.google.com^
+
+! ===== Trackers / analytics =====
+||googletagmanager.com^
+||google-analytics.com^
+||analytics.google.com^
+! Cloudflare Web Analytics beacon (RUM). Do NOT block challenges.cloudflare.com or
+! /cdn-cgi/challenge-platform/ – the forum sits behind a Cloudflare challenge.
+||static.cloudflareinsights.com^
+||cloudflareinsights.com^
+
+! ===== Passive adblock nag =====
+! 728x90 "Please turn off your AdBlock… donate" image painted as the background of every
+! ad-slot wrapper; visible as soon as the ad is gone. Also the network-rule canary.
+||guildstats.eu/images/bad.png^
+
+! ===== Cosmetic: ad slots =====
+! Slot wrappers: div.max-w-7xl with inline background:url(images/bad.png) (top one uses
+! ../images/bad.png and margin-top:-100px;height:100px – net zero, no gap when hidden).
+guildstats.eu##main > div[style*="images/bad.png"]
+guildstats.eu##[style*="images/bad.png"]
+guildstats.eu##ins.adsbygoogle
+! Auto Ads in-page placements (div wrapper with 10-20px margins)
+guildstats.eu##.google-auto-placed
+! Auto Ads anchor (html > ins, fixed top on mobile / bottom on desktop) and vignette (100vw x 100vh)
+guildstats.eu##html > ins.adsbygoogle
+guildstats.eu##div[id^="aswift_"][id$="_host"]
+guildstats.eu##iframe[id^="aswift_"]
+! AdSense "ad intents" bottom bar ("Join Associations", "Tibia game guide" search chips).
+! html > div#google-anno-sa (+ -glow). EVERY property incl. display/visibility is inline
+! !important, so this only wins if uBOL injects user-origin CSS (true in Chrome; unverified in
+! Safari). Real fix is the pagead2 network rule; userscript is the fallback.
+guildstats.eu##html > div[id^="google-anno"]
+guildstats.eu##.google-anno-skip
+! Ad-intents search chips injected INTO site text (e.g. "Play Tabletop RPGs" in the header
+! title on tibiamonk). Same inline !important caveat – userscript removes them.
+guildstats.eu##.google-anno-sc
+
+! ===== Cosmetic: Funding Choices (backup if the host rule is not applied) =====
+! Unverified: standard FC roots, not rendered in the test browser.
+guildstats.eu##.fc-ab-root
+guildstats.eu##.fc-consent-root
+guildstats.eu##.fc-dialog-overlay

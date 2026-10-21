@@ -1,0 +1,119 @@
+! Title: Tibia Fórum (forum.portaltibia.com.br) – uBOL custom filters
+! Description: Self-contained list for the PortalTibia IPS forum: PremiumAds wrapper (GPT + Prebid: Rubicon, Criteo, Equativ/Smart, OneTag, TripleLift, Xandr, Seedtag; Teads/Taboola/Membrana/k-words formats), MGID native, Navegg DMP, Facebook Pixel, GA4 x2, Yandex Metrica, Cloudflare Web Analytics, ~25 ID-sync/cookie-match hosts, PremiumAds leaderboards + sticky anchor, FansitesBR floating icon bar. Keeps chatbox, topics, search, sign-in (reCAPTCHA), Cloudflare challenge, YouTube embeds, partner-fansite footer.
+! Compatibility: uBlock Origin Lite (Safari, Chrome), Optimal/Complete mode required for cosmetic rules. Plain CSS only, no :has()/scriptlets. Also valid in uBO.
+! Last modified: 2026-10-21  Revision: 2 (rev2: documented ad-driven forced redirect to tibiaring.com)
+! Homepage: https://forum.portaltibia.com.br
+! NOTE: do NOT block challenges.cloudflare.com or /cdn-cgi/challenge-platform/ – the forum is behind a Cloudflare challenge.
+
+! ===== Ad stack: PremiumAds wrapper + Google =====
+||premiumads.com.br^
+||securepubads.g.doubleclick.net^
+||pubads.g.doubleclick.net^
+||googleads.g.doubleclick.net^
+||cm.g.doubleclick.net^
+||stats.g.doubleclick.net^
+||googlesyndication.com^
+||adservice.google.com^
+||adtrafficquality.google^
+||www.google.com/pagead/$3p
+||www.google.com/ccm/$3p
+
+! ===== Formats loaded by the PremiumAds engine (from its config) =====
+! Seedtag in-image/in-screen, Teads + Membrana outstream video, Taboola feed, k-words in-text
+||seedtag.com^
+||teads.tv^
+||membrana.media^
+||taboola.com^
+||taboolasyndication.com^
+||k-words.io^
+
+! ===== MGID native widgets (header placement + cookie-match chain) =====
+||mgid.com^
+||idealmedia.io^
+
+! ===== Prebid bidders / SSPs =====
+||rubiconproject.com^
+||criteo.com^
+||criteo.net^
+||smartadserver.com^
+||onetag-sys.com^
+||3lift.com^
+||adnxs.com^
+||lijit.com^
+||pubmatic.com^
+||a-mo.net^
+||360yield.com^
+||creativecdn.com^
+||amazon-adsystem.com^
+
+! ===== ID sync / DMPs / cookie matching =====
+! Navegg (Brazilian DMP: nvg* cookies + localStorage)
+||navdmp.com^
+||navegg.com^
+||id5-sync.com^
+||eu-1-id5-sync.com^
+||rlcdn.com^
+||crwdcntrl.net^
+||eyeota.net^
+||outbrain.com^
+||mathtag.com^
+||analytics.yahoo.com^
+||blismedia.com^
+||rtbwise.com^
+||turn.com^
+||admanmedia.com^
+||mediagotechnology.com^
+||adx.opera.com^
+
+! ===== Forced redirect (interaction hijack) =====
+! Observed 2026-10-21 (Chrome Beta, ads allowed, no clicks): after ~23s the tab was navigated to
+! www.tibiaring.com/char.php?... then tibiaring.com. Nothing in the site's own HTML/JS references
+! tibiaring; the top navigation had no script stack (initiator "other"), consistent with an ad
+! creative in a same-origin (friendly) GPT iframe setting top.location. Not reproducible in 3x90s
+! later runs (rotating creative). Fixed by the ad-stack rules above: with them, no ad frame loads.
+! (A tibiaring subframe block was tested and dropped: Chrome already stops cross-origin frame-busting
+! without a user gesture, so it would not have prevented this.)
+
+! ===== Analytics / tracking =====
+||googletagmanager.com^
+||google-analytics.com^
+||analytics.google.com^
+! Facebook Pixel (fbevents.js + signals config)
+||connect.facebook.net^
+||www.facebook.com/tr$3p
+! Yandex Metrica (_ym_uid cookie; referenced by the ad engine)
+||mc.yandex.ru^
+||mc.yandex.com^
+||yandex.com/metrika$3p
+||static.cloudflareinsights.com^
+||cloudflareinsights.com^
+
+! ===== FansitesBR network bar (fixed floating icon strip, left edge) =====
+! Cross-promo of other fansites, pinned over the page. Delete these 2 lines to keep it.
+||www.fansitesbr.com^$3p
+forum.portaltibia.com.br###myiconmenu
+
+! ===== Cosmetic: PremiumAds slots =====
+! Server-side placeholders: <div data-premium data-adunit="FORUM_PORTAL_TIBIA_BANNER_728X90_01|_02">
+! (top of #ipsLayout_mainArea and top of footer). The P_FORUM_PORTAL_TIBIA_* id is only added by the
+! PremiumAds JS, so the data-* selector is the one that matches when the engine is blocked.
+forum.portaltibia.com.br##div[data-premium]
+forum.portaltibia.com.br##div[data-adunit^="FORUM_PORTAL_TIBIA"]
+! Each placeholder is followed by a <br> (15px gap otherwise)
+forum.portaltibia.com.br##div[data-premium] + br
+! Engine-rendered slot ids: _BANNER_728X90_01_0 (970x250 / 468x60), _02_0 (footer), _HEADERSTICKY_0 (anchor)
+forum.portaltibia.com.br##div[id^="P_FORUM_PORTAL_TIBIA_"]
+forum.portaltibia.com.br##[id^="google_ads_iframe_"]
+! Sticky anchor: ppBoxAnchor-<random>_overlay_bottom (80px desktop / 130px mobile, fixed bottom)
+forum.portaltibia.com.br##[id^="ppBoxAnchor-"]
+forum.portaltibia.com.br##.ppOverlayBox
+forum.portaltibia.com.br##.ppAnchor
+forum.portaltibia.com.br##.pp-mgid
+! Unverified (from engine CSS, not rendered in test): sticky/closable unit classes
+forum.portaltibia.com.br##.pp-sticky-this
+forum.portaltibia.com.br##.pp-sticky-this-v2
+
+! ===== Cosmetic: MGID / Seedtag (unverified – loaded but not rendered in test) =====
+forum.portaltibia.com.br##div[data-type="_mgwidget"]
+forum.portaltibia.com.br##div[id^="ScriptRootC"]
+forum.portaltibia.com.br##iframe[src*="seedtag.com"]

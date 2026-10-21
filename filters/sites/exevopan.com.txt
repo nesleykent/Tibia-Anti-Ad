@@ -1,0 +1,53 @@
+! Title: Exevo Pan – self-contained cleanup (uBOL custom filters)
+! Description: Removes Exevo Pan's own sponsor/affiliate/cross-promo units (Bestiary Arena iframes,
+!   otPokémon, Tibia Blackjack, Rei dos Coins, Edgar Tc, Ravendawn, NoPing) and the floating
+!   promo pills. The site loads NO third-party trackers or ad networks (recon 2026-10-21), so this list is
+!   all promos, no tracker blocking. Works without any other list.
+! Compatibility: uBlock Origin Lite (Safari, Chrome); uBlock Origin. Plain CSS only, except one optional :has() rule.
+!   Cosmetic rules need the Optimal or Complete filtering mode for exevopan.com.
+! Last modified: 2026-10-21  Revision: 1
+! Homepage: https://www.exevopan.com
+
+! ===== Network: promo iframes (third-party Bestiary Arena widgets) =====
+! promo-scroll / promo-chest / iframe-obs-3 rotate per page; the whole host is only embedded as promos here.
+||bestiaryarena.com^$subdocument,domain=exevopan.com
+||bestiaryarena.com^$3p,domain=exevopan.com
+
+! ===== Network: promo/affiliate images =====
+! First-party sponsor logos (footer). tibiablackjack.png also serves as the Safari canary:
+! if the footer logo shows as a broken/empty image (or disappears), network rules apply.
+||assets.service-exevopan.com/public/assets/tibiablackjack.png^
+||assets.service-exevopan.com/public/edgartc.png^
+||assets.service-exevopan.com/public/reidoscoins.png^
+! imgur-hosted promo art (Tibia Blackjack icon, otPokémon banner + pill)
+||i.imgur.com/GNZ4DMD.png^
+||i.imgur.com/4nGKNBu.png^
+||i.imgur.com/waokAhF.png^
+
+! ===== Cosmetic: affiliate/sponsor links anywhere on the site =====
+exevopan.com##a[href*="otponline.com"]
+exevopan.com##a[href*="tbj.one/"]
+exevopan.com##a[href*="reidoscoins.com"]
+exevopan.com##a[href^="https://wa.me/528332996705"]
+exevopan.com##a[href*="ravenquest.io"]
+exevopan.com##a[href*="noping.com"]
+exevopan.com##a[href*="bestiaryarena.com"]
+exevopan.com##iframe[src*="bestiaryarena.com"]
+
+! ===== Cosmetic: wrappers that would stay visible when empty =====
+! Footer sponsor row (logos only) and the Bestiary Arena banner box under it.
+exevopan.com###footer-wrapper > div.flex-wrap:first-child
+exevopan.com###footer-wrapper > div.relative.overflow-hidden
+! Mobile-only "PC/Mobile Idle Tibia: Bestiary Arena" banner section near the top of <main>
+exevopan.com##main > section.inner-container.relative.mt-4.overflow-hidden.sm\:hidden
+! Mobile-only 2-column affiliate strip under the header (Tibia Blackjack / Get Tibia Coins)
+exevopan.com###__next ul.grid.grid-cols-2.tracking-widest.md\:hidden
+
+! ===== Cosmetic: floating bottom-right promo stack =====
+! Holds the animated "Get Exevo Pro" upsell pill, the otPokémon pill and a fading-in
+! Bestiary Arena video iframe. It contains nothing functional (verified desktop + mobile).
+exevopan.com##div.fixed.z-71.pointer-events-none.bottom-3
+
+! ===== Optional: TibiaTrade cross-promo carousel (homepage) =====
+! Partner-marketplace listings. Procedural (:has) — uBOL may skip it; remove the line to keep the carousel.
+exevopan.com##section.relative.grid.gap-2:has(> p a[href="https://tibiatrade.gg"])

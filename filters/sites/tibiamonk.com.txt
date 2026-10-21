@@ -1,0 +1,56 @@
+! Title: TibiaMonk.com – uBOL custom filters
+! Description: Self-contained list for tibiamonk.com: Google AdSense (manual "Advertisement" sections + Auto Ads in-page/anchor/vignette/ad-intents bar), Ad Traffic Quality + CSI telemetry, Funding Choices consent/ad-block recovery, Cloudflare Web Analytics. Keeps calculators, hunt lists, nav, sign-in (reCAPTCHA), TibiaData API.
+! Compatibility: uBlock Origin Lite (Safari, Chrome), Optimal/Complete mode required for cosmetic rules. Plain CSS only, no :has()/scriptlets. Also valid in uBO.
+! Last modified: 2026-10-21  Revision: 1
+! Homepage: https://www.tibiamonk.com
+
+! ===== Ads: Google AdSense / DoubleClick =====
+||pagead2.googlesyndication.com^
+||tpc.googlesyndication.com^
+||googlesyndication.com^
+||googleads.g.doubleclick.net^
+||securepubads.g.doubleclick.net^
+||stats.g.doubleclick.net^
+||adservice.google.com^
+! Ad Traffic Quality (ep1/ep2 fingerprint/spam telemetry loaded by AdSense)
+||adtrafficquality.google^
+! AdSense client-side instrumentation (csi = latency/viewability pings)
+||csi.gstatic.com^
+||www.google.com/pagead/$3p
+||www.google.com/ccm/$3p
+
+! ===== Consent + ad-blocking recovery (Google Funding Choices) =====
+||fundingchoicesmessages.google.com^
+
+! ===== Trackers / analytics =====
+! Cloudflare Web Analytics beacon. Do NOT block challenges.cloudflare.com.
+||static.cloudflareinsights.com^
+||cloudflareinsights.com^
+! Not seen on this site but common GA hosts; harmless to pre-block
+||googletagmanager.com^
+||google-analytics.com^
+
+! ===== Cosmetic: ad slots =====
+! Manual slots: <section aria-label="Advertisement"> with an "ADVERTISEMENT" label and padded
+! border; stays a 49px empty box when unfilled. aria-label is unique to ad sections (5 on /hunts/monk).
+tibiamonk.com##section[aria-label="Advertisement"]
+tibiamonk.com##ins.adsbygoogle
+! Auto Ads in-page placements
+tibiamonk.com##.google-auto-placed
+! Auto Ads anchor (top on mobile, bottom on desktop) and vignette, both direct children of <html>
+tibiamonk.com##html > ins.adsbygoogle
+tibiamonk.com##div[id^="aswift_"][id$="_host"]
+tibiamonk.com##iframe[id^="aswift_"]
+! AdSense "ad intents" bottom bar. Inline !important on every property: only wins if uBOL
+! injects user-origin CSS (Chrome yes; Safari unverified). Network rule above is the real fix;
+! tibiamonk.com.user.js is the optional fallback.
+tibiamonk.com##html > div[id^="google-anno"]
+tibiamonk.com##.google-anno-skip
+! Ad-intents search chips injected INTO site text (e.g. "Play Tabletop RPGs" in the header
+! title on tibiamonk). Same inline !important caveat – userscript removes them.
+tibiamonk.com##.google-anno-sc
+
+! ===== Cosmetic: Funding Choices (backup; not rendered in test, unverified) =====
+tibiamonk.com##.fc-ab-root
+tibiamonk.com##.fc-consent-root
+tibiamonk.com##.fc-dialog-overlay

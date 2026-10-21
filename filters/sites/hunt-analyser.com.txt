@@ -1,0 +1,82 @@
+! Title: hunt-analyser.com – ads, trackers & consent cleanup
+! Description: Self-contained uBlock Origin Lite custom filters for www.hunt-analyser.com.
+!   Blocks Google AdSense / DoubleClick, Funding Choices (consent + ad-block recovery CMP),
+!   Google ad-traffic-quality (sodar) probes, GA4/GTM and Cloudflare Web Analytics, and hides
+!   the AdSense rail panel, Auto ads and any CMP overlay. No other filter list required.
+! Compatibility: uBlock Origin Lite (Safari, Chrome); also valid uBlock Origin syntax.
+!   Plain CSS only (no :has(), :style(), scriptlets). Set the site to Optimal or Complete mode.
+! Homepage: https://www.hunt-analyser.com
+! Last modified: 2026-10-21
+! Revision: 1
+
+! ===========================================================================
+! Canary (run ONCE to check whether custom NETWORK rules apply in Safari uBOL)
+! Uncomment, reload /home/index: if the German flag in the language picker is
+! gone, network rules work. Re-comment afterwards.
+! ===========================================================================
+! ||www.hunt-analyser.com/assets/flags/lang_de-$image
+
+! ===========================================================================
+! Ads – Google AdSense / DoubleClick (pub ca-pub-1239690848987120)
+! ===========================================================================
+||pagead2.googlesyndication.com^
+||googlesyndication.com^
+||googleads.g.doubleclick.net^
+||doubleclick.net^
+||googleadservices.com^
+||tpc.googlesyndication.com^
+||adservice.google.com^
+! Ad-traffic-quality / sodar probes (ep1/ep2), loaded by show_ads_impl; also pulls
+! www.google.com/recaptcha/api2/aframe – the site itself does NOT use reCAPTCHA.
+||adtrafficquality.google^
+
+! ===========================================================================
+! Consent / ad-block-recovery CMP – Google Funding Choices
+! (sets FCCDCF / FCNEC cookies; also the vehicle for Google's "ad blocker detected" message)
+! ===========================================================================
+||fundingchoicesmessages.google.com^
+
+! ===========================================================================
+! Analytics / telemetry
+! ===========================================================================
+! GA4 property G-2YSSBZ05FL (cookies _ga, _ga_2YSSBZ05FL)
+||googletagmanager.com^
+||google-analytics.com^
+||analytics.google.com^
+! Cloudflare Web Analytics beacon (RUM)
+||static.cloudflareinsights.com^
+||cloudflareinsights.com^
+
+! ===========================================================================
+! Cosmetic – ad units (verified in-page)
+! ===========================================================================
+! Left-rail AdSense panel on /hunt_sessions, /creature_analysis etc. Stable Stimulus hooks.
+! Its own controller hides it when slots stay unfilled, but on mobile a filled rail was
+! ~790px tall – hide it outright so blocked/filled states both collapse.
+www.hunt-analyser.com##[data-controller~="adsense-rail"]
+www.hunt-analyser.com##[data-testid="adsense-left-rail"]
+www.hunt-analyser.com##[data-adsense-slot-container]
+www.hunt-analyser.com##ins.adsbygoogle
+www.hunt-analyser.com##[id^="aswift_"]
+! AdSense Auto ads / anchor / vignette injections
+www.hunt-analyser.com##.google-auto-placed
+www.hunt-analyser.com##ins.adsbygoogle[data-anchor-status]
+www.hunt-analyser.com##ins.adsbygoogle[data-vignette-loaded]
+www.hunt-analyser.com##iframe[id^="google_ads_iframe"]
+
+! ===========================================================================
+! Cosmetic – Funding Choices CMP / ad-block recovery overlay
+! UNVERIFIED: the dialog did not render in the test browser (consent cookie already set);
+! selectors are Google's standard FC root classes. Network block above should prevent it.
+! ===========================================================================
+www.hunt-analyser.com##.fc-consent-root
+www.hunt-analyser.com##.fc-ab-root
+www.hunt-analyser.com##.fc-dialog-overlay
+
+! ===========================================================================
+! Notes – deliberately NOT blocked
+! ===========================================================================
+! - cdnjs.cloudflare.com (Font Awesome icons) and fonts.googleapis.com: functional.
+! - Homepage #newsletter section is first-party inline content, not a pop-up; uncomment to hide:
+! www.hunt-analyser.com###newsletter
+! - No anti-adblock, scroll lock or input hijacking found in the site's own JS.

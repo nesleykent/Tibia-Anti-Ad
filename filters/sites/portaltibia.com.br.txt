@@ -1,0 +1,134 @@
+! Title: Portal Tibia (portaltibia.com.br) – uBOL custom filters
+! Description: Self-contained list for the PortalTibia WordPress site: PremiumAds wrapper (GPT + Prebid + Amazon APS; Seedtag/Teads/Taboola/Membrana/k-words formats), Navegg DMP + its sync partners, Facebook Pixel + like-box, GA4 x4, Jetpack stats, Yandex Metrica, Cloudflare Web Analytics, VigLink affiliate rewriting (via Disqus), dormant TibiaBR Revive pop-up layer, "Patrocínio" leaderboard + sidebar box, sticky anchor, FansitesBR floating bar. Keeps news, carousel, ticker, search, Disqus comments, YouTube, polls, contact form, CipSoft "Promoted Fansite" badge.
+! Compatibility: uBlock Origin Lite (Safari, Chrome), Optimal/Complete mode required for cosmetic rules. Plain CSS only (:has() only as labelled backup). Also valid in uBO.
+! Last modified: 2026-10-21  Revision: 1
+! Homepage: https://portaltibia.com.br
+! Companion list: forum.portaltibia.com.br.txt (same PremiumAds account family).
+
+! ===== Ad stack: PremiumAds wrapper + Google + Amazon =====
+||premiumads.com.br^
+||securepubads.g.doubleclick.net^
+||pubads.g.doubleclick.net^
+||googleads.g.doubleclick.net^
+||cm.g.doubleclick.net^
+||stats.g.doubleclick.net^
+||googlesyndication.com^
+||adservice.google.com^
+||adtrafficquality.google^
+||www.google.com/pagead/$3p
+||www.google.com/ccm/$3p
+! Amazon Publisher Services (apstag.js, config, web-banner; aps:* localStorage keys)
+||amazon-adsystem.com^
+
+! ===== Formats loaded by the PremiumAds engine =====
+||seedtag.com^
+||teads.tv^
+||membrana.media^
+||taboola.com^
+||taboolasyndication.com^
+||k-words.io^
+||mgid.com^
+||idealmedia.io^
+
+! ===== Self-hosted / regional ad server =====
+! TibiaBR Revive (OpenX) layer pop-up, document.write'd by an inline script that only fires on
+! the bare root URL (currently redirected to /pt/home/, so dormant). Blocked in case it returns.
+||banners.tibiabr.com^
+
+! ===== Prebid bidders / SSPs =====
+||rubiconproject.com^
+||criteo.com^
+||criteo.net^
+||smartadserver.com^
+||onetag-sys.com^
+||3lift.com^
+||adnxs.com^
+||lijit.com^
+||pubmatic.com^
+||a-mo.net^
+||360yield.com^
+||creativecdn.com^
+
+! ===== ID sync / DMPs / cookie matching =====
+! Navegg DMP (nvg* cookies/localStorage) and the partners it syncs to
+||navdmp.com^
+||navegg.com^
+||everesttech.net^
+||krxd.net^
+||bluekai.com^
+||acuityplatform.com^
+||smartclip.net^
+||id5-sync.com^
+||eu-1-id5-sync.com^
+||rlcdn.com^
+||crwdcntrl.net^
+||eyeota.net^
+||outbrain.com^
+||mathtag.com^
+||analytics.yahoo.com^
+||blismedia.com^
+||rtbwise.com^
+||turn.com^
+||admanmedia.com^
+||mediagotechnology.com^
+||adx.opera.com^
+
+! ===== Forced redirect (interaction hijack) =====
+! Observed 2026-10-21 (Chrome Beta, ads allowed, no clicks): after ~23s the tab was navigated to
+! www.tibiaring.com/char.php?... then tibiaring.com. Nothing in the site's own HTML/JS references
+! tibiaring; the top navigation had no script stack (initiator "other"), consistent with an ad
+! creative in a same-origin (friendly) GPT iframe setting top.location. Not reproducible in 3x90s
+! later runs (rotating creative). Fixed by the ad-stack rules above: with them, no ad frame loads.
+! (A tibiaring subframe block was tested and dropped: Chrome already stops cross-origin frame-busting
+! without a user gesture, so it would not have prevented this.)
+
+! ===== Analytics / tracking =====
+||googletagmanager.com^
+||google-analytics.com^
+||analytics.google.com^
+! Facebook Pixel + "Curta a nossa página!" like-box iframe (social tracker)
+||connect.facebook.net^
+||www.facebook.com/tr$3p
+||www.facebook.com/plugins/$3p
+! Jetpack / WordPress.com stats
+||stats.wp.com^
+||pixel.wp.com^
+||mc.yandex.ru^
+||mc.yandex.com^
+||static.cloudflareinsights.com^
+||cloudflareinsights.com^
+! VigLink (Disqus monetization): rewrites outbound links into affiliate redirects.
+! Disqus comments themselves are NOT blocked.
+||viglink.com^
+
+! ===== FansitesBR network bar (fixed floating icon strip, left edge) =====
+! Cross-promo of other fansites pinned over the page. Delete these 2 lines to keep it.
+||www.fansitesbr.com^$3p
+portaltibia.com.br###myiconmenu
+
+! ===== Cosmetic: PremiumAds slots =====
+! Server-side placeholders <div data-premium data-adunit="PORTAL_TIBIA_BANNER_728X90_01|300X250_01">;
+! the P_PORTAL_TIBIA_* id is only added by the ad JS.
+portaltibia.com.br##div[data-premium]
+portaltibia.com.br##div[data-adunit^="PORTAL_TIBIA"]
+portaltibia.com.br##div[id^="P_PORTAL_TIBIA_"]
+portaltibia.com.br##[id^="google_ads_iframe_"]
+! Homepage leaderboard block: the only .wpb_raw_html on the site (checked home + article); it holds
+! just the bare "Patrocínio" label + the slot. The CipSoft "Promoted Fansite" badge next to it stays.
+portaltibia.com.br##.wpb_raw_code.wpb_raw_html
+! Sidebar box heading "Patrocínio" (h5.section inside the text widget; only h5.section on the site)
+portaltibia.com.br##.textwidget > h5.section
+! Sticky anchor: ppBoxAnchor-<random>_overlay_bottom (fixed bottom)
+portaltibia.com.br##[id^="ppBoxAnchor-"]
+portaltibia.com.br##.ppOverlayBox
+portaltibia.com.br##.ppAnchor
+portaltibia.com.br##.pp-mgid
+! Unverified (from engine CSS, not rendered in test)
+portaltibia.com.br##.pp-sticky-this
+portaltibia.com.br##.pp-sticky-this-v2
+
+! ===== Cosmetic: Facebook like-box widget + backups =====
+portaltibia.com.br##iframe[src*="facebook.com/plugins"]
+! Backup only (:has may be skipped by uBOL): whole sidebar widget around the sponsor / like-box
+portaltibia.com.br##.widget:has(> .textwidget > div[data-premium])
+portaltibia.com.br##.widget:has(iframe[src*="facebook.com/plugins"])

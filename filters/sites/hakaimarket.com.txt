@@ -1,0 +1,50 @@
+! Title: hakaimarket.com – uBOL custom filters
+! Description: Self-contained list for hakaimarket.com. Blocks Vercel Web Analytics and the
+!   third-party partner widget feed, and hides partner/affiliate promos (Tibia Blackjack
+!   Halloween pop-up, header affiliate buttons, footer partner strip).
+!   No ad networks, ID-sync, consent banner or anti-adblock were found on the site.
+! Compatibility: uBlock Origin Lite (Safari, Chrome); plain CSS only, no procedural/scriptlet rules.
+!   Cosmetic rules need Optimal or Complete filtering mode on hakaimarket.com.
+! Last modified: 2026-10-21 (revision 1)
+! Recon: bundle index-DYjMkcvP.js + 35 lazy chunks, homepage (desktop) and /monsters/dragon (mobile).
+
+! ===== Analytics / telemetry =====
+! Vercel Web Analytics (first-party paths: loader + pageview beacon)
+||hakaimarket.com/_vercel/insights/
+! Vercel Speed Insights (not seen loaded; same SDK family, harmless if absent)
+||hakaimarket.com/_vercel/speed-insights/
+
+! ===== Partner / affiliate feeds =====
+! tibiatrade.gg is only referenced by the footer partner widget (Footer-*.js):
+! /api/trade/exevopan feed + item images. Nothing else on the site uses it.
+||tibiatrade.gg^$3p
+! NOT blocked on purpose: apis.google.com + hakaimarket-c24ef.firebaseapp.com (Firebase sign-in),
+! api.tibiamarket.top (market data), tibiopedia.pl (monster sprites), fonts.googleapis.com.
+
+! ===== Promo pop-up: Tibia Blackjack Halloween event =====
+! Inline-styled React modal (no classes) mounted directly under #root after 1.2 s,
+! once per session (sessionStorage "tbjPromoShown_halloween"). It does not lock scrolling.
+! Backdrop is the only zIndex:9998 element in the bundle; the dialog is anchored by translate(-50%.
+hakaimarket.com###root > div[style*="z-index: 9998"]
+hakaimarket.com###root > div[style*="z-index: 9999"][style*="translate(-50%"]
+
+! ===== Header affiliate buttons (desktop) =====
+! Animated "FREE 25 TC" Tibia Blackjack referral (tbj.one/?ref=...)
+hakaimarket.com##.header-blackjack-wrap
+! otPokémon banner slot (utm_medium=banner); CSS-module class has a build hash
+hakaimarket.com##span[class*="_otPokemonPromoSlot_"]
+hakaimarket.com##.header-right a[href*="utm_source=hakaimarket"]
+hakaimarket.com##.header-right a[href^="https://tbj.one/"]
+
+! ===== Footer partner strip =====
+! tibiatrade listings, Tibia Blackjack, EdgarTC, Bestiary Arena / Twitch "advertise" links.
+! The collapsible footer contains nothing but .footer-partners, and its floating toggle
+! button is labelled "PARTNERS", so the whole footer + toggle go.
+hakaimarket.com##.footer-partners
+hakaimarket.com###root > footer.modern-footer
+hakaimarket.com###root > button.footer-toggle-btn
+
+! ===== Changelog dialog =====
+! The pinned "featured" card currently is the Tibia Blackjack partner event.
+! Remove this line if you want featured changelog news back.
+hakaimarket.com##.changelog-card-featured
