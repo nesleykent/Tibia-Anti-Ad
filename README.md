@@ -21,6 +21,8 @@ Twitch includes reconnaissance scripts and an offline text-classification protot
 
 ## Try the experimental website filters
 
+**Private repository:** anonymous raw subscriptions will not work while access is restricted. Authorized users can download a generated list and import/paste it through a supported blocker interface. Never embed a GitHub access token in a subscription URL.
+
 Read the [installation and rollback guide](docs/INSTALLATION.md) and [compatibility notes](docs/COMPATIBILITY.md) before enabling a list.
 
 - [Portable syntax bundle](https://raw.githubusercontent.com/nesleykent/anti-ad-tibia/main/filters/anti-ad-tibia.txt): site-scoped network rules and basic cosmetic selectors.
