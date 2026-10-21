@@ -3,7 +3,6 @@
   "archive_sha256": "ed042a0b05eee8be636923b8754abb42452c5371fbfc20eb044c4090b53855d0",
   "files": {
     "extensions/twitch-clean/extension/hide.css": "fdfa63ec80e8607738d0ed00c251bae1ab2a631385cd6b37ad7c0b588d72dced",
-    "extensions/twitch-clean/extension/manifest.json": "36c9ed905fa3f04b3b3468f6e9f47c2700b49f5c298c02b83c5983ff507c4306",
     "extensions/twitch-clean/extension/nags.js": "24ee6126caf3b6ae9468e934a585ced02fb0674e5b70cb8c3c2803c93ba3718b",
     "extensions/twitch-clean/extension/page.js": "42faf014ed9bef6676d8ae0d1690f2349e9d7faa4c09c1f6c876f54d0d8cbf92",
     "extensions/twitch-clean/extension/rules.json": "938ee2ff790380d44d8b3ced3f7e3d88d8b444d87bd40bfa33770e0064d003d4",
@@ -19,5 +18,11 @@
     "research/twitch/twitch.tv-validation.md": "d140cd951126ab4d7ce9a71a35929933f7e46c093318535efaeff7af730dc8b4",
     "research/twitch/recon.js": "585e012a64efd0a1faad6f0fe356c22c9b625309e00e64a328eefdbb497eadbf",
     "scripts/twitch/twitch-stopthemadness.js": "32dee88dfa836a5c0293f79b23f61b9bef380b36d2fea676da3ff83b38648c11"
+  },
+  "modified_after_import": {
+    "extensions/twitch-clean/extension/manifest.json": {
+      "original_sha256": "36c9ed905fa3f04b3b3468f6e9f47c2700b49f5c298c02b83c5983ff507c4306",
+      "reason": ""
+    }
   }
 }

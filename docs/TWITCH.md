@@ -41,7 +41,6 @@ Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/refere
 | Signal | Source | Weight |
 |---|---|---|
 
-| Another game/server named | Title and tags | Only counts together with a screen that shows no Tibia-style client; `!server` commands are often sponsors |
 | Official marker (Global, official world names) | Title and tags | Needs a Tibia-style client on screen to mark `tibia` |
 
 Missing or contradictory evidence yields `undetermined`, which stays visible. See the [live sample](../research/twitch/data/2026-10-21/live-2015/README.md) for results.

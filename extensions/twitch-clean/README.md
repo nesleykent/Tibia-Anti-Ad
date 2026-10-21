@@ -1,6 +1,6 @@
 # Twitch Clean
 
-Safari Web Extension source supplied in `twitch-clean.zip`, integrated into Anti-Ad Tibia. The extension files are preserved byte-for-byte; see the [source manifest](../../research/twitch/source-manifest.json).
+Safari Web Extension source supplied in `twitch-clean.zip`, integrated into Anti-Ad Tibia. The supplied files are preserved byte-for-byte except `manifest.json`, which now also loads the Tibia filter; see the [source manifest](../../research/twitch/source-manifest.json).
 
 ## Features
 
@@ -8,6 +8,7 @@ Safari Web Extension source supplied in `twitch-clean.zip`, integrated into Anti
 - Cosmetic hiding of display ads, directory placements and promotional interfaces.
 - Targeted English-language handling of Apple TV, animated-emote and Prime Benefits prompts.
 - Source-quality preference on page load and background visibility handling.
+- **Tibia filter:** on the Tibia category directory, hides streams of other games (RubinOT and other OTServers, Pokémon servers, idle games). Official-marked and unclear streams stay visible.
 - The MIT-licensed **vaft** script attempts to replace stitched video advertisements with a clean stream. When no clean stream is available, playback can freeze during the break; an alternate stream can be lower resolution.
 
 The original upstream vaft project was archived in March 2026. Current live-ad effectiveness has not been verified in this integration. The historical [validation report](../../research/twitch/twitch.tv-validation.md) contains earlier test claims; its 186-test suite was not supplied and has not been reproduced here.
@@ -31,7 +32,9 @@ On a Twitch live page, `window.twitchAdSolutionsVersion === 24` indicates startu
 
 Disable/remove Twitch Clean in Safari settings and reload Twitch to remove its hooks. Source quality is a saved preference: choose your previous quality in the Twitch player afterward. Account for any other blocker when comparing behavior.
 
-The main script runs before the player in the page context. Cosmetic filters alone cannot perform this replacement. The extension and standalone script do not classify or hide OTServ streams.
+The main script runs before the player in the page context. Cosmetic filters alone cannot perform this replacement. The standalone script does not classify or hide OTServ streams.
+
+To inspect a Tibia-filter decision, check the `data-twitch-clean-tibia` attribute on a card's grid cell. Rules live in `filters/twitch/tibia-evidence.json`; after editing, run `python3 tools/twitch_evidence.py --write-js`.
 
 ## References
 

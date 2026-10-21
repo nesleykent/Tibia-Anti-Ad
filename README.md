@@ -17,7 +17,7 @@ Navigation, editorial content, tools and accessibility must keep working. Positi
 
 This is an initial research and tooling release. Experimental filter inputs and historical reports are included for 15 websites. Generated bundles exclude two sites with content-destruction risks. The remaining rules still require real extension testing across browsers; historical CSS injection and network simulation are not proof of blocker enforcement.
 
-Twitch includes the supplied **[Twitch Clean extension](extensions/twitch-clean/README.md)**, a **[standalone live-video ad script](scripts/twitch/README.md)**, complementary filters, reconnaissance scripts and an offline text-classification prototype. The vaft integration attempts to remove stitched video ads; current live effectiveness is unverified. No production accuracy claim or public channel blocklist is made.
+Twitch includes the supplied **[Twitch Clean extension](extensions/twitch-clean/README.md)**, a **[standalone live-video ad script](scripts/twitch/README.md)**, complementary filters, reconnaissance scripts and an offline text-classification prototype. The vaft integration attempts to remove stitched video ads; current live effectiveness is unverified. No permanent channel blocklist is used.
 
 ## Try the experimental website filters
 
