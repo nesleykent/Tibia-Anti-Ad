@@ -43,7 +43,7 @@ Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/refere
 |---|---|---|
 | OTServer-only client UI ("Map View" window, Battle Pass, Daily Missions) | OCR of the 1080p thumbnail | Enough alone to mark `other` |
 | Tibia-style client panels (Skills, Hunt Analyser, Prey…) | OCR | Shared by the official client and OTServers built on it; never decisive |
-| Another game/server named | Title and tags | Only counts together with a screen that shows no Tibia-style client; `!server` commands are often sponsors |
+| Another game/server named | Title and tags | Acts first, without waiting for OCR, unless an official marker is also present; overturned when the server is only a `!command` and the screen shows a Tibia-style client |
 | Official marker (Global, official world names) | Title and tags | Needs a Tibia-style client on screen to mark `tibia` |
 
-Missing or contradictory evidence yields `undetermined`, which stays visible. See the [live sample](../research/twitch/data/2026-10-21/live-2015/README.md) for results. This runs offline with `tesseract`; it is not yet wired into Twitch Clean.
+Missing or contradictory evidence yields `undetermined`, which stays visible. See the [live sample](../research/twitch/data/2026-10-21/live-2015/README.md) for results. The same rules run inside Twitch Clean (`tibia-classify.js`), with OCR of the thumbnail's right third in the browser; `tools/twitch_evidence.py` is the offline reference, and a test keeps both in agreement.

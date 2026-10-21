@@ -1,7 +1,7 @@
 {
   "_comment": "Evidence used by tools/twitch_evidence.py to tell official Tibia from other games in Twitch's Tibia category. No single signal decides: see docs/TWITCH.md. Terms match case-insensitively as whole words.",
   "client_ui": {
-    "_comment": "Text read from the stream thumbnail (OCR). ot_only: UI elements that exist only in custom OTServer clients (RubinOT/King Aslan/RedOT 'Map View' window, Battle Pass, Daily Missions). tibia_like: panels present in the official client and in OTServers built on it, so they only show a Tibia-style client.",
+    "_comment": "Text read from the stream thumbnail (OCR). ot_only: UI elements that exist only in custom OTServer clients (RubinOT/King Aslan/RedOT 'Map View' window, Battle Pass, Daily Missions). tibia_like: panels present in the official client and in OTServers built on it, so they only show a Tibia-style client. OCR misreads small UI text, so ot_only terms also match with up to two garbled characters before the last three letters (e.g. 'Map ¥Yiew') and 'battle pa…'.",
     "ot_only": [
       "map view",
       "battle pass",
@@ -91,7 +91,8 @@
       "pokememories",
       "sigma project",
       "poke io",
-      "amaralot"
+      "amaralot",
+      "idle poke"
     ],
     "Baiak Idle / idle": [
       "baiak idle",
@@ -146,7 +147,17 @@
       "mythos online",
       "eldrius",
       "king aslan",
-      "fantasydream"
+      "fantasydream",
+      "miracle74",
+      "miracle 7.4",
+      "papot",
+      "rivalia",
+      "rivaliaonline",
+      "arinar",
+      "warfront",
+      "shadowcores",
+      "otpokemon",
+      "trimera"
     ]
   }
 }

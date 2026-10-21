@@ -1,4 +1,5 @@
 import json
+import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -15,11 +16,27 @@ class EvidenceTests(unittest.TestCase):
         verdict, _, _ = EV.classify("King Aslan Global", [], "Skills Map View Store")
         self.assertEqual(verdict, "other")
 
-    def test_text_alone_never_hides_without_a_screen(self):
-        self.assertEqual(EV.classify("PKA Titan 2 !pokealliance", [], None)[0], "undetermined")
+    def test_text_naming_another_game_acts_before_ocr(self):
+        self.assertEqual(EV.classify("PKA Titan 2 !pokealliance", [], None)[0], "other")
+        self.assertEqual(EV.classify("EK 2500 !rubinot", [], None)[0], "other")
 
     def test_sponsor_command_with_tibia_client_stays_visible(self):
         self.assertEqual(EV.classify("EK 2500 !rubinot", [], "Skills Hunt Analyser Stamina")[0], "undetermined")
+        # A declared server is not just a sponsor command.
+        self.assertEqual(EV.classify("[RUBINOT] war !rubinot", [], "Skills Stamina")[0], "other")
+
+    def test_extension_classifier_matches_python(self):
+        js = json.loads(subprocess.run(["node", str(ROOT / "tests/twitch-classify.cjs")], check=True, capture_output=True, text=True).stdout)
+        data = ROOT / "research/twitch/data/2026-10-21/live-2015"
+        for stream in json.loads((data / "streams.json").read_text()):
+            ocr_file = data / "ocr" / f"{stream['channel']}.txt"
+            ocr = ocr_file.read_text() if ocr_file.exists() else None
+            expected = [EV.classify(stream["title"], stream["tags"], ocr)[0], EV.classify(stream["title"], stream["tags"], None)[0]]
+            self.assertEqual(js[stream["channel"]], expected, stream["channel"])
+
+    def test_extension_evidence_copy_is_current(self):
+        from twitch_evidence import EXTENSION_DATA, extension_data
+        self.assertEqual(EXTENSION_DATA.read_text(), extension_data(json.loads(EVIDENCE.read_text())))
 
     def test_other_game_without_tibia_client(self):
         self.assertEqual(EV.classify("[PXG] Jogando Rankeds", [], "Pokemon Bag Batalha")[0], "other")

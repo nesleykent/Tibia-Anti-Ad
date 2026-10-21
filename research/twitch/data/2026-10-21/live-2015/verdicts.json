@@ -2,7 +2,7 @@
   {
     "channel": "brederodess",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "server only as a chat command, Tibia-style client on screen",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -93,7 +93,7 @@
   {
     "channel": "saegusinha",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -130,7 +130,7 @@
   {
     "channel": "stigalzera",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -209,7 +209,7 @@
   {
     "channel": "pagodines",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "server only as a chat command, Tibia-style client on screen",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -227,7 +227,7 @@
   {
     "channel": "hyoogplays",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -242,7 +242,7 @@
   {
     "channel": "lucaobigbig",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "server only as a chat command, Tibia-style client on screen",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -264,6 +264,7 @@
     "reason": "OTServer-only client UI on screen",
     "evidence": {
       "ot_ui": [
+        "battle pass",
         "map view"
       ],
       "tibia_ui": [
@@ -283,7 +284,7 @@
   {
     "channel": "lugontv",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -298,7 +299,7 @@
   {
     "channel": "teslat",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -313,7 +314,7 @@
   {
     "channel": "antedeguemonn",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -327,8 +328,8 @@
   },
   {
     "channel": "shing_sheng",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -391,7 +392,7 @@
   {
     "channel": "oieusouoku",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -447,7 +448,7 @@
   {
     "channel": "safnaww",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -462,7 +463,7 @@
   {
     "channel": "paulynhatv",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -522,8 +523,8 @@
   },
   {
     "channel": "luanzingoexp",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -562,8 +563,8 @@
   },
   {
     "channel": "matts",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -581,8 +582,8 @@
   },
   {
     "channel": "degonitzz",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -599,8 +600,8 @@
   },
   {
     "channel": "valonnezerah",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -618,7 +619,7 @@
   {
     "channel": "krosszao",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -633,7 +634,7 @@
   {
     "channel": "anaadventure",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -647,8 +648,8 @@
   },
   {
     "channel": "pedronobretv",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -677,7 +678,7 @@
   {
     "channel": "chagas_044",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -692,7 +693,7 @@
   {
     "channel": "hyagozeraaa",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -707,7 +708,7 @@
   {
     "channel": "shurkss",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -722,7 +723,7 @@
   {
     "channel": "skyowoz",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -761,8 +762,8 @@
   },
   {
     "channel": "thesuperknurd",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -782,32 +783,40 @@
   },
   {
     "channel": "legolancetti",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
       "official_text": [],
-      "server_text": {}
+      "server_text": {
+        "Other OTServers": [
+          "arinar"
+        ]
+      }
     }
   },
   {
     "channel": "jardineiroxd",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
         "stamina"
       ],
       "official_text": [],
-      "server_text": {}
+      "server_text": {
+        "Other OTServers": [
+          "warfront"
+        ]
+      }
     }
   },
   {
     "channel": "emersonferrr",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -863,7 +872,7 @@
   {
     "channel": "trickzeraa",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -876,7 +885,8 @@
           "deusold"
         ],
         "Other OTServers": [
-          "aldeiaonline"
+          "aldeiaonline",
+          "rivaliaonline"
         ]
       }
     }
@@ -917,7 +927,7 @@
   {
     "channel": "inessone",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -953,8 +963,8 @@
   },
   {
     "channel": "makonowski",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -971,7 +981,7 @@
   {
     "channel": "william_hantaro",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1036,8 +1046,8 @@
   },
   {
     "channel": "voidcores_ots",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1049,6 +1059,7 @@
       "official_text": [],
       "server_text": {
         "Other OTServers": [
+          "shadowcores",
           "voidcores"
         ]
       }
@@ -1057,7 +1068,7 @@
   {
     "channel": "shunnyvt",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1084,19 +1095,23 @@
   },
   {
     "channel": "1indio",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
       "official_text": [],
-      "server_text": {}
+      "server_text": {
+        "Other OTServers": [
+          "trimera"
+        ]
+      }
     }
   },
   {
     "channel": "boycoins_",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1112,7 +1127,7 @@
   {
     "channel": "doomfist",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1150,7 +1165,7 @@
   {
     "channel": "paniclegends",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1168,7 +1183,7 @@
   {
     "channel": "lindao_gamer",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1214,7 +1229,7 @@
   {
     "channel": "sinxzyn",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1240,7 +1255,7 @@
   {
     "channel": "itsrakso",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1258,7 +1273,7 @@
   {
     "channel": "spectruxtv",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1286,7 +1301,7 @@
   {
     "channel": "water_storn",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1300,19 +1315,23 @@
   },
   {
     "channel": "juveeenil",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
       "official_text": [],
-      "server_text": {}
+      "server_text": {
+        "Poké OTs": [
+          "idle poke"
+        ]
+      }
     }
   },
   {
     "channel": "zaaplives",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1359,7 +1378,7 @@
   {
     "channel": "bolachinhaa_",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1373,8 +1392,8 @@
   },
   {
     "channel": "alemaotv",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1392,7 +1411,7 @@
   {
     "channel": "ogordonha",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1406,8 +1425,8 @@
   },
   {
     "channel": "vanreuse_007",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1424,7 +1443,7 @@
   {
     "channel": "japorega_",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "server only as a chat command, Tibia-style client on screen",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1444,7 +1463,7 @@
   {
     "channel": "stormbomb",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1459,7 +1478,7 @@
   {
     "channel": "xhannytv",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1493,7 +1512,7 @@
   {
     "channel": "macielzera__",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1525,7 +1544,7 @@
   {
     "channel": "youngsaulim",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1576,7 +1595,7 @@
   {
     "channel": "carvalini",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1611,8 +1630,8 @@
   },
   {
     "channel": "lostz3r4",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1630,7 +1649,7 @@
   {
     "channel": "anu_naki",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1646,7 +1665,7 @@
   {
     "channel": "nalkh",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1660,8 +1679,8 @@
   },
   {
     "channel": "oldjucada",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1670,13 +1689,17 @@
         "xp boost"
       ],
       "official_text": [],
-      "server_text": {}
+      "server_text": {
+        "Other OTServers": [
+          "papot"
+        ]
+      }
     }
   },
   {
     "channel": "vcruz",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1691,7 +1714,7 @@
   {
     "channel": "guerreirotetra",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "server only as a chat command, Tibia-style client on screen",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1714,7 +1737,7 @@
   {
     "channel": "zecchilord",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1729,8 +1752,8 @@
   },
   {
     "channel": "darianzin",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [
@@ -1748,7 +1771,7 @@
   {
     "channel": "marcos_d_lima",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1763,7 +1786,7 @@
   {
     "channel": "manowartibia",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1771,25 +1794,32 @@
       "server_text": {
         "RubinOT": [
           "rubinot"
+        ],
+        "Other OTServers": [
+          "rivalia"
         ]
       }
     }
   },
   {
     "channel": "h4wksin",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
       "official_text": [],
-      "server_text": {}
+      "server_text": {
+        "Other OTServers": [
+          "otpokemon"
+        ]
+      }
     }
   },
   {
     "channel": "itsmisty_xd",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1819,7 +1849,7 @@
   {
     "channel": "adr_warlord",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1834,7 +1864,7 @@
   {
     "channel": "abak",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
@@ -1870,13 +1900,17 @@
   },
   {
     "channel": "g4ndd",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],
       "official_text": [],
-      "server_text": {}
+      "server_text": {
+        "Other OTServers": [
+          "otpokemon"
+        ]
+      }
     }
   },
   {
@@ -1898,7 +1932,7 @@
   {
     "channel": "itsmanojava",
     "verdict": "other",
-    "reason": "names another game and the screen shows no Tibia-style client",
+    "reason": "names another game, screen does not contradict",
     "evidence": {
       "ot_ui": [],
       "tibia_ui": [],

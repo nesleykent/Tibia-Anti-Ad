@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Twitch Clean",
   "version": "1.0.0",
-  "description": "Blocks Twitch ad and tracking servers, hides display ads and nags, forces Source quality and strips stitched video ads (vaft).",
+  "description": "Blocks Twitch ad and tracking servers, hides display ads and nags, forces Source quality, strips stitched video ads (vaft) and hides non-Tibia streams in the Tibia category.",
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",
@@ -22,34 +22,77 @@
       "64": "icons/icon-64.png"
     }
   },
-  "permissions": ["declarativeNetRequest"],
-  "host_permissions": ["*://*.twitch.tv/*"],
+  "permissions": [
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "*://*.twitch.tv/*",
+    "https://static-cdn.jtvnw.net/*"
+  ],
   "declarative_net_request": {
     "rule_resources": [
-      { "id": "twitch_ads", "enabled": true, "path": "rules.json" }
+      {
+        "id": "twitch_ads",
+        "enabled": true,
+        "path": "rules.json"
+      }
     ]
   },
   "content_scripts": [
     {
-      "matches": ["*://*.twitch.tv/*"],
-      "css": ["hide.css"],
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "css": [
+        "hide.css"
+      ],
       "css_origin": "user",
       "run_at": "document_start",
       "all_frames": true
     },
     {
-      "matches": ["*://*.twitch.tv/*"],
-      "js": ["page.js"],
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "js": [
+        "page.js"
+      ],
       "world": "MAIN",
       "run_at": "document_start"
     },
     {
-      "matches": ["*://*.twitch.tv/*"],
-      "js": ["nags.js"],
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "js": [
+        "nags.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://www.twitch.tv/*"
+      ],
+      "js": [
+        "tibia-evidence.js",
+        "tibia-classify.js",
+        "tibia-filter.js"
+      ],
       "run_at": "document_idle"
     }
   ],
   "browser_specific_settings": {
-    "safari": { "strict_min_version": "26.0" }
+    "safari": {
+      "strict_min_version": "26.0"
+    }
+  },
+  "background": {
+    "scripts": [
+      "vendor/tesseract/tesseract.min.js",
+      "ocr-background.js"
+    ]
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
   }
 }

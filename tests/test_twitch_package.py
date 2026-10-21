@@ -10,7 +10,7 @@ EXTENSION = ROOT / 'extensions/twitch-clean/extension'
 class TwitchPackageTests(unittest.TestCase):
     def test_imported_files_match_supplied_archive_hashes(self):
         provenance = json.loads((ROOT / 'research/twitch/source-manifest.json').read_text())
-        self.assertEqual(len(provenance['files']), 17)
+        self.assertEqual(len(provenance['files']) + len(provenance['modified_after_import']), 17)
         for name, digest in provenance['files'].items():
             with self.subTest(file=name):
                 self.assertEqual(hashlib.sha256((ROOT / name).read_bytes()).hexdigest(), digest)
@@ -18,9 +18,11 @@ class TwitchPackageTests(unittest.TestCase):
     def test_manifest_references_existing_resources_and_early_page_world(self):
         manifest = json.loads((EXTENSION / 'manifest.json').read_text())
         self.assertEqual(manifest['manifest_version'], 3)
-        self.assertEqual(manifest['host_permissions'], ['*://*.twitch.tv/*'])
+        self.assertEqual(manifest['host_permissions'], ['*://*.twitch.tv/*', 'https://static-cdn.jtvnw.net/*'])
         self.assertEqual(manifest['permissions'], ['declarativeNetRequest'])
         for resource in manifest['icons'].values():
+            self.assertTrue((EXTENSION / resource).is_file())
+        for resource in manifest['background']['scripts']:
             self.assertTrue((EXTENSION / resource).is_file())
         for script in manifest['content_scripts']:
             for resource in script.get('js', []) + script.get('css', []):
