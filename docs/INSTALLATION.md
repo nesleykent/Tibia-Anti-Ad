@@ -1,5 +1,7 @@
 # Installation and rollback
 
+The repository is currently private. Raw URLs require authorized access and usually cannot be subscribed to by a blocker anonymously. Download a generated list while signed in, then use a supported local import or custom-filter editor. Do not put an access token in a filter URL.
+
 All lists are experimental. Use one generated bundle, not both. Review the site's historical report before enabling it. Cosmetic hiding does not prevent tracking requests.
 
 ## Firefox with uBlock Origin
