@@ -1,0 +1,145 @@
+! Title: TibiaWiki (Fandom) – Ads, Trackers & Annoyances
+! Description: Self-contained uBOL list for tibia.fandom.com: blocks Fandom ad-engine (Odyssey), GPT/Prebid/APS bidders, ID-sync, analytics beacons, Funding Choices ad-block recovery, featured-video ads, Google One Tap, and hides every ad slot/placeholder.
+! Compatibility: uBlock Origin Lite (Optimal/Complete mode on tibia.fandom.com), Safari + Chrome. Plain CSS only (no procedural operators, no scriptlets).
+! Last modified: 2026-10-21 (rev 2)
+! Homepage: local
+
+! ===== Network: Fandom first-party ad stack (CDN-hosted, ads only) =====
+! Odyssey host / ad-engine / prebid / identity-engine (ID graph) bundles. Content and MediaWiki
+! code live under tibia.fandom.com/load.php and static.wikia.nocookie.net – untouched.
+! The ad-engine also loads the rotating Admiral-style random-word hosts (e.g. wear.hmphpointed.com,
+! fun.whollyeven.com); blocking it prevents those, which can't be listed ahead of time.
+||script.wikia.nocookie.net/fandom-ae-assets/^
+! Silversurfer = Fandom behavioural tracking SDK
+||static.wikia.nocookie.net/silversurfer/^
+! Fandom telemetry beacons (pageload, trackingevent, morpheus_performance, adengloadtimes)
+||beacon.wikia-services.com^
+||tibia.fandom.com/__cb*/resources-ucp/*/dist/scripts/dtnr-observability.js
+||tibia.fandom.com/__cb*/resources-ucp/*/dist/scripts/pageview.js
+
+! ===== Network: Google ads / ad-block recovery =====
+||securepubads.g.doubleclick.net^
+||pagead2.googlesyndication.com^
+||googlesyndication.com^
+||doubleclick.net^
+||googleadservices.com^
+||adtrafficquality.google^
+! Funding Choices: Google's "you're using an ad blocker" recovery message (publisher 5441)
+||fundingchoicesmessages.google.com^
+
+! ===== Network: header bidding / bidders (Prebid + Amazon APS) =====
+||c.amazon-adsystem.com^
+||amazon-adsystem.com^
+||g2.gumgum.com^
+||gumgum.com^
+||static.criteo.net^
+||criteo.com^
+||criteo.net^
+||rubiconproject.com^
+||pubmatic.com^
+||openx.net^
+||adnxs.com^
+||indexww.com^
+||casalemedia.com^
+||triplelift.com^
+||3lift.com^
+||sharethrough.com^
+||media.net^
+||teads.tv^
+||smartadserver.com^
+||onetag-sys.com^
+||yieldmo.com^
+||33across.com^
+||adform.net^
+||sonobi.com^
+||kargo.com^
+
+! ===== Network: Brand Metrics ad-effect survey ("Help us understand your preference..." fly-in) =====
+! Injected by the ad-engine (BrandMetricsSurvey / icBrandMetricsFlyIn) from cdn.brandmetrics.com,
+! answers go to collector.brandmetrics.com. Also covered by the fandom-ae-assets rule above.
+||brandmetrics.com^
+
+! ===== Network: ID sync / audience / fingerprinting =====
+! seg.ad.gt = Audigent segments; ups.analytics.yahoo.com = Yahoo ConnectID (localStorage "connectId")
+||ad.gt^
+||ups.analytics.yahoo.com^
+||match.adsrvr.org^
+||adsrvr.org^
+||id5-sync.com^
+||liveramp.com^
+||rlcdn.com^
+||pippio.com^
+||crwdcntrl.net^
+||bidswitch.net^
+||everesttech.net^
+||demdex.net^
+||quantserve.com^
+||quantcount.com^
+||scorecardresearch.com^
+||sb.scorecardresearch.com^
+
+! ===== Network: analytics =====
+||static.cloudflareinsights.com^
+||cloudflareinsights.com^
+||google-analytics.com^
+||googletagmanager.com^
+! Algolia search click-tracking (search itself uses Fandom's own API and keeps working)
+||cdn.jsdelivr.net/npm/search-insights@$script
+||insights.algolia.io^
+
+! ===== Network: Google One Tap sign-in popup =====
+||auth.fandom.com/public/one-tap/^
+||accounts.google.com/gsi/^
+
+! ===== Cosmetic: ad slots and their always-visible wrappers =====
+! .fandom-ad-placeholder keeps its padding/label ("Advertisement") when empty -> hide wrapper.
+tibia.fandom.com##.fandom-ad-placeholder
+tibia.fandom.com##.fandom-ad-wrapper
+tibia.fandom.com##.fandom-ad-sticky-container
+tibia.fandom.com##.top-ads-container
+tibia.fandom.com##.bottom-ads-container
+tibia.fandom.com##fandom-ad
+tibia.fandom.com##.fandom-ad-label
+tibia.fandom.com###rail-boxad-wrapper
+tibia.fandom.com##[id^="label-"][class="fandom-ad-label"]
+tibia.fandom.com##div[id^="google_ads_iframe_"]
+tibia.fandom.com##iframe[id^="google_ads_iframe_"]
+tibia.fandom.com##.ad-slot-placeholder
+! Right-rail sticky ad box (only holds incontent_boxad)
+tibia.fandom.com##.sticky-modules-wrapper > .fandom-ad-wrapper
+
+! ===== Cosmetic: featured video (ad-backed JWPlayer above article text) =====
+tibia.fandom.com###featured-video__player-container
+tibia.fandom.com##.featured-video__wrapper
+tibia.fandom.com##.featured-video-player-container
+! backup (procedural in uBO; Lite may skip it)
+tibia.fandom.com##.page-content > div:has(> #featured-video__player-container)
+
+! ===== Cosmetic: ad-block recovery / promo layers =====
+! Funding Choices dialog (in case it loads despite the network rule)
+tibia.fandom.com##.fc-ab-root
+tibia.fandom.com##.fc-dialog-overlay
+tibia.fandom.com##.fc-dialog-container
+! Google One Tap
+tibia.fandom.com###credential_picker_container
+tibia.fandom.com###credential_picker_iframe
+
+! ===== Cosmetic: mobile skin (fandommobile) sticky units =====
+tibia.fandom.com###floor_adhesion_container
+tibia.fandom.com##.floor-adhesion
+tibia.fandom.com###interstitial
+tibia.fandom.com##fandom-ad[id="interstitial"]
+
+! ===== Cosmetic: OneTrust cookie/consent layer =====
+! Hidden without answering = no consent stored (most privacy-preserving). Remove these two
+! lines if you want to manage consent; cdn.cookielaw.org is intentionally NOT blocked.
+tibia.fandom.com###onetrust-consent-sdk
+tibia.fandom.com##.onetrust-pc-dark-filter
+
+! ===== Cosmetic: Brand Metrics survey fly-in (UNVERIFIED selectors, backup only) =====
+! The widget did not render in testing, so these are best-guess attribute matches.
+tibia.fandom.com##div[id^="bm-"]
+tibia.fandom.com##div[class^="bm-"]
+tibia.fandom.com##div[id*="brandmetrics"]
+tibia.fandom.com##div[class*="brandmetrics"]
+tibia.fandom.com##iframe[src*="brandmetrics.com"]

@@ -1,0 +1,59 @@
+! Title: tibiavip.app – uBOL custom filters
+! Description: Self-contained list for tibiavip.app. Blocks Google AdSense (incl. auto/anchor/vignette ads),
+!              Funding Choices (consent + ad-block recovery messages), GA4/gtag, Cloudflare Web Analytics,
+!              Google ad-quality/ID-sync telemetry, and hides leftover ad containers. No other list required.
+! Compatibility: uBlock Origin Lite (Safari, Chrome). Plain CSS only – no :has(), scriptlets or procedural filters.
+!                Cosmetic rules need filtering mode "Optimal" or "Complete" on tibiavip.app.
+! Homepage: https://tibiavip.app
+! Last modified: 2026-10-21
+! Revision: 1
+
+! ===== Network: advertising (AdSense / DoubleClick) =====
+||pagead2.googlesyndication.com^$3p
+||tpc.googlesyndication.com^$3p
+||googleads.g.doubleclick.net^$3p
+||securepubads.g.doubleclick.net^$3p
+! adsbygoogle.js conversion/ccm pings (observed www.google.com.br hit; path assumed)
+||www.google.com/pagead/$3p
+||www.google.com.br/pagead/$3p
+! AdSense iframe pre-rendered lookups (google_esf iframe)
+||googleads.g.doubleclick.net/pagead/html/$3p
+
+! ===== Network: ad-quality / fingerprinting telemetry =====
+! ep1/ep2.adtrafficquality.google = AdSense "SODAR" bot/fingerprint probes
+||adtrafficquality.google^$3p
+
+! ===== Network: consent + ad-block recovery (Google Funding Choices) =====
+! Loads the CMP banner and the "you are using an ad blocker" recovery dialog (fc-ab-root).
+! Blocking it removes both; site works without it (verified homepage).
+||fundingchoicesmessages.google.com^$3p
+
+! ===== Network: analytics =====
+||www.googletagmanager.com^$3p
+||analytics.google.com^$3p
+||www.google-analytics.com^$3p
+||stats.g.doubleclick.net^$3p
+! Cloudflare Web Analytics beacon (NOT the Turnstile challenge – that lives on challenges.cloudflare.com, keep it)
+||static.cloudflareinsights.com^$3p
+||cloudflareinsights.com/cdn-cgi/rum^
+
+! ===== Cosmetic: AdSense units (auto ads, anchor, vignette, in-page) =====
+tibiavip.app##ins.adsbygoogle
+tibiavip.app##.adsbygoogle
+tibiavip.app##iframe[id^="aswift_"]
+tibiavip.app##iframe[name^="aswift_"]
+tibiavip.app##iframe[title="Advertisement"]
+tibiavip.app##iframe#google_esf
+! Auto-ads anchor (data-overlays="bottom") and its wrappers – markup from AdSense, unverified on this site
+tibiavip.app##ins[data-anchor-status]
+tibiavip.app##ins[data-vignette-loaded]
+tibiavip.app##div[id^="google_ads_iframe_"]
+tibiavip.app##.google-auto-placed
+tibiavip.app##div[id^="aswift_"][id$="_host"]
+
+! ===== Cosmetic: Funding Choices banner / ad-block wall (backup if network rule is skipped) =====
+! Standard FC markup, not rendered in test (FC blocked/consent stored) – unverified
+tibiavip.app##.fc-consent-root
+tibiavip.app##.fc-ab-root
+tibiavip.app##.fc-dialog-overlay
+tibiavip.app##div[class^="fc-"][class*="-root"]

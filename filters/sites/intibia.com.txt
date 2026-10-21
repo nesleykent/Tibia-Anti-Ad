@@ -1,0 +1,78 @@
+! Title: intibia.com – ads, trackers & sponsor slots (uBOL custom filters)
+! Description: Self-contained list for https://intibia.com (Next.js app). Blocks Google Ad Manager/AdSense,
+!   Funding Choices (CMP + ad-block recovery), GA/GTM, Hotjar, first-party PostHog proxy (t.intibia.com,
+!   incl. its surveys popup), and the site's own "partner orders" sponsor placements. Hides every ad frame.
+! Compatibility: uBlock Origin Lite (Safari / Chromium), uBlock Origin. Plain CSS only, no :has()/scriptlets
+!   in critical rules. Requires Optimal or Complete filtering mode on intibia.com for cosmetic rules.
+! Last modified: 2026-10-21 (revision 1)
+! Expires: 7 days
+
+! ===== Network: Google ad stack =====
+||securepubads.g.doubleclick.net^
+||pagead2.googlesyndication.com^
+||cm.g.doubleclick.net^
+||stats.g.doubleclick.net^
+||googleads.g.doubleclick.net^
+||tpc.googlesyndication.com^
+||adservice.google.com^
+||ep1.adtrafficquality.google^
+||ep2.adtrafficquality.google^
+||adtrafficquality.google^
+! Funding Choices: consent banner AND Google "ad blocking recovery" message (ers=3 in the loader URL).
+! Blocking it is safe: nothing on the site waits for its callback.
+||fundingchoicesmessages.google.com^
+
+! ===== Network: analytics / telemetry / session recording =====
+||googletagmanager.com^$3p
+||analytics.google.com^
+||google-analytics.com^
+||region1.google-analytics.com^
+||static.hotjar.com^
+||script.hotjar.com^
+||hotjar.com^$3p
+||hotjar.io^$3p
+! First-party PostHog reverse proxy: events, session recording, web-vitals, dead-click capture
+! and the surveys.js pop-up (surveyPopupDelaySeconds in bundle). Only analytics lives on this host.
+||t.intibia.com^
+
+! ===== Network: first-party sponsor ("partner orders") placements =====
+! Feeds the sidebar "Partners" buttons, mobile bottom ad drawer (FooterAdDrawer), footer-stripe,
+! market-prices widget, sidebar square, medium-rectangle and modal-skyscraper partner slots.
+! Each component renders null when the query has no data, so blocking leaves no gaps.
+||intibia.com/api/fetch-partner-orders
+||buxgrdbsynsvajxonqhf.supabase.co/storage/v1/object/public/partner_orders/
+! "Featured on TibiaTrade" listings stripe above the footer
+||tibiatrade.gg/api/trade/exevopan
+
+! ===== Cosmetic: Google Ad Manager slots =====
+! Leaderboard: AdSlot id = pages-leaderboard-<slug>; its bordered wrapper stays 92px tall when empty.
+intibia.com##[id^="pages-leaderboard"]
+intibia.com##div.hidden[class*="max-w-[1264px]"][class*="z-20"][class*="md:flex"]
+! Medium rectangle (300x250) and modal skyscrapers (300x600/160x600/120x600) next to dialogs
+intibia.com##[id^="medium-rectangle"]
+! Home grid tiles holding a medium rectangle (desktop xl:order-4 tile, mobile max-md:order-1 tile).
+! Content tiles in the same grid don't carry bg-stone-800 + col-span-2 together.
+intibia.com##div.bg-stone-800.items-center.justify-center[class*="col-span-2"]
+intibia.com##div.absolute[class*="translate-x-[calc(-100%-20px)]"]
+intibia.com##div.absolute[class*="translate-x-[calc(100%+20px)]"]
+intibia.com##[id^="modal-skyscraper-"]
+intibia.com##[id^="google_ads_iframe"]
+intibia.com##iframe[src*="doubleclick.net"]
+
+! ===== Cosmetic: sponsor / partner placements (backup for the API block) =====
+! Sidebar "Partners" box (desktop xl)
+intibia.com##div.hidden.flex-col.gap-2.px-4.pb-4[class*="xl:flex"]
+! Mobile fixed bottom "ad bar" (FooterAdDrawer)
+intibia.com##div.fixed.bottom-0[class*="safe-area-inset-bottom"]
+! "Featured on TibiaTrade" stripe above the footer
+intibia.com##div.pt-6.pb-4.border-t.bg-stone-950.border-stone-800
+! Affiliate links/logos (footer partner logos etc.). Footer "Partners" page link is kept.
+intibia.com##a[href*="?ref=intibia"]
+intibia.com##a[href*="reidoscoins.com"]
+intibia.com##a[href*="otponline.com/intibia"]
+
+! ===== Cosmetic: annoyances (unverified – never rendered during testing) =====
+! PostHog survey widget (blocked at network level via t.intibia.com; selector is a backup)
+intibia.com##div[class^="PostHogSurvey"]
+intibia.com##.fc-consent-root
+intibia.com##.fc-ab-root

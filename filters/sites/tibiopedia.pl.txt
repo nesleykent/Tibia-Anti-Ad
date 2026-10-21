@@ -1,0 +1,141 @@
+! Title: Tibiopedia.pl – uBOL custom filters
+! Description: Self-contained list for tibiopedia.pl: Publift Fuse + Prebid header bidding (20+ SSPs), Google Publisher Tag/AdSense, Vidoomy floating video, Refinery89, Taboola, ID-sync (ID5, IntentIQ, LiveRamp, Lotame, Criteo, Panorama, SharedID, 33across, AMX), BlockThrough + Ad-Shield ad-recovery, GA4, Facebook SDK, side rails, "Reklama" boxes, sticky footer and the site's own adblock nag. Keeps nav, search, shoutbox, boosted-creature/cooldown panels, highslide galleries.
+! Compatibility: uBlock Origin Lite (Safari, Chrome), Optimal/Complete mode required for cosmetic rules. Plain CSS only, no :has()/scriptlets. Also valid in uBO.
+! REQUIRES tibiopedia.pl.user.js: blocking Ad-Shield (html-load.com etc.) without it makes the inline Ad-Shield loader wipe <body> every 100 ms.
+! Last modified: 2026-10-21  Revision: 1
+! Homepage: https://tibiopedia.pl
+
+! ===== Ad stack: Publift Fuse + Google =====
+||cdn.fuseplatform.net^
+||fuseplatform.net^
+||securepubads.g.doubleclick.net^
+||pagead2.googlesyndication.com^
+||tpc.googlesyndication.com^
+||googlesyndication.com^
+||googleads.g.doubleclick.net^
+||googleads6.g.doubleclick.net^
+||ad.doubleclick.net^
+||cm.g.doubleclick.net^
+||stats.g.doubleclick.net^
+||adservice.google.com^
+||adtrafficquality.google^
+||imasdk.googleapis.com^
+||www.google.com/pagead/$3p
+! Publift "gamera" LTV/audience telemetry
+||metrics.rapidedge.io^
+||rapidedge.io^
+! Prebid currency file pulled from jsDelivr (only Prebid uses it here)
+||cdn.jsdelivr.net/gh/prebid/$3p
+
+! ===== Other ad networks =====
+! Vidoomy outstream floating video (fixed corner player, z-index 2147483647)
+||vidoomy.com^
+! Refinery89 (tag currently commented out in HTML; blocked in case it returns)
+||refinery89.com^
+! Taboola (_taboola.push stub present at end of body)
+||taboola.com^
+||taboolasyndication.com^
+
+! ===== Prebid bidders (SSPs) =====
+||33across.com^
+||smilewanted.com^
+||lijit.com^
+||criteo.com^
+||criteo.net^
+||yellowblue.io^
+||adnxs.com^
+||cootlogix.com^
+||onetag-sys.com^
+||casalemedia.com^
+||a-mo.net^
+||nexx360.io^
+||servenobid.com^
+||openx.net^
+||optidigital.com^
+||4dex.io^
+||smartadserver.com^
+||connectad.io^
+||ingage.tech^
+||adsrvr.org^
+||richaudience.com^
+||pubmatic.com^
+||rubiconproject.com^
+||gumgum.com^
+||omnitagjs.com^
+||3lift.com^
+||creativecdn.com^
+||insticator.com^
+
+! ===== ID sync / identity graphs =====
+||id5-sync.com^
+||eu-1-id5-sync.com^
+||intentiq.com^
+||rlcdn.com^
+||crwdcntrl.net^
+||a-mx.com^
+||sharedid.org^
+||pubcid.org^
+
+! ===== Ad-recovery / anti-adblock vendors =====
+! BlockThrough (btloader; writes BT_AA_DETECTION, probes ad-delivery.net / dns-finder)
+||btloader.com^
+||ad-delivery.net^
+||dns-finder.com^
+! Ad-Shield loader + its fallback mirrors (decoded from the inline loader) and its
+! "Please allow ads" report/modal host. NEEDS the userscript – see header.
+||html-load.com^
+||content-loader.com^
+||error-report.com^
+||d2zdzxjekh1km6.cloudfront.net^
+
+! ===== Malvertising =====
+! Observed 2026-10-21: an ad force-redirected the top page to a fake "McAfee" scam
+||securesweep.pro^
+
+! ===== Analytics / social =====
+||googletagmanager.com^
+||google-analytics.com^
+||analytics.google.com^
+||connect.facebook.net^
+||www.facebook.com/plugins/$3p
+||www.facebook.com/tr$3p
+
+! ===== Site's own adblock nag =====
+! DO NOT block /js/show_ads.js – it is the bait: it sets adBlockEnabled=false.
+! If it is blocked (generic lists do that), scripts.js keeps the default
+! adBlockEnabled=true and showAdBlockNotification() builds the popup below.
+@@||tibiopedia.pl/js/show_ads.js$script,1p
+! Telemetry call fired when the nag is shown
+||tibiopedia.pl/ajax/save_adblock_user
+||tibiopedia.pl/images/library/adblock/
+
+! ===== Cosmetic: ad slots =====
+! Leaderboard (728x90 bordered box above content), MREC, large leaderboard, site sticky class
+tibiopedia.pl##.com_leaderboard
+tibiopedia.pl##.com_leaderboard_large
+tibiopedia.pl##.com_medium_box
+tibiopedia.pl##.com_skyscrapper
+tibiopedia.pl##.com_sticky_bottom
+! "Reklama"-titled 180x650 box in the right user bar (holds only the 160x600 vrec)
+tibiopedia.pl##.ad_panel_right
+! Left/right 300x600 sticky side rails outside the 1000px page (inline-styled, no id/class)
+tibiopedia.pl###pageBody > div[style*="margin-left:-295px"]
+tibiopedia.pl###pageBody > div[style*="right:-295px"]
+! Any remaining Fuse slot
+tibiopedia.pl##div[data-fuse]
+tibiopedia.pl##[id^="fuse-slot-"]
+tibiopedia.pl##[id^="google_ads_iframe_"]
+! Publift scrolling sticky footer
+tibiopedia.pl##[class^="publift-widget"]
+
+! ===== Cosmetic: floating video =====
+! Vidoomy player: random class names, only stable trait is the max z-index inline style on a body-level div.
+! Do NOT widen this to iframes: Ad-Shield checks its own full-screen iframe is visible
+! and falls back to confirm()/redirect if it is hidden (userscript prevents that path).
+tibiopedia.pl##body > div[style*="z-index: 2147483647"]
+
+! ===== Cosmetic: site adblock nag (backup; bait allowed above) =====
+! Built by showAdBlockNotification(): body-level div, random 8-letter id, jQuery inline styles.
+tibiopedia.pl##body > div[id][style*="margin-left: -250px"][style*="margin-top: -220px"]
+! LAYOUT=='mobile' variant (unverified: mobile layout not offered by /setup currently)
+tibiopedia.pl##body > div[id][style*="z-index: 1800"][style*="top: 105px"]

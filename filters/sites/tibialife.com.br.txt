@@ -1,0 +1,39 @@
+! Title: Tibia Life (tibialife.com.br) – uBOL custom filters
+! Description: Self-contained list for the Tibia Life WordPress/Elementor fansite (Roxeen theme). Blocks GA4 (Site Kit gtag) + Google Signals/ga-audiences remarketing beacon, the SmoothScroll wheel/keyboard hijack, and hides the self-hosted sponsor ("Parceiros") coupon banners and the ExitLag affiliate menu link. No ad network, ID-sync, pop-up, consent banner or anti-adblock exists on the site (checked 2026-10-21).
+! Compatibility: uBlock Origin Lite (Safari, Chrome); Optimal/Complete mode required for cosmetic rules. Plain CSS only, no :has()/scriptlets. Also valid in uBO.
+! Last modified: 2026-10-21  Revision: 1
+! Homepage: https://www.tibialife.com.br
+
+! ===== Analytics / tracking =====
+! gtag.js GT-5TGJ8HW -> GA4 G-4J2SDPCGHW (_ga, _ga_4J2SDPCGHW cookies)
+||googletagmanager.com^
+||google-analytics.com^
+||analytics.google.com^
+||stats.g.doubleclick.net^
+! Google Signals remarketing ping, sent to the regional Google domain (www.google.com.br/ads/ga-audiences)
+||google.com.br/ads/$3p
+||www.google.com/ads/$3p
+||www.google.com/ccm/$3p
+||www.google.com/pagead/$3p
+
+! ===== Interaction hijack: SmoothScroll for websites v1.5.1 =====
+! Standalone theme file containing only the wheel/arrow-key smooth-scroll override
+! (wheel + keydown listeners with preventDefault). Active on desktop Chrome AND desktop Safari.
+! Native scrolling returns when blocked; nothing else depends on it.
+||tibialife.com.br/wp-content/themes/roxeen/assets/js/smooth-scroll.min.js
+
+! ===== Cosmetic: "Parceiros" sponsor block (homepage sidebar column, all widths) =====
+! Elementor widgets: f472b1d = "Parceiros" heading, f1eac4f = ExitLag 336x280 coupon banner (bit.ly/Exitlag),
+! 21fb053 = danielhatano.com.br coupon banner (860x774 desktop). Elementor ids are stable per widget.
+tibialife.com.br##.elementor-element-f472b1d
+tibialife.com.br##.elementor-element-f1eac4f
+tibialife.com.br##.elementor-element-21fb053
+! Fallback if the widgets get re-created with new ids (hides the image widget wrapper via the link)
+tibialife.com.br##.elementor-widget-image a[href*="bit.ly/Exitlag" i]
+tibialife.com.br##.elementor-widget-image a[href*="danielhatano.com.br"]
+tibialife.com.br##.elementor-widget-image a[href*="bit.ly/Exitlag" i] + figcaption
+tibialife.com.br##.elementor-widget-image a[href*="danielhatano.com.br"] + figcaption
+
+! ===== Cosmetic: ExitLag affiliate link in the main menu (Parceiros submenu, desktop + mobile menus) =====
+! Duplicate id #menu-item-2195 (menu rendered twice) -> class selector
+tibialife.com.br##li.menu-item-2195

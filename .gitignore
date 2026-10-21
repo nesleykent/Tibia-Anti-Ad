@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.env
+.env.*
+*.zip
+# Original local working files are preserved; curated copies live below.
+/*.txt
+/*-validation.md
+/*.validation.md
+/*.user.js
+/twitch.js
+/twitchscrap.js
+/PROMPT.md
