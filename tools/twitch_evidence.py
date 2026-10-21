@@ -1,5 +1,6 @@
 """Classify full title and tag metadata."""
 import argparse
+import collections
 import json
 import re
 import subprocess
@@ -10,44 +11,76 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'filters/twitch/tibia-evidence.json'
 EXTENSION_DATA = ROOT / 'extensions/twitch-clean/extension/tibia-evidence.js'
+AUDIT = ROOT / 'research/twitch/data/2026-10-21/analysis/classificacao.json'
+AUDIT_OTHER = {'RubinOT', 'PokeAlliance (PKA)', 'PokeXGames (PXG)', 'Outros OTServers', 'Jogos Idle', 'DeusOT / DeusOld', 'Outros Pokémon', 'Pokémon misto', 'Outros jogos'}
+AUDIT_TIBIA = {'Tibia'}
 
 def normalize(text):
     text = unicodedata.normalize('NFKD', text).casefold()
     return ' '.join(''.join((c for c in text if not unicodedata.combining(c))).split())
 
-def matcher(terms):
-    alt = '|'.join((re.escape(t) for t in sorted(terms, key=len, reverse=True)))
-    pattern = re.compile(f'(?<![a-z0-9])(?:{alt})(?![a-z0-9])')
-    return lambda text: sorted(set(pattern.findall(text)))
+def words(terms):
+    alt = '|'.join((re.escape(normalize(t)) for t in sorted(terms, key=len, reverse=True)))
+    return re.compile(f'(?<![a-z0-9])([!\\u2757\\u2755]\\s*)?(?:{alt})(?![a-z0-9])')
 
-def fuzzy_matcher(terms):
-
-    def pattern(term):
-        head, tail = (term[:-3], term[-3:])
-        return '\\s*'.join((re.escape(w) for w in head.split())) + '\\s*\\S{0,2}' + re.escape(tail)
-    compiled = [(t, re.compile(pattern(t))) for t in terms]
-    return lambda text: sorted((t for t, p in compiled if p.search(text)))
+def fuzzy(term):
+    head = '\\s*'.join((re.escape(w) for w in term[:-3].split()))
+    return re.compile(f'{head}\\s*\\S{{0,2}}{re.escape(term[-3:])}')
 
 class Evidence:
 
     def __init__(self, data):
-        self.official = matcher(data['official_text'])
-        self.servers = {game: matcher(terms) for game, terms in data['server_text'].items()}
+        official = data['official']
+        self.official_title = words(official['title'] + official['worlds'])
+        self.official_tags = [re.compile(p) for p in official['tag_patterns']]
+        self.world_tags = {normalize(w) for w in official['worlds'] + official['worlds_tags_only']}
+        self.games = {game: (words(spec['words']), [re.compile(p) for p in spec['tag_patterns']]) for game, spec in data['games'].items()}
+
+    def metadata(self, title, tags):
+        title = normalize(title)
+        tags = [normalize(t).replace(' ', '') for t in tags]
+        found = {'declared': {}, 'tagged': {}, 'commands': {}, 'official': []}
+        for game, (pattern, tag_patterns) in self.games.items():
+            for match in pattern.finditer(title):
+                kind = 'commands' if match.group(1) else 'declared'
+                found[kind].setdefault(game, []).append(match.group(0))
+            hits = [t for t in tags if any((p.search(t) for p in tag_patterns))]
+            if hits:
+                found['tagged'][game] = hits
+        found['official'] = [m.group(0) for m in self.official_title.finditer(title) if not m.group(1)]
+        found['official'] += [t for t in tags if t in self.world_tags or any((p.search(t) for p in self.official_tags))]
+        return found
 
     def classify(self, title, tags):
         """Classify full title and tag metadata."""
-        text = normalize(f"{title} {' '.join(tags)}")
-        found = {'official_text': self.official(text), 'server_text': {g: m for g, f in self.servers.items() if (m := f(text))}}
-        names_server = bool(found['server_text'])
-        only_commands = names_server and all((re.search(f'!\\s*{re.escape(t)}', text) and (not re.search(f'(^|[^!\\w]){re.escape(t)}', re.sub(f'!\\s*{re.escape(t)}', '', text))) for terms in found['server_text'].values() for t in terms))
-        if names_server and (not found['official_text']):
-            if only_commands:
-                return ('undetermined', 'server only as a chat command, Tibia-style client on screen', found)
-            reason = 'names another game (text only, screen not read yet)'
-            return ('other', reason, found)
-        if found['official_text'] and (not names_server):
-            return ('tibia', 'official marker in text and a Tibia-style client on screen', found)
-        return ('undetermined', 'missing or conflicting evidence', found)
+        found = self.metadata(title, tags)
+        strong = set(found['declared']) | set(found['tagged'])
+        if strong and (not found['official']):
+            return ('other', f"declared/tagged: {', '.join(sorted(strong))}", found)
+        if found['official'] and (not strong):
+            return ('tibia', 'official world or Tibia Global', found)
+        if strong:
+            return ('undetermined', 'evidence for Tibia and another game', found)
+        if found['commands']:
+            return ('undetermined', 'server only as a chat command', found)
+        return ('undetermined', 'no decisive evidence', found)
+
+def evaluate(evidence):
+    """Compare metadata verdicts with the audit's categories; returns official streams hidden."""
+    table = collections.Counter()
+    wrong = []
+    for row in json.loads(AUDIT.read_text())['classificacao']:
+        tags = [t.strip() for t in row['tags_originais'].split('|') if t.strip()]
+        verdict, reason, _ = evidence.classify(row['titulo_original'], tags)
+        truth = 'other' if row['categoria'] in AUDIT_OTHER else 'tibia' if row['categoria'] in AUDIT_TIBIA else 'unclear'
+        table[truth, verdict] += 1
+        if verdict == 'other' and truth != 'other':
+            wrong.append((truth, row['canal'], reason, row['titulo_original'][:70], row['tags_originais']))
+    for truth in ('other', 'tibia', 'unclear'):
+        print(truth.ljust(8), {v: table[truth, v] for v in ('other', 'undetermined', 'tibia')})
+    for item in wrong:
+        print('HIDDEN', *item, sep=' | ')
+    return [w for w in wrong if w[0] == 'tibia']
 
 def extension_data(data):
     return f'// Generated by tools/twitch_evidence.py --write-js from filters/twitch/tibia-evidence.json. Do not edit.\nglobalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {json.dumps(data, ensure_ascii=True, indent=2)};\n'
@@ -55,19 +88,24 @@ def extension_data(data):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('streams', nargs='?')
+    parser.add_argument('--evaluate', action='store_true')
     parser.add_argument('--write-js', action='store_true')
     args = parser.parse_args()
     data = json.loads(EVIDENCE.read_text())
+    evidence = Evidence(data)
     if args.write_js:
         EXTENSION_DATA.write_text(extension_data(data))
         return
+    if args.evaluate:
+        raise SystemExit(1 if evaluate(evidence) else 0)
     if not args.streams:
         parser.error('streams is required')
-    evidence = Evidence(data)
     results = []
     for stream in json.loads(Path(args.streams).read_text()):
-        channel = stream['channel']
-        verdict, reason, found = evidence.classify(stream.get('title') or '', stream.get('tags') or [])
+        channel, title, tags = (stream['channel'], stream.get('title') or '', stream.get('tags') or [])
+        verdict, reason, found = evidence.classify(title, tags)
+        if verdict == 'undetermined':
+            verdict, reason, found = evidence.classify(title, tags)
         results.append({'channel': channel, 'verdict': verdict, 'reason': reason, 'evidence': found})
     print(json.dumps(results, ensure_ascii=False, indent=2))
 if __name__ == '__main__':

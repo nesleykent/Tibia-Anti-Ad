@@ -74,6 +74,16 @@
         "*://www.twitch.tv/*"
       ],
       "js": [
+        "tibia-props.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://www.twitch.tv/*"
+      ],
+      "js": [
         "tibia-evidence.js",
         "tibia-classify.js",
         "tibia-filter.js"

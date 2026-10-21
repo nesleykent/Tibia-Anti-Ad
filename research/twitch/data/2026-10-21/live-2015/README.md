@@ -4,7 +4,7 @@
 
 - `streams.json`: channel and title (tags were not exposed in this directory layout).
 
-Result: 65 `other`, 7 `tibia`, 42 `undetermined`. No stream with an official marker (Global, official world) was hidden except where an OTServer-only client element was on screen (e.g. "King Aslan Global" with a Map View window).
+Tags were not captured for this sample (titles only), so it under-represents the metadata stage. Current rules: 89 `other`, 12 `tibia`, 13 `undetermined`. No stream with an official marker (Global, official world) was hidden except where an OTServer-only client element was on screen (e.g. "King Aslan Global" with a Map View window).
 
 Visual findings:
 

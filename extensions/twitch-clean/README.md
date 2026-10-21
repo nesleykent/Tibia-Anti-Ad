@@ -8,7 +8,7 @@ Safari Web Extension source supplied in `twitch-clean.zip`, integrated into Anti
 - Cosmetic hiding of display ads, directory placements and promotional interfaces.
 - Targeted English-language handling of Apple TV, animated-emote and Prime Benefits prompts.
 - Source-quality preference on page load and background visibility handling.
-- **Tibia filter:** on the Tibia category directory, hides streams of other games (RubinOT and other OTServers, Pokémon servers, idle games). Official-marked and unclear streams stay visible.
+- **Tibia filter:** on the Tibia category directory, hides streams of other games (RubinOT and other OTServers, Pokémon servers, idle games). It reads each card's complete title and tags from Twitch's page data (`tibia-props.js`) and hides a card when a server is declared in the title or tags without an official world or "Tibia Global"; a `!server` chat command alone never hides. See [the research notes](../../research/twitch/otserver-filtering.md).
 - The MIT-licensed **vaft** script attempts to replace stitched video advertisements with a clean stream. When no clean stream is available, playback can freeze during the break; an alternate stream can be lower resolution.
 
 The original upstream vaft project was archived in March 2026. Current live-ad effectiveness has not been verified in this integration. The historical [validation report](../../research/twitch/twitch.tv-validation.md) contains earlier test claims; its 186-test suite was not supplied and has not been reproduced here.

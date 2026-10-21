@@ -34,13 +34,6 @@ Separate channels between tuning and holdout sets. Measure OTServ precision, fal
 
 Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/reference), consulted 2026-10-21.
 
-## Multi-signal classification (research)
+## OTServer filtering
 
-`tools/twitch_evidence.py` combines independent evidence, configured in `filters/twitch/tibia-evidence.json`. No single signal decides:
-
-| Signal | Source | Weight |
-|---|---|---|
-
-| Official marker (Global, official world names) | Title and tags | Needs a Tibia-style client on screen to mark `tibia` |
-
-Missing or contradictory evidence yields `undetermined`, which stays visible. See the [live sample](../research/twitch/data/2026-10-21/live-2015/README.md) for results.
+Twitch Clean hides OTServer, Pokémon-server and idle-game streams on the Tibia category directory. Method, alternatives and evaluation: [research/twitch/otserver-filtering.md](../research/twitch/otserver-filtering.md). Rules: `filters/twitch/tibia-evidence.json`; reference implementation and evaluation: `python3 tools/twitch_evidence.py --evaluate`.
