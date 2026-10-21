@@ -33,3 +33,15 @@ Every prototype output sets `hide: false`, even for OTServ: no real-stream preci
 Separate channels between tuning and holdout sets. Measure OTServ precision, false positives among official streams, recall and abstention by language. Target at least 99% OTServ precision with a reported confidence interval; a small sample cannot establish the target. Do not enable automatic hiding until the target and functional playback checks pass. Any known false positive requires investigation before release.
 
 Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/reference), consulted 2026-10-21.
+
+## Multi-signal classification (research)
+
+`tools/twitch_evidence.py` combines independent evidence, configured in `filters/twitch/tibia-evidence.json`. No single signal decides:
+
+| Signal | Source | Weight |
+|---|---|---|
+
+| Another game/server named | Title and tags | Only counts together with a screen that shows no Tibia-style client; `!server` commands are often sponsors |
+| Official marker (Global, official world names) | Title and tags | Needs a Tibia-style client on screen to mark `tibia` |
+
+Missing or contradictory evidence yields `undetermined`, which stays visible. See the [live sample](../research/twitch/data/2026-10-21/live-2015/README.md) for results.
