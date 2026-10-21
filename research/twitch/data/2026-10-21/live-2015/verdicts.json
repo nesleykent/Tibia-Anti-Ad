@@ -2,1963 +2,1880 @@
   {
     "channel": "brederodess",
     "verdict": "undetermined",
-    "reason": "server only as a chat command, Tibia-style client on screen",
+    "reason": "server only as a chat command",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "bestiary",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": []
     }
   },
   {
     "channel": "nxxxte",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "tibia",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "global"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "kekedepatinete",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "bestiary",
-        "hunt analyser",
-        "imbuements",
-        "offline training",
-        "prey",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "map view"
+      ]
     }
   },
   {
     "channel": "rickvitti",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "tibia",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "ferobra"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "diegovick",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "offline training",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
-          "rubinot"
+          "rubinot",
+          "infernum",
+          "vesperia"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "saegusinha",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pokealliance"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "arthmooca",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [
-        "battle pass"
-      ],
-      "tibia_ui": [
-        "hunt analyser",
-        "offline training",
-        "prey",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
-          "rubinot"
+          "rubinot",
+          "bellum",
+          "infernum"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "stigalzera",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other Pokémon servers, PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pokealliance"
         ],
-        "Poké OTs": [
+        "Other Pokémon servers": [
           "poke idle"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "vieiraah_",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "prey"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
-          "rubinot"
+          "drakaria"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "lethalmyk",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "imbuements"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
           "rubinot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "yilinn_",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "bestiary",
-        "imbuements",
-        "offline training",
-        "prey",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "map view"
+      ]
     }
   },
   {
     "channel": "pagodines",
     "verdict": "undetermined",
-    "reason": "server only as a chat command, Tibia-style client on screen",
+    "reason": "server only as a chat command",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "imbuements",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": []
     }
   },
   {
     "channel": "hyoogplays",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "lucaobigbig",
     "verdict": "undetermined",
-    "reason": "server only as a chat command, Tibia-style client on screen",
+    "reason": "server only as a chat command",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "offline training",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": []
     }
   },
   {
     "channel": "kingfabricin",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [
-        "battle pass",
-        "map view"
-      ],
-      "tibia_ui": [
-        "hunt analyser",
-        "offline training",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
-          "rubinot"
+          "infernum"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "lugontv",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other Pokémon servers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
-        "Poké OTs": [
+      "declared": {
+        "Other Pokémon servers": [
           "poke idle world"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "teslat",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
           "rubinot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "antedeguemonn",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "shing_sheng",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: DeusOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "imbuements",
-        "offline training",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "DeusOT": [
           "deusot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "DeusOT": [
+          "!deusot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "minghetto",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: battle pass",
     "evidence": {
-      "ot_ui": [
-        "battle pass"
-      ],
-      "tibia_ui": [
-        "hunt analyser",
-        "imbuements"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "battle pass"
+      ]
     }
   },
   {
     "channel": "raikezerah",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view, battle pass",
     "evidence": {
-      "ot_ui": [
-        "battle pass",
-        "map view"
-      ],
-      "tibia_ui": [
-        "hunt analyser",
-        "skills",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "map view",
+        "battle pass"
+      ]
     }
   },
   {
     "channel": "oieusouoku",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "beltranctz",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view, battle pass",
     "evidence": {
-      "ot_ui": [
-        "battle pass",
-        "map view"
-      ],
-      "tibia_ui": [
-        "skills",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "❗rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "map view",
+        "battle pass"
+      ]
     }
   },
   {
     "channel": "theschneiderr",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: battle pass",
     "evidence": {
-      "ot_ui": [
-        "battle pass"
-      ],
-      "tibia_ui": [
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "battle pass"
+      ]
     }
   },
   {
     "channel": "safnaww",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "paulynhatv",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
-          "rubinot"
+          "elysian"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "cateroide",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view, battle pass",
     "evidence": {
-      "ot_ui": [
-        "battle pass",
-        "map view"
-      ],
-      "tibia_ui": [
-        "imbuements",
-        "skills"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "map view",
+        "battle pass"
+      ]
     }
   },
   {
     "channel": "rodrigobugado",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "evidence for Tibia and another game",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "hunt analyser",
-        "imbuements",
-        "offline training",
-        "prey",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [
-        "global"
-      ],
-      "server_text": {
-        "Baiak Idle / idle": [
-          "baiak idle",
-          "baiakidle"
+      "declared": {
+        "Idle games": [
+          "baiak idle"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Idle games": [
+          "!baiakidle"
+        ]
+      },
+      "official": [
+        "global"
+      ]
     }
   },
   {
     "channel": "luanzingoexp",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: DeusOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "prey"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "DeusOT": [
-          "deusold",
-          "deusot"
+          "deusold"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "DeusOT": [
+          "!deusot",
+          "!deusold"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "phmartins7",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view, battle pass",
     "evidence": {
-      "ot_ui": [
-        "battle pass",
-        "map view"
-      ],
-      "tibia_ui": [
-        "hunt analyser",
-        "imbuements",
-        "prey"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "map view",
+        "battle pass"
+      ]
     }
   },
   {
     "channel": "matts",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "offline training",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "king aslan"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Other OTServers": [
+          "❗shadow-illusion",
+          "❗kingaslan"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "degonitzz",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: DeusOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "DeusOT": [
           "deusold"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "valonnezerah",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: DeusOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "DeusOT": [
           "deusot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "DeusOT": [
+          "!deusot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "krosszao",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pokealliance"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "anaadventure",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "pedronobretv",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Idle games",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
-        "Baiak Idle / idle": [
+      "declared": {
+        "Idle games": [
           "baiak idle"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "gzontinha",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "no decisive evidence",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "chagas_044",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "redot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "hyagozeraaa",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "shurkss",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "poke alliance"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "skyowoz",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "michellpassos",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "imbuements",
-        "prey",
-        "skills",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [
-        "global"
-      ],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "king aslan"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Other OTServers": [
+          "!kingaslan"
+        ]
+      },
+      "official": [
+        "global"
+      ],
+      "screen": [
+        "map view"
+      ]
     }
   },
   {
     "channel": "thesuperknurd",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: DeusOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "offline training",
-        "prey",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "DeusOT": [
-          "deus ot",
-          "deusot"
+          "deusot",
+          "deus ot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "legolancetti",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
+          "arinar",
           "arinar"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Other OTServers": [
+          "!arinar"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "jardineiroxd",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "warfront"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Other OTServers": [
+          "!warfront"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "emersonferrr",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "skills"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "exordion"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "alb_knight1",
     "verdict": "tibia",
-    "reason": "official marker in text and a Tibia-style client on screen",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "bestiary",
-        "hunt analyser",
-        "imbuements",
-        "offline training",
-        "prey",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "tibia global"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "krongsttorr",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "no decisive evidence",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "hunt analyser",
-        "offline training",
-        "prey",
-        "skills",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "trickzeraa",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: DeusOT, Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
-        "PokeAlliance": [
-          "pokealliance"
-        ],
+      "declared": {
         "DeusOT": [
           "deusold"
         ],
         "Other OTServers": [
-          "aldeiaonline",
-          "rivaliaonline"
+          "rivaliaonline",
+          "aldeiaonline"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "PokeAlliance": [
+          "!pokealliance"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "kovacsz_",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "tibia",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "hunt analyser",
-        "imbuements",
-        "prey",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
+        "belobra"
+      ]
     }
   },
   {
     "channel": "acreboyy",
     "verdict": "tibia",
-    "reason": "official marker in text and a Tibia-style client on screen",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "offline training",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "floribra"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "inessone",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "morgoroth96",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "skills",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
+          "redotserver",
           "exordion",
           "redot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "makonowski",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "skills"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "medivia"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "william_hantaro",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
-        ],
-        "Poké OTs": [
-          "pokeidle"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Other Pokémon servers": [
+          "!pokeidle"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "xenge1",
     "verdict": "tibia",
-    "reason": "official marker in text and a Tibia-style client on screen",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "stamina"
-      ],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "tibia global"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "palaz_rp",
     "verdict": "tibia",
-    "reason": "official marker in text and a Tibia-style client on screen",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "bestiary",
-        "hunt analyser",
-        "imbuements",
-        "prey",
-        "skills"
-      ],
-      "official_text": [
-        "ferobra",
-        "honbra"
-      ],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
+        "honbra",
+        "ferobra"
+      ]
     }
   },
   {
     "channel": "octuous_",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "tibia",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "lobera"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "voidcores_ots",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "offline training",
-        "skills",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
+          "voidcores",
           "shadowcores",
           "voidcores"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "shunnyvt",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pokealliance"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "venequillopush",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "tibia",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "talera"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "1indio",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "trimera"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "boycoins_",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Idle games",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
-        "Baiak Idle / idle": [
-          "baiak idle",
-          "baiakidle"
+      "declared": {
+        "Idle games": [
+          "baiak idle"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Idle games": [
+          "!baiakidle"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "doomfist",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "bnhsz",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [
-        "battle pass"
-      ],
-      "tibia_ui": [
-        "hunt analyser",
-        "imbuements",
-        "offline training",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
-          "rubinot"
+          "rubinot",
+          "infernum",
+          "infernum"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "❗rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "paniclegends",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance, PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
+          "pka",
           "pka"
         ],
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "lindao_gamer",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "joreltibiano",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "offline training",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "map view"
+      ]
     }
   },
   {
     "channel": "duwend",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "declared/tagged: PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {}
+      "declared": {
+        "PokeXGames": [
+          "pxg2"
+        ]
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "sinxzyn",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "shadowillusion772",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {}
+      "declared": {
+        "Other OTServers": [
+          "shadow-illusion"
+        ]
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "itsrakso",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance, PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ],
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "spectruxtv",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
+          "pka",
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "yagodnft",
-    "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "verdict": "other",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "skills"
-      ],
-      "official_text": [],
-      "server_text": {}
+      "declared": {
+        "Other OTServers": [
+          "tyron"
+        ]
+      },
+      "tagged": {},
+      "commands": {
+        "Other OTServers": [
+          "!tyron"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "water_storn",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "juveeenil",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other Pokémon servers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
-        "Poké OTs": [
+      "declared": {
+        "Other Pokémon servers": [
           "idle poke"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "zaaplives",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Idle games",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "skills"
-      ],
-      "official_text": [],
-      "server_text": {
-        "Baiak Idle / idle": [
+      "declared": {
+        "Idle games": [
           "baiak idle",
+          "tibia idle",
           "baiakidle"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Idle games": [
+          "!baiakidle"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "gian_tibiaforprofit",
     "verdict": "tibia",
-    "reason": "official marker in text and a Tibia-style client on screen",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "hunt analyser",
-        "imbuements",
-        "offline training",
-        "prey"
-      ],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "tibia global"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "madmatthz",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "no decisive evidence",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "bolachinhaa_",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "alemaotv",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "prey",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
           "rubinot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "ogordonha",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
+          "pka",
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "vanreuse_007",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "prey"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "japorega_",
     "verdict": "undetermined",
-    "reason": "server only as a chat command, Tibia-style client on screen",
+    "reason": "server only as a chat command",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "hunt analyser",
-        "offline training",
-        "prey",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": []
     }
   },
   {
     "channel": "stormbomb",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "PokeAlliance": [
+          "!pka"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "xhannytv",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "kynhotibia",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [],
-      "official_text": [
-        "global"
-      ],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "king aslan"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Other OTServers": [
+          "!kingaslan"
+        ]
+      },
+      "official": [
+        "global"
+      ],
+      "screen": [
+        "map view"
+      ]
     }
   },
   {
     "channel": "macielzera__",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "heminaa",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "no decisive evidence",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "offline training",
-        "prey",
-        "skills",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "youngsaulim",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other Pokémon servers, PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
+        ],
+        "Other Pokémon servers": [
+          "grand line adventures"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "madicotibia",
     "verdict": "tibia",
-    "reason": "official marker in text and a Tibia-style client on screen",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "imbuements",
-        "offline training",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [
-        "serdebra",
-        "tibia global"
-      ],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
+        "tibia global",
+        "serdebra"
+      ]
     }
   },
   {
     "channel": "ragnarisbacksz",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
-          "rubinot"
+          "belaria"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "carvalini",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "loiraa",
     "verdict": "tibia",
-    "reason": "official marker in text and a Tibia-style client on screen",
+    "reason": "official world or Tibia Global",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "bestiary",
-        "hunt analyser",
-        "offline training",
-        "prey",
-        "stamina",
-        "xp boost"
-      ],
-      "official_text": [
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": [
         "global",
         "rasteibra"
-      ],
-      "server_text": {}
+      ]
     }
   },
   {
     "channel": "lostz3r4",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Idle games",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "skills"
-      ],
-      "official_text": [],
-      "server_text": {
-        "Baiak Idle / idle": [
-          "baiak idle",
-          "drakoria"
+      "declared": {
+        "Idle games": [
+          "baiak idle"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Idle games": [
+          "!drakoria"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "anu_naki",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka",
           "pokealliance"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "nalkh",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "PokeAlliance": [
+          "!pka"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "oldjucada",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "offline training",
-        "skills",
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "papot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Other OTServers": [
+          "!papot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "vcruz",
-    "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "verdict": "undetermined",
+    "reason": "server only as a chat command",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "PokeXGames": [
-          "pxg"
+          "!pxg"
         ]
-      }
+      },
+      "official": []
     }
   },
   {
     "channel": "guerreirotetra",
     "verdict": "undetermined",
-    "reason": "server only as a chat command, Tibia-style client on screen",
+    "reason": "server only as a chat command",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "hunt analyser",
-        "imbuements",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ],
         "Other OTServers": [
-          "huntera"
+          "!huntera"
         ]
-      }
+      },
+      "official": []
     }
   },
   {
     "channel": "zecchilord",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
-          "pka",
-          "pokealliance"
+          "pokealliance",
+          "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "darianzin",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: DeusOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "imbuements",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "DeusOT": [
           "deusot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "marcos_d_lima",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeXGames",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeXGames": [
           "pxg"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "manowartibia",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "RubinOT": [
-          "rubinot"
+          "rubinot",
+          "drakaria"
+        ]
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
         ],
         "Other OTServers": [
-          "rivalia"
+          "!rivalia",
+          "!tibidle"
         ]
-      }
+      },
+      "official": []
     }
   },
   {
     "channel": "h4wksin",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other Pokémon servers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
-        "Other OTServers": [
+      "declared": {
+        "Other Pokémon servers": [
           "otpokemon"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "itsmisty_xd",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "PokeAlliance": [
           "pka",
           "pokealliance"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "dmaakz",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "no decisive evidence",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "imbuements",
-        "skills"
-      ],
-      "official_text": [],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "adr_warlord",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
           "redot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "abak",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: PokeAlliance",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
-        "RubinOT": [
-          "rubinot"
-        ],
+      "declared": {
         "PokeAlliance": [
           "pka"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "RubinOT": [
+          "!rubinot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "el_tratorr",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "OTServer-only client on screen: map view",
     "evidence": {
-      "ot_ui": [
-        "map view"
-      ],
-      "tibia_ui": [
-        "xp boost"
-      ],
-      "official_text": [],
-      "server_text": {
+      "declared": {},
+      "tagged": {},
+      "commands": {
         "RubinOT": [
-          "rubinot"
+          "!rubinot"
         ]
-      }
+      },
+      "official": [],
+      "screen": [
+        "map view"
+      ]
     }
   },
   {
     "channel": "g4ndd",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other Pokémon servers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
-        "Other OTServers": [
+      "declared": {
+        "Other Pokémon servers": [
           "otpokemon"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "supervinitv",
     "verdict": "other",
-    "reason": "OTServer-only client UI on screen",
+    "reason": "declared/tagged: RubinOT",
     "evidence": {
-      "ot_ui": [
-        "battle pass",
-        "map view"
-      ],
-      "tibia_ui": [
-        "hunt analyser"
-      ],
-      "official_text": [],
-      "server_text": {}
+      "declared": {
+        "RubinOT": [
+          "infernum",
+          "infernum"
+        ]
+      },
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   },
   {
     "channel": "itsmanojava",
     "verdict": "other",
-    "reason": "names another game, screen does not contradict",
+    "reason": "declared/tagged: Other OTServers",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [],
-      "official_text": [],
-      "server_text": {
+      "declared": {
         "Other OTServers": [
+          "redotserver",
           "redot"
         ]
-      }
+      },
+      "tagged": {},
+      "commands": {
+        "Other OTServers": [
+          "❗redot"
+        ]
+      },
+      "official": []
     }
   },
   {
     "channel": "yuyiplays",
     "verdict": "undetermined",
-    "reason": "missing or conflicting evidence",
+    "reason": "no decisive evidence",
     "evidence": {
-      "ot_ui": [],
-      "tibia_ui": [
-        "hunt analyser",
-        "imbuements",
-        "offline training",
-        "skills",
-        "stamina"
-      ],
-      "official_text": [],
-      "server_text": {}
+      "declared": {},
+      "tagged": {},
+      "commands": {},
+      "official": []
     }
   }
 ]

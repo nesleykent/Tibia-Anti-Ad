@@ -1,33 +1,37 @@
 // Twitch Clean: hides streams in the Tibia category that are really another game
 // (OTServers such as RubinOT, Pokémon servers, idle games).
 //
-// Each card is classified from independent evidence (see tibia-classify.js):
-// the game client visible in its thumbnail, read by ocr-background.js, plus the
-// title and tags. Title/tags act immediately; the thumbnail check then hides
-// OTServer clients the text missed, or restores a stream whose "!server" was
-// only a sponsor command. Only an "other" verdict hides a card.
-// Cards on screen are checked first. Runs only on the Tibia category directory.
+// Each card is classified from its full title and tags (copied from Twitch's own
+// data by tibia-props.js) with the rules in tibia-classify.js: a server declared
+// in the title or tags hides the card, unless an official world or "Tibia
+// Global" is also present; a mere "!server" command does not. Only cards the
+// metadata leaves undetermined have their thumbnail read (ocr-background.js),
+// where an OTServer-only client ("Map View", Battle Pass) also hides them.
+// Only "other" hides a card. Runs only on the Tibia category directory.
 (() => {
     'use strict';
 
     const api = globalThis.browser || globalThis.chrome;
     const MARK = 'data-twitch-clean-hidden';
     const VERDICT = 'data-twitch-clean-tibia';
+    const META = 'data-twitch-clean-meta';
     const classify = globalThis.TwitchCleanTibiaClassify.create(globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE);
-    const results = new Map(); // channel -> ocr text | null (null = unreadable)
+    const screens = new Map(); // channel -> OCR text | null (unreadable)
     const pending = new Set();
     const hiddenByUs = new WeakSet();
 
     const onTibiaDirectory = () => /^\/directory\/category\/tibia(\/|$)/i.test(location.pathname);
 
     const cardInfo = article => {
+        try {
+            const meta = JSON.parse(article.getAttribute(META) || 'null');
+            if (meta && typeof meta.channel === 'string') { return meta; }
+        } catch { /* fall back to the visible card */ }
         const href = article.querySelector('a[data-a-target="preview-card-channel-link"], a[data-a-target="preview-card-image-link"]')?.getAttribute('href') || '';
         const channel = href.match(/^\/([a-z0-9_]{1,25})\/?$/i)?.[1]?.toLowerCase();
         if (!channel) { return null; }
-        const title = article.querySelector('h4[title], h3[title]')?.getAttribute('title')
-            || article.querySelector('[data-a-target="preview-card-title-link"]')?.textContent || '';
-        const tags = [...article.querySelectorAll('[data-a-target="tw-tag"], button.tw-tag, [class*="tag" i] button')]
-            .map(t => t.textContent.trim()).filter(Boolean);
+        const title = article.querySelector('h4[title], h3[title]')?.getAttribute('title') || '';
+        const tags = [...article.querySelectorAll('[data-a-target="tw-tag"], .tw-tag')].map(t => t.textContent.trim()).filter(Boolean);
         return { channel, title, tags };
     };
 
@@ -38,45 +42,29 @@
         return node;
     };
 
+    const requestScreen = channel => {
+        if (screens.has(channel) || pending.has(channel)) { return; }
+        pending.add(channel);
+        api.runtime.sendMessage({ type: 'tibia-ocr', channel })
+            .then(response => screens.set(channel, typeof response?.text === 'string' ? response.text : null))
+            .catch(() => screens.set(channel, null))
+            .finally(() => { pending.delete(channel); scan(); });
+    };
+
     const apply = article => {
         const info = cardInfo(article);
         const cell = cellOf(article);
         let verdict = null;
-        if (info && onTibiaDirectory()) {
-            // Text decides at once; the thumbnail result refines it when it arrives.
-            const result = classify(info.title, info.tags, results.has(info.channel) ? results.get(info.channel) : null);
+        if (info) {
+            const screen = screens.has(info.channel) ? screens.get(info.channel) : null;
+            const result = classify(info.title, info.tags, screen);
             verdict = result.verdict;
             cell.setAttribute(VERDICT, `${verdict}: ${result.reason}`);
-        } else {
-            cell.removeAttribute(VERDICT);
+            if (verdict === 'undetermined' && !screens.has(info.channel)) { requestScreen(info.channel); }
         }
         if (verdict === 'other') { cell.setAttribute(MARK, ''); hiddenByUs.add(cell); }
         else if (hiddenByUs.has(cell)) { cell.removeAttribute(MARK); hiddenByUs.delete(cell); }
     };
-
-    const applyChannel = channel => {
-        for (const article of document.querySelectorAll('article')) {
-            if (cardInfo(article)?.channel === channel) { apply(article); }
-        }
-    };
-
-    const request = channel => {
-        if (results.has(channel) || pending.has(channel)) { return; }
-        pending.add(channel);
-        api.runtime.sendMessage({ type: 'tibia-ocr', channel })
-            .then(response => results.set(channel, typeof response?.text === 'string' ? response.text : null))
-            .catch(() => results.set(channel, null))
-            .finally(() => { pending.delete(channel); applyChannel(channel); });
-    };
-
-    const seen = new WeakSet();
-    const intersection = new IntersectionObserver(entries => {
-        for (const entry of entries) {
-            const info = cardInfo(entry.target);
-            if (!info || !onTibiaDirectory()) { continue; }
-            if (entry.isIntersecting) { request(info.channel); }
-        }
-    }, { rootMargin: '600px 0px' });
 
     const scan = () => {
         if (!onTibiaDirectory()) {
@@ -86,24 +74,20 @@
             }
             return;
         }
-        for (const article of document.querySelectorAll('article')) {
-            if (!seen.has(article)) { seen.add(article); intersection.observe(article); }
-            apply(article);
-        }
+        for (const article of document.querySelectorAll('article')) { apply(article); }
     };
 
     // Twitch reuses cards on scroll and client-side navigation: rescan once per
-    // batch of mutations.
+    // batch of mutations, including tibia-props.js updating a card's metadata.
     let queued = false;
     const observer = new MutationObserver(() => {
         if (queued) { return; }
         queued = true;
         queueMicrotask(() => { queued = false; scan(); });
     });
-
     const start = () => {
         scan();
-        observer.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['href', 'title'] });
+        observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title', META] });
     };
     if (document.body) { start(); }
     else { document.addEventListener('DOMContentLoaded', start, { once: true }); }

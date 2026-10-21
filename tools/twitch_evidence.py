@@ -1,26 +1,29 @@
-"""Combine independent evidence to tell official Tibia from other games on Twitch.
+"""Tell official Tibia from other games in Twitch's Tibia category.
 
-No single signal decides alone. Title/tags naming another game act first (they
-are cheap and catch most streams); the thumbnail, which shows the game client
-actually running, then adds and corrects:
+Follows the 2026-10-21 audit (research/twitch/data/2026-10-21/analysis):
 
-* ot_only UI (e.g. the "Map View" window or Battle Pass of RubinOT-style clients)
-  never appears in the official client, so it is enough on its own.
-* tibia_like UI (Skills, Hunt Analyser, ...) appears in the official client *and*
-  in OTServers built on it, so it only means "a Tibia-style client". It restores
-  a stream whose server appears only as a "!command" (often a sponsor).
+* Strong "other game" evidence: a server declared in the title (not as a
+  !command), a server domain, or a matching tag (e.g. rubinot, pka, baiakidle).
+* Weak: a server named only as a chat command (!rubinot), which is often a
+  sponsor. It never hides a stream on its own.
+* Strong Tibia evidence: an official world name (title or tag), "Tibia Global",
+  the tibiaglobal tag. The generic "Tibia" tag proves nothing.
+* Streams with strong evidence both ways (e.g. a rubinot tag next to a
+  tibiaglobal tag), or only weak evidence, stay undetermined. Their thumbnail
+  can then be read (OCR): an OTServer-only client element ("Map View", Battle
+  Pass) marks them as another game.
 
-Verdicts: "other" (hide), "tibia" (keep) or "undetermined" (keep). Anything
-contradictory or missing ends up undetermined.
+Verdicts: "other" (hide), "tibia" or "undetermined" (both stay visible).
 
-    python3 tools/twitch_evidence.py streams.json               # fetch + OCR thumbnails
+    python3 tools/twitch_evidence.py streams.json               # metadata, OCR undetermined via tesseract
     python3 tools/twitch_evidence.py streams.json --ocr-dir DIR # reuse <channel>.txt OCR
-    python3 tools/twitch_evidence.py --write-js                  # refresh the extension copy
+    python3 tools/twitch_evidence.py --evaluate                 # score against the audited 456 channels
+    python3 tools/twitch_evidence.py --write-js                 # refresh the extension copy
 
-Needs the `tesseract` command for live OCR. Input: array of objects with
-`channel`, `title` and optional `tags`.
+Input: array of objects with `channel`, `title` and `tags`.
 """
 import argparse
+import collections
 import json
 import re
 import subprocess
@@ -32,7 +35,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / "filters/twitch/tibia-evidence.json"
 EXTENSION_DATA = ROOT / "extensions/twitch-clean/extension/tibia-evidence.js"
+AUDIT = ROOT / "research/twitch/data/2026-10-21/analysis/classificacao.json"
 THUMBNAIL = "https://static-cdn.jtvnw.net/previews-ttv/live_user_{}-1920x1080.jpg"
+# Audit categories that name a game other than Tibia, and the official one.
+AUDIT_OTHER = {"RubinOT", "PokeAlliance (PKA)", "PokeXGames (PXG)", "Outros OTServers", "Jogos Idle",
+               "DeusOT / DeusOld", "Outros Pokémon", "Pokémon misto", "Outros jogos"}
+AUDIT_TIBIA = {"Tibia"}
 
 
 def normalize(text):
@@ -40,57 +48,64 @@ def normalize(text):
     return " ".join("".join(c for c in text if not unicodedata.combining(c)).split())
 
 
-def matcher(terms):
-    alt = "|".join(re.escape(t) for t in sorted(terms, key=len, reverse=True))
-    pattern = re.compile(rf"(?<![a-z0-9])(?:{alt})(?![a-z0-9])")
-    return lambda text: sorted(set(pattern.findall(text)))
+def words(terms):
+    alt = "|".join(re.escape(normalize(t)) for t in sorted(terms, key=len, reverse=True))
+    return re.compile(rf"(?<![a-z0-9])([!\u2757\u2755]\s*)?(?:{alt})(?![a-z0-9])")
 
 
-def fuzzy_matcher(terms):
+def fuzzy(term):
     # "map view" -> map\s*\S{0,2}iew: tolerates OCR noise such as "Map ¥Yiew".
-    def pattern(term):
-        head, tail = term[:-3], term[-3:]
-        return r"\s*".join(re.escape(w) for w in head.split()) + r"\s*\S{0,2}" + re.escape(tail)
-    compiled = [(t, re.compile(pattern(t))) for t in terms]
-    return lambda text: sorted(t for t, p in compiled if p.search(text))
+    head = r"\s*".join(re.escape(w) for w in term[:-3].split())
+    return re.compile(rf"{head}\s*\S{{0,2}}{re.escape(term[-3:])}")
 
 
 class Evidence:
     def __init__(self, data):
-        self.ot_ui = fuzzy_matcher(data["client_ui"]["ot_only"])
-        self.tibia_ui = matcher(data["client_ui"]["tibia_like"])
-        self.official = matcher(data["official_text"])
-        self.servers = {game: matcher(terms) for game, terms in data["server_text"].items()}
-
-    def classify(self, title, tags, ocr):
-        """ocr is the thumbnail text, or None when no thumbnail could be read."""
-        text = normalize(f"{title} {' '.join(tags)}")
-        screen = normalize(ocr or "")
-        found = {
-            "ot_ui": self.ot_ui(screen),
-            "tibia_ui": self.tibia_ui(screen),
-            "official_text": self.official(text),
-            "server_text": {g: m for g, f in self.servers.items() if (m := f(text))},
+        official = data["official"]
+        self.official_title = words(official["title"] + official["worlds"])
+        self.official_tags = [re.compile(p) for p in official["tag_patterns"]]
+        self.world_tags = {normalize(w) for w in official["worlds"] + official["worlds_tags_only"]}
+        self.games = {
+            game: (words(spec["words"]), [re.compile(p) for p in spec["tag_patterns"]])
+            for game, spec in data["games"].items()
         }
-        names_server = bool(found["server_text"])
-        # A server named only as a chat command ("!rubinot") is often a sponsor.
-        only_commands = names_server and all(
-            re.search(rf"!\s*{re.escape(t)}", text)
-            and not re.search(rf"(^|[^!\w]){re.escape(t)}", re.sub(rf"!\s*{re.escape(t)}", "", text))
-            for terms in found["server_text"].values() for t in terms
-        )
-        if found["ot_ui"]:
-            return "other", "OTServer-only client UI on screen", found
-        # Title/tags naming another game decide at once; the screen only overturns
-        # a "!command" mention when it shows a Tibia-style client.
-        if names_server and not found["official_text"]:
-            if only_commands and found["tibia_ui"]:
-                return "undetermined", "server only as a chat command, Tibia-style client on screen", found
-            reason = "names another game (text only, screen not read yet)" if ocr is None else "names another game, screen does not contradict"
-            return "other", reason, found
-        if found["official_text"] and not names_server and found["tibia_ui"]:
-            return "tibia", "official marker in text and a Tibia-style client on screen", found
-        return "undetermined", "missing or conflicting evidence", found
+        self.ot_ui = [(t, fuzzy(t)) for t in data["client_ui"]["ot_only"]]
+
+    def metadata(self, title, tags):
+        title = normalize(title)
+        tags = [normalize(t).replace(" ", "") for t in tags]
+        found = {"declared": {}, "tagged": {}, "commands": {}, "official": []}
+        for game, (pattern, tag_patterns) in self.games.items():
+            for match in pattern.finditer(title):
+                kind = "commands" if match.group(1) else "declared"
+                found[kind].setdefault(game, []).append(match.group(0))
+            hits = [t for t in tags if any(p.search(t) for p in tag_patterns)]
+            if hits:
+                found["tagged"][game] = hits
+        found["official"] = [m.group(0) for m in self.official_title.finditer(title) if not m.group(1)]
+        found["official"] += [t for t in tags if t in self.world_tags or any(p.search(t) for p in self.official_tags)]
+        return found
+
+    def classify(self, title, tags, ocr=None):
+        """ocr is the thumbnail text, or None when it was not read."""
+        found = self.metadata(title, tags)
+        strong = set(found["declared"]) | set(found["tagged"])
+        if strong and not found["official"]:
+            return "other", f"declared/tagged: {', '.join(sorted(strong))}", found
+        if found["official"] and not strong:
+            return "tibia", "official world or Tibia Global", found
+        # The screen breaks ties: an OTServer-only client beats a "tibiaglobal" tag.
+        if ocr is not None:
+            screen = normalize(ocr)
+            ui = [t for t, p in self.ot_ui if p.search(screen)]
+            if ui:
+                found["screen"] = ui
+                return "other", f"OTServer-only client on screen: {', '.join(ui)}", found
+        if strong:
+            return "undetermined", "evidence for Tibia and another game", found
+        if found["commands"]:
+            return "undetermined", "server only as a chat command", found
+        return "undetermined", "no decisive evidence", found
 
 
 def ocr_thumbnail(channel):
@@ -104,6 +119,24 @@ def ocr_thumbnail(channel):
         return result.stdout if result.returncode == 0 else None
 
 
+def evaluate(evidence):
+    """Compare metadata verdicts with the audit's categories; returns official streams hidden."""
+    table = collections.Counter()
+    wrong = []
+    for row in json.loads(AUDIT.read_text())["classificacao"]:
+        tags = [t.strip() for t in row["tags_originais"].split("|") if t.strip()]
+        verdict, reason, _ = evidence.classify(row["titulo_original"], tags)
+        truth = "other" if row["categoria"] in AUDIT_OTHER else "tibia" if row["categoria"] in AUDIT_TIBIA else "unclear"
+        table[(truth, verdict)] += 1
+        if verdict == "other" and truth != "other":
+            wrong.append((truth, row["canal"], reason, row["titulo_original"][:70], row["tags_originais"]))
+    for truth in ("other", "tibia", "unclear"):
+        print(truth.ljust(8), {v: table[(truth, v)] for v in ("other", "undetermined", "tibia")})
+    for item in wrong:
+        print("HIDDEN", *item, sep=" | ")
+    return [w for w in wrong if w[0] == "tibia"]
+
+
 def extension_data(data):
     return (
         "// Generated by tools/twitch_evidence.py --write-js from filters/twitch/tibia-evidence.json. Do not edit.\n"
@@ -115,24 +148,29 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("streams", nargs="?")
     parser.add_argument("--ocr-dir", type=Path)
+    parser.add_argument("--evaluate", action="store_true")
     parser.add_argument("--write-js", action="store_true")
     args = parser.parse_args()
     data = json.loads(EVIDENCE.read_text())
+    evidence = Evidence(data)
     if args.write_js:
         EXTENSION_DATA.write_text(extension_data(data))
         return
+    if args.evaluate:
+        raise SystemExit(1 if evaluate(evidence) else 0)
     if not args.streams:
         parser.error("streams is required")
-    evidence = Evidence(data)
     results = []
     for stream in json.loads(Path(args.streams).read_text()):
-        channel = stream["channel"]
-        if args.ocr_dir:
-            path = args.ocr_dir / f"{channel}.txt"
-            ocr = path.read_text() if path.exists() else None
-        else:
-            ocr = ocr_thumbnail(channel)
-        verdict, reason, found = evidence.classify(stream.get("title") or "", stream.get("tags") or [], ocr)
+        channel, title, tags = stream["channel"], stream.get("title") or "", stream.get("tags") or []
+        verdict, reason, found = evidence.classify(title, tags)
+        if verdict == "undetermined":
+            if args.ocr_dir:
+                path = args.ocr_dir / f"{channel}.txt"
+                ocr = path.read_text() if path.exists() else None
+            else:
+                ocr = ocr_thumbnail(channel)
+            verdict, reason, found = evidence.classify(title, tags, ocr)
         results.append({"channel": channel, "verdict": verdict, "reason": reason, "evidence": found})
     print(json.dumps(results, ensure_ascii=False, indent=2))
 
