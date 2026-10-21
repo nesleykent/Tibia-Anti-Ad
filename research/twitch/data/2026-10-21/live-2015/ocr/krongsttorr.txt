@@ -1,0 +1,761 @@
+ja Supply Analyser ==
+
+Loot Analyser
+
+EER)
+
+Wimbuements
+
+cial
+
+Gold Value: 392,003 0| || Gold Value: 2,133,597 0!
+
+Ole
+
+i}
+
+ss
+
+ve, th
+
+15h
+
+a
+
+Per Hour:
+
+129,6900
+
+Per Hour:
+
+oo
+
+Ss
+
+334,356.0| | (
+
+a
+
+el
+
+ail
+
+a
+
+.
+
+—.
+
+y
+
+FSS
+
+om
+
+<
+
+et
+
+=
+
+le
+
+ed
+
+‘in be
+
+= fg
+
+a
+
+ca
+
+iis Be
+
+igh
+
+14
+
+fe
+
+16 |
+
+7
+
+i
+
+iieed
+
+Bie
+
+ag
+
+}
+
+209 !
+
+ire
+
+a
+
+“70
+
+3
+
+on
+
+1h51| 1h51/ ca
+
+a
+
+18874
+
+12965
+
+veo ®
+
+ae
+
+be
+
+oe
+
+Ma
+
+os
+
+—
+
+—
+
+ag RR
+
+nil tracker ——s= |
+
+“i
+
+Prey Creatures
+
+aka
+
+i
+
+Inactive
+
+nay f
+
+ss
+
+a
+
+Ost
+
+fe Le
+
+=
+
+ae
+
+ee
+
+—
+
+‘of Inactive
+
+x Ie
+
+ie NAb
+
+Za
+
+ie
+
+Ge
+
+re
+
+ie
+
+ai
+
+aniversary Br.
+
+ial
+
+Eg
+
+ase)
+
+Bounty Task
+
+o
+
+©
+
+wa
+
+JF
+
+ns
+
+oor
+
+ars
+
+‘wi = Inactive
+
+oe
+
+Fi
+
+179
+
+90
+
+—
+
+a
+
+at
+
+es
+
+ejm[O}i) ase
+
+Weekly Tasks
+
+id
+
+.
+
+ed
+
+ed
+
+xen
+
+[step
+
+cial
+
+os
+
+a4
+
+Mal
+
+is
+
+SF,
+
+eck) 2h
+
+Store
+
+= Drop tracker = 1!
+
+[al
+
+es 3
+
+CSS ye=
+
+Sy
+
+TE RP Analyser
+
+49
+
+is
+
+ai
+
+aie
+
+A
+
+Raw XP Gain: 13,229 k ||
+
+=o
+
+eh
+
+[dd Trecked Drop
+
+3
+
+‘ad
+
+aa
+
+—
+
+iG
+
+XP Gail
+
+13,229,182 ||| 6 FE QP
+
+aay
+
+Ms
+
+me i
+
+z
+
+Raw XP/h:
+
+747,068
+
+(se wl
+
+a
+
+t—
+
+co
+
+xP fh:
+
+747,068
+
+at
+
+raat
+
+A
+
+Next Le
+
+70h 57min
+
+y Se RN
+
+ty
+
+Nar.
+
+2.
+
+one of 1526 greet spirit poti
+
+kf
+
+‘athe?
+
+ri
+
+=
+
+aa
+
+Pe
+
+U7
+
+Hunt Analyser
+
+eek =| Alicarn Quiver
+
+ied
+
+--
+
+eh
+
+Session:
+
+01:35h!4|
+
+Hi Skills
+
+otal
+
+aa
+
+Prd
+
+em
+
+Raw XP Gain:
+
+13,229 k|
+
+HENAN IN
+
+Level
+
+4,221 >)
+
+is
+
+mn
+
+- ew
+
+XP Gall
+
+13,229 k|
+
+“|
+
+¥|
+
+oe
+
+xP
+
+30,211,219,558
+
+af
+
+ey
+
+Raw XP/h:
+
+8,279,587
+
+cate nom
+
+XP Gain Rate
+
+oes a
+
+100%
+
+i
+
+a
+
+lame and 3
+
+they
+
+-
+
+Cte
+
+mi
+
+re
+
+xP fh:
+
+8,279,587
+
+C@XP Boost|
+
+jeem
+
+a
+
+a
+
+Loot:
+
+3,736 ka)
+
+a
+
+I
+
+Mana
+
+Hit Points
+
+12,965
+
+4
+
+Supplic
+
+680,318¢
+
+Soul Points
+
+18,074
+
+200
+
+be ae
+
+ial
+
+\ |
+
+Sa
+
+Balanci
+
+3,055 ke)
+
+‘artefact Box
+
+picid
+
+Capacity
+
+5,305
+
+tapere
+
+ea
+
+Dam:
+
+18,725 k
+
+¥ Battle List
+
+a
+
+mien
+
+‘Speed
+
+1,470
+
+si as
+
+el
+
+Damage/h:
+
+11,720 k)
+
+id
+
+Food
+
+Healin
+
+4,127,246
+
+TRAC #19 44
+
+G Input Analyser_= |
+
+‘Stamina
+
+#y
+
+a
+
+on
+
+Rea
+
+Pe 10 19 fe)
+
+Received Damage
+
+Al
+
+ai
+
+Offline Training 1
+
+ps
+
+Healing/h:
+
+2,583,243
+
+rhe Moonsnow Ma... |<
+
+Total:
+
+113,730
+
+Sa
+
+‘a ee
+
+%,
+
+tt
+
+—
+
+eee
+
+Killed Monsters:
+
+Max-DPS:
+
+4,733)
+
+Mag
+
+—<
+
+a ee ee
+
+Ni
+
+a
+
+581x dark torturer
+
+ee
+
+bi ae
+
+Z.
+
+|
+
+* "| 50x grimeleech
+
+Dama.
+
+Types
+
+Fist
+
+27
+
+sa,
+
+ae,
+
+3.
+
+Ta
+
+|
+
+cry
+
+ese
+
+230x hellflayer
+
+1146x vexclaw
+
+68,346 (60.1%)
+
+‘club
+
+sword
+
+24
+
+a7
+
+=
+
+ee
+
+—
+
+ie
+
+28,020 (24.7%)
+
+Axe
+
+32
+
+be ed |
+
+ee
+
+‘Artefact Box
+
+eiciolcd
+
+13,651 (12.
+
+Distance
+
+—
+
+is
+
+——
+
+—
+
+i
+
+coarnee
+
+a
+
+[al
+
+3,643
+
+bs
+
+ww tl
+
+P|
+
+oe
+
+d =e
+
+Shieldi
+
+114 hy
+
+all
+
+ae
+
+phen
+
+Damage Sources
+
+lee ‘7
+
+BAe | el
+
+You are exhausted. =
+
+ik
+
+The Moonsnos
+
+66.2%
+
+true frost flowe... 7.9%
+
+furious jaracal
+
+25.9%.
+
+es
+
+Ae |
+
+Be.
+
+|
+
+nine
+
+ia
+
+<
+
+=
+
+=)
+
+Ae
+
+To
+
+(END
+
+Rais
+
+75
+
+TTY
+
+ie

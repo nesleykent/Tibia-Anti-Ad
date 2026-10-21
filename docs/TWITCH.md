@@ -34,3 +34,16 @@ Every prototype output sets `hide: false`, even for OTServ: no real-stream preci
 Build an independently reviewed, timestamped labeled set containing multilingual titles, real official broadcasts, OTServ, mixed sessions, negations, promotions and stale/ambiguous thumbnails. Separate channels between tuning and holdout sets. Measure OTServ precision, false positives among official streams, recall and abstention by language. Target at least 99% OTServ precision with a reported confidence interval; a small sample cannot establish the target. Do not enable automatic hiding until the target and functional playback checks pass. Any known false positive requires investigation before release.
 
 Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/reference), consulted 2026-10-21. Stream metadata exposes titles, language, tags and thumbnail URLs; none is authoritative proof of official Tibia versus OTServ.
+
+## Multi-signal classification (research)
+
+`tools/twitch_evidence.py` combines independent evidence, configured in `filters/twitch/tibia-evidence.json`. No single signal decides:
+
+| Signal | Source | Weight |
+|---|---|---|
+| OTServer-only client UI ("Map View" window, Battle Pass, Daily Missions) | OCR of the 1080p thumbnail | Enough alone to mark `other` |
+| Tibia-style client panels (Skills, Hunt Analyser, Prey…) | OCR | Shared by the official client and OTServers built on it; never decisive |
+| Another game/server named | Title and tags | Only counts together with a screen that shows no Tibia-style client; `!server` commands are often sponsors |
+| Official marker (Global, official world names) | Title and tags | Needs a Tibia-style client on screen to mark `tibia` |
+
+Missing or contradictory evidence yields `undetermined`, which stays visible. See the [live sample](../research/twitch/data/2026-10-21/live-2015/README.md) for results. This runs offline with `tesseract`; it is not yet wired into Twitch Clean.
