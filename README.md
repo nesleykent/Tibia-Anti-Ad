@@ -17,7 +17,7 @@ Navigation, editorial content, tools and accessibility must keep working. Positi
 
 This is an initial research and tooling release. Experimental filter inputs and historical reports are included for 15 websites. Generated bundles exclude two sites with content-destruction risks. The remaining rules still require real extension testing across browsers; historical CSS injection and network simulation are not proof of blocker enforcement.
 
-Twitch includes reconnaissance scripts and an offline text-classification prototype. **Twitch video-ad neutralization, thumbnail analysis and automatic stream filtering are not implemented.** No production accuracy claim or public channel blocklist is made.
+Twitch includes the supplied **[Twitch Clean extension](extensions/twitch-clean/README.md)**, a **[standalone live-video ad script](scripts/twitch/README.md)**, complementary filters, reconnaissance scripts and an offline text-classification prototype. The vaft integration attempts to remove stitched video ads; current live effectiveness is unverified. Thumbnail analysis and automatic OTServ filtering remain unimplemented. No production accuracy claim or public channel blocklist is made.
 
 ## Try the experimental website filters
 
@@ -29,7 +29,7 @@ Read the [installation and rollback guide](docs/INSTALLATION.md) and [compatibil
 - [Extended syntax bundle](https://raw.githubusercontent.com/nesleykent/anti-ad-tibia/main/filters/anti-ad-tibia-extended.txt): also includes `:has()` selectors; an alternative to the portable bundle.
 - [Per-site inputs](filters/sites): research inputs, **not installation-ready lists**; some contain globally scoped rules or known breakage.
 
-No bundle contains Twitch video-ad blocking. The lists do not depend on EasyList/EasyPrivacy for their included rules, but do not claim complete protection. Userscripts are optional research artifacts and are never installed by a subscription.
+The website bundles do not contain Twitch video-ad blocking; use the separate extension or standalone script linked above. The lists do not depend on EasyList/EasyPrivacy for their included rules, but do not claim complete protection. Userscripts are optional research artifacts and are never installed by a subscription.
 
 ## Evidence and assessments
 
@@ -37,7 +37,7 @@ See the [website inventory](docs/WEBSITES.md), [assessment rubric](docs/ASSESSME
 
 ## Twitch
 
-[Classification policy and limitations](docs/TWITCH.md) covers titles, tags, language, metadata and thumbnails. Missing or contradictory evidence yields `undetermined`. Language, country, viewer count and the Tibia category alone cannot establish OTServ. The prototype never automatically hides streams.
+[Twitch setup, classification policy and limitations](docs/TWITCH.md) covers titles, tags, language, metadata and thumbnails. Missing or contradictory evidence yields `undetermined`. Language, country, viewer count and the Tibia category alone cannot establish OTServ. The prototype never automatically hides streams.
 
 ```sh
 python3 tools/classify_streams.py path/to/streams.json

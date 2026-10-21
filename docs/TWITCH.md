@@ -4,7 +4,9 @@
 
 Investigate display ads, overlays, telemetry and pre-roll/mid-roll video separately. Preserve playback, audio, captions, chat, sign-in, channel points and accessibility. Shared media/CDN or GraphQL endpoints must not be blocked indiscriminately. Server-inserted video advertising cannot be assumed removable with cosmetic CSS or a static hostname rule.
 
-`research/twitch/recon.js` inventories DOM hooks and resource hosts. `collect-streams.js` is a historical scrolling collector, not an official API client or classifier; it may misread cards/counts and is not part of a default installation. Neither script neutralizes video ads. No production Twitch ad-blocking method is included yet.
+`research/twitch/recon.js` inventories DOM hooks and resource hosts. `collect-streams.js` is a historical scrolling collector, not an official API client or classifier; it may misread cards/counts and is not part of a default installation. Neither reconnaissance script neutralizes video ads.
+
+The supplied **[Twitch Clean extension](../extensions/twitch-clean/README.md)** now packages vaft, Source quality, network rules and cosmetic/nag handling. The **[StopTheMadness Pro script](../scripts/twitch/README.md)** is a standalone alternative. Both contain the supplied vaft video-ad replacement logic; current live effectiveness remains unverified. The [complementary Twitch filters](../filters/twitch/twitch.tv.txt) and [historical report](../research/twitch/twitch.tv-validation.md) are also included. Choose one vaft injection method. These assets do not implement OTServ filtering.
 
 ## Precision-first classification
 

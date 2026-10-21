@@ -10,4 +10,8 @@ Date: 2026-10-21. Verification concerns repository setup, artifact construction 
 - Local documentation links checked for missing files.
 - Original root assets retained unchanged; ZIP archives and local session artifacts excluded from publication.
 
-No website was opened or audited anew for this release. No live Safari/Chrome/Firefox blocker enforcement, performance benchmarks, accessibility audit, real-stream accuracy evaluation, thumbnail analysis or Twitch video-ad neutralization was performed. These remain open work in the roadmap. Historical report claims remain attributed to their supplied source, not to this verification run.
+No website was opened or audited anew for this release. No live Safari/Chrome/Firefox blocker enforcement, performance benchmarks, accessibility audit, real-stream accuracy evaluation, thumbnail analysis or live verification of Twitch video-ad neutralization was performed. These remain open work in the roadmap. Historical report claims remain attributed to their supplied source, not to this verification run.
+
+## Twitch package integration
+
+The supplied `twitch-clean.zip` is now integrated: extension source and icons, standalone StopTheMadness script, Twitch filter list, updated recon script and historical report. Archive/file SHA-256 values record exact provenance. Node smoke tests check startup, Source quality, visibility and worker/fetch hooks with mocks for both script entry points. Manifest/resource and DNR structural checks are automated. These tests do not reproduce real Safari enforcement or live Twitch ad removal.

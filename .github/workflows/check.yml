@@ -10,6 +10,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --check extensions/twitch-clean/extension/page.js
+      - run: node --check extensions/twitch-clean/extension/nags.js
+      - run: node --check scripts/twitch/twitch-stopthemadness.js
+      - run: node tests/twitch-startup.cjs
       - run: python3 -m unittest discover -s tests -v
       - run: python3 tools/build_filters.py
       - run: git diff --exit-code -- filters/
