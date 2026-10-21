@@ -1,0 +1,28 @@
+/* Generated from twitch.tv.txt (2026-10-21 (revision 2)). Injected as a user-origin stylesheet
+   (css_origin: user), so these rules win over Twitch's own !important styles.
+   One rule per selector: a selector Safari cannot parse only drops itself. */
+
+.stream-display-ad__wrapper { display: none !important; }
+[data-test-selector="sda-wrapper"] { display: none !important; }
+.stream-display-ad__wrapper + div > div[style^="position:"] > div[class^="Layout-sc-"]:has(video[src^="https://m.media-amazon.com"]) { display: none !important; }
+.chat-shell > div[class^="Layout-sc-"] > div[style^="transition:"]:has(video[src^="https://m.media-amazon.com"]) { display: none !important; }
+button[aria-label="Learn more about this ad"] { display: none !important; }
+button[aria-label="Leave feedback for this Ad"] { display: none !important; }
+.video-player__overlay .player-overlay-background:has(a[href*="/how-to-allow-ads-browser"]) { display: none !important; }
+.video-player__overlay .player-overlay-background:has(> div[class^="Layout-"] > div[class^="Layout-"] > div[class^="Layout-"] > a[href="https://www.twitch.tv/turbo"]) { display: none !important; }
+div.tw-tower > div:has(div.promoted-card-stat__promotion) { display: none !important; }
+.top-nav__menu > * > *:has(svg path[d^="M2 19V5h17"]) { display: none !important; }
+.top-nav__prime { display: none !important; }
+[data-test-selector="test_selector_prime_tracking_button_wrapper"] [data-a-target="blue-bar"] { display: none !important; }
+.top-nav__external-link[data-a-target="try-presto-link"] { display: none !important; }
+.subtember-gradient { display: none !important; }
+#twilight-sticky-footer-root { display: none !important; }
+div[data-a-target="right-column-chat-bar"] div.stream-chat + div.chat-signup-gate-overlay { display: none !important; }
+.follow-prompt { display: none !important; }
+.consent-banner { display: none !important; }
+#directory-banner { display: none !important; }
+[data-a-target="directory-banner-ad-slot"] { display: none !important; }
+#directory-rectangle { display: none !important; }
+
+/* Elements marked by nags.js (nags without a stable CSS hook). */
+[data-twitch-clean-hidden] { display: none !important; }

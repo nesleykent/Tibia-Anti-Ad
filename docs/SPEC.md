@@ -18,6 +18,8 @@ Initial repository scope: preserve supplied research, publish experimental filte
 - `filters/anti-ad-tibia*.txt`: generated experimental subscriptions.
 - `research/`: supplied reports and scripts, not newly verified evidence.
 - `docs/`: installation, methodology, compatibility, Twitch policy and roadmap.
+- `extensions/twitch-clean/`: supplied Safari extension source.
+- `scripts/twitch/`: standalone live-video ad script and setup.
 - `tools/`: Python 3.11+ standard-library utilities; no external runtime dependencies.
 - Build: `python3 tools/build_filters.py`
 - Test: `python3 -m unittest discover -s tests -v`

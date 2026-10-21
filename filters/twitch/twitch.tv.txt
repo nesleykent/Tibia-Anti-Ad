@@ -1,0 +1,136 @@
+! Title: Twitch (twitch.tv) for uBO Lite on Safari
+! Description: Self-contained network and cosmetic rules for twitch.tv. Blocks Twitch's ad server and telemetry endpoints, the Amazon and Google ad stacks, Stream Display Ads, the anti-adblock player wall, Turbo/Prime/Luna/Subtember upsells, logged-out nags and the consent banner. Video ads stitched into the HLS stream itself cannot be removed by uBOL (see twitch.tv-validation.md).
+! Compatibility: uBlock Origin Lite for Safari 18.6+ (macOS, iOS, iPadOS). Network rules: Dashboard > Develop > Custom DNR rules (Developer mode must stay enabled). Cosmetic rules: Dashboard > Custom filters > Import / Export > Add. Filtering mode for twitch.tv: Optimal or Complete. Plain CSS only, no scriptlets, no procedural operators. Paste the whole file in both places; each importer ignores the other half.
+! Last modified: 2026-10-21 (revision 2)
+! Provenance tags: [Safari] markup or host observed in the maintainer's Safari 27 via twitch-recon.js; [uAssets] uBlock filters, [EL] EasyList/EasyPrivacy, [AG] AdGuard, [hagezi] hagezi DNS, [FFZ] FrankerFaceZ, [BTTV] BetterTTV, [TDM] TwitchDropsMiner. Rules without [Safari] have not been checked against the live site.
+! Formatting rule: no line may start with a space. uBOL's DNR paste importer rejects the whole paste if one does.
+
+! ============================================================================
+! 1. NETWORK RULES -> Develop > Custom DNR rules
+! On Safari, uBOL has no filter compiler, so its Custom filters importer
+! keeps only "host##selector" lines and silently drops these. They only take
+! effect from the Develop pane, which converts them to dynamic DNR rules.
+! ============================================================================
+
+! --- 1a. Twitch-owned ad and telemetry hosts. Only Twitch uses them, so global scope is safe.
+! Ad server edge (edge.ads.twitch.tv, fetched on directory pages [Safari]) [EL] [AG] [hagezi]
+||ads.twitch.tv^
+! Spade event telemetry [AG] [FFZ]. Twitch reads the live endpoint from "spade_url" in the channel HTML or settings JS [TDM], so this host may not be the only one used.
+||spade.twitch.tv^
+! Client event and error reporters [AG] [FFZ]
+||client-event-reporter.twitch.tv^
+||trowel.twitch.tv^
+! Extension analytics [EL] [AG] [hagezi]
+||analytics.m7g.twitch.tv^
+! Twitch-specific CloudFront distribution, blocked next to apstag.js in uBO's own Twitch section [uAssets #719]; purpose not documented
+||ddacn6pr5v0tl.cloudfront.net^
+! Deliberately NOT blocked:
+! spade.sci.twitch.tv: uBO downgraded its block to third-party only because blocking it on Twitch broke the site [uAssets unbreak #7001]
+! gql.twitch.tv, usher.ttvnw.net, *.hls.ttvnw.net, *.ttvnw.net/v1/playlist: API and video. Ads ride inside the same playlists.
+! usher.ttvnw.net "picture-by-picture" playlists: during a midroll this mini player keeps the stream visible while the ad plays [TDM vaft notes]
+! imasdk.googleapis.com: no evidence Twitch loads it, and without uBO's redirect resources a block can break players that require it
+
+! --- 1b. Third-party ad stacks with Twitch evidence. Scoped to twitch.tv pages so other sites keep their behavior.
+! Amazon Publisher Services: apstag.js, aax bids, s.amazon-adsystem.com/iu3 ID-sync iframes and aes.*.3px.axp pixels [Safari] [uAssets #719] [EL]
+||amazon-adsystem.com^$domain=twitch.tv
+! Amazon Ads measurement pixels (api.ono.us-east-1.prod.mt.paets.advertising.amazon.dev) [Safari]
+||advertising.amazon.dev^$domain=twitch.tv
+! SafeFrame host that renders the 728x90 directory banner (/vast/sf-5.html, iframe title "Display Ad") [Safari]
+||d3qpnbd0lnus53.cloudfront.net^$domain=twitch.tv
+! Ad video creatives, served as <video src="https://m.media-amazon.com/...mp4"> in Stream Display Ads and the directory rectangle [Safari] [uAssets] [AG]. Media only: the same host serves Amazon and Prime artwork.
+||m.media-amazon.com^$media,domain=twitch.tv
+! comScore beacon script and pixel (sb.scorecardresearch.com) [Safari]
+||scorecardresearch.com^$domain=twitch.tv
+! Google Ad Manager/IMA and Flashtalking: Twitch ad servers per AdGuard's 2018 Twitch allowlists and EasyList's Twitch pop-up rules [AG] [EL]. Default uBO users block all three today without Twitch breakage reports.
+||doubleclick.net^$domain=twitch.tv
+||flashtalking.com^$domain=twitch.tv
+||flxpxl.com^$domain=twitch.tv
+
+! --- 1c. Defensive coverage: common ad, analytics and ID-sync networks NOT observed on Twitch (live recon was impossible). Scoped to twitch.tv.
+! Covers sync partners that APS or Google could load if their entry scripts ever got through.
+||googlesyndication.com^$domain=twitch.tv
+||googleadservices.com^$domain=twitch.tv
+||google-analytics.com^$domain=twitch.tv
+||googletagmanager.com^$domain=twitch.tv
+||adnxs.com^$domain=twitch.tv
+||adsrvr.org^$domain=twitch.tv
+||casalemedia.com^$domain=twitch.tv
+||criteo.com^$domain=twitch.tv
+||criteo.net^$domain=twitch.tv
+||imrworldwide.com^$domain=twitch.tv
+||openx.net^$domain=twitch.tv
+||pubmatic.com^$domain=twitch.tv
+||rlcdn.com^$domain=twitch.tv
+||rubiconproject.com^$domain=twitch.tv
+
+! --- CANARY: a one-time Safari check. Keep these commented in normal use.
+! Paste ONE line on its own into Develop > Custom DNR rules, Save, then open https://www.twitch.tv/directory.
+! If the category box art disappears, that rule form works in Safari. Delete the line afterwards.
+! A (plain host rule):  ||static-cdn.jtvnw.net/ttv-boxart/
+! B ($domain= scoped):  ||static-cdn.jtvnw.net/ttv-boxart/$domain=twitch.tv
+! If A works and B does not, remove "$domain=twitch.tv" from the rules in 1b and 1c.
+
+! ============================================================================
+! 2. COSMETIC RULES -> Custom filters > Import / Export > Add
+! uBOL joins every selector for a host into ONE "a,b,c{display:none!important}"
+! rule, so a single selector Safari cannot parse would void all of them.
+! Everything below is plain CSS. :has() and :is() are native in Safari 15.4+,
+! and uBOL's importer runs with nativeCssHas, so they stay plain CSS.
+! Rules for twitch.tv also apply to www., m., clips. and player.twitch.tv.
+! uBOL skips sub-frames on Safari (WebKit bug 262491), so embedded players on
+! other sites are not covered.
+! ============================================================================
+
+! --- 2a. Stream Display Ads: lower-third/L-shaped ad frames around the player [EL]
+twitch.tv##.stream-display-ad__wrapper
+twitch.tv##[data-test-selector="sda-wrapper"]
+! SDA video creative panels beside the player and above chat [uAssets] [AG]
+twitch.tv##.stream-display-ad__wrapper + div > div[style^="position:"] > div[class^="Layout-sc-"]:has(video[src^="https://m.media-amazon.com"])
+twitch.tv##.chat-shell > div[class^="Layout-sc-"] > div[style^="transition:"]:has(video[src^="https://m.media-amazon.com"])
+
+! --- 2b. Controls shown during stitched video ad breaks
+! "Learn more" click-through and the ad-feedback survey button [uAssets] [EL]; the feedback button confirmed hidden in Safari [Safari]. These match the English UI only: Twitch localizes aria-labels.
+twitch.tv##button[aria-label="Learn more about this ad"]
+twitch.tv##button[aria-label="Leave feedback for this Ad"]
+! Left visible on purpose. uBOL cannot remove the stitched ad, so the label and countdown are the only signs of when the stream returns.
+! To hide them anyway, delete the leading "! " from the next two lines.
+! twitch.tv##[data-a-target="video-ad-label"]
+! twitch.tv##[data-a-target="video-ad-countdown"]
+
+! --- 2c. Anti-adblock: "Allow Twitch ads in your browser" / Turbo wall over the player [uAssets] [AG #196646]
+! Hides the overlay only. If Twitch replaces the stream instead of covering it, the player stays blank (unverified).
+! The uAssets rule's :is() is split in two. The how-to link matches at any depth; the Turbo link keeps uAssets' exact structure so other overlays with a Turbo link are not caught.
+twitch.tv##.video-player__overlay .player-overlay-background:has(a[href*="/how-to-allow-ads-browser"])
+twitch.tv##.video-player__overlay .player-overlay-background:has(> div[class^="Layout-"] > div[class^="Layout-"] > div[class^="Layout-"] > a[href="https://www.twitch.tv/turbo"])
+
+! --- 2d. Promoted stream cards in directories [AG]. Unverified and possibly stale; harmless if it no longer matches.
+twitch.tv##div.tw-tower > div:has(div.promoted-card-stat__promotion)
+
+! --- 2e. Upsells
+! Turbo "Go Ad-Free" nav button. It has no stable class, so it is matched by its battery icon path [BTTV, Oct 2026].
+twitch.tv##.top-nav__menu > * > *:has(svg path[d^="M2 19V5h17"])
+! Prime Gaming loot crown [FFZ] [BTTV]
+twitch.tv##.top-nav__prime
+! Prime promo bar [BTTV]
+twitch.tv##[data-test-selector="test_selector_prime_tracking_button_wrapper"] [data-a-target="blue-bar"]
+! Amazon Luna cross-promo link [FFZ]
+twitch.tv##.top-nav__external-link[data-a-target="try-presto-link"]
+! Subtember upsell banner [FFZ] [AG]
+twitch.tv##.subtember-gradient
+
+! --- 2f. Logged-out nags and consent banner
+! Sticky "join Twitch" sign-up footer [AG]
+twitch.tv###twilight-sticky-footer-root
+! Sign-up gate over chat [AG]
+twitch.tv##div[data-a-target="right-column-chat-bar"] div.stream-chat + div.chat-signup-gate-overlay
+! Follow prompt pop-up [AG]. Unverified.
+twitch.tv##.follow-prompt
+! Cookie consent banner, desktop and m.twitch.tv [AG]. Hiding it leaves consent unset; it accepts nothing.
+twitch.tv##.consent-banner
+
+! --- 2g. Directory and category page ad slots [Safari]
+! 728x90 banner between the category header and the tabs. The wrapper carries the 20px margins, so hiding it leaves no gap.
+twitch.tv###directory-banner
+twitch.tv##[data-a-target="directory-banner-ad-slot"]
+! "Learn More" video tile placed in the stream grid (flex item with order:3). Twitch uses this id on two nested elements; hiding the outer one lets the grid reflow.
+twitch.tv###directory-rectangle
