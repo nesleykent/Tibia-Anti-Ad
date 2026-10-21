@@ -1,0 +1,25 @@
+{
+  "collected": "2026-10-21",
+  "files": {
+    "raw/streams-1316-details-only.json": {
+      "source": "twitch-tibia-streams.json",
+      "sha256": "b3cea56ba3ab1c356fcbbc5637c7bf6dc6f05d5b1443c5cc7a4cb0ff83aa11de"
+    },
+    "raw/streams-1400.json": {
+      "source": "twitch-tibia-streams-3.json",
+      "sha256": "1c1c71e55c8ca0604ef29fc5fbbe1a64bb107076c2b053540be8f1bdd4eeb0d9"
+    },
+    "analysis/classificacao.json": {
+      "source": "Twitch_Tibia_Relatorio_e_Dados_21-10-2026.zip:twitch_tibia_classificacao_corrigida_2026-10-21.json",
+      "sha256": "3b71c4ceb0e2b1c72e1edd1353b3b76ae428e519bdfdadd25021c49c077fe560"
+    },
+    "analysis/classificacao.csv": {
+      "source": "Twitch_Tibia_Relatorio_e_Dados_21-10-2026.zip:twitch_tibia_classificacao_corrigida_2026-10-21.csv",
+      "sha256": "af797a60e2c1bf6ed166f33c21402ce1387203c11ca0f542088aa71165794137"
+    },
+    "analysis/relatorio.pdf": {
+      "source": "Twitch_Tibia_Relatorio_e_Dados_21-10-2026.zip:twitch_tibia_relatorio_corrigido_2026-10-21.pdf",
+      "sha256": "6382aae51955f0c46eaf4a6afd129f0ac2304a0719035ab798198a7674f029ff"
+    }
+  }
+}
