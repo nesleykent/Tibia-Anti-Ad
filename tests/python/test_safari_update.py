@@ -48,3 +48,17 @@ class SafariUpdateTests(unittest.TestCase):
                 backup = updater.install(built, installed, "TEAM")
             self.assertEqual((installed / "version").read_text(), "new")
             self.assertEqual((backup / "version").read_text(), "old")
+
+    def test_stale_copies_are_every_other_app_safari_sees(self):
+        listing = """
+     com.nesleykent.tibiaantiad.Extension(1.3.0)
+            Path = /Applications/Tibia Anti-Ad.app/Contents/PlugIns/Tibia Anti-Ad Extension.appex
+     com.nesleykent.tibiaantiad.Extension(1.2.3)
+            Path = /Users/me/Downloads/Tibia Anti-Ad.app/Contents/PlugIns/Tibia Anti-Ad Extension.appex
+     com.nesleykent.tibiaantiad.Toolbar(1.3.0)
+            Path = /Users/me/Code/Adblock/local/safari/previous.noindex/Tibia Anti-Ad.app/Contents/PlugIns/Tibia Anti-Ad Toolbar.appex
+"""
+        self.assertEqual(updater.stale_copies(listing, Path("/Applications/Tibia Anti-Ad.app")), [
+            Path("/Users/me/Code/Adblock/local/safari/previous.noindex/Tibia Anti-Ad.app"),
+            Path("/Users/me/Downloads/Tibia Anti-Ad.app"),
+        ])
