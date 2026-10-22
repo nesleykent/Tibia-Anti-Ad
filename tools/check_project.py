@@ -72,7 +72,7 @@ def main():
     check_friendly_screenshots()
     run("bash", "-n", "scripts/safari/build_and_run.sh")
     scripts = [*EXTENSION.rglob("*.js"), *ROOT.glob("scripts/twitch/*.js"),
-               *ROOT.glob("tests/javascript/*.cjs")]
+               *ROOT.glob("tests/javascript/*.cjs"), *ROOT.glob("tests/browser/*.cjs")]
     for script in sorted(scripts):
         run("node", "--check", str(script.relative_to(ROOT)))
     run("node", "tests/javascript/twitch-startup.cjs")

@@ -61,18 +61,42 @@ def score(model, feats):
     return model["bias"] + sum(model["features"].get(f, 0) for f in feats)
 
 
+def wilson_interval(successes, total):
+    """Two-sided 95% Wilson score interval; no estimate without observations."""
+    if total == 0:
+        return None
+    z = 1.959963984540054
+    p = successes / total
+    denominator = 1 + z * z / total
+    center = (p + z * z / (2 * total)) / denominator
+    radius = z * math.sqrt(p * (1 - p) / total + z * z / (4 * total * total)) / denominator
+    return max(0, center - radius), min(1, center + radius)
+
+
 def cross_validate(rows, folds=5):
     keys = sorted(rows)
+    # Prefixes distinguish captures, not independent channels. Keep every
+    # observation of the same channel on one side of the train/test boundary.
+    def channel(key):
+        return key.removeprefix("live:").casefold()
+
+    groups = {name: i % folds for i, name in enumerate(sorted({channel(key) for key in keys}))}
     results = []
     for k in range(folds):
-        test = [key for i, key in enumerate(keys) if i % folds == k]
-        model = train([rows[key] for key in keys if key not in set(test)])
+        test = [key for key in keys if groups[channel(key)] == k]
+        model = train([rows[key] for key in keys if groups[channel(key)] != k])
         results += [(score(model, rows[key][0]), rows[key][1]) for key in test]
     for cut in (4, 6, 8):
         tp = sum(1 for s, y in results if s >= cut and y)
         fp = sum(1 for s, y in results if s >= cut and not y)
         pos = sum(y for _, y in results)
-        print(f"log-odds >= {cut}: precision {tp / max(1, tp + fp):.3f} ({fp} official hidden), recall {tp / pos:.3f}")
+        interval = wilson_interval(tp, tp + fp)
+        precision = f"{tp / (tp + fp):.3f}" if tp + fp else "unknown"
+        confidence = f"[{interval[0]:.4f}, {interval[1]:.4f}]" if interval else "unknown"
+        recall = f"{tp / pos:.3f}" if pos else "unknown"
+        abstained = sum(-cut < s < cut for s, _ in results)
+        print(f"log-odds >= {cut}: precision {precision} ({fp} official hidden; {tp + fp} predicted other), "
+              f"95% Wilson CI {confidence}, recall {recall}, abstention {abstained}/{len(results)}")
     return results
 
 
@@ -81,7 +105,12 @@ def main():
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
     rows = dataset()
-    print(f"{len(rows)} labelled channels, {sum(y for _, y in rows.values())} other games")
+    channels = {key.removeprefix('live:').casefold() for key in rows}
+    print(f"{len(rows)} labelled observations from {len(channels)} channels, {sum(y for _, y in rows.values())} other games")
+    print("Development cross-validation only: labels and rules were tuned on these captures; "
+          "this is not an independently reviewed holdout or a live-hiding release gate.")
+    print("Wilson intervals summarize observations, including repeated captures of channels; "
+          "they do not establish independent-sample precision.")
     cross_validate(rows)
     if args.write:
         data = json.loads(EVIDENCE.read_text())

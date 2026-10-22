@@ -1,0 +1,1883 @@
+{
+  "date": "2026-10-22",
+  "os": "macOS 27.0.1",
+  "browser": "Chrome 157.0.8103.6",
+  "viewports": [
+    [
+      1440,
+      900
+    ],
+    [
+      390,
+      900
+    ]
+  ],
+  "runtime_source_commit": "6e50c8a15da353d380a9e5a606d6852ae0122674",
+  "limits": [
+    "Desktop Chrome at two viewport widths; not physical-mobile testing.",
+    "Homepage runs are exploratory and do not establish search/calculator/accessibility preservation.",
+    "HTTP 403 and setup-only pages are not measurements of site filtering.",
+    "No Safari or Firefox enforcement certification."
+  ],
+  "homepages": [
+    {
+      "site": "tibiawiki.com.br",
+      "scope": "homepage",
+      "observed_runs": 0,
+      "status": "HTTP 403",
+      "page_title": "Just a moment..."
+    },
+    {
+      "site": "tibiopedia.pl",
+      "scope": "homepage",
+      "observed_runs": 0,
+      "status": "setup-only",
+      "page_title": "Setup - Tibia ~ Tibiopedia.pl"
+    },
+    {
+      "site": "exevopan.com",
+      "scope": "homepage",
+      "observed_runs": 0,
+      "status": "HTTP 403",
+      "page_title": "403: Forbidden"
+    },
+    {
+      "site": "forum.portaltibia.com.br",
+      "scope": "homepage",
+      "observed_runs": 0,
+      "status": "HTTP 403",
+      "page_title": "Just a moment..."
+    },
+    {
+      "site": "guildstats.eu",
+      "scope": "homepage",
+      "observed_runs": 4,
+      "runs": [
+        {
+          "width": 1440,
+          "enabled": false,
+          "status": 200,
+          "requests": 97,
+          "transferredBytes": 1733655,
+          "blockedByClient": {}
+        },
+        {
+          "width": 1440,
+          "enabled": true,
+          "status": 200,
+          "requests": 49,
+          "transferredBytes": 1048066,
+          "blockedByClient": {
+            "static.cloudflareinsights.com": 1,
+            "pagead2.googlesyndication.com": 1,
+            "www.googletagmanager.com": 1
+          }
+        },
+        {
+          "width": 390,
+          "enabled": false,
+          "status": 200,
+          "requests": 79,
+          "transferredBytes": 1558707,
+          "blockedByClient": {}
+        },
+        {
+          "width": 390,
+          "enabled": true,
+          "status": 200,
+          "requests": 44,
+          "transferredBytes": 988272,
+          "blockedByClient": {
+            "static.cloudflareinsights.com": 1,
+            "pagead2.googlesyndication.com": 1,
+            "www.googletagmanager.com": 1
+          }
+        }
+      ]
+    },
+    {
+      "site": "hakaimarket.com",
+      "scope": "homepage",
+      "observed_runs": 4,
+      "runs": [
+        {
+          "width": 1440,
+          "enabled": false,
+          "status": 200,
+          "requests": 61,
+          "transferredBytes": 2760375,
+          "blockedByClient": {}
+        },
+        {
+          "width": 1440,
+          "enabled": true,
+          "status": 200,
+          "requests": 54,
+          "transferredBytes": 2513993,
+          "blockedByClient": {
+            "hakaimarket.com": 1,
+            "tibiatrade.gg": 1
+          }
+        },
+        {
+          "width": 390,
+          "enabled": false,
+          "status": 200,
+          "requests": 56,
+          "transferredBytes": 2539358,
+          "blockedByClient": {}
+        },
+        {
+          "width": 390,
+          "enabled": true,
+          "status": 200,
+          "requests": 50,
+          "transferredBytes": 2484723,
+          "blockedByClient": {
+            "hakaimarket.com": 1,
+            "tibiatrade.gg": 1
+          }
+        }
+      ]
+    },
+    {
+      "site": "hunt-analyser.com",
+      "scope": "homepage",
+      "observed_runs": 4,
+      "runs": [
+        {
+          "width": 1440,
+          "enabled": false,
+          "status": 200,
+          "requests": 131,
+          "transferredBytes": 3720868,
+          "blockedByClient": {}
+        },
+        {
+          "width": 1440,
+          "enabled": true,
+          "status": 200,
+          "requests": 101,
+          "transferredBytes": 3098232,
+          "blockedByClient": {
+            "pagead2.googlesyndication.com": 1,
+            "www.googletagmanager.com": 1,
+            "static.cloudflareinsights.com": 1
+          }
+        },
+        {
+          "width": 390,
+          "enabled": false,
+          "status": 200,
+          "requests": 131,
+          "transferredBytes": 3611956,
+          "blockedByClient": {}
+        },
+        {
+          "width": 390,
+          "enabled": true,
+          "status": 200,
+          "requests": 102,
+          "transferredBytes": 3031174,
+          "blockedByClient": {
+            "pagead2.googlesyndication.com": 1,
+            "www.googletagmanager.com": 1,
+            "static.cloudflareinsights.com": 1
+          }
+        }
+      ]
+    },
+    {
+      "site": "intibia.com",
+      "scope": "homepage",
+      "observed_runs": 4,
+      "runs": [
+        {
+          "width": 1440,
+          "enabled": false,
+          "status": 200,
+          "requests": 217,
+          "transferredBytes": 2400894,
+          "blockedByClient": {}
+        },
+        {
+          "width": 1440,
+          "enabled": true,
+          "status": 200,
+          "requests": 163,
+          "transferredBytes": 1449163,
+          "blockedByClient": {
+            "www.googletagmanager.com": 1,
+            "securepubads.g.doubleclick.net": 1,
+            "t.intibia.com": 6,
+            "tibiatrade.gg": 4,
+            "intibia.com": 3
+          }
+        },
+        {
+          "width": 390,
+          "enabled": false,
+          "status": 200,
+          "requests": 181,
+          "transferredBytes": 2242389,
+          "blockedByClient": {}
+        },
+        {
+          "width": 390,
+          "enabled": true,
+          "status": 200,
+          "requests": 132,
+          "transferredBytes": 1413363,
+          "blockedByClient": {
+            "www.googletagmanager.com": 1,
+            "securepubads.g.doubleclick.net": 1,
+            "t.intibia.com": 6,
+            "tibiatrade.gg": 4,
+            "intibia.com": 4
+          }
+        }
+      ]
+    },
+    {
+      "site": "portaltibia.com.br",
+      "scope": "homepage",
+      "observed_runs": 0,
+      "status": "HTTP 403",
+      "page_title": "Just a moment..."
+    },
+    {
+      "site": "tibia.fandom.com",
+      "scope": "homepage",
+      "observed_runs": 0,
+      "status": "HTTP 403",
+      "page_title": "Just a moment..."
+    },
+    {
+      "site": "tibialife.com.br",
+      "scope": "homepage",
+      "observed_runs": 4,
+      "runs": [
+        {
+          "width": 1440,
+          "enabled": false,
+          "status": 200,
+          "requests": 62,
+          "transferredBytes": 3185552,
+          "blockedByClient": {}
+        },
+        {
+          "width": 1440,
+          "enabled": true,
+          "status": 200,
+          "requests": 57,
+          "transferredBytes": 2771741,
+          "blockedByClient": {
+            "www.tibialife.com.br": 1,
+            "www.googletagmanager.com": 1
+          }
+        },
+        {
+          "width": 390,
+          "enabled": false,
+          "status": 200,
+          "requests": 57,
+          "transferredBytes": 2889340,
+          "blockedByClient": {}
+        },
+        {
+          "width": 390,
+          "enabled": true,
+          "status": 200,
+          "requests": 54,
+          "transferredBytes": 2720001,
+          "blockedByClient": {
+            "www.tibialife.com.br": 1,
+            "www.googletagmanager.com": 1
+          }
+        }
+      ]
+    },
+    {
+      "site": "tibiamonk.com",
+      "scope": "homepage",
+      "observed_runs": 4,
+      "runs": [
+        {
+          "width": 1440,
+          "enabled": false,
+          "status": 200,
+          "requests": 214,
+          "transferredBytes": 2562238,
+          "blockedByClient": {}
+        },
+        {
+          "width": 1440,
+          "enabled": true,
+          "status": 200,
+          "requests": 138,
+          "transferredBytes": 1963525,
+          "blockedByClient": {
+            "static.cloudflareinsights.com": 1,
+            "pagead2.googlesyndication.com": 2
+          }
+        },
+        {
+          "width": 390,
+          "enabled": false,
+          "status": 200,
+          "requests": 155,
+          "transferredBytes": 2058969,
+          "blockedByClient": {}
+        },
+        {
+          "width": 390,
+          "enabled": true,
+          "status": 200,
+          "requests": 104,
+          "transferredBytes": 1499390,
+          "blockedByClient": {
+            "static.cloudflareinsights.com": 1,
+            "pagead2.googlesyndication.com": 2
+          }
+        }
+      ]
+    },
+    {
+      "site": "tibiapal.com",
+      "scope": "homepage",
+      "observed_runs": 4,
+      "runs": [
+        {
+          "width": 1440,
+          "enabled": false,
+          "status": 200,
+          "requests": 165,
+          "transferredBytes": 4289147,
+          "blockedByClient": {}
+        },
+        {
+          "width": 1440,
+          "enabled": true,
+          "status": 200,
+          "requests": 61,
+          "transferredBytes": 3543866,
+          "blockedByClient": {
+            "www.googletagmanager.com": 1,
+            "pagead2.googlesyndication.com": 1
+          }
+        },
+        {
+          "width": 390,
+          "enabled": false,
+          "status": 200,
+          "requests": 109,
+          "transferredBytes": 4297904,
+          "blockedByClient": {}
+        },
+        {
+          "width": 390,
+          "enabled": true,
+          "status": 200,
+          "requests": 43,
+          "transferredBytes": 3532870,
+          "blockedByClient": {
+            "www.googletagmanager.com": 1,
+            "pagead2.googlesyndication.com": 1
+          }
+        }
+      ]
+    },
+    {
+      "site": "tibiaring.com",
+      "scope": "homepage",
+      "observed_runs": 0,
+      "status": "HTTP 403",
+      "page_title": "Just a moment..."
+    },
+    {
+      "site": "tibiavip.app",
+      "scope": "homepage",
+      "observed_runs": 4,
+      "runs": [
+        {
+          "width": 1440,
+          "enabled": false,
+          "status": 200,
+          "requests": 82,
+          "transferredBytes": 1185711,
+          "blockedByClient": {}
+        },
+        {
+          "width": 1440,
+          "enabled": true,
+          "status": 200,
+          "requests": 37,
+          "transferredBytes": 495676,
+          "blockedByClient": {
+            "pagead2.googlesyndication.com": 1,
+            "static.cloudflareinsights.com": 1,
+            "www.googletagmanager.com": 1
+          }
+        },
+        {
+          "width": 390,
+          "enabled": false,
+          "status": 200,
+          "requests": 101,
+          "transferredBytes": 1182100,
+          "blockedByClient": {}
+        },
+        {
+          "width": 390,
+          "enabled": true,
+          "status": 200,
+          "requests": 37,
+          "transferredBytes": 495986,
+          "blockedByClient": {
+            "pagead2.googlesyndication.com": 1,
+            "static.cloudflareinsights.com": 1,
+            "www.googletagmanager.com": 1
+          }
+        }
+      ]
+    }
+  ],
+  "tibiopedia_news": {
+    "url": "https://tibiopedia.pl/news",
+    "setup": "English, Library layout",
+    "desktop_pairs": 5,
+    "mobile_pairs": 1,
+    "content_preserved": true,
+    "medians": {
+      "baseline": {
+        "requests": {
+          "median": 758,
+          "min": 722,
+          "max": 787
+        },
+        "transferredBytes": {
+          "median": 6429450,
+          "min": 5996532,
+          "max": 6704623
+        }
+      },
+      "filtered": {
+        "requests": {
+          "median": 241,
+          "min": 241,
+          "max": 241
+        },
+        "transferredBytes": {
+          "median": 2086822,
+          "min": 2056700,
+          "max": 2216961
+        }
+      }
+    },
+    "performance_rating": "unknown: exploratory runs overlapped other browser probes; strict protocol not completed"
+  },
+  "twitch": [
+    {
+      "enabled": false,
+      "blockedByClient": {},
+      "playback": [
+        {
+          "sampled": "2026-10-22T11:05:58.211Z",
+          "currentTime": 7.912519,
+          "readyState": 4,
+          "paused": false,
+          "dimensions": [
+            1280,
+            720
+          ],
+          "errorCode": null,
+          "visibleAdLabel": false,
+          "chatPresent": true,
+          "captionsControl": false,
+          "playerError": null
+        },
+        {
+          "sampled": "2026-10-22T11:06:08.214Z",
+          "currentTime": 17.915602,
+          "readyState": 4,
+          "paused": false,
+          "dimensions": [
+            1280,
+            720
+          ],
+          "errorCode": null,
+          "visibleAdLabel": false,
+          "chatPresent": true,
+          "captionsControl": false,
+          "playerError": null
+        },
+        {
+          "sampled": "2026-10-22T11:06:18.217Z",
+          "currentTime": 27.919173,
+          "readyState": 4,
+          "paused": false,
+          "dimensions": [
+            1280,
+            720
+          ],
+          "errorCode": null,
+          "visibleAdLabel": false,
+          "chatPresent": true,
+          "captionsControl": false,
+          "playerError": null
+        },
+        {
+          "sampled": "2026-10-22T11:06:28.221Z",
+          "currentTime": 37.921505,
+          "readyState": 4,
+          "paused": false,
+          "dimensions": [
+            1280,
+            720
+          ],
+          "errorCode": null,
+          "visibleAdLabel": false,
+          "chatPresent": true,
+          "captionsControl": false,
+          "playerError": null
+        }
+      ]
+    },
+    {
+      "enabled": true,
+      "blockedByClient": {
+        "spade.twitch.tv": 2,
+        "s.amazon-adsystem.com": 7,
+        "edge.ads.twitch.tv": 2,
+        "sb.scorecardresearch.com": 8
+      },
+      "playback": [
+        {
+          "sampled": "2026-10-22T11:07:06.847Z",
+          "currentTime": 7.98145,
+          "readyState": 4,
+          "paused": false,
+          "dimensions": [
+            1280,
+            720
+          ],
+          "errorCode": null,
+          "visibleAdLabel": false,
+          "chatPresent": true,
+          "captionsControl": false,
+          "playerError": null
+        },
+        {
+          "sampled": "2026-10-22T11:07:16.852Z",
+          "currentTime": 17.986362,
+          "readyState": 4,
+          "paused": false,
+          "dimensions": [
+            1280,
+            720
+          ],
+          "errorCode": null,
+          "visibleAdLabel": false,
+          "chatPresent": true,
+          "captionsControl": false,
+          "playerError": null
+        },
+        {
+          "sampled": "2026-10-22T11:07:26.856Z",
+          "currentTime": 27.989554,
+          "readyState": 4,
+          "paused": false,
+          "dimensions": [
+            1280,
+            720
+          ],
+          "errorCode": null,
+          "visibleAdLabel": false,
+          "chatPresent": true,
+          "captionsControl": false,
+          "playerError": null
+        },
+        {
+          "sampled": "2026-10-22T11:07:36.860Z",
+          "currentTime": 37.994816,
+          "readyState": 4,
+          "paused": false,
+          "dimensions": [
+            1280,
+            720
+          ],
+          "errorCode": null,
+          "visibleAdLabel": false,
+          "chatPresent": true,
+          "captionsControl": false,
+          "playerError": null
+        }
+      ]
+    }
+  ],
+  "twitch_directory": [
+    {
+      "enabled": false,
+      "directory": {
+        "title": "Tibia - Twitch",
+        "cards": 30,
+        "hidden": 0,
+        "visibleAdContainers": 0
+      },
+      "reversibility": null
+    },
+    {
+      "enabled": true,
+      "directory": {
+        "title": "Tibia - Twitch",
+        "cards": 30,
+        "hidden": 24,
+        "visibleAdContainers": 0
+      },
+      "reversibility": {
+        "channel": "japabigodin",
+        "show": "passed",
+        "undo": "passed",
+        "disableFilter": "passed"
+      }
+    }
+  ],
+  "twitch_directory_limits": "Ad-container selector did not identify the displayed ad banner reliably; its zero counts are not ad-removal evidence. Card counts are not accuracy measurements.",
+  "local_evidence": {
+    "local/verification/live-sites/exevopan.com-1440-baseline.png": {
+      "sha256": "43945faa8236725d423a0fbeffda23e43c29bfaf94048283d9fef425ee9b66a1",
+      "bytes": 16686
+    },
+    "local/verification/live-sites/forum.portaltibia.com.br-1440-baseline.png": {
+      "sha256": "58e64f66baf95b1e7c9eb159326ad6ad3f05afed68dae4f9f58e959b6687fc98",
+      "bytes": 39207
+    },
+    "local/verification/live-sites/guildstats.eu-1440-baseline.png": {
+      "sha256": "a26fa66cadd9bae15bec9f93e2ce54a26e356549e8944095d745205876190dd8",
+      "bytes": 247390
+    },
+    "local/verification/live-sites/guildstats.eu-1440-filtered.png": {
+      "sha256": "b2a5d775926e839193e8d00461562f64a966738d0cb5c339b37e2a740a151183",
+      "bytes": 419890
+    },
+    "local/verification/live-sites/guildstats.eu-390-baseline.png": {
+      "sha256": "4566573a6caa958ec2410e8cf689f353ec43e713dedb6d8696ff9215d73e46da",
+      "bytes": 85552
+    },
+    "local/verification/live-sites/guildstats.eu-390-filtered.png": {
+      "sha256": "1b7b7a54c71339de364d5864d53c818a9d429968fabafb9cf47277127e74421e",
+      "bytes": 85749
+    },
+    "local/verification/live-sites/hakaimarket.com-1440-baseline.png": {
+      "sha256": "ffb0490160e0a1b2afd5ffdc42b2809704ea6ac7b5b98e30086fcc1d1d705a64",
+      "bytes": 426788
+    },
+    "local/verification/live-sites/hakaimarket.com-1440-filtered.png": {
+      "sha256": "fbd4c1dac83e4675557253ebdedbf0c6d63ad58b8f201410969df30a796a2c85",
+      "bytes": 785143
+    },
+    "local/verification/live-sites/hakaimarket.com-390-baseline.png": {
+      "sha256": "db6b93563b3745aad1d680df0bda68e35665d226a03fba5ca194e5e1d59e4a2b",
+      "bytes": 200797
+    },
+    "local/verification/live-sites/hakaimarket.com-390-filtered.png": {
+      "sha256": "0dca43581affc83830d9d05b580fac546a65125b4baca89c0328a3d8170feb0c",
+      "bytes": 255167
+    },
+    "local/verification/live-sites/hunt-analyser.com-1440-baseline.png": {
+      "sha256": "b69e06c9e26f511a3b9f2c07375622de9a7c532eeac0c199b3d1268756a4d725",
+      "bytes": 576795
+    },
+    "local/verification/live-sites/hunt-analyser.com-1440-filtered.png": {
+      "sha256": "4b6891c1e109ff4b9d6caddee4d501b24e48f4704a6b2c5b346cea0461102152",
+      "bytes": 576419
+    },
+    "local/verification/live-sites/hunt-analyser.com-390-baseline.png": {
+      "sha256": "2416cc641c04db1c9787f847c9f4e836b0c1c3c6a70023fd736f9011ddf4d930",
+      "bytes": 145684
+    },
+    "local/verification/live-sites/hunt-analyser.com-390-filtered.png": {
+      "sha256": "2cd82c9ccd7ca922b8537325d12e191ff2ee0c3b628b54e7c15fb4e0d5a05d97",
+      "bytes": 145508
+    },
+    "local/verification/live-sites/intibia.com-1440-baseline.png": {
+      "sha256": "812144bbe51b824da784e0e269c87f9692e4aaead74f655e8958d0e1bd84ad68",
+      "bytes": 232563
+    },
+    "local/verification/live-sites/intibia.com-1440-filtered.png": {
+      "sha256": "5c031e780a01e26669410c5c0004d2fdc4701de0696a29a23624bd9afbcc6c29",
+      "bytes": 246482
+    },
+    "local/verification/live-sites/intibia.com-390-baseline.png": {
+      "sha256": "a349264cd60eeeb232884e649626f36ea651b550c09aaedf4ca4871ffaef89b0",
+      "bytes": 56188
+    },
+    "local/verification/live-sites/intibia.com-390-filtered.png": {
+      "sha256": "4cbb994999afe194ad64dda15cd5d05dc2286e9e74e9c1137884bda7fa309103",
+      "bytes": 74479
+    },
+    "local/verification/live-sites/portaltibia.com.br-1440-baseline.png": {
+      "sha256": "5ae91298c272395a2b2baa479941813e52c6bacc1c24d07b9f33311062847780",
+      "bytes": 38019
+    },
+    "local/verification/live-sites/tibia.fandom.com-1440-baseline.png": {
+      "sha256": "3bd8e841919f4264d795753f3148108218cd565367ecc014b7eed3cf832431b3",
+      "bytes": 37978
+    },
+    "local/verification/live-sites/tibialife.com.br-1440-baseline.png": {
+      "sha256": "3038eb1ab0691461bab60f8155cfcb3561ea1a0d62d45bb923ba5df6db4fdcf3",
+      "bytes": 820699
+    },
+    "local/verification/live-sites/tibialife.com.br-1440-filtered.png": {
+      "sha256": "72fb0f89c08ac65cae6826b4dc468c8f8bc8ea21fe5a790793ae187612d87cf4",
+      "bytes": 492353
+    },
+    "local/verification/live-sites/tibialife.com.br-390-baseline.png": {
+      "sha256": "bc6ed2780100ed5beebc6608373345a440580c6d5a25ca576bb658a53ecd742b",
+      "bytes": 375099
+    },
+    "local/verification/live-sites/tibialife.com.br-390-filtered.png": {
+      "sha256": "a778555196030654ee8c6a0b38a7a1674cd85b7962e6edb9161249dd8358db09",
+      "bytes": 254156
+    },
+    "local/verification/live-sites/tibiamonk.com-1440-baseline.png": {
+      "sha256": "4dbece321cc22999a7a4f49a7ddd41fb7eb3fe4b32e593970f7dfa7b86f0e89d",
+      "bytes": 253638
+    },
+    "local/verification/live-sites/tibiamonk.com-1440-filtered.png": {
+      "sha256": "7ee9036a5740153675a165317ce0af873fce8a91fc6339e57dfc872c79da0201",
+      "bytes": 121558
+    },
+    "local/verification/live-sites/tibiamonk.com-390-baseline.png": {
+      "sha256": "0539b27e80627e742a53f2ae3c11306cbe42139bb4c46f2b6d67a6d2d989d535",
+      "bytes": 78246
+    },
+    "local/verification/live-sites/tibiamonk.com-390-filtered.png": {
+      "sha256": "6d302ddafbbe754d7091c55235ae14f8bcffae43dcd39ad72b0fad5d0b1376de",
+      "bytes": 53350
+    },
+    "local/verification/live-sites/tibiapal.com-1440-baseline.png": {
+      "sha256": "cfd5a1c84537c1d5936699d82b84acd79802f953e3bb0ab489d0dca44a7fbbd6",
+      "bytes": 499228
+    },
+    "local/verification/live-sites/tibiapal.com-1440-filtered.png": {
+      "sha256": "df8f26bc5a5bc8996a3dc691b637e72804e5bea335fea5bda0a4fed322a0aa60",
+      "bytes": 444173
+    },
+    "local/verification/live-sites/tibiapal.com-390-baseline.png": {
+      "sha256": "1bbeeffb987596bc4645298c312c449a0a2673954a2fe27ac8278e407300c1f3",
+      "bytes": 192097
+    },
+    "local/verification/live-sites/tibiapal.com-390-filtered.png": {
+      "sha256": "c7e08585d96683481fcc4eace31ad5aadb7fbfbbf9d17da9260ca5ea24962bea",
+      "bytes": 157653
+    },
+    "local/verification/live-sites/tibiaring.com-1440-baseline.png": {
+      "sha256": "3a76a539675f0610ba83a5c643aefb0f54f85efd8fd8bb86480d95c2ff015d9f",
+      "bytes": 37835
+    },
+    "local/verification/live-sites/tibiavip.app-1440-baseline.png": {
+      "sha256": "ceda973438fc52fc33df3d1a1faeab807874c9d31b1ac92274e5037ba0f7cb52",
+      "bytes": 139593
+    },
+    "local/verification/live-sites/tibiavip.app-1440-filtered.png": {
+      "sha256": "cbb5187841fcd8076d61f59fb17893e6137c1f245e2972bbbdfa1769d3377fde",
+      "bytes": 137716
+    },
+    "local/verification/live-sites/tibiavip.app-390-baseline.png": {
+      "sha256": "56a6fea4a653ef33831dbea329ce0ec54c82f0b23e18e4cf0786f1438aff8e71",
+      "bytes": 85542
+    },
+    "local/verification/live-sites/tibiavip.app-390-filtered.png": {
+      "sha256": "346720c1f0c615780ad33abd4a640b4a01486092d59f424be3430a5d3ae8a593",
+      "bytes": 61867
+    },
+    "local/verification/live-sites/tibiawiki.com.br-1440-baseline.png": {
+      "sha256": "f7132d9300b3e1f28ff1133d87c84b456dfd273f57878650a9a301bed9be029b",
+      "bytes": 41120
+    },
+    "local/verification/live-sites/tibiawiki.com.br-1440-filtered.png": {
+      "sha256": "f5a485487a2097e6262110da03dcb6f185bdec0ae9c0d2fe08c7f4c2b4a4d39c",
+      "bytes": 40873
+    },
+    "local/verification/live-sites/tibiopedia.pl-1440-baseline.png": {
+      "sha256": "d0af92deefe4153a4606158f4ed40a6169fdfe314996c15da0bc91ac8d32f649",
+      "bytes": 906227
+    },
+    "local/verification/live-sites/tibiopedia.pl-1440-filtered.png": {
+      "sha256": "dd56c802b06fa4dfa6136a78d3682d83d30f29a444b9263b33a97a43d523b97c",
+      "bytes": 906125
+    },
+    "local/verification/live-sites/tibiopedia.pl-390-baseline.png": {
+      "sha256": "15e923d30482b8ce47ef373c8045a2a731767c5141ac5aed5649b7528f7d7534",
+      "bytes": 352463
+    },
+    "local/verification/live-sites/tibiopedia.pl-390-filtered.png": {
+      "sha256": "d0d322a45828df05e39532c20894485004cb767261337c404b0d0eac1931b5fa",
+      "bytes": 370716
+    },
+    "local/verification/live-sites--news/tibiopedia.pl-1440-baseline.png": {
+      "sha256": "4ebe8704539bf53e469440c64a31142aa114277b0dd5f072f755d9b438373dbc",
+      "bytes": 906440
+    },
+    "local/verification/live-sites--news/tibiopedia.pl-1440-filtered.png": {
+      "sha256": "bac8af75a4ce8a119b0fb9c12eb3694c2711d1ac7003ab26a57c0aebc341d956",
+      "bytes": 906130
+    },
+    "local/verification/live-sites-configured-content--guild-United/guildstats.eu-1440-baseline.png": {
+      "sha256": "f9d58f15e7228270191aee323003eba2051226b95d8a261efd1d30b119906726",
+      "bytes": 209184
+    },
+    "local/verification/live-sites-configured-content--guild-United/guildstats.eu-1440-filtered.png": {
+      "sha256": "d2dd3063198d9f91efcdbd3d96ae5b1b493c91ad1fd67b2326493c27f71a0b16",
+      "bytes": 203045
+    },
+    "local/verification/live-sites-configured-content--guild-United/guildstats.eu-390-baseline.png": {
+      "sha256": "847573cb1632291d722578398d64c1fc9473d1e4cd04e58f23820ea4cffca2a7",
+      "bytes": 76084
+    },
+    "local/verification/live-sites-configured-content--guild-United/guildstats.eu-390-filtered.png": {
+      "sha256": "97cb6b6056e63fe5d25b7a044dacd93abdca9ee1f3dfe0c4f3462f15d6739baa",
+      "bytes": 78490
+    },
+    "local/verification/live-sites-configured-content--news/tibiopedia.pl-1440-baseline.png": {
+      "sha256": "0dda2bd2dd2bfaf37a9d969a9c176e58f4092591b9db690c4f5a301a56842ba9",
+      "bytes": 923283
+    },
+    "local/verification/live-sites-configured-content--news/tibiopedia.pl-1440-error.png": {
+      "sha256": "8014006d80ce5ca02a706c3b9064181c8231acac12368aabf9e9b8b8a85bf477",
+      "bytes": 1421425
+    },
+    "local/verification/live-sites-configured-content--news/tibiopedia.pl-1440-filtered.png": {
+      "sha256": "8d00a86732d33121a1d3cc02a6e7c4c804e92791fa899a98f465dd390a7d7e31",
+      "bytes": 954140
+    },
+    "local/verification/live-sites-configured-content--news/tibiopedia.pl-390-baseline.png": {
+      "sha256": "26dee9a4c1dbd3d6f68d5d3541644fff919a11b936c0455d4c4d7faaed13a440",
+      "bytes": 360048
+    },
+    "local/verification/live-sites-configured-content--news/tibiopedia.pl-390-filtered.png": {
+      "sha256": "7bb3a917c66abf51a622b4794bc7d1d65561939d4e084fcdf22726b5e39fd49b",
+      "bytes": 373791
+    },
+    "local/verification/live-sites-deep/guildstats.eu-1440-baseline.png": {
+      "sha256": "4d319303403881642c57fd2c45a2c57b6865ba9d3cfebc66256bf18ced5e2195",
+      "bytes": 209489
+    },
+    "local/verification/live-sites-deep/guildstats.eu-1440-filtered.png": {
+      "sha256": "d2dd3063198d9f91efcdbd3d96ae5b1b493c91ad1fd67b2326493c27f71a0b16",
+      "bytes": 203045
+    },
+    "local/verification/live-sites-deep/guildstats.eu-390-baseline.png": {
+      "sha256": "847573cb1632291d722578398d64c1fc9473d1e4cd04e58f23820ea4cffca2a7",
+      "bytes": 76084
+    },
+    "local/verification/live-sites-deep/guildstats.eu-390-filtered.png": {
+      "sha256": "97cb6b6056e63fe5d25b7a044dacd93abdca9ee1f3dfe0c4f3462f15d6739baa",
+      "bytes": 78490
+    },
+    "local/verification/live-sites-deep/hakaimarket.com-1440-baseline.png": {
+      "sha256": "13033b077f7bfb94ce30354202105e4cf16a42447e22e583ca67d7108e13b9af",
+      "bytes": 451317
+    },
+    "local/verification/live-sites-deep/tibiopedia.pl-1440-baseline.png": {
+      "sha256": "394e36385a7280971607195ed5fcf3bbb78c26f170718e75134740a972a3becf",
+      "bytes": 1048842
+    },
+    "local/verification/live-sites-deep/tibiopedia.pl-1440-filtered.png": {
+      "sha256": "c31db8662235d0dc6a29f5d037c609bc1e3a6307971c12517e589f1fcd968f76",
+      "bytes": 1080112
+    },
+    "local/verification/live-sites-deep/tibiopedia.pl-390-baseline.png": {
+      "sha256": "132d1751d27b8a2049c2d27856ffd023c1bea5c89de613cbdaaccfde6805f414",
+      "bytes": 336762
+    },
+    "local/verification/live-sites-deep/tibiopedia.pl-390-filtered.png": {
+      "sha256": "0515d57136b684dc15eecb56d0cc9ab5668041ac1e9ce473d026a2b060d13c82",
+      "bytes": 359747
+    },
+    "local/verification/live-twitch/directory-baseline.png": {
+      "sha256": "3abf404987dc7465ab8be80cd3882906d38146daaf1da9351b72250ffac6919f",
+      "bytes": 1060434
+    },
+    "local/verification/live-twitch/directory-filtered.png": {
+      "sha256": "d979be72f8b5f9d3be92d8bffa94a9b67601ba8042248d1a8fb9402e8ef4995a",
+      "bytes": 1167136
+    },
+    "local/verification/live-twitch/player-baseline.png": {
+      "sha256": "36f24178796fadb3c91c2a771a3565ac4e2f0965345eed9f6730200873241ce2",
+      "bytes": 896521
+    },
+    "local/verification/live-twitch/player-filtered.png": {
+      "sha256": "8ea3744e01785375760656ab0490d17abbea80189550ef18981819eca91a8af4",
+      "bytes": 843666
+    }
+  },
+  "internal_pages": [
+    {
+      "site": "tibiopedia.pl",
+      "path": "/monsters/Cockroach",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Monsters: Cockroach - Tibia ~ Tibiopedia.pl",
+        "bodyCharacters": 4685,
+        "headings": [
+          "News",
+          "Forum",
+          "Download",
+          "Spells",
+          "Monsters",
+          "Items",
+          "Quests",
+          "NPC"
+        ],
+        "links": 256,
+        "inputs": 6,
+        "adIntentRoots": [],
+        "totalBlockingTime": 1,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "tibiopedia.pl",
+      "path": "/monsters/Cockroach",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Monsters: Cockroach - Tibia ~ Tibiopedia.pl",
+        "bodyCharacters": 4668,
+        "headings": [
+          "News",
+          "Forum",
+          "Download",
+          "Spells",
+          "Monsters",
+          "Items",
+          "Quests",
+          "NPC"
+        ],
+        "links": 256,
+        "inputs": 6,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "ads.vidoomy.com": 1,
+        "cdn.fuseplatform.net": 1,
+        "html-load.com": 1,
+        "www.googletagmanager.com": 1,
+        "connect.facebook.net": 1
+      }
+    },
+    {
+      "site": "tibiopedia.pl",
+      "path": "/monsters/Cockroach",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Monsters: Cockroach - Tibia ~ Tibiopedia.pl",
+        "bodyCharacters": 4685,
+        "headings": [
+          "News",
+          "Forum",
+          "Download",
+          "Spells",
+          "Monsters",
+          "Items",
+          "Quests",
+          "NPC"
+        ],
+        "links": 256,
+        "inputs": 6,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "tibiopedia.pl",
+      "path": "/monsters/Cockroach",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Monsters: Cockroach - Tibia ~ Tibiopedia.pl",
+        "bodyCharacters": 4668,
+        "headings": [
+          "News",
+          "Forum",
+          "Download",
+          "Spells",
+          "Monsters",
+          "Items",
+          "Quests",
+          "NPC"
+        ],
+        "links": 256,
+        "inputs": 6,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "ads.vidoomy.com": 1,
+        "cdn.fuseplatform.net": 1,
+        "html-load.com": 1,
+        "www.googletagmanager.com": 1,
+        "connect.facebook.net": 1
+      }
+    },
+    {
+      "site": "guildstats.eu",
+      "path": "/guild/United",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "United - Guild Stats | GuildStats.eu",
+        "bodyCharacters": 1684,
+        "headings": [
+          "United"
+        ],
+        "links": 213,
+        "inputs": 11,
+        "adIntentRoots": [
+          {
+            "id": "google-anno-sa",
+            "parent": "HTML",
+            "display": "block"
+          },
+          {
+            "id": "google-anno-sa-glow",
+            "parent": "DIV",
+            "display": "block"
+          }
+        ],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "guildstats.eu",
+      "path": "/guild/United",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "United - Guild Stats | GuildStats.eu",
+        "bodyCharacters": 1462,
+        "headings": [
+          "United"
+        ],
+        "links": 210,
+        "inputs": 11,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "static.cloudflareinsights.com": 1,
+        "www.googletagmanager.com": 1,
+        "pagead2.googlesyndication.com": 1
+      }
+    },
+    {
+      "site": "guildstats.eu",
+      "path": "/guild/United",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "United - Guild Stats | GuildStats.eu",
+        "bodyCharacters": 1541,
+        "headings": [
+          "United"
+        ],
+        "links": 213,
+        "inputs": 11,
+        "adIntentRoots": [
+          {
+            "id": "google-anno-sa",
+            "parent": "HTML",
+            "display": "block"
+          },
+          {
+            "id": "google-anno-sa-glow",
+            "parent": "DIV",
+            "display": "block"
+          }
+        ],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "guildstats.eu",
+      "path": "/guild/United",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "United - Guild Stats | GuildStats.eu",
+        "bodyCharacters": 1354,
+        "headings": [
+          "United"
+        ],
+        "links": 210,
+        "inputs": 11,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "static.cloudflareinsights.com": 1,
+        "www.googletagmanager.com": 1,
+        "pagead2.googlesyndication.com": 1
+      }
+    },
+    {
+      "site": "hakaimarket.com",
+      "path": "/monsters/dragon",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+        "bodyCharacters": 5267,
+        "headings": [
+          "Tibia Blackjack Halloween Spooktacular!",
+          "👹 Tibia Monsters",
+          "Dragon"
+        ],
+        "links": 39,
+        "inputs": 2,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "hakaimarket.com",
+      "path": "/monsters/dragon",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+        "bodyCharacters": 4295,
+        "headings": [
+          "Tibia Blackjack Halloween Spooktacular!",
+          "👹 Tibia Monsters",
+          "Dragon"
+        ],
+        "links": 35,
+        "inputs": 2,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "hakaimarket.com": 1,
+        "tibiatrade.gg": 1
+      }
+    },
+    {
+      "site": "hakaimarket.com",
+      "path": "/monsters/dragon",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+        "bodyCharacters": 995,
+        "headings": [
+          "Tibia Blackjack Halloween Spooktacular!",
+          "Tibia Monsters",
+          "Dragon"
+        ],
+        "links": 22,
+        "inputs": 1,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "hakaimarket.com",
+      "path": "/monsters/dragon",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+        "bodyCharacters": 0,
+        "headings": [],
+        "links": 0,
+        "inputs": 0,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "hakaimarket.com": 1,
+        "tibiatrade.gg": 1
+      }
+    },
+    {
+      "site": "hunt-analyser.com",
+      "path": "/creature_analysis",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "HuntAnalyser",
+        "bodyCharacters": 825,
+        "headings": [
+          "Plan your hunts with confidence",
+          "Follow Us",
+          "Resources",
+          "More",
+          "Fansite Programme"
+        ],
+        "links": 32,
+        "inputs": 31,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "hunt-analyser.com",
+      "path": "/creature_analysis",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "HuntAnalyser",
+        "bodyCharacters": 825,
+        "headings": [
+          "Plan your hunts with confidence",
+          "Follow Us",
+          "Resources",
+          "More",
+          "Fansite Programme"
+        ],
+        "links": 32,
+        "inputs": 31,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "pagead2.googlesyndication.com": 1,
+        "www.googletagmanager.com": 1,
+        "static.cloudflareinsights.com": 1
+      }
+    },
+    {
+      "site": "hunt-analyser.com",
+      "path": "/creature_analysis",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "HuntAnalyser",
+        "bodyCharacters": 742,
+        "headings": [
+          "Plan your hunts with confidence",
+          "Follow Us",
+          "Resources",
+          "More",
+          "Fansite Programme"
+        ],
+        "links": 32,
+        "inputs": 31,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "hunt-analyser.com",
+      "path": "/creature_analysis",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "HuntAnalyser",
+        "bodyCharacters": 742,
+        "headings": [
+          "Plan your hunts with confidence",
+          "Follow Us",
+          "Resources",
+          "More",
+          "Fansite Programme"
+        ],
+        "links": 32,
+        "inputs": 31,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "pagead2.googlesyndication.com": 1,
+        "www.googletagmanager.com": 1,
+        "static.cloudflareinsights.com": 1
+      }
+    },
+    {
+      "site": "intibia.com",
+      "path": "/bestiary-tracker",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Tibia Bestiary Tracker | Track Your Bestiary Progress | Intibia",
+        "bodyCharacters": 22427,
+        "headings": [
+          "Bestiary Tracker",
+          "Mark finished creatures, track charm points, and find the best entries to complete next."
+        ],
+        "links": 37,
+        "inputs": 4,
+        "adIntentRoots": [],
+        "totalBlockingTime": 131,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "intibia.com",
+      "path": "/bestiary-tracker",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Tibia Bestiary Tracker | Track Your Bestiary Progress | Intibia",
+        "bodyCharacters": 22220,
+        "headings": [
+          "Bestiary Tracker",
+          "Mark finished creatures, track charm points, and find the best entries to complete next."
+        ],
+        "links": 27,
+        "inputs": 4,
+        "adIntentRoots": [],
+        "totalBlockingTime": 137,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "t.intibia.com": 12,
+        "www.googletagmanager.com": 1,
+        "securepubads.g.doubleclick.net": 1,
+        "tibiatrade.gg": 4,
+        "intibia.com": 4
+      }
+    },
+    {
+      "site": "intibia.com",
+      "path": "/bestiary-tracker",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Tibia Bestiary Tracker | Track Your Bestiary Progress | Intibia",
+        "bodyCharacters": 22200,
+        "headings": [
+          "Bestiary Tracker",
+          "Mark finished creatures, track charm points, and find the best entries to complete next."
+        ],
+        "links": 37,
+        "inputs": 4,
+        "adIntentRoots": [],
+        "totalBlockingTime": 152,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "intibia.com",
+      "path": "/bestiary-tracker",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Tibia Bestiary Tracker | Track Your Bestiary Progress | Intibia",
+        "bodyCharacters": 22017,
+        "headings": [
+          "Bestiary Tracker",
+          "Mark finished creatures, track charm points, and find the best entries to complete next."
+        ],
+        "links": 27,
+        "inputs": 4,
+        "adIntentRoots": [],
+        "totalBlockingTime": 108,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "t.intibia.com": 7,
+        "tibiatrade.gg": 5,
+        "www.googletagmanager.com": 1,
+        "securepubads.g.doubleclick.net": 1,
+        "intibia.com": 4
+      }
+    },
+    {
+      "site": "tibialife.com.br",
+      "path": "/orcsoberfest-14/",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Orcsoberfest - Tibia Life",
+        "bodyCharacters": 1884,
+        "headings": [
+          "Orcsoberfest",
+          "Siga nosso Instagram"
+        ],
+        "links": 159,
+        "inputs": 22,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "tibialife.com.br",
+      "path": "/orcsoberfest-14/",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Orcsoberfest - Tibia Life",
+        "bodyCharacters": 1868,
+        "headings": [
+          "Orcsoberfest",
+          "Siga nosso Instagram"
+        ],
+        "links": 159,
+        "inputs": 22,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "www.tibialife.com.br": 1,
+        "www.googletagmanager.com": 1
+      }
+    },
+    {
+      "site": "tibialife.com.br",
+      "path": "/orcsoberfest-14/",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Orcsoberfest - Tibia Life",
+        "bodyCharacters": 1774,
+        "headings": [
+          "Orcsoberfest",
+          "Siga nosso Instagram"
+        ],
+        "links": 159,
+        "inputs": 22,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "tibialife.com.br",
+      "path": "/orcsoberfest-14/",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Orcsoberfest - Tibia Life",
+        "bodyCharacters": 1774,
+        "headings": [
+          "Orcsoberfest",
+          "Siga nosso Instagram"
+        ],
+        "links": 159,
+        "inputs": 22,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "www.tibialife.com.br": 1,
+        "www.googletagmanager.com": 1
+      }
+    },
+    {
+      "site": "tibiamonk.com",
+      "path": "/en/calculators/experience",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Leveling Calculator | Tibia Monk",
+        "bodyCharacters": 1785,
+        "headings": [
+          "Experience Calculator"
+        ],
+        "links": 39,
+        "inputs": 4,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "tibiamonk.com",
+      "path": "/en/calculators/experience",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Leveling Calculator | Tibia Monk",
+        "bodyCharacters": 1770,
+        "headings": [
+          "Experience Calculator"
+        ],
+        "links": 39,
+        "inputs": 4,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "static.cloudflareinsights.com": 1,
+        "pagead2.googlesyndication.com": 2
+      }
+    },
+    {
+      "site": "tibiamonk.com",
+      "path": "/en/calculators/experience",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Leveling Calculator | Tibia Monk",
+        "bodyCharacters": 1292,
+        "headings": [
+          "Experience Calculator"
+        ],
+        "links": 39,
+        "inputs": 4,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "tibiamonk.com",
+      "path": "/en/calculators/experience",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Leveling Calculator | Tibia Monk",
+        "bodyCharacters": 1277,
+        "headings": [
+          "Experience Calculator"
+        ],
+        "links": 39,
+        "inputs": 4,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "static.cloudflareinsights.com": 1,
+        "pagead2.googlesyndication.com": 2
+      }
+    },
+    {
+      "site": "tibiapal.com",
+      "path": "/hunting",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Tibia Hunting Places - Best Spawns by Level | TibiaPal.com",
+        "bodyCharacters": 6648,
+        "headings": [],
+        "links": 164,
+        "inputs": 10,
+        "adIntentRoots": [
+          {
+            "id": "google-anno-sa",
+            "parent": "HTML",
+            "display": "block"
+          },
+          {
+            "id": "google-anno-sa-glow",
+            "parent": "DIV",
+            "display": "block"
+          }
+        ],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "tibiapal.com",
+      "path": "/hunting",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Tibia Hunting Places - Best Spawns by Level | TibiaPal.com",
+        "bodyCharacters": 6397,
+        "headings": [],
+        "links": 162,
+        "inputs": 10,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "www.googletagmanager.com": 1,
+        "pagead2.googlesyndication.com": 1
+      }
+    },
+    {
+      "site": "tibiapal.com",
+      "path": "/hunting",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Tibia Hunting Places - Best Spawns by Level | TibiaPal.com",
+        "bodyCharacters": 6435,
+        "headings": [],
+        "links": 162,
+        "inputs": 10,
+        "adIntentRoots": [
+          {
+            "id": "google-anno-sa",
+            "parent": "HTML",
+            "display": "block"
+          },
+          {
+            "id": "google-anno-sa-glow",
+            "parent": "DIV",
+            "display": "block"
+          }
+        ],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {}
+    },
+    {
+      "site": "tibiapal.com",
+      "path": "/hunting",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "error": null,
+      "page": {
+        "title": "Tibia Hunting Places - Best Spawns by Level | TibiaPal.com",
+        "bodyCharacters": 6296,
+        "headings": [],
+        "links": 162,
+        "inputs": 10,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "blockedByClient": {
+        "www.googletagmanager.com": 1,
+        "pagead2.googlesyndication.com": 1
+      }
+    },
+    {
+      "site": "tibiavip.app",
+      "path": "/worlds",
+      "width": 1440,
+      "enabled": false,
+      "status": 403,
+      "error": null,
+      "page": {
+        "title": "Just a moment...",
+        "bodyCharacters": 260,
+        "headings": [
+          "tibiavip.app",
+          "Performing security verification",
+          "Verification successful. Waiting for tibiavip.app to respond"
+        ],
+        "links": 2,
+        "inputs": 1,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": true
+      },
+      "blockedByClient": {}
+    }
+  ],
+  "hakai_reproduction": [
+    {
+      "site": "hakaimarket.com",
+      "path": "/monsters/dragon",
+      "width": 1440,
+      "enabled": false,
+      "status": 200,
+      "page": {
+        "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+        "bodyCharacters": 5256,
+        "rootChildren": 7,
+        "rootDisplay": "flex",
+        "headings": [
+          "Tibia Blackjack Halloween Spooktacular!",
+          "👹 Tibia Monsters",
+          "Dragon"
+        ],
+        "links": 39,
+        "inputs": 2,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "scriptErrors": [],
+      "blockedByClient": {}
+    },
+    {
+      "site": "hakaimarket.com",
+      "path": "/monsters/dragon",
+      "width": 1440,
+      "enabled": true,
+      "status": 200,
+      "page": {
+        "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+        "bodyCharacters": 4295,
+        "rootChildren": 7,
+        "rootDisplay": "flex",
+        "headings": [
+          "Tibia Blackjack Halloween Spooktacular!",
+          "👹 Tibia Monsters",
+          "Dragon"
+        ],
+        "links": 35,
+        "inputs": 2,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "scriptErrors": [],
+      "blockedByClient": {
+        "hakaimarket.com": 1,
+        "tibiatrade.gg": 1
+      }
+    },
+    {
+      "site": "hakaimarket.com",
+      "path": "/monsters/dragon",
+      "width": 390,
+      "enabled": false,
+      "status": 200,
+      "page": {
+        "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+        "bodyCharacters": 995,
+        "rootChildren": 6,
+        "rootDisplay": "flex",
+        "headings": [
+          "Tibia Blackjack Halloween Spooktacular!",
+          "Tibia Monsters",
+          "Dragon"
+        ],
+        "links": 22,
+        "inputs": 1,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "scriptErrors": [],
+      "blockedByClient": {}
+    },
+    {
+      "site": "hakaimarket.com",
+      "path": "/monsters/dragon",
+      "width": 390,
+      "enabled": true,
+      "status": 200,
+      "page": {
+        "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+        "bodyCharacters": 0,
+        "rootChildren": 0,
+        "rootDisplay": "flex",
+        "headings": [],
+        "links": 0,
+        "inputs": 0,
+        "adIntentRoots": [],
+        "totalBlockingTime": 0,
+        "challenge": false
+      },
+      "scriptErrors": [
+        "getCharmPointsValue is not defined"
+      ],
+      "blockedByClient": {
+        "hakaimarket.com": 1,
+        "tibiatrade.gg": 1
+      }
+    }
+  ],
+  "safari": "WebDriver session creation refused: Allow remote automation disabled; no authorization to enable it was obtained.",
+  "hakai_without_extension": {
+    "extensionInstalled": false,
+    "errors": [],
+    "title": "Dragon - Tibia Monster Loot, Stats & Resistances | Hakai Market",
+    "text": 995,
+    "rootChildren": 6
+  }
+}

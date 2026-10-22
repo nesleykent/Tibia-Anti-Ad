@@ -69,3 +69,7 @@ CI checks Python 3.11 and 3.14 with Node.js 22. Its uploaded Chrome package is a
 - The installed Chrome Beta 157.0.8103.6 passed real action API and popup checks for both states in light/dark appearances in a disposable headless profile. Saved disabled state was restored after restarting the test browser and reloading its unpacked extension. Local screenshots include popup states and rendered icon previews; the browser's native toolbar chrome was not captured.
 - The native host now safely validates script messages, uses a weak message-handler proxy, restricts navigation to local resources, reports status/settings errors, and quits after opening Safari Settings only on success. The app build version now follows the extension version rather than remaining fixed at 1.
 - The universal app and extension were signed and installed through the personal updater. Installed resources and signatures are checked separately from the browser tests. Live Safari restart persistence remains a separate unverified item.
+
+## Issue verification — 2026-10-22
+
+See the [issue verification ledger](ISSUE_VALIDATION.md) for the channel-split fix, reproducible browser observations, the unresolved HakaiMarket failure and remaining Safari acceptance. These results do not certify all four issues as complete.
