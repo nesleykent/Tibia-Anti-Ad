@@ -49,9 +49,23 @@
         queued = true;
         queueMicrotask(() => { queued = false; scan(); });
     });
+    // Observe only on the Tibia directory, following Twitch's client-side navigation.
+    let observing = false;
+    const follow = () => {
+        const wanted = onTibiaDirectory();
+        if (wanted === observing) { return; }
+        observing = wanted;
+        if (wanted) {
+            observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title'] });
+            scan();
+        } else {
+            observer.disconnect();
+        }
+    };
     const start = () => {
-        scan();
-        observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title'] });
+        follow();
+        globalThis.navigation?.addEventListener?.('currententrychange', follow);
+        setInterval(follow, 1000);
     };
     if (document.body) { start(); }
     else { document.addEventListener('DOMContentLoaded', start, { once: true }); }

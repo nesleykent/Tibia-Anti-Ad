@@ -2,7 +2,6 @@
   "source_archive": "twitch-clean.zip",
   "archive_sha256": "ed042a0b05eee8be636923b8754abb42452c5371fbfc20eb044c4090b53855d0",
   "files": {
-    "extension/src/nags.js": "24ee6126caf3b6ae9468e934a585ced02fb0674e5b70cb8c3c2803c93ba3718b",
     "extension/src/icons/icon-128.png": "843aefaeacebe41cce6f60e9deccbf09b7354ab27da510d4480cf012b1b04f92",
     "extension/src/icons/icon-16.png": "d31a58b2f60157f3aa07485af18e6daade4d9496f94f6b3610b2080db1f75bce",
     "extension/src/icons/icon-256.png": "16475206134c2534b435096069e139bfeb877cb7cd9daea840c9866f611d3c9c",
@@ -32,6 +31,10 @@
     "extension/src/rules.json": {
       "original_sha256": "938ee2ff790380d44d8b3ced3f7e3d88d8b444d87bd40bfa33770e0064d003d4",
       "reason": "Split by purpose: the 17 ad-server rules stay here (ruleset twitch_ads) and the 11 tracking rules moved to tracking.json (ruleset twitch_tracking), renumbered from 1, so each can be switched separately. Hosts and conditions are unchanged."
+    },
+    "extension/src/nags.js": {
+      "original_sha256": "24ee6126caf3b6ae9468e934a585ced02fb0674e5b70cb8c3c2803c93ba3718b",
+      "reason": "At start, clears only its own (named) marks; the empty marks set by tibia-filter.js on hidden Tibia category streams are left in place, so a card hidden before nags.js starts does not flash back."
     }
   }
 }

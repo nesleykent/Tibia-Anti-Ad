@@ -13,6 +13,9 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
     // Oldest "Show" overrides are dropped beyond this many.
     const MAX_SHOWN = 200;
     const TWITCH = /^https?:\/\/([^/]+\.)?twitch\.tv(\/|$)/i;
+    const TIBIA_DIRECTORY = /^https?:\/\/www\.twitch\.tv\/directory\/category\/tibia(\/|$|\?)/i;
+    // Sections the viewer left open, remembered on this device only.
+    const OPEN_KEY = 'tibia-anti-ad:open-sections';
 
     let settings = S.resolve();
     let shown = {};
@@ -95,6 +98,11 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
             input.disabled = disabled;
             input.closest('.row')?.classList.toggle('is-disabled', disabled);
         }
+        for (const section of document.querySelectorAll('.section')) {
+            const inputs = [...section.querySelectorAll('.group input[data-setting]')];
+            const on = inputs.filter(input => input.checked).length;
+            section.querySelector('.count').textContent = !settings.enabled ? 'Paused' : `${on} of ${inputs.length} on`;
+        }
         $('d-backgroundQuality').textContent = settings.removeStreamAds
             ? 'Included with Remove stream ads.'
             : 'Stops Twitch lowering the quality in hidden tabs.';
@@ -165,6 +173,24 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
         if (key === 'enabled' || key === 'tibiaFilter') { setTimeout(refreshHidden, 150); }
     };
 
+    const readOpen = () => {
+        try { return new Set(JSON.parse(localStorage.getItem(OPEN_KEY) || '[]')); }
+        catch { return new Set(); }
+    };
+    const saveOpen = section => {
+        const open = readOpen();
+        if (section.open) { open.add(section.dataset.section); } else { open.delete(section.dataset.section); }
+        try { localStorage.setItem(OPEN_KEY, JSON.stringify([...open])); } catch { /* not remembered */ }
+    };
+    // Remembered sections, plus the one about the active tab: the Tibia category
+    // on its directory, the fansites on a fansite.
+    const openSections = activeUrl => {
+        const open = readOpen();
+        if (TIBIA_DIRECTORY.test(activeUrl || '')) { open.add('tibia'); }
+        if (S.SITES.some(site => { try { const host = new URL(activeUrl).hostname; return host === site.domain || host.endsWith('.' + site.domain); } catch { return false; } })) { open.add('sites'); }
+        for (const section of document.querySelectorAll('.section')) { section.open = open.has(section.dataset.section); }
+    };
+
     const reloadTwitch = () => {
         if (!twitchTab) { return; }
         api.tabs.reload(twitchTab.id);
@@ -184,6 +210,10 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
         $('version').textContent = `Version ${api.runtime.getManifest().version}`;
         document.addEventListener('change', onChange);
         $('reload-button').addEventListener('click', reloadTwitch);
+        // Only the viewer's own clicks are remembered, not the sections opened for the active tab.
+        for (const summary of document.querySelectorAll('.section > summary')) {
+            summary.addEventListener('click', () => setTimeout(() => saveOpen(summary.parentElement)));
+        }
         api.storage.onChanged.addListener((changes, area) => {
             if (area === 'local') { load(); }
         });
@@ -191,8 +221,9 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
             .then(([active]) => {
                 twitchTab = active && TWITCH.test(active.url || '') ? active : null;
                 buildSites(active?.url);
+                openSections(active?.url);
             })
-            .catch(() => { twitchTab = null; buildSites(''); });
+            .catch(() => { twitchTab = null; buildSites(''); openSections(''); });
         tab.then(load).finally(() => {
             renderReload();
             refreshHidden();

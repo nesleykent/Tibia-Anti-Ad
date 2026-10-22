@@ -39,15 +39,27 @@ Implemented in `tools/twitch_evidence.py` (reference) and `extension/src/tibia-c
 3. **Undetermined** (kept visible): evidence both ways, a server only as a chat command, or nothing decisive.
 4. **Screen check, undetermined only:** the 1080p thumbnail's right third is read with OCR. A custom OTServer client element — the titled "Map View" minimap, Battle Pass, Daily Missions — never appears in the official client and marks the stream as another game. This resolves streams that tag both `rubinot` and `tibiaglobal`, and `!server`-only titles.
 
+### Weighted classification (2026-10-22)
+
+The rules above are now weighted signals rather than exact keyword tests (`weights`, `decision`, `fuzzy` and `context` in the evidence file):
+
+- **Normalization:** accents and marks (including emoji variation selectors), lookalike Cyrillic/Greek letters and small capitals, fancy Unicode fonts (NFKD), leetspeak in mixed words (`rub1n0t`), repeated letters (`RUBINOTTT`, `TORNABRAAAA`) and spaced-out letters (`R U B I N O T`).
+- **Spelling mistakes:** names listed under a game's `fuzzy` match one edit away (two for names of 10+ letters) with the same first letter, never against `fuzzy.protected` words or exact entries; an equally close official world wins.
+- **Weights:** server name in the title 4 (misspelt 3.25), RubinOT or PokeAlliance world 3, `!server` command 3, server tag 3.5; official world or Tibia Global in the title 4, `global` 3, official tag 3. Weak context — server rates (`exp x50`), old client versions (`7.4`, `8.60`), `OT`/`OTs`, Pokémon words, `idle`, the channel name — weighs 1.5–2 and cannot decide alone.
+- **Context:** up to two words before a mention, in the same clause, weaken it: negation ×0.2 (`não`, `sem`), leaving ×0.35 (`ex`, `saí do`), comparison ×0.5 (`vs`, `x`), another time ×0.6 (`depois`). `global` right after a server name is part of it (`Future OT Global`). Official tags count ×0.4 against a server named in the title.
+- **Decision:** each side's signals combine as strongest + ½ next + ¼ next…; a side wins at 3 points with a 2-point lead, otherwise the stream is undetermined. The thumbnail OCR still runs only for undetermined streams; server names read on screen now count too.
+
+`tests/data/tibia-classify-cases.json` holds hand-labelled spelling, negation and legitimate-Tibia cases; the Python reference and the extension port must agree on every verdict and score.
+
 ## Evaluation against the audit (456 channels)
 
 | Audit category | Hidden | Undetermined (visible) | Tibia (visible) |
 |---|---|---|---|
-| Other games (281) | **257** | 23 | 1 |
-| Tibia (92) | **0** | 8 | 84 |
-| Unclear (83) | 7 | 71 | 5 |
+| Other games (281) | **276** | 4 | 1 |
+| Tibia (92) | **0** | 6 | 86 |
+| Unclear (83) | 9 | 69 | 5 |
 
-Metadata alone, before OCR. The 7 unclear streams hidden all list several servers, none of them Tibia. The rules were tuned on this same capture, so live accuracy will be lower; the live check on 2026-10-21 ~21:00 hid 25 of the first 30 cards, leaving 3 RubinOT streams for the OCR stage and 1 official stream visible.
+Metadata alone, before OCR, with the weighted rules (exact keyword rules before 2026-10-22: 257 / 0 / 84). The 9 unclear streams hidden all list several servers, none of them Tibia. On the 562-stream live capture the weighted rules agree with the reviewed verdicts on 560 streams: TORNABRAAAA (official) is now kept as Tibia, and one stream with only a `!rubinot` command and two official world tags is now undetermined. In Chrome Beta 157 on 2026-10-22 the extension hid 29 of the 30 first cards, each with its reason, and kept the official `WAR FEROBRA` stream. The rules were tuned on this same capture, so live accuracy will be lower; the live check on 2026-10-21 ~21:00 hid 25 of the first 30 cards, leaving 3 RubinOT streams for the OCR stage and 1 official stream visible.
 
 ## Known gaps
 

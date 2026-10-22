@@ -1,5 +1,5 @@
-// Prints the extension classifier's verdicts for the audited 2026-10-21 capture
-// and the 562-stream live capture (keys prefixed live:),
+// Prints the extension classifier's verdicts and scores for the audited 2026-10-21 capture
+// the 562-stream live capture (keys prefixed live:) and tests/data/tibia-classify-cases.json (case:),
 // for tests/python/test_twitch_evidence.py to compare with tools/twitch_evidence.py.
 const fs = require('fs');
 const path = require('path');
@@ -12,8 +12,11 @@ const audit = JSON.parse(fs.readFileSync(path.join(root, 'research/twitch/data/2
 const out = {};
 for (const row of audit.classificacao) {
     const tags = row.tags_originais.split('|').map(t => t.trim()).filter(Boolean);
-    out[row.canal] = classify(row.titulo_original, tags).verdict;
+    const r = classify(row.titulo_original, tags, null, row.canal);
+    out[row.canal] = [r.verdict, r.score];
 }
 const live = JSON.parse(fs.readFileSync(path.join(root, 'research/twitch/data/2026-10-21/live-2115/streams.json'), 'utf8'));
-for (const s of live) { out[`live:${s.channel}`] = classify(s.title, s.tags).verdict; }
+for (const s of live) { const r = classify(s.title, s.tags, null, s.channel); out[`live:${s.channel}`] = [r.verdict, r.score]; }
+const cases = JSON.parse(fs.readFileSync(path.join(root, 'tests/data/tibia-classify-cases.json'), 'utf8')).cases;
+cases.forEach((c, i) => { const r = classify(c.title, c.tags || [], c.ocr ?? null, c.channel || ''); out[`case:${i}`] = [r.verdict, r.score]; });
 console.log(JSON.stringify(out));

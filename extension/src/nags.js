@@ -152,7 +152,8 @@
 
     const start = () => {
         // Marks left by an earlier copy of this script are not tracked; start clean.
-        for (const el of document.querySelectorAll(`[${MARK}]`)) { el.removeAttribute(MARK); }
+        // Empty marks belong to the Tibia filter (tibia-filter.js) and stay.
+        for (const el of document.querySelectorAll(`[${MARK}]:not([${MARK}=""])`)) { el.removeAttribute(MARK); }
         forEachMatch(document.body, hide);
         observer.observe(document.body, { childList: true, subtree: true, characterData: true });
     };
