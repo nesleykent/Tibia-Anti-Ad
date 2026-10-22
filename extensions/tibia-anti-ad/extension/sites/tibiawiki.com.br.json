@@ -1,0 +1,380 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||tags.premiumads.com.br^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||securepubads.g.doubleclick.net^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||pagead2.googlesyndication.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||cm.g.doubleclick.net^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||c.amazon-adsystem.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||config.aps.amazon-adsystem.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||ads.viralize.tv^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||content.viralize.tv^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||web-banner.ads.aps.amazon-adsystem.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||safeframe.googlesyndication.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||adtrafficquality.google^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||s.seedtag.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||rubiconproject.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||onetag-sys.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||smartadserver.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||pubmatic.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||gum.criteo.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||id.navegg.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||banners.tibiabr.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||fundingchoicesmessages.google.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||googletagmanager.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||google-analytics.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 23,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||connect.facebook.net^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 24,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||facebook.com/tr^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 25,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||cdn.navdmp.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 26,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||tag.navdmp.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  },
+  {
+    "id": 27,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||mc.yandex.ru^",
+      "domainType": "thirdParty",
+      "domains": [
+        "tibiawiki.com.br"
+      ]
+    }
+  }
+]

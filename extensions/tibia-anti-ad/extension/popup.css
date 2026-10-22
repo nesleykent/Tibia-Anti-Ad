@@ -1,0 +1,233 @@
+/* Tibia Anti-Ad settings, styled after macOS System Settings: grouped inset lists,
+   13px labels with 11px secondary text, and switches. Safari draws
+   <input type="checkbox" switch> as the native switch (html.native-switch, set
+   by popup.js); other browsers get the CSS switch below. */
+
+:root {
+  color-scheme: light dark;
+  --bg: #f2f2f2;
+  --group: #ffffff;
+  --group-border: rgba(0, 0, 0, 0.07);
+  --separator: rgba(0, 0, 0, 0.09);
+  --label: rgba(0, 0, 0, 0.85);
+  --secondary: rgba(0, 0, 0, 0.5);
+  --accent: #007aff;
+  --switch-off: rgba(0, 0, 0, 0.09);
+  --knob: #ffffff;
+  --button: #ffffff;
+  --button-border: rgba(0, 0, 0, 0.14);
+  --focus: rgba(0, 122, 255, 0.5);
+}
+
+/* Safari's native switch follows the system accent color; match it. */
+@supports (color: AccentColor) {
+  html.native-switch { --accent: AccentColor; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1e1e1e;
+    --group: #2a2a2a;
+    --group-border: rgba(255, 255, 255, 0.06);
+    --separator: rgba(255, 255, 255, 0.08);
+    --label: rgba(255, 255, 255, 0.86);
+    --secondary: rgba(255, 255, 255, 0.55);
+    --switch-off: rgba(255, 255, 255, 0.16);
+    --knob: #e9e9e9;
+    --button: rgba(255, 255, 255, 0.14);
+    --button-border: rgba(255, 255, 255, 0.08);
+    --accent: #0a84ff;
+    --focus: rgba(10, 132, 255, 0.6);
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --group-border: rgba(127, 127, 127, 0.6);
+    --separator: rgba(127, 127, 127, 0.5);
+    --secondary: color-mix(in srgb, var(--label) 80%, transparent);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  margin: 0;
+  width: 340px;
+  padding: 0 12px 12px;
+  background: var(--bg);
+  color: var(--label);
+  font: 13px/1.35 -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Opened as a full page (Safari's extension settings, or a Chrome tab). */
+@media (min-width: 420px) {
+  body { width: auto; max-width: 520px; margin: 0 auto; padding: 8px 20px 20px; }
+}
+
+/* Settings load asynchronously: hide controls until they show stored values, and
+   do not animate switches into their stored state when the popup opens. */
+body.loading main,
+body.loading .header input { visibility: hidden; }
+body.loading input[switch],
+body.loading input[switch]::before { transition: none !important; }
+
+h1, h2, h3, p, ul { margin: 0; }
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 4px 4px;
+}
+.app-icon { flex: none; border-radius: 6px; }
+.header-text { flex: 1; min-width: 0; }
+h1 { font-size: 15px; font-weight: 600; }
+
+h2 {
+  margin: 14px 4px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.group {
+  background: var(--group);
+  border: 0.5px solid var(--group-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 36px;
+  padding: 7px 12px;
+}
+.row + .row::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12px;
+  right: 0;
+  height: 0.5px;
+  background: var(--separator);
+}
+.row[hidden] { display: none; }
+.row-stack { flex-direction: column; align-items: stretch; gap: 4px; }
+
+.row-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  cursor: default;
+}
+.row-title { font-size: 13px; font-weight: 400; }
+h3.row-title { font-weight: 600; }
+
+.detail {
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--secondary);
+}
+
+.is-disabled .row-text { opacity: 0.45; }
+
+/* Switch: native in Safari. */
+html.native-switch input[switch] { flex: none; margin: 0; }
+
+/* Switch: CSS fallback in macOS proportions. */
+html:not(.native-switch) input[switch] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  position: relative;
+  width: 32px;
+  height: 18px;
+  margin: 0;
+  border-radius: 9px;
+  background: var(--switch-off);
+  cursor: default;
+  transition: background-color 0.2s ease;
+}
+html:not(.native-switch) input[switch]::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--knob);
+  box-shadow: 0 0.5px 1.5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+html:not(.native-switch) input[switch]:checked { background: var(--accent); }
+html:not(.native-switch) input[switch]:checked::before { transform: translateX(14px); }
+html:not(.native-switch) input[switch]:disabled { opacity: 0.45; }
+
+input[switch]:focus-visible,
+.button:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
+}
+
+/* Lists of streams in the Tibia section. */
+.list { list-style: none; padding: 0; }
+.list:empty { display: none; }
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+}
+.list-item + .list-item { border-top: 0.5px solid var(--separator); }
+.list-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.list-text .row-title,
+.list-text .detail {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Push buttons. */
+.button {
+  flex: none;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 3px 10px;
+  border: 0.5px solid var(--button-border);
+  border-radius: 6px;
+  background: var(--button);
+  color: var(--label);
+  box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.08);
+}
+.button:active { filter: brightness(0.94); }
+.button.primary {
+  background: var(--accent);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.footer { padding: 12px 4px 0; }
+.reload {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.reload[hidden] { display: none; }
+.version { text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before { transition: none !important; }
+}

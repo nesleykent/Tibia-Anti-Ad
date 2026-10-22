@@ -3,9 +3,9 @@ import json
 import shutil
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / 'extensions/twitch-clean/extension'
-CHROME = ROOT / 'extensions/twitch-clean/chrome'
-OUTPUT = ROOT / 'dist/twitch-clean-chrome'
+SOURCE = ROOT / 'extensions/tibia-anti-ad/extension'
+CHROME = ROOT / 'extensions/tibia-anti-ad/chrome'
+OUTPUT = ROOT / 'dist/tibia-anti-ad-chrome'
 
 def build():
     if OUTPUT.exists():

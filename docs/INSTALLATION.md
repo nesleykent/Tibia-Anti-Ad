@@ -26,4 +26,4 @@ Tibiopedia and TibiaWiki BR are deliberately excluded from generated bundles: su
 
 ## Rollback
 
-Unsubscribe from the Anti-Ad Tibia list or remove the pasted rules, disable any separately installed companion script, and reload the page. Restore the previous filtering mode if changed. If a failure persists with Anti-Ad Tibia disabled, record that in the issue. Never disable all privacy protection as a permanent workaround.
+Unsubscribe from the Tibia Anti-Ad list or remove the pasted rules, disable any separately installed companion script, and reload the page. Restore the previous filtering mode if changed. If a failure persists with Tibia Anti-Ad disabled, record that in the issue. Never disable all privacy protection as a permanent workaround.

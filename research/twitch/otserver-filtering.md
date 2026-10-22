@@ -28,11 +28,11 @@ The report's method is the reference for this project:
 
 ## Data source chosen
 
-Every directory card is rendered by React with props that include the complete `title`, **every** freeform tag (`tagListProps.freeformTags`), `channelLogin` and the viewer count. These are the same fields the audited JSON capture contained, available without any extra network request. Because React props live in the page's JavaScript world, Twitch Clean reads them from a small page-world script (`tibia-props.js`) and hands them to the filter through a data attribute. If the props cannot be found, the filter falls back to the visible card text.
+Every directory card is rendered by React with props that include the complete `title`, **every** freeform tag (`tagListProps.freeformTags`), `channelLogin` and the viewer count. These are the same fields the audited JSON capture contained, available without any extra network request. Because React props live in the page's JavaScript world, Tibia Anti-Ad reads them from a small page-world script (`tibia-props.js`) and hands them to the filter through a data attribute. If the props cannot be found, the filter falls back to the visible card text.
 
 ## Classification rules
 
-Implemented in `tools/twitch_evidence.py` (reference) and `extensions/twitch-clean/extension/tibia-classify.js` (extension), configured in `filters/twitch/tibia-evidence.json`:
+Implemented in `tools/twitch_evidence.py` (reference) and `extensions/tibia-anti-ad/extension/tibia-classify.js` (extension), configured in `filters/twitch/tibia-evidence.json`:
 
 1. **Other game:** a server declared in the title (not as a `!command`) or in a tag, including server domains and RubinOT's own world names (Infernum, Bellum, Belaria…), with no official evidence → hide.
 2. **Tibia:** an official world name (from [TibiaData](https://api.tibiadata.com/v4/worlds)), "Tibia Global" or the `tibiaglobal` tag, with no server evidence → keep. World names that are also ordinary words (Dia, Sombra, Bona…) count only as tags.
