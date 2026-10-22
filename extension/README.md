@@ -35,7 +35,7 @@ How it works: `settings.js` defines every option and default. `settings-bridge.j
 
 ## Install in Chrome (development)
 
-For a ready-to-use download and simple instructions, follow [Install Tibia Anti-Ad in Chrome](../docs/INSTALL_CHROME.md). It covers downloading, selecting the correct folder, settings, updates and removal.
+**[Download the ready-to-use Chrome ZIP](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.1/tibia-anti-ad-chrome.zip)**. For simple instructions, follow [Install Tibia Anti-Ad in Chrome](../docs/INSTALL_CHROME.md). It covers downloading, selecting the correct folder, settings, updates and removal.
 
 Requires Python 3.11+ to build. From the repository root:
 

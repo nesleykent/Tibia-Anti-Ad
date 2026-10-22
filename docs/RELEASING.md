@@ -15,7 +15,9 @@ A successful CI run establishes repository integrity, not production readiness. 
 
 Use semantic versions for extension releases and keep the source manifest version aligned with the release tag. Use prerelease tags such as `v1.0.0-alpha.1` while experimental; the browser manifest itself accepts only its numeric version format. Do not create a stable tag just because the existing manifest says `1.0.0`.
 
-Build Chrome with `python3 tools/build_chrome_extension.py`. CI uploads the unpacked build as a development artifact for the checked commit; it is not signed, store-reviewed or a stable release. Distribute a reviewed archive with its commit, SHA-256 checksum, license and third-party notices. Safari requires Apple's wrapper/signing process; no signed app is produced here. Never publish credentials, local archives or private captures.
+Build the installable ZIP with `python3 tools/package_chrome_extension.py`. It creates `dist/tibia-anti-ad-chrome.zip` with one top-level `tibia-anti-ad-chrome/` folder and a `.zip.sha256` checksum. Publish both as assets on the tagged GitHub prerelease/release, then update direct download links in the README, extension guide and Chrome tutorial. The ZIP must download without GitHub authentication.
+
+Build only the unpacked folder with `python3 tools/build_chrome_extension.py`. CI uploads the unpacked build as a development artifact for the checked commit; it is not signed, store-reviewed or a stable release. Distribute a reviewed archive with its commit, SHA-256 checksum, license and third-party notices. Safari requires Apple's wrapper/signing process; no signed app is produced here. Never publish credentials, local archives or private captures.
 
 ## Maintenance and rollback
 

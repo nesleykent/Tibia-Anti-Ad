@@ -9,7 +9,9 @@ Browser extensions, content-blocking filters and transparent research for a clea
 
 **Love the fansites, not the ads.** Read the full [Tibia Anti-Ad Manifesto](MANIFESTO.md) for the motivation and principles behind this project.
 
-**Install in Chrome:** [Follow the step-by-step guide](docs/INSTALL_CHROME.md). You can use a ready-to-use download without a terminal.
+**[Download for Chrome (.zip)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.1/tibia-anti-ad-chrome.zip)** · [Installation guide](docs/INSTALL_CHROME.md)
+
+Extract the ZIP, open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and choose the extracted `tibia-anti-ad-chrome` folder. No GitHub account or terminal is needed.
 
 ## Choose how to use it
 

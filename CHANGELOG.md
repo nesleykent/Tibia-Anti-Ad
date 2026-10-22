@@ -6,6 +6,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Added
 
+- Public Chrome ZIP download on GitHub Releases, with a checksum and a predictable folder to select during installation.
+
 - Plain-English Chrome installation guide with a ready-to-use download, folder-selection help, updates, removal and troubleshooting.
 
 - Friendly-fansite collection with 23 original screenshots, user-confirmed unblocked capture conditions, visual notes and SHA-256 provenance. Tibia-Statistic remains included with its small affiliate placement documented.

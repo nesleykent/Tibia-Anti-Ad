@@ -4,19 +4,13 @@ This guide is for Chrome on a Windows, Mac or Linux computer. **The main method 
 
 Tibia Anti-Ad is currently an experimental extension installed from a downloaded folder. It does not update automatically.
 
-## 1. Download the ready-to-use Chrome package
+## 1. Download
 
-You need to be signed in to a free GitHub account to download this package.
+**[Download Tibia Anti-Ad for Chrome (.zip)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.1/tibia-anti-ad-chrome.zip)**
 
-1. Open [Tibia Anti-Ad downloads in GitHub Actions](https://github.com/nesleykent/Tibia-Anti-Ad/actions/workflows/check.yml?query=branch%3Amain).
-2. Open the **newest successful run for `main`**. Look for a green check mark. Skip runs that are still running or have a red cross.
-3. On that run's page, find **Artifacts**. You may need to scroll down.
-4. Click the download named **`tibia-anti-ad-chrome-…`**. The long ending identifies the version; you do not need to copy or type it.
-5. Save the ZIP file to your computer.
+Click the link above and save **`tibia-anti-ad-chrome.zip`**. No GitHub account or terminal is needed. This is the prepared Chrome package, ready to extract and load.
 
-**Cannot click the download?** Make sure you are signed in to GitHub. Packages are kept for 14 days. If one has expired, try a newer successful run. If no package is available, use the optional build instructions at the end of this page.
-
-Use the Chrome package from **Artifacts** for this method. GitHub's **Code → Download ZIP** downloads the source project, which needs an extra preparation step.
+[Release details and checksum](https://github.com/nesleykent/Tibia-Anti-Ad/releases/tag/v1.0.0-alpha.1).
 
 ## 2. Extract the ZIP and keep the folder
 
@@ -26,13 +20,13 @@ A ZIP file is a compressed folder. Chrome needs its extracted contents.
 - **Mac:** double-click the ZIP. Finder creates an extracted folder.
 - **Linux:** open the ZIP with your archive manager and choose **Extract**.
 
-Move the extracted folder somewhere permanent, such as **Documents**, and rename it **Tibia Anti-Ad Chrome** if you like. Do this **before** loading it in Chrome.
+The ZIP contains a folder named **`tibia-anti-ad-chrome`**. Move that folder somewhere permanent, such as **Documents**. Do this **before** loading it in Chrome.
 
 Open the folder. You should see a file named **`manifest.json`** alongside files such as **`background.js`** and **`popup.html`**:
 
 ```text
 Documents/
-└── Tibia Anti-Ad Chrome/       ← Select this folder in the next step
+└── tibia-anti-ad-chrome/       ← Select this folder in the next step
     ├── manifest.json
     ├── background.js
     ├── popup.html
@@ -72,7 +66,7 @@ The enabled Chrome card and a working settings panel confirm installation. They 
 ## Update later
 
 1. Download and extract a newer Chrome package by following steps 1–2.
-2. Replace the **contents** of your existing **Tibia Anti-Ad Chrome** folder with the new package's contents. Keep the installed folder's name and location, and make sure `manifest.json` is directly inside it. Remove old package files first so obsolete files are not left behind.
+2. Replace the **contents** of your existing **`tibia-anti-ad-chrome`** folder with the new package's contents. Keep the installed folder's name and location, and make sure `manifest.json` is directly inside it. Remove old package files first so obsolete files are not left behind.
 3. Open **`chrome://extensions`** and click the **Reload** button on the Tibia Anti-Ad card. It is usually shown as a circular arrow.
 4. Reload Twitch and fansite tabs.
 
@@ -91,7 +85,7 @@ If Source quality was enabled on Twitch, select your preferred video quality in 
 | What you see | What to do |
 | --- | --- |
 | “Manifest file is missing or unreadable” | Extract the ZIP first. Choose the folder directly containing `manifest.json`, not its parent folder. |
-| An error mentions Safari settings or `background.scripts` | You selected the shared source folder instead of the prepared Chrome package. Use the package from Artifacts or the build output below. |
+| An error mentions Safari settings or `background.scripts` | You selected the shared source folder instead of the prepared Chrome package. Use the direct Chrome ZIP download at the top of this page. |
 | No Developer mode or Load unpacked button | Check that you are using desktop Chrome. A managed computer may restrict extension installation; contact its administrator. |
 | The extension cannot find its files after a restart | Its installed folder may have been moved or deleted. Restore the folder to its original location, or load the extracted package again. |
 | The settings open but a page is unchanged | Reload the page, check that the relevant feature/site switch is on, and review the extension's site access under Details. |
@@ -100,7 +94,7 @@ If Source quality was enabled on Twitch, select your preferred video quality in 
 
 ## Optional: prepare the Chrome folder yourself
 
-Use this route if no ready-to-use download is available or you prefer building from source. It requires **Python 3.11 or newer**; Node.js is not needed just to build this package.
+Use this route only if you prefer building from source. It requires **Python 3.11 or newer**; Node.js is not needed just to build this package.
 
 1. On the [repository page](https://github.com/nesleykent/Tibia-Anti-Ad), choose **Code → Download ZIP**, then extract it. You can also use an existing clone.
 2. Open a terminal in the extracted project folder — the folder containing `README.md`, `tools` and `extension`.
@@ -128,5 +122,5 @@ The shared **`extension/src`** folder is not the prepared Chrome package. After 
 ## References
 
 - [Chrome's official instructions for loading a local extension](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
-- [GitHub's official instructions for downloading build artifacts](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts).
+- [Download and release details](https://github.com/nesleykent/Tibia-Anti-Ad/releases/tag/v1.0.0-alpha.1).
 - [Feature details and known limitations](../extension/README.md).
