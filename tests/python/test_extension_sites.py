@@ -90,7 +90,7 @@ class ExtensionSitesTests(unittest.TestCase):
 
     def test_popup_lists_the_sites(self):
         popup = (EXTENSION / 'popup.html').read_text()
-        self.assertIn('<div class="group" id="sites"></div>', popup)
+        self.assertIn('<div class="group" id="sites" role="group" aria-labelledby="h-sites"></div>', popup)
         self.assertLess(popup.index('sites.js'), popup.index('settings.js'))
         self.assertIn('input.dataset.setting = site.key', (EXTENSION / 'popup.js').read_text())
 

@@ -20,9 +20,10 @@
 </header>
 
 <main>
-  <section aria-labelledby="h-network">
-    <h2 id="h-network">Network</h2>
-    <div class="group">
+  <h2 class="area">Twitch</h2>
+  <details class="section" id="s-ads" data-section="ads">
+    <summary><span class="section-title" id="h-ads">Ads and tracking</span><span class="count" id="c-ads"></span></summary>
+    <div class="group" role="group" aria-labelledby="h-ads">
       <div class="row">
         <label class="row-text" for="blockAds"><span class="row-title">Block ad servers</span><span class="detail" id="d-blockAds">Twitch, Amazon and Google ad networks.</span></label>
         <input type="checkbox" switch role="switch" id="blockAds" data-setting="blockAds" aria-describedby="d-blockAds">
@@ -31,14 +32,17 @@
         <label class="row-text" for="blockTracking"><span class="row-title">Block tracking</span><span class="detail" id="d-blockTracking">Telemetry, analytics and ID-sync servers.</span></label>
         <input type="checkbox" switch role="switch" id="blockTracking" data-setting="blockTracking" aria-describedby="d-blockTracking">
       </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="h-video">
-    <h2 id="h-video">Video</h2>
-    <div class="group">
       <div class="row">
-        <label class="row-text" for="removeStreamAds"><span class="row-title">Remove stream ads</span><span class="detail" id="d-removeStreamAds">Swaps ad breaks for an ad-free stream. It may drop to 360p or pause.</span></label>
+        <label class="row-text" for="hideDisplayAds"><span class="row-title">Hide display ads</span><span class="detail" id="d-hideDisplayAds">Banners, sponsored tiles, player ad frames, ad-block warnings.</span></label>
+        <input type="checkbox" switch role="switch" id="hideDisplayAds" data-setting="hideDisplayAds" aria-describedby="d-hideDisplayAds">
+      </div>
+    </div>
+  </details>
+  <details class="section" id="s-video" data-section="video">
+    <summary><span class="section-title" id="h-video">Video player</span><span class="count" id="c-video"></span></summary>
+    <div class="group" role="group" aria-labelledby="h-video">
+      <div class="row">
+        <label class="row-text" for="removeStreamAds"><span class="row-title">Remove stream ads</span><span class="detail" id="d-removeStreamAds">Swaps ad breaks for an ad-free stream; may drop to 360p or pause.</span></label>
         <input type="checkbox" switch role="switch" id="removeStreamAds" data-setting="removeStreamAds" aria-describedby="d-removeStreamAds">
       </div>
       <div class="row">
@@ -54,15 +58,10 @@
         <input type="checkbox" switch role="switch" id="hideAdBreakBanner" data-setting="hideAdBreakBanner" aria-describedby="d-hideAdBreakBanner">
       </div>
     </div>
-  </section>
-
-  <section aria-labelledby="h-page">
-    <h2 id="h-page">Page</h2>
-    <div class="group">
-      <div class="row">
-        <label class="row-text" for="hideDisplayAds"><span class="row-title">Hide display ads</span><span class="detail" id="d-hideDisplayAds">Banners, sponsored tiles, player ad frames and ad-block warnings.</span></label>
-        <input type="checkbox" switch role="switch" id="hideDisplayAds" data-setting="hideDisplayAds" aria-describedby="d-hideDisplayAds">
-      </div>
+  </details>
+  <details class="section" id="s-page" data-section="page">
+    <summary><span class="section-title" id="h-page">Page clutter</span><span class="count" id="c-page"></span></summary>
+    <div class="group" role="group" aria-labelledby="h-page">
       <div class="row">
         <label class="row-text" for="hideUpsells"><span class="row-title">Hide upsells</span><span class="detail" id="d-hideUpsells">Turbo, Prime Gaming, Luna and Subtember.</span></label>
         <input type="checkbox" switch role="switch" id="hideUpsells" data-setting="hideUpsells" aria-describedby="d-hideUpsells">
@@ -80,11 +79,10 @@
         <input type="checkbox" switch role="switch" id="hideCookieBanner" data-setting="hideCookieBanner" aria-describedby="d-hideCookieBanner">
       </div>
     </div>
-  </section>
-
-  <section aria-labelledby="h-tibia">
-    <h2 id="h-tibia">Tibia category</h2>
-    <div class="group">
+  </details>
+  <details class="section" id="s-tibia" data-section="tibia">
+    <summary><span class="section-title" id="h-tibia">Tibia category</span><span class="count" id="c-tibia"></span></summary>
+    <div class="group" role="group" aria-labelledby="h-tibia">
       <div class="row">
         <label class="row-text" for="tibiaFilter"><span class="row-title">Hide other games</span><span class="detail" id="d-tibiaFilter">OTServers, Pokémon servers and idle games. Undecided streams stay visible.</span></label>
         <input type="checkbox" switch role="switch" id="tibiaFilter" data-setting="tibiaFilter" aria-describedby="d-tibiaFilter">
@@ -100,12 +98,12 @@
         <ul class="list" id="tibia-shown-list" aria-labelledby="tibia-shown-title"></ul>
       </div>
     </div>
-  </section>
-
-  <section aria-labelledby="h-sites">
-    <h2 id="h-sites">Fansites</h2>
-    <div class="group" id="sites"></div>
-  </section>
+  </details>
+  <h2 class="area">Fansites</h2>
+  <details class="section" id="s-sites" data-section="sites">
+    <summary><span class="section-title" id="h-sites">Tibia fansites</span><span class="count" id="c-sites"></span></summary>
+    <div class="group" id="sites" role="group" aria-labelledby="h-sites"></div>
+  </details>
 </main>
 
 <footer class="footer">

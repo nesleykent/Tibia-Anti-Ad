@@ -24,6 +24,18 @@
     let enabled = true;
     let shown = {};
     const hiddenByUs = new WeakSet();
+    // Verdicts by channel, title and tags: Twitch re-renders the same cards often.
+    const verdicts = new Map();
+    const classifyCard = info => {
+        const key = `${info.channel}\n${info.title}\n${info.tags.join('\n')}`;
+        let result = verdicts.get(key);
+        if (!result) {
+            if (verdicts.size >= 1000) { verdicts.clear(); }
+            result = classify(info.title, info.tags, info.channel);
+            verdicts.set(key, result);
+        }
+        return result;
+    };
 
     const onTibiaDirectory = () => /^\/directory\/category\/tibia(\/|$)/i.test(location.pathname);
 
@@ -52,7 +64,7 @@
         const cell = cellOf(article);
         let verdict = null;
         if (info) {
-            const result = classify(info.title, info.tags);
+            const result = classifyCard(info);
             verdict = result.verdict;
             const overridden = verdict === 'other' && shown[info.channel] === info.title;
             cell.setAttribute(VERDICT, `${verdict}: ${result.reason}${overridden ? ' (shown by you)' : ''}`);
@@ -110,9 +122,23 @@
         queued = true;
         queueMicrotask(() => { queued = false; scan(); });
     });
+    // Observe the page only on the Tibia directory. Twitch navigates without
+    // reloading, so follow the URL (Navigation API where available, else a
+    // one-second check) and clear the marks when leaving the directory.
+    let observing = false;
+    const follow = () => {
+        const wanted = onTibiaDirectory();
+        if (wanted === observing) { return; }
+        observing = wanted;
+        if (wanted) { observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title', META] }); }
+        else { observer.disconnect(); }
+        scan();
+    };
     const start = () => {
         scan();
-        observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title', META] });
+        follow();
+        globalThis.navigation?.addEventListener?.('currententrychange', follow);
+        setInterval(follow, 1000);
     };
     // Cards this script hides on the current page, for the settings page.
     const hiddenCards = () => [...document.querySelectorAll('article')].flatMap(article => {
