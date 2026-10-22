@@ -5,6 +5,6 @@ __pycache__/
 .env.*
 *.zip
 # Unpublished original inputs, local captures and scratch material.
-/.local/
+/local/
 # Reproducible development builds.
 /dist/

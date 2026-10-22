@@ -29,7 +29,7 @@ Use small functions, explicit output fields and deterministic UTF-8 output. Exam
 
 ## Acceptance checklist
 - English public-facing repository, README and contribution workflow.
-- Original local file bytes are preserved under `.local/legacy/`; ZIPs and local artifacts are not published.
+- Original local file bytes are preserved under `local/legacy/`; ZIPs and local artifacts are not published.
 - Inputs and historical verification claims retain provenance and limitations.
 - Every generated network rule is restricted to its source site.
 - Known content-destruction risks are excluded from generated bundles.
