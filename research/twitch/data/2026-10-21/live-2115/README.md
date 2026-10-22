@@ -21,10 +21,10 @@ Errors found in the first pass and fixed:
 - **Official stream hidden:** keplerztv ("[CELEBRA - RP 1700+]"), because the boss tag "Bakragore" matched the Baiak tag pattern.
 - **OTServer shown as Tibia:** lord_paulistinha_ofc (paulistinhaot.com) via the official world tag Lutabra.
 - **OTServers left undetermined** because a generic `global`/`tibiaglobal` tag cancelled a server declared in the title: matts (King Aslan), bruxotibiano (Aldeia Online), bigode_junim (PXG), rendoryltda (DeusOT). Now the title outranks tags.
+- **Confirmed by the user:** projeto0337 ("FARM ON de live coins do rubinot", tag tibiaglobal) is RubinOT; now hidden.
 - **Unlisted servers:** Future OT, Baiak variants, ClassiCores, Padventures, Ultron OT, Avalorium, Ravox Idle, Poke Idle spellings, `xxxot.com` domains.
 
 Still open:
 
 - Streams whose only server mention is a chat command (el_tratorr 137 viewers, pagodines, beltranctz, `!rubinot`-only titles) stay visible by design; many are probably RubinOT. The thumbnail check (offline tool) resolves them.
-- projeto0337 ("FARM ON de live coins do rubinot", tag tibiaglobal) is now hidden; the mention may be a sponsor.
 - Streams playing other non-Tibia games with a tibiaglobal tag (jhovitv, Conan Exiles) stay visible; they are not OTServers.
