@@ -4,7 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const root = path.resolve(__dirname, '..');
-const ext = path.join(root, 'extensions/twitch-clean/extension');
+const ext = path.join(root, 'extensions/tibia-anti-ad/extension');
 require(path.join(ext, 'tibia-evidence.js'));
 require(path.join(ext, 'tibia-classify.js'));
 const classify = globalThis.TwitchCleanTibiaClassify.create(globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE);

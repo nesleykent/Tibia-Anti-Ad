@@ -1,12 +1,21 @@
-// Twitch Clean: page-context script (manifest content_scripts world "MAIN", run_at document_start).
-// Part 1 forces Source quality; part 2 is vaft (TwitchAdSolutions, MIT), unmodified.
+// Tibia Anti-Ad: page-context script (manifest content_scripts world "MAIN", run_at document_start).
+// Part 1 forces Source quality; part 2 is vaft (TwitchAdSolutions, MIT), unmodified;
+// part 3 keeps quality in background tabs when vaft is off.
 // If StopTheMadness also injects vaft, vaft's own version guard keeps only the first copy.
+//
+// Each part reads the settings that settings-bridge.js mirrors into this page's
+// localStorage under "tibia-anti-ad:settings" (settings.js PAGE_KEY). Extension
+// storage cannot answer before Twitch's player starts, so the mirror is read
+// synchronously; missing or unreadable settings mean the defaults (all on).
 // ---------------------------------------------------------------------------
 // Part 1: Source quality
 // Twitch keeps the chosen quality in localStorage "video-quality"; "chunked" is
 // its name for the Source rendition. Writing it before the player starts makes
 // every stream open at Source instead of Auto.
 (() => {
+    let settings = {};
+    try { settings = JSON.parse(localStorage.getItem('tibia-anti-ad:settings')) || {}; } catch {}
+    if (settings.enabled === false || settings.sourceQuality === false) { return; }
     try {
         const source = JSON.stringify({ default: 'chunked' });
         if (localStorage.getItem('video-quality') !== source) {
@@ -40,6 +49,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+if ((() => {
+    try {
+        const settings = JSON.parse(localStorage.getItem('tibia-anti-ad:settings')) || {};
+        return settings.enabled !== false && settings.removeStreamAds !== false;
+    } catch { return true; }
+})()) {
 // ==UserScript==
 // @name         TwitchAdSolutions (vaft)
 // @namespace    https://github.com/pixeltris/TwitchAdSolutions
@@ -1158,4 +1173,19 @@ SOFTWARE.
     window.allSegmentsAreAdSegments = () => {
         postTwitchWorkerMessage('AllSegmentsAreAdSegments');
     };
+})();
+}
+
+// ---------------------------------------------------------------------------
+// Part 3: keep quality in background tabs when vaft, which already does this, is off.
+// Twitch lowers quality while document.hidden is true; FrankerFaceZ counters it
+// the same way.
+(() => {
+    let settings = {};
+    try { settings = JSON.parse(localStorage.getItem('tibia-anti-ad:settings')) || {}; } catch {}
+    if (settings.enabled === false || settings.backgroundQuality === false || settings.removeStreamAds !== false) { return; }
+    try {
+        Object.defineProperty(document, 'hidden', { configurable: true, get: () => false });
+        Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'visible' });
+    } catch {}
 })();

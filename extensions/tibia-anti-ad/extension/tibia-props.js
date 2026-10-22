@@ -1,4 +1,4 @@
-// Twitch Clean: exposes each directory card's full stream metadata to the Tibia
+// Tibia Anti-Ad: exposes each directory card's full stream metadata to the Tibia
 // filter. A card shows only some tags; Twitch's own React props for the card
 // hold the complete title, every freeform tag and the channel login. This runs
 // in the page world (where those props live) and copies them into a

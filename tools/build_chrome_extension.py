@@ -1,8 +1,8 @@
-"""Build the Chrome variant of Twitch Clean into dist/twitch-clean-chrome.
+"""Build the Chrome variant of Tibia Anti-Ad into dist/tibia-anti-ad-chrome.
 
-The Safari source in extensions/twitch-clean/extension is shared; Chrome only
+The Safari source in extensions/tibia-anti-ad/extension is shared; Chrome only
 needs a service-worker background that hosts OCR in an offscreen document
-(extensions/twitch-clean/chrome) and a few manifest changes. Load the output
+(extensions/tibia-anti-ad/chrome) and a few manifest changes. Load the output
 folder with "Load unpacked" in chrome://extensions.
 """
 import json
@@ -10,9 +10,9 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "extensions/twitch-clean/extension"
-CHROME = ROOT / "extensions/twitch-clean/chrome"
-OUTPUT = ROOT / "dist/twitch-clean-chrome"
+SOURCE = ROOT / "extensions/tibia-anti-ad/extension"
+CHROME = ROOT / "extensions/tibia-anti-ad/chrome"
+OUTPUT = ROOT / "dist/tibia-anti-ad-chrome"
 
 
 def build():

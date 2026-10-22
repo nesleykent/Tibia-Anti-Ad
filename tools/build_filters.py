@@ -30,7 +30,7 @@ def scope_rule(rule, domain):
 def build(extended=False):
     lines = [
         "[Adblock Plus 2.0]",
-        "! Title: Anti-Ad Tibia" + (" Extended" if extended else " Portable"),
+        "! Title: Tibia Anti-Ad" + (" Extended" if extended else " Portable"),
         "! Description: Experimental site-scoped ads, tracking and annoyance filters",
         "! Homepage: https://github.com/nesleykent/anti-ad-tibia",
         "! Expires: 1 day",

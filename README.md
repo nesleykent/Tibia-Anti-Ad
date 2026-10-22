@@ -1,8 +1,8 @@
-# Anti-Ad Tibia
+# Tibia Anti-Ad
 
 **The player experience comes before monetization.**
 
-Anti-Ad Tibia identifies, blocks and neutralizes intrusive advertising, tracking and navigation interference across services used by the Tibia community. The need to fund a fansite does not justify abusive advertising.
+Tibia Anti-Ad identifies, blocks and neutralizes intrusive advertising, tracking and navigation interference across services used by the Tibia community. The need to fund a fansite does not justify abusive advertising.
 
 ## What we cover
 
@@ -17,7 +17,7 @@ Navigation, editorial content, tools and accessibility must keep working. Positi
 
 This is an initial research and tooling release. Experimental filter inputs and historical reports are included for 15 websites. Generated bundles exclude two sites with content-destruction risks. The remaining rules still require real extension testing across browsers; historical CSS injection and network simulation are not proof of blocker enforcement.
 
-Twitch includes the supplied **[Twitch Clean extension](extensions/twitch-clean/README.md)**, a **[standalone live-video ad script](scripts/twitch/README.md)**, complementary filters, reconnaissance scripts and an offline text-classification prototype. The vaft integration attempts to remove stitched video ads; current live effectiveness is unverified. The extension also hides OTServer, Pokémon-server and idle-game streams from the Tibia category, combining title/tag evidence with OCR of the game client in each thumbnail (see [docs/TWITCH.md](docs/TWITCH.md)); accuracy is measured only on a 114-stream sample. No permanent channel blocklist is used.
+Twitch includes the supplied **[Tibia Anti-Ad extension](extensions/tibia-anti-ad/README.md)**, a **[standalone live-video ad script](scripts/twitch/README.md)**, complementary filters, reconnaissance scripts and an offline text-classification prototype. The vaft integration attempts to remove stitched video ads; current live effectiveness is unverified. The extension also hides OTServer, Pokémon-server and idle-game streams from the Tibia category, combining title/tag evidence with OCR of the game client in each thumbnail (see [docs/TWITCH.md](docs/TWITCH.md)); accuracy is measured only on a 114-stream sample. No permanent channel blocklist is used.
 
 ## Try the experimental website filters
 
