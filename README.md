@@ -15,7 +15,7 @@ Browser extensions, content-blocking filters and transparent research for a clea
 
 **Chrome:** Extract the ZIP, open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and choose the extracted `tibia-anti-ad-chrome` folder. No GitHub account or terminal is needed.
 
-**Safari:** Download the Safari ZIP, extract it, then use **Safari → Settings → Developer → Add Temporary Extension…**. Development previews require allowing unsigned extensions; temporary installs end when Safari quits or after 24 hours. A compiled Mac app is also available in the [Safari guide](docs/INSTALL_SAFARI.md).
+**Safari:** For a quick trial, download the Safari ZIP, extract it, then use **Safari → Settings → Developer → Add Temporary Extension…**. This temporary method ends when Safari quits or after 24 hours. For an installed Mac app, see the [Safari guide and free personal signing instructions](docs/INSTALL_SAFARI.md). The maintainer's app already uses personal Apple Development signing; see [current signing status](docs/SAFARI_STATUS.md) for verified results and remaining Safari checks.
 
 ## Choose how to use it
 

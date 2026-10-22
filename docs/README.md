@@ -2,7 +2,8 @@
 
 ## Use the project
 
-- [Install in Safari](INSTALL_SAFARI.md): direct downloads, temporary installation, the development Mac app and local Xcode builds.
+- [Install in Safari](INSTALL_SAFARI.md): direct downloads, temporary installation and free personal signing for the Mac app.
+- [Safari signing status](SAFARI_STATUS.md): the personally signed local installation, public preview differences, verified evidence and remaining checks.
 
 - [Install in Chrome](INSTALL_CHROME.md): download, extract, load and update the extension without a terminal.
 

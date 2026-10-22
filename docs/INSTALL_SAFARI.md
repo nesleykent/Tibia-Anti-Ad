@@ -4,6 +4,8 @@ For **Safari 26 or later on a Mac**. The public downloads below use an ad-hoc de
 
 ## For your own Mac: free Xcode signing
 
+**Maintainer's current installation:** the Mac app in Applications was personally signed on 2026-10-22. It is not an Add Temporary Extension installation. See the [signing status and verification record](SAFARI_STATUS.md) before repeating setup or replacing that app.
+
 You do not need to buy Apple Developer Program membership just to set up a Personal Team for local development. Xcode can create a free **Apple Development** certificate associated with your Apple Account. This is not a Developer ID certificate for public downloads.
 
 1. Open **Xcode → Settings → Accounts** (called **Apple Accounts** in some versions).
