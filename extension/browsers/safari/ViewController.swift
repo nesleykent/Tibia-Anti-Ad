@@ -76,13 +76,33 @@ struct ContentView: View {
         }
     }
 
+    // Safari reports an unknown extension (SFErrorDomain 1) until it has run and
+    // loaded the newly installed app; open Safari, then ask once more.
     private func openSafariSettings() {
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
-            DispatchQueue.main.async {
-                if let error { settingsError = error.localizedDescription }
-                else { NSApplication.shared.terminate(nil) }
+        showSettings { error in
+            guard error != nil, let safari = NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.apple.Safari") else {
+                return finish(error)
+            }
+            NSWorkspace.shared.openApplication(at: safari, configuration: NSWorkspace.OpenConfiguration()) { _, _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    showSettings { retryError in
+                        state.refresh()
+                        finish(retryError)
+                    }
+                }
             }
         }
+    }
+
+    private func showSettings(_ completion: @escaping (Error?) -> Void) {
+        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
+            DispatchQueue.main.async { completion(error) }
+        }
+    }
+
+    private func finish(_ error: Error?) {
+        if let error { settingsError = error.localizedDescription }
+        else { NSApplication.shared.terminate(nil) }
     }
 }
 
