@@ -1,5 +1,7 @@
 # Installation and rollback
 
+**Installing the Tibia Anti-Ad extension in Chrome?** Follow the [Chrome installation tutorial](INSTALL_CHROME.md). The instructions below cover filter lists for an existing blocker.
+
 The repository is public. Copy a generated subscription URL from the [README](../README.md) into a compatible blocker. If your blocker only supports local import, download the selected list and import it through its supported interface. No GitHub account or access token is needed.
 
 All lists are experimental. Use one generated bundle, not both. Review the site's historical report before enabling it. Cosmetic hiding does not prevent tracking requests.

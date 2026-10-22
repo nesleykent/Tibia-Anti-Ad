@@ -9,6 +9,8 @@ Browser extensions, content-blocking filters and transparent research for a clea
 
 **Love the fansites, not the ads.** Read the full [Tibia Anti-Ad Manifesto](MANIFESTO.md) for the motivation and principles behind this project.
 
+**Install in Chrome:** [Follow the step-by-step guide](docs/INSTALL_CHROME.md). You can use a ready-to-use download without a terminal.
+
 ## Choose how to use it
 
 | Component | What it does | Start here |

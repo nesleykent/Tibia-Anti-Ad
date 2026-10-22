@@ -2,6 +2,8 @@
 
 ## Use the project
 
+- [Install in Chrome](INSTALL_CHROME.md): download, extract, load and update the extension without a terminal.
+
 - [Installation and rollback](INSTALLATION.md): filter subscriptions and recovery.
 - [Extension setup and settings](../extension/README.md): Safari source, Chrome development build and feature controls.
 - [Browser compatibility](COMPATIBILITY.md): supported syntax targets and verification limits.
