@@ -73,6 +73,7 @@ The preview's packaging and native startup have been checked. Live Twitch ad rem
 
 - **Temporary folder:** download and extract the new Safari ZIP, remove the old temporary extension in Safari Settings, then add the new folder.
 - **Mac app:** quit the host app, replace it with the new app in the same location, reopen it, then check Safari's extension settings and reload affected pages. Keep Safari and the app closed while replacing files.
+- **Personally signed local app:** Claude or Codex can run `PYTHONDONTWRITEBYTECODE=1 python3 tools/update_safari_extension.py` after updating and checking the local source. The tool selects a valid certificate from the installed app's team, signs, verifies and installs the update with a previous-version backup. It leaves Safari open; reload pages or restart Safari if needed. See [automatic local updates](SAFARI_STATUS.md#automatic-local-updates-for-claude-and-codex). Do not replace this installation with the ad-hoc public ZIP.
 - **Pause:** turn the extension off in Safari Settings and reload affected pages.
 - **Remove:** disable the extension in Safari Settings. Remove its temporary entry or delete the containing app, depending on the method you used, then reload pages.
 

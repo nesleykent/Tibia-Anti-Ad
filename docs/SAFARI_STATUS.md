@@ -21,7 +21,21 @@ The maintainer's installed app uses the third method. **Do not call that install
 
 Bundle identifiers: `com.nesleykent.tibiaantiad` (app) and `com.nesleykent.tibiaantiad.Extension` (extension). Personal certificate identifiers and private keys are intentionally excluded from this record.
 
-## Rebuild without reverting to ad-hoc signing
+## Automatic local updates for Claude and Codex
+
+After updating the code in the current checkout and running the repository checks, the agent runs:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 tools/update_safari_extension.py
+```
+
+This discovers the installed app's Apple team and a valid Apple Development identity from that team in the local keychain, including a renewed certificate if available. It builds the current source, signs and verifies both bundles, stages the app and updates the existing Applications location. The previous app is retained under `local/safari/previous/Tibia Anti-Ad.app`; failed installed-copy verification restores the previous installation. Concurrent runs are rejected. No personal identity needs to be stored in repository configuration.
+
+The agent should perform this update itself instead of delegating certificate selection, signing or file copying to the maintainer. The tool does not pull source, publish assets, change Safari preferences or close the user's Safari tabs. It opens the installed host app after the update. Reload affected pages; Safari may need to be restarted to load the updated extension. Preservation of enabled state and settings across updates has not yet been verified in Safari.
+
+If no valid identity from the installed team is available, the update stops before replacing the installed app. The account owner may need to renew their certificate in Xcode or approve a macOS keychain prompt; agents must not bypass such prompts or fall back to ad-hoc signing.
+
+## Build only, without changing the installed app
 
 With an existing valid development identity in the local keychain:
 

@@ -13,4 +13,6 @@ The maintainer's Mac has an **Apple Development-signed app installed in `/Applic
 
 The public Release app and default CI build still use **ad-hoc signing**. Personal signing is explicit through `--sign-identity` or `TIBIA_SAFARI_SIGN_IDENTITY`. Do not replace the personally signed installed app with an ad-hoc preview during routine builds or updates.
 
+After implementing and checking a local Safari update, run `PYTHONDONTWRITEBYTECODE=1 python3 tools/update_safari_extension.py`. It discovers a valid development identity from the installed app's team, builds, signs and verifies both bundles, updates Applications, and retains the previous app under `local/safari/previous/`. No identity argument or manual copy is required. It uses the current checkout; it does not pull source or publish a Release. If signing fails, fix the cause without substituting ad-hoc signing. Initial account login, certificate renewal and OS keychain prompts may still require the user. Do not promise silent updates if macOS requests authorization.
+
 Safari acceptance with unsigned extensions disabled and persistence after quitting Safari remain **unverified**. Do not describe these as tested, promise permanent validity, or infer macOS renewal periods from iOS rules. Never publish the maintainer's certificate, private key, identity details or personally signed app as a public release.

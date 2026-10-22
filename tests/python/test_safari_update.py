@@ -1,0 +1,50 @@
+"""Personal updates must retain the installed app when verification fails."""
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "tools"))
+import update_safari_extension as updater
+
+
+class SafariUpdateTests(unittest.TestCase):
+    def test_invalid_candidate_does_not_touch_installed_app_or_backup(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            installed, built, backup = root / "Installed.app", root / "Built.app", root / "backup.app"
+            for path, version in ((installed, "installed"), (built, "invalid"), (backup, "backup")):
+                path.mkdir()
+                (path / "version").write_text(version)
+            with patch.object(updater, "BACKUP", backup), patch.object(updater, "verify_app", side_effect=RuntimeError("wrong team")):
+                with self.assertRaisesRegex(RuntimeError, "wrong team"):
+                    updater.install(built, installed, "TEAM")
+            self.assertEqual((installed / "version").read_text(), "installed")
+            self.assertEqual((backup / "version").read_text(), "backup")
+
+    def test_failed_installed_verification_restores_previous_app(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            installed, built = root / "Installed.app", root / "Built.app"
+            installed.mkdir()
+            built.mkdir()
+            (installed / "version").write_text("old")
+            (built / "version").write_text("new")
+            with patch.object(updater, "BACKUP", root / "backup.app"), patch.object(updater, "verify_app", side_effect=["TEAM", RuntimeError("invalid copy")]):
+                with self.assertRaisesRegex(RuntimeError, "invalid copy"):
+                    updater.install(built, installed, "TEAM")
+            self.assertEqual((installed / "version").read_text(), "old")
+
+    def test_successful_update_replaces_app_and_retains_backup(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            installed, built = root / "Installed.app", root / "Built.app"
+            installed.mkdir()
+            built.mkdir()
+            (installed / "version").write_text("old")
+            (built / "version").write_text("new")
+            with patch.object(updater, "BACKUP", root / "backup.app"), patch.object(updater, "verify_app", return_value="TEAM"):
+                backup = updater.install(built, installed, "TEAM")
+            self.assertEqual((installed / "version").read_text(), "new")
+            self.assertEqual((backup / "version").read_text(), "old")

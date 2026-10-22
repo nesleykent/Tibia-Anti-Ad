@@ -55,3 +55,9 @@ CI checks Python 3.11 and 3.14 with Node.js 22. Its uploaded Chrome package is a
 - Acceptance of the personally signed extension with unsigned extensions disabled, and persistence after Safari restarts, remain unverified. Do not apply the temporary ZIP's lifetime to this installed app or report restart persistence as tested.
 - The temporary-extension ZIP has a deterministic top-level folder, source-byte preservation checks, original license notices and a SHA-256 checksum. Native app packaging preserves bundle metadata with Apple’s `ditto`.
 - A separate macOS CI job builds, verifies and packages the Safari app without distribution credentials. See GitHub Actions for results on each exact source commit.
+
+## Personal Safari updater — 2026-10-22
+
+- Ran `tools/update_safari_extension.py` against the installed personal app. It discovered a valid identity from the same Apple team, built and signed the app and extension, verified the staged copy and installed result, and retained the previous app under `local/safari/previous/`. Both the installed app and backup passed deep, strict signature verification. `pluginkit` reported the updated extension at its Applications location.
+- Automated failure tests verify that a rejected staged candidate preserves both the installed app and existing backup, and that failed installed-copy verification restores the old app. A successful replacement test verifies the new files and retained backup.
+- Safari tabs were left open. Updated extension activation, retained Safari settings and restart persistence were not established by this updater test.

@@ -5,6 +5,7 @@ The Safari app is generated from `extension/src/` with Apple's converter. Do not
 - `python3 tools/build_safari_extension.py`: generate the project, build a universal macOS app, apply sandbox entitlements and verify the app and embedded extension. Requires macOS and full Xcode.
 - `python3 tools/package_safari_extension.py`: package the built app and the temporary-extension source ZIP, with SHA-256 checksum files.
 - `scripts/safari/build_and_run.sh --verify`: rebuild, launch and check that the host process stays running.
+- `python3 tools/update_safari_extension.py`: update the personally signed app in Applications using an automatically selected valid identity from the installed team; preserve a previous-version backup. See [automatic local updates](../../../docs/SAFARI_STATUS.md#automatic-local-updates-for-claude-and-codex).
 
 The entitlements mirror the converter's sandbox settings: the host uses App Sandbox and outgoing network access; the extension uses App Sandbox. Ad-hoc signing provides integrity for development, not an Apple Developer ID or notarization. It does not remove Safari's unsigned-extension requirement or Gatekeeper's distribution checks.
 

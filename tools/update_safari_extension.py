@@ -1,0 +1,109 @@
+"""Update the installed personal Safari app using a valid identity from its team.
+
+Run from the current local checkout. This does not fetch code or publish assets.
+"""
+import hashlib
+import plistlib
+import re
+import shutil
+import ssl
+import subprocess
+import tempfile
+from pathlib import Path
+
+from build_safari_extension import BUNDLE_ID, ROOT, build
+
+INSTALLED = Path("/Applications/Tibia Anti-Ad.app")
+BACKUP = ROOT / "local/safari/previous/Tibia Anti-Ad.app"
+
+
+def output(*args):
+    return subprocess.check_output([str(arg) for arg in args], text=True,
+                                   stderr=subprocess.STDOUT)
+
+
+def verify_app(app, expected_team=None):
+    output("codesign", "--verify", "--deep", "--strict", app)
+    extensions = list((app / "Contents/PlugIns").glob("*.appex"))
+    if len(extensions) != 1:
+        raise RuntimeError("Expected exactly one installed Safari extension.")
+    team = expected_team
+    for bundle, identifier in ((app, BUNDLE_ID), (extensions[0], BUNDLE_ID + ".Extension")):
+        info = plistlib.loads((bundle / "Contents/Info.plist").read_bytes())
+        signature = output("codesign", "-dvv", bundle)
+        match = re.search(r"^TeamIdentifier=([A-Z0-9]+)$", signature, re.M)
+        if (info["CFBundleIdentifier"] != identifier or not match
+                or "Authority=Apple Development:" not in signature):
+            raise RuntimeError("Expected a personally signed Tibia Anti-Ad app and extension.")
+        team = team or match[1]
+        if match[1] != team:
+            raise RuntimeError("Update signing team differs from the installed app.")
+    return team
+
+
+def find_identity(team):
+    valid = output("security", "find-identity", "-v", "-p", "codesigning")
+    fingerprints = set(re.findall(r'\) ([A-Fa-f0-9]{40}) "Apple Development:', valid))
+    certificates = output("security", "find-certificate", "-a", "-c", "Apple Development", "-p")
+    for pem in re.findall(r"-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----", certificates, re.S):
+        der = ssl.PEM_cert_to_DER_cert(pem)
+        fingerprint = hashlib.sha1(der).hexdigest().upper()
+        if fingerprint not in fingerprints:
+            continue
+        subject = subprocess.check_output(
+            ["openssl", "x509", "-inform", "DER", "-noout", "-subject", "-nameopt", "RFC2253"],
+            input=der).decode()
+        if re.search(r"(?:^|,)OU=" + re.escape(team) + r"(?:,|$)", subject):
+            return fingerprint
+    raise RuntimeError("No valid Apple Development identity for the installed team. Renew the certificate in Xcode; the installed app has not been replaced.")
+
+
+def install(built, installed, team):
+    """Stage and verify before swapping; retain the previous app for rollback."""
+    with tempfile.TemporaryDirectory(prefix="tibia-update-", dir=installed.parent) as temporary:
+        stage = Path(temporary)
+        candidate, previous = stage / installed.name, stage / "previous.app"
+        shutil.copytree(built, candidate, symlinks=True)
+        verify_app(candidate, team)
+        BACKUP.parent.mkdir(parents=True, exist_ok=True)
+        if BACKUP.exists():
+            shutil.rmtree(BACKUP)
+        shutil.copytree(installed, BACKUP, symlinks=True)
+        installed.rename(previous)
+        try:
+            candidate.rename(installed)
+            verify_app(installed, team)
+        except BaseException:
+            if installed.exists():
+                shutil.rmtree(installed)
+            previous.rename(installed)
+            raise
+    return BACKUP
+
+
+def main():
+    if not INSTALLED.is_dir():
+        raise RuntimeError("Install and personally sign the app once before using this updater.")
+    # Serialize agent updates; never race another updater replacing the same app.
+    import fcntl
+    lock_path = ROOT / "local/safari/update.lock"
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    with lock_path.open("w") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            raise RuntimeError("Another personal Safari update is already running.") from None
+        team = verify_app(INSTALLED)
+        identity = find_identity(team)
+        built = build(identity)
+        verify_app(built, team)
+        # A closed host app is safe to replace. Do not close the user's Safari tabs.
+        subprocess.run(["pkill", "-x", "Tibia Anti-Ad"], check=False)
+        backup = install(built, INSTALLED, team)
+        subprocess.run(["open", str(INSTALLED)], check=True)
+        print(f"Updated and verified: {INSTALLED}\nPrevious app: {backup}")
+        print("Safari was left running. Reload affected pages; a Safari restart may be needed to activate the update.")
+
+
+if __name__ == "__main__":
+    main()
