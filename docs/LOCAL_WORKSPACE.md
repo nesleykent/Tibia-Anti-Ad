@@ -7,7 +7,7 @@ The checkout separates published files from original working material and genera
 | `extension/`, `filters/`, `research/`, `scripts/`, `tools/`, `tests/` | Maintained project files |
 | `docs/` and root project documents | Public usage, contribution and maintenance guidance |
 | `dist/` | Reproducible development builds; ignored by Git |
-| `local/legacy/fansites/<domain>/` | Original local filters, reports and userscripts, grouped by fansite |
+| `local/legacy/fansites/<domain>/` | Original local filters, reports and userscripts, grouped by fansite. `tibiavip.app` is stored as `tibiavip.app-site/`: macOS treats any folder ending in `.app` as an application and lists it in Launchpad and Spotlight. |
 | `local/legacy/twitch/scripts/` | Original Twitch scripts |
 | `local/legacy/archives/` | Supplied ZIP archives |
 | `local/legacy/notes/` | Original working notes |
