@@ -4,7 +4,7 @@
 // Each card is classified from its full title and tags (copied from Twitch's own
 // data by tibia-props.js) with the rules in tibia-classify.js: a server declared
 // in the title or tags hides the card, unless an official world or "Tibia
-// Global" is also present; a mere "!server" command does not. Only "other"
+// Global" is also present; a "!server" chat command counts like the name. Only "other"
 // hides a card. Runs only on the Tibia category directory, and only while the
 // popup's switch ({tibiaFilter} in storage, on by default) is on.
 (() => {

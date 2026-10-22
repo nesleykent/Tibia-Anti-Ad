@@ -58,7 +58,8 @@ class Evidence:
     def classify(self, title, tags):
         """Classify full title and tag metadata."""
         found = self.metadata(title, tags)
-        declared, tagged = (sorted(found['declared']), sorted(found['tagged']))
+        declared = sorted(set(found['declared']) | set(found['commands']))
+        tagged = sorted(found['tagged'])
         official_title, official_tags = (found['official_title'], found['official_tags'])
         if declared and (not official_title):
             return ('other', f"declared in title: {', '.join(declared)}", found)
@@ -71,8 +72,6 @@ class Evidence:
             return ('tibia', 'official world or Tibia Global in title', found)
         if declared or tagged:
             return ('undetermined', 'evidence for Tibia and another game', found)
-        if found['commands']:
-            return ('undetermined', 'server only as a chat command', found)
         return ('undetermined', 'no decisive evidence', found)
 
 def evaluate(evidence):

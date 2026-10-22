@@ -52,7 +52,8 @@
     };
     return (title, tags) => {
       const found = metadata(title, tags);
-      const declared = Object.keys(found.declared).sort();
+      // A "!server" chat command in the title names the server just like plain text.
+      const declared = [...new Set([...Object.keys(found.declared), ...Object.keys(found.commands)])].sort();
       const tagged = Object.keys(found.tagged).sort();
       const officialInTitle = found.official_title.length > 0;
       const officialInTags = found.official_tags.length > 0;
@@ -93,13 +94,6 @@
         return {
           verdict: 'undetermined',
           reason: 'evidence for Tibia and another game',
-          found
-        };
-      }
-      if (Object.keys(found.commands).length) {
-        return {
-          verdict: 'undetermined',
-          reason: 'server only as a chat command',
           found
         };
       }
