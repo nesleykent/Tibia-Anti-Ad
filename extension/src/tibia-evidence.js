@@ -354,9 +354,10 @@ globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {
         "[a-z0-9]{3,}(?<!b)ot\\.(?:com|online|net|org|gg)",
         "\\[[a-z0-9]{2,}ot\\]",
         "(?<![a-z0-9])baiak[a-z0-9]*",
-        "(?<![a-z0-9])pokeidl[a-z]*"
+        "(?<![a-z0-9])pokeidl[a-z]*",
+        "(?<![a-z0-9])[a-z0-9]{2,}-ot(?![a-z0-9])"
       ],
-      "_comment": "title_patterns catch unlisted servers: a domain or [TAG] ending in 'ot' (not 'bot'), Baiak variants, Poke Idle spellings.",
+      "_comment": "title_patterns catch unlisted servers: a domain or [TAG] ending in 'ot' (not 'bot'), a hyphenated name-OT (Mau-Ot), Baiak variants, Poke Idle spellings.",
       "fuzzy": [
         "kingaslan",
         "medivia",

@@ -2,6 +2,10 @@
   "_comment": "Hand-labelled titles for the Tibia filter: spelling variations, lookalike letters, negations and legitimate Tibia streams that must stay visible. tests/python/test_twitch_evidence.py runs them through both classifiers. expect is the verdict; 'visible' means tibia or undetermined.",
   "cases": [
     {
+      "title": "Tibia Mobile Mau-Ot - Kina 800+ Soul War!",
+      "expect": "other"
+    },
+    {
       "title": "rubimot ek 500 farm",
       "expect": "other"
     },
