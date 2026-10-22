@@ -1,21 +1,21 @@
-// Twitch Clean background: keeps the network rulesets in step with the settings.
+// Tibia Anti-Ad background: keeps the network rulesets in step with the settings.
 // Browsers re-enable static rulesets from manifest.json after an update, so the
 // stored choice is reapplied on install, on browser start and on every change.
 // Safari loads settings.js first through manifest background.scripts; the
 // Chrome build runs this file as a service worker and imports it.
-if (typeof importScripts === 'function' && !globalThis.TwitchCleanSettings) {
-    importScripts('settings.js');
+if (typeof importScripts === 'function' && !globalThis.TibiaAntiAdSettings) {
+    importScripts('sites.js', 'settings.js');
 }
 
 (() => {
     'use strict';
 
     const api = globalThis.browser || globalThis.chrome;
-    const S = globalThis.TwitchCleanSettings;
+    const S = globalThis.TibiaAntiAdSettings;
 
     const sync = () => S.load(api)
         .then(settings => api.declarativeNetRequest.updateEnabledRulesets(S.rulesetState(settings)))
-        .catch(error => console.warn('[Twitch Clean] could not update rulesets:', error));
+        .catch(error => console.warn('[Tibia Anti-Ad] could not update rulesets:', error));
 
     api.runtime.onInstalled.addListener(sync);
     api.runtime.onStartup.addListener(sync);

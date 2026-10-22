@@ -13,9 +13,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --check extensions/twitch-clean/extension/page.js
-      - run: node --check extensions/twitch-clean/extension/nags.js
-      - run: for f in settings settings-bridge background tibia-evidence tibia-classify tibia-filter tibia-props popup; do node --check extensions/twitch-clean/extension/$f.js; done
+      - run: node --check extensions/tibia-anti-ad/extension/page.js
+      - run: node --check extensions/tibia-anti-ad/extension/nags.js
+      - run: for f in sites settings settings-bridge background tibia-evidence tibia-classify tibia-filter tibia-props popup sites/fixes/tibiopedia.pl sites/fixes/tibiawiki.com.br sites/fixes/adsense-overlays; do node --check extensions/tibia-anti-ad/extension/$f.js; done
       - run: node --check scripts/twitch/twitch-stopthemadness.js
       - run: node tests/twitch-startup.cjs
       - run: node tests/twitch-settings.cjs

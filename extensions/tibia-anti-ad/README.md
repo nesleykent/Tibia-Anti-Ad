@@ -1,6 +1,6 @@
-# Twitch Clean
+# Tibia Anti-Ad
 
-Safari Web Extension source supplied in `twitch-clean.zip`, integrated into Anti-Ad Tibia. The supplied files are preserved byte-for-byte except `manifest.json`, `hide.css`, `page.js` and `rules.json`, which were changed for the Tibia filter and the settings; the [source manifest](../../research/twitch/source-manifest.json) records each change and the original hashes. The vaft code inside `page.js` is unchanged.
+Safari Web Extension source supplied in `twitch-clean.zip`, integrated into Tibia Anti-Ad. The supplied files are preserved byte-for-byte except `manifest.json`, `hide.css`, `page.js` and `rules.json`, which were changed for the Tibia filter and the settings; the [source manifest](../../research/twitch/source-manifest.json) records each change and the original hashes. The vaft code inside `page.js` is unchanged.
 
 ## Features
 
@@ -16,7 +16,7 @@ The original upstream vaft project was archived in March 2026. Current live-ad e
 
 ## Settings
 
-Open the settings from the toolbar button, or in Safari from **Settings > Extensions > Twitch Clean > Settings**. Every feature has its own switch, all on by default except **Hide ad-break banner**. The **Twitch Clean** switch at the top pauses everything at once. Settings are stored locally in the extension; nothing is sent anywhere.
+Open the settings from the toolbar button, or in Safari from **Settings > Extensions > Tibia Anti-Ad > Settings**. Every feature has its own switch, all on by default except **Hide ad-break banner**. The **Tibia Anti-Ad** switch at the top pauses everything at once. Settings are stored locally in the extension; nothing is sent anywhere.
 
 | Section | Switch | Effect | Applies |
 | --- | --- | --- | --- |
@@ -40,8 +40,8 @@ The supplied manifest targets Safari 26+. This folder contains source, not a sig
 1. Download/clone this private repository while signed in.
 2. In Safari settings, enable the web-developer features and unsigned extensions where available.
 3. Choose **Add Temporary Extension…** and select this directory's **`extension`** folder, containing `manifest.json`.
-4. Enable Twitch Clean and allow access to Twitch. Reload the live channel page.
-5. Open the settings from the Twitch Clean toolbar button to choose features.
+4. Enable Tibia Anti-Ad and allow access to Twitch. Reload the live channel page.
+5. Open the settings from the Tibia Anti-Ad toolbar button to choose features.
 
 Temporary and unsigned installations follow Safari's lifecycle restrictions; they can disappear after quitting Safari or after the temporary-installation limit. For persistent development, use Apple's Safari web-extension tooling to wrap `extension/` in an Xcode app, configure local signing and run it. No signed app or Xcode project is included. Do not delete an existing project to resolve a packaging error.
 
@@ -51,7 +51,7 @@ Alternatively, use the [standalone StopTheMadness Pro script](../../scripts/twit
 
 On a Twitch live page, `window.twitchAdSolutionsVersion === 24` indicates that vaft started (with **Remove stream ads** on). `localStorage.getItem('video-quality')` should initially contain `{"default":"chunked"}` (with **Source quality** on). These checks do **not** prove that video advertisements were removed. Confirm playback through a real ad break, including audio, captions, quality, chat and reconnect behavior.
 
-Switch off a feature in the settings, or pause everything with the **Twitch Clean** switch; video features stop after Twitch reloads. Disable/remove Twitch Clean in Safari settings and reload Twitch to remove its hooks entirely. Source quality is a saved preference: choose your previous quality in the Twitch player afterward. Account for any other blocker when comparing behavior.
+Switch off a feature in the settings, or pause everything with the **Tibia Anti-Ad** switch; video features stop after Twitch reloads. Disable/remove Tibia Anti-Ad in Safari settings and reload Twitch to remove its hooks entirely. Source quality is a saved preference: choose your previous quality in the Twitch player afterward. Account for any other blocker when comparing behavior.
 
 The main script runs before the player in the page context. Cosmetic filters alone cannot perform this replacement. The standalone script does not classify or hide OTServ streams.
 

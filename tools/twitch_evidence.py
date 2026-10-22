@@ -10,7 +10,7 @@ import urllib.request
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'filters/twitch/tibia-evidence.json'
-EXTENSION_DATA = ROOT / 'extensions/twitch-clean/extension/tibia-evidence.js'
+EXTENSION_DATA = ROOT / 'extensions/tibia-anti-ad/extension/tibia-evidence.js'
 AUDIT = ROOT / 'research/twitch/data/2026-10-21/analysis/classificacao.json'
 AUDIT_OTHER = {'RubinOT', 'PokeAlliance (PKA)', 'PokeXGames (PXG)', 'Outros OTServers', 'Jogos Idle', 'DeusOT / DeusOld', 'Outros Pokémon', 'Pokémon misto', 'Outros jogos'}
 AUDIT_TIBIA = {'Tibia'}

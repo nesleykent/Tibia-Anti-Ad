@@ -1,4 +1,4 @@
-// Twitch Clean: JavaScript port of Evidence.classify() in tools/twitch_evidence.py.
+// Tibia Anti-Ad: JavaScript port of Evidence.classify() in tools/twitch_evidence.py.
 // Keep the two in step; tests/test_twitch_evidence.py checks they agree.
 (() => {
   'use strict';

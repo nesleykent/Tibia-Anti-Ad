@@ -1,8 +1,14 @@
-// Twitch Clean settings: every option, its default and what it controls.
+// Tibia Anti-Ad settings: every option, its default and what it controls.
 // Loaded by the settings page (popup.html), the background script and the
 // isolated content scripts, so all of them share one definition.
 (() => {
     'use strict';
+
+    // The fansites (sites.js, generated from filters/sites). Each one has a switch,
+    // on by default, that controls its ruleset and its cosmetic rules. Loaded
+    // before this file; without it only the Twitch options exist.
+    const SITES = globalThis.TibiaAntiAdSites || [];
+    const fromSites = field => Object.fromEntries(SITES.map(site => [site.key, field(site)]));
 
     // Every option is a boolean in storage.local under the same key.
     const DEFAULTS = Object.freeze({
@@ -19,17 +25,19 @@
         hideSignupPrompts: true,
         hideCookieBanner: true,
         tibiaFilter: true,
+        ...fromSites(() => true),
     });
 
     // Declarative net request rulesets (manifest.json rule_resources ids).
     const RULESETS = Object.freeze({
         blockAds: 'twitch_ads',
         blockTracking: 'twitch_tracking',
+        ...fromSites(site => site.ruleset),
     });
 
     // hide.css groups. Opt-out groups are hidden unless named in the root's
-    // data-twitch-clean-off attribute; opt-in groups are hidden only when named
-    // in data-twitch-clean-on.
+    // data-tibia-anti-ad-off attribute; opt-in groups are hidden only when named
+    // in data-tibia-anti-ad-on.
     const CSS_OPT_OUT = Object.freeze({
         hideDisplayAds: 'ads',
         hideUpsells: 'upsells',
@@ -37,6 +45,7 @@
         hideSignupPrompts: 'signup',
         hideCookieBanner: 'cookies',
         tibiaFilter: 'tibia',
+        ...fromSites(site => site.domain),
     });
     const CSS_OPT_IN = Object.freeze({
         hideAdBreakBanner: 'adbreak',
@@ -45,7 +54,7 @@
     // page.js runs in the page before any extension API can answer, so the
     // settings bridge mirrors the resolved settings into the page's localStorage
     // under this key and page.js reads them synchronously.
-    const PAGE_KEY = 'twitch-clean:settings';
+    const PAGE_KEY = 'tibia-anti-ad:settings';
 
     // Options that page.js applies once, when the page loads.
     const RELOAD_KEYS = Object.freeze(['removeStreamAds', 'sourceQuality', 'backgroundQuality']);
@@ -77,8 +86,8 @@
 
     const load = api => api.storage.local.get(DEFAULTS).then(resolve);
 
-    globalThis.TwitchCleanSettings = Object.freeze({
-        DEFAULTS, RULESETS, CSS_OPT_OUT, CSS_OPT_IN, PAGE_KEY, RELOAD_KEYS,
+    globalThis.TibiaAntiAdSettings = Object.freeze({
+        SITES, DEFAULTS, RULESETS, CSS_OPT_OUT, CSS_OPT_IN, PAGE_KEY, RELOAD_KEYS,
         resolve, active, cssState, rulesetState, load,
     });
 })();

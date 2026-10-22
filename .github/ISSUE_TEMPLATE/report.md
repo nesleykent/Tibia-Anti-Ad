@@ -11,7 +11,7 @@ Advertising / tracking / navigation interference / broken tool / assessment corr
 OS, browser and blocker versions, viewport, active lists and revisions, consent/login state (no credentials).
 
 ## Reproduction
-Steps, expected result, actual result, delayed/scroll interactions, and behavior with Anti-Ad Tibia disabled.
+Steps, expected result, actual result, delayed/scroll interactions, and behavior with Tibia Anti-Ad disabled.
 
 ## Evidence
 Redacted screenshots or request details. Mark observations, simulations and assumptions separately. Do not include cookies, tokens or private account data.

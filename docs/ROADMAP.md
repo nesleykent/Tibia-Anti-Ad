@@ -21,7 +21,7 @@
 - [ ] Establish reassessment and correction history.
 
 ## Twitch
-- [x] Integrate supplied Twitch Clean extension and standalone vaft script with English instructions.
+- [x] Integrate supplied Tibia Anti-Ad extension and standalone vaft script with English instructions.
 - [ ] Validate display-ad and telemetry filters without breaking playback or chat.
 - [ ] Investigate pre-roll/mid-roll neutralization and measure stalls, latency and ad exposure.
 - [ ] Collect reviewed multilingual Tibia/OTServ/undetermined data using supported metadata sources.

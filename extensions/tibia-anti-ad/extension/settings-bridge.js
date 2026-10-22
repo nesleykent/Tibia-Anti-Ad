@@ -1,7 +1,7 @@
-// Twitch Clean: applies the settings to each Twitch page.
+// Tibia Anti-Ad: applies the settings to each Twitch page.
 //
-// - Names the hide.css groups that are switched off (data-twitch-clean-off) or
-//   opted into (data-twitch-clean-on) on the root element, live as settings change.
+// - Names the hide.css groups that are switched off (data-tibia-anti-ad-off) or
+//   opted into (data-tibia-anti-ad-on) on the root element, live as settings change.
 // - Mirrors the resolved settings into the page's localStorage for page.js,
 //   which has to decide synchronously before Twitch's player starts.
 // The last mirrored copy is applied first, synchronously, so a group you turned
@@ -10,7 +10,7 @@
     'use strict';
 
     const api = globalThis.browser || globalThis.chrome;
-    const S = globalThis.TwitchCleanSettings;
+    const S = globalThis.TibiaAntiAdSettings;
 
     const setList = (el, name, values) => {
         if (values.length) { el.setAttribute(name, values.join(' ')); }
@@ -21,8 +21,8 @@
         const root = document.documentElement;
         if (!root) { return; }
         const { off, on } = S.cssState(settings);
-        setList(root, 'data-twitch-clean-off', off);
-        setList(root, 'data-twitch-clean-on', on);
+        setList(root, 'data-tibia-anti-ad-off', off);
+        setList(root, 'data-tibia-anti-ad-on', on);
     };
 
     const mirror = settings => {

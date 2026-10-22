@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-EXTENSION = ROOT / 'extensions/twitch-clean/extension'
+EXTENSION = ROOT / 'extensions/tibia-anti-ad/extension'
 
 
 class TwitchPackageTests(unittest.TestCase):
@@ -19,7 +19,7 @@ class TwitchPackageTests(unittest.TestCase):
     def test_manifest_references_existing_resources_and_early_page_world(self):
         manifest = json.loads((EXTENSION / 'manifest.json').read_text())
         self.assertEqual(manifest['manifest_version'], 3)
-        self.assertEqual(manifest['host_permissions'], ['*://*.twitch.tv/*'])
+        self.assertEqual(manifest['host_permissions'][0], '*://*.twitch.tv/*')
         self.assertEqual(manifest['permissions'], ['declarativeNetRequest', 'storage'])
         for resource in manifest['icons'].values():
             self.assertTrue((EXTENSION / resource).is_file())
@@ -35,7 +35,8 @@ class TwitchPackageTests(unittest.TestCase):
 
     def test_dnr_ids_actions_and_essential_video_hosts(self):
         rulesets = {entry['id']: json.loads((EXTENSION / entry['path']).read_text())
-                    for entry in json.loads((EXTENSION / 'manifest.json').read_text())['declarative_net_request']['rule_resources']}
+                    for entry in json.loads((EXTENSION / 'manifest.json').read_text())['declarative_net_request']['rule_resources']
+                    if not entry['id'].startswith('site_')}
         self.assertEqual(set(rulesets), {'twitch_ads', 'twitch_tracking'})
         hosts = []
         for name, rules in rulesets.items():
@@ -56,14 +57,14 @@ class TwitchPackageTests(unittest.TestCase):
         manifest = json.loads((EXTENSION / 'manifest.json').read_text())
         self.assertTrue((EXTENSION / manifest['options_ui']['page']).is_file())
         self.assertEqual(manifest['options_ui']['page'], manifest['action']['default_popup'])
-        self.assertEqual(manifest['background'], {'scripts': ['settings.js', 'background.js']})
+        self.assertEqual(manifest['background'], {'scripts': ['sites.js', 'settings.js', 'background.js']})
         bridge = next(item for item in manifest['content_scripts'] if 'settings-bridge.js' in item.get('js', []))
-        self.assertEqual(bridge['js'], ['settings.js', 'settings-bridge.js'])
+        self.assertEqual(bridge['js'], ['sites.js', 'settings.js', 'settings-bridge.js'])
         self.assertEqual(bridge['run_at'], 'document_start')
         self.assertTrue(bridge['all_frames'])
         tibia = next(item for item in manifest['content_scripts'] if 'tibia-filter.js' in item.get('js', []))
-        self.assertEqual(tibia['js'][0], 'settings.js')
-        overrides = json.loads((ROOT / 'extensions/twitch-clean/chrome/manifest-overrides.json').read_text())
+        self.assertEqual(tibia['js'][:2], ['sites.js', 'settings.js'])
+        overrides = json.loads((ROOT / 'extensions/tibia-anti-ad/chrome/manifest-overrides.json').read_text())
         self.assertEqual(overrides['background'], {'service_worker': 'background.js'})
 
     def test_every_setting_has_a_switch_and_every_css_rule_a_group(self):
@@ -80,7 +81,7 @@ class TwitchPackageTests(unittest.TestCase):
         self.assertEqual(len(rules), 25)
         for rule in rules:
             with self.subTest(rule=rule):
-                match = re.match(r'html(?::not\(\[data-twitch-clean-off~="(\w+)"\]\)|\[data-twitch-clean-on~="(\w+)"\]) ', rule)
+                match = re.match(r'html(?::not\(\[data-tibia-anti-ad-off~="(\w+)"\]\)|\[data-tibia-anti-ad-on~="(\w+)"\]) ', rule)
                 self.assertIsNotNone(match)
                 self.assertIn(match.group(1) or match.group(2), groups)
 

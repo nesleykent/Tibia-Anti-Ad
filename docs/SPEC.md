@@ -1,4 +1,4 @@
-# Anti-Ad Tibia project specification
+# Tibia Anti-Ad project specification
 
 ## Objective and principles
 Identify, block and neutralize intrusive advertising, tracking and navigation interference in services used by the Tibia community. Fansite funding does not justify abusive advertising. The player experience takes priority over monetization. Recognizing good practices never grants advertising immunity.
@@ -18,7 +18,7 @@ Initial repository scope: preserve supplied research, publish experimental filte
 - `filters/anti-ad-tibia*.txt`: generated experimental subscriptions.
 - `research/`: supplied reports and scripts, not newly verified evidence.
 - `docs/`: installation, methodology, compatibility, Twitch policy and roadmap.
-- `extensions/twitch-clean/`: supplied Safari extension source.
+- `extensions/tibia-anti-ad/`: supplied Safari extension source.
 - `scripts/twitch/`: standalone live-video ad script and setup.
 - `tools/`: Python 3.11+ standard-library utilities; no external runtime dependencies.
 - Build: `python3 tools/build_filters.py`
