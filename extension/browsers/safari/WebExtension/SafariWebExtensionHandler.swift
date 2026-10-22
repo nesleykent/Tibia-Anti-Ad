@@ -1,13 +1,10 @@
 import Foundation
 import SafariServices
 
-// Answers browser.runtime.sendNativeMessage from the web extension's background script.
+// Safari requires a principal class for a web extension. The extension does not
+// use native messaging, so every request is completed without a reply.
 final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     func beginRequest(with context: NSExtensionContext) {
-        let item = context.inputItems.first as? NSExtensionItem
-        let message = item?.userInfo?[SFExtensionMessageKey] as? [String: Any] ?? [:]
-        let response = NSExtensionItem()
-        response.userInfo = [SFExtensionMessageKey: SharedStore.handle(message)]
-        context.completeRequest(returningItems: [response], completionHandler: nil)
+        context.completeRequest(returningItems: [], completionHandler: nil)
     }
 }
