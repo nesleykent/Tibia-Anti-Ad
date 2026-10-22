@@ -1,6 +1,24 @@
 # Install Tibia Anti-Ad in Safari
 
-For **Safari 26 or later on a Mac**. These are development previews, not an App Store installation. No Apple Developer distribution certificate is configured for this project yet, so Safari requires **Allow unsigned extensions**. That setting resets when you quit Safari.
+For **Safari 26 or later on a Mac**. The public downloads below use an ad-hoc development signature and require **Allow unsigned extensions**. For your own Mac, you can instead configure a free **Personal Team / Apple Development** certificate in Xcode. Public distribution signing and personal development signing are different workflows.
+
+## For your own Mac: free Xcode signing
+
+You do not need to buy Apple Developer Program membership just to set up a Personal Team for local development. Xcode can create a free **Apple Development** certificate associated with your Apple Account. This is not a Developer ID certificate for public downloads.
+
+1. Open **Xcode → Settings → Accounts** (called **Apple Accounts** in some versions).
+2. Add your Apple Account and select your **Personal Team**.
+3. Open **Manage Certificates…**, click **+**, and choose **Apple Development**. Complete any account or keychain prompts yourself.
+4. Open the generated project at **`dist/safari-project/Tibia Anti-Ad/Tibia Anti-Ad.xcodeproj`** in Xcode. If it does not exist yet, run the optional build command near the end of this guide once to generate it.
+5. In the project editor, select **Tibia Anti-Ad** under **Targets**. Open **Signing & Capabilities**, enable **Automatically manage signing**, and choose your **Personal Team**. Repeat for **Tibia Anti-Ad Extension**. Both targets need your development identity.
+6. Select the **Tibia Anti-Ad** scheme and **My Mac**, then choose **Product → Run**.
+7. Enable the newly signed extension in Safari Settings. Remove the earlier temporary installation to avoid confusing it with this copy.
+
+Use **Xcode's Run command** for this personal signing route. The repository's default command-line build deliberately uses ad-hoc signing for public previews and CI; rerunning it does not preserve a Personal Team selection in its regenerated project.
+
+After signing, test that Safari accepts the extension with **Allow unsigned extensions turned off**, then quit and reopen Safari to check persistence. That behavior has not been verified on this machine yet: it currently has no valid Apple Development identity.
+
+See [Apple's Personal Team signing workflow](https://help.apple.com/xcode/mac/current/en.lproj/dev60b6fbbc7.html) and [certificate management](https://help.apple.com/xcode/mac/current/en.lproj/dev154b28f09.html). The paid Developer ID route is needed for a normally trusted, publicly distributed download, not this local Personal Team setup.
 
 ## Quickest option: download the extension folder
 
@@ -31,7 +49,7 @@ The ZIP contains **Tibia Anti-Ad.app**, with the Safari extension embedded. It i
 
 You may need to enable **Allow unsigned extensions** again after restarting Safari. The containing app keeps the extension files installed, but does not remove this development-mode requirement.
 
-**If macOS blocks the app:** use the temporary-extension ZIP above, or build the app locally with Xcode below. Do not disable Gatekeeper or other system protections. A signed and notarized download requires a configured Apple Developer ID certificate; that is still pending.
+**If macOS blocks the app:** use the temporary-extension ZIP above, or build the app locally with Xcode below. Do not disable Gatekeeper or other system protections. A publicly distributed signed and notarized download requires a configured Apple Developer ID certificate; that is still pending. For your own Mac, use the free Personal Team route above.
 
 ## Open the extension's controls
 

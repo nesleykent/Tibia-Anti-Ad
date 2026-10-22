@@ -9,3 +9,5 @@ The Safari app is generated from `extension/src/` with Apple's converter. Do not
 The entitlements mirror the converter's sandbox settings: the host uses App Sandbox and outgoing network access; the extension uses App Sandbox. Ad-hoc signing provides integrity for development, not an Apple Developer ID or notarization. It does not remove Safari's unsigned-extension requirement or Gatekeeper's distribution checks.
 
 For a signed public app, configure a Developer ID certificate and notarization or publish through the App Store. This build never creates identities, changes keychains, disables Gatekeeper or changes Safari's security preferences.
+
+For local personal signing, open the generated Xcode project, choose a free Personal Team on both targets, and build with Xcode. The command-line preview build uses ad-hoc signing deliberately and regenerates its project; it does not retain those personal Xcode settings. See the [personal signing instructions](../../../docs/INSTALL_SAFARI.md#for-your-own-mac-free-xcode-signing).
