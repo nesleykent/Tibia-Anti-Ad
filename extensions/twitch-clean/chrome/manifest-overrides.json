@@ -1,0 +1,7 @@
+{
+  "_comment": "Merged over ../extension/manifest.json by tools/build_chrome_extension.py.",
+  "background": {"service_worker": "background.js"},
+  "permissions": ["declarativeNetRequest", "offscreen"],
+  "browser_specific_settings": null,
+  "minimum_chrome_version": "116"
+}

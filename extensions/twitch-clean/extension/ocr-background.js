@@ -85,7 +85,10 @@
     };
 
     api.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-        if (message?.type !== 'tibia-ocr' || typeof message.channel !== 'string' || !/^[a-z0-9_]{1,25}$/i.test(message.channel)) {
+        // 'tibia-ocr-forwarded' comes from the Chrome service worker (chrome/background.js).
+        // In Chrome only the forwarded copy is handled here, so each request is read once.
+        const expected = location.pathname.endsWith('/offscreen.html') ? 'tibia-ocr-forwarded' : 'tibia-ocr';
+        if (message?.type !== expected || typeof message.channel !== 'string' || !/^[a-z0-9_]{1,25}$/i.test(message.channel)) {
             return false;
         }
         ocr(message.channel.toLowerCase()).then(text => sendResponse({ text }));

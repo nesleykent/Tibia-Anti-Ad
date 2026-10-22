@@ -62,7 +62,11 @@
             cell.setAttribute(VERDICT, `${verdict}: ${result.reason}`);
             if (verdict === 'undetermined' && !screens.has(info.channel)) { requestScreen(info.channel); }
         }
-        if (verdict === 'other') { cell.setAttribute(MARK, ''); hiddenByUs.add(cell); }
+        if (verdict === 'other') {
+            if (!hiddenByUs.has(cell)) { requestMore(); }
+            cell.setAttribute(MARK, '');
+            hiddenByUs.add(cell);
+        }
         else if (hiddenByUs.has(cell)) { cell.removeAttribute(MARK); hiddenByUs.delete(cell); }
     };
 
@@ -75,6 +79,31 @@
             return;
         }
         for (const article of document.querySelectorAll('article')) { apply(article); }
+    };
+
+    // Twitch loads more cards from a scroll handler on its root scroller that
+    // checks whether the list end is near. Hiding cards shortens the list without
+    // a scroll, so after hiding, dispatch a synthetic scroll event (as Unwanted
+    // Twitch does): Twitch loads more only if the end is now near, and the
+    // reader's position never changes.
+    // The handler may not be attached yet, or a load may be in flight, so retry
+    // while the visible list stays shorter than two screens and no new cards came.
+    const RETRIES = 8;
+    let nudgeTimer = 0;
+    let retries = 0;
+    let lastCount = 0;
+    const requestMore = () => {
+        if (nudgeTimer) { return; }
+        nudgeTimer = setTimeout(() => {
+            nudgeTimer = 0;
+            const scroller = document.querySelector('[data-a-target="root-scroller"]');
+            if (!scroller || !onTibiaDirectory()) { return; }
+            scroller.dispatchEvent(new Event('scroll'));
+            const count = document.querySelectorAll('article').length;
+            if (count !== lastCount) { lastCount = count; retries = 0; }
+            const short = scroller.scrollHeight - scroller.scrollTop < scroller.clientHeight * 2;
+            if (short && retries++ < RETRIES) { requestMore(); }
+        }, 700);
     };
 
     // Twitch reuses cards on scroll and client-side navigation: rescan once per
