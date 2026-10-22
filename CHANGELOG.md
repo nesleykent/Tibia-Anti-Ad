@@ -43,6 +43,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Fixed
 
+- Safari toolbar icon stays tinted on every page: the extension now has access to all sites (`<all_urls>`), because Safari greys an extension's icon wherever it has no access. Content scripts and network rules still apply only to Twitch and the 15 fansites; Safari will show its broader access prompt once.
+
 - Safari toolbar icon: a plain infinity line glyph when blocking is on, instead of a filled circle that showed as a solid white disc next to Safari's other toolbar icons.
 
 - Settings popover: no more collapsible sections; every option is visible in grouped sections with a header, and every row keeps the same layout (text on the left, switch or button on the right). The on-counts next to headers are gone.

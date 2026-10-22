@@ -73,7 +73,8 @@
     "*://*.tibiawiki.com.br/*",
     "*://tibiopedia.pl/*",
     "*://*.tibiopedia.pl/*",
-    "https://raw.githubusercontent.com/*"
+    "https://raw.githubusercontent.com/*",
+    "<all_urls>"
   ],
   "declarative_net_request": {
     "rule_resources": [

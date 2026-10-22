@@ -170,7 +170,10 @@ def build():
             script["matches"] = [TWITCH_MATCH] + hosts
     manifest["content_scripts"] = kept + scripts
     # The Tibia filter's evidence updates from the repository (tibia-rules.js).
-    manifest["host_permissions"] = [TWITCH_MATCH] + hosts + ["https://raw.githubusercontent.com/*"]
+    # Access to every site keeps Safari's toolbar icon tinted on every page (Safari
+    # greys it where an extension has no access); content scripts still run only
+    # on Twitch and the fansites, and the rule sets match only their hosts.
+    manifest["host_permissions"] = [TWITCH_MATCH] + hosts + ["https://raw.githubusercontent.com/*", "<all_urls>"]
     manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return sites
 
