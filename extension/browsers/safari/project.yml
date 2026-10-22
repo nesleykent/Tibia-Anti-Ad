@@ -1,11 +1,13 @@
 # XcodeGen description of the Safari app: `tools/build_safari_extension.py`
 # stages the web extension's resources and runs `xcodegen` on this file.
 #
-# Two targets:
+# Three targets:
 #   - Tibia Anti-Ad: the host app (a SwiftUI window with the extension's status).
 #   - Tibia Anti-Ad Extension: the Safari web extension (scripts, styles, network
-#     rules and the toolbar popup from extension/src).
-# The app contains one extension, so Safari lists Tibia Anti-Ad once.
+#     rules from extension/src).
+#   - Tibia Anti-Ad Toolbar: the Safari app extension that owns the toolbar
+#     button and its native SwiftUI popover.
+# The three share settings through the App Group named by TIBIA_APP_GROUP.
 
 name: Tibia Anti-Ad
 
@@ -24,6 +26,7 @@ settings:
     # Signing happens after the build, in tools/build_safari_extension.py.
     CODE_SIGNING_ALLOWED: NO
     ENABLE_USER_SCRIPT_SANDBOXING: NO
+    TIBIA_APP_GROUP: group.com.nesleykent.tibiaantiad
     TIBIA_VERSION: "1.0"
 
 targets:
@@ -32,6 +35,7 @@ targets:
     platform: macOS
     sources:
       - App
+      - Shared
       - path: Resources/App
         buildPhase: resources
     info:
@@ -39,6 +43,7 @@ targets:
       properties:
         CFBundleDisplayName: Tibia Anti-Ad
         LSApplicationCategoryType: public.app-category.utilities
+        TibiaAppGroup: $(TIBIA_APP_GROUP)
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
     settings:
@@ -48,16 +53,19 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     dependencies:
       - target: Tibia Anti-Ad Extension
+      - target: Tibia Anti-Ad Toolbar
 
   Tibia Anti-Ad Extension:
     type: app-extension
     platform: macOS
     sources:
       - WebExtension
+      - Shared
     info:
       path: Generated/WebExtension-Info.plist
       properties:
         CFBundleDisplayName: Tibia Anti-Ad
+        TibiaAppGroup: $(TIBIA_APP_GROUP)
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSExtension:
@@ -74,3 +82,36 @@ targets:
         basedOnDependencyAnalysis: false
         script: rsync -a "${SRCROOT}/Resources/WebExtension/" "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/"
 
+  Tibia Anti-Ad Toolbar:
+    type: app-extension
+    platform: macOS
+    sources:
+      - Toolbar
+      - Shared
+      - path: Resources/Toolbar
+        buildPhase: resources
+    info:
+      path: Generated/Toolbar-Info.plist
+      properties:
+        CFBundleDisplayName: Tibia Anti-Ad
+        TibiaAppGroup: $(TIBIA_APP_GROUP)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSHumanReadableDescription: Settings for Tibia Anti-Ad.
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.Safari.extension
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).SafariExtensionHandler
+          SFSafariToolbarItem:
+            Action: Popover
+            Identifier: Button
+            Image: ToolbarActive.png
+            Label: Tibia Anti-Ad
+          # Access to every site keeps the toolbar button tinted on every page
+          # (an aesthetic choice, see docs/ICONS.md); the extension reads only
+          # the active page's address, to match it with the Tibia directory.
+          SFSafariWebsiteAccess:
+            Level: All
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.nesleykent.tibiaantiad.Toolbar
+        PRODUCT_NAME: Tibia Anti-Ad Toolbar
