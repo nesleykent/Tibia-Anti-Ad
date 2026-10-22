@@ -337,7 +337,9 @@ globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {
         "strikerot",
         "otservlist",
         "project fibula",
-        "fibula project"
+        "fibula project",
+        "lawl new era",
+        "lawl"
       ],
       "tag_patterns": [
         "^otserv",
