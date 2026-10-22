@@ -4,10 +4,9 @@
 // Each card is classified from its full title and tags (copied from Twitch's own
 // data by tibia-props.js) with the rules in tibia-classify.js: a server declared
 // in the title or tags hides the card, unless an official world or "Tibia
-// Global" is also present; a mere "!server" command does not. Only cards the
-// metadata leaves undetermined have their thumbnail read (ocr-background.js),
-// where an OTServer-only client ("Map View", Battle Pass) also hides them.
-// Only "other" hides a card. Runs only on the Tibia category directory.
+// Global" is also present; a mere "!server" command does not. Only "other"
+// hides a card. Runs only on the Tibia category directory, and only while the
+// popup's switch ({tibiaFilter} in storage, on by default) is on.
 (() => {
     'use strict';
 
@@ -16,8 +15,7 @@
     const VERDICT = 'data-twitch-clean-tibia';
     const META = 'data-twitch-clean-meta';
     const classify = globalThis.TwitchCleanTibiaClassify.create(globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE);
-    const screens = new Map(); // channel -> OCR text | null (unreadable)
-    const pending = new Set();
+    let enabled = true;
     const hiddenByUs = new WeakSet();
 
     const onTibiaDirectory = () => /^\/directory\/category\/tibia(\/|$)/i.test(location.pathname);
@@ -42,25 +40,14 @@
         return node;
     };
 
-    const requestScreen = channel => {
-        if (screens.has(channel) || pending.has(channel)) { return; }
-        pending.add(channel);
-        api.runtime.sendMessage({ type: 'tibia-ocr', channel })
-            .then(response => screens.set(channel, typeof response?.text === 'string' ? response.text : null))
-            .catch(() => screens.set(channel, null))
-            .finally(() => { pending.delete(channel); scan(); });
-    };
-
     const apply = article => {
         const info = cardInfo(article);
         const cell = cellOf(article);
         let verdict = null;
         if (info) {
-            const screen = screens.has(info.channel) ? screens.get(info.channel) : null;
-            const result = classify(info.title, info.tags, screen);
+            const result = classify(info.title, info.tags);
             verdict = result.verdict;
             cell.setAttribute(VERDICT, `${verdict}: ${result.reason}`);
-            if (verdict === 'undetermined' && !screens.has(info.channel)) { requestScreen(info.channel); }
         }
         if (verdict === 'other') {
             if (!hiddenByUs.has(cell)) { requestMore(); }
@@ -71,7 +58,7 @@
     };
 
     const scan = () => {
-        if (!onTibiaDirectory()) {
+        if (!enabled || !onTibiaDirectory()) {
             for (const el of document.querySelectorAll(`[${VERDICT}]`)) {
                 el.removeAttribute(VERDICT);
                 if (hiddenByUs.has(el)) { el.removeAttribute(MARK); hiddenByUs.delete(el); }
@@ -118,6 +105,10 @@
         scan();
         observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title', META] });
     };
+    api.storage.onChanged.addListener(changes => {
+        if (changes.tibiaFilter) { enabled = changes.tibiaFilter.newValue !== false; scan(); }
+    });
+    api.storage.local.get({ tibiaFilter: true }).then(({ tibiaFilter }) => { enabled = tibiaFilter !== false; scan(); });
     if (document.body) { start(); }
     else { document.addEventListener('DOMContentLoaded', start, { once: true }); }
 })();

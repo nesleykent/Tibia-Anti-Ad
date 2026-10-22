@@ -22,7 +22,7 @@
   "modified_after_import": {
     "extensions/twitch-clean/extension/manifest.json": {
       "original_sha256": "36c9ed905fa3f04b3b3468f6e9f47c2700b49f5c298c02b83c5983ff507c4306",
-      "reason": "Adds the Tibia stream filter: background OCR page, thumbnail host permission, wasm CSP and content scripts."
+      "reason": "Adds the Tibia stream filter content scripts, its popup switch and the storage permission."
     }
   }
 }
