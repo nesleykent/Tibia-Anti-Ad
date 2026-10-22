@@ -2,7 +2,7 @@
  {
   "channel": "brederodess",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -107,8 +107,8 @@
  },
  {
   "channel": "pagodines",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -124,7 +124,7 @@
  {
   "channel": "lucaobigbig",
   "verdict": "other",
-  "reason": "tagged: Other OTServers, RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -258,7 +258,7 @@
  {
   "channel": "vovohzera",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -330,7 +330,7 @@
  {
   "channel": "yilinn_",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -374,7 +374,7 @@
  {
   "channel": "raikezerah",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -425,7 +425,7 @@
  {
   "channel": "theschneiderr",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -445,7 +445,7 @@
  {
   "channel": "cateroide",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -533,7 +533,7 @@
  {
   "channel": "hardparadox",
   "verdict": "other",
-  "reason": "declared in title: PokeAlliance",
+  "reason": "declared in title: PokeAlliance, RubinOT",
   "evidence": {
    "declared": {
     "PokeAlliance": [
@@ -592,8 +592,8 @@
  },
  {
   "channel": "beltranctz",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -609,7 +609,7 @@
  {
   "channel": "phmartins7",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -678,7 +678,7 @@
  {
   "channel": "abak",
   "verdict": "other",
-  "reason": "declared in title: PokeAlliance",
+  "reason": "declared in title: PokeAlliance, RubinOT",
   "evidence": {
    "declared": {
     "PokeAlliance": [
@@ -856,7 +856,7 @@
  {
   "channel": "claudiosptx",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -897,7 +897,7 @@
  {
   "channel": "joreltibiano",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -1019,8 +1019,8 @@
  },
  {
   "channel": "leozindesumilde",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -1116,7 +1116,7 @@
  {
   "channel": "coud_z",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -1157,7 +1157,7 @@
  {
   "channel": "nattank",
   "verdict": "other",
-  "reason": "declared in title: DeusOT",
+  "reason": "declared in title: DeusOT, Other OTServers",
   "evidence": {
    "declared": {
     "DeusOT": [
@@ -1631,8 +1631,8 @@
  },
  {
   "channel": "el_tratorr",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -1723,7 +1723,7 @@
  {
   "channel": "japorega_",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -1832,7 +1832,7 @@
  {
   "channel": "guerreirotetra",
   "verdict": "other",
-  "reason": "tagged: Other OTServers, PokeXGames, RubinOT",
+  "reason": "declared in title: Other OTServers, RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -2303,7 +2303,7 @@
  {
   "channel": "manowartibia",
   "verdict": "other",
-  "reason": "declared in title: RubinOT",
+  "reason": "declared in title: Other OTServers, RubinOT",
   "evidence": {
    "declared": {
     "RubinOT": [
@@ -2841,7 +2841,7 @@
  {
   "channel": "trickzeraa",
   "verdict": "other",
-  "reason": "declared in title: DeusOT, Other OTServers",
+  "reason": "declared in title: DeusOT, Other OTServers, PokeAlliance",
   "evidence": {
    "declared": {
     "DeusOT": [
@@ -2968,7 +2968,7 @@
  {
   "channel": "william_hantaro",
   "verdict": "other",
-  "reason": "declared in title: PokeAlliance",
+  "reason": "declared in title: Other OTServers, Other Pokémon servers, PokeAlliance",
   "evidence": {
    "declared": {
     "PokeAlliance": [
@@ -3202,7 +3202,7 @@
  {
   "channel": "junii_n",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -3976,7 +3976,7 @@
  {
   "channel": "rukzeltv",
   "verdict": "other",
-  "reason": "declared in title: Other Pokémon servers",
+  "reason": "declared in title: Other Pokémon servers, PokeAlliance",
   "evidence": {
    "declared": {
     "Other Pokémon servers": [
@@ -4090,8 +4090,8 @@
  },
  {
   "channel": "sckuler_tv",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -4746,8 +4746,8 @@
  },
  {
   "channel": "dogreteee",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -4976,8 +4976,8 @@
  },
  {
   "channel": "breuus",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -5103,8 +5103,8 @@
  },
  {
   "channel": "lee_tugaa",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -5220,7 +5220,7 @@
  {
   "channel": "bingaatv",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -5647,7 +5647,7 @@
  {
   "channel": "kyrsz",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -5689,8 +5689,8 @@
  },
  {
   "channel": "benksbr",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, Other Pokémon servers",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -5839,8 +5839,8 @@
  },
  {
   "channel": "okimbocao",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -5939,7 +5939,7 @@
  {
   "channel": "rpxhoffmann",
   "verdict": "other",
-  "reason": "declared in title: Idle games",
+  "reason": "declared in title: Idle games, Other OTServers",
   "evidence": {
    "declared": {
     "Idle games": [
@@ -6252,8 +6252,8 @@
  },
  {
   "channel": "quarentazord",
-  "verdict": "tibia",
-  "reason": "official world or tibiaglobal tag",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -7192,8 +7192,8 @@
  },
  {
   "channel": "immax321",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -7225,7 +7225,7 @@
  {
   "channel": "tiososkj",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -7822,8 +7822,8 @@
  },
  {
   "channel": "raafaazz",
-  "verdict": "undetermined",
-  "reason": "evidence for Tibia and another game",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -7979,8 +7979,8 @@
  },
  {
   "channel": "jatinhalol",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -8263,8 +8263,8 @@
  },
  {
   "channel": "aleehi",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -8400,8 +8400,8 @@
  },
  {
   "channel": "kachowtibia",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -9238,8 +9238,8 @@
  },
  {
   "channel": "matthztvz",
-  "verdict": "undetermined",
-  "reason": "server only as a chat command",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {},
@@ -9267,7 +9267,7 @@
  {
   "channel": "detrep",
   "verdict": "other",
-  "reason": "declared in title: Other OTServers",
+  "reason": "declared in title: Idle games, Other OTServers",
   "evidence": {
    "declared": {
     "Other OTServers": [
@@ -9469,7 +9469,7 @@
  {
   "channel": "higuinhomonk",
   "verdict": "other",
-  "reason": "tagged: Other Pokémon servers, RubinOT",
+  "reason": "declared in title: PokeAlliance, RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {
@@ -10603,7 +10603,7 @@
  {
   "channel": "branco2tv",
   "verdict": "other",
-  "reason": "tagged: RubinOT",
+  "reason": "declared in title: RubinOT",
   "evidence": {
    "declared": {},
    "tagged": {

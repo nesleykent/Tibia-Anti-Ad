@@ -7,8 +7,8 @@ Follows the 2026-10-21 audit (research/twitch/data/2026-10-21/analysis):
   title also names an official world or Tibia Global, whatever the tags say.
 * With neither in the title, a server tag (rubinot, pka, baiakidle...) hides and
   an official world or tibiaglobal tag keeps.
-* A server named only as a chat command (!rubinot) is often a sponsor and never
-  hides a stream on its own. The generic "Tibia" tag proves nothing.
+* A "!server" chat command in the title (!rubinot) counts like the server's
+  name. The generic "Tibia" tag proves nothing.
 * Streams with strong evidence both ways (e.g. a rubinot tag next to a
   tibiaglobal tag), or only weak evidence, stay undetermined. Their thumbnail
   can then be read (OCR): an OTServer-only client element ("Map View", Battle
@@ -97,7 +97,9 @@ class Evidence:
     def classify(self, title, tags, ocr=None):
         """ocr is the thumbnail text, or None when it was not read."""
         found = self.metadata(title, tags)
-        declared, tagged = sorted(found["declared"]), sorted(found["tagged"])
+        # A "!server" chat command in the title names the server just like plain text.
+        declared = sorted(set(found["declared"]) | set(found["commands"]))
+        tagged = sorted(found["tagged"])
         official_title, official_tags = found["official_title"], found["official_tags"]
         # The title outranks the tags.
         if declared and not official_title:
@@ -118,8 +120,6 @@ class Evidence:
                 return "other", f"OTServer-only client on screen: {', '.join(ui)}", found
         if declared or tagged:
             return "undetermined", "evidence for Tibia and another game", found
-        if found["commands"]:
-            return "undetermined", "server only as a chat command", found
         return "undetermined", "no decisive evidence", found
 
 

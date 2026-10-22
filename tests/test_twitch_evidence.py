@@ -43,7 +43,7 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(EV.classify("um newba !! PXG Magma", [])[0], "other")
 
     def test_screen_only_decides_undetermined_streams(self):
-        self.assertEqual(EV.classify("EK 2500 !rubinot", [], "Skills Map View Store")[0], "other")
+        self.assertEqual(EV.classify("EK 2500", [], "Skills Map View Store")[0], "other")
         self.assertEqual(EV.classify("RASTEIBRA", ["rubinot"], "Map View")[0], "other")
         self.assertEqual(EV.classify("Tibia Global EK", [], "Map View")[0], "tibia")
 
