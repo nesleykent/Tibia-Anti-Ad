@@ -18,12 +18,11 @@ class TwitchPackageTests(unittest.TestCase):
     def test_manifest_references_existing_resources_and_early_page_world(self):
         manifest = json.loads((EXTENSION / 'manifest.json').read_text())
         self.assertEqual(manifest['manifest_version'], 3)
-        self.assertEqual(manifest['host_permissions'], ['*://*.twitch.tv/*', 'https://static-cdn.jtvnw.net/*'])
-        self.assertEqual(manifest['permissions'], ['declarativeNetRequest'])
+        self.assertEqual(manifest['host_permissions'], ['*://*.twitch.tv/*'])
+        self.assertEqual(manifest['permissions'], ['declarativeNetRequest', 'storage'])
         for resource in manifest['icons'].values():
             self.assertTrue((EXTENSION / resource).is_file())
-        for resource in manifest['background']['scripts']:
-            self.assertTrue((EXTENSION / resource).is_file())
+        self.assertTrue((EXTENSION / manifest['action']['default_popup']).is_file())
         for script in manifest['content_scripts']:
             for resource in script.get('js', []) + script.get('css', []):
                 self.assertTrue((EXTENSION / resource).is_file())

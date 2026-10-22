@@ -36,4 +36,4 @@ Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/refere
 
 ## OTServer filtering
 
-Twitch Clean hides OTServer, Pokémon-server and idle-game streams on the Tibia category directory. Method, alternatives and evaluation: [research/twitch/otserver-filtering.md](../research/twitch/otserver-filtering.md). Rules: `filters/twitch/tibia-evidence.json`; reference implementation and evaluation: `python3 tools/twitch_evidence.py --evaluate`.
+Twitch Clean hides OTServer, Pokémon-server and idle-game streams on the Tibia category directory. It reads each card's full title and tags from Twitch's own data, and applies the audit's evidence rules; undecided streams stay visible. Method, alternatives and evaluation: [research/twitch/otserver-filtering.md](../research/twitch/otserver-filtering.md). Rules: `filters/twitch/tibia-evidence.json`; reference implementation and evaluation: `python3 tools/twitch_evidence.py --evaluate`.

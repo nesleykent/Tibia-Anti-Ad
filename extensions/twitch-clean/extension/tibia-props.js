@@ -7,6 +7,17 @@
 (() => {
     'use strict';
 
+    // Browsers that ignore "world": "MAIN" run this as an isolated content
+    // script, where React's props are invisible; re-run it inside the page.
+    const ext = globalThis.browser?.runtime?.id ? globalThis.browser : globalThis.chrome?.runtime?.id ? globalThis.chrome : null;
+    if (ext) {
+        const script = document.createElement('script');
+        script.src = ext.runtime.getURL('tibia-props.js');
+        script.onload = () => script.remove();
+        (document.head || document.documentElement).append(script);
+        return;
+    }
+
     const ATTR = 'data-twitch-clean-meta';
     const onTibiaDirectory = () => /^\/directory\/category\/tibia(\/|$)/i.test(location.pathname);
 
