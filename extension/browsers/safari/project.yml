@@ -44,6 +44,8 @@ targets:
         CFBundleDisplayName: Tibia Anti-Ad
         LSApplicationCategoryType: public.app-category.utilities
         TibiaAppGroup: $(TIBIA_APP_GROUP)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.nesleykent.tibiaantiad
@@ -64,6 +66,8 @@ targets:
       properties:
         CFBundleDisplayName: Tibia Anti-Ad
         TibiaAppGroup: $(TIBIA_APP_GROUP)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSExtension:
           NSExtensionPointIdentifier: com.apple.Safari.web-extension
           NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).SafariWebExtensionHandler
@@ -91,6 +95,8 @@ targets:
       properties:
         CFBundleDisplayName: Tibia Anti-Ad
         TibiaAppGroup: $(TIBIA_APP_GROUP)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSHumanReadableDescription: Settings for Tibia Anti-Ad.
         NSExtension:
           NSExtensionPointIdentifier: com.apple.Safari.extension
