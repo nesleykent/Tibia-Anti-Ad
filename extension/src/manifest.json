@@ -30,12 +30,16 @@
     "scripts": [
       "sites.js",
       "settings.js",
+      "tibia-evidence.js",
+      "tibia-classify.js",
+      "tibia-rules.js",
       "background.js"
     ]
   },
   "permissions": [
     "declarativeNetRequest",
-    "storage"
+    "storage",
+    "alarms"
   ],
   "host_permissions": [
     "*://*.twitch.tv/*",
@@ -68,7 +72,8 @@
     "*://tibiawiki.com.br/*",
     "*://*.tibiawiki.com.br/*",
     "*://tibiopedia.pl/*",
-    "*://*.tibiopedia.pl/*"
+    "*://*.tibiopedia.pl/*",
+    "https://raw.githubusercontent.com/*"
   ],
   "declarative_net_request": {
     "rule_resources": [
@@ -251,6 +256,7 @@
         "settings.js",
         "tibia-evidence.js",
         "tibia-classify.js",
+        "tibia-rules.js",
         "tibia-filter.js"
       ],
       "run_at": "document_idle"

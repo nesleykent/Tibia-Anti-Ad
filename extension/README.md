@@ -31,6 +31,8 @@ Open the settings from the toolbar button, or in Safari from **Settings > Extens
 
 How it works: `settings.js` defines every option and default. `settings-bridge.js` names the switched-off `hide.css` groups on the page's root element and mirrors the settings into the page's `localStorage` for `page.js`, which must decide before Twitch's player starts and cannot wait for extension storage. `background.js` reapplies the ruleset choice after browser start and extension updates. Clearing Twitch's site data removes that mirror, so one page load then runs with the defaults until the bridge writes it again.
 
+**Rule updates:** the Tibia filter's evidence (server names, worlds, weights, sites) is downloaded from this repository's `main` branch at browser start and every 6 hours; **Filter rules** in the Tibia category section shows the last update and **Update Now** checks immediately. A download is used only if the bundled classifier accepts it; code, network rules and fansite fixes still update only with the extension.
+
 **Correcting the Tibia filter:** on the Tibia category, the settings popover shows how many streams are hidden and by which games. **Manage Blocked Streams…** opens the Blocked Streams page: the hidden streams grouped by category, each with its title and the reason it was hidden, a search field (Command-F) that filters as you type, and a category pop-up menu. **Show** keeps that broadcast visible until its title changes, so a correction never becomes a permanent channel rule. **Shown by You** on the same page lists the corrections; **Hide** removes one. Turning off **Hide other games** shows every stream immediately.
 
 ## Install in Chrome (development)

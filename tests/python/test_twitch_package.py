@@ -20,7 +20,7 @@ class TwitchPackageTests(unittest.TestCase):
         manifest = json.loads((EXTENSION / 'manifest.json').read_text())
         self.assertEqual(manifest['manifest_version'], 3)
         self.assertEqual(manifest['host_permissions'][0], '*://*.twitch.tv/*')
-        self.assertEqual(manifest['permissions'], ['declarativeNetRequest', 'storage'])
+        self.assertEqual(manifest['permissions'], ['declarativeNetRequest', 'storage', 'alarms'])
         for resource in manifest['icons'].values():
             self.assertTrue((EXTENSION / resource).is_file())
         self.assertTrue((EXTENSION / manifest['action']['default_popup']).is_file())
@@ -57,7 +57,7 @@ class TwitchPackageTests(unittest.TestCase):
         manifest = json.loads((EXTENSION / 'manifest.json').read_text())
         self.assertTrue((EXTENSION / manifest['options_ui']['page']).is_file())
         self.assertEqual(manifest['options_ui']['page'], manifest['action']['default_popup'])
-        self.assertEqual(manifest['background'], {'scripts': ['sites.js', 'settings.js', 'background.js']})
+        self.assertEqual(manifest['background'], {'scripts': ['sites.js', 'settings.js', 'tibia-evidence.js', 'tibia-classify.js', 'tibia-rules.js', 'background.js']})
         bridge = next(item for item in manifest['content_scripts'] if 'settings-bridge.js' in item.get('js', []))
         self.assertEqual(bridge['js'], ['sites.js', 'settings.js', 'settings-bridge.js'])
         self.assertEqual(bridge['run_at'], 'document_start')

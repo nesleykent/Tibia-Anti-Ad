@@ -2,7 +2,8 @@
   "_comment": "Merged over ../extension/manifest.json by tools/build_chrome_extension.py.",
   "permissions": [
     "declarativeNetRequest",
-    "storage"
+    "storage",
+    "alarms"
   ],
   "browser_specific_settings": null,
   "minimum_chrome_version": "116",

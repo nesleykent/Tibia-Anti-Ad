@@ -20,7 +20,9 @@
     const MARK = 'data-twitch-clean-hidden';
     const VERDICT = 'data-twitch-clean-tibia';
     const META = 'data-twitch-clean-meta';
-    const classify = globalThis.TwitchCleanTibiaClassify.create(globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE);
+    const R = globalThis.TibiaAntiAdRules;
+    // The bundled evidence until storage answers with a newer download (tibia-rules.js).
+    let classify = globalThis.TwitchCleanTibiaClassify.create(globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE);
     let enabled = true;
     let shown = {};
     const hiddenByUs = new WeakSet();
@@ -162,14 +164,17 @@
         return false;
     });
 
-    const load = () => Promise.all([S.load(api), api.storage.local.get({ tibiaShown: {} })])
-        .then(([settings, { tibiaShown }]) => {
+    const load = () => Promise.all([S.load(api), api.storage.local.get({ tibiaShown: {}, [R.KEY]: null })])
+        .then(([settings, stored]) => {
+            const { tibiaShown } = stored;
+            classify = globalThis.TwitchCleanTibiaClassify.create(R.current(stored[R.KEY]));
+            verdicts.clear();
             enabled = S.active(settings, 'tibiaFilter');
             shown = tibiaShown && typeof tibiaShown === 'object' ? tibiaShown : {};
             scan();
         });
     api.storage.onChanged.addListener((changes, area) => {
-        if (area === 'local' && (changes.tibiaFilter || changes.enabled || changes.tibiaShown)) { load(); }
+        if (area === 'local' && (changes.tibiaFilter || changes.enabled || changes.tibiaShown || changes[R.KEY])) { load(); }
     });
     load();
     if (document.body) { start(); }

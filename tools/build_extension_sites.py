@@ -169,7 +169,8 @@ def build():
         if "settings-bridge.js" in script.get("js", []):
             script["matches"] = [TWITCH_MATCH] + hosts
     manifest["content_scripts"] = kept + scripts
-    manifest["host_permissions"] = [TWITCH_MATCH] + hosts
+    # The Tibia filter's evidence updates from the repository (tibia-rules.js).
+    manifest["host_permissions"] = [TWITCH_MATCH] + hosts + ["https://raw.githubusercontent.com/*"]
     manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return sites
 

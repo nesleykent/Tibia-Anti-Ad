@@ -17,6 +17,7 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
 
     let settings = S.resolve();
     let shown = {};
+    let rules = { fetchedAt: 0, error: null };
     let twitchTab = null;
     let reloadPending = false;
 
@@ -121,6 +122,19 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
             .then(renderSummary, () => renderSummary(null));
     };
 
+    // When the Tibia filter's evidence last came from GitHub (tibia-rules.js).
+    const renderRules = () => {
+        const time = rules.fetchedAt && new Date(rules.fetchedAt).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+        $('rules-detail').textContent = rules.error ? `Update failed: ${rules.error}.${time ? ` Using rules from ${time}.` : ' Using the built-in rules.'}`
+            : time ? `Updated ${time} from GitHub. Checked every 6 hours.` : 'Built-in rules. Updates are checked every 6 hours.';
+    };
+    const updateRules = () => {
+        $('rules-button').disabled = true;
+        $('rules-detail').textContent = 'Checking for updates…';
+        api.runtime.sendMessage({ type: 'tibia-anti-ad:update-rules' })
+            .catch(() => {}).finally(() => { $('rules-button').disabled = false; load(); });
+    };
+
     // Opens the management page in a tab, linked to the Twitch tab it lists.
     const manage = () => {
         const query = twitchTab ? `?tab=${twitchTab.id}` : '';
@@ -168,8 +182,10 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
         renderReload();
     };
 
-    const load = () => Promise.all([S.load(api), api.storage.local.get({ tibiaShown: {} })])
-        .then(([loaded, { tibiaShown }]) => {
+    const load = () => Promise.all([S.load(api), api.storage.local.get({ tibiaShown: {}, tibiaEvidence: null, tibiaEvidenceError: null })])
+        .then(([loaded, { tibiaShown, tibiaEvidence, tibiaEvidenceError }]) => {
+            rules = { fetchedAt: tibiaEvidence?.fetchedAt || 0, error: tibiaEvidenceError?.message || null };
+            renderRules();
             settings = loaded;
             shown = tibiaShown && typeof tibiaShown === 'object' ? tibiaShown : {};
             renderSwitches();
@@ -181,6 +197,7 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
         document.addEventListener('change', onChange);
         $('reload-button').addEventListener('click', reloadTwitch);
         $('manage-button').addEventListener('click', manage);
+        $('rules-button').addEventListener('click', updateRules);
         // Only the viewer's own clicks are remembered, not the sections opened for the active tab.
         for (const summary of document.querySelectorAll('.section > summary')) {
             summary.addEventListener('click', () => setTimeout(() => saveOpen(summary.parentElement)));
