@@ -343,7 +343,8 @@ globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {
         "project fibula",
         "fibula project",
         "lawl new era",
-        "lawl"
+        "lawl",
+        "soe"
       ],
       "tag_patterns": [
         "^otserv",
