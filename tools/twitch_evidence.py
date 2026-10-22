@@ -21,7 +21,7 @@ def normalize(text):
 
 def words(terms):
     alt = '|'.join((re.escape(normalize(t)) for t in sorted(terms, key=len, reverse=True)))
-    return re.compile(f'(?<![a-z0-9])([!\\u2757\\u2755]\\s*)?(?:{alt})(?![a-z0-9])')
+    return re.compile(f'(?<![a-z0-9])([!\\u2757\\u2755])?(?:{alt})(?![a-z0-9])')
 
 def fuzzy(term):
     head = '\\s*'.join((re.escape(w) for w in term[:-3].split()))
@@ -32,34 +32,44 @@ class Evidence:
     def __init__(self, data):
         official = data['official']
         self.official_title = words(official['title'] + official['worlds'])
+        alt = '|'.join((re.escape(w) for w in official['worlds_tags_only']))
+        self.official_bracketed = re.compile(f'[\\[(]\\s*(?:{alt})(?![a-z0-9])')
         self.official_tags = [re.compile(p) for p in official['tag_patterns']]
         self.world_tags = {normalize(w) for w in official['worlds'] + official['worlds_tags_only']}
-        self.games = {game: (words(spec['words']), [re.compile(p) for p in spec['tag_patterns']]) for game, spec in data['games'].items()}
+        self.games = {game: (words(spec['words']), [re.compile(p) for p in spec.get('title_patterns', [])], [re.compile(p) for p in spec['tag_patterns']]) for game, spec in data['games'].items()}
 
     def metadata(self, title, tags):
         title = normalize(title)
         tags = [normalize(t).replace(' ', '') for t in tags]
-        found = {'declared': {}, 'tagged': {}, 'commands': {}, 'official': []}
-        for game, (pattern, tag_patterns) in self.games.items():
-            for match in pattern.finditer(title):
-                kind = 'commands' if match.group(1) else 'declared'
-                found[kind].setdefault(game, []).append(match.group(0))
-            hits = [t for t in tags if any((p.search(t) for p in tag_patterns))]
-            if hits:
-                found['tagged'][game] = hits
-        found['official'] = [m.group(0) for m in self.official_title.finditer(title) if not m.group(1)]
-        found['official'] += [t for t in tags if t in self.world_tags or any((p.search(t) for p in self.official_tags))]
+        found = {'declared': {}, 'tagged': {}, 'commands': {}, 'official_title': [], 'official_tags': []}
+        for game, (pattern, title_patterns, tag_patterns) in self.games.items():
+            hits = [(m.group(0), bool(m.group(1))) for m in pattern.finditer(title)]
+            hits += [(m.group(0), m.start() > 0 and title[m.start() - 1] in '!❗❕') for p in title_patterns for m in p.finditer(title)]
+            for text, command in hits:
+                found['commands' if command else 'declared'].setdefault(game, []).append(text)
+            tagged = [t for t in tags if any((p.search(t) for p in tag_patterns))]
+            if tagged:
+                found['tagged'][game] = tagged
+        found['official_title'] = [m.group(0) for m in self.official_title.finditer(title) if not m.group(1)]
+        found['official_title'] += self.official_bracketed.findall(title)
+        found['official_tags'] = [t for t in tags if t in self.world_tags or any((p.search(t) for p in self.official_tags))]
         return found
 
     def classify(self, title, tags):
         """Classify full title and tag metadata."""
         found = self.metadata(title, tags)
-        strong = set(found['declared']) | set(found['tagged'])
-        if strong and (not found['official']):
-            return ('other', f"declared/tagged: {', '.join(sorted(strong))}", found)
-        if found['official'] and (not strong):
-            return ('tibia', 'official world or Tibia Global', found)
-        if strong:
+        declared, tagged = (sorted(found['declared']), sorted(found['tagged']))
+        official_title, official_tags = (found['official_title'], found['official_tags'])
+        if declared and (not official_title):
+            return ('other', f"declared in title: {', '.join(declared)}", found)
+        if not declared and (not official_title):
+            if tagged and (not official_tags):
+                return ('other', f"tagged: {', '.join(tagged)}", found)
+            if official_tags and (not tagged):
+                return ('tibia', 'official world or tibiaglobal tag', found)
+        if official_title and (not declared) and (not tagged):
+            return ('tibia', 'official world or Tibia Global in title', found)
+        if declared or tagged:
             return ('undetermined', 'evidence for Tibia and another game', found)
         if found['commands']:
             return ('undetermined', 'server only as a chat command', found)

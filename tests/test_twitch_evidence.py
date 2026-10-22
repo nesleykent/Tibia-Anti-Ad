@@ -28,8 +28,15 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(EV.classify('EK 1k', ['Tibia'])[0], 'undetermined')
         self.assertEqual(EV.classify('bom dia galera', [])[0], 'undetermined')
 
-    def test_mixed_evidence_stays_visible(self):
-        self.assertEqual(EV.classify('RubinOT RP', ['tibiaglobal'])[0], 'undetermined')
+    def test_title_outranks_tags(self):
+        self.assertEqual(EV.classify('King Aslan - farm', ['tibiaglobal', 'global'])[0], 'other')
+        self.assertEqual(EV.classify('paulistinhaot.com ON', ['lutabra'])[0], 'other')
+        self.assertEqual(EV.classify('RASTEIBRA monk do 0', ['rubinot'])[0], 'undetermined')
+        self.assertEqual(EV.classify('Global! de 0 a 500', ['rubinot'])[0], 'undetermined')
+
+    def test_ambiguous_world_in_brackets_and_boss_tag(self):
+        self.assertEqual(EV.classify('[CELEBRA - RP 1700+] !comandos', ['Bakragore'])[0], 'tibia')
+        self.assertEqual(EV.classify('um newba !! PXG Magma', [])[0], 'other')
 
     def test_audit_hides_no_official_stream(self):
         for row, tags in audit_rows():
@@ -40,6 +47,8 @@ class EvidenceTests(unittest.TestCase):
         js = json.loads(subprocess.run(['node', str(ROOT / 'tests/twitch-classify.cjs')], check=True, capture_output=True, text=True).stdout)
         for row, tags in audit_rows():
             self.assertEqual(js[row['canal']], EV.classify(row['titulo_original'], tags)[0], row['canal'])
+        for stream in json.loads((ROOT / 'research/twitch/data/2026-10-21/live-2115/streams.json').read_text()):
+            self.assertEqual(js[f"live:{stream['channel']}"], EV.classify(stream['title'], stream['tags'])[0], stream['channel'])
 
     def test_extension_evidence_copy_is_current(self):
         self.assertEqual(EXTENSION_DATA.read_text(), extension_data(json.loads(EVIDENCE.read_text())))

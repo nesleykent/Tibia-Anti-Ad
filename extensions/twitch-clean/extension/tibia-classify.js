@@ -3,20 +3,23 @@
 (() => {
   'use strict';
 
+  const COMMAND = '!\u2757\u2755';
   const escape = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const normalize = s => s.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/\s+/g, ' ').trim();
 
-  // Whole-word terms; group 1 captures a leading "!"/"\u2757" (a chat command).
+  // Whole-word terms; group 1 captures a "!"/"\u2757" right before the term (a chat command).
   const words = terms => {
     const alt = terms.map(normalize).sort((a, b) => b.length - a.length).map(escape).join('|');
-    return new RegExp(`(?<![a-z0-9])([!\\u2757\\u2755]\\s*)?(?:${alt})(?![a-z0-9])`, 'g');
+    return new RegExp(`(?<![a-z0-9])([${COMMAND}])?(?:${alt})(?![a-z0-9])`, 'g');
   };
   const fuzzy = term => new RegExp(`${term.slice(0, -3).split(' ').filter(Boolean).map(escape).join('\\s*')}\\s*\\S{0,2}${escape(term.slice(-3))}`);
   const create = data => {
     const officialTitle = words([...data.official.title, ...data.official.worlds]);
+    // Worlds that are also ordinary words count in a title only as "[World" or "(World".
+    const officialBracketed = new RegExp(`[\\[(]\\s*(?:${data.official.worlds_tags_only.map(escape).join('|')})(?![a-z0-9])`, 'g');
     const officialTags = data.official.tag_patterns.map(p => new RegExp(p));
     const worldTags = new Set([...data.official.worlds, ...data.official.worlds_tags_only].map(normalize));
-    const games = Object.entries(data.games).map(([game, spec]) => [game, words(spec.words), spec.tag_patterns.map(p => new RegExp(p))]);
+    const games = Object.entries(data.games).map(([game, spec]) => [game, words(spec.words), (spec.title_patterns || []).map(p => new RegExp(p, 'g')), spec.tag_patterns.map(p => new RegExp(p))]);
     const metadata = (title, tags) => {
       title = normalize(title);
       tags = tags.map(t => normalize(t).replace(/ /g, ''));
@@ -24,41 +27,69 @@
         declared: {},
         tagged: {},
         commands: {},
-        official: []
+        official_title: [],
+        official_tags: []
       };
-      for (const [game, pattern, tagPatterns] of games) {
-        for (const match of title.matchAll(pattern)) {
-          const kind = match[1] ? 'commands' : 'declared';
-          (found[kind][game] = found[kind][game] || []).push(match[0]);
+      for (const [game, pattern, titlePatterns, tagPatterns] of games) {
+        const hits = [...title.matchAll(pattern)].map(m => [m[0], Boolean(m[1])]);
+        for (const p of titlePatterns) {
+          for (const m of title.matchAll(p)) {
+            hits.push([m[0], m.index > 0 && COMMAND.includes(title[m.index - 1])]);
+          }
         }
-        const hits = tags.filter(t => tagPatterns.some(p => p.test(t)));
-        if (hits.length) {
-          found.tagged[game] = hits;
+        for (const [text, command] of hits) {
+          const kind = command ? 'commands' : 'declared';
+          (found[kind][game] = found[kind][game] || []).push(text);
+        }
+        const tagged = tags.filter(t => tagPatterns.some(p => p.test(t)));
+        if (tagged.length) {
+          found.tagged[game] = tagged;
         }
       }
-      found.official = [...title.matchAll(officialTitle)].filter(m => !m[1]).map(m => m[0]).concat(tags.filter(t => worldTags.has(t) || officialTags.some(p => p.test(t))));
+      found.official_title = [...title.matchAll(officialTitle)].filter(m => !m[1]).map(m => m[0]).concat([...title.matchAll(officialBracketed)].map(m => m[0]));
+      found.official_tags = tags.filter(t => worldTags.has(t) || officialTags.some(p => p.test(t)));
       return found;
     };
     return (title, tags) => {
       const found = metadata(title, tags);
-      const strong = [...new Set([...Object.keys(found.declared), ...Object.keys(found.tagged)])].sort();
-      if (strong.length && !found.official.length) {
+      const declared = Object.keys(found.declared).sort();
+      const tagged = Object.keys(found.tagged).sort();
+      const officialInTitle = found.official_title.length > 0;
+      const officialInTags = found.official_tags.length > 0;
+      // The title outranks the tags.
+      if (declared.length && !officialInTitle) {
         return {
           verdict: 'other',
-          reason: `declared/tagged: ${strong.join(', ')}`,
+          reason: `declared in title: ${declared.join(', ')}`,
           found
         };
       }
-      if (found.official.length && !strong.length) {
+      if (!declared.length && !officialInTitle) {
+        if (tagged.length && !officialInTags) {
+          return {
+            verdict: 'other',
+            reason: `tagged: ${tagged.join(', ')}`,
+            found
+          };
+        }
+        if (officialInTags && !tagged.length) {
+          return {
+            verdict: 'tibia',
+            reason: 'official world or tibiaglobal tag',
+            found
+          };
+        }
+      }
+      if (officialInTitle && !declared.length && !tagged.length) {
         return {
           verdict: 'tibia',
-          reason: 'official world or Tibia Global',
+          reason: 'official world or Tibia Global in title',
           found
         };
       }
       // The screen breaks ties: an OTServer-only client beats a "tibiaglobal" tag.
 
-      if (strong.length) {
+      if (declared.length || tagged.length) {
         return {
           verdict: 'undetermined',
           reason: 'evidence for Tibia and another game',

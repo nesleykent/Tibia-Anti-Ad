@@ -1,4 +1,5 @@
-// Prints the extension classifier's verdicts for the audited 2026-10-21 capture,
+// Prints the extension classifier's verdicts for the audited 2026-10-21 capture
+// and the 562-stream live capture (keys prefixed live:),
 // for tests/test_twitch_evidence.py to compare with tools/twitch_evidence.py.
 const fs = require('fs');
 const path = require('path');
@@ -13,4 +14,6 @@ for (const row of audit.classificacao) {
     const tags = row.tags_originais.split('|').map(t => t.trim()).filter(Boolean);
     out[row.canal] = classify(row.titulo_original, tags).verdict;
 }
+const live = JSON.parse(fs.readFileSync(path.join(root, 'research/twitch/data/2026-10-21/live-2115/streams.json'), 'utf8'));
+for (const s of live) { out[`live:${s.channel}`] = classify(s.title, s.tags).verdict; }
 console.log(JSON.stringify(out));
