@@ -64,7 +64,7 @@ tests/
 tools/                Build, classification and verification commands
 ```
 
-See the [documentation index](docs/README.md) for navigation. Generated development packages go to the ignored `dist/` directory. Original local working files are archived under the ignored `.local/legacy/` directory.
+See the [documentation index](docs/README.md) for navigation. Generated development packages go to the ignored `dist/` directory. Original local working files are archived under the ignored `local/legacy/` directory.
 
 ## Develop and contribute
 
