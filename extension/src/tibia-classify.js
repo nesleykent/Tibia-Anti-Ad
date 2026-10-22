@@ -227,6 +227,18 @@
       };
     });
     const longest = Math.max(3, ...[...phrases.keys()].map(k => k.split(' ').length));
+    // A server's name written with "ot" (hegalot, deusot): the server itself.
+    const server = key => {
+      const entry = singles.get(key);
+      if (entry) {
+        return entry;
+      }
+      const name = key.endsWith('ot') && key.length >= 6 ? singles.get(key.slice(0, -2)) : undefined;
+      return name && name.side === 'other' ? name : undefined;
+    };
+    const D = data.context.domains;
+    const domainRe = new RegExp(`(?<![a-z0-9@._-])((?:[a-z0-9-]+\\.)+(?:${D.tlds.join('|')}))(?![a-z0-9-])`, 'g');
+    const within = (domain, list) => list.some(d => domain === d || domain.endsWith(`.${d}`));
     const channelKeys = [...singles].filter(([key, entry]) => entry.side === 'other' && key.length >= 6).sort((a, b) => b[0].length - a[0].length);
     const officialTags = data.official.tag_patterns.map(p => new RegExp(p));
     const worldTags = new Set([...data.official.worlds, ...data.official.worlds_tags_only].map(normalize));
@@ -273,7 +285,7 @@
         for (let n = Math.min(longest, tokens.length - i); n >= 1 && !match; n--) {
           const parts = tokens.slice(i, i + n).map(t => squeeze(t.text));
           const key = squeeze(parts.join(''));
-          const entry = n === 1 ? singles.get(key) || singles.get(squeeze(leet(tokens[i].text))) : phrases.get(parts.join(' ')) || (key.length >= 8 ? singles.get(key) : undefined);
+          const entry = n === 1 ? server(key) || server(squeeze(leet(tokens[i].text))) : phrases.get(parts.join(' ')) || (key.length >= 8 ? singles.get(key) : undefined);
           if (entry) {
             match = {
               entry,
@@ -362,7 +374,8 @@
           distance: m.distance
         });
       }
-      const overlaps = (start, end) => found.some(m => start < m.end && m.start < end);
+      const spans = [...found];
+      const overlaps = (start, end) => spans.some(m => start < m.end && m.start < end);
       for (const {
         game,
         titlePatterns
@@ -372,10 +385,22 @@
             if (overlaps(m.index, m.index + m[0].length)) {
               continue;
             }
+            spans.push({
+              start: m.index,
+              end: m.index + m[0].length
+            });
             const command = m.index > 0 && COMMAND.includes(title[m.index - 1]);
             signals.push(signal('other', command ? 'command' : 'title', game, m[0], command ? W.command : W.pattern));
           }
         }
+      }
+      // Websites: an OTServer's own site, or a self-hosted (dynamic DNS) server.
+      for (const m of title.matchAll(domainRe)) {
+        const domain = m[1];
+        if (overlaps(m.index, m.index + domain.length) || within(domain, D.ignore)) {
+          continue;
+        }
+        signals.push(within(domain, D.self_hosted) ? signal('other', 'title', 'Other OTServers', domain, D.self_hosted_weight) : signal('other', 'context', 'server website', domain, D.weight));
       }
       for (const c of contexts) {
         const m = [...title.matchAll(c.re)].find(x => !overlaps(x.index, x.index + x[0].length));
@@ -396,6 +421,12 @@
         const game = games.find(g => g.tagPatterns.some(p => p.test(tag)));
         if (game) {
           signals.push(signal('other', 'tag', game.game, tag, W.tag));
+          continue;
+        }
+        // Any server name or server world as a tag (hegal, infernum).
+        const named = server(squeeze(leet(tag)));
+        if (named && named.side === 'other') {
+          signals.push(signal('other', 'tag', named.game, tag, W.tag));
           continue;
         }
         const near = !worldTags.has(tag) && misspelling(squeeze(leet(tag)), 1);

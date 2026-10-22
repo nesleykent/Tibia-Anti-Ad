@@ -49,6 +49,8 @@ The rules above are now weighted signals rather than exact keyword tests (`weigh
 - **Context:** up to two words before a mention, in the same clause, weaken it: negation ×0.2 (`não`, `sem`), leaving ×0.35 (`ex`, `saí do`), comparison ×0.5 (`vs`, `x`), another time ×0.6 (`depois`). `global` right after a server name is part of it (`Future OT Global`). Official tags count ×0.4 against a server named in the title.
 - **Decision:** each side's signals combine as strongest + ½ next + ¼ next…; a side wins at 3 points with a 2-point lead, otherwise the stream is undetermined.
 
+- **Server names everywhere (2026-10-22):** every listed server name or server world also counts as a tag (`hegal`), a name written with "ot" counts as the server (`!hegalot`), and websites in the title count: each unknown site 2 points (several add up: `troyale.online | tfight.online | …`), a dynamic-DNS host 3.5 (`tibiapirate.duckdns.org`, a self-hosted server); Tibia, fansite, social and streaming-tool sites count nothing.
+
 `tests/data/tibia-classify-cases.json` holds hand-labelled spelling, negation and legitimate-Tibia cases; the Python reference and the extension port must agree on every verdict and score.
 
 ## Evaluation against the audit (456 channels)

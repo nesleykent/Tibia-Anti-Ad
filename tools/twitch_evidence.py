@@ -139,11 +139,21 @@ class Evidence:
                 add(world, {'side': 'other', 'kind': 'world', 'game': game})
             self.games.append((game, [re.compile(p) for p in spec.get('title_patterns', [])], [re.compile(p) for p in spec['tag_patterns']]))
         self.longest = max([3] + [len(k.split(' ')) for k in self.phrases])
+        self.domains = data['context']['domains']
+        self.domain_re = re.compile('(?<![a-z0-9@._-])((?:[a-z0-9-]+\\.)+(?:' + '|'.join(self.domains['tlds']) + '))(?![a-z0-9-])')
         self.channel_keys = sorted(((k, e) for k, e in self.singles.items() if e['side'] == 'other' and len(k) >= 6), key=lambda item: -len(item[0]))
         self.official_tags = [re.compile(p) for p in official['tag_patterns']]
         self.world_tags = {normalize(w) for w in official['worlds'] + official['worlds_tags_only']}
         self.contexts = [dict(c, side=side, re=re.compile(c['pattern'])) for side in ('other', 'tibia') for c in data['context'][side]]
         self.modifiers = [(m['factor'], words(m['words']), words(m['after']) if m.get('after') else None) for name, m in data['context']['modifiers'].items() if not name.startswith('_')]
+
+    def server(self, key):
+        """A lexicon entry, or a server's name written with "ot" (hegalot, deusot)."""
+        entry = self.singles.get(key)
+        if entry:
+            return entry
+        name = self.singles.get(key[:-2]) if key.endswith('ot') and len(key) >= 6 else None
+        return name if name and name['side'] == 'other' else None
 
     def misspelling(self, key, max_distance):
         """The closest fuzzy name to a word, if it is a plausible misspelling."""
@@ -168,7 +178,7 @@ class Evidence:
                 parts = [squeeze(t['text']) for t in tokens[i:i + n]]
                 key = squeeze(''.join(parts))
                 if n == 1:
-                    entry = self.singles.get(key) or self.singles.get(squeeze(leet(tokens[i]['text'])))
+                    entry = self.server(key) or self.server(squeeze(leet(tokens[i]['text'])))
                 else:
                     entry = self.phrases.get(' '.join(parts)) or (self.singles.get(key) if len(key) >= 8 else None)
                 if entry:
@@ -217,16 +227,29 @@ class Evidence:
                 weight = w['official_fuzzy'] if m['distance'] else w['official_global'] if m['kind'] == 'global' else w['official_bracketed'] if m['kind'] == 'bracketed' else w['official_title']
             source = 'command' if m['side'] == 'other' and m['command'] else 'title'
             signals.append(signal(m['side'], source, m['game'], m['text'], weight * self.modifier(title, tokens, m), kind=m['kind'], distance=m['distance']))
+        spans = list(found)
 
         def overlaps(start, end):
-            return any((start < m['end'] and m['start'] < end for m in found))
+            return any((start < m['end'] and m['start'] < end for m in spans))
+
+        def within(domain, sites):
+            return any((domain == d or domain.endswith('.' + d) for d in sites))
         for game, title_patterns, _ in self.games:
             for p in title_patterns:
                 for m in p.finditer(title):
                     if overlaps(m.start(), m.end()):
                         continue
+                    spans.append({'start': m.start(), 'end': m.end()})
                     command = m.start() > 0 and title[m.start() - 1] in COMMAND
                     signals.append(signal('other', 'command' if command else 'title', game, m.group(0), w['command'] if command else w['pattern']))
+        for m in self.domain_re.finditer(title):
+            domain = m.group(1)
+            if overlaps(m.start(), m.start() + len(domain)) or within(domain, self.domains['ignore']):
+                continue
+            if within(domain, self.domains['self_hosted']):
+                signals.append(signal('other', 'title', 'Other OTServers', domain, self.domains['self_hosted_weight']))
+            else:
+                signals.append(signal('other', 'context', 'server website', domain, self.domains['weight']))
         for c in self.contexts:
             m = next((x for x in c['re'].finditer(title) if not overlaps(x.start(), x.end())), None)
             if m:
@@ -244,6 +267,10 @@ class Evidence:
             game = next((g for g, _, tag_patterns in self.games if any((p.search(tag) for p in tag_patterns))), None)
             if game:
                 signals.append(signal('other', 'tag', game, tag, w['tag']))
+                continue
+            named = self.server(squeeze(leet(tag)))
+            if named and named['side'] == 'other':
+                signals.append(signal('other', 'tag', named['game'], tag, w['tag']))
                 continue
             near = tag not in self.world_tags and self.misspelling(squeeze(leet(tag)), 1)
             if near and near['entry']['side'] == 'other':
