@@ -1,0 +1,1 @@
+// Shared extension background.
