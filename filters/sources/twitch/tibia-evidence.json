@@ -219,7 +219,11 @@
         "poketibia",
         "otpokemon",
         "pokedream"
-      ]
+      ],
+      "title_patterns": [
+        "(?<![a-z0-9])poke[a-z]{4,}"
+      ],
+      "_comment": "title_patterns: any poke+name word (PokeHero, PokeMMO): in the Tibia category these are Pokémon servers."
     },
     "Idle games": {
       "words": [

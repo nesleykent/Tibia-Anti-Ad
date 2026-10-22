@@ -220,7 +220,11 @@ globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {
         "poketibia",
         "otpokemon",
         "pokedream"
-      ]
+      ],
+      "title_patterns": [
+        "(?<![a-z0-9])poke[a-z]{4,}"
+      ],
+      "_comment": "title_patterns: any poke+name word (PokeHero, PokeMMO): in the Tibia category these are Pok\u00e9mon servers."
     },
     "Idle games": {
       "words": [
