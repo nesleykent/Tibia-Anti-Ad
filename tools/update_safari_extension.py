@@ -11,11 +11,8 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from build_safari_extension import BUNDLE_ID, ROOT, WEB_EXTENSION_ID, build, hide_from_system, remove_build_files
-
-# Version 1.3 briefly shipped a second, toolbar extension; an installed app
-# that still has it is accepted as the one being replaced.
-TOOLBAR_ID = BUNDLE_ID + ".Toolbar"
+from build_safari_extension import (BUNDLE_ID, ROOT, TOOLBAR_ID, WEB_EXTENSION_ID, build, hide_from_system,
+                                    remove_build_files)
 
 INSTALLED = Path("/Applications/Tibia Anti-Ad.app")
 BACKUP = ROOT / "local/safari/previous.noindex/Tibia Anti-Ad.app"
@@ -33,8 +30,8 @@ def bundle_identifier(bundle):
 def verify_app(app, expected_team=None):
     """Check that the app and its extensions are signed by one Apple Development team.
 
-    The web extension is required; an installed app that still has the former
-    toolbar extension is accepted as the one being replaced.
+    The web extension is required; the toolbar extension is new in 1.3, so an
+    installed app from before it is still accepted as the one being replaced.
     """
     output("codesign", "--verify", "--deep", "--strict", app)
     extensions = {bundle_identifier(bundle): bundle for bundle in (app / "Contents/PlugIns").glob("*.appex")}
