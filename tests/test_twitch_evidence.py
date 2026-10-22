@@ -22,9 +22,10 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(EV.classify("borA >>> farm", ["rubinot", "Tibia"])[0], "other")
         self.assertEqual(EV.classify("Infernum 2 war", [])[0], "other")
 
-    def test_chat_command_alone_does_not_hide(self):
-        self.assertEqual(EV.classify("EK 2500 !rubinot !pix", ["Tibia"])[0], "undetermined")
-        self.assertEqual(EV.classify("O BEM SEMPRE VENCE ❗soe ❗rubinot", [])[0], "undetermined")
+    def test_chat_command_names_the_server(self):
+        self.assertEqual(EV.classify("EK 2500 !rubinot !pix", ["Tibia"])[0], "other")
+        self.assertEqual(EV.classify("O BEM SEMPRE VENCE \u2757soe \u2757rubinot", [])[0], "other")
+        self.assertEqual(EV.classify("Tibia Global Etebra !rubinot", [])[0], "undetermined")
 
     def test_official_world_keeps_and_generic_tibia_tag_does_not(self):
         self.assertEqual(EV.classify("EK 1k", ["Inabra"])[0], "tibia")
