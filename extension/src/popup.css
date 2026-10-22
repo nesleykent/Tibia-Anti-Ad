@@ -1,160 +1,163 @@
-/* Tibia Anti-Ad settings, styled after macOS System Settings: grouped inset lists,
-   13px labels with 11px secondary text, and switches. Safari draws
-   <input type="checkbox" switch> as the native switch (html.native-switch, set
-   by popup.js); other browsers get the CSS switch below. */
+/* Tibia Anti-Ad settings, laid out as a macOS System Settings grouped form
+   (Apple HIG): grouped containers with inset separators, disclosure triangles
+   that point inward when collapsed and down when expanded, indented child rows,
+   switches in rows, and semantic system colors and text styles that follow the
+   appearance, Increase Contrast and Reduce Motion. Safari draws
+   <input type="checkbox" switch> and buttons natively (html.native-switch, set
+   by popup.js); other browsers get the fallbacks below. Every design value is
+   a token on :root. */
 
 :root {
   color-scheme: light dark;
-  --bg: #f2f2f2;
-  --group: #ffffff;
-  --group-border: rgba(0, 0, 0, 0.07);
-  --separator: rgba(0, 0, 0, 0.09);
-  --label: rgba(0, 0, 0, 0.85);
-  --secondary: rgba(0, 0, 0, 0.5);
+
+  /* Semantic colors. CSS system colors here; Safari's own -apple-system-* colors below. */
+  --label: CanvasText;
+  --secondary-label: color-mix(in srgb, CanvasText 55%, transparent);
+  --tertiary-label: color-mix(in srgb, CanvasText 32%, transparent);
+  --separator: color-mix(in srgb, CanvasText 11%, transparent);
+  --fill: color-mix(in srgb, CanvasText 10%, transparent);
+  --switch-off: color-mix(in srgb, CanvasText 14%, transparent);
+  --switch-border: color-mix(in srgb, CanvasText 18%, transparent);
+  --window: color-mix(in srgb, Canvas 94%, CanvasText);
+  --group: Canvas;
+  --group-border: color-mix(in srgb, CanvasText 6%, transparent);
   --accent: #007aff;
-  --switch-off: rgba(0, 0, 0, 0.09);
-  --knob: #ffffff;
-  --button: #ffffff;
-  --button-border: rgba(0, 0, 0, 0.14);
-  --focus: rgba(0, 122, 255, 0.5);
-  --hover: rgba(0, 0, 0, 0.05);
+  --on-accent: white;
+  --knob: white;
+
+  /* Text styles: body 13 pt, subheadline 11 pt, headline 13 pt bold (macOS). */
+  --font-body: 400 13px/16px -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-subheadline: 400 11px/14px -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-headline: 700 13px/16px -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Metrics. */
+  --space-xs: 2px;
+  --space-s: 6px;
+  --space-m: 10px;
+  --space-l: 16px;
+  --row-height: 36px;
+  --row-padding: 7px 10px;
+  --radius-group: 10px;
+  --radius-control: 6px;
+  --triangle: 9px;
+  /* Child rows start where their section's label starts. */
+  --indent: calc(10px + var(--triangle) + var(--space-s));
+  --duration: 0.15s;
 }
 
-/* Safari's native switch follows the system accent color; match it. */
 @supports (color: AccentColor) {
-  html.native-switch { --accent: AccentColor; }
+  :root { --accent: AccentColor; --on-accent: AccentColorText; }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1e1e1e;
-    --group: #2a2a2a;
-    --group-border: rgba(255, 255, 255, 0.06);
-    --separator: rgba(255, 255, 255, 0.08);
-    --label: rgba(255, 255, 255, 0.86);
-    --secondary: rgba(255, 255, 255, 0.55);
-    --switch-off: rgba(255, 255, 255, 0.16);
-    --knob: #e9e9e9;
-    --button: rgba(255, 255, 255, 0.14);
-    --button-border: rgba(255, 255, 255, 0.08);
-    --accent: #0a84ff;
-    --focus: rgba(10, 132, 255, 0.6);
-    --hover: rgba(255, 255, 255, 0.06);
+    --window: Canvas;
+    --group: color-mix(in srgb, Canvas 93%, CanvasText);
+    --knob: color-mix(in srgb, white 90%, CanvasText);
+  }
+}
+
+/* Safari: the system's own semantic colors and text styles. */
+@supports (color: -apple-system-label) {
+  :root {
+    --label: -apple-system-label;
+    --secondary-label: -apple-system-secondary-label;
+    --tertiary-label: -apple-system-tertiary-label;
+    --separator: -apple-system-separator;
+    --accent: -apple-system-control-accent;
+  }
+}
+@supports (font: -apple-system-body) {
+  :root {
+    --font-body: -apple-system-body;
+    --font-subheadline: -apple-system-subheadline;
+    --font-headline: -apple-system-headline;
   }
 }
 
 @media (prefers-contrast: more) {
   :root {
-    --group-border: rgba(127, 127, 127, 0.6);
-    --separator: rgba(127, 127, 127, 0.5);
-    --secondary: color-mix(in srgb, var(--label) 80%, transparent);
+    --secondary-label: color-mix(in srgb, CanvasText 80%, transparent);
+    --separator: color-mix(in srgb, CanvasText 45%, transparent);
+    --group-border: color-mix(in srgb, CanvasText 55%, transparent);
   }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --separator: color-mix(in srgb, var(--group) 85%, CanvasText);
+    --fill: color-mix(in srgb, var(--group) 85%, CanvasText);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration: 0s; }
 }
 
 * { box-sizing: border-box; }
 
-html { background: var(--bg); }
+html { background: var(--window); }
 
 body {
   margin: 0;
   width: 340px;
-  padding: 0 12px 12px;
-  background: var(--bg);
+  padding: var(--space-m) var(--space-m) var(--space-m);
+  background: var(--window);
   color: var(--label);
-  font: 13px/1.35 -apple-system, BlinkMacSystemFont, "Helvetica Neue", system-ui, sans-serif;
+  font: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 
 /* Opened as a full page (Safari's extension settings, or a Chrome tab). */
 @media (min-width: 420px) {
-  body { width: auto; max-width: 520px; margin: 0 auto; padding: 8px 20px 20px; }
+  body { width: auto; max-width: 520px; margin: 0 auto; padding: var(--space-l) 20px 20px; }
 }
 
 /* Settings load asynchronously: hide controls until they show stored values, and
    do not animate switches into their stored state when the popup opens. */
-body.loading main,
-body.loading .header input { visibility: hidden; }
+body.loading main { visibility: hidden; }
 body.loading input[switch],
 body.loading input[switch]::before { transition: none !important; }
 
-h1, h2, h3, p, ul { margin: 0; }
+h1, h2, h3, p, ul { margin: 0; font: inherit; }
 
-.header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 4px 4px;
-}
-.app-icon { flex: none; border-radius: 6px; }
-.header-text { flex: 1; min-width: 0; }
-h1 { font-size: 15px; font-weight: 600; }
-
-h2.area {
-  margin: 12px 4px 4px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--secondary);
+/* Group headers above a grouped container. */
+.group-header {
+  margin: var(--space-l) var(--space-m) var(--space-s);
+  font: var(--font-headline);
 }
 
-/* Collapsible sections: a disclosure row with the number of switches on. */
-.section { margin-top: 6px; }
-.section > summary {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 30px;
-  padding: 5px 10px;
-  border-radius: 8px;
-  list-style: none;
-  cursor: default;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.section > summary::-webkit-details-marker { display: none; }
-.section > summary::before {
-  content: "";
-  flex: none;
-  width: 6px;
-  height: 6px;
-  margin: 0 3px 0 1px;
-  border-right: 1.5px solid var(--secondary);
-  border-bottom: 1.5px solid var(--secondary);
-  transform: rotate(-45deg);
-  transition: transform 0.15s ease;
-}
-.section[open] > summary::before { transform: rotate(45deg); }
-.section > summary:hover { background: var(--hover); }
-.section > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -1px; }
-.section-title { flex: 1; font-weight: 600; }
-.count { font-size: 11px; color: var(--secondary); font-variant-numeric: tabular-nums; }
-.section > .group { margin-top: 2px; }
-
+/* Grouped container. */
 .group {
   background: var(--group);
   border: 0.5px solid var(--group-border);
-  border-radius: 10px;
+  border-radius: var(--radius-group);
   overflow: hidden;
 }
 
+/* Rows, separated by hairlines inset to where the text starts. */
 .row {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-height: 32px;
-  padding: 5px 12px;
+  gap: var(--space-m);
+  min-height: var(--row-height);
+  padding: var(--row-padding);
 }
-.row + .row::before {
+.row[hidden] { display: none; }
+.row-stack { flex-direction: column; align-items: stretch; gap: var(--space-xs); }
+.group .row::before {
   content: "";
   position: absolute;
   top: 0;
-  left: 12px;
+  left: var(--space-m);
   right: 0;
-  height: 0.5px;
-  background: var(--separator);
+  border-top: 0.5px solid var(--separator);
 }
-.row[hidden] { display: none; }
-.row-stack { flex-direction: column; align-items: stretch; gap: 4px; }
+.group > :first-child > .row:first-child::before,
+.group > .row:first-child::before { display: none; }
+.children .row { padding-left: var(--indent); }
+.children .row::before { left: var(--indent); }
 
 .row-text {
   flex: 1;
@@ -164,21 +167,51 @@ h2.area {
   gap: 1px;
   cursor: default;
 }
-.row-title { font-size: 13px; font-weight: 400; }
-h3.row-title { font-weight: 600; }
+h1.row-title,
+h3.row-title { font: var(--font-headline); }
 
 .detail {
-  font-size: 11px;
-  line-height: 1.3;
-  color: var(--secondary);
+  font: var(--font-subheadline);
+  color: var(--secondary-label);
 }
 
-.is-disabled .row-text { opacity: 0.45; }
+.is-disabled .row-text { color: var(--tertiary-label); }
+.is-disabled .row-text .detail { color: inherit; }
+
+/* Master switch row. */
+.hero { gap: var(--space-m); }
+.app-icon { flex: none; border-radius: 7px; }
+
+/* Disclosure rows: a triangle at the leading edge pointing inward when the
+   section is collapsed and down when it is expanded. */
+.section > summary {
+  list-style: none;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  gap: var(--space-s);
+}
+.section > summary::-webkit-details-marker { display: none; }
+.section > summary .row-title { flex: 1; min-width: 0; }
+.triangle {
+  flex: none;
+  width: var(--triangle);
+  height: var(--triangle);
+  background: var(--secondary-label);
+  clip-path: polygon(20% 8%, 88% 50%, 20% 92%);
+  transition: transform var(--duration) ease;
+}
+.section[open] > summary .triangle { transform: rotate(90deg); }
+.count {
+  flex: none;
+  color: var(--secondary-label);
+  font-variant-numeric: tabular-nums;
+}
 
 /* Switch: native in Safari. */
 html.native-switch input[switch] { flex: none; margin: 0; }
 
-/* Switch: CSS fallback in macOS proportions. */
+/* Switch: fallback in macOS proportions, the knob position showing the state. */
 html:not(.native-switch) input[switch] {
   appearance: none;
   -webkit-appearance: none;
@@ -189,8 +222,9 @@ html:not(.native-switch) input[switch] {
   margin: 0;
   border-radius: 9px;
   background: var(--switch-off);
+  box-shadow: inset 0 0 0 0.5px var(--switch-border);
   cursor: default;
-  transition: background-color 0.2s ease;
+  transition: background-color var(--duration) ease;
 }
 html:not(.native-switch) input[switch]::before {
   content: "";
@@ -201,18 +235,18 @@ html:not(.native-switch) input[switch]::before {
   height: 14px;
   border-radius: 50%;
   background: var(--knob);
-  box-shadow: 0 0.5px 1.5px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease;
+  box-shadow: 0 0.5px 1.5px color-mix(in srgb, black 30%, transparent);
+  transition: transform var(--duration) ease;
 }
-html:not(.native-switch) input[switch]:checked { background: var(--accent); }
+html:not(.native-switch) input[switch]:checked { background: var(--accent); box-shadow: none; }
 html:not(.native-switch) input[switch]:checked::before { transform: translateX(14px); }
 html:not(.native-switch) input[switch]:disabled { opacity: 0.45; }
 
+/* Keyboard focus: the system focus ring. */
 input[switch]:focus-visible,
-.button:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 1px;
-}
+.section > summary:focus-visible,
+button:focus-visible { outline: auto; outline-offset: 1px; }
+.section > summary:focus-visible { outline-offset: -3px; }
 
 /* Lists of streams in the Tibia section. */
 .list { list-style: none; padding: 0; }
@@ -220,8 +254,8 @@ input[switch]:focus-visible,
 .list-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px 0;
+  gap: var(--space-m);
+  padding: var(--space-s) 0;
 }
 .list-item + .list-item { border-top: 0.5px solid var(--separator); }
 .list-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
@@ -232,37 +266,30 @@ input[switch]:focus-visible,
   white-space: nowrap;
 }
 
-/* Push buttons. */
-.button {
-  flex: none;
-  font: inherit;
-  font-size: 12px;
-  line-height: 1.2;
+/* Push buttons: the native bezel in Safari; the default button uses the accent. */
+.button { flex: none; font: var(--font-body); }
+html:not(.native-switch) .button {
   padding: 3px 10px;
-  border: 0.5px solid var(--button-border);
-  border-radius: 6px;
-  background: var(--button);
+  border: 0.5px solid var(--separator);
+  border-radius: var(--radius-control);
+  background: var(--group);
   color: var(--label);
-  box-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.08);
 }
-.button:active { filter: brightness(0.94); }
 .button.primary {
+  padding: 3px 10px;
+  border: 0;
+  border-radius: var(--radius-control);
   background: var(--accent);
-  border-color: transparent;
-  color: #ffffff;
+  color: var(--on-accent);
 }
 
-.footer { padding: 12px 4px 0; }
+.footer { padding: var(--space-m) var(--space-m) 0; }
 .reload {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: var(--space-m);
+  margin-bottom: var(--space-s);
 }
 .reload[hidden] { display: none; }
-.version { text-align: center; }
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before { transition: none !important; }
-}
+.version { text-align: center; color: var(--tertiary-label); }

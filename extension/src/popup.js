@@ -99,7 +99,7 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
             input.closest('.row')?.classList.toggle('is-disabled', disabled);
         }
         for (const section of document.querySelectorAll('.section')) {
-            const inputs = [...section.querySelectorAll('.group input[data-setting]')];
+            const inputs = [...section.querySelectorAll('.children input[data-setting]')];
             const on = inputs.filter(input => input.checked).length;
             section.querySelector('.count').textContent = !settings.enabled ? 'Paused' : `${on} of ${inputs.length} on`;
         }
