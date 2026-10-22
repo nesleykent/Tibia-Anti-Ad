@@ -1,8 +1,5 @@
-"""Build a universal macOS Safari development app using the installed Xcode.
-
-The ad-hoc signature provides local code integrity, not Developer ID trust or
-notarization. Safari's explicit unsigned-extension development mode is required.
-"""
+"""Build a universal Safari app with ad-hoc or explicit local development signing."""
+import argparse
 import json
 import plistlib
 import shutil
@@ -24,9 +21,15 @@ def run(*args):
     subprocess.run([str(arg) for arg in args], cwd=ROOT, check=True)
 
 
-def build():
+def build(sign_identity="-"):
     if sys.platform != "darwin":
         raise RuntimeError("Building the Safari app requires macOS and full Xcode.")
+    if sign_identity != "-":
+        identities = subprocess.check_output(
+            ["security", "find-identity", "-v", "-p", "codesigning"], text=True)
+        if not sign_identity or not any(sign_identity in line and '"' in line
+                                        for line in identities.splitlines()):
+            raise RuntimeError("Signing identity is not valid. Check Xcode's certificates and the Apple WWDR intermediate certificate.")
     if PROJECT_ROOT.exists():
         shutil.rmtree(PROJECT_ROOT)
     run("xcrun", "safari-web-extension-converter", SOURCE,
@@ -66,7 +69,8 @@ def build():
         if original.is_file() and original.read_bytes() != (resources / original.relative_to(SOURCE)).read_bytes():
             raise RuntimeError(f"Packaged extension resource differs: {original.name}")
     for bundle, entitlements in ((extension, "extension.entitlements"), (APP, "host.entitlements")):
-        run("codesign", "--force", "--sign", "-", "--entitlements", CONFIG / entitlements, bundle)
+        run("codesign", "--force", "--sign", sign_identity,
+            "--entitlements", CONFIG / entitlements, bundle)
     run("codesign", "--verify", "--deep", "--strict", APP)
     for bundle, info in ((APP, host_info), (extension, ext_info)):
         binary = bundle / "Contents/MacOS" / info["CFBundleExecutable"]
@@ -77,4 +81,7 @@ def build():
 
 
 if __name__ == "__main__":
-    print(build())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--sign-identity", default="-",
+                        help="Local signing identity name or SHA-1; default: ad-hoc (-).")
+    print(build(parser.parse_args().sign_identity))

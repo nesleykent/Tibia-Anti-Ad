@@ -14,9 +14,17 @@ You do not need to buy Apple Developer Program membership just to set up a Perso
 6. Select the **Tibia Anti-Ad** scheme and **My Mac**, then choose **Product → Run**.
 7. Enable the newly signed extension in Safari Settings. Remove the earlier temporary installation to avoid confusing it with this copy.
 
-Use **Xcode's Run command** for this personal signing route. The repository's default command-line build deliberately uses ad-hoc signing for public previews and CI; rerunning it does not preserve a Personal Team selection in its regenerated project.
+Use **Xcode's Run command** for this personal signing route. The repository's default command-line build uses ad-hoc signing for public previews and CI; rerunning it does not preserve a Personal Team selection in its regenerated project. To build with an existing valid development certificate from the command line instead:
 
-After signing, test that Safari accepts the extension with **Allow unsigned extensions turned off**, then quit and reopen Safari to check persistence. That behavior has not been verified on this machine yet: it currently has no valid Apple Development identity.
+```sh
+python3 tools/build_safari_extension.py --sign-identity 'Apple Development'
+```
+
+If you have more than one matching certificate, use the exact certificate name or SHA-1 from `security find-identity -v -p codesigning`. To use the build-and-run script with personal signing, set `TIBIA_SAFARI_SIGN_IDENTITY` to that identity. Both the app and its embedded extension are signed and verified; the certificate and private key stay in your Mac's keychain.
+
+**Certificate listed in Xcode but not valid for signing?** A missing Apple WWDR G3 intermediate certificate can cause this. Follow [Apple's instructions for restoring a missing intermediate certificate](https://help.apple.com/xcode/mac/current/en.lproj/devc4c7101d8.html). Do not change the certificate's trust setting to Always Trust.
+
+After signing, test that Safari accepts the extension with **Allow unsigned extensions turned off**, then quit and reopen Safari to check persistence. Native signature verification alone does not establish that Safari has accepted and retained the extension.
 
 See [Apple's Personal Team signing workflow](https://help.apple.com/xcode/mac/current/en.lproj/dev60b6fbbc7.html) and [certificate management](https://help.apple.com/xcode/mac/current/en.lproj/dev154b28f09.html). The paid Developer ID route is needed for a normally trusted, publicly distributed download, not this local Personal Team setup.
 

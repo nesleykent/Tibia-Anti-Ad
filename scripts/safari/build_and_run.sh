@@ -8,7 +8,7 @@ case "$mode" in
   *) echo "Usage: $0 [run|--debug|--logs|--telemetry|--verify]" >&2; exit 2 ;;
 esac
 pkill -x 'Tibia Anti-Ad' >/dev/null 2>&1 || true
-python3 tools/build_safari_extension.py
+python3 tools/build_safari_extension.py --sign-identity "${TIBIA_SAFARI_SIGN_IDENTITY:--}"
 app="$PWD/dist/Tibia Anti-Ad.app"
 case "$mode" in
   --debug) lldb -- "$app/Contents/MacOS/Tibia Anti-Ad" ;;
