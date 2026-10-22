@@ -95,7 +95,9 @@ def describe(s):
         return f"{('official' if s['game'] == 'Tibia' else s['game'])} tag {s['text']}"
     if s['side'] == 'tibia':
         return f"{s['text']} in title"
-    return f"""{s['game']}{(' world' if s.get('kind') == 'world' else '')} in title{(' ("%s")' % s['text'] if s.get('distance') else '')}"""
+    world = ' world' if s.get('kind') == 'world' else ''
+    match = ' ("%s")' % s['text'] if s.get('distance') else ''
+    return f"{s['game']}{world} in title{match}"
 
 def js_round(value):
     return math.floor(value * 100 + 0.5) / 100
