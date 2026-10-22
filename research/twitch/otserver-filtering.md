@@ -59,7 +59,7 @@ The rules above are now weighted signals rather than exact keyword tests (`weigh
 | Tibia (92) | **0** | 6 | 86 |
 | Unclear (83) | 9 | 69 | 5 |
 
-The 9 unclear streams hidden all list several servers, none of them Tibia. On the 562-stream live capture the weighted rules agree with the reviewed verdicts on 560 streams: TORNABRAAAA (official) is now kept as Tibia, and one stream with only a `!rubinot` command and two official world tags is now undetermined. In Chrome Beta 157 on 2026-10-22 the extension hid 29 of the 30 first cards, each with its reason, and kept the official `WAR FEROBRA` stream.
+The 9 unclear streams hidden all list several servers, none of them Tibia. On the 562-stream live capture the weighted rules agree with the reviewed verdicts on 560 streams: TORNABRAAAA (official) is now kept as Tibia, and one stream with only a `!rubinot` command and two official world tags is now undetermined. In Chrome Beta 157 on 2026-10-22 the extension hid 29 of the 30 first cards, each with its reason, and kept the official `WAR FEROBRA` stream. In WebKit (WKWebView on macOS 27 with Safari 27.0.1's engine, content scripts in an isolated world, metadata reader in the page world) the same 29 of 30 were hidden through `hide.css`, and the load-more nudge filled the list to 107 cards (96 hidden, 11 visible: 9 official-world streams, 2 undetermined). Twitch refused load-more in the DevTools-driven Chrome profile with `failed integrity check`, with or without the extension, so that run could not exercise it.
 
 ## Known gaps
 
