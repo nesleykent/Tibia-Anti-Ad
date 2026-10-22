@@ -40,14 +40,23 @@ def run(*args):
 
 # --- Signing -----------------------------------------------------------------
 
+def find_certificate(identity):
+    """The PEM certificate of a signing identity given by name or SHA-1 hash."""
+    if re.fullmatch(r"[0-9A-Fa-f]{40}", identity):
+        listing = subprocess.check_output(["security", "find-certificate", "-a", "-Z", "-p"], text=True)
+        for sha1, pem in re.findall(r"SHA-1 hash: ([0-9A-F]{40})\n.*?(-----BEGIN CERTIFICATE-----.*?-----END CERTIFICATE-----)", listing, re.S):
+            if sha1 == identity.upper():
+                return pem
+        raise RuntimeError(f"No certificate with SHA-1 {identity} in the keychain.")
+    return subprocess.check_output(["security", "find-certificate", "-c", identity, "-p"], text=True)
+
+
 def signing_team(identity):
     """The team of a signing identity (its certificate's OU), or None when ad-hoc."""
     if identity == "-":
         return None
-    certificate = subprocess.run(["security", "find-certificate", "-c", identity, "-p"],
-                                 capture_output=True, text=True, check=True).stdout
     subject = subprocess.run(["openssl", "x509", "-noout", "-subject", "-nameopt", "RFC2253"],
-                             input=certificate, capture_output=True, text=True, check=True).stdout
+                             input=find_certificate(identity), capture_output=True, text=True, check=True).stdout
     match = re.search(r"(?:^|,)OU=([A-Z0-9]{10})(?:,|$)", subject)
     if not match:
         raise RuntimeError(f"Could not read the team of signing identity {identity!r}.")
