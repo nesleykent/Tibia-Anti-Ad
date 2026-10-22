@@ -6,7 +6,7 @@ Investigate display ads, overlays, telemetry and pre-roll/mid-roll video separat
 
 `research/twitch/recon.js` inventories DOM hooks and resource hosts. `collect-streams.js` is a historical scrolling collector, not an official API client or classifier; it may misread cards/counts and is not part of a default installation. Neither reconnaissance script neutralizes video ads. Collected snapshots and their classification live in [`research/twitch/data`](../research/twitch/data/2026-10-21/README.md).
 
-The supplied **[Tibia Anti-Ad extension](../extensions/tibia-anti-ad/README.md)** now packages vaft, Source quality, network rules and cosmetic/nag handling, each with its own switch in the extension's settings. The **[StopTheMadness Pro script](../scripts/twitch/README.md)** is a standalone alternative. Both contain the supplied vaft video-ad replacement logic; current live effectiveness remains unverified. The [complementary Twitch filters](../filters/twitch/twitch.tv.txt) and [historical report](../research/twitch/twitch.tv-validation.md) are also included. Choose one vaft injection method. These assets do not implement OTServ filtering.
+The supplied **[Tibia Anti-Ad extension](../extensions/tibia-anti-ad/README.md)** now packages vaft, Source quality, network rules and cosmetic/nag handling, each with its own switch in the extension's settings. The **[StopTheMadness Pro script](../scripts/twitch/README.md)** is a standalone alternative. Both contain the supplied vaft video-ad replacement logic; current live effectiveness remains unverified. The [complementary Twitch filters](../filters/twitch/twitch.tv.txt) and [historical report](../research/twitch/twitch.tv-validation.md) are also included. Choose one vaft injection method. The standalone script does not implement OTServ filtering; the extension has a separate title/tag classifier described below.
 
 ## Precision-first classification
 
@@ -26,7 +26,7 @@ Input example:
 [{"title": "OTServ", "tags": ["OTServ"], "language": "en"}]
 ```
 
-Every prototype output sets `hide: false`, even for OTServ: no real-stream precision benchmark has been completed. Future optional hiding must require high-confidence corroborated evidence, a visible explanation, per-stream override and an immediate undo. Undetermined and legitimate Tibia streams stay visible. Corrections must not require exposing a viewer's private history.
+Every prototype output sets `hide: false`, even for OTServ: this synthetic prototype has no real-stream precision benchmark. Future optional hiding must require high-confidence corroborated evidence, a visible explanation, per-stream override and an immediate undo. Undetermined and legitimate Tibia streams stay visible. Corrections must not require exposing a viewer's private history.
 
 ## Validation gate for future integration
 

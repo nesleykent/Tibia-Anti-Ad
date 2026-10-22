@@ -1,59 +1,66 @@
 # Tibia Anti-Ad
 
-**The player experience comes before monetization.**
+_Sorry for the inconvenience, we just want Tibia._
 
-Tibia Anti-Ad identifies, blocks and neutralizes intrusive advertising, tracking and navigation interference across services used by the Tibia community. The need to fund a fansite does not justify abusive advertising.
+[![Validate project](https://github.com/nesleykent/Tibia-Anti-Ad/actions/workflows/check.yml/badge.svg)](https://github.com/nesleykent/Tibia-Anti-Ad/actions/workflows/check.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## What we cover
+Browser extensions, content-blocking filters and transparent research for a cleaner Tibia community. Find actual Tibia streams on Twitch and browse fansites without advertising and tracking, while keeping the articles, calculators, maps and tools you came for.
 
-- Fansites, wikis, calculators, maps, databases, market tools and community portals.
-- Floating ads, pop-ups, forced redirects, autoplay, intrusive banners, tracking, fingerprinting, anti-adblock walls and leftover ad containers.
-- Website assessments covering advertising intrusiveness, tracking, performance and usability.
-- Twitch advertising research and precision-first identification of OTServ streams among Tibia broadcasts.
+**Love the fansites, not the ads.** Read the full [Tibia Anti-Ad Manifesto](MANIFESTO.md) for the motivation and principles behind this project.
 
-Navigation, editorial content, tools and accessibility must keep working. Positive recognition never grants an exemption: **no website receives immunity from ad blocking**.
+## Choose how to use it
 
-## Project status
+| Component | What it does | Start here |
+| --- | --- | --- |
+| Browser extension | Twitch ad/tracking rules, video-ad replacement attempts, reversible stream filtering and controls for 15 fansites | [Extension setup and settings](extensions/tibia-anti-ad/README.md) |
+| Website filter lists | Site-scoped rules for an existing compatible blocker; 13 sites included | [Installation and rollback](docs/INSTALLATION.md) |
+| Standalone Twitch script | Video-ad replacement through StopTheMadness Pro; choose this or the extension's video integration | [Script setup](scripts/twitch/README.md) |
+| Research and classification tools | Inspect evidence and reproduce offline classifications | [Research](research/README.md) · [Twitch methodology](docs/TWITCH.md) |
 
-This is an initial research and tooling release. Experimental filter inputs and historical reports are included for 15 websites. Generated bundles exclude two sites with content-destruction risks. The remaining rules still require real extension testing across browsers; historical CSS injection and network simulation are not proof of blocker enforcement.
+## Status and limits
 
-Twitch includes the supplied **[Tibia Anti-Ad extension](extensions/tibia-anti-ad/README.md)**, a **[standalone live-video ad script](scripts/twitch/README.md)**, complementary filters, reconnaissance scripts and an offline text-classification prototype. The vaft integration attempts to remove stitched video ads; current live effectiveness is unverified. No permanent channel blocklist is used.
+**Experimental.** The repository's automated checks cover generated artifacts, rule scope, settings and offline classifications. They do not certify live ad removal or browser compatibility. Historical reports are supplied evidence, not newly reproduced audits. See [verification](docs/VERIFICATION.md), [compatibility](docs/COMPATIBILITY.md) and the [roadmap](docs/ROADMAP.md).
 
-## Try the experimental website filters
+- The extension uses titles and tags to identify OTServ promotions and unrelated games. Uncertain streams stay visible; hidden streams have reasons and can be restored. The dated development samples are insufficient to establish general accuracy.
+- The vaft integration attempts to replace stitched video ads. Live effectiveness is unverified, and playback can stall or fall back to lower quality during breaks.
+- Filter subscriptions exclude TibiaWiki BR and Tibiopedia because of documented content-destruction risks. The extension includes experimental repairs for both and enables their site controls by default; review its settings and disable a site if it breaks.
 
-**Private repository:** anonymous raw subscriptions will not work while access is restricted. Authorized users can download a generated list and import/paste it through a supported blocker interface. Never embed a GitHub access token in a subscription URL.
+## Install website filters
 
-Read the [installation and rollback guide](docs/INSTALLATION.md) and [compatibility notes](docs/COMPATIBILITY.md) before enabling a list.
+Choose **one** generated list and add its URL to a blocker that supports its syntax:
 
-- [Portable syntax bundle](https://raw.githubusercontent.com/nesleykent/anti-ad-tibia/main/filters/anti-ad-tibia.txt): site-scoped network rules and basic cosmetic selectors.
-- [Extended syntax bundle](https://raw.githubusercontent.com/nesleykent/anti-ad-tibia/main/filters/anti-ad-tibia-extended.txt): also includes `:has()` selectors; an alternative to the portable bundle.
-- [Per-site inputs](filters/sites): research inputs, **not installation-ready lists**; some contain globally scoped rules or known breakage.
+- [Portable bundle](https://raw.githubusercontent.com/nesleykent/Tibia-Anti-Ad/main/filters/anti-ad-tibia.txt): site-scoped network rules and basic cosmetic selectors.
+- [Extended bundle](https://raw.githubusercontent.com/nesleykent/Tibia-Anti-Ad/main/filters/anti-ad-tibia-extended.txt): an alternative that also includes `:has()` selectors.
 
-The website bundles do not contain Twitch video-ad blocking; use the separate extension or standalone script linked above. The lists do not depend on EasyList/EasyPrivacy for their included rules, but do not claim complete protection. Userscripts are optional research artifacts and are never installed by a subscription.
+Read the [installation and rollback guide](docs/INSTALLATION.md) first. [Per-site inputs](filters/sites) are research material, not installation-ready subscriptions. The bundles contain no Twitch video-ad replacement and install no userscripts. Cosmetic hiding alone does not stop tracking requests.
 
-## Evidence and assessments
+## Principles in practice
 
-See the [website inventory](docs/WEBSITES.md), [assessment rubric](docs/ASSESSMENTS.md) and [research reports](research/reports). Historical reports distinguish observed, simulated and assumed behavior. Their claims have not been independently reproduced for this release, and raw screenshots/HAR files are not included. Numeric ratings and measured performance rankings are pending reproducible audits.
+- **Preserve useful content.** Navigation, search, forms, playback, tools and accessibility must keep working.
+- **Respect viewer choice.** Classify the current broadcast, keep uncertainty visible and support corrections; no permanent channel blacklist.
+- **Document the evidence.** Distinguish observed, simulated, experimental and unverified results. Publish no invented scores or performance claims.
+- **Support the community.** Recognize good practices and voluntary contributions without granting advertising exemptions or targeting individuals.
 
-## Twitch
+Explore the [website inventory](docs/WEBSITES.md), [assessment rubric](docs/ASSESSMENTS.md) and [historical reports](research/reports).
 
-Missing or contradictory evidence yields `undetermined`. Language, country, viewer count and the Tibia category alone cannot establish OTServ. The prototype never automatically hides streams.
+## Develop and contribute
+
+Requires **Python 3.11+** and **Node.js 22+**. Build tools use the Python standard library; no package installation or Twitch credentials are required for the checks.
 
 ```sh
-python3 tools/classify_streams.py path/to/streams.json
+git clone https://github.com/nesleykent/Tibia-Anti-Ad.git
+cd Tibia-Anti-Ad
+python3 tools/check_project.py
+python3 tools/build_chrome_extension.py
 ```
 
-The input is an array of stream objects with `title`, `tags` and optional metadata. Processing stays local and writes results to standard output. No Twitch credentials are needed.
+The check command runs syntax checks, tests, offline evaluation, documentation checks and generated-file verification. The Chrome build is written to `dist/tibia-anti-ad-chrome`; see the [extension guide](extensions/tibia-anti-ad/README.md) before loading it. Safari source is in `extensions/tibia-anti-ad/extension`.
 
-## Development and contributions
+Read [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow, [release guidance](docs/RELEASING.md) for publication gates and [CHANGELOG.md](CHANGELOG.md) for changes. Report breakage and false positives through [GitHub issues](https://github.com/nesleykent/Tibia-Anti-Ad/issues). Report vulnerabilities using [SECURITY.md](SECURITY.md). Community participation follows the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-Python 3.11+ and its standard library are sufficient:
+## License and independence
 
-```sh
-python3 tools/build_filters.py
-python3 -m unittest discover -s tests -v
-```
+Project-authored work is available under the [MIT License](LICENSE). Imported code and research retain their attribution and applicable terms; review [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) before redistribution.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md), the [specification](docs/SPEC.md) and [roadmap](docs/ROADMAP.md). Report breakage with the page URL, browser/blocker versions, active lists and reproducible steps. Never include account tokens or personal browsing data.
-
-Independent community project. Not affiliated with CipSoft, Twitch or the reviewed websites. Tibia belongs to CipSoft GmbH.
+Independent community project, unaffiliated with CipSoft, Twitch or the reviewed websites. Tibia belongs to CipSoft GmbH. Names and marks identify the services this project works with and do not imply endorsement.

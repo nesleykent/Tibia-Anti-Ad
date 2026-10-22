@@ -1,0 +1,24 @@
+name: Hidden legitimate Tibia stream
+description: Help correct a stream-filter decision without creating a channel blacklist.
+title: '[False positive]: '
+body:
+  - type: input
+    id: revision
+    attributes:
+      label: Extension version and commit
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Broadcast and evidence
+      description: Public channel URL, observation time with timezone, title, tags and the hidden-stream reason. Redact private information.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction and correction
+      description: Browser/OS versions, steps, why this is official Tibia and whether Show or disabling the filter restores the card.
+    validations:
+      required: true

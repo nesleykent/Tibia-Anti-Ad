@@ -1,0 +1,17 @@
+name: Feature or research proposal
+description: Propose a focused improvement aligned with the manifesto.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Player problem
+      description: Describe the experience to improve, affected pages and available evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal and preservation checks
+      description: Expected behavior, alternatives, how to preserve useful content and how to verify success.
+    validations:
+      required: true

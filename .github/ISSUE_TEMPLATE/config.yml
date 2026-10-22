@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/nesleykent/Tibia-Anti-Ad/security/advisories/new
+    about: Report vulnerabilities privately. See SECURITY.md for the fallback if unavailable.

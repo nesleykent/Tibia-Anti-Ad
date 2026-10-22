@@ -24,6 +24,16 @@
 - [x] Integrate supplied Tibia Anti-Ad extension and standalone vaft script with English instructions.
 - [ ] Validate display-ad and telemetry filters without breaking playback or chat.
 - [ ] Investigate pre-roll/mid-roll neutralization and measure stalls, latency and ad exposure.
-- [ ] Collect reviewed multilingual Tibia/OTServ/undetermined data using supported metadata sources.
 
-- [ ] Evaluate precision/false positives before opt-in, reversible hiding.
+- [ ] Collect an independently reviewed holdout set using supported metadata sources.
+
+- [x] Add reversible hiding with decision reasons and per-broadcast corrections.
+- [ ] Meet the precision target on independent data and complete real-browser checks before a stable release.
+
+## Open-source maintenance
+
+- [x] Preserve and publish the full manifesto; align contribution and release standards with it.
+- [x] Add licensing and provenance notices, security reporting, conduct, issue forms and ownership routing.
+- [x] Provide one local/CI verification command, pinned actions, compatibility checks and development build artifacts.
+- [ ] Confirm redistribution rights for all supplied assets before publishing packaged releases.
+- [ ] Complete the live behavior and preservation checks in [RELEASING.md](RELEASING.md) before declaring stable support.
