@@ -10,6 +10,10 @@ On Safari the toolbar uses Apple's plain **infinity** when blocking is on and **
 
 The host window reports Safari's extension-enabled status. The popup and toolbar report the extension's master blocking setting. These are separate states: a Safari-enabled extension can have blocking paused.
 
+## Access to all sites (aesthetic choice)
+
+**Why the extension asks for access to every site (`<all_urls>`): appearance only.** Safari greys an extension's toolbar icon on every page the extension has no access to, so with access limited to Twitch and the fansites the icon turned white on all other pages. The maintainer chose a consistently tinted icon, so the extension requests access to all sites. It uses that access for nothing: content scripts, cosmetic rules and network rule sets still match only Twitch and the 15 fansites, and no other page is read or changed. To keep access minimal instead, remove `"<all_urls>"` from `host_permissions` in `tools/build_extension_sites.py` (the icon then greys outside those sites), or grant the extension only those sites in Safari Settings → Extensions → Edit Websites.
+
 ## Compatibility and rendering
 
 Both SF Symbol names were resolved successfully using `NSImage(systemSymbolName:accessibilityDescription:)` on macOS 27.0.1. Apple's local CoreGlyphs `name_availability.plist` assigns both names to release `2020.1`, whose macOS minimum is **11.0**. This is below the project's macOS 14 build target. The extension still requires Safari 26 or later.

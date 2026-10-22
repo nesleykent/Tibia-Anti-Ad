@@ -51,6 +51,10 @@ Open `chrome://extensions`, enable Developer mode, choose **Load unpacked** and 
 
 The extension includes rules and individual switches for all 15 sites in the [inventory](../docs/WEBSITES.md). Network rules are scoped to each site. Unlike the standalone filter subscriptions, the extension includes TibiaWiki BR and Tibiopedia with experimental page repairs; both are enabled by default. Their content-preservation behavior still needs live browser verification. Disable the relevant site switch and reload if content or tools fail.
 
+## Permissions
+
+**Why the extension asks for access to every site (`<all_urls>`): appearance only.** Safari greys an extension's toolbar icon on every page the extension has no access to, so with access limited to Twitch and the fansites the icon turned white on all other pages. The maintainer chose a consistently tinted icon, so the extension requests access to all sites. It uses that access for nothing: content scripts, cosmetic rules and network rule sets still match only Twitch and the 15 fansites, and no other page is read or changed. To keep access minimal instead, remove `"<all_urls>"` from `host_permissions` in [`tools/build_extension_sites.py`](../tools/build_extension_sites.py) (the icon then greys outside those sites), or grant the extension only those sites in Safari Settings → Extensions → Edit Websites. Details: [toolbar icons](../docs/ICONS.md#access-to-all-sites-aesthetic-choice).
+
 ## Install in Safari
 
 **[Download the Safari extension ZIP](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-safari-extension.zip)** or the **[compiled Mac app](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-safari-macos.zip)**. Follow the [Safari installation guide](../docs/INSTALL_SAFARI.md).
