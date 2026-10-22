@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Twitch Clean",
-  "version": "1.0.0",
-  "description": "Blocks Twitch ad and tracking servers, hides display ads and nags, forces Source quality, strips stitched video ads (vaft) and hides non-Tibia streams in the Tibia category.",
+  "version": "1.1.0",
+  "description": "Blocks Twitch ad and tracking servers, hides display ads and prompts, forces Source quality, strips stitched video ads (vaft) and hides non-Tibia streams in the Tibia category. Every feature has its own switch.",
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",
@@ -23,6 +23,15 @@
     },
     "default_popup": "popup.html"
   },
+  "options_ui": {
+    "page": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "settings.js",
+      "background.js"
+    ]
+  },
   "permissions": [
     "declarativeNetRequest",
     "storage"
@@ -36,10 +45,26 @@
         "id": "twitch_ads",
         "enabled": true,
         "path": "rules.json"
+      },
+      {
+        "id": "twitch_tracking",
+        "enabled": true,
+        "path": "tracking.json"
       }
     ]
   },
   "content_scripts": [
+    {
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "js": [
+        "settings.js",
+        "settings-bridge.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
     {
       "matches": [
         "*://*.twitch.tv/*"
@@ -85,6 +110,7 @@
         "*://www.twitch.tv/*"
       ],
       "js": [
+        "settings.js",
         "tibia-evidence.js",
         "tibia-classify.js",
         "tibia-filter.js"

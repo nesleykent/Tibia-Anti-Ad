@@ -1,28 +1,51 @@
-/* Generated from twitch.tv.txt (2026-10-21 (revision 2)). Injected as a user-origin stylesheet
-   (css_origin: user), so these rules win over Twitch's own !important styles.
-   One rule per selector: a selector Safari cannot parse only drops itself. */
+/* Selectors from twitch.tv.txt (2026-10-21 (revision 2)). Injected as a user-origin
+   stylesheet (css_origin: user), so these rules win over Twitch's own !important styles.
+   One rule per selector: a selector Safari cannot parse only drops itself.
 
-.stream-display-ad__wrapper { display: none !important; }
-[data-test-selector="sda-wrapper"] { display: none !important; }
-.stream-display-ad__wrapper + div > div[style^="position:"] > div[class^="Layout-sc-"]:has(video[src^="https://m.media-amazon.com"]) { display: none !important; }
-.chat-shell > div[class^="Layout-sc-"] > div[style^="transition:"]:has(video[src^="https://m.media-amazon.com"]) { display: none !important; }
-button[aria-label="Learn more about this ad"] { display: none !important; }
-button[aria-label="Leave feedback for this Ad"] { display: none !important; }
-.video-player__overlay .player-overlay-background:has(a[href*="/how-to-allow-ads-browser"]) { display: none !important; }
-.video-player__overlay .player-overlay-background:has(> div[class^="Layout-"] > div[class^="Layout-"] > div[class^="Layout-"] > a[href="https://www.twitch.tv/turbo"]) { display: none !important; }
-div.tw-tower > div:has(div.promoted-card-stat__promotion) { display: none !important; }
-.top-nav__menu > * > *:has(svg path[d^="M2 19V5h17"]) { display: none !important; }
-.top-nav__prime { display: none !important; }
-[data-test-selector="test_selector_prime_tracking_button_wrapper"] [data-a-target="blue-bar"] { display: none !important; }
-.top-nav__external-link[data-a-target="try-presto-link"] { display: none !important; }
-.subtember-gradient { display: none !important; }
-#twilight-sticky-footer-root { display: none !important; }
-div[data-a-target="right-column-chat-bar"] div.stream-chat + div.chat-signup-gate-overlay { display: none !important; }
-.follow-prompt { display: none !important; }
-.consent-banner { display: none !important; }
-#directory-banner { display: none !important; }
-[data-a-target="directory-banner-ad-slot"] { display: none !important; }
-#directory-rectangle { display: none !important; }
+   Each rule belongs to a settings group (settings.js). settings-bridge.js names the
+   groups that are switched off in the root's data-twitch-clean-off attribute and the
+   opt-in groups that are switched on in data-twitch-clean-on. With neither attribute
+   (before settings load, or settings unreadable) the defaults apply. */
 
-/* Elements marked by nags.js (nags without a stable CSS hook). */
-[data-twitch-clean-hidden] { display: none !important; }
+/* Display ads: ad frames around the player, ad controls, anti-adblock overlay,
+   promoted cards and directory ad slots. Setting: hideDisplayAds. */
+html:not([data-twitch-clean-off~="ads"]) .stream-display-ad__wrapper { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) [data-test-selector="sda-wrapper"] { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) .stream-display-ad__wrapper + div > div[style^="position:"] > div[class^="Layout-sc-"]:has(video[src^="https://m.media-amazon.com"]) { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) .chat-shell > div[class^="Layout-sc-"] > div[style^="transition:"]:has(video[src^="https://m.media-amazon.com"]) { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) button[aria-label="Learn more about this ad"] { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) button[aria-label="Leave feedback for this Ad"] { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) .video-player__overlay .player-overlay-background:has(a[href*="/how-to-allow-ads-browser"]) { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) .video-player__overlay .player-overlay-background:has(> div[class^="Layout-"] > div[class^="Layout-"] > div[class^="Layout-"] > a[href="https://www.twitch.tv/turbo"]) { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) div.tw-tower > div:has(div.promoted-card-stat__promotion) { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) #directory-banner { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) [data-a-target="directory-banner-ad-slot"] { display: none !important; }
+html:not([data-twitch-clean-off~="ads"]) #directory-rectangle { display: none !important; }
+
+/* Ad-break banner and countdown, opt-in because it is the only cue for when the
+   stream returns. Setting: hideAdBreakBanner (off by default). */
+html[data-twitch-clean-on~="adbreak"] [data-a-target="video-ad-label"] { display: none !important; }
+html[data-twitch-clean-on~="adbreak"] [data-a-target="video-ad-countdown"] { display: none !important; }
+
+/* Upsells: Turbo, Prime Gaming, Amazon Luna, Subtember. Setting: hideUpsells. */
+html:not([data-twitch-clean-off~="upsells"]) .top-nav__menu > * > *:has(svg path[d^="M2 19V5h17"]) { display: none !important; }
+html:not([data-twitch-clean-off~="upsells"]) .top-nav__prime { display: none !important; }
+html:not([data-twitch-clean-off~="upsells"]) [data-test-selector="test_selector_prime_tracking_button_wrapper"] [data-a-target="blue-bar"] { display: none !important; }
+html:not([data-twitch-clean-off~="upsells"]) .top-nav__external-link[data-a-target="try-presto-link"] { display: none !important; }
+html:not([data-twitch-clean-off~="upsells"]) .subtember-gradient { display: none !important; }
+
+/* Sign-up prompts for logged-out viewers. Setting: hideSignupPrompts. */
+html:not([data-twitch-clean-off~="signup"]) #twilight-sticky-footer-root { display: none !important; }
+html:not([data-twitch-clean-off~="signup"]) div[data-a-target="right-column-chat-bar"] div.stream-chat + div.chat-signup-gate-overlay { display: none !important; }
+html:not([data-twitch-clean-off~="signup"]) .follow-prompt { display: none !important; }
+
+/* Cookie banner; hiding it accepts nothing. Setting: hideCookieBanner. */
+html:not([data-twitch-clean-off~="cookies"]) .consent-banner { display: none !important; }
+
+/* Prompts marked by nags.js (Apple TV, animated emotes, Prime Benefits), which set a
+   rule name as the value. Setting: hidePrompts. */
+html:not([data-twitch-clean-off~="prompts"]) [data-twitch-clean-hidden]:not([data-twitch-clean-hidden=""]) { display: none !important; }
+
+/* Tibia category streams marked by tibia-filter.js, which sets an empty value.
+   Setting: tibiaFilter. */
+html:not([data-twitch-clean-off~="tibia"]) [data-twitch-clean-hidden=""] { display: none !important; }

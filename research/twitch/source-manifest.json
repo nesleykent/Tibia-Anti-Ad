@@ -2,10 +2,7 @@
   "source_archive": "twitch-clean.zip",
   "archive_sha256": "ed042a0b05eee8be636923b8754abb42452c5371fbfc20eb044c4090b53855d0",
   "files": {
-    "extensions/twitch-clean/extension/hide.css": "fdfa63ec80e8607738d0ed00c251bae1ab2a631385cd6b37ad7c0b588d72dced",
     "extensions/twitch-clean/extension/nags.js": "24ee6126caf3b6ae9468e934a585ced02fb0674e5b70cb8c3c2803c93ba3718b",
-    "extensions/twitch-clean/extension/page.js": "42faf014ed9bef6676d8ae0d1690f2349e9d7faa4c09c1f6c876f54d0d8cbf92",
-    "extensions/twitch-clean/extension/rules.json": "938ee2ff790380d44d8b3ced3f7e3d88d8b444d87bd40bfa33770e0064d003d4",
     "extensions/twitch-clean/extension/icons/icon-128.png": "843aefaeacebe41cce6f60e9deccbf09b7354ab27da510d4480cf012b1b04f92",
     "extensions/twitch-clean/extension/icons/icon-16.png": "d31a58b2f60157f3aa07485af18e6daade4d9496f94f6b3610b2080db1f75bce",
     "extensions/twitch-clean/extension/icons/icon-256.png": "16475206134c2534b435096069e139bfeb877cb7cd9daea840c9866f611d3c9c",
@@ -20,9 +17,21 @@
     "scripts/twitch/twitch-stopthemadness.js": "32dee88dfa836a5c0293f79b23f61b9bef380b36d2fea676da3ff83b38648c11"
   },
   "modified_after_import": {
+    "extensions/twitch-clean/extension/hide.css": {
+      "original_sha256": "fdfa63ec80e8607738d0ed00c251bae1ab2a631385cd6b37ad7c0b588d72dced",
+      "reason": "Gates each rule group on a settings attribute (data-twitch-clean-off/on) so the settings page can switch display ads, upsells, prompts, sign-up prompts, the cookie banner and the Tibia filter independently; adds the opt-in ad-break banner rules already listed (commented) in twitch.tv.txt. Selectors are otherwise unchanged."
+    },
     "extensions/twitch-clean/extension/manifest.json": {
       "original_sha256": "36c9ed905fa3f04b3b3468f6e9f47c2700b49f5c298c02b83c5983ff507c4306",
       "reason": "Adds the Tibia stream filter content scripts, its popup switch and the storage permission."
+    },
+    "extensions/twitch-clean/extension/page.js": {
+      "original_sha256": "42faf014ed9bef6676d8ae0d1690f2349e9d7faa4c09c1f6c876f54d0d8cbf92",
+      "reason": "Reads the settings mirrored by settings-bridge.js and runs Source quality (part 1) and vaft (part 2) only when enabled; adds part 3, which keeps quality in background tabs when vaft is off. The vaft code itself is unchanged."
+    },
+    "extensions/twitch-clean/extension/rules.json": {
+      "original_sha256": "938ee2ff790380d44d8b3ced3f7e3d88d8b444d87bd40bfa33770e0064d003d4",
+      "reason": "Split by purpose: the 17 ad-server rules stay here (ruleset twitch_ads) and the 11 tracking rules moved to tracking.json (ruleset twitch_tracking), renumbered from 1, so each can be switched separately. Hosts and conditions are unchanged."
     }
   }
 }

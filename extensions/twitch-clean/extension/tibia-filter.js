@@ -6,16 +6,23 @@
 // in the title or tags hides the card, unless an official world or "Tibia
 // Global" is also present; a "!server" chat command counts like the name. Only "other"
 // hides a card. Runs only on the Tibia category directory, and only while the
-// popup's switch ({tibiaFilter} in storage, on by default) is on.
+// "Hide other games" setting (tibiaFilter) and the master switch are on.
+//
+// Corrections: "Show" in the settings page stores {channel: title} in
+// tibiaShown. That broadcast stays visible until its title changes, so the
+// override never becomes a permanent channel rule. The settings page asks this
+// script for the cards it hides on the current page.
 (() => {
     'use strict';
 
     const api = globalThis.browser || globalThis.chrome;
+    const S = globalThis.TwitchCleanSettings;
     const MARK = 'data-twitch-clean-hidden';
     const VERDICT = 'data-twitch-clean-tibia';
     const META = 'data-twitch-clean-meta';
     const classify = globalThis.TwitchCleanTibiaClassify.create(globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE);
     let enabled = true;
+    let shown = {};
     const hiddenByUs = new WeakSet();
 
     const onTibiaDirectory = () => /^\/directory\/category\/tibia(\/|$)/i.test(location.pathname);
@@ -47,7 +54,9 @@
         if (info) {
             const result = classify(info.title, info.tags);
             verdict = result.verdict;
-            cell.setAttribute(VERDICT, `${verdict}: ${result.reason}`);
+            const overridden = verdict === 'other' && shown[info.channel] === info.title;
+            cell.setAttribute(VERDICT, `${verdict}: ${result.reason}${overridden ? ' (shown by you)' : ''}`);
+            if (overridden) { verdict = 'shown'; }
         }
         if (verdict === 'other') {
             if (!hiddenByUs.has(cell)) { requestMore(); }
@@ -105,10 +114,30 @@
         scan();
         observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title', META] });
     };
-    api.storage.onChanged.addListener(changes => {
-        if (changes.tibiaFilter) { enabled = changes.tibiaFilter.newValue !== false; scan(); }
+    // Cards this script hides on the current page, for the settings page.
+    const hiddenCards = () => [...document.querySelectorAll('article')].flatMap(article => {
+        const cell = cellOf(article);
+        if (!hiddenByUs.has(cell)) { return []; }
+        const info = cardInfo(article);
+        const reason = (cell.getAttribute(VERDICT) || '').replace(/^other: /, '');
+        return info ? [{ channel: info.channel, title: info.title, reason }] : [];
     });
-    api.storage.local.get({ tibiaFilter: true }).then(({ tibiaFilter }) => { enabled = tibiaFilter !== false; scan(); });
+    api.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message?.type !== 'twitch-clean:tibia-hidden') { return false; }
+        sendResponse({ onDirectory: onTibiaDirectory(), enabled, hidden: enabled && onTibiaDirectory() ? hiddenCards() : [] });
+        return false;
+    });
+
+    const load = () => Promise.all([S.load(api), api.storage.local.get({ tibiaShown: {} })])
+        .then(([settings, { tibiaShown }]) => {
+            enabled = S.active(settings, 'tibiaFilter');
+            shown = tibiaShown && typeof tibiaShown === 'object' ? tibiaShown : {};
+            scan();
+        });
+    api.storage.onChanged.addListener((changes, area) => {
+        if (area === 'local' && (changes.tibiaFilter || changes.enabled || changes.tibiaShown)) { load(); }
+    });
+    load();
     if (document.body) { start(); }
     else { document.addEventListener('DOMContentLoaded', start, { once: true }); }
 })();
