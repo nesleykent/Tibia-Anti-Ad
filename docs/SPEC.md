@@ -1,7 +1,7 @@
 # Tibia Anti-Ad project specification
 
 ## Objective and principles
-Identify, block and neutralize intrusive advertising, tracking and navigation interference in services used by the Tibia community. Fansite funding does not justify abusive advertising. The player experience takes priority over monetization. Recognizing good practices never grants advertising immunity.
+Identify, block and neutralize advertising, tracking and navigation interference in services used by the Tibia community. The [manifesto](../MANIFESTO.md) establishes the project’s player-first mission; the goal includes advertising regardless of how intrusive it is. The player experience takes priority over monetization. Recognizing good practices never grants advertising immunity.
 
 ## Capabilities and delivery order
 | Module | Responsibility | Depends on |
@@ -22,7 +22,7 @@ Initial repository scope: preserve supplied research, publish experimental filte
 - `scripts/twitch/`: standalone live-video ad script and setup.
 - `tools/`: Python 3.11+ standard-library utilities; no external runtime dependencies.
 - Build: `python3 tools/build_filters.py`
-- Test: `python3 -m unittest discover -s tests -v`
+- Full checks: `python3 tools/check_project.py` (Python 3.11+ and Node.js 22+)
 - Classify: `python3 tools/classify_streams.py path/to/streams.json`
 
 Use small functions, explicit output fields and deterministic UTF-8 output. Example: `{"classification": "undetermined", "hide": false}`. No implicit language-based inference or remote requests.
@@ -42,3 +42,12 @@ Use small functions, explicit output fields and deterministic UTF-8 output. Exam
 
 ## Boundaries and verification
 Always preserve navigation, content, tools and accessibility. Never publish fabricated ratings, screenshots, performance measurements or live-browser compatibility claims. Never whitelist ads as a reward. No secrets, session dumps or unreviewed archives. External dependencies and browser installation require separate justification. Run unit and artifact checks before publication. Browser-level acceptance requires actual extension enforcement on desktop/mobile home and deep pages; supplied CSS-injection reports do not satisfy that acceptance.
+
+## Repository quality acceptance
+
+- Preserve the full supplied manifesto and link its principles to contributor and release criteria.
+- Use the canonical public repository URL; document experimental status without promising production readiness.
+- Provide licensing, imported-material attribution, security reporting, conduct and contributor review guidance.
+- Check maintained local documentation links, JavaScript syntax, Python/Node behavior, offline evaluation, Chrome package resources and deterministic generated output through one local/CI command.
+- Keep CI read-only, pinned and bounded; publish development artifacts with license notices and track action updates.
+- Verify the published main commit and its CI result. Record remaining live browser and asset-rights gates before declaring a stable release.

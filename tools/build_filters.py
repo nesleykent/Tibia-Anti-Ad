@@ -32,7 +32,7 @@ def build(extended=False):
         "[Adblock Plus 2.0]",
         "! Title: Tibia Anti-Ad" + (" Extended" if extended else " Portable"),
         "! Description: Experimental site-scoped ads, tracking and annoyance filters",
-        "! Homepage: https://github.com/nesleykent/anti-ad-tibia",
+        "! Homepage: https://github.com/nesleykent/Tibia-Anti-Ad",
         "! Expires: 1 day",
         "! Version: 2026.10.21.1",
         "! Status: Experimental; browser enforcement not certified",

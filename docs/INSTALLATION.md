@@ -1,6 +1,6 @@
 # Installation and rollback
 
-The repository is currently private. Raw URLs require authorized access and usually cannot be subscribed to by a blocker anonymously. Download a generated list while signed in, then use a supported local import or custom-filter editor. Do not put an access token in a filter URL.
+The repository is public. Copy a generated subscription URL from the [README](../README.md) into a compatible blocker. If your blocker only supports local import, download the selected list and import it through its supported interface. No GitHub account or access token is needed.
 
 All lists are experimental. Use one generated bundle, not both. Review the site's historical report before enabling it. Cosmetic hiding does not prevent tracking requests.
 

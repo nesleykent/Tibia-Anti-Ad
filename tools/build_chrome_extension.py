@@ -1,8 +1,8 @@
 """Build the Chrome variant of Tibia Anti-Ad into dist/tibia-anti-ad-chrome.
 
 The Safari source in extensions/tibia-anti-ad/extension is shared; Chrome only
-needs a service-worker background that hosts OCR in an offscreen document
-(extensions/tibia-anti-ad/chrome) and a few manifest changes. Load the output
+needs a service-worker background (extensions/tibia-anti-ad/chrome) and a
+few manifest changes. Load the output
 folder with "Load unpacked" in chrome://extensions.
 """
 import json
@@ -33,6 +33,8 @@ def build():
     for script in manifest["content_scripts"]:
         script.pop("css_origin", None)  # Safari-only key.
     (OUTPUT / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n")
+    for notice in ("LICENSE", "THIRD_PARTY_NOTICES.md"):
+        shutil.copy2(ROOT / notice, OUTPUT / notice)
     return OUTPUT
 
 

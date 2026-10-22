@@ -33,11 +33,25 @@ How it works: `settings.js` defines every option and default. `settings-bridge.j
 
 **Correcting the Tibia filter:** on the Tibia category, the settings page lists the streams hidden on the current page with the reason for each. **Show** keeps that broadcast visible until its title changes, so a correction never becomes a permanent channel rule. **Shown by you** lists the corrections; **Hide** removes one. Turning off **Hide other games** shows every stream immediately.
 
+## Install in Chrome (development)
+
+Requires Python 3.11+ to build. From the repository root:
+
+```sh
+python3 tools/build_chrome_extension.py
+```
+
+Open `chrome://extensions`, enable Developer mode, choose **Load unpacked** and select `dist/tibia-anti-ad-chrome`. Review requested Twitch and fansite permissions, then reload affected pages. Rebuild and choose **Reload** in the extension manager after source updates. Remove it through the same manager to uninstall. This is an experimental development package; packaging checks do not certify live Chrome filtering.
+
+## Fansite controls
+
+The extension includes rules and individual switches for all 15 sites in the [inventory](../../docs/WEBSITES.md). Network rules are scoped to each site. Unlike the standalone filter subscriptions, the extension includes TibiaWiki BR and Tibiopedia with experimental page repairs; both are enabled by default. Their content-preservation behavior still needs live browser verification. Disable the relevant site switch and reload if content or tools fail.
+
 ## Install in Safari
 
 The supplied manifest targets Safari 26+. This folder contains source, not a signed App Store app.
 
-1. Download/clone this private repository while signed in.
+1. Clone or download [the public repository](https://github.com/nesleykent/Tibia-Anti-Ad).
 2. In Safari settings, enable the web-developer features and unsigned extensions where available.
 3. Choose **Add Temporary Extension…** and select this directory's **`extension`** folder, containing `manifest.json`.
 4. Enable Tibia Anti-Ad and allow access to Twitch. Reload the live channel page.
