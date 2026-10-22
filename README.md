@@ -13,7 +13,7 @@ Browser extensions, content-blocking filters and transparent research for a clea
 
 | Component | What it does | Start here |
 | --- | --- | --- |
-| Browser extension | Twitch ad/tracking rules, video-ad replacement attempts, reversible stream filtering and controls for 15 fansites | [Extension setup and settings](extensions/tibia-anti-ad/README.md) |
+| Browser extension | Twitch ad/tracking rules, video-ad replacement attempts, reversible stream filtering and controls for 15 fansites | [Extension setup and settings](extension/README.md) |
 | Website filter lists | Site-scoped rules for an existing compatible blocker; 13 sites included | [Installation and rollback](docs/INSTALLATION.md) |
 | Standalone Twitch script | Video-ad replacement through StopTheMadness Pro; choose this or the extension's video integration | [Script setup](scripts/twitch/README.md) |
 | Research and classification tools | Inspect evidence and reproduce offline classifications | [Research](research/README.md) · [Twitch methodology](docs/TWITCH.md) |
@@ -30,10 +30,10 @@ Browser extensions, content-blocking filters and transparent research for a clea
 
 Choose **one** generated list and add its URL to a blocker that supports its syntax:
 
-- [Portable bundle](https://raw.githubusercontent.com/nesleykent/Tibia-Anti-Ad/main/filters/anti-ad-tibia.txt): site-scoped network rules and basic cosmetic selectors.
-- [Extended bundle](https://raw.githubusercontent.com/nesleykent/Tibia-Anti-Ad/main/filters/anti-ad-tibia-extended.txt): an alternative that also includes `:has()` selectors.
+- [Portable bundle](https://raw.githubusercontent.com/nesleykent/Tibia-Anti-Ad/main/filters/lists/anti-ad-tibia.txt): site-scoped network rules and basic cosmetic selectors.
+- [Extended bundle](https://raw.githubusercontent.com/nesleykent/Tibia-Anti-Ad/main/filters/lists/anti-ad-tibia-extended.txt): an alternative that also includes `:has()` selectors.
 
-Read the [installation and rollback guide](docs/INSTALLATION.md) first. [Per-site inputs](filters/sites) are research material, not installation-ready subscriptions. The bundles contain no Twitch video-ad replacement and install no userscripts. Cosmetic hiding alone does not stop tracking requests.
+Read the [installation and rollback guide](docs/INSTALLATION.md) first. [Per-site inputs](filters/sources/sites) are research material, not installation-ready subscriptions. The bundles contain no Twitch video-ad replacement and install no userscripts. Cosmetic hiding alone does not stop tracking requests.
 
 ## Principles in practice
 
@@ -42,7 +42,29 @@ Read the [installation and rollback guide](docs/INSTALLATION.md) first. [Per-sit
 - **Document the evidence.** Distinguish observed, simulated, experimental and unverified results. Publish no invented scores or performance claims.
 - **Support the community.** Recognize good practices and voluntary contributions without granting advertising exemptions or targeting individuals.
 
-Explore the [website inventory](docs/WEBSITES.md), [assessment rubric](docs/ASSESSMENTS.md) and [historical reports](research/reports).
+Explore the [website inventory](docs/WEBSITES.md), [assessment rubric](docs/ASSESSMENTS.md) and [historical reports](research/fansites/reports).
+
+## Repository layout
+
+```text
+extension/            Browser extension
+  src/                Shared source and generated site rules
+  browsers/chrome/    Chrome-specific manifest overrides
+filters/
+  sources/            Fansite rules and Twitch evidence inputs
+  lists/              Generated subscriptions to install
+docs/                 Setup, compatibility, methodology and maintenance
+research/
+  fansites/           Historical reports and optional userscripts
+  twitch/             Captures, classification research and provenance
+scripts/twitch/       Standalone video-ad script
+tests/
+  python/             Build, rule-scope and classification tests
+  javascript/         Extension startup and settings checks
+tools/                Build, classification and verification commands
+```
+
+See the [documentation index](docs/README.md) for navigation. Generated development packages go to the ignored `dist/` directory. Original local working files are archived under the ignored `.local/legacy/` directory.
 
 ## Develop and contribute
 
@@ -55,7 +77,7 @@ python3 tools/check_project.py
 python3 tools/build_chrome_extension.py
 ```
 
-The check command runs syntax checks, tests, offline evaluation, documentation checks and generated-file verification. The Chrome build is written to `dist/tibia-anti-ad-chrome`; see the [extension guide](extensions/tibia-anti-ad/README.md) before loading it. Safari source is in `extensions/tibia-anti-ad/extension`.
+The check command runs syntax checks, tests, offline evaluation, documentation checks and generated-file verification. The Chrome build is written to `dist/tibia-anti-ad-chrome`; see the [extension guide](extension/README.md) before loading it. Safari source is in `extension/src`.
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) for the workflow, [release guidance](docs/RELEASING.md) for publication gates and [CHANGELOG.md](CHANGELOG.md) for changes. Report breakage and false positives through [GitHub issues](https://github.com/nesleykent/Tibia-Anti-Ad/issues). Report vulnerabilities using [SECURITY.md](SECURITY.md). Community participation follows the [Code of Conduct](CODE_OF_CONDUCT.md).
 

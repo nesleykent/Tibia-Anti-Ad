@@ -1,0 +1,6 @@
+/* Tibia Anti-Ad: AdSense units on guildstats.eu whose inline !important styles page CSS cannot
+   beat. This is a user-origin stylesheet (css_origin: user), so it wins. Gated by the
+   guildstats.eu switch. Ported from research/fansites/userscripts/guildstats.eu.user.js. */
+html:not([data-tibia-anti-ad-off~="guildstats.eu"]) > div[id^="google-anno"] { display: none !important; }
+html:not([data-tibia-anti-ad-off~="guildstats.eu"]) > ins.adsbygoogle { display: none !important; }
+html:not([data-tibia-anti-ad-off~="guildstats.eu"]) .google-anno-sc { display: none !important; }

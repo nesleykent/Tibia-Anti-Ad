@@ -14,11 +14,11 @@ Identify, block and neutralize advertising, tracking and navigation interference
 Initial repository scope: preserve supplied research, publish experimental filter inputs and reproducible bundles, establish assessment methodology, provide a conservative offline text-classification prototype and track unimplemented live capabilities. Creating this project is not equivalent to completing its research program.
 
 ## Structure and commands
-- `filters/sites/`: experimental per-site inputs, scoped by the build before installation.
-- `filters/anti-ad-tibia*.txt`: generated experimental subscriptions.
+- `filters/sources/sites/`: experimental per-site inputs, scoped by the build before installation.
+- `filters/lists/anti-ad-tibia*.txt`: generated experimental subscriptions.
 - `research/`: supplied reports and scripts, not newly verified evidence.
 - `docs/`: installation, methodology, compatibility, Twitch policy and roadmap.
-- `extensions/tibia-anti-ad/`: supplied Safari extension source.
+- `extension/`: supplied Safari extension source.
 - `scripts/twitch/`: standalone live-video ad script and setup.
 - `tools/`: Python 3.11+ standard-library utilities; no external runtime dependencies.
 - Build: `python3 tools/build_filters.py`
@@ -29,7 +29,7 @@ Use small functions, explicit output fields and deterministic UTF-8 output. Exam
 
 ## Acceptance checklist
 - English public-facing repository, README and contribution workflow.
-- Original local files remain untouched; ZIPs and local artifacts are not published.
+- Original local file bytes are preserved under `.local/legacy/`; ZIPs and local artifacts are not published.
 - Inputs and historical verification claims retain provenance and limitations.
 - Every generated network rule is restricted to its source site.
 - Known content-destruction risks are excluded from generated bundles.

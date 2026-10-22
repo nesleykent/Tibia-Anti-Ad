@@ -1,0 +1,6 @@
+/* Tibia Anti-Ad: AdSense anchor ads reserve a band with inline padding on <body>
+   (e.g. "padding: 0px 0px 120px"). The site sets no body padding of its own, so forcing
+   0 changes nothing else. User-origin stylesheet, gated by the tibiaring.com switch.
+   Ported from research/fansites/userscripts/tibiaring.com.user.js. */
+html:not([data-tibia-anti-ad-off~="tibiaring.com"]),
+html:not([data-tibia-anti-ad-off~="tibiaring.com"]) body { padding-top: 0 !important; padding-bottom: 0 !important; }

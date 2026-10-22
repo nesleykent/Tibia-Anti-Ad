@@ -1,0 +1,6 @@
+/* Tibia Anti-Ad: AdSense units on tibiamonk.com whose inline !important styles page CSS cannot
+   beat. This is a user-origin stylesheet (css_origin: user), so it wins. Gated by the
+   tibiamonk.com switch. Ported from research/fansites/userscripts/tibiamonk.com.user.js. */
+html:not([data-tibia-anti-ad-off~="tibiamonk.com"]) > div[id^="google-anno"] { display: none !important; }
+html:not([data-tibia-anti-ad-off~="tibiamonk.com"]) > ins.adsbygoogle { display: none !important; }
+html:not([data-tibia-anti-ad-off~="tibiamonk.com"]) .google-anno-sc { display: none !important; }

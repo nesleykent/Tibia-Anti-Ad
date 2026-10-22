@@ -6,7 +6,7 @@ The root MIT license applies to project-authored work. It does not grant rights 
 
 - Upstream: <https://github.com/pixeltris/TwitchAdSolutions>
 - Copyright (c) 2020-present TwitchAdSolutions Contributors.
-- License: MIT; the full upstream notice remains embedded in `extensions/tibia-anti-ad/extension/page.js` and `scripts/twitch/twitch-stopthemadness.js`.
+- License: MIT; the full upstream notice remains embedded in `extension/src/page.js` and `scripts/twitch/twitch-stopthemadness.js`.
 - The imported implementation reports version 24. Archive and source hashes are recorded in [source-manifest.json](research/twitch/source-manifest.json), alongside modifications made after import.
 
 Preserve the upstream notice when redistributing these files. The project MIT notice does not replace it.

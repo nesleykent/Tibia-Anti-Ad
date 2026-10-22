@@ -39,7 +39,7 @@ jobs:
       - name: Build Chrome development package
         run: python3 tools/build_chrome_extension.py
       - name: Confirm generated sources are committed
-        run: git diff --exit-code -- filters/ extensions/tibia-anti-ad/extension/
+        run: git diff --exit-code -- filters/ extension/src/
       - name: Upload Chrome development package
         if: matrix.python == '3.11'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

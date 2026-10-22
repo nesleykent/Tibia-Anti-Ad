@@ -2,34 +2,34 @@
   "source_archive": "twitch-clean.zip",
   "archive_sha256": "ed042a0b05eee8be636923b8754abb42452c5371fbfc20eb044c4090b53855d0",
   "files": {
-    "extensions/tibia-anti-ad/extension/nags.js": "24ee6126caf3b6ae9468e934a585ced02fb0674e5b70cb8c3c2803c93ba3718b",
-    "extensions/tibia-anti-ad/extension/icons/icon-128.png": "843aefaeacebe41cce6f60e9deccbf09b7354ab27da510d4480cf012b1b04f92",
-    "extensions/tibia-anti-ad/extension/icons/icon-16.png": "d31a58b2f60157f3aa07485af18e6daade4d9496f94f6b3610b2080db1f75bce",
-    "extensions/tibia-anti-ad/extension/icons/icon-256.png": "16475206134c2534b435096069e139bfeb877cb7cd9daea840c9866f611d3c9c",
-    "extensions/tibia-anti-ad/extension/icons/icon-32.png": "ccd351f3ce1912aada49d2d9956a219e8acff5c5c86e115e797a9446752441aa",
-    "extensions/tibia-anti-ad/extension/icons/icon-48.png": "131ad089e46883d8ae1fc45dca28af2cc00a190992d6e7bbd057974069998d18",
-    "extensions/tibia-anti-ad/extension/icons/icon-512.png": "18ff2581accd21e8b333b2b39175f5afac2fb2a6e4fcdf90725e1cffeb5281b6",
-    "extensions/tibia-anti-ad/extension/icons/icon-64.png": "a620f63d083b3a56901350616aa32e23928d4f304a96a66310eccbd6e2b38945",
-    "extensions/tibia-anti-ad/extension/icons/icon-96.png": "f82cf1bc0cd302fdd70f3b52bd5c1626851d165aba5c5f9fa822a4573d9f7d48",
-    "filters/twitch/twitch.tv.txt": "33b2af8cb73825fbea22c357b83b760204bfb66a554f2238c2c4b1b9fe5b92d1",
+    "extension/src/nags.js": "24ee6126caf3b6ae9468e934a585ced02fb0674e5b70cb8c3c2803c93ba3718b",
+    "extension/src/icons/icon-128.png": "843aefaeacebe41cce6f60e9deccbf09b7354ab27da510d4480cf012b1b04f92",
+    "extension/src/icons/icon-16.png": "d31a58b2f60157f3aa07485af18e6daade4d9496f94f6b3610b2080db1f75bce",
+    "extension/src/icons/icon-256.png": "16475206134c2534b435096069e139bfeb877cb7cd9daea840c9866f611d3c9c",
+    "extension/src/icons/icon-32.png": "ccd351f3ce1912aada49d2d9956a219e8acff5c5c86e115e797a9446752441aa",
+    "extension/src/icons/icon-48.png": "131ad089e46883d8ae1fc45dca28af2cc00a190992d6e7bbd057974069998d18",
+    "extension/src/icons/icon-512.png": "18ff2581accd21e8b333b2b39175f5afac2fb2a6e4fcdf90725e1cffeb5281b6",
+    "extension/src/icons/icon-64.png": "a620f63d083b3a56901350616aa32e23928d4f304a96a66310eccbd6e2b38945",
+    "extension/src/icons/icon-96.png": "f82cf1bc0cd302fdd70f3b52bd5c1626851d165aba5c5f9fa822a4573d9f7d48",
+    "filters/sources/twitch/twitch.tv.txt": "33b2af8cb73825fbea22c357b83b760204bfb66a554f2238c2c4b1b9fe5b92d1",
     "research/twitch/twitch.tv-validation.md": "d140cd951126ab4d7ce9a71a35929933f7e46c093318535efaeff7af730dc8b4",
     "research/twitch/recon.js": "585e012a64efd0a1faad6f0fe356c22c9b625309e00e64a328eefdbb497eadbf",
     "scripts/twitch/twitch-stopthemadness.js": "32dee88dfa836a5c0293f79b23f61b9bef380b36d2fea676da3ff83b38648c11"
   },
   "modified_after_import": {
-    "extensions/tibia-anti-ad/extension/hide.css": {
+    "extension/src/hide.css": {
       "original_sha256": "fdfa63ec80e8607738d0ed00c251bae1ab2a631385cd6b37ad7c0b588d72dced",
       "reason": "Gates each rule group on a settings attribute (data-twitch-clean-off/on) so the settings page can switch display ads, upsells, prompts, sign-up prompts, the cookie banner and the Tibia filter independently; adds the opt-in ad-break banner rules already listed (commented) in twitch.tv.txt. Selectors are otherwise unchanged."
     },
-    "extensions/tibia-anti-ad/extension/manifest.json": {
+    "extension/src/manifest.json": {
       "original_sha256": "36c9ed905fa3f04b3b3468f6e9f47c2700b49f5c298c02b83c5983ff507c4306",
       "reason": "Adds the Tibia stream filter content scripts, its popup switch and the storage permission."
     },
-    "extensions/tibia-anti-ad/extension/page.js": {
+    "extension/src/page.js": {
       "original_sha256": "42faf014ed9bef6676d8ae0d1690f2349e9d7faa4c09c1f6c876f54d0d8cbf92",
       "reason": "Reads the settings mirrored by settings-bridge.js and runs Source quality (part 1) and vaft (part 2) only when enabled; adds part 3, which keeps quality in background tabs when vaft is off. The vaft code itself is unchanged."
     },
-    "extensions/tibia-anti-ad/extension/rules.json": {
+    "extension/src/rules.json": {
       "original_sha256": "938ee2ff790380d44d8b3ced3f7e3d88d8b444d87bd40bfa33770e0064d003d4",
       "reason": "Split by purpose: the 17 ad-server rules stay here (ruleset twitch_ads) and the 11 tracking rules moved to tracking.json (ruleset twitch_tracking), renumbered from 1, so each can be switched separately. Hosts and conditions are unchanged."
     }

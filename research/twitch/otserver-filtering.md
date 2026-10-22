@@ -32,7 +32,7 @@ Every directory card is rendered by React with props that include the complete `
 
 ## Classification rules
 
-Implemented in `tools/twitch_evidence.py` (reference) and `extensions/tibia-anti-ad/extension/tibia-classify.js` (extension), configured in `filters/twitch/tibia-evidence.json`:
+Implemented in `tools/twitch_evidence.py` (reference) and `extension/src/tibia-classify.js` (extension), configured in `filters/sources/twitch/tibia-evidence.json`:
 
 1. **Other game:** a server declared in the title (not as a `!command`) or in a tag, including server domains and RubinOT's own world names (Infernum, Bellum, Belaria…), with no official evidence → hide.
 2. **Tibia:** an official world name (from [TibiaData](https://api.tibiadata.com/v4/worlds)), "Tibia Global" or the `tibiaglobal` tag, with no server evidence → keep. World names that are also ordinary words (Dia, Sombra, Bona…) count only as tags.

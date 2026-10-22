@@ -18,4 +18,4 @@ The maintainer will assess reports as capacity allows, coordinate remediation an
 
 The extension requests access to Twitch and the supported fansites to apply filtering and site repairs. Feature settings are stored locally. A small subset is mirrored into each relevant page's local storage so early page scripts can read it; page scripts can also read that mirror. It is not a secret store.
 
-Offline classification checks do not need credentials or a network connection. Inspect them before use and never commit private sessions. See the [extension guide](extensions/tibia-anti-ad/README.md) for feature controls and rollback.
+Offline classification checks do not need credentials or a network connection. Inspect them before use and never commit private sessions. See the [extension guide](extension/README.md) for feature controls and rollback.

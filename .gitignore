@@ -4,12 +4,7 @@ __pycache__/
 .env
 .env.*
 *.zip
-# Original local working files are preserved; curated copies live below.
-/*.txt
-/*-validation.md
-/*.validation.md
-/*.user.js
-/twitch.js
-/twitchscrap.js
-/PROMPT.md
+# Unpublished original inputs, local captures and scratch material.
+/.local/
+# Reproducible development builds.
 /dist/
