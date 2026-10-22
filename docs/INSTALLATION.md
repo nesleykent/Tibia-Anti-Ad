@@ -16,6 +16,8 @@ Use the installed version's custom-list import facility if available. Otherwise 
 
 ## Safari
 
+For the Tibia Anti-Ad extension and compiled Mac app, use the [Safari installation guide](INSTALL_SAFARI.md). The notes below concern third-party blockers importing filter lists.
+
 Use a blocker that accepts the selected list's syntax. uBO Lite and other Safari blockers differ in custom-filter import, conversion and network enforcement. If your version offers a custom-filter editor, paste supported rules there. A raw subscription URL is not a native Safari content-blocker JSON file.
 
 Record Safari, operating-system and blocker versions. Verify cosmetic hiding and network blocking separately with a harmless, site-specific canary image; remove the temporary rule immediately afterward. Consult the historical reports for examples, but confirm the image still exists first. Do not interpret a hidden banner as evidence that analytics requests stopped.

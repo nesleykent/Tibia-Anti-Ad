@@ -6,11 +6,11 @@ Tibia Anti-Ad is currently an experimental extension installed from a downloaded
 
 ## 1. Download
 
-**[Download Tibia Anti-Ad for Chrome (.zip)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.1/tibia-anti-ad-chrome.zip)**
+**[Download Tibia Anti-Ad for Chrome (.zip)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-chrome.zip)**
 
 Click the link above and save **`tibia-anti-ad-chrome.zip`**. No GitHub account or terminal is needed. This is the prepared Chrome package, ready to extract and load.
 
-[Release details and checksum](https://github.com/nesleykent/Tibia-Anti-Ad/releases/tag/v1.0.0-alpha.1).
+[Release details and checksum](https://github.com/nesleykent/Tibia-Anti-Ad/releases/tag/v1.0.0-alpha.2).
 
 ## 2. Extract the ZIP and keep the folder
 
@@ -122,5 +122,5 @@ The shared **`extension/src`** folder is not the prepared Chrome package. After 
 ## References
 
 - [Chrome's official instructions for loading a local extension](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
-- [Download and release details](https://github.com/nesleykent/Tibia-Anti-Ad/releases/tag/v1.0.0-alpha.1).
+- [Download and release details](https://github.com/nesleykent/Tibia-Anti-Ad/releases/tag/v1.0.0-alpha.2).
 - [Feature details and known limitations](../extension/README.md).

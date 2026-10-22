@@ -25,7 +25,7 @@ def check_documentation():
                  ROOT / "extension/README.md",
                  ROOT / "scripts/twitch/README.md", ROOT / "research/README.md",
                  ROOT / "research/fansites/README.md", ROOT / "research/fansites/friendly/README.md",
-                 ROOT / "filters/README.md"]
+                 ROOT / "filters/README.md", ROOT / "extension/browsers/safari/README.md"]
     failures = []
     for document in documents:
         # Ignore external URLs, fragments and example text inside fenced code.
@@ -70,6 +70,7 @@ def generated_files():
 def main():
     check_documentation()
     check_friendly_screenshots()
+    run("bash", "-n", "scripts/safari/build_and_run.sh")
     scripts = [*EXTENSION.rglob("*.js"), *ROOT.glob("scripts/twitch/*.js"),
                *ROOT.glob("tests/javascript/*.cjs")]
     for script in sorted(scripts):

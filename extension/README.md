@@ -35,7 +35,7 @@ How it works: `settings.js` defines every option and default. `settings-bridge.j
 
 ## Install in Chrome (development)
 
-**[Download the ready-to-use Chrome ZIP](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.1/tibia-anti-ad-chrome.zip)**. For simple instructions, follow [Install Tibia Anti-Ad in Chrome](../docs/INSTALL_CHROME.md). It covers downloading, selecting the correct folder, settings, updates and removal.
+**[Download the ready-to-use Chrome ZIP](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-chrome.zip)**. For simple instructions, follow [Install Tibia Anti-Ad in Chrome](../docs/INSTALL_CHROME.md). It covers downloading, selecting the correct folder, settings, updates and removal.
 
 Requires Python 3.11+ to build. From the repository root:
 
@@ -51,17 +51,13 @@ The extension includes rules and individual switches for all 15 sites in the [in
 
 ## Install in Safari
 
-The supplied manifest targets Safari 26+. This folder contains source, not a signed App Store app.
+**[Download the Safari extension ZIP](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-safari-extension.zip)** or the **[compiled Mac app](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-safari-macos.zip)**. Follow the [Safari installation guide](../docs/INSTALL_SAFARI.md).
 
-1. Clone or download [the public repository](https://github.com/nesleykent/Tibia-Anti-Ad).
-2. In Safari settings, enable the web-developer features and unsigned extensions where available.
-3. Choose **Add Temporary Extension…** and select this directory's **`src`** folder, containing `manifest.json`.
-4. Enable Tibia Anti-Ad and allow access to Twitch. Reload the live channel page.
-5. Open the settings from the Tibia Anti-Ad toolbar button to choose features.
+These are development previews for Safari 26+. The Mac app is built for Apple Silicon and Intel and uses an ad-hoc signature; there is no Developer ID certificate or notarization configured. Safari requires **Allow unsigned extensions**, which resets when Safari quits. The folder-based temporary install ends after 24 hours or when Safari quits.
 
-Temporary and unsigned installations follow Safari's lifecycle restrictions; they can disappear after quitting Safari or after the temporary-installation limit. For persistent development, use Apple's Safari web-extension tooling to wrap `extension/` in an Xcode app, configure local signing and run it. No signed app or Xcode project is included. Do not delete an existing project to resolve a packaging error.
+Build locally with `python3 tools/build_safari_extension.py`, or use `scripts/safari/build_and_run.sh` to build and launch. Generated Xcode files stay in `dist/`; shared extension source remains in `extension/src/`.
 
-Alternatively, use the [standalone StopTheMadness Pro script](../scripts/twitch/README.md). Choose one vaft injection path; remove the Twitch custom script from StopTheMadness when using this extension. This README does not claim the Safari-specific package is verified on Chrome or Firefox.
+Choose one vaft injection method: remove the standalone Twitch custom script from StopTheMadness when using this extension's video-ad replacement.
 
 ## Check and undo
 

@@ -45,3 +45,12 @@ CI checks Python 3.11 and 3.14 with Node.js 22. Its uploaded Chrome package is a
 - Original bytes are preserved under `research/fansites/friendly/screenshots/`. The manifest records original names, sizes, dimensions, SHA-256 values and visual observations; the check command verifies the inventory and image metadata against those values.
 - Tibia-Statistic’s small Amazon affiliate section is visible and documented. The user explicitly requested that it remain in the friendly selection. No filtering exemption was added.
 - Long captures, missing images and rendering artifacts limit visual conclusions. No tracking, performance or live behavior rating was inferred. The existing test/build checks pass.
+
+## Safari packaging — 2026-10-22
+
+- Generated a macOS Xcode project from the shared extension source with Apple’s Safari converter. Corrected the converter-generated host identifier so the embedded extension’s identifier has the required prefix.
+- Built both `arm64` and `x86_64` binaries using Xcode 27.1 on macOS 27.0.1, targeting macOS 14 minimum; the manifest still requires Safari 26+. Older Macs and OS versions were not executed in this run.
+- The build checks every bundled web resource against the shared source, validates bundle identifiers, checks both architectures and verifies the nested app signatures. Signatures are ad-hoc, with the converter’s sandbox entitlements; no Apple signing identity was available. No Developer ID or notarization is claimed.
+- Native startup is checked through the build-and-run script; this does not certify Safari extension enforcement or live ad removal. Safari’s unsigned-extension preference is not changed automatically.
+- The temporary-extension ZIP has a deterministic top-level folder, source-byte preservation checks, original license notices and a SHA-256 checksum. Native app packaging preserves bundle metadata with Apple’s `ditto`.
+- A separate macOS CI job builds, verifies and packages the Safari app without distribution credentials. See GitHub Actions for results on each exact source commit.

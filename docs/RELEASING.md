@@ -17,7 +17,7 @@ Use semantic versions for extension releases and keep the source manifest versio
 
 Build the installable ZIP with `python3 tools/package_chrome_extension.py`. It creates `dist/tibia-anti-ad-chrome.zip` with one top-level `tibia-anti-ad-chrome/` folder and a `.zip.sha256` checksum. Publish both as assets on the tagged GitHub prerelease/release, then update direct download links in the README, extension guide and Chrome tutorial. The ZIP must download without GitHub authentication.
 
-Build only the unpacked folder with `python3 tools/build_chrome_extension.py`. CI uploads the unpacked build as a development artifact for the checked commit; it is not signed, store-reviewed or a stable release. Distribute a reviewed archive with its commit, SHA-256 checksum, license and third-party notices. Safari requires Apple's wrapper/signing process; no signed app is produced here. Never publish credentials, local archives or private captures.
+Build only the unpacked folder with `python3 tools/build_chrome_extension.py`. CI uploads the unpacked build as a development artifact for the checked commit; it is not signed, store-reviewed or a stable release. Distribute a reviewed archive with its commit, SHA-256 checksum, license and third-party notices. Build Safari with `python3 tools/build_safari_extension.py` on macOS with Xcode, then `python3 tools/package_safari_extension.py`. Publish both Safari ZIPs and their checksums. The containing app has an ad-hoc development signature only; Developer ID signing and notarization remain unconfigured. Label it as a development preview and link the unsigned-extension instructions. Never publish credentials, local archives or private captures.
 
 ## Maintenance and rollback
 

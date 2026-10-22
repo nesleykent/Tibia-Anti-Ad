@@ -9,9 +9,13 @@ Browser extensions, content-blocking filters and transparent research for a clea
 
 **Love the fansites, not the ads.** Read the full [Tibia Anti-Ad Manifesto](MANIFESTO.md) for the motivation and principles behind this project.
 
-**[Download for Chrome (.zip)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.1/tibia-anti-ad-chrome.zip)** · [Installation guide](docs/INSTALL_CHROME.md)
+**[Download for Chrome (.zip)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-chrome.zip)** · [Chrome guide](docs/INSTALL_CHROME.md)
 
-Extract the ZIP, open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and choose the extracted `tibia-anti-ad-chrome` folder. No GitHub account or terminal is needed.
+**[Download for Safari (.zip, temporary extension)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-safari-extension.zip)** · [Safari guide and Mac app](docs/INSTALL_SAFARI.md)
+
+**Chrome:** Extract the ZIP, open `chrome://extensions`, enable **Developer mode**, click **Load unpacked**, and choose the extracted `tibia-anti-ad-chrome` folder. No GitHub account or terminal is needed.
+
+**Safari:** Download the Safari ZIP, extract it, then use **Safari → Settings → Developer → Add Temporary Extension…**. Development previews require allowing unsigned extensions; temporary installs end when Safari quits or after 24 hours. A compiled Mac app is also available in the [Safari guide](docs/INSTALL_SAFARI.md).
 
 ## Choose how to use it
 

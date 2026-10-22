@@ -2,6 +2,8 @@
 
 ## Use the project
 
+- [Install in Safari](INSTALL_SAFARI.md): direct downloads, temporary installation, the development Mac app and local Xcode builds.
+
 - [Install in Chrome](INSTALL_CHROME.md): download, extract, load and update the extension without a terminal.
 
 - [Installation and rollback](INSTALLATION.md): filter subscriptions and recovery.

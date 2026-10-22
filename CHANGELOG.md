@@ -6,6 +6,9 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Added
 
+- Safari downloads: a temporary-extension ZIP and a universal macOS development app built with Xcode, with checksums and clear signing limitations.
+- Reproducible Safari build/package tools and a local build-and-run entrypoint.
+
 - Public Chrome ZIP download on GitHub Releases, with a checksum and a predictable folder to select during installation.
 
 - Plain-English Chrome installation guide with a ready-to-use download, folder-selection help, updates, removal and troubleshooting.

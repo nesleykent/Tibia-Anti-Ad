@@ -48,3 +48,28 @@ jobs:
           path: dist/tibia-anti-ad-chrome/
           if-no-files-found: error
           retention-days: 14
+
+  safari:
+    name: Safari macOS build
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.11'
+      - name: Build and verify universal Safari development app
+        run: python3 tools/build_safari_extension.py
+      - name: Package Safari downloads
+        run: python3 tools/package_safari_extension.py
+      - name: Upload Safari development packages
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: tibia-anti-ad-safari-${{ github.sha }}
+          path: dist/tibia-anti-ad-safari-*.zip*
+          if-no-files-found: error
+          retention-days: 14
