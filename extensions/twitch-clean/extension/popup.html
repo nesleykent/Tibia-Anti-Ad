@@ -1,19 +1,113 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<style>
-  :root { color-scheme: light dark; }
-  body { margin: 0; padding: 14px 16px; width: 260px; font: 13px -apple-system, system-ui, sans-serif; }
-  h1 { font-size: 14px; margin: 0 0 10px; }
-  label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
-  p { margin: 8px 0 0; color: GrayText; font-size: 12px; }
-</style>
-</head>
-<body>
-<h1>Twitch Clean</h1>
-<label><input type="checkbox" id="tibia"> Esconder servidores piratas na categoria Tibia</label>
-<p id="status"></p>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Twitch Clean</title>
+<link rel="stylesheet" href="popup.css">
+<script src="settings.js"></script>
 <script src="popup.js"></script>
+</head>
+<body class="loading">
+<header class="header">
+  <img class="app-icon" src="icons/icon-64.png" alt="" width="28" height="28">
+  <div class="header-text">
+    <h1 id="title">Twitch Clean</h1>
+    <p id="status" class="detail" aria-live="polite"></p>
+  </div>
+  <input type="checkbox" switch role="switch" id="enabled" data-setting="enabled" aria-labelledby="title" aria-describedby="status">
+</header>
+
+<main>
+  <section aria-labelledby="h-network">
+    <h2 id="h-network">Network</h2>
+    <div class="group">
+      <div class="row">
+        <label class="row-text" for="blockAds"><span class="row-title">Block ad servers</span><span class="detail" id="d-blockAds">Twitch, Amazon and Google ad networks.</span></label>
+        <input type="checkbox" switch role="switch" id="blockAds" data-setting="blockAds" aria-describedby="d-blockAds">
+      </div>
+      <div class="row">
+        <label class="row-text" for="blockTracking"><span class="row-title">Block tracking</span><span class="detail" id="d-blockTracking">Telemetry, analytics and ID-sync servers.</span></label>
+        <input type="checkbox" switch role="switch" id="blockTracking" data-setting="blockTracking" aria-describedby="d-blockTracking">
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-video">
+    <h2 id="h-video">Video</h2>
+    <div class="group">
+      <div class="row">
+        <label class="row-text" for="removeStreamAds"><span class="row-title">Remove stream ads</span><span class="detail" id="d-removeStreamAds">Swaps ad breaks for an ad-free stream. It may drop to 360p or pause.</span></label>
+        <input type="checkbox" switch role="switch" id="removeStreamAds" data-setting="removeStreamAds" aria-describedby="d-removeStreamAds">
+      </div>
+      <div class="row">
+        <label class="row-text" for="sourceQuality"><span class="row-title">Source quality</span><span class="detail" id="d-sourceQuality">Starts every stream at the highest quality.</span></label>
+        <input type="checkbox" switch role="switch" id="sourceQuality" data-setting="sourceQuality" aria-describedby="d-sourceQuality">
+      </div>
+      <div class="row">
+        <label class="row-text" for="backgroundQuality"><span class="row-title">Keep quality in background</span><span class="detail" id="d-backgroundQuality">Stops Twitch lowering the quality in hidden tabs.</span></label>
+        <input type="checkbox" switch role="switch" id="backgroundQuality" data-setting="backgroundQuality" aria-describedby="d-backgroundQuality">
+      </div>
+      <div class="row">
+        <label class="row-text" for="hideAdBreakBanner"><span class="row-title">Hide ad-break banner</span><span class="detail" id="d-hideAdBreakBanner">Hides the countdown shown while an ad plays.</span></label>
+        <input type="checkbox" switch role="switch" id="hideAdBreakBanner" data-setting="hideAdBreakBanner" aria-describedby="d-hideAdBreakBanner">
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-page">
+    <h2 id="h-page">Page</h2>
+    <div class="group">
+      <div class="row">
+        <label class="row-text" for="hideDisplayAds"><span class="row-title">Hide display ads</span><span class="detail" id="d-hideDisplayAds">Banners, sponsored tiles, player ad frames and ad-block warnings.</span></label>
+        <input type="checkbox" switch role="switch" id="hideDisplayAds" data-setting="hideDisplayAds" aria-describedby="d-hideDisplayAds">
+      </div>
+      <div class="row">
+        <label class="row-text" for="hideUpsells"><span class="row-title">Hide upsells</span><span class="detail" id="d-hideUpsells">Turbo, Prime Gaming, Luna and Subtember.</span></label>
+        <input type="checkbox" switch role="switch" id="hideUpsells" data-setting="hideUpsells" aria-describedby="d-hideUpsells">
+      </div>
+      <div class="row">
+        <label class="row-text" for="hidePrompts"><span class="row-title">Hide prompts</span><span class="detail" id="d-hidePrompts">Apple TV offer, emotes tip and Prime Benefits.</span></label>
+        <input type="checkbox" switch role="switch" id="hidePrompts" data-setting="hidePrompts" aria-describedby="d-hidePrompts">
+      </div>
+      <div class="row">
+        <label class="row-text" for="hideSignupPrompts"><span class="row-title">Hide sign-up prompts</span><span class="detail" id="d-hideSignupPrompts">Sign-up bar, chat sign-up gate and follow pop-up.</span></label>
+        <input type="checkbox" switch role="switch" id="hideSignupPrompts" data-setting="hideSignupPrompts" aria-describedby="d-hideSignupPrompts">
+      </div>
+      <div class="row">
+        <label class="row-text" for="hideCookieBanner"><span class="row-title">Hide cookie banner</span><span class="detail" id="d-hideCookieBanner">Hides the banner without accepting anything.</span></label>
+        <input type="checkbox" switch role="switch" id="hideCookieBanner" data-setting="hideCookieBanner" aria-describedby="d-hideCookieBanner">
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-tibia">
+    <h2 id="h-tibia">Tibia category</h2>
+    <div class="group">
+      <div class="row">
+        <label class="row-text" for="tibiaFilter"><span class="row-title">Hide other games</span><span class="detail" id="d-tibiaFilter">OTServers, Pokémon servers and idle games. Undecided streams stay visible.</span></label>
+        <input type="checkbox" switch role="switch" id="tibiaFilter" data-setting="tibiaFilter" aria-describedby="d-tibiaFilter">
+      </div>
+      <div class="row row-stack" id="tibia-hidden" hidden>
+        <h3 class="row-title" id="tibia-hidden-title">Hidden on this page</h3>
+        <p class="detail" id="tibia-hidden-empty" hidden></p>
+        <ul class="list" id="tibia-hidden-list" aria-labelledby="tibia-hidden-title"></ul>
+      </div>
+      <div class="row row-stack" id="tibia-shown" hidden>
+        <h3 class="row-title" id="tibia-shown-title">Shown by you</h3>
+        <p class="detail">Each stays visible until its title changes.</p>
+        <ul class="list" id="tibia-shown-list" aria-labelledby="tibia-shown-title"></ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="reload" id="reload" hidden>
+    <p class="detail" id="reload-note" aria-live="polite">Video changes apply when Twitch reloads.</p>
+    <button type="button" class="button primary" id="reload-button" hidden>Reload Twitch</button>
+  </div>
+  <p class="detail version" id="version"></p>
+</footer>
 </body>
 </html>

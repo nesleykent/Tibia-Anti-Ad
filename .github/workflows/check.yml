@@ -15,9 +15,10 @@ jobs:
           node-version: '22'
       - run: node --check extensions/twitch-clean/extension/page.js
       - run: node --check extensions/twitch-clean/extension/nags.js
-      - run: for f in tibia-evidence tibia-classify tibia-filter tibia-props popup; do node --check extensions/twitch-clean/extension/$f.js; done
+      - run: for f in settings settings-bridge background tibia-evidence tibia-classify tibia-filter tibia-props popup; do node --check extensions/twitch-clean/extension/$f.js; done
       - run: node --check scripts/twitch/twitch-stopthemadness.js
       - run: node tests/twitch-startup.cjs
+      - run: node tests/twitch-settings.cjs
       - run: python3 -m unittest discover -s tests -v
       - run: python3 tools/build_filters.py
       - run: git diff --exit-code -- filters/
