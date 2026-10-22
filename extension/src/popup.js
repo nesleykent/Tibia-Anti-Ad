@@ -108,7 +108,7 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
                 ...top.slice(0, 2).map(([game, count]) => `${game} ${count}`),
                 top.length > 2 ? `${top.length - 2} more` : '',
                 restored ? `${restored} shown by you` : '',
-            ].filter(Boolean).join(' · ');
+            ].filter(Boolean).join(' \u00b7 ');
         } else {
             $('tibia-summary-title').textContent = `${plural(restored, 'stream')} shown by you`;
             $('tibia-summary-detail').textContent = 'Each stays visible until its title changes.';
@@ -130,7 +130,7 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
     };
     const updateRules = () => {
         $('rules-button').disabled = true;
-        $('rules-detail').textContent = 'Checking for updates…';
+        $('rules-detail').textContent = 'Checking for updates\u2026';
         api.runtime.sendMessage({ type: 'tibia-anti-ad:update-rules' })
             .catch(() => {}).finally(() => { $('rules-button').disabled = false; load(); });
     };

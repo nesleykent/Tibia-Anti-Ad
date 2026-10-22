@@ -85,6 +85,12 @@ class TwitchPackageTests(unittest.TestCase):
                 self.assertIsNotNone(match)
                 self.assertIn(match.group(1) or match.group(2), groups)
 
+    def test_extension_scripts_are_ascii(self):
+        # Safari can read extension scripts as Latin-1; non-ASCII must be escaped.
+        for path in EXTENSION.rglob('*.js'):
+            with self.subTest(file=path.name):
+                self.assertTrue(path.read_bytes().isascii())
+
     def test_vaft_in_page_script_is_unmodified(self):
         def vaft(path):
             source = path.read_text()

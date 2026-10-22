@@ -1,5 +1,5 @@
 // Tibia Anti-Ad: hides streams in the Tibia category that are really another game
-// (OTServers such as RubinOT, Pokémon servers, idle games).
+// (OTServers such as RubinOT, Pok\u00e9mon servers, idle games).
 //
 // Each card is classified from its full title and tags (copied from Twitch's own
 // data by tibia-props.js) with the rules in tibia-classify.js: a server declared

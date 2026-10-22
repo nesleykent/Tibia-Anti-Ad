@@ -38,6 +38,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Fixed
 
+- Safari: "SyntaxError: Invalid character" in tibia-classify.js. Safari can read extension scripts as Latin-1, so every extension script is now plain ASCII (non-ASCII characters escaped), and a test keeps it that way.
+
 - The nag hider no longer clears the Tibia filter's marks when it starts, which could briefly show hidden streams again.
 
 Live website preservation, cross-browser enforcement and Twitch ad-break behavior remain unverified. No stable release is declared by this change.
