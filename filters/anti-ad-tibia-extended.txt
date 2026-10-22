@@ -1,5 +1,5 @@
 [Adblock Plus 2.0]
-! Title: Anti-Ad Tibia Extended
+! Title: Tibia Anti-Ad Extended
 ! Description: Experimental site-scoped ads, tracking and annoyance filters
 ! Homepage: https://github.com/nesleykent/anti-ad-tibia
 ! Expires: 1 day

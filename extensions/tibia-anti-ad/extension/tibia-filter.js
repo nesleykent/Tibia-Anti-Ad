@@ -1,4 +1,4 @@
-// Twitch Clean: hides streams in the Tibia category that are really another game
+// Tibia Anti-Ad: hides streams in the Tibia category that are really another game
 // (OTServers such as RubinOT, Pokémon servers, idle games).
 //
 // Each card is classified from its full title and tags (copied from Twitch's own
@@ -16,7 +16,7 @@
     'use strict';
 
     const api = globalThis.browser || globalThis.chrome;
-    const S = globalThis.TwitchCleanSettings;
+    const S = globalThis.TibiaAntiAdSettings;
     const MARK = 'data-twitch-clean-hidden';
     const VERDICT = 'data-twitch-clean-tibia';
     const META = 'data-twitch-clean-meta';
@@ -123,7 +123,7 @@
         return info ? [{ channel: info.channel, title: info.title, reason }] : [];
     });
     api.runtime.onMessage.addListener((message, sender, sendResponse) => {
-        if (message?.type !== 'twitch-clean:tibia-hidden') { return false; }
+        if (message?.type !== 'tibia-anti-ad:tibia-hidden') { return false; }
         sendResponse({ onDirectory: onTibiaDirectory(), enabled, hidden: enabled && onTibiaDirectory() ? hiddenCards() : [] });
         return false;
     });

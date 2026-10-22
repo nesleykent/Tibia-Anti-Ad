@@ -1,10 +1,10 @@
-// Mocked settings checks for Twitch Clean; no browser and no network.
+// Mocked settings checks for Tibia Anti-Ad; no browser and no network.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 
-const EXT = path.join(__dirname, '..', 'extensions/twitch-clean/extension');
+const EXT = path.join(__dirname, '..', 'extensions/tibia-anti-ad/extension');
 const read = name => fs.readFileSync(path.join(EXT, name), 'utf8');
 // Objects from a vm context have another realm's prototypes; compare plain copies.
 const plain = value => JSON.parse(JSON.stringify(value));
@@ -12,7 +12,7 @@ const settingsSource = read('settings.js');
 
 const loadSettings = (context = vm.createContext({})) => {
   vm.runInContext(settingsSource, context);
-  return context.TwitchCleanSettings;
+  return context.TibiaAntiAdSettings;
 };
 
 // settings.js: defaults, master switch, CSS groups and rulesets.
@@ -36,7 +36,7 @@ const loadSettings = (context = vm.createContext({})) => {
 
 // settings-bridge.js: cached copy first, then storage, then live changes.
 (async () => {
-  const pageStorage = new Map([['twitch-clean:settings', JSON.stringify({ hideUpsells: false })]]);
+  const pageStorage = new Map([['tibia-anti-ad:settings', JSON.stringify({ hideUpsells: false })]]);
   const attributes = new Map();
   let stored = { hideCookieBanner: false };
   const listeners = [];
@@ -60,27 +60,27 @@ const loadSettings = (context = vm.createContext({})) => {
   });
   loadSettings(context);
   vm.runInContext(read('settings-bridge.js'), context);
-  assert.equal(attributes.get('data-twitch-clean-off'), 'upsells', 'cached copy applies synchronously');
+  assert.equal(attributes.get('data-tibia-anti-ad-off'), 'upsells', 'cached copy applies synchronously');
   await new Promise(resolve => setImmediate(resolve));
-  assert.equal(attributes.get('data-twitch-clean-off'), 'cookies');
-  assert.equal(JSON.parse(pageStorage.get('twitch-clean:settings')).hideCookieBanner, false);
+  assert.equal(attributes.get('data-tibia-anti-ad-off'), 'cookies');
+  assert.equal(JSON.parse(pageStorage.get('tibia-anti-ad:settings')).hideCookieBanner, false);
   stored = { removeStreamAds: false, hideAdBreakBanner: true };
   listeners.forEach(listener => listener({ removeStreamAds: { newValue: false } }, 'local'));
   await new Promise(resolve => setImmediate(resolve));
-  assert.equal(attributes.has('data-twitch-clean-off'), false);
-  assert.equal(attributes.get('data-twitch-clean-on'), 'adbreak');
-  assert.equal(JSON.parse(pageStorage.get('twitch-clean:settings')).removeStreamAds, false);
+  assert.equal(attributes.has('data-tibia-anti-ad-off'), false);
+  assert.equal(attributes.get('data-tibia-anti-ad-on'), 'adbreak');
+  assert.equal(JSON.parse(pageStorage.get('tibia-anti-ad:settings')).removeStreamAds, false);
   stored = { enabled: false };
   listeners.forEach(listener => listener({ enabled: { newValue: false } }, 'local'));
   await new Promise(resolve => setImmediate(resolve));
-  assert.equal(attributes.get('data-twitch-clean-off'), 'ads upsells prompts signup cookies tibia');
+  assert.equal(attributes.get('data-tibia-anti-ad-off'), 'ads upsells prompts signup cookies tibia');
   console.log('PASS settings-bridge.js: cached copy, storage, live changes and master switch');
 })().then(() => {
   // page.js: each part follows the mirrored settings.
   const page = read('page.js');
   const run = mirrored => {
     const storage = new Map();
-    if (mirrored !== undefined) { storage.set('twitch-clean:settings', mirrored); }
+    if (mirrored !== undefined) { storage.set('tibia-anti-ad:settings', mirrored); }
     class OriginalWorker { constructor(url) { this.url = url; } addEventListener() {} postMessage() {} }
     const originalFetch = async () => { throw new Error('Unexpected network request'); };
     const document = {
@@ -114,3 +114,22 @@ const loadSettings = (context = vm.createContext({})) => {
   assert.deepEqual(run('{"enabled":false}'), { vaft: false, quality: false, hidden: true });
   console.log('PASS page.js: Source quality, vaft and background quality follow the settings');
 }).catch(error => { console.error(error); process.exit(1); });
+
+// settings.js with sites.js: one switch per fansite, on by default.
+{
+  const context = vm.createContext({});
+  vm.runInContext(read('sites.js'), context);
+  const S = loadSettings(context);
+  const defaults = S.resolve();
+  assert.equal(S.SITES.length, 15);
+  for (const site of S.SITES) {
+    assert.equal(defaults[site.key], true);
+    assert.equal(S.RULESETS[site.key], site.ruleset);
+    assert.equal(S.CSS_OPT_OUT[site.key], site.domain);
+  }
+  const off = { ...defaults, 'site:tibiopedia.pl': false };
+  assert.ok(S.rulesetState(off).disableRulesetIds.includes('site_tibiopedia_pl'));
+  assert.ok(S.rulesetState(defaults).enableRulesetIds.includes('site_tibiawiki_com_br'));
+  assert.deepEqual(plain(S.cssState(off).off), ['tibiopedia.pl']);
+  console.log('PASS settings.js: every fansite has a switch, ruleset and CSS gate');
+}

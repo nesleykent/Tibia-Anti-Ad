@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Twitch Clean</title>
+<title>Tibia Anti-Ad</title>
 <link rel="stylesheet" href="popup.css">
+<script src="sites.js"></script>
 <script src="settings.js"></script>
 <script src="popup.js"></script>
 </head>
@@ -12,7 +13,7 @@
 <header class="header">
   <img class="app-icon" src="icons/icon-64.png" alt="" width="28" height="28">
   <div class="header-text">
-    <h1 id="title">Twitch Clean</h1>
+    <h1 id="title">Tibia Anti-Ad</h1>
     <p id="status" class="detail" aria-live="polite"></p>
   </div>
   <input type="checkbox" switch role="switch" id="enabled" data-setting="enabled" aria-labelledby="title" aria-describedby="status">
@@ -99,6 +100,11 @@
         <ul class="list" id="tibia-shown-list" aria-labelledby="tibia-shown-title"></ul>
       </div>
     </div>
+  </section>
+
+  <section aria-labelledby="h-sites">
+    <h2 id="h-sites">Fansites</h2>
+    <div class="group" id="sites"></div>
   </section>
 </main>
 

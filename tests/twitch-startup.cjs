@@ -5,7 +5,7 @@ const vm = require('node:vm');
 const path = require('node:path');
 
 for (const file of [
-  'extensions/twitch-clean/extension/page.js',
+  'extensions/tibia-anti-ad/extension/page.js',
   'scripts/twitch/twitch-stopthemadness.js',
 ]) {
   for (const readyState of ['loading', 'complete']) {

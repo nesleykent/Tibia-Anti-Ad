@@ -1,0 +1,536 @@
+{
+  "manifest_version": 3,
+  "name": "Tibia Anti-Ad",
+  "version": "1.2.0",
+  "description": "Blocks ads, trackers and anti-adblock walls on Twitch and 15 Tibia fansites: network rules, cosmetic fixes, Source quality and stitched video ad removal on Twitch. Every feature and site has its own switch.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "64": "icons/icon-64.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png",
+    "256": "icons/icon-256.png",
+    "512": "icons/icon-512.png"
+  },
+  "action": {
+    "default_title": "Tibia Anti-Ad",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "64": "icons/icon-64.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "options_ui": {
+    "page": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "sites.js",
+      "settings.js",
+      "background.js"
+    ]
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.twitch.tv/*",
+    "*://exevopan.com/*",
+    "*://*.exevopan.com/*",
+    "*://forum.portaltibia.com.br/*",
+    "*://*.forum.portaltibia.com.br/*",
+    "*://guildstats.eu/*",
+    "*://*.guildstats.eu/*",
+    "*://hakaimarket.com/*",
+    "*://*.hakaimarket.com/*",
+    "*://hunt-analyser.com/*",
+    "*://*.hunt-analyser.com/*",
+    "*://intibia.com/*",
+    "*://*.intibia.com/*",
+    "*://portaltibia.com.br/*",
+    "*://*.portaltibia.com.br/*",
+    "*://tibia.fandom.com/*",
+    "*://*.tibia.fandom.com/*",
+    "*://tibialife.com.br/*",
+    "*://*.tibialife.com.br/*",
+    "*://tibiamonk.com/*",
+    "*://*.tibiamonk.com/*",
+    "*://tibiapal.com/*",
+    "*://*.tibiapal.com/*",
+    "*://tibiaring.com/*",
+    "*://*.tibiaring.com/*",
+    "*://tibiavip.app/*",
+    "*://*.tibiavip.app/*",
+    "*://tibiawiki.com.br/*",
+    "*://*.tibiawiki.com.br/*",
+    "*://tibiopedia.pl/*",
+    "*://*.tibiopedia.pl/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "twitch_ads",
+        "enabled": true,
+        "path": "rules.json"
+      },
+      {
+        "id": "twitch_tracking",
+        "enabled": true,
+        "path": "tracking.json"
+      },
+      {
+        "id": "site_exevopan_com",
+        "enabled": true,
+        "path": "sites/exevopan.com.json"
+      },
+      {
+        "id": "site_forum_portaltibia_com_br",
+        "enabled": true,
+        "path": "sites/forum.portaltibia.com.br.json"
+      },
+      {
+        "id": "site_guildstats_eu",
+        "enabled": true,
+        "path": "sites/guildstats.eu.json"
+      },
+      {
+        "id": "site_hakaimarket_com",
+        "enabled": true,
+        "path": "sites/hakaimarket.com.json"
+      },
+      {
+        "id": "site_hunt_analyser_com",
+        "enabled": true,
+        "path": "sites/hunt-analyser.com.json"
+      },
+      {
+        "id": "site_intibia_com",
+        "enabled": true,
+        "path": "sites/intibia.com.json"
+      },
+      {
+        "id": "site_portaltibia_com_br",
+        "enabled": true,
+        "path": "sites/portaltibia.com.br.json"
+      },
+      {
+        "id": "site_tibia_fandom_com",
+        "enabled": true,
+        "path": "sites/tibia.fandom.com.json"
+      },
+      {
+        "id": "site_tibialife_com_br",
+        "enabled": true,
+        "path": "sites/tibialife.com.br.json"
+      },
+      {
+        "id": "site_tibiamonk_com",
+        "enabled": true,
+        "path": "sites/tibiamonk.com.json"
+      },
+      {
+        "id": "site_tibiapal_com",
+        "enabled": true,
+        "path": "sites/tibiapal.com.json"
+      },
+      {
+        "id": "site_tibiaring_com",
+        "enabled": true,
+        "path": "sites/tibiaring.com.json"
+      },
+      {
+        "id": "site_tibiavip_app",
+        "enabled": true,
+        "path": "sites/tibiavip.app.json"
+      },
+      {
+        "id": "site_tibiawiki_com_br",
+        "enabled": true,
+        "path": "sites/tibiawiki.com.br.json"
+      },
+      {
+        "id": "site_tibiopedia_pl",
+        "enabled": true,
+        "path": "sites/tibiopedia.pl.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.twitch.tv/*",
+        "*://exevopan.com/*",
+        "*://*.exevopan.com/*",
+        "*://forum.portaltibia.com.br/*",
+        "*://*.forum.portaltibia.com.br/*",
+        "*://guildstats.eu/*",
+        "*://*.guildstats.eu/*",
+        "*://hakaimarket.com/*",
+        "*://*.hakaimarket.com/*",
+        "*://hunt-analyser.com/*",
+        "*://*.hunt-analyser.com/*",
+        "*://intibia.com/*",
+        "*://*.intibia.com/*",
+        "*://portaltibia.com.br/*",
+        "*://*.portaltibia.com.br/*",
+        "*://tibia.fandom.com/*",
+        "*://*.tibia.fandom.com/*",
+        "*://tibialife.com.br/*",
+        "*://*.tibialife.com.br/*",
+        "*://tibiamonk.com/*",
+        "*://*.tibiamonk.com/*",
+        "*://tibiapal.com/*",
+        "*://*.tibiapal.com/*",
+        "*://tibiaring.com/*",
+        "*://*.tibiaring.com/*",
+        "*://tibiavip.app/*",
+        "*://*.tibiavip.app/*",
+        "*://tibiawiki.com.br/*",
+        "*://*.tibiawiki.com.br/*",
+        "*://tibiopedia.pl/*",
+        "*://*.tibiopedia.pl/*"
+      ],
+      "js": [
+        "sites.js",
+        "settings.js",
+        "settings-bridge.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "css": [
+        "hide.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "js": [
+        "page.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://*.twitch.tv/*"
+      ],
+      "js": [
+        "nags.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://www.twitch.tv/*"
+      ],
+      "js": [
+        "tibia-props.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://www.twitch.tv/*"
+      ],
+      "js": [
+        "sites.js",
+        "settings.js",
+        "tibia-evidence.js",
+        "tibia-classify.js",
+        "tibia-filter.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "*://exevopan.com/*",
+        "*://*.exevopan.com/*"
+      ],
+      "css": [
+        "sites/exevopan.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://forum.portaltibia.com.br/*",
+        "*://*.forum.portaltibia.com.br/*"
+      ],
+      "css": [
+        "sites/forum.portaltibia.com.br.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://guildstats.eu/*",
+        "*://*.guildstats.eu/*"
+      ],
+      "css": [
+        "sites/guildstats.eu.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://guildstats.eu/*",
+        "*://*.guildstats.eu/*"
+      ],
+      "js": [
+        "sites.js",
+        "settings.js",
+        "sites/fixes/adsense-overlays.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://guildstats.eu/*",
+        "*://*.guildstats.eu/*"
+      ],
+      "css": [
+        "sites/fixes/guildstats.eu.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://hakaimarket.com/*",
+        "*://*.hakaimarket.com/*"
+      ],
+      "css": [
+        "sites/hakaimarket.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://www.hunt-analyser.com/*",
+        "*://*.www.hunt-analyser.com/*"
+      ],
+      "css": [
+        "sites/hunt-analyser.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://intibia.com/*",
+        "*://*.intibia.com/*"
+      ],
+      "css": [
+        "sites/intibia.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://portaltibia.com.br/*",
+        "*://*.portaltibia.com.br/*"
+      ],
+      "css": [
+        "sites/portaltibia.com.br.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibia.fandom.com/*",
+        "*://*.tibia.fandom.com/*"
+      ],
+      "css": [
+        "sites/tibia.fandom.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibialife.com.br/*",
+        "*://*.tibialife.com.br/*"
+      ],
+      "css": [
+        "sites/tibialife.com.br.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiamonk.com/*",
+        "*://*.tibiamonk.com/*"
+      ],
+      "css": [
+        "sites/tibiamonk.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiamonk.com/*",
+        "*://*.tibiamonk.com/*"
+      ],
+      "js": [
+        "sites.js",
+        "settings.js",
+        "sites/fixes/adsense-overlays.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://tibiamonk.com/*",
+        "*://*.tibiamonk.com/*"
+      ],
+      "css": [
+        "sites/fixes/tibiamonk.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiapal.com/*",
+        "*://*.tibiapal.com/*"
+      ],
+      "css": [
+        "sites/tibiapal.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiaring.com/*",
+        "*://*.tibiaring.com/*"
+      ],
+      "css": [
+        "sites/tibiaring.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiaring.com/*",
+        "*://*.tibiaring.com/*"
+      ],
+      "css": [
+        "sites/fixes/tibiaring.com.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiavip.app/*",
+        "*://*.tibiavip.app/*"
+      ],
+      "css": [
+        "sites/tibiavip.app.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiawiki.com.br/*",
+        "*://*.tibiawiki.com.br/*"
+      ],
+      "css": [
+        "sites/tibiawiki.com.br.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiawiki.com.br/*",
+        "*://*.tibiawiki.com.br/*"
+      ],
+      "js": [
+        "sites/fixes/tibiawiki.com.br.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://tibiopedia.pl/*",
+        "*://*.tibiopedia.pl/*"
+      ],
+      "css": [
+        "sites/tibiopedia.pl.css"
+      ],
+      "css_origin": "user",
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://tibiopedia.pl/*",
+        "*://*.tibiopedia.pl/*"
+      ],
+      "js": [
+        "sites/fixes/tibiopedia.pl.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "safari": {
+      "strict_min_version": "26.0"
+    }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "tibia-props.js"
+      ],
+      "matches": [
+        "*://www.twitch.tv/*"
+      ]
+    }
+  ]
+}

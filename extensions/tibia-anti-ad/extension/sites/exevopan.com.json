@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||bestiaryarena.com^",
+      "resourceTypes": [
+        "sub_frame"
+      ],
+      "domains": [
+        "exevopan.com"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||bestiaryarena.com^",
+      "domainType": "thirdParty",
+      "domains": [
+        "exevopan.com"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||assets.service-exevopan.com/public/assets/tibiablackjack.png^",
+      "domains": [
+        "exevopan.com"
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||assets.service-exevopan.com/public/edgartc.png^",
+      "domains": [
+        "exevopan.com"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||assets.service-exevopan.com/public/reidoscoins.png^",
+      "domains": [
+        "exevopan.com"
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||i.imgur.com/GNZ4DMD.png^",
+      "domains": [
+        "exevopan.com"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||i.imgur.com/4nGKNBu.png^",
+      "domains": [
+        "exevopan.com"
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||i.imgur.com/waokAhF.png^",
+      "domains": [
+        "exevopan.com"
+      ]
+    }
+  }
+]

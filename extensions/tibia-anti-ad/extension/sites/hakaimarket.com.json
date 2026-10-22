@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||hakaimarket.com/_vercel/insights/",
+      "domains": [
+        "hakaimarket.com"
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||hakaimarket.com/_vercel/speed-insights/",
+      "domains": [
+        "hakaimarket.com"
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "priority": 1,
+    "action": {
+      "type": "block"
+    },
+    "condition": {
+      "urlFilter": "||tibiatrade.gg^",
+      "domainType": "thirdParty",
+      "domains": [
+        "hakaimarket.com"
+      ]
+    }
+  }
+]

@@ -1,4 +1,4 @@
-// Twitch Clean settings page: the toolbar popup and Safari's extension settings.
+// Tibia Anti-Ad settings page: the toolbar popup and Safari's extension settings.
 // Each switch is an <input type="checkbox" switch> whose data-setting names a
 // settings.js key. Loaded in <head> so the switch style is chosen before the
 // first paint: Safari draws input[switch] natively, other browsers use the CSS
@@ -9,7 +9,7 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
     'use strict';
 
     const api = globalThis.browser || globalThis.chrome;
-    const S = globalThis.TwitchCleanSettings;
+    const S = globalThis.TibiaAntiAdSettings;
     // Oldest "Show" overrides are dropped beyond this many.
     const MAX_SHOWN = 200;
     const TWITCH = /^https?:\/\/([^/]+\.)?twitch\.tv(\/|$)/i;
@@ -42,6 +42,44 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
         button.addEventListener('click', onClick);
         item.append(text, button);
         return item;
+    };
+
+    const plural = (count, word) => `${count} ${word}${count === 1 ? '' : 's'}`;
+
+    // One switch per fansite, the site in the active tab first.
+    const buildSites = activeUrl => {
+        let host = '';
+        try { host = new URL(activeUrl).hostname; } catch {}
+        const covers = site => host === site.domain || host.endsWith('.' + site.domain);
+        // The most specific match (forum.portaltibia.com.br over portaltibia.com.br).
+        const current = S.SITES.filter(covers).sort((a, b) => b.domain.length - a.domain.length)[0];
+        const sites = current ? [current, ...S.SITES.filter(site => site !== current)] : S.SITES;
+        $('sites').replaceChildren(...sites.map(site => {
+            const id = `site-${site.domain}`;
+            const row = document.createElement('div');
+            row.className = 'row';
+            const label = document.createElement('label');
+            label.className = 'row-text';
+            label.htmlFor = id;
+            const title = document.createElement('span');
+            title.className = 'row-title';
+            title.textContent = site.domain;
+            const detail = document.createElement('span');
+            detail.className = 'detail';
+            detail.id = `d-${id}`;
+            const parts = [site === current ? 'This site' : '', `${plural(site.rules, 'network rule')}, ${plural(site.selectors, 'hidden element')}`];
+            detail.textContent = parts.filter(Boolean).join('. ') + (site.protected ? '. Also stops its anti-adblock wall.' : '.');
+            label.append(title, detail);
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.setAttribute('switch', '');
+            input.setAttribute('role', 'switch');
+            input.id = id;
+            input.dataset.setting = site.key;
+            input.setAttribute('aria-describedby', detail.id);
+            row.append(label, input);
+            return row;
+        }));
     };
 
     const renderSwitches = () => {
@@ -95,7 +133,7 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
     // Asks the Tibia filter in the active Twitch tab which cards it hides.
     const refreshHidden = () => {
         if (!twitchTab || !S.active(settings, 'tibiaFilter')) { renderHidden(null); return Promise.resolve(); }
-        return api.tabs.sendMessage(twitchTab.id, { type: 'twitch-clean:tibia-hidden' })
+        return api.tabs.sendMessage(twitchTab.id, { type: 'tibia-anti-ad:tibia-hidden' })
             .then(renderHidden, () => renderHidden(null));
     };
 
@@ -150,9 +188,12 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
             if (area === 'local') { load(); }
         });
         const tab = api.tabs.query({ active: true, currentWindow: true })
-            .then(([active]) => { twitchTab = active && TWITCH.test(active.url || '') ? active : null; })
-            .catch(() => { twitchTab = null; });
-        Promise.all([load(), tab]).finally(() => {
+            .then(([active]) => {
+                twitchTab = active && TWITCH.test(active.url || '') ? active : null;
+                buildSites(active?.url);
+            })
+            .catch(() => { twitchTab = null; buildSites(''); });
+        tab.then(load).finally(() => {
             renderReload();
             refreshHidden();
             // Reveal after a frame has been styled with the stored values, so the

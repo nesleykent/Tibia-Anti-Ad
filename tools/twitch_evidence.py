@@ -35,7 +35,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / "filters/twitch/tibia-evidence.json"
-EXTENSION_DATA = ROOT / "extensions/twitch-clean/extension/tibia-evidence.js"
+EXTENSION_DATA = ROOT / "extensions/tibia-anti-ad/extension/tibia-evidence.js"
 AUDIT = ROOT / "research/twitch/data/2026-10-21/analysis/classificacao.json"
 THUMBNAIL = "https://static-cdn.jtvnw.net/previews-ttv/live_user_{}-1920x1080.jpg"
 # Audit categories that name a game other than Tibia, and the official one.
