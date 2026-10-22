@@ -1,0 +1,10625 @@
+[
+ {
+  "channel": "brederodess",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "diegovick",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "infernum",
+     "vesperia"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "arthmooca",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "bellum",
+     "infernum"
+    ],
+    "Other OTServers": [
+     "[rubinot]"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubiniot",
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rickvitti",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "ferobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "saegusinha",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemonalliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pagodines",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lucaobigbig",
+  "verdict": "other",
+  "reason": "tagged: Other OTServers, RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "otserv"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lethalmyk",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "vieiraah_",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "drakaria"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "stigalzera",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers, PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poke idle"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pokeidle",
+     "pokeidleworld"
+    ],
+    "Idle games": [
+     "pokeidle",
+     "pokeidleworld",
+     "idle",
+     "idlegame"
+    ],
+    "Other OTServers": [
+     "otserv"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "vinysant1",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "belaria"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "otserver",
+     "otserv"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "vovohzera",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinotot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "manok_rulez",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "belaria"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubiniot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "projeto0337",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "yilinn_",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "teslat",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "raikezerah",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubiniot",
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lugontv",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke idle world"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other Pokémon servers": [
+     "pokemonidle",
+     "pokemon",
+     "pokeidleworld"
+    ],
+    "Idle games": [
+     "pokemonidle",
+     "idleworld",
+     "pokeidleworld"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "theschneiderr",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "cateroide",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "hyoogplays",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pokexgames",
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sadbots_br",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "sigma project"
+    ],
+    "Idle games": [
+     "tibia idle"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "paulynhatv",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "elysian"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "hardparadox",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "PokeAlliance": [
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ],
+    "PokeAlliance": [
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "henry_foltz",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "elysian"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "otserver"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "beltranctz",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "❗rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "phmartins7",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubiniot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lucaspagun",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "safnaww",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance",
+     "pokealliace"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia",
+     "pokemonbr",
+     "pokemongo"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "abak",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "1indio",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "trimera"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "doomfist",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "paniclegends",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance, PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pka"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ],
+    "PokeXGames": [
+     "pokexgames",
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "pokeidle"
+    ],
+    "Idle games": [
+     "pokeidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "biskella",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "karol",
+  "verdict": "other",
+  "reason": "tagged: PokeXGames",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "water_storn",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kenotvzz",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "belaria"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "claudiosptx",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "duwend",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg2"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxg",
+     "pokexgames"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "joreltibiano",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubinot",
+     "rubini",
+     "rubiniot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "oieusouoku",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia"
+    ],
+    "Idle games": [
+     "idle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bolachinhaa_",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bandicotpxg",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemonstream"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pokealliance",
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pacheco22k",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pokememories"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "otpokemon",
+     "pokemon",
+     "pokemoncommunitygamer",
+     "pokemoncommunity"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "leozindesumilde",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "marcaozinh0",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "infernum"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubiniot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lukitopr",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "poke alliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pka",
+     "!pokealliance"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ronaldodaaula",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "vesperia"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "otserver"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot",
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "coud_z",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "mtstibia",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "mystian",
+     "infernum"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nattank",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusold"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "DeusOT": [
+     "!deusold",
+     "!deusot"
+    ],
+    "Other OTServers": [
+     "!taleon"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "flameikki",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bnhsz",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "infernum",
+     "infernum"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "medivia"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "❗rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "shing_sheng",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot"
+    ]
+   },
+   "commands": {
+    "DeusOT": [
+     "!deusot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "thiagotaw",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "miracle74"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "durexlivexd",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "elysian"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubinotomelhorot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "obulba",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "gian_tibiaforprofit",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kynhotibia",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "king aslan"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "otserv",
+     "kingaslan"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "!kingaslan"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "oldjucada",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "papot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "DeusOT": [
+     "deusold",
+     "deusot"
+    ],
+    "Other OTServers": [
+     "medivia",
+     "miracle"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "!papot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "luanzingoexp",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baiak"
+    ],
+    "Other OTServers": [
+     "otserver"
+    ]
+   },
+   "commands": {
+    "DeusOT": [
+     "!deusot",
+     "!deusold"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tac_z",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pokememories"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "pokemon"
+    ],
+    "Other OTServers": [
+     "otserver"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "youngsaulim",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers, PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "grand line adventures"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "PokeXGames": [
+     "pokexgames"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ikkilol1",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kaldec",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "poke alliance"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pokeidle",
+     "poketibia"
+    ],
+    "Idle games": [
+     "pokeidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "juveeenil",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "idle poke"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sinxzyn",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "matts",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "king aslan"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other OTServers": [
+     "kingaslan"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "❗shadow-illusion",
+     "❗kingaslan"
+    ]
+   },
+   "official_title": [],
+   "official_tags": [
+    "global",
+    "tibiaglobal",
+    "dracobra"
+   ]
+  }
+ },
+ {
+  "channel": "sharxera",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "el_tratorr",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "spectruxtv",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "madmatthz",
+  "verdict": "other",
+  "reason": "tagged: PokeAlliance",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "carvalini",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "vanreuse_007",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "japorega_",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "boycoins_",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baikidle",
+     "baiakidle"
+    ]
+   },
+   "commands": {
+    "Idle games": [
+     "!baiakidle"
+    ],
+    "Other OTServers": [
+     "baiakidle"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "anu_naki",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tiiopatiinhass",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "king aslan"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "otserver",
+     "kingaslan"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "heminaa",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "belobra",
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "guerreirotetra",
+  "verdict": "other",
+  "reason": "tagged: Other OTServers, PokeXGames, RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ],
+    "Other OTServers": [
+     "huntera"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ],
+    "Other OTServers": [
+     "!huntera"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "loiraa",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "rasteibra"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "iamxandin",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "cruzneto",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot",
+     "deusotbr",
+     "deusot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "darianzin",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "valonnezerah",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "DeusOT": [
+     "!deusot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "zecchilord",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "adalacs",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "krosszao",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "mythera_pk",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "infernum",
+     "infernum"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubini"
+    ],
+    "Other OTServers": [
+     "otserver"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "vickuchiha",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "xhannytv",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "degonitzz",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusold"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "itsmisty_xd",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ogordonha",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia",
+     "pstory",
+     "pokemontcg",
+     "pokeidle"
+    ],
+    "Idle games": [
+     "pokeidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "hyagozeraaa",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "itsrakso",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance, PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "saymoni",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "nefera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "shadowillusion772",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "shadow-illusion"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "ots"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "adr_warlord",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "inferniaot",
+     "[inferniaot]"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot",
+     "deusold"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "compatipo",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quintera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "manowartibia",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "drakaria"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ],
+    "Other OTServers": [
+     "!rivalia",
+     "!tibidle"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "thesuperknurd",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot",
+     "deus ot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "inessone",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemongo"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "yuyiplays",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal",
+    "calmera"
+   ]
+  }
+ },
+ {
+  "channel": "voidcores_ots",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "voidcores",
+     "shadowcores",
+     "voidcores"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "ots",
+     "otserver"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "itsmanojava",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "redotserver",
+     "redot"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "❗redot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lenaverso",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": [
+    "kalibra"
+   ]
+  }
+ },
+ {
+  "channel": "kashi74",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "miracle74"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "hiagora__",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "raynex",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "cowboybeto",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quintera",
+    "lobera",
+    "talera",
+    "quintera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "euribeirorodrigo",
+  "verdict": "other",
+  "reason": "tagged: PokeAlliance",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pecascreator",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quintera"
+   ],
+   "official_tags": [
+    "quintera"
+   ]
+  }
+ },
+ {
+  "channel": "the_guilletv",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lostz3r4",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "tibiaidle",
+     "baiakidle"
+    ]
+   },
+   "commands": {
+    "Idle games": [
+     "!drakoria"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "abreuziik",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "madicotibia",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global",
+    "serdebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pedronobretv",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baiakidle",
+     "idle",
+     "baikidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "viiinee",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "acreboyy",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "floribra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "blezahfiih",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "gentebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "samuelsoft",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "futureot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "vidaltuk",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "liinrz",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "surtoo_",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "caiooclt",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "souls of elysium"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "roqueonline",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "retronic"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "japacoins",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "iansz",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "future ot"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "❗redot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "trickzeraa",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusold"
+    ],
+    "Other OTServers": [
+     "rivaliaonline",
+     "aldeiaonline"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ],
+    "DeusOT": [
+     "deusold"
+    ],
+    "Other OTServers": [
+     "otserv"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pokealliance"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "skolaxx",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubinotaovivo"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "eurovampiro",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "saiyansreturn"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ],
+    "Other OTServers": [
+     "otserver"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "reikekasz",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "DeusOT": [
+     "!deusot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lucaaakira",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxgtibia",
+     "pxg",
+     "pokexgames"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "william_hantaro",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ],
+    "PokeAlliance": [
+     "pka"
+    ],
+    "PokeXGames": [
+     "pxgtibia"
+    ]
+   },
+   "commands": {
+    "Other Pokémon servers": [
+     "!pokeidle"
+    ],
+    "Other OTServers": [
+     "pokeidleio",
+     "pokeidle"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "morgoroth96",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "redotserver",
+     "exordion",
+     "redot"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "exordion"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "imroocks",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "luminera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "palaz_rp",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "honbra",
+    "ferobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kirojp0",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "cursedveloz",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "poketibia",
+     "pokemon",
+     "pokeidle",
+     "pokeidleworld"
+    ],
+    "Idle games": [
+     "pokeidle",
+     "pokeidleworld"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "gzontinha",
+  "verdict": "other",
+  "reason": "tagged: Other Pokémon servers, PokeAlliance",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "antraxttv1",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "godshiryu",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "cafeina54",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pstory",
+     "pstory"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "pstory",
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "junii_n",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "gvmemoneyplease",
+  "verdict": "other",
+  "reason": "tagged: Other Pokémon servers, PokeXGames",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "PokeXGames": [
+     "pokexgames"
+    ],
+    "Other Pokémon servers": [
+     "poketibia",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ofamosodoidao",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "belaria"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "yoshimitsuccs",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pokebong"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "thzzn_",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "felipeandrewszz",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle",
+     "baiakidle"
+    ],
+    "Other OTServers": [
+     "baiak",
+     "baiakidle",
+     "baiak"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "skyowoz",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kovacsz_",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "belobra"
+   ],
+   "official_tags": [
+    "global"
+   ]
+  }
+ },
+ {
+  "channel": "pimentaonline",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubiniot"
+    ],
+    "PokeAlliance": [
+     "pka",
+     "pokealliace"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "emersonferrr",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "exordion"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "hugo_banidos",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "futureot"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "!futureot",
+     "!futureot",
+     "!redot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "stormbomb",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "vinny_xd",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "minibia"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "marvin__xd",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "futureot"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "!futureot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sheherman",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "wakapunkz",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "kalimera",
+    "kalimera"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "mercyano_pka",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "xenge1",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "polastreli",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ziclaw",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "kalibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jiigaao",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "luci_chapman",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sousupermeme",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pstory"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pvzerah",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "belobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nubigas",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance",
+     "pokealliance"
+    ],
+    "PokeXGames": [
+     "pxg",
+     "pxgtibia",
+     "pxgbr",
+     "pokexgames",
+     "pokexgamestibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lukaows",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "fernandiitox",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "havera",
+    "solidera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "eryrrel",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "duprezikaa",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "PokeXGames": [
+     "pxg",
+     "pokexgames"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sulfgaming",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "toyjesus",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bruxotibiano",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "aldeia online",
+     "aldeiaonline"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusold"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "!aldeiaonline"
+    ]
+   },
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "luk4ryo",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pokexgames"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxgtibia",
+     "pokexgames",
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bielsfarm35",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "glabela"
+    ],
+    "Other OTServers": [
+     "baiak",
+     "baiak"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "shurkss",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "poke alliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "brucescottt",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers, PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "poke alliance"
+    ],
+    "Other Pokémon servers": [
+     "pokedream"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia",
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sirneriss",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "koliseuot"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "otserver"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "legolancetti",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "arinar",
+     "arinar"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "!arinar"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "arqueirodkt",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "rei_nelzera",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "futureot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rukzeltv",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pokemon aliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bixao_tv",
+  "verdict": "undetermined",
+  "reason": "evidence for Tibia and another game",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubiniot",
+     "rubinot"
+    ],
+    "DeusOT": [
+     "deusot"
+    ]
+   },
+   "commands": {},
+   "official_title": [
+    "rasteibra"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "evangeliista",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke aliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "soyimsa",
+  "verdict": "undetermined",
+  "reason": "evidence for Tibia and another game",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kaltezahn",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sckuler_tv",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "darcio_",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "qwadah",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "medivia"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "medivia",
+     "mediviaonline"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "horusstv_",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "padulagamer11",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "kingaslan"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "kingaslan"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "xandao0",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pinhomatos",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "belobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "spvitu",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "redot",
+     "futureot"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "❗shadow-illusion",
+     "❗redot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "fvckingcontrol",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "futureot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "gfuj1",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "mahhxd_",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "van_elsworth",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "medivia"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "mediviaonline"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sadlypg",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nllrox",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ryuudai_",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pokexgames"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "chagas_044",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "redot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "blaastgames",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "mestrejackk",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "iagowszn",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "futureot"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "!futureot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "skzgamer_",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "solarian",
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "mariioalzd",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quintera",
+    "talera",
+    "wintera",
+    "quidera"
+   ],
+   "official_tags": [
+    "talera"
+   ]
+  }
+ },
+ {
+  "channel": "shunnyvt",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "otpokemon",
+     "pokemonfan",
+     "otpokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "olukerin",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxg",
+     "pxgtibia",
+     "pxgbr",
+     "pxgaming",
+     "pokexgames",
+     "pokexgamestibia",
+     "pokexgamesbrasil"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "matthewcrazy13",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pagliuso",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "jadebra"
+   ]
+  }
+ },
+ {
+  "channel": "tiggao",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxgtibia"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pstory",
+     "pstoryonline"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nazgulplayer",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pstory"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "casalbad",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global",
+    "quelibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "13mpf",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinotomelhorot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ricanelaxz",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quidera"
+   ],
+   "official_tags": [
+    "wintera",
+    "quidera"
+   ]
+  }
+ },
+ {
+  "channel": "jegudin",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "inabra"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "octuous_",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "lobera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "o_kiinn",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemonalliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jaoobaianoo",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia",
+     "pokemon",
+     "pokemonbr"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dedekasapeca",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "wintera",
+    "global"
+   ],
+   "official_tags": [
+    "talera",
+    "wintera"
+   ]
+  }
+ },
+ {
+  "channel": "dogreteee",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "danielitomere",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kauek9z",
+  "verdict": "other",
+  "reason": "tagged: Idle games, Other Pokémon servers",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "Other Pokémon servers": [
+     "pokemonstream",
+     "pokemon"
+    ],
+    "Idle games": [
+     "idle",
+     "idlegame"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "royaleduzera",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global",
+    "kalibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "yannjogaleve",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusold",
+     "deusold"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "DeusOT": [
+     "!deusold"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "teuz2k",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke idlle"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "serginlmtv",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quelibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "soda_yar",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quintera",
+    "quintera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "narkesh",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke idle"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "polakormt",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "tibinot",
+     "tibinot.com"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "miracle74"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "!tibinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "luciferold",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "deus_nikolas",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak",
+     "baiake"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Idle games": [
+     "!baiakidle"
+    ],
+    "Other OTServers": [
+     "baiakidle"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "xinforinfo",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global",
+    "belobra"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "breuus",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "!kingaslan"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "mage_tetra",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "xxbrayanz",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "ourobra",
+    "dracobra",
+    "tornabra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "galatyxagamer",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "inabra"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "skilderi",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "amonot",
+     "amonot",
+     "[amonot]",
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "magaraz_x",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers, PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia",
+     "pokemon",
+     "pokemonrpg"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "angelolima",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "xymera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lee_tugaa",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "!redot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rqcapollo",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pokememories"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "wilsonrks",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "talera",
+    "quintera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pedrinho_ek",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global",
+    "ustebra"
+   ],
+   "official_tags": [
+    "global"
+   ]
+  }
+ },
+ {
+  "channel": "danilofs16",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "rasteibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "berserker_gyn",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "medivia"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kazx6",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "rasteibra"
+   ],
+   "official_tags": [
+    "rasteibra",
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "bingaatv",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "❗rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "panquecitotv",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "xymera",
+    "wintera"
+   ]
+  }
+ },
+ {
+  "channel": "simonzerando",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "futureotglobal"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "alefcamisadez",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "serdebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sorzusrp",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "duduhxp",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "frangodsz",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sabugo7zip",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "kingaslan"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "imvincecoronel",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "souls of elysium"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "emozeraa",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "jadebra",
+    "ferobra"
+   ],
+   "official_tags": [
+    "global",
+    "jadebra",
+    "ferobra"
+   ]
+  }
+ },
+ {
+  "channel": "jardineiroxd",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "warfront"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "!warfront"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "timtim221308",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "prodigianboy",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lzenlok",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke idle"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokeallianepka"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ],
+    "Idle games": [
+     "idlegame"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "juhborges",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "moral01",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lecoinsanoz",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers, PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pokexgames",
+     "pxg"
+    ],
+    "Idle games": [
+     "baiakidle"
+    ],
+    "Other OTServers": [
+     "baiakidle"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Idle games": [
+     "!baiakidle"
+    ],
+    "Other OTServers": [
+     "baiakidle"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "cia_floripa",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pokedream",
+     "pokedream"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "pokemon"
+    ],
+    "Idle games": [
+     "idle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ygoorxxx",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "koliseuot",
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "espessato",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tornabra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jordann9191",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "papot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "otservbr",
+     "miracle74",
+     "miracle"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "!papot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "forterian86",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rattengg",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "blumera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ganorp",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kyrsz",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubiniot",
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot",
+     "!belaria",
+     "!vesperia",
+     "!bellum",
+     "!auroria",
+     "!tenebrium"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "meregah",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "benksbr",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "Other Pokémon servers": [
+     "❗pokeidle"
+    ],
+    "Other OTServers": [
+     "pokeidle"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "babyoneblood",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "lobera",
+    "quintera"
+   ],
+   "official_tags": [
+    "lobera",
+    "quintera"
+   ]
+  }
+ },
+ {
+  "channel": "vikingogalactico",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "agent_reo",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "peloria"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "meegazork",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "herakiva",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "duzao_gameplay",
+  "verdict": "other",
+  "reason": "tagged: PokeAlliance",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tiotrevaz",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "cavasanaa",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "okimbocao",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bafotoxico1",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lelekogames",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, PokeAlliance, PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ],
+    "PokeXGames": [
+     "pxg"
+    ],
+    "Other OTServers": [
+     "[rubiniot]"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ],
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ],
+    "PokeXGames": [
+     "pokexgames"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "notlezinho",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "descubra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "newedde",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "belobra"
+   ],
+   "official_tags": [
+    "belobra",
+    "belobra"
+   ]
+  }
+ },
+ {
+  "channel": "rpxhoffmann",
+  "verdict": "other",
+  "reason": "declared in title: Idle games",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "ravoxidle"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "Idle games": [
+     "!ravoxidle"
+    ],
+    "Other OTServers": [
+     "!futureot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tiago0716",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quelibra"
+   ],
+   "official_tags": [
+    "quelibra",
+    "quelibra"
+   ]
+  }
+ },
+ {
+  "channel": "rods_1988",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "vunira"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "theuziiinrj",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sorcdemolido",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot"
+    ]
+   },
+   "commands": {
+    "DeusOT": [
+     "!deusot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sacudobot",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "huntera"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "idle"
+    ],
+    "Other OTServers": [
+     "huntera"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "voidzin_92",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lothback",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "collabra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "evazord",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "taknelsonn",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "collabra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dasherownsz",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "xymera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "almofadinhasgames",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rodrigoldtv",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "paulao0_0",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "paquettah",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jotank_s",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "lobera"
+   ]
+  }
+ },
+ {
+  "channel": "donkaadin",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "ultron ot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "quarentazord",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": [
+    "etebra",
+    "yubra"
+   ]
+  }
+ },
+ {
+  "channel": "derbzilla_",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "issobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kingstwv",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "mythera74"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "otserver"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jinbei",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "oo_lelis",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "honbra"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "progankvzla",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "poke alliance"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pka",
+     "!pokealliance"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "danidanis",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "gentebra"
+   ],
+   "official_tags": [
+    "gentebra"
+   ]
+  }
+ },
+ {
+  "channel": "daogameplay",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "rasteibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "diegoalejandro26vs",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxg",
+     "pokexgames"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "andreutallxd",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot",
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "primoprimox",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dilminhaxd",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "descubra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "duzaoxdd",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lixitocl",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ],
+    "PokeXGames": [
+     "pokexgames"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sidzzz_",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "redot"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "otserver",
+     "redot"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "!redot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "zaupiinha",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "fredogzz",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "psyke182",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "kalibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "roxeluse",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "slash_tvs",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "PokeXGames": [
+     "pxgtibia",
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "fabinsofe",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global"
+   ],
+   "official_tags": [
+    "gladibra"
+   ]
+  }
+ },
+ {
+  "channel": "mythszcwb",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "venequillopush",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "talera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "maximuseml",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "shar_acter",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bacch1n",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "peuwar",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jhowgamboa",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "karlossaanz",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pokexgames"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "leezayone",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quelibra"
+   ],
+   "official_tags": [
+    "quelibra",
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "akatsuyachannel",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "migguedes",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ],
+    "PokeXGames": [
+     "pokexgames",
+     "pxg"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "seentinelaek",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "gentebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "paozikaz",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "likkacyan",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "piitocha",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ferauu",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sortidao",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "roswuelxgaming",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "classicores"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "miracle74"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "tomic_chile",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "d3nito",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "orodault",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "poke alliance"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "eduardovcpessoa",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ladyblackarrow",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "kalibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "energyvolt",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "eric_a10",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "lobera",
+    "talera"
+   ]
+  }
+ },
+ {
+  "channel": "nextl0st",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pxgtibia",
+     "pokexgames",
+     "pxgbr",
+     "pxgorebound",
+     "pxggold"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "zafagames",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "thiagobacaninha",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "maldadegratuita",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rayoshink",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dellutv",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "rasteibra",
+    "global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jhabramm",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "padventures"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "padventures",
+     "poketibia",
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "shafk92",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baiak",
+     "baiakidle"
+    ]
+   },
+   "commands": {
+    "Idle games": [
+     "!baiakidle"
+    ],
+    "Other OTServers": [
+     "baiakidle"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nubjill",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "classiccores"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "immax321",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "senaemcena139",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pokexgame"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tiososkj",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sayhell45",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "prtcco",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dearthvixoak",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quintera"
+   ],
+   "official_tags": [
+    "quintera"
+   ]
+  }
+ },
+ {
+  "channel": "thusgasum",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "falconflu",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "padventures"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "fiddlemota",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kaaduzerah",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global",
+    "cantabra"
+   ],
+   "official_tags": [
+    "tibiaglobal",
+    "jadebra",
+    "tibiaglobal",
+    "cantabra"
+   ]
+  }
+ },
+ {
+  "channel": "zurubys",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "astera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ta_viinho",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "zerozerozero98",
+  "verdict": "other",
+  "reason": "declared in title: Idle games",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "lol idle"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "papaifps",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "jadebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "baazir",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiakidle",
+     "tibia idle",
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiakidle",
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baiakidle",
+     "tibiaidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "mihawked1994",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kurolol7",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "twesleee",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "serdebra",
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "lipintyf",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "issobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "paizaoksfino",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nessatibiana",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "ryukaanrj",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "kalibra",
+    "global"
+   ],
+   "official_tags": [
+    "tibiaglobal",
+    "kalibra"
+   ]
+  }
+ },
+ {
+  "channel": "ethercom",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "rasteibra",
+    "ferobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "typicaljefff",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "deeco17",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tibianorocha",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "dracobra"
+   ],
+   "official_tags": [
+    "tibiaglobal",
+    "dracobra",
+    "global"
+   ]
+  }
+ },
+ {
+  "channel": "ow_james",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "DeusOT": [
+     "!deusot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "krashozik",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusold"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot"
+    ]
+   },
+   "commands": {
+    "DeusOT": [
+     "!deusold"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "keplerztv",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "[celebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bdscarioca",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "redot",
+     "redotserver"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "redot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "deathmourne_",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "poke alliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka",
+     "pokealliance",
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "apsbankai",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pokemon",
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "alfagamermx",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "shigurexd23",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pokeidle"
+    ],
+    "Other OTServers": [
+     "pokeidle"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "thasmoonblade",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "yonabra",
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "dantasowna",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "biscoitwo",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "raafaazz",
+  "verdict": "undetermined",
+  "reason": "evidence for Tibia and another game",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "PokeAlliance": [
+     "pka"
+    ],
+    "Other Pokémon servers": [
+     "pokemonalliance"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": [
+    "etebra"
+   ]
+  }
+ },
+ {
+  "channel": "espadaservice",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "heeenry_poke_idle",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke idle world"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tibiara",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "tibiara"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nohat_tv",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "issamisan",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "PokeAlliance": [
+     "pka"
+    ],
+    "Idle games": [
+     "tibiaidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tvbooger",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "witchtargaryen",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "fulgorot",
+     "fulgorot.com"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "miracle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jatinhalol",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "!kingaslan"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "wiikkzms",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "calmera"
+   ],
+   "official_tags": [
+    "calmera",
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "king_brosiito",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lucasbtz",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "gwiltin",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "futureot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "azeca",
+  "verdict": "other",
+  "reason": "tagged: Other Pokémon servers",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "Other Pokémon servers": [
+     "pokemon",
+     "pokemonemeraldnuzlocke"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "impulsitv",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quintera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "carloshbxd",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "lobera",
+    "talera",
+    "quintera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "stutixxx",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "luciiraldo",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "mythera74",
+     "mythera"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "agdsz",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance",
+     "pka"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "joselitomestre",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "artyopp",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ramoncintraa",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "hortamaister",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiakidle",
+     "baiakidle"
+    ],
+    "Other OTServers": [
+     "baiakidle",
+     "baiakidle"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baiakidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tibiapaladinvibes",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "ferobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "moisesax",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "aleehi",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "Other OTServers": [
+     "!inferniaot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "alagoanobr",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pe7zinn",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "striker_ot_idle",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "strikerot",
+     "[strikerot]"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "idle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "morales30",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rodr1gueiraa",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "inabra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bigode_junim",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg",
+     "pokexgames"
+    ]
+   },
+   "tagged": {
+    "PokeXGames": [
+     "pokexgames",
+     "pxg"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "pokemonstream"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "kachowtibia",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "zoinhodomartelo",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "rasteibra",
+    "ferobra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "skazifox",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "barbudo_tv",
+  "verdict": "undetermined",
+  "reason": "evidence for Tibia and another game",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubinot"
+    ],
+    "Idle games": [
+     "baiakidle",
+     "idle",
+     "baiak"
+    ]
+   },
+   "commands": {},
+   "official_title": [
+    "tibia global",
+    "etebra"
+   ],
+   "official_tags": [
+    "etebra"
+   ]
+  }
+ },
+ {
+  "channel": "tchubyvers",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "solarian"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "luucca1993",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "koliseuot",
+     "[koliseuot]",
+     "baiak"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lord_paulistinha_ofc",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "paulistinhaot",
+     "paulistinhaot",
+     "paulistinhaot.com"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "lutabra",
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "lonzera1",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "cantabra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "guizoon013",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "ourobra",
+    "global"
+   ],
+   "official_tags": [
+    "ourobra",
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "nyckolas_fernando",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "gustavaoricaria",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dengoow",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sodymen",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "solidera",
+    "havera"
+   ],
+   "official_tags": [
+    "solidera"
+   ]
+  }
+ },
+ {
+  "channel": "jhonyoz",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bgzinn_gg",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rendoryltda",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "otserve"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "arcfuleragem",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jhow_rx",
+  "verdict": "other",
+  "reason": "declared in title: DeusOT, Other OTServers",
+  "evidence": {
+   "declared": {
+    "DeusOT": [
+     "deusot"
+    ],
+    "Other OTServers": [
+     "[deusot]"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot",
+     "deusold"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "marcianoph",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemonalliance"
+    ]
+   },
+   "commands": {
+    "PokeAlliance": [
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "maxlofur",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "pacera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "srbruxotg",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke alianca"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "alex_santhos",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "swiftbane_noxbolt",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "daazaan",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "floribra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "castorstroy",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "xymera"
+   ]
+  }
+ },
+ {
+  "channel": "reb3_",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "padventures"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "padventures",
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "pilon_fps",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "drakozen_",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "descubra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "soygamma",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "yovera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "siulsaniel",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "talera",
+    "wintera",
+    "quintera"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "igorveneza12",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baiakidle",
+     "baiak"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "batisodin",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "oldcaxa",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "yubra"
+   ],
+   "official_tags": [
+    "tibiaglobal",
+    "yubra"
+   ]
+  }
+ },
+ {
+  "channel": "marcelow95",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "ourobra",
+    "ferobra"
+   ]
+  }
+ },
+ {
+  "channel": "spectralmagin",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance, RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "auroria"
+    ],
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tiupiki",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "inabra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "junimxd",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "jadebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "treeboorzin",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "carumato",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sigyan",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "ustebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "eofantinha",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "poke alliance"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemon",
+     "poketibia"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "osefardita",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "global"
+   ]
+  }
+ },
+ {
+  "channel": "mana_all",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "batche00",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "meilor25",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "javah09",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "honbra",
+    "jadebra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "amaralot",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "amaralot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "btmarconi",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "fortis ot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "matthztvz",
+  "verdict": "undetermined",
+  "reason": "server only as a chat command",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sickisicky",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "detrep",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "universeot"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baiak"
+    ]
+   },
+   "commands": {
+    "Idle games": [
+     "!ravoxidle"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "okingjacksz",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, PokeAlliance, RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "PokeAlliance": [
+     "pka"
+    ],
+    "Other OTServers": [
+     "[rubinot]"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "daltaotv",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lsetetv",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot",
+     "infernum"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "azoghal_",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "kalibra"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "twigaum",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "hagakure2003",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "pokeidleeeeeeeeee"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "sraraujotv",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "itzspower",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "idle"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bashloyal",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "higuinhomonk",
+  "verdict": "other",
+  "reason": "tagged: Other Pokémon servers, RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ],
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ],
+    "PokeAlliance": [
+     "!pka"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "stralavento",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers, RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Idle games": [
+     "baiak idle",
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak",
+     "baiak"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "darkattack032",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "eldriusonline"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "zamazzuu",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "zsacizera",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "silax16",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "birobiro29",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "zehzi",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "taleon",
+     "taleon"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "taleonsan",
+     "taleon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nobrega00",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "haww_",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "braagahcdd",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "[rubinot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "mumedeiros52",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "maguitinhoo",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "redot",
+     "[redot]"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "redot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "1viinao",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "futureot"
+    ]
+   },
+   "tagged": {
+    "DeusOT": [
+     "deusot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "izzuki_",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "donbonati1",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kilerdeann",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ddekoutv",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "luminera"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "uauu69",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dodiziin",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "gibimbadobanjo",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "floribra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "guridobrick",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ditodog",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "redotserver"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jean_pac",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tiobogo",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "pokeidle"
+    ],
+    "Other OTServers": [
+     "pokeidle"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "pokeidle",
+     "pokemon"
+    ],
+    "Idle games": [
+     "pokeidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "moxtrao",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "yonabra"
+   ]
+  }
+ },
+ {
+  "channel": "pxglowlvl",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "poke alliance"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "goalej",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "quintera"
+   ]
+  }
+ },
+ {
+  "channel": "thzinx331",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "baiakminimalist"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "semhype007",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poketibia"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "rukukums",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "belobra",
+    "ombra"
+   ]
+  }
+ },
+ {
+  "channel": "growskerblack",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "hells_25",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "ismaelchahin",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "naaansz",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "avalorium"
+    ]
+   },
+   "tagged": {
+    "Other OTServers": [
+     "fortibiaot"
+    ]
+   },
+   "commands": {
+    "Other OTServers": [
+     "!avalorium"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "fah165",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "[rubinot]"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "elothteam",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "kasteria"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jhowlitz",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "b0lachamaria",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "drakhal7",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "nostalgiapurinha",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "poke alliance",
+     "pka"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "maggothzz",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jhovitv",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "marcoviejo",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dragontibia",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "velhovitinho",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "donbianchi",
+  "verdict": "other",
+  "reason": "declared in title: PokeAlliance",
+  "evidence": {
+   "declared": {
+    "PokeAlliance": [
+     "pka"
+    ]
+   },
+   "tagged": {
+    "PokeAlliance": [
+     "pka",
+     "pokealliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "charming_murderer",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "quintera"
+   ],
+   "official_tags": [
+    "tibiaglobal"
+   ]
+  }
+ },
+ {
+  "channel": "yakaso_",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers, RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ],
+    "Other OTServers": [
+     "rubinot.com"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubiniot"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "xk4n0r",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiakidle",
+     "baiak idle",
+     "baiakidle"
+    ],
+    "Other OTServers": [
+     "baiakidle",
+     "baiak",
+     "baiak",
+     "baiakidle"
+    ]
+   },
+   "tagged": {
+    "Idle games": [
+     "baiakidle",
+     "baiakidle"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "enforia",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jonabelyko",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "xarthurzinx",
+  "verdict": "other",
+  "reason": "declared in title: RubinOT",
+  "evidence": {
+   "declared": {
+    "RubinOT": [
+     "rubinot"
+    ]
+   },
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubiniot"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "broleziadm",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "global",
+    "rasteibra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jjuunio",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "yonabra"
+   ],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jhontank77",
+  "verdict": "tibia",
+  "reason": "official world or Tibia Global in title",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [
+    "tibia global",
+    "inabra"
+   ],
+   "official_tags": [
+    "tibiaglobal",
+    "inabra"
+   ]
+  }
+ },
+ {
+  "channel": "podvimcurioso",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "dashcoins",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "godlike_apollo",
+  "verdict": "tibia",
+  "reason": "official world or tibiaglobal tag",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": [
+    "cipsoft"
+   ]
+  }
+ },
+ {
+  "channel": "unholynirsu",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke idle world"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "kabe_666",
+  "verdict": "undetermined",
+  "reason": "no decisive evidence",
+  "evidence": {
+   "declared": {},
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "outcast_server",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "outcastserver"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "beckfest_",
+  "verdict": "other",
+  "reason": "declared in title: PokeXGames",
+  "evidence": {
+   "declared": {
+    "PokeXGames": [
+     "pxg"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "superstarpka",
+  "verdict": "other",
+  "reason": "tagged: Other Pokémon servers, PokeAlliance",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "PokeAlliance": [
+     "pokealliance"
+    ],
+    "Other Pokémon servers": [
+     "pokemonalliance"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "tamosiguinedi",
+  "verdict": "other",
+  "reason": "declared in title: Idle games, Other OTServers",
+  "evidence": {
+   "declared": {
+    "Idle games": [
+     "baiak idle"
+    ],
+    "Other OTServers": [
+     "baiak"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "legendaaryplayer",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "padventures",
+     "padventures"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "padventures"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "bestar10",
+  "verdict": "other",
+  "reason": "tagged: Other Pokémon servers",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "Other Pokémon servers": [
+     "padventures"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "lockheedmartinufo",
+  "verdict": "other",
+  "reason": "declared in title: Other OTServers",
+  "evidence": {
+   "declared": {
+    "Other OTServers": [
+     "outcastserver"
+    ]
+   },
+   "tagged": {},
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "jrdferri",
+  "verdict": "other",
+  "reason": "declared in title: Other Pokémon servers",
+  "evidence": {
+   "declared": {
+    "Other Pokémon servers": [
+     "poke idle world"
+    ]
+   },
+   "tagged": {
+    "Other Pokémon servers": [
+     "pokemon"
+    ]
+   },
+   "commands": {},
+   "official_title": [],
+   "official_tags": []
+  }
+ },
+ {
+  "channel": "branco2tv",
+  "verdict": "other",
+  "reason": "tagged: RubinOT",
+  "evidence": {
+   "declared": {},
+   "tagged": {
+    "RubinOT": [
+     "rubinot",
+     "rubinotaovivo",
+     "rubini"
+    ]
+   },
+   "commands": {
+    "RubinOT": [
+     "!rubinot"
+    ]
+   },
+   "official_title": [],
+   "official_tags": []
+  }
+ }
+]
