@@ -64,6 +64,12 @@ def tokenize(text):
             i += 1
     return tokens
 
+def features(title, tags):
+    """The statistical model's features: squeezed title words (t:) and tags (g:)."""
+    words = {'t:' + squeeze(w) for w in re.findall('[a-z0-9]+', normalize(title)) if len(w) >= 2 and (not w.isdigit())}
+    compact = (re.sub('[^a-z0-9]', '', normalize(t)) for t in tags)
+    return words | {'g:' + squeeze(t) for t in compact if t}
+
 def fuzzy_ui(term):
     head = '\\s*'.join((re.escape(w) for w in term[:-3].split()))
     return re.compile(f'{head}\\s*\\S{{0,2}}{re.escape(term[-3:])}')
@@ -87,6 +93,8 @@ def describe(s):
         return f"{('OTServer-only client' if s['game'] == 'OTServer client' else s['game'])} on screen: {s['text']}"
     if s['source'] == 'context':
         return s['game']
+    if s['source'] == 'model':
+        return 'statistical model'
     if s['source'] == 'channel':
         return f"{s['game']} in channel name"
     if s['source'] == 'command':
@@ -140,6 +148,7 @@ class Evidence:
             self.games.append((game, [re.compile(p) for p in spec.get('title_patterns', [])], [re.compile(p) for p in spec['tag_patterns']]))
         self.longest = max([3] + [len(k.split(' ')) for k in self.phrases])
         self.domains = data['context']['domains']
+        self.model = data.get('model')
         self.domain_re = re.compile('(?<![a-z0-9@._-])((?:[a-z0-9-]+\\.)+(?:' + '|'.join(self.domains['tlds']) + '))(?![a-z0-9-])')
         self.channel_keys = sorted(((k, e) for k, e in self.singles.items() if e['side'] == 'other' and len(k) >= 6), key=lambda item: -len(item[0]))
         self.official_tags = [re.compile(p) for p in official['tag_patterns']]
@@ -282,6 +291,18 @@ class Evidence:
         hit = next(((k, e) for k, e in self.channel_keys if k in name), None)
         return [signal('other', 'channel', hit[1]['game'], channel, self.w['channel'])] if hit else []
 
+    def model_signals(self, title, tags):
+        """The statistical model's verdict when it is confident (tools/train_tibia_model.py)."""
+        model = self.model
+        if not model:
+            return []
+        odds = model['bias'] + sum((model['features'].get(f, 0) for f in sorted(features(title, tags))))
+        if odds >= model['confident']:
+            return [signal('other', 'model', 'Other games', 'model', self.w['model'])]
+        if odds <= -model['confident']:
+            return [signal('tibia', 'model', 'Tibia', 'model', self.w['model_tibia'])]
+        return []
+
     def decide(self, signals):
         title_other = combine([s for s in signals if s['side'] == 'other' and s['source'] in ('title', 'command')])
         title_tibia = any((s['side'] == 'tibia' and s['source'] == 'title' for s in signals))
@@ -304,7 +325,7 @@ class Evidence:
 
     def classify(self, title, tags, channel=''):
         """Classify full title and tag metadata."""
-        signals = self.title_signals(normalize(title)) + self.tag_signals(tags) + self.channel_signals(channel)
+        signals = self.title_signals(normalize(title)) + self.tag_signals(tags) + self.channel_signals(channel) + self.model_signals(title, tags)
         verdict, reason, score = self.decide(signals)
         found = {'signals': [dict(s, weight=js_round(s['weight'])) for s in signals], 'score': score}
         return (verdict, reason, found)

@@ -436,6 +436,28 @@
       }
       return signals;
     };
+
+    // The statistical model's verdict when it is confident (tools/train_tibia_model.py):
+    // naive Bayes over squeezed title words (t:) and tags (g:).
+    const model = data.model;
+    const features = (title, tags) => {
+      const words = (normalize(title).match(/[a-z0-9]+/g) || []).filter(w => w.length >= 2 && !/^[0-9]+$/.test(w)).map(w => `t:${squeeze(w)}`);
+      const compact = tags.map(t => normalize(t).replace(/[^a-z0-9]/g, '')).filter(Boolean).map(t => `g:${squeeze(t)}`);
+      return [...new Set([...words, ...compact])].sort();
+    };
+    const modelSignals = (title, tags) => {
+      if (!model) {
+        return [];
+      }
+      const odds = features(title, tags).reduce((sum, f) => sum + (model.features[f] || 0), model.bias);
+      if (odds >= model.confident) {
+        return [signal('other', 'model', 'Other games', 'model', W.model)];
+      }
+      if (odds <= -model.confident) {
+        return [signal('tibia', 'model', 'Tibia', 'model', W.model_tibia)];
+      }
+      return [];
+    };
     const channelSignals = channel => {
       const name = squeeze(normalize(channel || '').replace(/[^a-z0-9]/g, ''));
       const hit = channelKeys.find(([key]) => name.includes(key));
@@ -452,7 +474,7 @@
       }
       return [...best.values()].sort((a, b) => b - a).reduce((sum, w, i) => sum + w / 2 ** i, 0);
     };
-    const describe = s => s.source === 'screen' ? `${s.game === 'OTServer client' ? 'OTServer-only client' : s.game} on screen: ${s.text}` : s.source === 'context' ? s.game : s.source === 'channel' ? `${s.game} in channel name` : s.source === 'command' ? `!${s.text.replace(/^[!\u2757\u2755]/, '')} command` : s.source === 'tag' ? `${s.game === 'Tibia' ? 'official' : s.game} tag ${s.text}` : s.side === 'tibia' ? `${s.text} in title` : `${s.game}${s.kind === 'world' ? ' world' : ''} in title${s.distance ? ` ("${s.text}")` : ''}`;
+    const describe = s => s.source === 'screen' ? `${s.game === 'OTServer client' ? 'OTServer-only client' : s.game} on screen: ${s.text}` : s.source === 'context' ? s.game : s.source === 'model' ? 'statistical model' : s.source === 'channel' ? `${s.game} in channel name` : s.source === 'command' ? `!${s.text.replace(/^[!\u2757\u2755]/, '')} command` : s.source === 'tag' ? `${s.game === 'Tibia' ? 'official' : s.game} tag ${s.text}` : s.side === 'tibia' ? `${s.text} in title` : `${s.game}${s.kind === 'world' ? ' world' : ''} in title${s.distance ? ` ("${s.text}")` : ''}`;
     const decide = signals => {
       const titleOther = combine(signals.filter(s => s.side === 'other' && (s.source === 'title' || s.source === 'command')));
       const titleTibia = signals.some(s => s.side === 'tibia' && s.source === 'title');
@@ -493,7 +515,7 @@
 
     // when the title, tags and channel name leave the stream undetermined.
     return (title, tags, channel = '') => {
-      const signals = [...titleSignals(normalize(title)), ...tagSignals(tags), ...channelSignals(channel)];
+      const signals = [...titleSignals(normalize(title)), ...tagSignals(tags), ...channelSignals(channel), ...modelSignals(title, tags)];
       let result = decide(signals);
       return {
         ...result,
