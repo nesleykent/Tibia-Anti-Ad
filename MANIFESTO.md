@@ -1,6 +1,6 @@
 # Tibia Anti-Ad Manifesto
 
-_Sorry for the inconvenience, we just want Tibia_
+_Sorry for the inconvenience, we just want Tibia._
 
 ## The Community Deserves Better
 
