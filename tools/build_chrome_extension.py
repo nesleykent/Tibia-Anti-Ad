@@ -1,7 +1,7 @@
 """Build the Chrome variant of Tibia Anti-Ad into dist/tibia-anti-ad-chrome.
 
-The Safari source in extensions/tibia-anti-ad/extension is shared; Chrome only
-needs a service-worker background (extensions/tibia-anti-ad/chrome) and a
+The Safari source in extension/src is shared; Chrome only
+needs a service-worker background (extension/browsers/chrome) and a
 few manifest changes. Load the output
 folder with "Load unpacked" in chrome://extensions.
 """
@@ -10,8 +10,8 @@ import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "extensions/tibia-anti-ad/extension"
-CHROME = ROOT / "extensions/tibia-anti-ad/chrome"
+SOURCE = ROOT / "extension/src"
+CHROME = ROOT / "extension/browsers/chrome"
 OUTPUT = ROOT / "dist/tibia-anti-ad-chrome"
 
 

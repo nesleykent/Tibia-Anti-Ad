@@ -7,7 +7,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-EXTENSION = ROOT / "extensions/tibia-anti-ad/extension"
+EXTENSION = ROOT / "extension/src"
 
 
 def run(*command):
@@ -20,8 +20,9 @@ def check_documentation():
     documents = [*(ROOT / name for name in ("README.md", "MANIFESTO.md", "CONTRIBUTING.md",
                   "SECURITY.md", "CODE_OF_CONDUCT.md", "CHANGELOG.md", "THIRD_PARTY_NOTICES.md")),
                  *ROOT.glob("docs/*.md"),
-                 ROOT / "extensions/tibia-anti-ad/README.md",
-                 ROOT / "scripts/twitch/README.md", ROOT / "research/README.md"]
+                 ROOT / "extension/README.md",
+                 ROOT / "scripts/twitch/README.md", ROOT / "research/README.md",
+                 ROOT / "research/fansites/README.md", ROOT / "filters/README.md"]
     failures = []
     for document in documents:
         # Ignore external URLs, fragments and example text inside fenced code.
@@ -38,7 +39,7 @@ def check_documentation():
 
 
 def generated_files():
-    paths = [*ROOT.glob("filters/anti-ad-tibia*.txt"),
+    paths = [*ROOT.glob("filters/lists/anti-ad-tibia*.txt"),
              EXTENSION / "manifest.json", EXTENSION / "sites.js",
              EXTENSION / "tibia-evidence.js", *EXTENSION.glob("sites/*.*")]
     return {p.relative_to(ROOT): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
@@ -47,12 +48,12 @@ def generated_files():
 def main():
     check_documentation()
     scripts = [*EXTENSION.rglob("*.js"), *ROOT.glob("scripts/twitch/*.js"),
-               *ROOT.glob("tests/*.cjs")]
+               *ROOT.glob("tests/javascript/*.cjs")]
     for script in sorted(scripts):
         run("node", "--check", str(script.relative_to(ROOT)))
-    run("node", "tests/twitch-startup.cjs")
-    run("node", "tests/twitch-settings.cjs")
-    run(sys.executable, "-m", "unittest", "discover", "-s", "tests", "-v")
+    run("node", "tests/javascript/twitch-startup.cjs")
+    run("node", "tests/javascript/twitch-settings.cjs")
+    run(sys.executable, "-m", "unittest", "discover", "-s", "tests/python", "-v")
     run(sys.executable, "tools/twitch_evidence.py", "--evaluate")
     before = generated_files()
     for builder in ("build_filters.py", "build_extension_sites.py", "twitch_evidence.py"):

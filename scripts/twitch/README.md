@@ -1,6 +1,6 @@
 # Twitch live-video ad script
 
-[`twitch-stopthemadness.js`](twitch-stopthemadness.js) is the supplied standalone alternative to [Tibia Anti-Ad](../../extensions/tibia-anti-ad/README.md). It sets Source quality and includes vaft with its MIT notice intact. It tries alternate video streams and strips stitched ad segments; this can reduce resolution or freeze playback during an ad break.
+[`twitch-stopthemadness.js`](twitch-stopthemadness.js) is the supplied standalone alternative to [Tibia Anti-Ad](../../extension/README.md). It sets Source quality and includes vaft with its MIT notice intact. It tries alternate video streams and strips stitched ad segments; this can reduce resolution or freeze playback during an ad break.
 
 ## StopTheMadness Pro
 
