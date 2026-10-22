@@ -6,7 +6,7 @@ from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "extension/src"
-APP = ROOT / "dist/Tibia Anti-Ad.app"
+APP = ROOT / "dist/safari.noindex/Tibia Anti-Ad.app"
 SOURCE_ZIP = ROOT / "dist/tibia-anti-ad-safari-extension.zip"
 APP_ZIP = ROOT / "dist/tibia-anti-ad-safari-macos.zip"
 

@@ -9,7 +9,7 @@ case "$mode" in
 esac
 pkill -x 'Tibia Anti-Ad' >/dev/null 2>&1 || true
 python3 tools/build_safari_extension.py --sign-identity "${TIBIA_SAFARI_SIGN_IDENTITY:--}"
-app="$PWD/dist/Tibia Anti-Ad.app"
+app="$PWD/dist/safari.noindex/Tibia Anti-Ad.app"
 case "$mode" in
   --debug) lldb -- "$app/Contents/MacOS/Tibia Anti-Ad" ;;
   --logs|--telemetry)

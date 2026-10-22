@@ -11,10 +11,11 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from build_safari_extension import BUNDLE_ID, ROOT, TOOLBAR_ID, WEB_EXTENSION_ID, build
+from build_safari_extension import (BUNDLE_ID, ROOT, TOOLBAR_ID, WEB_EXTENSION_ID, build, hide_from_system,
+                                    remove_build_files)
 
 INSTALLED = Path("/Applications/Tibia Anti-Ad.app")
-BACKUP = ROOT / "local/safari/previous/Tibia Anti-Ad.app"
+BACKUP = ROOT / "local/safari/previous.noindex/Tibia Anti-Ad.app"
 
 
 def output(*args):
@@ -110,6 +111,10 @@ def main():
         subprocess.run(["pkill", "-x", "Tibia Anti-Ad"], check=False)
         backup = install(built, INSTALLED, team)
         subprocess.run(["open", str(INSTALLED)], check=True)
+        # The backup is for rollback only; keep it out of Launchpad and Safari.
+        hide_from_system(backup)
+        # The installed app is all that is needed; the build cache is about 1 GB.
+        remove_build_files()
         print(f"Updated and verified: {INSTALLED}\nPrevious app: {backup}")
         print("Safari was left running. Reload affected pages; a Safari restart may be needed to activate the update.")
 

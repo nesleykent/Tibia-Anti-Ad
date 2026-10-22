@@ -87,7 +87,7 @@ Requires full Xcode, its command-line tools, and Python 3.11 or newer. Work from
 python3 tools/build_safari_extension.py
 ```
 
-This generates the Xcode project under **`dist/safari-project/Tibia Anti-Ad/`** and the ready-to-run app at **`dist/Tibia Anti-Ad.app`**. The generated project can be opened in Xcode. The script builds both Mac architectures, verifies resources and applies an ad-hoc development signature. It does not configure a developer account or change Safari's security settings.
+This generates the Xcode project under **`dist/safari-project/Tibia Anti-Ad/`** and the ready-to-run app at **`dist/safari.noindex/Tibia Anti-Ad.app`**. The generated project can be opened in Xcode. The script builds both Mac architectures, verifies resources and applies an ad-hoc development signature. It does not configure a developer account or change Safari's security settings.
 
 To build and open the app in one step:
 

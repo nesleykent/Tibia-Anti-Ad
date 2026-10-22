@@ -21,8 +21,10 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "extension/src"
 SAFARI = ROOT / "extension/browsers/safari"
 PROJECT_ROOT = ROOT / "dist/safari-project"
-DERIVED = ROOT / "dist/safari-build"
-APP = ROOT / "dist/Tibia Anti-Ad.app"
+# Spotlight and Launchpad skip folders ending in .noindex, so build products
+# never show up next to the installed app.
+DERIVED = ROOT / "dist/safari-build.noindex"
+APP = ROOT / "dist/safari.noindex/Tibia Anti-Ad.app"
 
 BUNDLE_ID = "com.nesleykent.tibiaantiad"
 WEB_EXTENSION_ID = BUNDLE_ID + ".Extension"
@@ -34,8 +36,26 @@ APP_ICON_SIZES = [(16, 1, 16), (16, 2, 32), (32, 1, 32), (32, 2, 64), (128, 1, 1
                   (128, 2, 256), (256, 1, 256), (256, 2, 512), (512, 1, 512)]
 
 
+LSREGISTER = ("/System/Library/Frameworks/CoreServices.framework/Frameworks/"
+              "LaunchServices.framework/Support/lsregister")
+
+
 def run(*args):
     subprocess.run([str(arg) for arg in args], cwd=ROOT, check=True)
+
+
+def hide_from_system(*apps):
+    """Keep build products and backups out of Launchpad, Spotlight and Safari.
+
+    Xcode registers every app it builds with Launch Services, so each copy shows
+    up as another Tibia Anti-Ad; only the installed app in /Applications should.
+    """
+    for app in apps:
+        if app.exists():
+            subprocess.run([LSREGISTER, "-u", str(app)], check=False)
+        folder = app.parent
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / ".metadata_never_index").touch()
 
 
 # --- Signing -----------------------------------------------------------------
@@ -195,6 +215,13 @@ def verify(app):
             raise RuntimeError(f"Expected a universal Mac binary: {binary}")
 
 
+def remove_build_files():
+    """Delete the build cache and staged project (about 1 GB) once the app is installed."""
+    for path in (DERIVED, PROJECT_ROOT, APP.parent):
+        if path.exists():
+            shutil.rmtree(path)
+
+
 def build(sign_identity="-"):
     if sys.platform != "darwin":
         raise RuntimeError("Building the Safari app requires macOS, full Xcode and XcodeGen.")
@@ -207,6 +234,7 @@ def build(sign_identity="-"):
     xcode_build(group, version)
     sign(sign_identity, group)
     verify(APP)
+    hide_from_system(APP, DERIVED / "Build/Products/Release/Tibia Anti-Ad.app")
     return APP
 
 
