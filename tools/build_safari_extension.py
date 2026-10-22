@@ -44,24 +44,8 @@ def build(sign_identity="-"):
     shutil.copy2(CONFIG / "ViewController.swift", host / "ViewController.swift")
     for state, filename in (("active", "StatusActive.png"), ("inactive", "StatusInactive.png")):
         shutil.copy2(SOURCE / f"icons/safari-toolbar/{state}-256.png", host / "Resources" / filename)
-    main_html = host / "Resources/Base.lproj/Main.html"
-    main_html.write_text(main_html.read_text().replace('src="../Icon.png"', 'src="../StatusInactive.png"')
-                         .replace('alt="Tibia Anti-Ad Icon"', 'alt="" aria-hidden="true"'))
-    with (host / "Resources/Style.css").open("a") as style:
-        style.write('\n@media (prefers-color-scheme: dark) { body img { filter: invert(1); } }\n')
-    # Keep native failures visible instead of silently showing an unknown state.
-    with (host / "Resources/Script.js").open("a") as script:
-        script.write('\nconst originalShow = show;\n'
-                     'show = function(enabled, useSettings) {\n'
-                     '    originalShow(enabled, useSettings);\n'
-                     '    document.querySelector("img").src = enabled === true ? "../StatusActive.png" : "../StatusInactive.png";\n'
-                     '};\n')
-        script.write('\nfunction showStatusError() {\n'
-                     '    show(undefined, true);\n'
-                     '    const status = document.querySelector(".state-unknown");\n'
-                     '    status.setAttribute("role", "status");\n'
-                     '    status.textContent = "Safari extension status is unavailable. Open Safari Settings to check Tibia Anti-Ad. Blocking controls are in the Safari toolbar.";\n'
-                     '}\n')
+    # The window is native SwiftUI (ViewController.swift); the converter's
+    # Main.html, Script.js and Style.css stay in the project but are never loaded.
     # Generated comments must not embed the build machine owner's full name.
     for path in PROJECT_ROOT.rglob("*.swift"):
         path.write_text("\n".join(line for line in path.read_text().splitlines()

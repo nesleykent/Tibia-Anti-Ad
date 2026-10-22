@@ -43,6 +43,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Fixed
 
+- Safari app window is native SwiftUI instead of the converter's web page: extension status that refreshes when you return from Safari Settings, **Open Safari Settings…** as the default button, a link to the GitHub repository, and system fonts, colors and Dark Mode.
+
 - Safari: "SyntaxError: Invalid character" in tibia-classify.js. Safari can read extension scripts as Latin-1, so every extension script is now plain ASCII (non-ASCII characters escaped), and a test keeps it that way.
 
 - The nag hider no longer clears the Tibia filter's marks when it starts, which could briefly show hidden streams again.
