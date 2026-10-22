@@ -52,4 +52,15 @@
         if (area === 'local' && Object.keys(changes).some(key => key in S.DEFAULTS)) { refresh(); }
     });
     refresh();
+
+    // Safari: pick up changes made in the app's toolbar popover when this page
+    // loads and whenever it regains focus (the popover closing).
+    // Only the top frame asks; the background ignores the request outside Safari.
+    const topFrame = typeof window !== 'undefined' && window === window.top;
+    if (topFrame && api.runtime?.sendMessage) {
+        const sync = () => api.runtime.sendMessage({ type: 'tibia-anti-ad:native-sync' }).catch(() => {});
+        sync();
+        window.addEventListener('focus', sync);
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) { sync(); } });
+    }
 })();

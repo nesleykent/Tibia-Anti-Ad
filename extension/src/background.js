@@ -16,6 +16,8 @@ if (typeof importScripts === 'function' && !globalThis.TibiaAntiAdSettings) {
     const R = globalThis.TibiaAntiAdRules;
 
     const syncToolbar = async settings => {
+        // The Safari app shows its own native toolbar button instead.
+        if (!api.action) { return; }
         const state = settings.enabled ? 'active' : 'inactive';
         const tasks = [api.action.setTitle({
             title: `Tibia Anti-Ad \u2014 Blocking ${settings.enabled ? 'enabled' : 'disabled'}`,
@@ -49,19 +51,65 @@ if (typeof importScripts === 'function' && !globalThis.TibiaAntiAdSettings) {
     };
 
     const updateRules = () => R.update(api);
+
+    // Safari: settings edited in the native toolbar popover live in the app's
+    // App Group. Exchange them with this extension's storage by native
+    // messaging (SafariWebExtensionHandler): send what the scripts use, take
+    // edits newer than the last ones applied.
+    const native = Boolean(globalThis.browser?.runtime?.sendNativeMessage) && !api.action;
+    let pendingNative = Promise.resolve();
+    const syncNative = () => {
+        if (!native) { return Promise.resolve(); }
+        pendingNative = pendingNative.then(async () => {
+            const stored = await api.storage.local.get(null);
+            const reply = await globalThis.browser.runtime.sendNativeMessage('application.id', {
+                type: 'sync', settings: S.resolve(stored), tibiaShown: stored.tibiaShown || {},
+                rules: { fetchedAt: stored.tibiaEvidence?.fetchedAt || 0, error: stored.tibiaEvidenceError?.message || null },
+            });
+            const seen = { settings: 0, shown: 0, rules: 0, ...stored.nativeSeen };
+            const changes = {};
+            if (reply?.settingsChangedAt > seen.settings) {
+                Object.assign(changes, S.resolve({ ...S.resolve(stored), ...reply.settings }));
+                seen.settings = reply.settingsChangedAt;
+            }
+            if (reply?.tibiaShownChangedAt > seen.shown) {
+                changes.tibiaShown = reply.tibiaShown || {};
+                seen.shown = reply.tibiaShownChangedAt;
+            }
+            if (reply?.rulesRequestedAt > seen.rules) {
+                seen.rules = reply.rulesRequestedAt;
+                updateRules();
+            }
+            if (Object.keys(changes).length || JSON.stringify(seen) !== JSON.stringify(stored.nativeSeen)) {
+                await api.storage.local.set({ ...changes, nativeSeen: seen });
+            }
+        }).catch(error => console.warn('[Tibia Anti-Ad] could not sync with the app:', error));
+        return pendingNative;
+    };
+    const reportHidden = message => native
+        ? globalThis.browser.runtime.sendNativeMessage('application.id', { ...message, type: 'hidden' }).catch(() => {})
+        : Promise.resolve();
+    if (native) {
+        api.alarms.create('tibia-native', { periodInMinutes: 1 });
+        api.alarms.onAlarm.addListener(alarm => { if (alarm.name === 'tibia-native') { syncNative(); } });
+    }
     api.alarms.create('tibia-rules', { periodInMinutes: R.PERIOD_MINUTES });
     api.alarms.onAlarm.addListener(alarm => { if (alarm.name === 'tibia-rules') { updateRules(); } });
     api.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message?.type === 'tibia-anti-ad:native-sync') { syncNative().then(() => sendResponse(true)); return true; }
+        if (message?.type === 'tibia-anti-ad:hidden-report') { reportHidden(message); return false; }
         if (message?.type !== 'tibia-anti-ad:update-rules') { return false; }
         updateRules().then(sendResponse);
         return true;
     });
 
-    api.runtime.onInstalled.addListener(() => { sync(); updateRules(); });
-    api.runtime.onStartup.addListener(() => { sync(); updateRules(); });
+    api.runtime.onInstalled.addListener(() => { sync(); updateRules(); syncNative(); });
+    api.runtime.onStartup.addListener(() => { sync(); updateRules(); syncNative(); });
     api.storage.onChanged.addListener((changes, area) => {
         if (area === 'local' && Object.keys(changes).some(key => key === 'enabled' || key in S.RULESETS)) { sync(); }
+        if (area === 'local' && (changes.tibiaEvidence || changes.tibiaEvidenceError)) { syncNative(); }
     });
     // A nonpersistent background can load without onStartup/onInstalled firing.
     sync();
+    syncNative();
 })();

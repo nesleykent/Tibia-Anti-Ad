@@ -82,6 +82,7 @@
 
     const scan = () => {
         if (!enabled || !onTibiaDirectory()) {
+            scheduleReport();
             for (const el of document.querySelectorAll(`[${VERDICT}]`)) {
                 el.removeAttribute(VERDICT);
                 if (hiddenByUs.has(el)) { el.removeAttribute(MARK); hiddenByUs.delete(el); }
@@ -89,6 +90,7 @@
             return;
         }
         for (const article of document.querySelectorAll('article')) { apply(article); }
+        scheduleReport();
     };
 
     // Twitch loads more cards from a scroll handler on its root scroller that
@@ -158,6 +160,18 @@
         const reason = (cell.getAttribute(VERDICT) || '').replace(/^other: /, '');
         return [{ channel: info.channel, title: info.title, reason, game: gameOf(classifyCard(info)) }];
     });
+    // Report the hidden cards for the Safari app's popover whenever they change.
+    let lastReport = '';
+    const report = () => {
+        const onDirectory = enabled && onTibiaDirectory();
+        const hidden = onDirectory ? hiddenCards() : [];
+        const value = JSON.stringify([onDirectory, hidden]);
+        if (value === lastReport) { return; }
+        lastReport = value;
+        api.runtime.sendMessage({ type: 'tibia-anti-ad:hidden-report', url: location.href, onDirectory, hidden }).catch(() => {});
+    };
+    let reportTimer = 0;
+    const scheduleReport = () => { clearTimeout(reportTimer); reportTimer = setTimeout(report, 500); };
     api.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (message?.type !== 'tibia-anti-ad:tibia-hidden') { return false; }
         sendResponse({ onDirectory: onTibiaDirectory(), enabled, hidden: enabled && onTibiaDirectory() ? hiddenCards() : [] });

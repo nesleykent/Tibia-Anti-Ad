@@ -11,7 +11,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from build_safari_extension import BUNDLE_ID, ROOT, build
+from build_safari_extension import BUNDLE_ID, ROOT, TOOLBAR_ID, WEB_EXTENSION_ID, build
 
 INSTALLED = Path("/Applications/Tibia Anti-Ad.app")
 BACKUP = ROOT / "local/safari/previous/Tibia Anti-Ad.app"
@@ -22,19 +22,28 @@ def output(*args):
                                    stderr=subprocess.STDOUT)
 
 
+def bundle_identifier(bundle):
+    return plistlib.loads((bundle / "Contents/Info.plist").read_bytes())["CFBundleIdentifier"]
+
+
 def verify_app(app, expected_team=None):
+    """Check that the app and its extensions are signed by one Apple Development team.
+
+    The web extension is required; the toolbar extension is new in 1.3, so an
+    installed app from before it is still accepted as the one being replaced.
+    """
     output("codesign", "--verify", "--deep", "--strict", app)
-    extensions = list((app / "Contents/PlugIns").glob("*.appex"))
-    if len(extensions) != 1:
-        raise RuntimeError("Expected exactly one installed Safari extension.")
+    extensions = {bundle_identifier(bundle): bundle for bundle in (app / "Contents/PlugIns").glob("*.appex")}
+    if WEB_EXTENSION_ID not in extensions or not set(extensions) <= {WEB_EXTENSION_ID, TOOLBAR_ID}:
+        raise RuntimeError(f"Unexpected Safari extensions in {app}: {sorted(extensions)}")
+    if bundle_identifier(app) != BUNDLE_ID:
+        raise RuntimeError(f"Unexpected app identifier in {app}.")
     team = expected_team
-    for bundle, identifier in ((app, BUNDLE_ID), (extensions[0], BUNDLE_ID + ".Extension")):
-        info = plistlib.loads((bundle / "Contents/Info.plist").read_bytes())
+    for bundle in [app, *extensions.values()]:
         signature = output("codesign", "-dvv", bundle)
         match = re.search(r"^TeamIdentifier=([A-Z0-9]+)$", signature, re.M)
-        if (info["CFBundleIdentifier"] != identifier or not match
-                or "Authority=Apple Development:" not in signature):
-            raise RuntimeError("Expected a personally signed Tibia Anti-Ad app and extension.")
+        if not match or "Authority=Apple Development:" not in signature:
+            raise RuntimeError("Expected a personally signed Tibia Anti-Ad app and extensions.")
         team = team or match[1]
         if match[1] != team:
             raise RuntimeError("Update signing team differs from the installed app.")
