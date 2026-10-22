@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blocked Streams – Tibia Anti-Ad</title>
+<link rel="stylesheet" href="popup.css">
+<script src="sites.js"></script>
+<script src="settings.js"></script>
+<script src="manage.js"></script>
+</head>
+<body class="manage loading">
+<header class="manage-header">
+  <h1 class="manage-title">Blocked Streams</h1>
+  <p class="detail" id="status" aria-live="polite"></p>
+</header>
+
+<div class="toolbar" role="search">
+  <input type="search" id="search" class="search" placeholder="Search channels, titles and reasons" aria-label="Search blocked streams" autocomplete="off" spellcheck="false">
+  <label class="detail" for="filter">Show</label>
+  <select id="filter" class="popup-button">
+    <option value="">All Categories</option>
+  </select>
+</div>
+
+<main>
+  <div id="groups"></div>
+  <p class="detail empty" id="empty" hidden></p>
+
+  <section id="shown-section" aria-labelledby="h-shown" hidden>
+    <h2 class="group-header" id="h-shown">Shown by You</h2>
+    <p class="detail group-note">Each stays visible until its title changes.</p>
+    <ul class="group list-group" id="shown-list" aria-labelledby="h-shown"></ul>
+  </section>
+</main>
+</body>
+</html>

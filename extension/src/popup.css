@@ -29,6 +29,7 @@
   --font-body: 400 13px/16px -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-subheadline: 400 11px/14px -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-headline: 700 13px/16px -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-title: 700 15px/20px -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 
   /* Metrics. */
   --space-xs: 2px;
@@ -72,6 +73,7 @@
     --font-body: -apple-system-body;
     --font-subheadline: -apple-system-subheadline;
     --font-headline: -apple-system-headline;
+    --font-title: -apple-system-title3;
   }
 }
 
@@ -248,24 +250,6 @@ input[switch]:focus-visible,
 button:focus-visible { outline: auto; outline-offset: 1px; }
 .section > summary:focus-visible { outline-offset: -3px; }
 
-/* Lists of streams in the Tibia section. */
-.list { list-style: none; padding: 0; }
-.list:empty { display: none; }
-.list-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-m);
-  padding: var(--space-s) 0;
-}
-.list-item + .list-item { border-top: 0.5px solid var(--separator); }
-.list-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
-.list-text .row-title,
-.list-text .detail {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 /* Push buttons: the native bezel in Safari; the default button uses the accent. */
 .button { flex: none; font: var(--font-body); }
 html:not(.native-switch) .button {
@@ -293,3 +277,30 @@ html:not(.native-switch) .button {
 }
 .reload[hidden] { display: none; }
 .version { text-align: center; color: var(--tertiary-label); }
+
+/* Blocked Streams page (manage.html): a window-sized list with a search field
+   and a category pop-up button above groups of streams. */
+body.manage { width: auto; max-width: 640px; margin: 0 auto; padding: var(--space-l) 20px 20px; }
+.manage-header { margin: 0 var(--space-m) var(--space-m); }
+.manage-title { font: var(--font-title); font-weight: 700; }
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  margin: 0 0 var(--space-xs);
+}
+.search { flex: 1; min-width: 0; font: var(--font-body); }
+.popup-button { flex: none; max-width: 45%; font: var(--font-body); }
+.list-group { list-style: none; margin: 0; padding: 0; }
+.list-group .row-text .row-title,
+.list-group .row-text .detail:not(.reason) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.group-header .count { font: var(--font-body); color: var(--secondary-label); }
+.group-note { margin: calc(-1 * var(--space-xs)) var(--space-m) var(--space-s); }
+.empty { margin: var(--space-l) var(--space-m); text-align: center; }
+body.manage.loading main,
+body.manage.loading .toolbar { visibility: hidden; }
+#tibia-summary .button { align-self: flex-end; margin-top: var(--space-xs); }

@@ -10,8 +10,6 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
 
     const api = globalThis.browser || globalThis.chrome;
     const S = globalThis.TibiaAntiAdSettings;
-    // Oldest "Show" overrides are dropped beyond this many.
-    const MAX_SHOWN = 200;
     const TWITCH = /^https?:\/\/([^/]+\.)?twitch\.tv(\/|$)/i;
     const TIBIA_DIRECTORY = /^https?:\/\/www\.twitch\.tv\/directory\/category\/tibia(\/|$|\?)/i;
     // Sections the viewer left open, remembered on this device only.
@@ -23,29 +21,6 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
     let reloadPending = false;
 
     const $ = id => document.getElementById(id);
-
-    const listItem = (title, detail, buttonLabel, buttonName, onClick) => {
-        const item = document.createElement('li');
-        item.className = 'list-item';
-        const text = document.createElement('div');
-        text.className = 'list-text';
-        const name = document.createElement('span');
-        name.className = 'row-title';
-        name.textContent = title;
-        const info = document.createElement('span');
-        info.className = 'detail';
-        info.textContent = detail;
-        info.title = detail;
-        text.append(name, info);
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'button';
-        button.textContent = buttonLabel;
-        button.setAttribute('aria-label', buttonName);
-        button.addEventListener('click', onClick);
-        item.append(text, button);
-        return item;
-    };
 
     const plural = (count, word) => `${count} ${word}${count === 1 ? '' : 's'}`;
 
@@ -117,44 +92,39 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
             : 'Video changes apply the next time Twitch loads.';
     };
 
-    const renderShown = () => {
-        const list = $('tibia-shown-list');
-        list.replaceChildren(...Object.entries(shown).map(([channel, title]) =>
-            listItem(channel, title, 'Hide', `Hide ${channel} again`, () => setShown(channel, null))));
-        $('tibia-shown').hidden = !list.children.length;
-    };
-
-    const renderHidden = response => {
-        const section = $('tibia-hidden');
-        const list = $('tibia-hidden-list');
-        const empty = $('tibia-hidden-empty');
-        list.replaceChildren();
-        // Shown only on the Tibia category, where the filter hides cards.
-        section.hidden = !S.active(settings, 'tibiaFilter') || !response?.onDirectory;
-        if (section.hidden) { return; }
-        list.append(...response.hidden.map(card =>
-            listItem(card.channel, card.reason, 'Show', `Show ${card.channel}`, () => setShown(card.channel, card.title))));
-        empty.textContent = 'No streams hidden on this page.';
-        empty.hidden = list.children.length > 0;
+    // A one-line summary; the streams themselves are listed in manage.html.
+    const renderSummary = response => {
+        const hidden = response?.hidden || [];
+        const onDirectory = S.active(settings, 'tibiaFilter') && Boolean(response?.onDirectory);
+        const restored = Object.keys(shown).length;
+        $('tibia-summary').hidden = !onDirectory && !restored;
+        if (onDirectory) {
+            const counts = new Map();
+            for (const card of hidden) { counts.set(card.game, (counts.get(card.game) || 0) + 1); }
+            const top = [...counts].sort((a, b) => b[1] - a[1]);
+            $('tibia-summary-title').textContent = hidden.length ? `${plural(hidden.length, 'stream')} hidden on this page` : 'No streams hidden on this page';
+            $('tibia-summary-detail').textContent = [
+                ...top.slice(0, 2).map(([game, count]) => `${game} ${count}`),
+                top.length > 2 ? `${top.length - 2} more` : '',
+                restored ? `${restored} shown by you` : '',
+            ].filter(Boolean).join(' · ');
+        } else {
+            $('tibia-summary-title').textContent = `${plural(restored, 'stream')} shown by you`;
+            $('tibia-summary-detail').textContent = 'Each stays visible until its title changes.';
+        }
     };
 
     // Asks the Tibia filter in the active Twitch tab which cards it hides.
     const refreshHidden = () => {
-        if (!twitchTab || !S.active(settings, 'tibiaFilter')) { renderHidden(null); return Promise.resolve(); }
+        if (!twitchTab || !S.active(settings, 'tibiaFilter')) { renderSummary(null); return Promise.resolve(); }
         return api.tabs.sendMessage(twitchTab.id, { type: 'tibia-anti-ad:tibia-hidden' })
-            .then(renderHidden, () => renderHidden(null));
+            .then(renderSummary, () => renderSummary(null));
     };
 
-    // channel -> current title shows that broadcast; title null removes the override.
-    const setShown = (channel, title) => {
-        const next = { ...shown };
-        delete next[channel];
-        if (title !== null) { next[channel] = title; }
-        const entries = Object.entries(next);
-        shown = Object.fromEntries(entries.slice(Math.max(0, entries.length - MAX_SHOWN)));
-        renderShown();
-        // The filter rescans on the storage change; ask again once it has.
-        return api.storage.local.set({ tibiaShown: shown }).then(() => setTimeout(refreshHidden, 150));
+    // Opens the management page in a tab, linked to the Twitch tab it lists.
+    const manage = () => {
+        const query = twitchTab ? `?tab=${twitchTab.id}` : '';
+        api.tabs.create({ url: api.runtime.getURL(`manage.html${query}`) }).then(() => window.close(), () => {});
     };
 
     const onChange = event => {
@@ -203,13 +173,14 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
             settings = loaded;
             shown = tibiaShown && typeof tibiaShown === 'object' ? tibiaShown : {};
             renderSwitches();
-            renderShown();
+            refreshHidden();
         });
 
     const start = () => {
         $('version').textContent = `Version ${api.runtime.getManifest().version}`;
         document.addEventListener('change', onChange);
         $('reload-button').addEventListener('click', reloadTwitch);
+        $('manage-button').addEventListener('click', manage);
         // Only the viewer's own clicks are remembered, not the sections opened for the active tab.
         for (const summary of document.querySelectorAll('.section > summary')) {
             summary.addEventListener('click', () => setTimeout(() => saveOpen(summary.parentElement)));

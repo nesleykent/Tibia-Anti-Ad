@@ -8,7 +8,7 @@ Safari Web Extension source supplied in `twitch-clean.zip`, integrated into Tibi
 - Cosmetic hiding of display ads, directory placements and promotional interfaces.
 - Targeted English-language handling of Apple TV, animated-emote and Prime Benefits prompts.
 - Source-quality preference on page load and background visibility handling.
-- **Tibia filter:** on the Tibia category directory, hides streams of other games (RubinOT and other OTServers, Pokémon servers, idle games). It reads each card's complete title and tags from Twitch's page data (`tibia-props.js`) and hides a card when a server is declared in the title or tags without an official world or "Tibia Global"; a `!server` chat command in the title names the server like plain text. Undecided cards stay visible. The settings page lists the streams hidden on the current page with their reasons and can show any of them. See [the research notes](../research/twitch/otserver-filtering.md).
+- **Tibia filter:** on the Tibia category directory, hides streams of other games (RubinOT and other OTServers, Pokémon servers, idle games). It reads each card's complete title and tags from Twitch's page data (`tibia-props.js`) and hides a card when a server is declared in the title or tags without an official world or "Tibia Global"; a `!server` chat command in the title names the server like plain text. Undecided cards stay visible. The settings popover summarizes what it hides; the Blocked Streams page lists each stream by category with its reason and can show any of them. See [the research notes](../research/twitch/otserver-filtering.md).
 - **Settings** for every feature, described below.
 - The MIT-licensed **vaft** script attempts to replace stitched video advertisements with a clean stream. When no clean stream is available, playback can freeze during the break; an alternate stream can be lower resolution.
 
@@ -31,7 +31,7 @@ Open the settings from the toolbar button, or in Safari from **Settings > Extens
 
 How it works: `settings.js` defines every option and default. `settings-bridge.js` names the switched-off `hide.css` groups on the page's root element and mirrors the settings into the page's `localStorage` for `page.js`, which must decide before Twitch's player starts and cannot wait for extension storage. `background.js` reapplies the ruleset choice after browser start and extension updates. Clearing Twitch's site data removes that mirror, so one page load then runs with the defaults until the bridge writes it again.
 
-**Correcting the Tibia filter:** on the Tibia category, the settings page lists the streams hidden on the current page with the reason for each. **Show** keeps that broadcast visible until its title changes, so a correction never becomes a permanent channel rule. **Shown by you** lists the corrections; **Hide** removes one. Turning off **Hide other games** shows every stream immediately.
+**Correcting the Tibia filter:** on the Tibia category, the settings popover shows how many streams are hidden and by which games. **Manage Blocked Streams…** opens the Blocked Streams page: the hidden streams grouped by category, each with its title and the reason it was hidden, a search field (Command-F) that filters as you type, and a category pop-up menu. **Show** keeps that broadcast visible until its title changes, so a correction never becomes a permanent channel rule. **Shown by You** on the same page lists the corrections; **Hide** removes one. Turning off **Hide other games** shows every stream immediately.
 
 ## Install in Chrome (development)
 

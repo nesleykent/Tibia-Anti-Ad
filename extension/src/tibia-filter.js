@@ -140,13 +140,21 @@
         globalThis.navigation?.addEventListener?.('currententrychange', follow);
         setInterval(follow, 1000);
     };
-    // Cards this script hides on the current page, for the settings page.
+    // The game behind a hidden card's strongest evidence, for grouping; weak
+    // context (server rates, "OT") names no game.
+    const gameOf = result => {
+        const best = result.found.signals.filter(s => s.side === 'other' && s.source !== 'context')
+            .sort((a, b) => b.weight - a.weight)[0];
+        return !best ? 'Other games' : best.game === 'OTServer client' ? 'Other OTServers' : best.game;
+    };
+    // Cards this script hides on the current page, for the settings pages.
     const hiddenCards = () => [...document.querySelectorAll('article')].flatMap(article => {
         const cell = cellOf(article);
         if (!hiddenByUs.has(cell)) { return []; }
         const info = cardInfo(article);
+        if (!info) { return []; }
         const reason = (cell.getAttribute(VERDICT) || '').replace(/^other: /, '');
-        return info ? [{ channel: info.channel, title: info.title, reason }] : [];
+        return [{ channel: info.channel, title: info.title, reason, game: gameOf(classifyCard(info)) }];
     });
     api.runtime.onMessage.addListener((message, sender, sendResponse) => {
         if (message?.type !== 'tibia-anti-ad:tibia-hidden') { return false; }

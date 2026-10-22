@@ -90,15 +90,12 @@
           <label class="row-text" for="tibiaFilter"><span class="row-title">Hide other games</span><span class="detail" id="d-tibiaFilter">OTServers, Pokémon servers and idle games. Undecided streams stay visible.</span></label>
           <input type="checkbox" switch role="switch" id="tibiaFilter" data-setting="tibiaFilter" aria-describedby="d-tibiaFilter">
         </div>
-        <div class="row row-stack" id="tibia-hidden" hidden>
-          <h3 class="row-title" id="tibia-hidden-title">Hidden on this page</h3>
-          <p class="detail" id="tibia-hidden-empty" hidden></p>
-          <ul class="list" id="tibia-hidden-list" aria-labelledby="tibia-hidden-title"></ul>
-        </div>
-        <div class="row row-stack" id="tibia-shown" hidden>
-          <h3 class="row-title" id="tibia-shown-title">Shown by you</h3>
-          <p class="detail">Each stays visible until its title changes.</p>
-          <ul class="list" id="tibia-shown-list" aria-labelledby="tibia-shown-title"></ul>
+        <div class="row row-stack" id="tibia-summary" hidden>
+          <div class="row-text">
+            <span class="row-title" id="tibia-summary-title" aria-live="polite"></span>
+            <span class="detail" id="tibia-summary-detail"></span>
+          </div>
+          <button type="button" class="button" id="manage-button">Manage Blocked Streams…</button>
         </div>
       </div>
     </details>
