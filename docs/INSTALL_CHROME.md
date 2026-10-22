@@ -59,7 +59,7 @@ Chrome continues reading the extension from this folder. **Keep it in the same p
 
 Review the site's access controls under **Details** on the extension's Chrome card if Chrome asks about access. The extension needs access to Twitch and the supported fansites to filter their pages.
 
-To try stream filtering, open the [Tibia category on Twitch](https://www.twitch.tv/directory/category/tibia). If a stream is hidden, the extension's **Hidden on this page** section explains the decision; **Show** restores it. Uncertain streams stay visible.
+To try stream filtering, open the [Tibia category on Twitch](https://www.twitch.tv/directory/category/tibia). If a stream is hidden, open **Tibia category → Manage Blocked Streams…** to see its reason; **Show** restores it. Uncertain streams stay visible.
 
 The enabled Chrome card and a working settings panel confirm installation. They do not guarantee that every ad will be removed: live Twitch video-ad replacement is experimental and can affect playback during an ad break.
 
@@ -89,7 +89,7 @@ If Source quality was enabled on Twitch, select your preferred video quality in 
 | No Developer mode or Load unpacked button | Check that you are using desktop Chrome. A managed computer may restrict extension installation; contact its administrator. |
 | The extension cannot find its files after a restart | Its installed folder may have been moved or deleted. Restore the folder to its original location, or load the extracted package again. |
 | The settings open but a page is unchanged | Reload the page, check that the relevant feature/site switch is on, and review the extension's site access under Details. |
-| A legitimate Tibia stream disappears | Use **Show** under **Hidden on this page**, or turn off **Hide other games**. |
+| A legitimate Tibia stream disappears | Open **Manage Blocked Streams…** and choose **Show**, or turn off **Hide other games**. |
 | Video playback or a fansite breaks | Pause the affected feature and reload. Report the page, browser version and steps through [GitHub issues](https://github.com/nesleykent/Tibia-Anti-Ad/issues). |
 
 ## Optional: prepare the Chrome folder yourself

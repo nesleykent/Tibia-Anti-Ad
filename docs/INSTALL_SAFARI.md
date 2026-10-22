@@ -37,7 +37,7 @@ You may need to enable **Allow unsigned extensions** again after restarting Safa
 
 Click Tibia Anti-Ad in Safari's toolbar. If it is not visible, check **Safari → Settings → Extensions** and your toolbar configuration.
 
-The top **Tibia Anti-Ad** switch pauses everything. Other switches control individual Twitch features and fansites. **Hidden on this page → Show** restores a hidden stream. Video-setting changes may need a page reload.
+The top **Tibia Anti-Ad** switch pauses everything. Other switches control individual Twitch features and fansites. Open **Tibia category → Manage Blocked Streams…**, then use **Show** to restore a hidden stream. Video-setting changes may need a page reload.
 
 The preview's packaging and native startup have been checked. Live Twitch ad removal and full fansite behavior still require browser verification.
 
