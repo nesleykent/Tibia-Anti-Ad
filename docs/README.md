@@ -17,4 +17,5 @@
 - [Verification record](VERIFICATION.md): what has and has not been checked.
 - [Roadmap](ROADMAP.md): remaining work.
 - [Contributing](../CONTRIBUTING.md): development and review workflow.
+- [Local workspace](LOCAL_WORKSPACE.md): original inputs, archives, caches and managed checkouts.
 - [Release guide](RELEASING.md): versioning, publication gates and rollback.
