@@ -41,6 +41,7 @@ const loadSettings = (context = vm.createContext({})) => {
   let stored = { hideCookieBanner: false };
   const listeners = [];
   const context = vm.createContext({
+    location: { hostname: 'www.twitch.tv' },
     document: {
       documentElement: {
         setAttribute: (name, value) => attributes.set(name, value),
@@ -64,6 +65,7 @@ const loadSettings = (context = vm.createContext({})) => {
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(attributes.get('data-tibia-anti-ad-off'), 'cookies');
   assert.equal(JSON.parse(pageStorage.get('tibia-anti-ad:settings')).hideCookieBanner, false);
+  assert.ok(!Object.keys(JSON.parse(pageStorage.get('tibia-anti-ad:settings'))).some(key => key.startsWith('site:')), 'fansite switches stay out of Twitch');
   stored = { removeStreamAds: false, hideAdBreakBanner: true };
   listeners.forEach(listener => listener({ removeStreamAds: { newValue: false } }, 'local'));
   await new Promise(resolve => setImmediate(resolve));
