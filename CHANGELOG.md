@@ -6,6 +6,10 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Added
 
+- Safari toolbar status: `infinity.circle` when blocking is disabled and `infinity.circle.fill` when enabled, synchronized on changes and background startup. Toolbar titles describe the state in text.
+- Chrome uses original outlined/filled infinity-in-circle vectors for the same two states, with dual-tone edges for light/dark themes. Both browsers' popup status indicators match their toolbar state. Imported shield branding is replaced with original circular infinity artwork.
+- Native Safari host fixes: handle malformed messages safely, avoid retaining the controller through its message handler, and show settings/status errors instead of silently quitting or hiding failures.
+
 - Safari downloads: a temporary-extension ZIP and a universal macOS development app built with Xcode, with checksums and clear signing limitations.
 - Reproducible Safari build/package tools and a local build-and-run entrypoint.
 

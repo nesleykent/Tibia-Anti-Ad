@@ -2,14 +2,6 @@
   "source_archive": "twitch-clean.zip",
   "archive_sha256": "ed042a0b05eee8be636923b8754abb42452c5371fbfc20eb044c4090b53855d0",
   "files": {
-    "extension/src/icons/icon-128.png": "843aefaeacebe41cce6f60e9deccbf09b7354ab27da510d4480cf012b1b04f92",
-    "extension/src/icons/icon-16.png": "d31a58b2f60157f3aa07485af18e6daade4d9496f94f6b3610b2080db1f75bce",
-    "extension/src/icons/icon-256.png": "16475206134c2534b435096069e139bfeb877cb7cd9daea840c9866f611d3c9c",
-    "extension/src/icons/icon-32.png": "ccd351f3ce1912aada49d2d9956a219e8acff5c5c86e115e797a9446752441aa",
-    "extension/src/icons/icon-48.png": "131ad089e46883d8ae1fc45dca28af2cc00a190992d6e7bbd057974069998d18",
-    "extension/src/icons/icon-512.png": "18ff2581accd21e8b333b2b39175f5afac2fb2a6e4fcdf90725e1cffeb5281b6",
-    "extension/src/icons/icon-64.png": "a620f63d083b3a56901350616aa32e23928d4f304a96a66310eccbd6e2b38945",
-    "extension/src/icons/icon-96.png": "f82cf1bc0cd302fdd70f3b52bd5c1626851d165aba5c5f9fa822a4573d9f7d48",
     "filters/sources/twitch/twitch.tv.txt": "33b2af8cb73825fbea22c357b83b760204bfb66a554f2238c2c4b1b9fe5b92d1",
     "research/twitch/twitch.tv-validation.md": "d140cd951126ab4d7ce9a71a35929933f7e46c093318535efaeff7af730dc8b4",
     "research/twitch/recon.js": "585e012a64efd0a1faad6f0fe356c22c9b625309e00e64a328eefdbb497eadbf",
@@ -35,6 +27,38 @@
     "extension/src/nags.js": {
       "original_sha256": "24ee6126caf3b6ae9468e934a585ced02fb0674e5b70cb8c3c2803c93ba3718b",
       "reason": "At start, clears only its own (named) marks; the empty marks set by tibia-filter.js on hidden Tibia category streams are left in place, so a card hidden before nags.js starts does not flash back."
+    },
+    "extension/src/icons/icon-128.png": {
+      "original_sha256": "843aefaeacebe41cce6f60e9deccbf09b7354ab27da510d4480cf012b1b04f92",
+      "reason": "Replaced imported branding with original infinity-in-circle vector artwork; Safari status controls use the official infinity.circle and infinity.circle.fill SF Symbols separately."
+    },
+    "extension/src/icons/icon-16.png": {
+      "original_sha256": "d31a58b2f60157f3aa07485af18e6daade4d9496f94f6b3610b2080db1f75bce",
+      "reason": "Replaced imported branding with original infinity-in-circle vector artwork; Safari status controls use the official infinity.circle and infinity.circle.fill SF Symbols separately."
+    },
+    "extension/src/icons/icon-256.png": {
+      "original_sha256": "16475206134c2534b435096069e139bfeb877cb7cd9daea840c9866f611d3c9c",
+      "reason": "Replaced imported branding with original infinity-in-circle vector artwork; Safari status controls use the official infinity.circle and infinity.circle.fill SF Symbols separately."
+    },
+    "extension/src/icons/icon-32.png": {
+      "original_sha256": "ccd351f3ce1912aada49d2d9956a219e8acff5c5c86e115e797a9446752441aa",
+      "reason": "Replaced imported branding with original infinity-in-circle vector artwork; Safari status controls use the official infinity.circle and infinity.circle.fill SF Symbols separately."
+    },
+    "extension/src/icons/icon-48.png": {
+      "original_sha256": "131ad089e46883d8ae1fc45dca28af2cc00a190992d6e7bbd057974069998d18",
+      "reason": "Replaced imported branding with original infinity-in-circle vector artwork; Safari status controls use the official infinity.circle and infinity.circle.fill SF Symbols separately."
+    },
+    "extension/src/icons/icon-512.png": {
+      "original_sha256": "18ff2581accd21e8b333b2b39175f5afac2fb2a6e4fcdf90725e1cffeb5281b6",
+      "reason": "Replaced imported branding with original infinity-in-circle vector artwork; Safari status controls use the official infinity.circle and infinity.circle.fill SF Symbols separately."
+    },
+    "extension/src/icons/icon-64.png": {
+      "original_sha256": "a620f63d083b3a56901350616aa32e23928d4f304a96a66310eccbd6e2b38945",
+      "reason": "Replaced imported branding with original infinity-in-circle vector artwork; Safari status controls use the official infinity.circle and infinity.circle.fill SF Symbols separately."
+    },
+    "extension/src/icons/icon-96.png": {
+      "original_sha256": "f82cf1bc0cd302fdd70f3b52bd5c1626851d165aba5c5f9fa822a4573d9f7d48",
+      "reason": "Replaced imported branding with original infinity-in-circle vector artwork; Safari status controls use the official infinity.circle and infinity.circle.fill SF Symbols separately."
     }
   }
 }

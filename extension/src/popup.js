@@ -62,6 +62,11 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
     };
 
     const renderSwitches = () => {
+        const state = settings.enabled ? 'active' : 'inactive';
+        const safari = api.runtime.getURL('').startsWith('safari-web-extension:');
+        $('blocking-status-icon').src = safari
+            ? `icons/safari-toolbar/${state}-64.png`
+            : `icons/chrome-toolbar/${state}-128.png`;
         for (const input of document.querySelectorAll('input[data-setting]')) {
             const key = input.dataset.setting;
             let checked = settings[key];

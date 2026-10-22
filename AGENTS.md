@@ -7,6 +7,8 @@
 
 ## Safari: read before giving installation advice or rebuilding
 
+Icon contract: Safari uses `infinity.circle` when disabled and `infinity.circle.fill` when enabled. Chrome uses original vector equivalents with the same outlined/filled circle states. This applies to toolbar and popup status indicators; the Safari host window also uses circular extension-status indicators. There is no slash in either design. See [icon specification and checks](docs/ICONS.md).
+
 Read [Safari signing status](docs/SAFARI_STATUS.md) and the [installation guide](docs/INSTALL_SAFARI.md).
 
 The maintainer's Mac has an **Apple Development-signed app installed in `/Applications/Tibia Anti-Ad.app`**, verified on 2026-10-22. It is an installed app containing an extension, not an **Add Temporary Extension** installation. Do not apply the temporary ZIP's 24-hour/quit lifetime to this signed app.

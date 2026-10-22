@@ -182,7 +182,10 @@ h3.row-title { font: var(--font-headline); }
 
 /* Master switch row. */
 .hero { gap: var(--space-m); }
-.app-icon { flex: none; border-radius: 7px; }
+.status-icon { flex: none; }
+@media (prefers-color-scheme: dark) {
+    .status-icon[src*="safari-toolbar"] { filter: invert(1); }
+}
 
 /* Disclosure rows: a triangle at the leading edge pointing inward when the
    section is collapsed and down when it is expanded. */

@@ -77,6 +77,7 @@ def main():
         run("node", "--check", str(script.relative_to(ROOT)))
     run("node", "tests/javascript/twitch-startup.cjs")
     run("node", "tests/javascript/twitch-settings.cjs")
+    run("node", "tests/javascript/toolbar-state.cjs")
     run(sys.executable, "-m", "unittest", "discover", "-s", "tests/python", "-v")
     run(sys.executable, "tools/twitch_evidence.py", "--evaluate")
     before = generated_files()

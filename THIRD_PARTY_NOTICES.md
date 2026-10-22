@@ -13,6 +13,12 @@ Preserve the upstream notice when redistributing these files. The project MIT no
 
 ## Supplied extension assets and historical research
 
+### Safari toolbar controls: Apple SF Symbols
+
+`extension/src/icons/safari-toolbar/` contains PNG renderings of Apple's `infinity.circle` and `infinity.circle.fill` SF Symbols, generated using AppKit by `scripts/safari/export_toolbar_icons.swift`. They are Safari toolbar, popup blocking-status and native extension-status interface indicators, not app icons, logos or a trademark. Apple retains its rights; these assets are not licensed under this project's MIT license. Use is subject to [Apple's SF Symbols terms](https://developer.apple.com/sf-symbols/) and [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/sf-symbols). The Chrome packager omits these assets.
+
+`extension/browsers/chrome/artwork/` contains original project-authored infinity-in-circle SVGs covered by the project's MIT license. The Chrome toolbar PNGs and shared extension branding PNGs are rendered from these vectors, independently of SF Symbols. Imported shield branding was replaced; original hashes remain in `research/twitch/source-manifest.json`.
+
 The original Twitch Clean archive, icons, filter inputs, companion scripts, research reports and Twitch snapshots were supplied as the project's starting material. Their presence is not evidence of a separate upstream license grant. Provenance and modifications for the Twitch archive are recorded in the source manifest above. Other historical material is described in [research/README.md](research/README.md).
 
 The root license covers the maintainer's original contributions to this material, not rights owned by other parties. Before a packaged release, maintainers must confirm redistribution rights for imported assets, including icons and any captured third-party material; replace or omit assets whose rights cannot be established. Do not claim that historical test reports have been independently reproduced.

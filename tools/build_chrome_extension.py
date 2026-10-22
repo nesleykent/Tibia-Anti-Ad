@@ -19,7 +19,16 @@ def build():
     if OUTPUT.exists():
         shutil.rmtree(OUTPUT)
     shutil.copytree(SOURCE, OUTPUT)
+    # SF Symbols toolbar assets are for the Apple-platform build only.
+    shutil.rmtree(OUTPUT / "icons/safari-toolbar", ignore_errors=True)
+    popup = OUTPUT / "popup.html"
+    popup.write_text(popup.read_text().replace("icons/safari-toolbar/active-64.png",
+                                             "icons/chrome-toolbar/active-128.png"))
     for path in CHROME.iterdir():
+        if path.is_dir():
+            if path.name == "icons":
+                shutil.copytree(path, OUTPUT / "icons", dirs_exist_ok=True)
+            continue
         if path.name != "manifest-overrides.json":
             shutil.copy2(path, OUTPUT / path.name)
     manifest = json.loads((SOURCE / "manifest.json").read_text())

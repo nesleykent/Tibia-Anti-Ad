@@ -26,8 +26,10 @@ class ChromeBuildTests(unittest.TestCase):
             self.assertNotIn("browser_specific_settings", manifest)
             self.assertIn("service_worker", manifest["background"])
             self.assertNotIn("scripts", manifest["background"])
+            self.assertFalse((output / "icons/safari-toolbar").exists())
             resources = [manifest["background"]["service_worker"], manifest["action"]["default_popup"],
-                         *manifest["icons"].values(), "LICENSE", "THIRD_PARTY_NOTICES.md"]
+                         *manifest["icons"].values(), *manifest["action"]["default_icon"].values(),
+                         "LICENSE", "THIRD_PARTY_NOTICES.md"]
             for script in manifest["content_scripts"]:
                 self.assertNotIn("css_origin", script)
                 resources.extend(script.get("js", []) + script.get("css", []))
