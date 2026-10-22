@@ -38,3 +38,10 @@ CI checks Python 3.11 and 3.14 with Node.js 22. Its uploaded Chrome package is a
 - SHA-256 checks confirm all 19 moved historical reports/userscripts and all 40 locally archived originals retain their bytes. Local originals are ignored under `local/legacy/`.
 - Comparison against the previous commit confirms extension runtime bytes are identical except for updated paths in comments. Effective subscription rules are unchanged.
 - The full repository checks and Chrome build pass with the new paths. Documentation indexes and provenance path keys were updated; original provenance digests remain unchanged.
+
+## Friendly-fansite evidence — 2026-10-22
+
+- Received and visually inspected 23 supplied PNG screenshots. The user confirmed ad blockers were disabled; exact capture times, page URLs, browser versions and network evidence were not supplied.
+- Original bytes are preserved under `research/fansites/friendly/screenshots/`. The manifest records original names, sizes, dimensions, SHA-256 values and visual observations; the check command verifies the inventory and image metadata against those values.
+- Tibia-Statistic’s small Amazon affiliate section is visible and documented. The user explicitly requested that it remain in the friendly selection. No filtering exemption was added.
+- Long captures, missing images and rendering artifacts limit visual conclusions. No tracking, performance or live behavior rating was inferred. The existing test/build checks pass.

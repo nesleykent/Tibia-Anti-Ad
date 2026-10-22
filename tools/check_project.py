@@ -1,5 +1,7 @@
 """Run the same dependency-free repository checks locally and in CI."""
 import hashlib
+import json
+import struct
 import re
 import subprocess
 import sys
@@ -22,7 +24,8 @@ def check_documentation():
                  *ROOT.glob("docs/*.md"),
                  ROOT / "extension/README.md",
                  ROOT / "scripts/twitch/README.md", ROOT / "research/README.md",
-                 ROOT / "research/fansites/README.md", ROOT / "filters/README.md"]
+                 ROOT / "research/fansites/README.md", ROOT / "research/fansites/friendly/README.md",
+                 ROOT / "filters/README.md"]
     failures = []
     for document in documents:
         # Ignore external URLs, fragments and example text inside fenced code.
@@ -38,6 +41,25 @@ def check_documentation():
     print(f"Checked local links in {len(documents)} maintained documents", flush=True)
 
 
+def check_friendly_screenshots():
+    directory = ROOT / "research/fansites/friendly"
+    manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+    listed = set()
+    for entry in manifest["entries"]:
+        path = directory / entry["screenshot"]
+        if path.parent != directory / "screenshots" or path.suffix != ".png" or path in listed:
+            raise ValueError(f"Invalid or duplicate screenshot path: {entry['screenshot']}")
+        listed.add(path)
+        data = path.read_bytes()
+        if (data[:8] != b"\x89PNG\r\n\x1a\n" or len(data) != entry["bytes"]
+                or hashlib.sha256(data).hexdigest() != entry["sha256"]
+                or struct.unpack(">II", data[16:24]) != (entry["width"], entry["height"])):
+            raise ValueError(f"Screenshot differs from supplied evidence: {path.name}")
+    if listed != set((directory / "screenshots").glob("*.png")):
+        raise ValueError("Screenshot inventory differs from its provenance manifest")
+    print(f"Verified original bytes and dimensions of {len(listed)} friendly-fansite screenshots", flush=True)
+
+
 def generated_files():
     paths = [*ROOT.glob("filters/lists/anti-ad-tibia*.txt"),
              EXTENSION / "manifest.json", EXTENSION / "sites.js",
@@ -47,6 +69,7 @@ def generated_files():
 
 def main():
     check_documentation()
+    check_friendly_screenshots()
     scripts = [*EXTENSION.rglob("*.js"), *ROOT.glob("scripts/twitch/*.js"),
                *ROOT.glob("tests/javascript/*.cjs")]
     for script in sorted(scripts):

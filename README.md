@@ -42,6 +42,8 @@ Read the [installation and rollback guide](docs/INSTALLATION.md) first. [Per-sit
 - **Document the evidence.** Distinguish observed, simulated, experimental and unverified results. Publish no invented scores or performance claims.
 - **Support the community.** Recognize good practices and voluntary contributions without granting advertising exemptions or targeting individuals.
 
+The [friendly-fansite collection](research/fansites/friendly/README.md) recognizes 23 community projects through supplied screenshots captured without blockers, with observations and explicit evidence limits.
+
 Explore the [website inventory](docs/WEBSITES.md), [assessment rubric](docs/ASSESSMENTS.md) and [historical reports](research/fansites/reports).
 
 ## Repository layout

@@ -6,6 +6,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Added
 
+- Friendly-fansite collection with 23 original screenshots, user-confirmed unblocked capture conditions, visual notes and SHA-256 provenance. Tibia-Statistic remains included with its small affiliate placement documented.
+
 - Full Tibia Anti-Ad Manifesto and project principles connecting viewer choice, content preservation and transparent evidence.
 - MIT license for project-authored work, third-party notices, security policy, community conduct and maintainer guidance.
 - Structured breakage and false-positive reports, contribution review checklist and release acceptance gates.

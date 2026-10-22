@@ -6,6 +6,7 @@
 - [Extension setup and settings](../extension/README.md): Safari source, Chrome development build and feature controls.
 - [Browser compatibility](COMPATIBILITY.md): supported syntax targets and verification limits.
 - [Website inventory](WEBSITES.md): coverage, source rules and historical reports.
+- [Friendly fansites](../research/fansites/friendly/README.md): supplied unblocked screenshots and visual observations.
 - [Twitch](TWITCH.md): advertising, classification policy and evidence.
 
 ## Understand and maintain it

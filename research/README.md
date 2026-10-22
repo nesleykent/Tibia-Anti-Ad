@@ -8,7 +8,7 @@ Userscripts are optional, unreviewed research artifacts, not part of generated s
 
 ## Organization
 
-- [Fansite research](fansites/README.md): historical reports and optional repair userscripts.
+- [Fansite research](fansites/README.md): historical reports, optional repair userscripts and the friendly-fansite screenshot collection received on 2026-10-22.
 - [Twitch research](twitch/otserver-filtering.md): classification method, dated snapshots and offline evidence.
 - [Source provenance](twitch/source-manifest.json): imported Twitch file hashes; path keys follow the current layout without changing the original digests.
 

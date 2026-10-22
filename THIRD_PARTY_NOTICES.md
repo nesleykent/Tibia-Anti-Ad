@@ -18,3 +18,7 @@ The original Twitch Clean archive, icons, filter inputs, companion scripts, rese
 The root license covers the maintainer's original contributions to this material, not rights owned by other parties. Before a packaged release, maintainers must confirm redistribution rights for imported assets, including icons and any captured third-party material; replace or omit assets whose rights cannot be established. Do not claim that historical test reports have been independently reproduced.
 
 Tibia and Twitch names, marks, game imagery and third-party broadcast or website content remain the property of their respective owners. Their inclusion for identification or research implies no affiliation or endorsement.
+
+## Friendly-fansite screenshots
+
+The [friendly-fansite collection](research/fansites/friendly/README.md) contains 23 user-supplied website screenshots received on 2026-10-22. Their original bytes and filenames are recorded in its manifest. The screenshots are research evidence; third-party website designs, text, imagery and marks retain their respective owners’ rights. The root MIT license does not grant rights to these underlying works.
