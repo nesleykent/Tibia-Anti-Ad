@@ -306,4 +306,8 @@ body.manage { width: auto; max-width: 640px; margin: 0 auto; padding: var(--spac
 .empty { margin: var(--space-l) var(--space-m); text-align: center; }
 body.manage.loading main,
 body.manage.loading .toolbar { visibility: hidden; }
-#tibia-summary .button { align-self: flex-end; margin-top: var(--space-xs); }
+
+/* Every section is open: a header above each group, options at full width. */
+.children .row { padding-left: var(--space-m); }
+.children .row::before { left: var(--space-m); }
+.children > .row:first-child::before { display: none; }

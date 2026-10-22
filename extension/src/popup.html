@@ -21,12 +21,9 @@
       <input type="checkbox" switch role="switch" id="enabled" data-setting="enabled" aria-labelledby="title" aria-describedby="status">
     </div>
   </div>
-
-  <h2 class="group-header" id="h-twitch">Twitch</h2>
-  <div class="group" role="group" aria-labelledby="h-twitch">
-    <details class="section" id="s-ads" data-section="ads">
-      <summary class="row disclosure"><span class="triangle" aria-hidden="true"></span><span class="row-title" id="h-ads">Ads and tracking</span><span class="count" id="c-ads"></span></summary>
-      <div class="children" role="group" aria-labelledby="h-ads">
+  <section class="section" id="s-ads" data-section="ads" aria-labelledby="h-ads">
+    <h2 class="group-header" id="h-ads">Ads and tracking</h2>
+    <div class="group children" role="group" aria-labelledby="h-ads">
         <div class="row">
           <label class="row-text" for="blockAds"><span class="row-title">Block ad servers</span><span class="detail" id="d-blockAds">Twitch, Amazon and Google ad networks.</span></label>
           <input type="checkbox" switch role="switch" id="blockAds" data-setting="blockAds" aria-describedby="d-blockAds">
@@ -40,10 +37,10 @@
           <input type="checkbox" switch role="switch" id="hideDisplayAds" data-setting="hideDisplayAds" aria-describedby="d-hideDisplayAds">
         </div>
       </div>
-    </details>
-    <details class="section" id="s-video" data-section="video">
-      <summary class="row disclosure"><span class="triangle" aria-hidden="true"></span><span class="row-title" id="h-video">Video player</span><span class="count" id="c-video"></span></summary>
-      <div class="children" role="group" aria-labelledby="h-video">
+  </section>
+  <section class="section" id="s-video" data-section="video" aria-labelledby="h-video">
+    <h2 class="group-header" id="h-video">Video player</h2>
+    <div class="group children" role="group" aria-labelledby="h-video">
         <div class="row">
           <label class="row-text" for="removeStreamAds"><span class="row-title">Remove stream ads</span><span class="detail" id="d-removeStreamAds">Swaps ad breaks for an ad-free stream; may drop to 360p or pause.</span></label>
           <input type="checkbox" switch role="switch" id="removeStreamAds" data-setting="removeStreamAds" aria-describedby="d-removeStreamAds">
@@ -61,10 +58,10 @@
           <input type="checkbox" switch role="switch" id="hideAdBreakBanner" data-setting="hideAdBreakBanner" aria-describedby="d-hideAdBreakBanner">
         </div>
       </div>
-    </details>
-    <details class="section" id="s-page" data-section="page">
-      <summary class="row disclosure"><span class="triangle" aria-hidden="true"></span><span class="row-title" id="h-page">Page clutter</span><span class="count" id="c-page"></span></summary>
-      <div class="children" role="group" aria-labelledby="h-page">
+  </section>
+  <section class="section" id="s-page" data-section="page" aria-labelledby="h-page">
+    <h2 class="group-header" id="h-page">Page clutter</h2>
+    <div class="group children" role="group" aria-labelledby="h-page">
         <div class="row">
           <label class="row-text" for="hideUpsells"><span class="row-title">Hide upsells</span><span class="detail" id="d-hideUpsells">Turbo, Prime Gaming, Luna and Subtember.</span></label>
           <input type="checkbox" switch role="switch" id="hideUpsells" data-setting="hideUpsells" aria-describedby="d-hideUpsells">
@@ -82,20 +79,20 @@
           <input type="checkbox" switch role="switch" id="hideCookieBanner" data-setting="hideCookieBanner" aria-describedby="d-hideCookieBanner">
         </div>
       </div>
-    </details>
-    <details class="section" id="s-tibia" data-section="tibia">
-      <summary class="row disclosure"><span class="triangle" aria-hidden="true"></span><span class="row-title" id="h-tibia">Tibia category</span><span class="count" id="c-tibia"></span></summary>
-      <div class="children" role="group" aria-labelledby="h-tibia">
+  </section>
+  <section class="section" id="s-tibia" data-section="tibia" aria-labelledby="h-tibia">
+    <h2 class="group-header" id="h-tibia">Tibia category</h2>
+    <div class="group children" role="group" aria-labelledby="h-tibia">
         <div class="row">
           <label class="row-text" for="tibiaFilter"><span class="row-title">Hide other games</span><span class="detail" id="d-tibiaFilter">OTServers, Pokémon servers and idle games. Undecided streams stay visible.</span></label>
           <input type="checkbox" switch role="switch" id="tibiaFilter" data-setting="tibiaFilter" aria-describedby="d-tibiaFilter">
         </div>
-        <div class="row row-stack" id="tibia-summary" hidden>
+        <div class="row" id="tibia-summary" hidden>
           <div class="row-text">
             <span class="row-title" id="tibia-summary-title" aria-live="polite"></span>
             <span class="detail" id="tibia-summary-detail"></span>
           </div>
-          <button type="button" class="button" id="manage-button">Manage Blocked Streams…</button>
+          <button type="button" class="button" id="manage-button" aria-label="Manage Blocked Streams">Manage…</button>
         </div>
         <div class="row">
           <div class="row-text">
@@ -105,16 +102,11 @@
           <button type="button" class="button" id="rules-button">Update Now</button>
         </div>
       </div>
-    </details>
-  </div>
-
-  <h2 class="group-header" id="h-fansites">Fansites</h2>
-  <div class="group" role="group" aria-labelledby="h-fansites">
-    <details class="section" id="s-sites" data-section="sites">
-      <summary class="row disclosure"><span class="triangle" aria-hidden="true"></span><span class="row-title" id="h-sites">Tibia fansites</span><span class="count" id="c-sites"></span></summary>
-      <div class="children" id="sites" role="group" aria-labelledby="h-sites"></div>
-    </details>
-  </div>
+  </section>
+  <section class="section" id="s-sites" data-section="sites" aria-labelledby="h-sites">
+    <h2 class="group-header" id="h-sites">Tibia fansites</h2>
+    <div class="group children" id="sites" role="group" aria-labelledby="h-sites"></div>
+  </section>
 </main>
 
 <footer class="footer">
