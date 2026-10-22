@@ -43,6 +43,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Fixed
 
+- Safari toolbar icon: a plain infinity line glyph when blocking is on, instead of a filled circle that showed as a solid white disc next to Safari's other toolbar icons.
+
 - Settings popover: no more collapsible sections; every option is visible in grouped sections with a header, and every row keeps the same layout (text on the left, switch or button on the right). The on-counts next to headers are gone.
 
 - Safari app window is native SwiftUI instead of the converter's web page: extension status that refreshes when you return from Safari Settings, **Open Safari Settings…** as the default button, a link to the GitHub repository, and system fonts, colors and Dark Mode.

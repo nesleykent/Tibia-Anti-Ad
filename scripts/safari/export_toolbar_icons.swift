@@ -1,11 +1,13 @@
-// Render Apple's circle infinity symbols for Safari controls, never app icons/logos.
+// Render Apple's infinity symbols for Safari controls, never app icons/logos: a plain
+// infinity when blocking is on (a line glyph like the other toolbar icons, which
+// Safari tints), an infinity in a circle outline when it is paused.
 import AppKit
 
 let output = URL(fileURLWithPath: CommandLine.arguments.dropFirst().first ?? "extension/src/icons/safari-toolbar")
 try FileManager.default.createDirectory(at: output, withIntermediateDirectories: true)
 for size in [16, 19, 32, 38, 64, 128, 256] {
     for active in [false, true] {
-        let symbolName = active ? "infinity.circle.fill" : "infinity.circle"
+        let symbolName = active ? "infinity" : "infinity.circle"
         guard let symbol = NSImage(systemSymbolName: symbolName, accessibilityDescription: nil)?
             .withSymbolConfiguration(.init(pointSize: 16, weight: .regular)) else {
             fatalError("\(symbolName) requires macOS 11 or later.")

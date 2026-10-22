@@ -1,10 +1,10 @@
 # Infinity status icons
 
-The final design uses **infinity inside a circle**, with an outline when disabled and a filled circle when enabled. There is no slash. The master `enabled` setting controls both the toolbar and popup blocking indicator; individual site or feature switches do not change this global indicator.
+On Safari the toolbar uses Apple's plain **infinity** when blocking is on and **infinity in a circle outline** when it is paused. Safari tints toolbar templates (blue where the extension can act, gray elsewhere), so a filled circle stood out as a solid disc next to Safari's line glyphs; the plain symbol matches their weight. Chrome keeps its original outlined/filled infinity-in-circle artwork. There is no slash. The master `enabled` setting controls both the toolbar and popup blocking indicator; individual site or feature switches do not change this global indicator.
 
 | Surface | Disabled | Enabled |
 | --- | --- | --- |
-| Safari toolbar and popup | Apple's `infinity.circle` | Apple's `infinity.circle.fill` |
+| Safari toolbar and popup | Apple's `infinity.circle` | Apple's `infinity` |
 | Safari host window | Circular outline when Safari reports the extension disabled or its status unknown | Filled circular symbol when Safari reports the extension enabled |
 | Chrome toolbar and popup | Original outlined infinity-in-circle vector | Original filled infinity-in-circle vector |
 
@@ -12,7 +12,7 @@ The host window reports Safari's extension-enabled status. The popup and toolbar
 
 ## Compatibility and rendering
 
-Both exact SF Symbol names were resolved successfully using `NSImage(systemSymbolName:accessibilityDescription:)` on macOS 27.0.1. Apple's local CoreGlyphs `name_availability.plist` assigns both names to release `2020.1`, whose macOS minimum is **11.0**. This is below the project's macOS 14 build target. The extension still requires Safari 26 or later.
+Both SF Symbol names were resolved successfully using `NSImage(systemSymbolName:accessibilityDescription:)` on macOS 27.0.1. Apple's local CoreGlyphs `name_availability.plist` assigns both names to release `2020.1`, whose macOS minimum is **11.0**. This is below the project's macOS 14 build target. The extension still requires Safari 26 or later.
 
 Safari toolbar assets are monochrome transparent PNGs at **16, 19, 32 and 38 px**, following [Apple's Safari extension icon requirements](https://developer.apple.com/documentation/safariservices/creating-a-safari-web-extension). Additional 64/128/256 px renders support popup and host status indicators. Safari tints toolbar templates; popup and host images invert in dark appearance. Regenerate with `swift scripts/safari/export_toolbar_icons.swift` on macOS. No private-use Unicode glyph or SF font installation is required at runtime.
 
