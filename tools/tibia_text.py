@@ -1,40 +1,50 @@
-"""Server-identity extraction shared with the browser, driven by exported data.
+"""Generic text features shared by training and inference; no server lexicon.
 
-There are deliberately no learned words, subwords, language, gameplay, channel,
-viewer or image features. An unknown identity cannot acquire a verdict by
-resembling a known word. Whole tags and bounded title phrases are distinct.
+Words, adjacent word pairs and character 3/4/5-grams are learned from labels.
+Features use FNV-1a identifiers so the exported model contains no raw titles,
+channel identifiers or readable names. The JavaScript port is checked for parity.
 """
 import re
 import unicodedata
 
+LOOKALIKE = dict(zip("авекмнорстухіјѕԁɡαβεικνορτυχᴀʙᴄᴅᴇɢʜɪᴊᴋʟᴍɴᴏᴘʀꜱᴛᴜᴠᴡʏᴢ",
+                     "abekmhopctyxijsdgabeikvoptuxabcdeghijklmnoprstuvwyz"))
+
 
 def normalize(text):
-    text = unicodedata.normalize('NFKD', str(text))
-    return ' '.join(''.join(c for c in text if not unicodedata.category(c).startswith('M')).lower().split())
+    text = unicodedata.normalize("NFKD", str(text))
+    # Every mark (\p{M} in JavaScript), including emoji variation selectors such as "❗️".
+    text = "".join(c for c in text if not unicodedata.category(c).startswith("M")).lower()
+    return " ".join("".join(LOOKALIKE.get(c, c) for c in text).split())
 
 
-def feature_fields(title, tags, extractor):
-    title = re.sub(extractor['command_pattern'], ' ', normalize(title))
-    tags = {normalize(tag) for tag in tags}
-    fields = ({}, {})
-    for key, spec in sorted(extractor['features'].items()):
-        terms = sorted(set(spec['terms']))
-        if spec['source'] == 'title':
-            matches = [t for t in terms if re.search(r'(?<![a-z0-9])' + re.escape(t) + r'(?![a-z0-9])', title)]
-            if matches:
-                fields[0][key] = matches
-        else:
-            matches = sorted(tags.intersection(terms))
-            if matches:
-                fields[1][key] = matches
-    return fields
+
+def feature_id(value):
+    result = 2166136261
+    for char in value:
+        result = ((result ^ ord(char)) * 16777619) & 0xffffffff
+    return f"{result:08x}"
 
 
-def features(title, tags, extractor):
-    a, b = feature_fields(title, tags, extractor)
-    return sorted(a.keys() | b.keys())
+def text_features(text):
+    tokens = [re.sub(r"[0-9]+", "#", word) for word in re.findall(r"[a-z0-9]+", normalize(text))]
+    raw = {"w:" + word for word in tokens}
+    raw.update("b:" + a + " " + b for a, b in zip(tokens, tokens[1:]))
+    for word in set(tokens):
+        padded = "^" + word + "$"
+        raw.update("c:" + padded[i:i + n] for n in (3, 4, 5) for i in range(len(padded) - n + 1))
+    # A shared character fragment is weaker than a complete word/phrase. This
+    # limits confident decisions from a new word merely resembling a known one.
+    return {feature_id(value): 0.25 if value.startswith("c:") else 1.0 for value in raw}
 
 
-def ambiguous_context(title, extractor):
-    text = re.sub(extractor['command_pattern'], ' ', normalize(title))
-    return bool(re.search(extractor['context_pattern'], text))
+def feature_fields(title, tags):
+    tag_features = {}
+    for tag in tags:
+        tag_features.update(text_features(tag))
+    return text_features(title), tag_features
+
+
+def features(title, tags):
+    title_features, tag_features = feature_fields(title, tags)
+    return title_features | tag_features

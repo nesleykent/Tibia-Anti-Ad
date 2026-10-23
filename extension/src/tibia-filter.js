@@ -35,7 +35,7 @@
         let result = verdicts.get(key);
         if (!result) {
             if (verdicts.size >= 1000) { verdicts.clear(); }
-            result = classify(info.title, info.tags);
+            result = classify(info.title, info.tags, info.channel);
             verdicts.set(key, result);
         }
         return result;

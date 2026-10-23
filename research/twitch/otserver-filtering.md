@@ -1,7 +1,5 @@
 # Removing OTServer streams from Twitch's Tibia category
 
-Current implementation: [server-identity model and held-out evaluation](../../docs/TWITCH_MODEL.md). The rules and image-processing descriptions below are historical and are no longer executable classifier behavior.
-
 Research notes, 2026-10-21. Goal: hide streams of other games (RubinOT and other OTServers, Pokémon servers, idle games) that use Twitch's **Tibia** category, without hiding official Tibia streams.
 
 ## The problem

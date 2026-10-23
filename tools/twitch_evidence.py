@@ -1,94 +1,83 @@
-"""Metadata-only supervised server-identity inference. No image inputs or I/O."""
+"""Classify full title and tag metadata."""
 import argparse
 import collections
 import json
 import math
+from tibia_text import normalize, features, feature_fields
 import re
+import subprocess
+import tempfile
+import urllib.request
 from pathlib import Path
-from tibia_text import feature_fields, ambiguous_context
-
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'filters/sources/twitch/tibia-evidence.json'
 EXTENSION_DATA = ROOT / 'extension/src/tibia-evidence.js'
 AUDIT = ROOT / 'research/twitch/data/2026-10-21/analysis/classificacao.json'
+AUDIT_OTHER = {'RubinOT', 'PokeAlliance (PKA)', 'PokeXGames (PXG)', 'Outros OTServers', 'Jogos Idle', 'DeusOT / DeusOld', 'Outros Pokémon', 'Pokémon misto'}
 AUDIT_TIBIA = {'Tibia'}
-AUDIT_OTHER = {'RubinOT', 'PokeAlliance (PKA)', 'PokeXGames (PXG)', 'Outros OTServers', 'Jogos Idle',
-               'DeusOT / DeusOld', 'Outros Pokémon', 'Pokémon misto', 'Outros jogos'}
-
-
-def rounded(value):
-    return math.floor(value * 1000000 + 0.5) / 1000000
-
 
 class Evidence:
-    def __init__(self, data):
-        self.model = m = data['model']
-        self.extractor = data['extractor']
-        specs = self.extractor['features']
-        if (m.get('format') != 'server-identity-logistic-v1' or not math.isfinite(m['bias'])
-                or not 0 < m['official_threshold'] < m['other_threshold'] < 1
-                or set(m['weights']) != set(specs)
-                or not all(math.isfinite(v) for v in m['weights'].values())):
-            raise ValueError('Invalid server-identity model')
-        for key, spec in specs.items():
-            if (not re.fullmatch('[a-z_]+', key) or spec['side'] not in ('tibia', 'other')
-                    or spec['source'] not in ('title', 'tags') or not spec['terms']
-                    or any(not re.fullmatch('[a-z0-9 .-]+', t) for t in spec['terms'])):
-                raise ValueError('Invalid identity feature')
-        # Patterns belong to the versioned extraction contract, not downloaded code.
-        if (self.extractor['command_pattern'] != r'[!❗❕]\s*[a-z0-9_]+'
-                or self.extractor['context_pattern'] != r'(^|[^a-z0-9])(?:nao|not|never|ex|vs|versus|depois|luego)(?=$|[^a-z0-9])'):
-            raise ValueError('Unsupported extraction policy')
+    """Portable presence inference, plus compatibility with the previous model."""
 
-    def classify(self, title, tags):
-        title_features, tag_features = feature_fields(title, tags, self.extractor)
-        known = sorted(title_features.keys() | tag_features.keys())
-        signals = []
+    def __init__(self, data):
+        self.model = data['model']
+        model = self.model
+        if model.get('format') not in {'joint-text-logistic-v1', 'piracy-presence-logit-v1'}:
+            raise ValueError('Unsupported statistical model format')
+        self.presence = model['format'] == 'piracy-presence-logit-v1'
+        if self.presence and model['bias'] != 0:
+            raise ValueError('Presence inference requires neutral odds without text evidence')
+        if not math.isfinite(model['bias']) or not math.isfinite(model['threshold']) or model['threshold'] <= 0:
+            raise ValueError('Invalid statistical model decision parameters')
+        self.weights = model['weights']
+        for key, value in self.weights.items():
+            if not re.fullmatch('[0-9a-f]{8}', key) or len(value) != 2 or (not all((math.isfinite(v) for v in value))) or (value[1] <= 0):
+                raise ValueError('Invalid statistical model weights')
+
+    def classify(self, title, tags, channel=''):
+        title_features, tag_features = feature_fields(title, tags)
+        known = sorted(set(title_features | tag_features) & self.weights.keys())
+        norm = 1 if self.presence else math.sqrt(sum((self.weights[key][1] ** 2 for key in known)))
         contributions = {'title': 0.0, 'tags': 0.0}
         for key in known:
-            spec = self.extractor['features'][key]
-            value = self.model['weights'][key]
-            source = spec['source']
-            contributions[source] += value
-            signals.append({'side': spec['side'], 'source': source, 'game': 'Tibia' if spec['side'] == 'tibia' else 'Other games',
-                            'text': ', '.join((title_features | tag_features)[key]), 'feature': key, 'weight': rounded(value)})
-        logit = self.model['bias']
-        for key in known:
-            logit += self.model['weights'][key]
+            value = self.weights[key][0] / norm
+            shared = key in title_features and key in tag_features
+            if key in title_features:
+                contributions['title'] += value / (2 if shared else 1)
+            if key in tag_features:
+                contributions['tags'] += value / (2 if shared else 1)
+        logit = self.model['bias'] + sum(contributions.values())
         probability = 1 / (1 + math.exp(-max(-40, min(40, logit))))
-        sides = {s['side'] for s in signals}
-        blocked = ('no server identity' if not known else 'conflicting server identities' if len(sides) > 1
-                   else 'negation, comparison or temporal context' if ambiguous_context(title, self.extractor) else '')
-        verdict = ('undetermined' if blocked else 'other' if probability >= self.model['other_threshold']
-                   else 'tibia' if probability <= self.model['official_threshold'] else 'undetermined')
+        threshold = self.model['threshold']
+        verdict = 'other' if known and logit >= threshold else 'tibia' if known and logit <= -threshold else 'undetermined'
+        rounded = lambda value: math.floor(value * 1000000 + 0.5) / 1000000
         score = {'other': rounded(probability), 'tibia': rounded(1 - probability)}
-        reason = blocked or ('insufficient confidence' if verdict == 'undetermined' else 'server identity evidence')
-        if known:
-            reason += ': ' + '; '.join(s['text'] for s in signals)
-        model_info = {'logit': rounded(logit), 'title': rounded(contributions['title']), 'tags': rounded(contributions['tags']),
-                      'bias': self.model['bias'], 'matched': len(known)}
-        return verdict, reason, {'signals': signals, 'model': model_info, 'score': score, 'abstention': blocked or None}
-
+        inputs = 'title and tags' if title_features and tag_features else 'title' if title_features else 'tags' if tag_features else 'no text'
+        target = 'private-server' if self.presence else 'other-game'
+        reason = f'statistical model from {inputs}: {math.floor(probability * 100 + 0.5)}% {target} estimate'
+        model_info = {'logit': rounded(logit), 'title': rounded(contributions['title']), 'tags': rounded(contributions['tags']), 'bias': self.model['bias'], 'matched': len(known)}
+        found = {'signals': [{'side': 'other' if logit >= 0 else 'tibia', 'source': 'model', 'game': 'Other games' if logit >= 0 else 'Tibia', 'text': inputs, 'weight': rounded(abs(logit))}], 'model': model_info, 'score': score}
+        return (verdict, reason, found)
 
 def evaluate(evidence):
-    """Historical safety check only. Held-out metrics are in the model report."""
+    """Compare metadata verdicts with the audit's categories; returns official streams hidden."""
     table = collections.Counter()
     wrong = []
     for row in json.loads(AUDIT.read_text())['classificacao']:
         tags = [t.strip() for t in row['tags_originais'].split('|') if t.strip()]
-        verdict, _, _ = evidence.classify(row['titulo_original'], tags)
-        truth = 'tibia' if row['categoria'] in AUDIT_TIBIA else 'other' if row['categoria'] in AUDIT_OTHER else 'unclear'
-        table[(truth, verdict)] += 1
-        if truth == 'tibia' and verdict == 'other':
-            wrong.append(row['canal'])
-    print('Historical safety check:', dict(table))
-    return wrong
-
+        verdict, reason, _ = evidence.classify(row['titulo_original'], tags, channel=row['canal'])
+        truth = 'other' if row['categoria'] in AUDIT_OTHER else 'tibia' if row['categoria'] in AUDIT_TIBIA else 'unclear'
+        table[truth, verdict] += 1
+        if verdict == 'other' and truth != 'other':
+            wrong.append((truth, row['canal'], reason, row['titulo_original'][:70], row['tags_originais']))
+    for truth in ('other', 'tibia', 'unclear'):
+        print(truth.ljust(8), {v: table[truth, v] for v in ('other', 'undetermined', 'tibia')})
+    for item in wrong:
+        print('HIDDEN', *item, sep=' | ')
+    return [w for w in wrong if w[0] == 'tibia']
 
 def extension_data(data):
-    return ('// Generated by tools/twitch_evidence.py --write-js from filters/sources/twitch/tibia-evidence.json. Do not edit.\n'
-            f'globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {json.dumps(data, ensure_ascii=True, indent=2)};\n')
-
+    return f'// Generated by tools/twitch_evidence.py --write-js from filters/sources/twitch/tibia-evidence.json. Do not edit.\nglobalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {json.dumps(data, ensure_ascii=True, indent=2)};\n'
 
 def main():
     parser = argparse.ArgumentParser()
@@ -100,17 +89,18 @@ def main():
     evidence = Evidence(data)
     if args.write_js:
         EXTENSION_DATA.write_text(extension_data(data))
-    elif args.evaluate:
-        raise SystemExit(bool(evaluate(evidence)))
-    elif args.streams:
-        results = []
-        for stream in json.loads(Path(args.streams).read_text()):
-            verdict, reason, found = evidence.classify(stream.get('title') or '', stream.get('tags') or [])
-            results.append({'channel': stream['channel'], 'verdict': verdict, 'reason': reason, 'evidence': found})
-        print(json.dumps(results, ensure_ascii=False, indent=2))
-    else:
+        return
+    if args.evaluate:
+        raise SystemExit(1 if evaluate(evidence) else 0)
+    if not args.streams:
         parser.error('streams is required')
-
-
+    results = []
+    for stream in json.loads(Path(args.streams).read_text()):
+        channel, title, tags = (stream['channel'], stream.get('title') or '', stream.get('tags') or [])
+        verdict, reason, found = evidence.classify(title, tags, channel=channel)
+        if verdict == 'undetermined':
+            verdict, reason, found = evidence.classify(title, tags, channel)
+        results.append({'channel': channel, 'verdict': verdict, 'reason': reason, 'evidence': found})
+    print(json.dumps(results, ensure_ascii=False, indent=2))
 if __name__ == '__main__':
     main()

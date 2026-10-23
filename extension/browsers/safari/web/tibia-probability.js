@@ -28,10 +28,12 @@
             badge = document.createElement('span');
             badge.className = 'tibia-official-probability';
             badge.setAttribute(BADGE, '');
-            badge.setAttribute('role', 'img');
+            const label = document.createElement('span');
+            label.className = 'tibia-probability-accessible-label';
+            label.textContent = 'Estimated probability of official Tibia: ';
             const value = document.createElement('span');
             value.className = 'tibia-probability-value';
-            badge.append(value);
+            badge.append(label, value);
             row.append(badge);
         }
         const probability = result.score.tibia;
@@ -39,12 +41,9 @@
             : probability >= 0.9995 ? `>${formatter.format(0.999)}` : formatter.format(probability) : 'n/a';
         const value = badge.querySelector('.tibia-probability-value');
         if (value.textContent !== text) { value.textContent = text; }
-        const accessible = `Estimated probability of official Tibia: ${text}`;
-        if (badge.getAttribute('aria-label') !== accessible) { badge.setAttribute('aria-label', accessible); }
         const raw = String(probability);
         if (badge.getAttribute(BADGE) !== raw) { badge.setAttribute(BADGE, raw); }
-        const basis = result.found.model.matched ? result.reason : 'No server identity; sampled base rate only';
-        const title = `Estimated probability of official Tibia: ${text} (model estimate). ${result.verdict}: ${basis}`;
+        const title = `Estimated probability of official Tibia: ${text} (model estimate)`;
         if (badge.title !== title) { badge.title = title; }
     };
     globalThis.TibiaAntiAdProbability = Object.freeze({ render, remove, clear });
