@@ -28,6 +28,7 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Changed
 
+- Private-server inference (1.5.0): supervised text-presence likelihoods and channel-separated logistic calibration replace the model that depended heavily on official-world references. Missing official references add no piracy evidence; titles and tags jointly supply present patterns. Unrelated games are excluded from positive training labels. Safari continues to display the complement of the private-server estimate. Automatic hiding now requires 98% estimated piracy probability. Documentation describes the model, cutoff, development comparisons and limits explicitly.
 - Tibia filtering (1.3.0): learned statistical inference over complete titles and tags now directly decides card visibility. Manual name lists, channel rules and lexical score overrides are removed from the live classifier. Shared word, phrase and character features are fitted from audited labels; old filter predictions are excluded from training. Uncertain results remain visible. See the [model card](docs/TWITCH_MODEL.md) for input comparisons, provenance and current detection limits.
 - Title extraction recovers visible heading text when React metadata has an empty title or the heading lacks a title attribute. Text-node updates trigger reclassification, and reused cards discard stale metadata when React props are unavailable.
 

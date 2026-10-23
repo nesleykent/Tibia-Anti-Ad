@@ -13,7 +13,7 @@ import train_tibia_model as model
 class ModelValidationTests(unittest.TestCase):
     def test_training_uses_audit_labels_not_filter_predictions(self):
         rows = model.observations()
-        self.assertEqual(len(rows), 373)
+        self.assertEqual(len(rows), 370)
         self.assertTrue(all(set(row) == {'channel', 'title', 'tags', 'label'} for row in rows))
         self.assertEqual(set(model.dataset()), {row['channel'] for row in rows})
         self.assertNotEqual(model.dataset('title'), model.dataset('tags'))
@@ -43,8 +43,37 @@ class ModelValidationTests(unittest.TestCase):
             return 0
         with patch.object(model, 'train', train), patch.object(model, 'score', score):
             with contextlib.redirect_stdout(io.StringIO()):
-                result = model.cross_validate(rows, folds=2)
+                result = model.cross_validate(rows, folds=2, calibrated=False)
         self.assertEqual(len(result), len(rows))
+
+    def test_presence_rates_do_not_learn_absence_of_official_features(self):
+        fitted = model.train([({'shared': 1, 'private': 1}, 1), ({'shared': 1, 'official': 1}, 0)])
+        self.assertEqual(fitted['bias'], 0)
+        self.assertEqual(model.score(fitted, {'shared': 1}), 0)
+        self.assertEqual(model.score(fitted, {'unknown': 1}), 0)
+        self.assertGreater(model.score(fitted, {'private': 1}), 0)
+        self.assertLess(model.score(fitted, {'official': 1}), 0)
+        self.assertEqual(model.score(fitted, {'private': 1}), model.score(fitted, {'private': 1, 'shared': 1}))
+
+    def test_calibration_preserves_neutral_odds_and_reduces_overconfidence(self):
+        slope = model.calibration_slope([(10, 1), (10, 0), (-10, 0), (-10, 1)])
+        self.assertGreaterEqual(slope, 0)
+        self.assertLess(slope, 1)
+
+    def test_calibration_uses_inner_held_out_channels(self):
+        rows = {f'channel{i}': ({str(i): 1}, i % 2) for i in range(12)}
+        training_sets = []
+        def train(training):
+            names = {key for values, _ in training for key in values}
+            training_sets.append(names)
+            return {'weights': {}, 'training': names}
+        def score(fitted, values):
+            self.assertTrue(set(values).isdisjoint(fitted['training']))
+            return 1
+        with patch.object(model, 'train', train), patch.object(model, 'score', score):
+            fitted = model.fit(rows)
+        self.assertEqual(len(training_sets), model.CALIBRATION_FOLDS + 1)
+        self.assertEqual(fitted['calibration']['method'], 'channel-cross-fitted-zero-intercept-logistic')
 
 
 if __name__ == '__main__':

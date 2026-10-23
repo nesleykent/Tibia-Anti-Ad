@@ -1,5 +1,7 @@
 # Twitch: advertising and stream classification
 
+The extension's current classifier is a supervised probabilistic machine-learning model, trained on labelled full titles and tags. It estimates private-server streams, and Safari displays the complement of that estimate as the Tibia percentage. See the [current model card](TWITCH_MODEL.md). The offline prototype below is historical; its hand-written declaration rules do not run in the extension.
+
 ## Platform advertising
 
 Investigate display ads, overlays, telemetry and pre-roll/mid-roll video separately. Preserve playback, audio, captions, chat, sign-in, channel points and accessibility. Shared media/CDN or GraphQL endpoints must not be blocked indiscriminately. Server-inserted video advertising cannot be assumed removable with cosmetic CSS or a static hostname rule.
@@ -8,7 +10,7 @@ Investigate display ads, overlays, telemetry and pre-roll/mid-roll video separat
 
 The supplied **[Tibia Anti-Ad extension](../extension/README.md)** now packages vaft, Source quality, network rules and cosmetic/nag handling, each with its own switch in the extension's settings. The **[StopTheMadness Pro script](../scripts/twitch/README.md)** is a standalone alternative. Both contain the supplied vaft video-ad replacement logic; current live effectiveness remains unverified. The [complementary Twitch filters](../filters/sources/twitch/twitch.tv.txt) and [historical report](../research/twitch/twitch.tv-validation.md) are also included. Choose one vaft injection method. The standalone script does not implement OTServ filtering; the extension has a separate title/tag classifier described below.
 
-## Precision-first classification
+## Historical offline prototype
 
 Labels: **Tibia**, **OTServ**, **undetermined**. Classify the current broadcast, not the person or channel permanently. Keep timestamped evidence, source and a reason for every decision.
 
@@ -36,4 +38,6 @@ Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/refere
 
 ## OTServer filtering
 
-Tibia Anti-Ad hides OTServer, Pokémon-server and idle-game streams on the Tibia category directory. It reads each card's full title, tags and channel from Twitch's own data and weighs the evidence: normalized text (lookalike letters, fancy fonts, leetspeak, repeated or spaced-out letters), server names with spelling mistakes, server worlds, chat commands, tags, weak context such as server rates, and words that weaken a mention (negation, leaving, comparison). A stream is hidden only when the other-game evidence reaches the threshold with a clear lead over official evidence; undecided streams stay visible. Its settings popover summarizes how many streams it hides on the current page; **Manage Blocked Streams…** opens the Blocked Streams page, which groups them by category with the reason for each, a search field and a category filter. **Show** keeps that broadcast visible until its title changes (a per-broadcast correction, never a permanent channel rule), **Shown by You** lists the corrections with **Hide** to undo one, and the **Hide other games** switch turns the filter off immediately. Method, alternatives and evaluation: [research/twitch/otserver-filtering.md](../research/twitch/otserver-filtering.md). Rules: `filters/sources/twitch/tibia-evidence.json`; reference implementation and evaluation: `python3 tools/twitch_evidence.py --evaluate`.
+The extension jointly analyzes full titles and tags with a supervised probabilistic model. It does not use a manually maintained server-name blacklist, channel identity, or heuristic point totals to decide a card. The model estimates private-server streams in the Tibia category; Safari shows `1 - P(private-server stream | title, tags)` beside the channel name. A visibility cutoff is separate from this probability, and uncertain streams stay visible. Training provenance, decision thresholds, development measurements and limitations are in the [model card](TWITCH_MODEL.md).
+
+The settings popover summarizes how many streams it hides; **Manage Blocked Streams…** opens their titles and model reasons. **Show** keeps that broadcast visible until its title changes, and **Hide** undoes the correction. **Hide other games** immediately switches filtering on or off. Safari probability labels remain visible with either setting; the master switch pauses both. Learned parameters live in `filters/sources/twitch/tibia-evidence.json`; the reference implementation and evaluation are available with `python3 tools/twitch_evidence.py --evaluate`. Earlier rule-based approaches remain documented as history in the [research notes](../research/twitch/otserver-filtering.md).

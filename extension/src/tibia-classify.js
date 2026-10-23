@@ -1,4 +1,4 @@
-// Portable joint TF-IDF logistic inference. Weights are learned from labelled
+// Portable supervised text inference. Weights are learned from labelled
 // titles and tags; no name list, channel feature or heuristic decides a card.
 // Keep feature extraction and scoring in step with tools/tibia_text.py and
 // tools/twitch_evidence.py; the full captures are checked for numeric parity.
@@ -96,7 +96,8 @@
   const rounded = value => Math.round(value * 1000000) / 1000000;
   const create = data => {
     const model = data?.model;
-    if (model?.format !== 'joint-text-logistic-v1' || !Number.isFinite(model.bias) || !Number.isFinite(model.threshold) || model.threshold <= 0 || !model.weights || typeof model.weights !== 'object' || Array.isArray(model.weights)) {
+    const presence = model?.format === 'piracy-presence-logit-v1';
+    if (!presence && model?.format !== 'joint-text-logistic-v1' || !Number.isFinite(model.bias) || presence && model.bias !== 0 || !Number.isFinite(model.threshold) || model.threshold <= 0 || !model.weights || typeof model.weights !== 'object' || Array.isArray(model.weights)) {
       throw new Error('Invalid statistical model');
     }
     for (const [key, value] of Object.entries(model.weights)) {
@@ -107,7 +108,7 @@
     const classify = (title, tags, channel = '') => {
       const [titleFeatures, tagFeatures] = featureFields(title, tags);
       const known = [...new Set([...titleFeatures, ...tagFeatures])].filter(key => Object.hasOwn(model.weights, key)).sort();
-      const norm = Math.sqrt(known.reduce((sum, key) => sum + model.weights[key][1] ** 2, 0));
+      const norm = presence ? 1 : Math.sqrt(known.reduce((sum, key) => sum + model.weights[key][1] ** 2, 0));
       let titleValue = 0,
         tagValue = 0;
       for (const key of known) {
@@ -128,7 +129,7 @@
         tibia: rounded(1 - probability)
       };
       const inputs = titleFeatures.size && tagFeatures.size ? 'title and tags' : titleFeatures.size ? 'title' : tagFeatures.size ? 'tags' : 'no text';
-      const reason = `statistical model from ${inputs}: ${Math.round(probability * 100)}% other-game estimate`;
+      const reason = `statistical model from ${inputs}: ${Math.round(probability * 100)}% ${presence ? 'private-server' : 'other-game'} estimate`;
       return {
         verdict,
         reason,

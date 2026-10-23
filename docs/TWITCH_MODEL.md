@@ -1,42 +1,44 @@
-# Twitch statistical filter, 1.3.0
+# Twitch private-server model, 1.5.0
 
-The classifier learns from the complete stream title and all available tags together. Its statistical result directly decides `other`, `tibia` or `undetermined`. There are no manually banned names, server-domain rules, official-world overrides or channel features. Undetermined streams remain visible, and the existing Show/Hide corrections remain per broadcast.
+Tibia Anti-Ad uses supervised probabilistic machine learning to estimate `P(private-server stream | full title, tags)`. Safari displays `1 - P(private-server stream | full title, tags)` as the Tibia percentage. Learned parameters determine every decision; no hand-maintained server blacklist, official-world override, channel identity or heuristic point total decides a card. Show/Hide corrections still apply only to the current broadcast.
 
-## Inputs and model
+## Inputs and inference
 
-The shared feature extractor normalizes Unicode and extracts words, adjacent word pairs and character 3/4/5-grams. Numerical runs become a generic number marker. Title and tag patterns share a learned feature space, so a pattern observed in tags can also contribute when it appears in a title. Character fragments carry one quarter of a whole-word feature's input weight, reducing reliance on partial resemblance. Tags are deduplicated and their ordering does not affect the result.
+The shared extractor normalizes Unicode and extracts words, adjacent word pairs and character 3/4/5-grams. Numerical runs become a generic number marker. Title and tags share the same feature space, and duplicate patterns count once. Character fragments have one quarter of a word's input weight. Patterns learned in tags can also inform a title. Hash identifiers are a representation choice, not an anonymization guarantee.
 
-The trainer fits L2-normalized TF-IDF followed by balanced, regularized logistic regression (`C=4`, zero intercept). Only features observed in at least 2 training observations are retained. Each exported entry contains a learned coefficient multiplied by its effective IDF, and that effective IDF for normalization. Features are identified by FNV-1a keys; the model contains no raw titles or channel identifiers. Hashing is a representation choice, not an anonymization guarantee.
+The supervised presence model estimates each pattern's document-presence probability in the labelled private-server and official classes, using Jeffreys smoothing (`alpha=0.5`). Its learned coefficient is the log ratio of those probabilities. At inference it adds only coefficients for patterns actually present. It includes no absent-feature terms, no intercept and no input-length normalization. Thus a missing official reference contributes zero, and irrelevant patterns with zero learned weight cannot dilute an existing private-server signal. Unknown or empty text has neutral odds (50%) and remains undetermined.
 
-The browser and Python reference evaluate the same model without an ML runtime dependency. Positive logits of at least 2 hide a stream; logits of at most -2 classify it as Tibia. Intermediate scores abstain. Empty or entirely unrecognized inputs also abstain. The displayed percentage is the model's logistic estimate, not a calibrated guarantee of real-world correctness. Diagnostics separate the title and tag contributions; patterns present in both fields split their contribution equally without counting twice.
+A positive logistic scale is fitted to predictions from four inner folds separated by channel. Calibration uses balanced log loss and a small regularizer; a zero intercept preserves neutral odds without evidence. The exported coefficients already include this scale. Evaluation holds out a separate outer fold, so calibration never sees its labels. The displayed estimate uses equal class priors; it is not a measured prevalence or a guarantee of accuracy on Twitch. Correlated text patterns, weak labels and distribution shifts remain limitations. [Calibration methodology and limits](https://scikit-learn.org/stable/modules/calibration.html).
+
+Automatic hiding requires at least 98% estimated private-server probability, equivalent to at most 2% in the displayed complement. The stricter decision cutoff preserves the existing official and ambiguous-text visibility controls while the new model improves detection. A low displayed estimate above 2% can therefore remain visible. Show overrides and paused settings also preserve visibility. This cutoff is a decision policy, not a claim of 98% precision. The model classifies official evidence at the symmetric boundary; intermediate results abstain. Score and cutoff remain separate.
+
+`piracy-presence-logit-v1` stores signed learned coefficients with neutral bias. Python and JavaScript implement identical inference without an ML runtime dependency. The earlier `joint-text-logistic-v1` reader remains supported for compatible fixtures; bundled revision 3 rejects cached revision 2 models. Older extensions reject the new model format and keep their last compatible data until updated.
 
 ## Training and development evaluation
 
-Training uses the existing audit's 373 labelled observations: 281 other-game streams and 92 official streams. The audit was produced with rules and manual review; it is limited supervision. Predictions from the filter's 562-stream capture are excluded from training. The source SHA-256 is recorded with the exported model. No screenshot examples or regression fixtures were added to training.
+Training uses 370 labelled observations from the existing audit: 278 private-server streams and 92 official streams. Three unrelated-game observations were removed from the positive class; an unrelated game is not a piracy label. Ambiguous or unverified observations are not turned into negative labels. The audit was produced mostly with rules and review, so its supervision is limited. Predictions from the filter's 562-stream capture, user screenshots and regression fixtures are excluded from training. The source SHA-256 and class definition are recorded with the exported model.
 
-Five-fold development evaluation groups observations by channel. All feature selection, IDF fitting and model fitting occur within the training fold. The same channel split and decision cutoff apply to every input comparison:
+Five-fold development evaluation groups observations by channel. Presence counts and inner calibration are fitted only within each training fold. The same channel split and decision cutoff apply to every input comparison:
 
-| Inputs | Other games hidden, of 281 | Official streams hidden, of 92 | Undetermined, of 373 |
+| Inputs | Private streams hidden, of 278 | Official streams hidden, of 92 | Undetermined, of 370 |
 | --- | --- | --- | --- |
-| Title and tags | 141 | 0 | 203 |
-| Title only | 145 | 0 | 188 |
-| Tags only | 105 | 2 | 256 |
+| Title and tags | 196 | 0 | 97 |
+| Title only | 234 | 0 | 58 |
+| Tags only | 61 | 0 | 304 |
 
-These measurements demonstrate title use; they do not establish that adding tags always improves recall. At the chosen conservative cutoff, joint input hides 36 more other-game examples than tags alone and avoids its 2 official false positives. It still misses about half of the labelled other-game examples. No independent holdout, calibrated confidence or complete pirate-stream removal is claimed. The joint model's observation-level precision interval is 97.35% to 100% (95% Wilson); the data and design have been used during development, so this is not a production guarantee.
+On the same 370 labels and outer channel folds, the previous model with its previous cutoff hid 147 of 278 private-server examples and zero official examples. The new model and its 98% cutoff hide 196 private-server examples and zero of 92 official examples. Brier loss decreased from 0.0461 to 0.0345 and log loss from 0.2002 to 0.1102; these proper scores assess both discrimination and probability quality, not calibration alone. The new observation-level precision interval is 98.08% to 100% (95% Wilson). These are development comparisons, not an independent holdout or a production guarantee. They do not establish that adding tags always improves recall. The model still misses 82 of the 278 labelled private streams at its applied cutoff.
 
 ## Reproduce and verify
 
-Training is optional and uses the pinned dependency in `tools/model-requirements.txt`, installed in an ignored local environment. Normal builds, repository checks and browser inference do not need scikit-learn.
+Training and inference now use the Python standard library. The pinned scikit-learn environment in `tools/model-requirements.txt` is retained for reproducing the historical logistic baseline, not required to train the current presence model.
 
 ```sh
-python3 -m venv local/tibia-model-env
-local/tibia-model-env/bin/python -m pip install -r tools/model-requirements.txt
-PYTHONDONTWRITEBYTECODE=1 local/tibia-model-env/bin/python tools/train_tibia_model.py --write --report local/model-report.json
+PYTHONDONTWRITEBYTECODE=1 python3 tools/train_tibia_model.py --write --report local/model-report.json
 PYTHONDONTWRITEBYTECODE=1 python3 tools/twitch_evidence.py --write-js
 PYTHONDONTWRITEBYTECODE=1 python3 tools/check_project.py
 ```
 
-The statistical data format requires a matching classifier. Revision 2 rejects older cached rule-assisted data. Older extensions cannot consume this format and retain their last compatible data until the extension is updated. For later bundled changes, increment the evidence revision when older cached models must be superseded. Downloaded data never contains executable code.
+For later bundled changes, increment the evidence revision when older cached models must be superseded. Downloaded data never contains executable code.
 
 Tests check numeric parity on the complete historical captures, both field contributions, neutral-model behavior, generalization of learned character fragments, channel independence, duplicate tags, official visibility controls and cache compatibility. Browser checks additionally change only the title with tags fixed, then change only the tags with the title fixed, and verify actual card visibility. Historical fixture verdicts describe the earlier heuristic; statistical inference may abstain on those other-game examples instead of forcing a name match.
 

@@ -13,17 +13,20 @@ ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'filters/sources/twitch/tibia-evidence.json'
 EXTENSION_DATA = ROOT / 'extension/src/tibia-evidence.js'
 AUDIT = ROOT / 'research/twitch/data/2026-10-21/analysis/classificacao.json'
-AUDIT_OTHER = {'RubinOT', 'PokeAlliance (PKA)', 'PokeXGames (PXG)', 'Outros OTServers', 'Jogos Idle', 'DeusOT / DeusOld', 'Outros Pokémon', 'Pokémon misto', 'Outros jogos'}
+AUDIT_OTHER = {'RubinOT', 'PokeAlliance (PKA)', 'PokeXGames (PXG)', 'Outros OTServers', 'Jogos Idle', 'DeusOT / DeusOld', 'Outros Pokémon', 'Pokémon misto'}
 AUDIT_TIBIA = {'Tibia'}
 
 class Evidence:
-    """Portable inference for the exported joint TF-IDF logistic regression."""
+    """Portable presence inference, plus compatibility with the previous model."""
 
     def __init__(self, data):
         self.model = data['model']
         model = self.model
-        if model.get('format') != 'joint-text-logistic-v1':
+        if model.get('format') not in {'joint-text-logistic-v1', 'piracy-presence-logit-v1'}:
             raise ValueError('Unsupported statistical model format')
+        self.presence = model['format'] == 'piracy-presence-logit-v1'
+        if self.presence and model['bias'] != 0:
+            raise ValueError('Presence inference requires neutral odds without text evidence')
         if not math.isfinite(model['bias']) or not math.isfinite(model['threshold']) or model['threshold'] <= 0:
             raise ValueError('Invalid statistical model decision parameters')
         self.weights = model['weights']
@@ -34,7 +37,7 @@ class Evidence:
     def classify(self, title, tags, channel=''):
         title_features, tag_features = feature_fields(title, tags)
         known = sorted(set(title_features | tag_features) & self.weights.keys())
-        norm = math.sqrt(sum((self.weights[key][1] ** 2 for key in known)))
+        norm = 1 if self.presence else math.sqrt(sum((self.weights[key][1] ** 2 for key in known)))
         contributions = {'title': 0.0, 'tags': 0.0}
         for key in known:
             value = self.weights[key][0] / norm
@@ -50,7 +53,8 @@ class Evidence:
         rounded = lambda value: math.floor(value * 1000000 + 0.5) / 1000000
         score = {'other': rounded(probability), 'tibia': rounded(1 - probability)}
         inputs = 'title and tags' if title_features and tag_features else 'title' if title_features else 'tags' if tag_features else 'no text'
-        reason = f'statistical model from {inputs}: {math.floor(probability * 100 + 0.5)}% other-game estimate'
+        target = 'private-server' if self.presence else 'other-game'
+        reason = f'statistical model from {inputs}: {math.floor(probability * 100 + 0.5)}% {target} estimate'
         model_info = {'logit': rounded(logit), 'title': rounded(contributions['title']), 'tags': rounded(contributions['tags']), 'bias': self.model['bias'], 'matched': len(known)}
         found = {'signals': [{'side': 'other' if logit >= 0 else 'tibia', 'source': 'model', 'game': 'Other games' if logit >= 0 else 'Tibia', 'text': inputs, 'weight': rounded(abs(logit))}], 'model': model_info, 'score': score}
         return (verdict, reason, found)

@@ -28,11 +28,12 @@ from pathlib import Path
 sys.path.insert(0,'tools')
 from twitch_evidence import Evidence,EVIDENCE
 from tibia_text import feature_id
-classifier=Evidence(json.loads(EVIDENCE.read_text()))
+classifier_data=json.loads(EVIDENCE.read_text())
+classifier=Evidence(classifier_data)
 cases=json.loads(Path('tests/data/tibia-classify-cases.json').read_text())['cases']
 for row in cases:
     row['expect']=classifier.classify(row['title'],row.get('tags',[]))[0]
-toy={'revision':2,'model':{'format':'joint-text-logistic-v1','bias':0,'threshold':1,'weights':{feature_id('w:alpha'):[-4,1],feature_id('w:beta'):[4,1]}}}
+toy={'revision':classifier_data['revision'],'model':{'format':'joint-text-logistic-v1','bias':0,'threshold':1,'weights':{feature_id('w:alpha'):[-4,1],feature_id('w:beta'):[4,1]}}}
 print(json.dumps({'cases':cases,'toy':toy}))
 `], {
     cwd: root,

@@ -53,10 +53,11 @@ private final class Fixture: NSObject, WKURLSchemeHandler {
           runtime:{onMessage:{addListener(){}},sendMessage:async()=>true}};
         """
         scripts.addUserScript(WKUserScript(source: setup, injectionTime: .atDocumentEnd, forMainFrameOnly: true))
-        for name in ["settings.js", "tibia-evidence.js", "tibia-classify.js", "tibia-rules.js"] {
+        for name in ["settings.js", "settings-bridge.js", "tibia-evidence.js", "tibia-classify.js", "tibia-rules.js"] {
             scripts.addUserScript(WKUserScript(source: try String(contentsOf: root.appendingPathComponent("extension/src/\(name)"), encoding: .utf8), injectionTime: .atDocumentEnd, forMainFrameOnly: true))
         }
-        let css = try String(contentsOf: root.appendingPathComponent("extension/browsers/safari/web/tibia-probability.css"), encoding: .utf8)
+        let css = try String(contentsOf: root.appendingPathComponent("extension/src/hide.css"), encoding: .utf8)
+            + "\n" + String(contentsOf: root.appendingPathComponent("extension/browsers/safari/web/tibia-probability.css"), encoding: .utf8)
         let encodedCSS = String(data: try JSONSerialization.data(withJSONObject: [css]), encoding: .utf8)!
         scripts.addUserScript(WKUserScript(source: "const style=document.createElement('style'); style.textContent=\(encodedCSS)[0]; document.head.append(style);", injectionTime: .atDocumentEnd, forMainFrameOnly: true))
         for relative in ["extension/src/tibia-props.js", "extension/browsers/safari/web/tibia-probability.js", "extension/src/tibia-filter.js"] {
@@ -78,10 +79,19 @@ private final class Fixture: NSObject, WKURLSchemeHandler {
         })
         """
         try await wait(view, valuesMatch)
+        let visibilityMatches = """
+        [...document.querySelectorAll('article')].every(article=>{
+          const result=TwitchCleanTibiaClassify.create(TWITCH_CLEAN_TIBIA_EVIDENCE)(article.querySelector('h4').title,[...article.querySelectorAll('.tw-tag')].map(t=>t.textContent));
+          const hidden=article.getClientRects().length===0;
+          return hidden===(testStored.tibiaFilter && testStored.enabled!==false && result.verdict==='other');
+        })
+        """
         _ = try await view.evaluateJavaScript("setTestSettings({tibiaFilter:true});true")
         try await wait(view, "\(all) && document.querySelectorAll('[data-twitch-clean-hidden]').length>0")
+        try await wait(view, visibilityMatches)
         _ = try await view.evaluateJavaScript("setTestSettings({tibiaFilter:false});true")
         try await wait(view, "\(all) && document.querySelectorAll('[data-twitch-clean-hidden]').length===0")
+        try await wait(view, visibilityMatches)
         for width in [1440, 375] {
             window.setContentSize(NSSize(width: width, height: width == 375 ? 1100 : 900))
             for dark in [true, false] {
@@ -128,6 +138,29 @@ private final class Fixture: NSObject, WKURLSchemeHandler {
             try await wait(view, "location.hostname==='www.twitch.tv' && document.readyState!=='loading'")
             try await wait(view, "document.querySelectorAll('[data-tibia-official-probability]').length>0")
             try await wait(view, "[...document.querySelectorAll('article a[data-a-target=\"preview-card-channel-link\"]')].every(link=>link.querySelector('[data-tibia-official-probability]'))")
+            _ = try await view.evaluateJavaScript("setTestSettings({tibiaFilter:true});true")
+            let liveVisibility = """
+            [...document.querySelectorAll('article')].filter(article=>article.querySelector('[data-tibia-official-probability]')).every(article=>{
+              const badge=article.querySelector('[data-tibia-official-probability]');
+              const probability=Number(badge.getAttribute('data-tibia-official-probability'));
+              const cutoff=1/(1+Math.exp(TWITCH_CLEAN_TIBIA_EVIDENCE.model.threshold));
+              const hidden=article.getClientRects().length===0;
+              const cell=article.closest('[data-twitch-clean-tibia]');
+              return cell && hidden===cell.getAttribute('data-twitch-clean-tibia').startsWith('other:') && (probability>cutoff+0.000001 || hidden);
+            }) && document.querySelectorAll('[data-twitch-clean-hidden]').length>0
+            """
+            try await wait(view, liveVisibility)
+            let visibility = try await view.evaluateJavaScript("""
+            JSON.stringify({total:document.querySelectorAll('[data-tibia-official-probability]').length,
+              hidden:document.querySelectorAll('[data-twitch-clean-hidden]').length,
+              lowestVisible:Math.min(...[...document.querySelectorAll('[data-tibia-official-probability]')].filter(badge=>badge.getClientRects().length).map(badge=>Number(badge.getAttribute('data-tibia-official-probability'))))})
+            """) as? String ?? "{}"
+            print("PASS live WebKit computed visibility: \(visibility)")
+            let filteredSnapshot = try await view.takeSnapshot(configuration: nil)
+            try NSBitmapImageRep(data: filteredSnapshot.tiffRepresentation!)!.representation(using: .png, properties: [:])!
+                .write(to: output.appendingPathComponent("live-filtered.png"))
+            _ = try await view.evaluateJavaScript("setTestSettings({tibiaFilter:false});true")
+            try await wait(view, "document.querySelectorAll('[data-twitch-clean-hidden]').length===0")
             let snapshot = try await view.takeSnapshot(configuration: nil)
             try NSBitmapImageRep(data: snapshot.tiffRepresentation!)!.representation(using: .png, properties: [:])!
                 .write(to: output.appendingPathComponent("live-dark.png"))

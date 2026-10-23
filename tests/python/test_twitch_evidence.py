@@ -38,7 +38,7 @@ class EvidenceTests(unittest.TestCase):
 
     def test_no_manual_name_or_channel_decision_tables_are_shipped(self):
         self.assertEqual(set(DATA), {'revision', '_comment', 'training', 'model'})
-        self.assertEqual(DATA['model']['format'], 'joint-text-logistic-v1')
+        self.assertEqual(DATA['model']['format'], 'piracy-presence-logit-v1')
         self.assertTrue(DATA['model']['weights'])
         for key in DATA['model']['weights']:
             self.assertRegex(key, '^[0-9a-f]{8}$')
