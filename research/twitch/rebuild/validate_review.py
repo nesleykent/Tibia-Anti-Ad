@@ -26,7 +26,10 @@ def main():
     ids = {row['id'] for row in annotations}
     for row in annotations:
         assert row['source_id'] in known_sources, row['id']
-        assert row['approval'] == 'pending' and not row['use_in_training'], row['id']
+        assert row['approval'] in {'pending', 'maintainer_confirmed'} and not row['use_in_training'], row['id']
+        if row['approval'] == 'maintainer_confirmed':
+            assert row['review_source'] in known_sources, row['id']
+            assert next(source for source in sources if source['id'] == row['review_source'])['kind'] == 'explicit_maintainer_label_review'
         assert row['proposed_context'] in {'session', 'promotion', 'negation', 'comparison', 'unresolved', 'no_evidence'}
         assert row['proposed_stream_private'] in {'private', 'not_private', None}
         assert row['proposed_affirmative_private_evidence'] in {True, False, None}
@@ -52,11 +55,22 @@ def main():
     assert packet['counts']['contexts'] == dict(Counter(row['proposed_context'] for row in annotations))
     assert packet['counts']['private_proposals'] == dict(Counter(str(row['proposed_stream_private']) for row in annotations))
     assert packet['counts']['affirmative_evidence'] == dict(Counter(str(row['proposed_affirmative_private_evidence']) for row in annotations))
+    assert packet['counts']['review_status'] == dict(Counter(row['approval'] for row in annotations))
+    confirmed = {row['id']: row for row in annotations if row['approval'] == 'maintainer_confirmed'}
+    assert set(confirmed) == {'raw1400:16', 'maintainer-example:0'}
+    assert confirmed['raw1400:16']['proposed_context'] == 'session'
+    assert confirmed['raw1400:16']['proposed_stream_private'] == 'private'
+    assert confirmed['raw1400:16']['proposed_affirmative_private_evidence'] is True
+    assert confirmed['raw1400:16']['review_history'][0]['previous']['proposed_context'] == 'unresolved'
+    assert confirmed['maintainer-example:0']['proposed_context'] == 'promotion'
+    assert confirmed['maintainer-example:0']['proposed_stream_private'] == 'not_private'
+    assert confirmed['maintainer-example:0']['proposed_affirmative_private_evidence'] is False
+    assert confirmed['raw1400:16']['contrast_group'] == confirmed['maintainer-example:0']['contrast_group']
     assert sum(row['data_role'] == 'historical_control' for row in annotations) == 65
     catalogue = json.loads((DIRECTORY / 'catalogue-candidates.json').read_text())
     assert len(catalogue['entries']) == 50
     assert all(not row['approved'] and row['catalogue_url'].startswith('https://otservlist.net/') for row in catalogue['entries'])
-    print(f'PASS {len(annotations)} pending proposals, exact source spans/hashes, 50 unapproved catalogue facts; no training approvals')
+    print(f'PASS {len(annotations)} review records (2 maintainer-confirmed), exact source spans/hashes, 50 unapproved catalogue facts; no training approvals')
 
 
 if __name__ == '__main__':

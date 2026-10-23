@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "PROPOSED: maintainer review required before training",
-  "approval_gate": "No record is training-approved. No models fitted, no train/calibration/test assignment made.",
+  "approval_gate": "Two individual labels confirmed by maintainer; all other labels pending. No record is authorized for training and milestone B has not been approved.",
   "annotation_method": "Fresh explicit per-example proposals from original source inputs and cited public facts; no rejected model, predictions, weights or label overlays read.",
   "target": "P(private server), not all unrelated games and not P(official Tibia)",
   "source_files": {
@@ -13,7 +13,7 @@
     "cases": "tests/data/tibia-classify-cases.json"
   },
   "counts": {
-    "total": 220,
+    "total": 221,
     "by_source": {
       "audit": 92,
       "cases": 65,
@@ -21,25 +21,30 @@
       "user-requirements": 7,
       "constructed-contrast": 18,
       "constructed-invariance": 16,
-      "raw1400": 10
+      "raw1400": 10,
+      "maintainer-command-review-2026-10-23": 1
     },
     "contexts": {
-      "session": 120,
-      "unresolved": 27,
+      "session": 133,
       "no_evidence": 32,
       "promotion": 28,
+      "unresolved": 15,
       "negation": 8,
       "comparison": 5
     },
     "private_proposals": {
-      "private": 107,
-      "None": 71,
-      "not_private": 42
+      "private": 121,
+      "not_private": 43,
+      "None": 57
     },
     "affirmative_evidence": {
-      "True": 106,
-      "None": 33,
-      "False": 81
+      "True": 120,
+      "False": 80,
+      "None": 21
+    },
+    "review_status": {
+      "pending": 219,
+      "maintainer_confirmed": 2
     }
   },
   "annotations": [
@@ -263,17 +268,18 @@
       "input_sha256": "0d702eec44e9542fc74c47e1555fc1e3fe24fe215dad213b581560b78d2bf5cc",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Command alone with generic role/game tags does not independently distinguish session from promotion. Needs review.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -285,10 +291,24 @@
           "start": 29,
           "end": 37,
           "text": "!RUBINOT",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Command alone with generic role/game tags does not independently distinguish session from promotion. Needs review.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:7",
@@ -669,17 +689,18 @@
       "input_sha256": "f53662bd50fdd16e36e606601b3c1aab3e6ae62bcdb05d3d960701c060133606",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Drops and repeated server command can indicate rewards or promotion; neither proves session without review.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -691,10 +712,24 @@
           "start": 11,
           "end": 19,
           "text": "!RubinOT",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Drops and repeated server command can indicate rewards or promotion; neither proves session without review.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:21",
@@ -1907,14 +1942,15 @@
       "proposed_context": "promotion",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": false,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Title advertises earning live points. Whether broadcaster is playing that server remains unconfirmed.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -1929,7 +1965,21 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "promotion",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": false,
+            "reason": "Title advertises earning live points. Whether broadcaster is playing that server remains unconfirmed.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:110",
@@ -1945,17 +1995,18 @@
       "input_sha256": "a03eeb6dd4d6d26650b5abd269435e1983d59222c9d05866e87dc209acea0cfe",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Bounty/role/levels plus one command do not settle session vs sponsorship.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -1967,10 +2018,24 @@
           "start": 54,
           "end": 62,
           "text": "!RUBINOT",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Bounty/role/levels plus one command do not settle session vs sponsorship.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:112",
@@ -1986,17 +2051,18 @@
       "input_sha256": "b9400e27baa03eae34b2176a706eedd085fbb0ba6c0f91ee600663f6023361b3",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Generic personal title and server command; do not force earlier private label into truth.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -2008,10 +2074,24 @@
           "start": 5,
           "end": 13,
           "text": "!RubinOT",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Generic personal title and server command; do not force earlier private label into truth.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:115",
@@ -2398,17 +2478,18 @@
       "input_sha256": "67d1b04a54742c8edf557bf264e13e23364b431421fb7efcc021c4156c69ddae",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Server command with no other session evidence. Explicit review needed.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -2420,10 +2501,24 @@
           "start": 4,
           "end": 12,
           "text": "!Rubinot",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Server command with no other session evidence. Explicit review needed.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:179",
@@ -2936,17 +3031,18 @@
       "input_sha256": "b27d10dfd44f9d56af31ed6eda1081a2c8e8052c406c36ee4d4359e0258a75a9",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Age marker and command only; previous rule cannot supply target truth.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -2958,10 +3054,24 @@
           "start": 5,
           "end": 13,
           "text": "!Rubinot",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Age marker and command only; previous rule cannot supply target truth.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:281",
@@ -3254,17 +3364,18 @@
       "input_sha256": "2c7433662c4db9a40c6101e3e7e7d74724d2ba1066be053c0d77d28a6f217477",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Server command with role/level alone, pending context review.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -3276,10 +3387,24 @@
           "start": 0,
           "end": 8,
           "text": "!Rubinot",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Server command with role/level alone, pending context review.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:363",
@@ -3295,18 +3420,19 @@
       "input_sha256": "849e5bfe6b5eb8d895e09b1f96ccd7981809c188d8ee1c6d3ae95958092fa87f",
       "original_label": "Outros Pokémon",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
         "poke-io",
-        "poke-world"
+        "poke-world",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Names a private/idle family through command but exact project/session vs promotion not resolved.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": true,
+      "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
@@ -3318,10 +3444,24 @@
           "start": 0,
           "end": 9,
           "text": "❗pokeidle",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Names a private/idle family through command but exact project/session vs promotion not resolved.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "audit:381",
@@ -6631,16 +6771,17 @@
       "input_sha256": "8d4cfe088de100d51187d985c5e1cb7c4b7ab8b1ed69f6a546cdd9ef9c623e85",
       "original_label": null,
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
         "poke-io",
-        "poke-world"
+        "poke-world",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Command names idle family, but active session/promotion and exact product are not settled.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
@@ -6654,10 +6795,24 @@
           "start": 0,
           "end": 9,
           "text": "❗pokeidle",
-          "context": "unresolved",
+          "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Command names idle family, but active session/promotion and exact product are not settled.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "live2115:396",
@@ -7651,22 +7806,37 @@
       "input_sha256": "9cff7c3f6f6aeaffb02b04d8562463b78a837baf9c20a2e82ec84cf0ceab95ba",
       "original_label": null,
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Command in title-only capture; absence of tags is missing data, not negative evidence.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Command in title-only capture; absence of tags is missing data, not negative evidence.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "raw1400:16",
@@ -7682,22 +7852,39 @@
       "input_sha256": "fd37fdd50d59e76746045c8953b7c434eb2f2d5845cba8bbebc2aea0945e7168",
       "original_label": null,
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Later metadata contains a server command whereas earlier audited title did not. Do not propagate channel identity as a feature or silently rewrite earlier input.",
+      "reason": "Maintainer explicitly adjudicated this OT-server-command title as a private session. The private identifier functions as the session identifier here, not as one sponsor among a collection of unrelated sponsorship commands. No channel identity or official-looking reward is used.",
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Later metadata contains a server command whereas earlier audited title did not. Do not propagate channel identity as a feature or silently rewrite earlier input.",
+            "approval": "pending"
+          },
+          "decision": "Maintainer resolves this command-based title as a private-server session. Preserve original captured input and earlier capture separately."
+        }
+      ],
+      "review_source": "maintainer-command-review-2026-10-23",
+      "label_basis": "maintainer_adjudication_of_this_metadata",
+      "contrast_group": "server-command-context-review"
     },
     {
       "id": "raw1400:73",
@@ -7744,22 +7931,37 @@
       "input_sha256": "2ea9d2e9fe3959290b6026326db27700c799cbe92f87999b6084c9ba225f3cb8",
       "original_label": null,
       "historical_binary_interpretation": null,
-      "proposed_context": "promotion",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": false,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Live-reward/currency advertising plus command; active-session target unverified.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "promotion",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": false,
+            "reason": "Live-reward/currency advertising plus command; active-session target unverified.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "raw1400:199",
@@ -7836,22 +8038,37 @@
       "input_sha256": "5374cb010c2194dc1a62ba4e167d98359e8813ac088348a9c74611616e408c1b",
       "original_label": null,
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": null,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
-        "rubinot"
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
       ],
-      "reason": "Server command plus bounty/vocation is not automatically confirmed session; pending human annotation.",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "annotation_author": "assistant proposal for maintainer review",
       "approval": "pending",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_history": [
+        {
+          "source_id": "maintainer-command-review-2026-10-23",
+          "previous": {
+            "proposed_context": "unresolved",
+            "proposed_stream_private": null,
+            "proposed_affirmative_private_evidence": null,
+            "reason": "Server command plus bounty/vocation is not automatically confirmed session; pending human annotation.",
+            "approval": "pending"
+          },
+          "decision": "Assistant revises this analogous proposal under the maintainer command-context criterion. This individual live label is not directly confirmed by the maintainer."
+        }
+      ],
+      "policy_source": "maintainer-command-review-2026-10-23"
     },
     {
       "id": "raw1400:411",
@@ -7990,6 +8207,41 @@
           "focus": "primary"
         }
       ]
+    },
+    {
+      "id": "maintainer-example:0",
+      "source_id": "maintainer-command-review-2026-10-23",
+      "text": "baratuca tryhard + radinho 🪳 MS 2850 ⭐ !LOJA 50 tc/mês SEM SUB - SUB 100 TC/mês !yt👈🏻 !exitlag !golden !moedaz !rubinot",
+      "tags": [],
+      "tags_observed": false,
+      "proposed_context": "promotion",
+      "focus": "secondary",
+      "proposed_referent_private": true,
+      "proposed_stream_private": "not_private",
+      "proposed_affirmative_private_evidence": false,
+      "evidence_sources": [
+        "rubinot",
+        "maintainer-command-review-2026-10-23"
+      ],
+      "reason": "Maintainer explicitly reports an original-server stream. RubinOT appears within a collection of sponsorship/shop commands; this mention is incidental promotion, not an affirmative private-session declaration. The title contains no official-world identifier: a negative private label must not depend on official-looking points.",
+      "annotation_author": "maintainer-provided real-stream example; transcription and span markup by assistant",
+      "approval": "maintainer_confirmed",
+      "review_source": "maintainer-command-review-2026-10-23",
+      "use_in_training": false,
+      "label_basis": "maintainer_reports_original_server_session",
+      "active_session_independently_verified": false,
+      "data_role": "maintainer_reported_stream_example",
+      "mentions": [
+        {
+          "field": "title",
+          "start": 111,
+          "end": 119,
+          "text": "!rubinot",
+          "context": "promotion",
+          "focus": "secondary"
+        }
+      ],
+      "contrast_group": "server-command-context-review"
     }
   ],
   "span_offset_unit": "Unicode code points, zero-based, end exclusive"

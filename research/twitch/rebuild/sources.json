@@ -210,6 +210,12 @@
       "kind": "counterfactual_checks",
       "date": "2026-10-23",
       "finding": "Language-tag transformations of existing review examples; keep with parent, never count as independent observations."
+    },
+    {
+      "id": "maintainer-command-review-2026-10-23",
+      "kind": "explicit_maintainer_label_review",
+      "date": "2026-10-23",
+      "finding": "Maintainer resolves raw1400:16 as private and supplies a contrasting original-server title with multiple sponsorship commands. This review labels these inputs only; it is not a per-channel rule or blanket rule based on command counts."
     }
   ]
 }
