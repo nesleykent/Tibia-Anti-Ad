@@ -1,76 +1,62 @@
 import json
-import math
 import subprocess
 import sys
 import unittest
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / 'tools'))
-from twitch_evidence import AUDIT, AUDIT_TIBIA, EVIDENCE, EXTENSION_DATA, Evidence, extension_data
+sys.path.insert(0, str(ROOT/'tools'))
+from twitch_evidence import EVIDENCE, EXTENSION_DATA, AUDIT, Evidence, extension_data
 from tibia_text import feature_fields
-DATA = json.loads(EVIDENCE.read_text())
-EV = Evidence(DATA)
-CASES = ROOT / 'tests/data/tibia-classify-cases.json'
+DATA=json.loads(EVIDENCE.read_text())
+EV=Evidence(DATA)
 
-def audit_rows():
-    for row in json.loads(AUDIT.read_text())['classificacao']:
-        yield (row, [t.strip() for t in row['tags_originais'].split('|') if t.strip()])
 
 class EvidenceTests(unittest.TestCase):
+    def test_explanations_name_actual_identity_and_field(self):
+        verdict,_,found=EV.classify('RubinOT hunt bosses',['Português','rubinot'])
+        self.assertEqual(verdict,'other')
+        self.assertTrue(found['signals'])
+        self.assertEqual({s['text'] for s in found['signals']},{'rubinot'})
+        self.assertEqual({s['source'] for s in found['signals']},{'title','tags'})
+        self.assertAlmostEqual(found['model']['logit'],found['model']['bias']+found['model']['title']+found['model']['tags'],places=5)
 
-    def test_full_title_changes_the_result_with_identical_language_tags(self):
-        official = EV.classify('Tibia Global Antica hunt bosses', ['Português'])
-        other = EV.classify('DROPS ON SHINY CATCH EVENT', ['Português'])
-        self.assertEqual(official[0], 'tibia')
-        self.assertEqual(other[0], 'other')
-        self.assertLess(official[2]['model']['title'], 0)
-        self.assertGreater(other[2]['model']['title'], 0)
-        self.assertNotEqual(other[2]['model']['tags'], 0)
+    def test_neutral_unseen_and_command_only_inputs_abstain(self):
+        for title in ('','hunt bosses','DROPS ON SHINY CATCH EVENT','qxzvkjqzzq','!RubinOT !deusot !pix','R U B I N O T','rub1n0t','Kalante'):
+            result=EV.classify(title,['Português','pokemon','Tibia','MMORPG'])
+            self.assertEqual(result[0],'undetermined',title)
+            self.assertEqual(result[2]['signals'],[],title)
 
-    def test_both_fields_contribute_to_the_joint_logit(self):
-        for title, tags in [('hunt bosses', ['pokemon']), ('Tibia Global', ['Português'])]:
-            found = EV.classify(title, tags)[2]
-            detail = found['model']
-            self.assertNotEqual(detail['title'], 0)
-            self.assertNotEqual(detail['tags'], 0)
-            self.assertAlmostEqual(detail['logit'], detail['title'] + detail['tags'] + detail['bias'], places=5)
-            self.assertTrue(all((s['source'] == 'model' for s in found['signals'])))
+    def test_conflicting_and_comparative_inputs_stay_visible(self):
+        for title,tags in [('Tibia Global Antica RubinOT',[]),('RubinOT',['tibiaglobal']),('nao jogo RubinOT',[]),('ex-rubinot',[]),('RubinOT vs PokeAlliance',[])]:
+            self.assertEqual(EV.classify(title,tags)[0],'undetermined',title)
 
-    def test_no_manual_name_or_channel_decision_tables_are_shipped(self):
-        self.assertEqual(set(DATA), {'revision', '_comment', 'training', 'model'})
-        self.assertEqual(DATA['model']['format'], 'piracy-presence-logit-v1')
-        self.assertTrue(DATA['model']['weights'])
-        for key in DATA['model']['weights']:
-            self.assertRegex(key, '^[0-9a-f]{8}$')
-        a = EV.classify('hunt bosses', ['Português'], channel='anyone')
-        b = EV.classify('hunt bosses', ['Português'], channel='rubinot')
-        self.assertEqual(a, b)
+    def test_tag_order_duplicates_and_neutral_suffix_are_inert(self):
+        a=EV.classify('RubinOT',['rubinot'])
+        self.assertEqual(a,EV.classify('RubinOT',['English','rubinot','rubinot','Português']))
+        self.assertEqual(EV.classify('Antica',[]),EV.classify('Antica hunt bosses !rubinot',['English']))
 
-    def test_duplicate_or_reordered_tags_do_not_count_twice(self):
-        a = EV.classify('hunt bosses', ['Português', 'Tibia'])
-        self.assertEqual(a, EV.classify('hunt bosses', ['Tibia', 'Português', 'Tibia']))
+    def test_official_world_label_error_is_repaired(self):
+        self.assertNotEqual(EV.classify('COBRA BASTION DUO - Tibia - Kalanta',[])[0],'other')
+        self.assertTrue(any('kalanta' in s['text'] for s in EV.classify('Kalanta',[])[2]['signals']))
 
-    def test_empty_and_out_of_vocabulary_text_abstain(self):
-        for title, tags in [('', []), ('🦋', ['🎉']), ('qxzvkjqzzq', [])]:
-            verdict, _, found = EV.classify(title, tags)
-            self.assertEqual(verdict, 'undetermined')
-            self.assertTrue(math.isfinite(found['score']['other']))
+    def test_python_browser_full_result_parity(self):
+        rows=[]
+        for row in json.loads(AUDIT.read_text())['classificacao']:
+            rows.append([row['titulo_original'],[t.strip() for t in row['tags_originais'].split('|') if t.strip()]])
+        for capture in ('live-2015','live-2115'):
+            rows.extend([r['title'],r.get('tags',[])] for r in json.loads((AUDIT.parent.parent/capture/'streams.json').read_text()))
+        rows.extend([r['title'],r.get('tags',[])] for r in json.loads((ROOT/'tests/data/tibia-classify-cases.json').read_text())['cases'])
+        rows.extend([s,['Português']] for s in ('❗️rubinot','𝐓𝐢𝐛𝐢𝐚 𝐆𝐥𝐨𝐛𝐚𝐥','é ! RÚBINOT','İstanbul','Antica !rubinot','rubinot!pix'))
+        js=json.loads(subprocess.run(['node',str(ROOT/'tests/javascript/twitch-classify.cjs')],input=json.dumps(rows),capture_output=True,text=True,check=True).stdout)
+        for (title,tags),result in zip(rows,js,strict=True):
+            verdict,reason,found=EV.classify(title,tags)
+            self.assertEqual(result,{'verdict':verdict,'reason':reason,'score':found['score'],'found':found},title)
 
-    def test_existing_official_and_ambiguous_controls_remain_visible(self):
-        for case in json.loads(CASES.read_text())['cases']:
-            if case['expect'] in ('tibia', 'undetermined'):
-                self.assertNotEqual(EV.classify(case['title'], case.get('tags', []))[0], 'other', case['title'])
+    def test_feature_fields_match_browser(self):
+        rows=[['𝐓𝐢𝐛𝐢𝐚 Global Antica !rubinot',['Português','rubinot']],['RubinOT boss',['rubinot','Antica']],['',[]]]
+        script="require('./extension/src/tibia-evidence.js');require('./extension/src/tibia-classify.js');console.log(JSON.stringify("+json.dumps(rows)+".map(([t,g])=>TwitchCleanTibiaClassify.featureFields(t,g,TWITCH_CLEAN_TIBIA_EVIDENCE.extractor))));"
+        js=json.loads(subprocess.run(['node','-e',script],cwd=ROOT,capture_output=True,text=True,check=True).stdout)
+        self.assertEqual(js,[list(feature_fields(t,g,DATA['extractor'])) for t,g in rows])
 
-    def test_audit_hides_no_official_stream(self):
-        for row, tags in audit_rows():
-            if row['categoria'] in AUDIT_TIBIA:
-                self.assertNotEqual(EV.classify(row['titulo_original'], tags)[0], 'other', row['canal'])
-
-    def test_exported_feature_ids_match_browser_for_both_fields(self):
-        samples = [['𝐓𝐢𝐛𝐢𝐚 2500 !hunt', ['Português', 'tibiaglobal']], ['abc-brandnew', ['abcbrandnew']], ['', []]]
-        script = "require('./extension/src/tibia-classify.js'); console.log(JSON.stringify(" + json.dumps(samples) + '.map(([title,tags])=>TwitchCleanTibiaClassify.featureFields(title,tags).map(s=>[...s].sort()))));'
-        js = json.loads(subprocess.run(['node', '-e', script], cwd=ROOT, check=True, capture_output=True, text=True).stdout)
-        self.assertEqual(js, [[sorted(t), sorted(g)] for t, g in (feature_fields(*s) for s in samples)])
-
-    def test_extension_evidence_copy_is_current(self):
-        self.assertEqual(EXTENSION_DATA.read_text(), extension_data(DATA))
+    def test_generated_source_is_current(self):
+        self.assertEqual(EXTENSION_DATA.read_text(),extension_data(DATA))

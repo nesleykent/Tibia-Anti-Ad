@@ -1,30 +1,28 @@
-/* Align the estimate with Twitch's channel name, below the stream title. */
+/* Scoped important declarations preserve the row against Twitch resets.
+   Align the estimate with Twitch's channel name, below the stream title. */
 [data-tibia-probability-row] {
-  display: flex;
-  align-items: center;
-  column-gap: 6px;
-  min-width: 0;
+  display: flex !important;
+  align-items: center !important;
+  column-gap: 6px !important;
+  min-width: 0 !important;
 }
 [data-tibia-probability-row] > :not(.tibia-official-probability) {
-  min-width: 0;
-  overflow: hidden;
+  min-width: 0 !important;
+  overflow: hidden !important;
 }
 .tibia-official-probability {
-  flex: 0 0 auto;
-  margin-inline-start: auto;
-  color: var(--color-text-alt-2, inherit);
-  font-size: 13px;
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
-  line-height: inherit;
-  white-space: nowrap;
+  flex: 0 0 auto !important;
+  margin-inline-start: auto !important;
+  color: var(--color-text-alt-2, inherit) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  font-variant-numeric: tabular-nums !important;
+  line-height: inherit !important;
+  white-space: nowrap !important;
 }
-.tibia-probability-accessible-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
+/* Twitch styles spans inside links; protect the numeric value as well. */
+.tibia-probability-value {
+  font: inherit !important;
+  color: inherit !important;
+  white-space: inherit !important;
 }

@@ -1,0 +1,3361 @@
+{
+  "baseline": "Bundled revision 3 metadata model at task start; historical screen/rule verdicts are not truth.",
+  "changes": [
+    {
+      "id": "audit:3",
+      "channel": "paidodwarf",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "conflicting server identities: tibiaglobal; rubinot; rubinot",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:7",
+      "channel": "settzzofc",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:14",
+      "channel": "uaivenom",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot; rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:20",
+      "channel": "guidoparamax",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:21",
+      "channel": "grimhavenofficial",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:24",
+      "channel": "shadowillusion772",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:25",
+      "channel": "beltranctz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:26",
+      "channel": "lugontv",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:28",
+      "channel": "breisomtvs",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:32",
+      "channel": "daisonjr",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: baiakidle, rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "baiakidle, rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:37",
+      "channel": "fernando_fnc",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "conflicting server identities: tibiaglobal; deusot",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:47",
+      "channel": "voidcores_ots",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:50",
+      "channel": "keirissa",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:51",
+      "channel": "lukaocorsi",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:56",
+      "channel": "minghetto",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "conflicting server identities: tibiaglobal; rubiniot, rubinot",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubiniot, rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "audit:58",
+      "channel": "uguettolitz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:59",
+      "channel": "bren0_naves",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:76",
+      "channel": "mtstibia",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:82",
+      "channel": "pretowisck",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:87",
+      "channel": "indypereira",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:90",
+      "channel": "angrysebbe",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:91",
+      "channel": "tony__gaming",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:92",
+      "channel": "joohnw4r",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:93",
+      "channel": "konthar0",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:95",
+      "channel": "rickvitti",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: ferobra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "ferobra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "audit:100",
+      "channel": "darianzin",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:107",
+      "channel": "lendariocoyote",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:108",
+      "channel": "dorivall_",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:109",
+      "channel": "mtsgamertv",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:110",
+      "channel": "yilinn_",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:111",
+      "channel": "galll__",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:112",
+      "channel": "trolzinhorp",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:114",
+      "channel": "sedex_braboo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:124",
+      "channel": "jordann9191",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:126",
+      "channel": "karlin_nara",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:130",
+      "channel": "locutor_tibiano",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:134",
+      "channel": "baeckinho",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:135",
+      "channel": "maranha_og",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:143",
+      "channel": "krongsttorr",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:147",
+      "channel": "brn__tv",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:148",
+      "channel": "leoziiktv",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:157",
+      "channel": "forterian86",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:158",
+      "channel": "thurzikaa",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:159",
+      "channel": "vick_healer",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "conflicting server identities: quelibra; ferobra, terribra; rubinot",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "quelibra",
+          "feature": "official_world_tag",
+          "weight": -7.738041
+        },
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "ferobra, terribra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "audit:161",
+      "channel": "noether_tw",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:163",
+      "channel": "vinny_xd",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:164",
+      "channel": "famosobolt",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:170",
+      "channel": "carlinhotibiano",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot; rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:174",
+      "channel": "haziano",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:175",
+      "channel": "richarddonodoauroria",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:179",
+      "channel": "pulgazin",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "conflicting server identities: ferobra, terribra; baiakidle; baiak-idle",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "ferobra, terribra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "baiakidle",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "baiak-idle",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:181",
+      "channel": "confiialek",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:188",
+      "channel": "rdann_z",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:194",
+      "channel": "theuz_tv_",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:197",
+      "channel": "luciferold",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:198",
+      "channel": "witchtargaryen",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:204",
+      "channel": "narkesh",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:207",
+      "channel": "morgahar_",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:211",
+      "channel": "liminhaplay",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:216",
+      "channel": "mikeszk_",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:218",
+      "channel": "lirryk",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: tibia global; inabra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "tibia global",
+          "feature": "official_declaration_title",
+          "weight": -7.001035
+        },
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "inabra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "audit:219",
+      "channel": "kaicgiorgi",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:224",
+      "channel": "tylerforever01",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:226",
+      "channel": "lzenlok",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:228",
+      "channel": "trekinho_",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:241",
+      "channel": "krt_tibia",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:244",
+      "channel": "fumeiareiaaa",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:256",
+      "channel": "halsartibiano",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:257",
+      "channel": "barbudo_tv",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "conflicting server identities: tibia global; rubinot",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "tibia global",
+          "feature": "official_declaration_title",
+          "weight": -7.001035
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "audit:258",
+      "channel": "b4murillo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:270",
+      "channel": "gwiltin",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:272",
+      "channel": "okimbocao",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:273",
+      "channel": "bafotoxico1",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: baiak idle",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "baiak idle",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:275",
+      "channel": "hajgabo3",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:276",
+      "channel": "womolu",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:281",
+      "channel": "canseidesered",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: tibiaglobal",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        }
+      ]
+    },
+    {
+      "id": "audit:282",
+      "channel": "guridobrick",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:287",
+      "channel": "figuretz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:289",
+      "channel": "senaemcena139",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:303",
+      "channel": "emeszin",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:304",
+      "channel": "lkdarktv",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:319",
+      "channel": "marc0s_paul0_",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: honbra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "honbra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "audit:324",
+      "channel": "marrecosegundo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:325",
+      "channel": "feliperprubinot",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:335",
+      "channel": "yurevo_org",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:342",
+      "channel": "god_qutor",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:352",
+      "channel": "danielitobirdone",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:353",
+      "channel": "chacalgame148",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: ferobra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "ferobra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "audit:357",
+      "channel": "caio_s4",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:362",
+      "channel": "outcast_server",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:363",
+      "channel": "benksbr",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:370",
+      "channel": "vikingogalactico",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: pka; pka",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "pka",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "pka",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:372",
+      "channel": "ubge_ovelhaohb",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:375",
+      "channel": "hizi123",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:378",
+      "channel": "chapola_",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:379",
+      "channel": "nesskraveen",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:380",
+      "channel": "menezescansado",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:385",
+      "channel": "correaarcher",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:386",
+      "channel": "gabooyzk",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:387",
+      "channel": "joey3777",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:389",
+      "channel": "yezzirzx",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:390",
+      "channel": "amaralot",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:393",
+      "channel": "cnvsorc",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:396",
+      "channel": "macaense_",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:399",
+      "channel": "ary_rn",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:402",
+      "channel": "pautz",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:406",
+      "channel": "sickisicky",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:408",
+      "channel": "sojoker_",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:412",
+      "channel": "rpokoski",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: baiak idle",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "baiak idle",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "audit:415",
+      "channel": "headgamesoficial",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:422",
+      "channel": "moxtrao",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:429",
+      "channel": "richardolindo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:437",
+      "channel": "mythostibia3d",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:439",
+      "channel": "pinduca93",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:444",
+      "channel": "ordnajela66",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:447",
+      "channel": "lockheedmartinufo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:448",
+      "channel": "stare_tibijczyki",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: kalanta",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "kalanta",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "audit:449",
+      "channel": "nyxtrik",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:450",
+      "channel": "reylevi5",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "audit:453",
+      "channel": "vandeemon",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: tibiaglobal",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        }
+      ]
+    },
+    {
+      "id": "live-2015:0",
+      "channel": "brederodess",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:1",
+      "channel": "nxxxte",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:2",
+      "channel": "kekedepatinete",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:3",
+      "channel": "rickvitti",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: ferobra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "ferobra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2015:8",
+      "channel": "vieiraah_",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:9",
+      "channel": "lethalmyk",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2015:10",
+      "channel": "yilinn_",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:11",
+      "channel": "pagodines",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:13",
+      "channel": "lucaobigbig",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:14",
+      "channel": "kingfabricin",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:15",
+      "channel": "lugontv",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:16",
+      "channel": "teslat",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:19",
+      "channel": "minghetto",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:22",
+      "channel": "beltranctz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:23",
+      "channel": "theschneiderr",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:25",
+      "channel": "paulynhatv",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:26",
+      "channel": "cateroide",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:30",
+      "channel": "matts",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:31",
+      "channel": "degonitzz",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusold",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusold",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2015:36",
+      "channel": "gzontinha",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:43",
+      "channel": "legolancetti",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:48",
+      "channel": "trickzeraa",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:52",
+      "channel": "morgoroth96",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:53",
+      "channel": "makonowski",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: medivia, medivia.online",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "medivia, medivia.online",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2015:58",
+      "channel": "voidcores_ots",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:60",
+      "channel": "venequillopush",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: talera",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "talera",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2015:67",
+      "channel": "joreltibiano",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:68",
+      "channel": "duwend",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:70",
+      "channel": "shadowillusion772",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:74",
+      "channel": "water_storn",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: pxg",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "pxg",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2015:75",
+      "channel": "juveeenil",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:78",
+      "channel": "madmatthz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:80",
+      "channel": "alemaotv",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2015:91",
+      "channel": "ragnarisbacksz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:97",
+      "channel": "oldjucada",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:98",
+      "channel": "vcruz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:99",
+      "channel": "guerreirotetra",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:101",
+      "channel": "darianzin",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2015:104",
+      "channel": "h4wksin",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:110",
+      "channel": "g4ndd",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:111",
+      "channel": "supervinitv",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2015:112",
+      "channel": "itsmanojava",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:3",
+      "channel": "rickvitti",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: ferobra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "ferobra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:5",
+      "channel": "pagodines",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:7",
+      "channel": "lethalmyk",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:11",
+      "channel": "vovohzera",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:13",
+      "channel": "projeto0337",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "conflicting server identities: tibiaglobal; rubinot; rubinot",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:21",
+      "channel": "sadbots_br",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:22",
+      "channel": "paulynhatv",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:25",
+      "channel": "beltranctz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:30",
+      "channel": "1indio",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:35",
+      "channel": "water_storn",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: pxg",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "pxg",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:39",
+      "channel": "joreltibiano",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: rubiniot, rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubiniot, rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:43",
+      "channel": "pacheco22k",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:44",
+      "channel": "leozindesumilde",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:49",
+      "channel": "mtstibia",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:54",
+      "channel": "thiagotaw",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:58",
+      "channel": "kynhotibia",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:61",
+      "channel": "tac_z",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:65",
+      "channel": "juveeenil",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:67",
+      "channel": "matts",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "conflicting server identities: tibiaglobal; dracobra; pka, pokealliance",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "dracobra",
+          "feature": "official_world_tag",
+          "weight": -7.738041
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "pka, pokealliance",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:74",
+      "channel": "japorega_",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:83",
+      "channel": "darianzin",
+      "before": "tibia",
+      "after": "other",
+      "reason": "server identity evidence: deusot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:88",
+      "channel": "mythera_pk",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:91",
+      "channel": "degonitzz",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusold",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusold",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:96",
+      "channel": "saymoni",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: nefera",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "nefera",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:97",
+      "channel": "shadowillusion772",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:98",
+      "channel": "adr_warlord",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusold, deusot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "deusold, deusot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:100",
+      "channel": "manowartibia",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:104",
+      "channel": "voidcores_ots",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:105",
+      "channel": "itsmanojava",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:121",
+      "channel": "samuelsoft",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:128",
+      "channel": "iansz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:135",
+      "channel": "morgoroth96",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:143",
+      "channel": "cafeina54",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:144",
+      "channel": "junii_n",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:156",
+      "channel": "vinny_xd",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:162",
+      "channel": "polastreli",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:177",
+      "channel": "bielsfarm35",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:181",
+      "channel": "legolancetti",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:187",
+      "channel": "soyimsa",
+      "before": "tibia",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:191",
+      "channel": "qwadah",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: medivia; medivia, medivia.online",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "medivia",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "medivia, medivia.online",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:195",
+      "channel": "pinhomatos",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: belobra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "belobra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:196",
+      "channel": "spvitu",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:200",
+      "channel": "van_elsworth",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: medivia, medivia.online",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "medivia, medivia.online",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:201",
+      "channel": "sadlypg",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:212",
+      "channel": "matthewcrazy13",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubiniot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubiniot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:215",
+      "channel": "nazgulplayer",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:219",
+      "channel": "jegudin",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: tibiaglobal; inabra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "inabra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:224",
+      "channel": "dogreteee",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:225",
+      "channel": "danielitomere",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:226",
+      "channel": "kauek9z",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:228",
+      "channel": "yannjogaleve",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusold",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusold",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:229",
+      "channel": "teuz2k",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:232",
+      "channel": "narkesh",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:234",
+      "channel": "luciferold",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:244",
+      "channel": "lee_tugaa",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:251",
+      "channel": "bingaatv",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:254",
+      "channel": "alefcamisadez",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: serdebra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "serdebra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:258",
+      "channel": "sabugo7zip",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:259",
+      "channel": "imvincecoronel",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:264",
+      "channel": "lzenlok",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:266",
+      "channel": "moral01",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:268",
+      "channel": "cia_floripa",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:269",
+      "channel": "ygoorxxx",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:270",
+      "channel": "espessato",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: tornabra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "tornabra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:272",
+      "channel": "forterian86",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:273",
+      "channel": "rattengg",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:275",
+      "channel": "kyrsz",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubiniot, rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubiniot, rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:277",
+      "channel": "benksbr",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:281",
+      "channel": "meegazork",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusot; deusot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:284",
+      "channel": "tiotrevaz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:285",
+      "channel": "cavasanaa",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: tibiaglobal",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        }
+      ]
+    },
+    {
+      "id": "live-2115:286",
+      "channel": "okimbocao",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:289",
+      "channel": "notlezinho",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: descubra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "descubra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:291",
+      "channel": "rpxhoffmann",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:295",
+      "channel": "sorcdemolido",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusot; deusot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:297",
+      "channel": "voidzin_92",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: baiak idle",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "baiak idle",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:301",
+      "channel": "dasherownsz",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:307",
+      "channel": "donkaadin",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:322",
+      "channel": "sidzzz_",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:323",
+      "channel": "zaupiinha",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:324",
+      "channel": "fredogzz",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: pka",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "pka",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:326",
+      "channel": "roxeluse",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:333",
+      "channel": "bacch1n",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:343",
+      "channel": "piitocha",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:347",
+      "channel": "tomic_chile",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:364",
+      "channel": "senaemcena139",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:365",
+      "channel": "tiososkj",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:369",
+      "channel": "thusgasum",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:402",
+      "channel": "heeenry_poke_idle",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:407",
+      "channel": "witchtargaryen",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:409",
+      "channel": "wiikkzms",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: tibiaglobal; calmera; calmera",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "calmera",
+          "feature": "official_world_tag",
+          "weight": -7.738041
+        },
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "calmera",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:412",
+      "channel": "gwiltin",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:417",
+      "channel": "luciiraldo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:431",
+      "channel": "bigode_junim",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "conflicting server identities: tibiaglobal; pokexgames, pxg; pokexgames, pxg",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "pokexgames, pxg",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "pokexgames, pxg",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:434",
+      "channel": "skazifox",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:435",
+      "channel": "barbudo_tv",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "conflicting server identities: tibia global; baiakidle, rubinot",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "tibia global",
+          "feature": "official_declaration_title",
+          "weight": -7.001035
+        },
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "baiakidle, rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:438",
+      "channel": "lord_paulistinha_ofc",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: tibiaglobal; lutabra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "tibiaglobal",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        },
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "lutabra",
+          "feature": "official_world_tag",
+          "weight": -7.738041
+        }
+      ]
+    },
+    {
+      "id": "live-2115:439",
+      "channel": "lonzera1",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:441",
+      "channel": "nyckolas_fernando",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:446",
+      "channel": "bgzinn_gg",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot; rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:453",
+      "channel": "alex_santhos",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:454",
+      "channel": "swiftbane_noxbolt",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:456",
+      "channel": "castorstroy",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:457",
+      "channel": "reb3_",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:460",
+      "channel": "soygamma",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: yovera",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "yovera",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:463",
+      "channel": "batisodin",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:469",
+      "channel": "treeboorzin",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:470",
+      "channel": "carumato",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubiniot; pka",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubiniot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        },
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "pka",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:471",
+      "channel": "sigyan",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "negation, comparison or temporal context: ustebra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "ustebra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:474",
+      "channel": "mana_all",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: tibia global",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "tibia global",
+          "feature": "official_declaration_title",
+          "weight": -7.001035
+        }
+      ]
+    },
+    {
+      "id": "live-2115:478",
+      "channel": "amaralot",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:480",
+      "channel": "matthztvz",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:481",
+      "channel": "sickisicky",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:482",
+      "channel": "detrep",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:498",
+      "channel": "birobiro29",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:502",
+      "channel": "braagahcdd",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:504",
+      "channel": "maguitinhoo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:505",
+      "channel": "1viinao",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: deusot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "deusot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    },
+    {
+      "id": "live-2115:510",
+      "channel": "uauu69",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:513",
+      "channel": "guridobrick",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:515",
+      "channel": "jean_pac",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:516",
+      "channel": "tiobogo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:521",
+      "channel": "semhype007",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:527",
+      "channel": "fah165",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:531",
+      "channel": "drakhal7",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:542",
+      "channel": "enforia",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:543",
+      "channel": "jonabelyko",
+      "before": "tibia",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:546",
+      "channel": "jjuunio",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: yonabra",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "title",
+          "game": "Tibia",
+          "text": "yonabra",
+          "feature": "official_world_title",
+          "weight": -9.529325
+        }
+      ]
+    },
+    {
+      "id": "live-2115:550",
+      "channel": "godlike_apollo",
+      "before": "undetermined",
+      "after": "tibia",
+      "reason": "server identity evidence: cipsoft",
+      "signals": [
+        {
+          "side": "tibia",
+          "source": "tags",
+          "game": "Tibia",
+          "text": "cipsoft",
+          "feature": "official_declaration_tag",
+          "weight": -4.677335
+        }
+      ]
+    },
+    {
+      "id": "live-2115:551",
+      "channel": "unholynirsu",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:553",
+      "channel": "outcast_server",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:554",
+      "channel": "beckfest_",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: pxg",
+      "signals": [
+        {
+          "side": "other",
+          "source": "title",
+          "game": "Other games",
+          "text": "pxg",
+          "feature": "other_server_title",
+          "weight": 6.904516
+        }
+      ]
+    },
+    {
+      "id": "live-2115:559",
+      "channel": "lockheedmartinufo",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:560",
+      "channel": "jrdferri",
+      "before": "other",
+      "after": "undetermined",
+      "reason": "no server identity",
+      "signals": []
+    },
+    {
+      "id": "live-2115:561",
+      "channel": "branco2tv",
+      "before": "undetermined",
+      "after": "other",
+      "reason": "server identity evidence: rubinot",
+      "signals": [
+        {
+          "side": "other",
+          "source": "tags",
+          "game": "Other games",
+          "text": "rubinot",
+          "feature": "other_server_tag",
+          "weight": 6.462345
+        }
+      ]
+    }
+  ],
+  "baseline_commit": "8a5020e0f36d9cb5cf7f62d3fdece16da0e8768d"
+}

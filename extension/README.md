@@ -8,7 +8,7 @@ Safari Web Extension source supplied in `twitch-clean.zip`, integrated into Tibi
 - Cosmetic hiding of display ads, directory placements and promotional interfaces.
 - Targeted English-language handling of Apple TV, animated-emote and Prime Benefits prompts.
 - Source-quality preference on page load and background visibility handling.
-- **Tibia filter:** on the Tibia category directory, estimates private-server streams (OTServers, Pokémon servers and Tibia-derived idle servers) from each card's complete title and tags in Twitch's page data (`tibia-props.js`). It uses a supervised probabilistic machine-learning model fitted to labelled examples: learned text-presence likelihoods with cross-fitted logistic calibration. No manual name list, official-world exception or heuristic point total decides a card. Automatic hiding requires at least 98% estimated private-server probability; undecided cards stay visible. The settings popover summarizes what it hides; the Blocked Streams page lists each stream by category with its reason and can show any of them. See the [model card](../docs/TWITCH_MODEL.md).
+- **Tibia filter:** on the Tibia category directory, estimates non-official streams from explicit server identities in complete titles and tags read by `tibia-props.js`. A supervised logistic model uses six identity feature types and separate calibration groups. Language, generic gameplay, chat commands, channel identity and images are excluded. Automatic hiding requires at least 98% model probability and an unambiguous recognized identity. Unknown or conflicting identities stay visible. The Blocked Streams page explains each hidden stream and can restore it. See the [model card](../docs/TWITCH_MODEL.md).
 - **Settings** for every feature, described below.
 - The MIT-licensed **vaft** script attempts to replace stitched video advertisements with a clean stream. When no clean stream is available, playback can freeze during the break; an alternate stream can be lower resolution.
 
@@ -75,7 +75,7 @@ Switch off a feature in the settings, or pause everything with the **Tibia Anti-
 
 The main script runs before the player in the page context. Cosmetic filters alone cannot perform this replacement. The standalone script does not classify or hide OTServ streams.
 
-To inspect a Tibia-filter decision, check the `data-twitch-clean-tibia` attribute on a card's grid cell. Learned weights live in `filters/sources/twitch/tibia-evidence.json`; train and evaluate them as described in the [model card](../docs/TWITCH_MODEL.md). They are generated from labelled data, not edited as a wordlist.
+To inspect a Tibia-filter decision, check the `data-twitch-clean-tibia` attribute on a card's grid cell. Learned weights live in `filters/sources/twitch/tibia-evidence.json`; train and evaluate them as described in the [model card](../docs/TWITCH_MODEL.md). The versioned identity ontology defines admissible inputs; coefficients are fitted from labelled data.
 
 Safari additionally shows the estimated probability of **official Tibia** at the right of every channel-name row in the Tibia directory, with **Hide other games** on or off. The estimate comes from the same joint title/tag model used for hiding. It is a model estimate, not a p-value or a measured accuracy rate. Hover for its meaning; very small/large estimates display as `<0.1%` / `>99.9%` rather than rounding to certainty. The master switch pauses these labels. This presentation is packaged only for Safari in `extension/browsers/safari/web/`; the inference and filtering source remains shared.
 

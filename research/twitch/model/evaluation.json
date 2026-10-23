@@ -1,0 +1,537 @@
+{
+  "evaluation": "Frozen channel/exact-metadata-group holdout; no refit after evaluation; retrospective same-day proxy labels",
+  "composition": {
+    "train": {
+      "0": 56,
+      "1": 157,
+      "None": 55
+    },
+    "calibration": {
+      "0": 20,
+      "1": 53,
+      "None": 24
+    },
+    "test": {
+      "0": 17,
+      "1": 50,
+      "None": 24
+    }
+  },
+  "held_out": {
+    "n": 67,
+    "official": 17,
+    "other": 50,
+    "hidden_official": 0,
+    "hidden_other": 42,
+    "other_recall": 0.84,
+    "hide_precision": 1.0,
+    "hidden_official_rate_wilson95": [
+      0,
+      0.1843181350088518
+    ],
+    "abstained": 10,
+    "coverage": 0.8507462686567164,
+    "selective_error": 0.0,
+    "brier": 0.024463542890895522,
+    "log_loss": 0.07608621060904146,
+    "ece_5_equal_width": 0.013010626865671615,
+    "reliability_bins": [
+      {
+        "lower": 0,
+        "n": 15,
+        "mean_probability": 0.0005413999999999999,
+        "observed_other": 0.0
+      },
+      {
+        "lower": 0.8,
+        "n": 52,
+        "mean_probability": 0.9781459807692308,
+        "observed_other": 0.9615384615384616
+      }
+    ],
+    "confusion": {
+      "0:tibia": 15,
+      "0:other": 0,
+      "0:undetermined": 2,
+      "1:tibia": 0,
+      "1:other": 42,
+      "1:undetermined": 8
+    }
+  },
+  "held_out_uncalibrated": {
+    "n": 67,
+    "official": 17,
+    "other": 50,
+    "hidden_official": 0,
+    "hidden_other": 42,
+    "other_recall": 0.84,
+    "hide_precision": 1.0,
+    "hidden_official_rate_wilson95": [
+      0,
+      0.1843181350088518
+    ],
+    "abstained": 10,
+    "coverage": 0.8507462686567164,
+    "selective_error": 0.0,
+    "brier": 0.023780007524552237,
+    "log_loss": 0.07383790972567197,
+    "ece_5_equal_width": 0.008969835820895458,
+    "reliability_bins": [
+      {
+        "lower": 0,
+        "n": 15,
+        "mean_probability": 0.0023748000000000003,
+        "observed_other": 0.0
+      },
+      {
+        "lower": 0.8,
+        "n": 52,
+        "mean_probability": 0.9724107115384615,
+        "observed_other": 0.9615384615384616
+      }
+    ],
+    "confusion": {
+      "0:tibia": 15,
+      "0:other": 0,
+      "0:undetermined": 2,
+      "1:tibia": 0,
+      "1:other": 42,
+      "1:undetermined": 8
+    }
+  },
+  "unresolved_test": {
+    "undetermined": 21,
+    "tibia": 1,
+    "other": 2
+  },
+  "signals": [
+    [
+      "official_world_title",
+      -9.5293254846
+    ],
+    [
+      "official_world_tag",
+      -7.7380410281
+    ],
+    [
+      "official_declaration_title",
+      -7.0010351267
+    ],
+    [
+      "official_declaration_tag",
+      -4.6773351973
+    ],
+    [
+      "other_server_tag",
+      6.4623453848
+    ],
+    [
+      "other_server_title",
+      6.9045158573
+    ]
+  ],
+  "test_predictions": [
+    {
+      "id": "audit:1",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:2",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:3",
+      "label": 1,
+      "verdict": "undetermined",
+      "p_other": 0.999976
+    },
+    {
+      "id": "audit:9",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:16",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:17",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:21",
+      "label": 1,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:31",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:35",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:36",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999775
+    },
+    {
+      "id": "audit:39",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:43",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999775
+    },
+    {
+      "id": "audit:44",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:46",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:49",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:52",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:53",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999775
+    },
+    {
+      "id": "audit:57",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:71",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:72",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:75",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:85",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:96",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:97",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999775
+    },
+    {
+      "id": "audit:119",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:129",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999775
+    },
+    {
+      "id": "audit:133",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:136",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:142",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:149",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:150",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:153",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:154",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 5.9e-05
+    },
+    {
+      "id": "audit:155",
+      "label": 1,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:161",
+      "label": 0,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:176",
+      "label": 1,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:192",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:195",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:206",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:223",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:231",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:241",
+      "label": 0,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:254",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:255",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:280",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:285",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:287",
+      "label": 1,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:289",
+      "label": 1,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:302",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:304",
+      "label": 1,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:327",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:345",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:347",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:349",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:356",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:360",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.003017
+    },
+    {
+      "id": "audit:365",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:367",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 5e-06
+    },
+    {
+      "id": "audit:377",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:383",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.000504
+    },
+    {
+      "id": "audit:390",
+      "label": 1,
+      "verdict": "undetermined",
+      "p_other": 0.874093
+    },
+    {
+      "id": "audit:392",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:394",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 1.0
+    },
+    {
+      "id": "audit:407",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999856
+    },
+    {
+      "id": "audit:410",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.0
+    },
+    {
+      "id": "audit:420",
+      "label": 0,
+      "verdict": "tibia",
+      "p_other": 0.0
+    },
+    {
+      "id": "audit:452",
+      "label": 1,
+      "verdict": "other",
+      "p_other": 0.999775
+    }
+  ]
+}

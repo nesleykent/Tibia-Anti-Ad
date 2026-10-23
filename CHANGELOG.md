@@ -6,6 +6,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Added
 
+- Tibia classifier 1.6.0: supervised server-identity logistic regression replaces unrestricted text features. Language, gameplay and chat commands are inert; unknown and conflicting identities abstain. Removes all classifier image processing. Separate fitting, calibration and test groups, explicit label audit, held-out metrics and complete verdict changes are documented in the [model card](docs/TWITCH_MODEL.md).
+
 - Safari 1.4.0 displays the model's estimated probability of official Tibia beside every stream's channel name in the Tibia directory. Estimates remain visible with **Hide other games** on or off; the master switch pauses them. Chrome does not include this presentation.
 - Safari toolbar status: `infinity.circle` when blocking is disabled and `infinity.circle.fill` when enabled, synchronized on changes and background startup. Toolbar titles describe the state in text.
 - Chrome uses original outlined/filled infinity-in-circle vectors for the same two states, with dual-tone edges for light/dark themes. Both browsers' popup status indicators match their toolbar state. Imported shield branding is replaced with original circular infinity artwork.
