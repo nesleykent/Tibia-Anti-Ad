@@ -1,0 +1,557 @@
+{
+  "status": "candidate facts for milestone A review; not model inputs or approved labels",
+  "retrieved_date": "2026-10-23",
+  "source_url": "https://otservlist.net/",
+  "source_sha256": "9ceb906c63cd78de2cef0a954398b1946b6c8f5402dd17f63e86fcaf5aaf2fad",
+  "rendered_at": "2026-10-23T11:33:59+00:00",
+  "coverage": "first page only; not a complete catalogue",
+  "extraction": "Public servers.data entries in the page JSON; host, protocol and linked source listings only. No manual server-name list.",
+  "entries": [
+    {
+      "host": "play.aurera-global.com",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1619/12-anos-online",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1594733"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "sv.ultronot.com",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/3702/ultron-global-860-2",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1665755"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "sv.best-baiak.com",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/3996/best-baiak-86-2",
+      "upstream_listing_urls": [],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "elysian.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1621/27k-on-battle-pass",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1651274"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "solarian.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1622/27k-on-battle-pass-2",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1662807"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "mystian.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1625/27k-on-battle-pass-5",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1659894"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "bellum.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1639/27k-on-battle-pass-9",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1653856"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "infernum1.rubinot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3794/new-server-retropvp",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1666069"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "eldrian.rubinot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3506/27k-on-battle-pass-14",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1665737"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "lunarian.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1626/27k-on-battle-pass-6",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1658683"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "obsidian.rubinot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3657/27k-on-battle-pas-2",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1665733"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "auroria.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/2188/27k-on-battle-pass-12",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1658675"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "sv.baiak-ilusion.com.br",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1630/baiak-10anos-host-br",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1593481",
+        "https://otserv-list.com/server/sv.baiak-ilusion.com.br"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "belaria.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1623/27k-on-battle-pass-3",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1661241"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "vesperia.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1631/27k-on-battle-pass-8",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1661240"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "go.cyleria.pl",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1627/3x-exp-event",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1636187",
+        "https://otserv-list.com/server/go.cyleria.pl"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "drakaria.rubinot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3625/27k-on-battle-pass-16",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1665735"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "malveria.rubinot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3651/27k-on-battle-pass-17",
+      "upstream_listing_urls": [],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "login.gunzodus.net",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/1629/fresh-new-economy",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1646128",
+        "https://otserv-list.com/server/login.gunzodus.net"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "rexia.pl",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1641/no-resets-evo-high",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1605445",
+        "https://tibiaservers.net/rexia.pl-ots/",
+        "https://otserv-list.com/server/rexia.pl"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "season.koliseuot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3686/otc-bot-liberado-4",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1665411"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "login.oxygenot.live",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1634/evo-rpg-pvpe-android",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1650698"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "infernum2.rubinot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3796/new-server-retropvp-3",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1666070"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "tibia.canob.us",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1647/high-exp-10-years-on",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1613438"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "go.miracle74.com",
+      "protocol": "7.4",
+      "catalogue_url": "https://otservlist.net/servers/1638/1x-hardcore-slowpace",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1656915"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "infernum3.rubinot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3795/new-server-retropvp-2",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1666071"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "tenebrium.rubinot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1628/27k-on-battle-pass-7",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1662256"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "on.aurera-global.com",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/2260/12-anos-online-2",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1663221",
+        "https://otserv-list.com/server/on.aurera-global.com"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "sv.baiaksp.com.br",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1681/baiak-high-x9999",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1651651",
+        "https://otserv-list.com/server/sv.baiaksp.com.br"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "sv.demolidores.com.br",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1636/best-baiak-86",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1619183",
+        "https://tibiaservers.net/demolidores.net-ots/",
+        "https://otserv-list.com/server/sv.demolidores.com.br"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "game.olympic74.com",
+      "protocol": "7.4",
+      "catalogue_url": "https://otservlist.net/servers/1826/classick-start-today",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1666313"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "login.retronic.online",
+      "protocol": "7.4",
+      "catalogue_url": "https://otservlist.net/servers/3799/danubia",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1666078"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "bravora.exordion.com.br",
+      "protocol": "7.4",
+      "catalogue_url": "https://otservlist.net/servers/1618/global-74-custom",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1664164"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "sv.otdbo.com.br",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/4182/otdbo",
+      "upstream_listing_urls": [],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "baiak.amonot.online",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3619/novo-balanceamento",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1664609"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "legacy.koliseuot.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/3646/otc-bot-liberado-3",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1663657"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "outcastserver.com",
+      "protocol": "7.6",
+      "catalogue_url": "https://otservlist.net/servers/2601/outcastserver",
+      "upstream_listing_urls": [
+        "https://tibiaservers.net/outcastserver.com-ots/"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "noxiousot.com",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1645/nox-rlmap-86",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1364365",
+        "https://tibiaservers.net/noxiousot.com-ots/"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "anthera.calmera.com.br",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1651/5y-sorteio-pc-gamer",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1639096"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "demonicavengers.com",
+      "protocol": "8.0",
+      "catalogue_url": "https://otservlist.net/servers/3335/demonic-avengers",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1665439"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "vps-cb393e73.vps.ovh.ca",
+      "protocol": "10.90",
+      "catalogue_url": "https://otservlist.net/servers/4023/browsera-online-in-browser",
+      "upstream_listing_urls": [],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "new.unline.org",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/3552/unline-new-world",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1665821"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "status.taleoftitan.com",
+      "protocol": "15.20",
+      "catalogue_url": "https://otservlist.net/servers/3715/tale-of-titan-custom-evo",
+      "upstream_listing_urls": [],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "sv.baiak-icewar.com",
+      "protocol": "8.6",
+      "catalogue_url": "https://otservlist.net/servers/1643/abriu-06-02-host-br",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1627456"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "play.neferaot.com",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3500/free-tc-por-apertura",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1665770"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "cellenium.rubinot.net",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1652/27k-on-battle-pass-11",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1661509"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "play.inferniaot.com",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3836/onlyotc-bot-free-2",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1666148"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "play.arinar.online",
+      "protocol": "15.0",
+      "catalogue_url": "https://otservlist.net/servers/1964/custom-update-18-03",
+      "upstream_listing_urls": [
+        "https://otservlist.org/ots/1666177"
+      ],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "fimot.com.br",
+      "protocol": "15.2",
+      "catalogue_url": "https://otservlist.net/servers/3919/rl-custom-bot-free",
+      "upstream_listing_urls": [],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    },
+    {
+      "host": "play.oldot.online",
+      "protocol": "7.7",
+      "catalogue_url": "https://otservlist.net/servers/3969/oldot-server-76",
+      "upstream_listing_urls": [],
+      "entity_private_proposal": true,
+      "alias_status": "domain fact only; marketing display name not accepted as identity",
+      "approved": false
+    }
+  ]
+}

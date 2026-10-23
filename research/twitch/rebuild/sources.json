@@ -1,0 +1,215 @@
+{
+  "status": "milestone-a review pending",
+  "sources": [
+    {
+      "id": "audit",
+      "kind": "historical_audit",
+      "path": "research/twitch/data/2026-10-21/analysis/classificacao.json",
+      "sha256": "3b71c4ceb0e2b1c72e1edd1353b3b76ae428e519bdfdadd25021c49c077fe560",
+      "records": 456,
+      "label_status": "Original labels are untrusted historical assertions; not approved supervision.",
+      "image_data_used": false
+    },
+    {
+      "id": "raw1316",
+      "kind": "metadata_capture",
+      "path": "research/twitch/data/2026-10-21/raw/streams-1316-details-only.json",
+      "sha256": "b3cea56ba3ab1c356fcbbc5637c7bf6dc6f05d5b1443c5cc7a4cb0ff83aa11de",
+      "records": 456,
+      "label_status": "Original labels are untrusted historical assertions; not approved supervision.",
+      "image_data_used": false
+    },
+    {
+      "id": "raw1400",
+      "kind": "metadata_capture",
+      "path": "research/twitch/data/2026-10-21/raw/streams-1400.json",
+      "sha256": "1c1c71e55c8ca0604ef29fc5fbbe1a64bb107076c2b053540be8f1bdd4eeb0d9",
+      "records": 487,
+      "label_status": "477 usable titles, 10 accessibility prompts excluded; tags empty in this collector output. No original class labels.",
+      "image_data_used": false,
+      "accessibility_prompt_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "valid_title_count": 477
+    },
+    {
+      "id": "live2015",
+      "kind": "metadata_capture",
+      "path": "research/twitch/data/2026-10-21/live-2015/streams.json",
+      "sha256": "2806130252a9cf727617bd206f376c8b8edd751252686973acca7df03f571797",
+      "records": 114,
+      "label_status": "Original labels are untrusted historical assertions; not approved supervision.",
+      "image_data_used": false
+    },
+    {
+      "id": "live2115",
+      "kind": "metadata_capture",
+      "path": "research/twitch/data/2026-10-21/live-2115/streams.json",
+      "sha256": "7cbb59f7bfe030e130a268445fd0d6a105574b585866bac88c9e10630ad4ff2f",
+      "records": 562,
+      "label_status": "Original labels are untrusted historical assertions; not approved supervision.",
+      "image_data_used": false
+    },
+    {
+      "id": "cases",
+      "kind": "historical_rule_fixture",
+      "path": "tests/data/tibia-classify-cases.json",
+      "sha256": "52849c137a9a106ecf24d404c44135223466b8089434a88c461b171f0fe7a631",
+      "records": 65,
+      "label_status": "Original labels are untrusted historical assertions; not approved supervision.",
+      "image_data_used": false
+    },
+    {
+      "id": "ots-org",
+      "url": "https://otservlist.org/",
+      "kind": "catalogue",
+      "checked_date": "2026-10-23",
+      "finding": "Browser text readable; direct curl403. Lists endpoints, versions and forthcoming launches. A listing identifies a server, not the server of any Twitch session."
+    },
+    {
+      "id": "ots-net",
+      "url": "https://otservlist.net/",
+      "kind": "catalogue_import",
+      "checked_date": "2026-10-23",
+      "finding": "Raw public page JSON captured locally; automatically extracted 50 first-page host/protocol facts with upstream URLs. Incomplete coverage; imports are not independent confirmations.",
+      "response_sha256": "9ceb906c63cd78de2cef0a954398b1946b6c8f5402dd17f63e86fcaf5aaf2fad"
+    },
+    {
+      "id": "worlds",
+      "url": "https://api.tibiadata.com/v4/worlds",
+      "kind": "third_party_roster",
+      "checked_date": "2026-10-23",
+      "finding": "Official-world roster for annotation checks and name-collision audit only, never official-looking predictor points. CipSoft page403. Response timestamp must be preserved separately from retrieval.",
+      "response_sha256": "a2f1ee16d25aade0799e6d272eba2dea2cbdf77da697b61deb6a413a1e5b1c6d",
+      "response_timestamp": "2026-10-23T11:33:09Z",
+      "world_count": 87
+    },
+    {
+      "id": "rubinot",
+      "url": "https://rubinot.com.br/news",
+      "kind": "operator",
+      "checked_date": "2026-10-23",
+      "finding": "Independent server website; describes its client economy and linked Twitch rewards. Does not establish which server an unrelated channel is playing."
+    },
+    {
+      "id": "pka",
+      "url": "https://pokealliance.com/",
+      "kind": "conflicting_self_description",
+      "checked_date": "2026-10-23",
+      "finding": "Describes a separate Pokemon game but footer says community fansite. Identity evidence, not unqualified operator authority."
+    },
+    {
+      "id": "pka-links",
+      "url": "https://linktr.ee/pokealliance",
+      "kind": "self_identified_operator_links",
+      "checked_date": "2026-10-23",
+      "finding": "Self-identifies as official PokeAlliance account, links the same .com site and project Twitch account. Corroboration with unresolved site/footer inconsistency."
+    },
+    {
+      "id": "pxg",
+      "url": "https://wiki.pokexgames.com/P%C3%A1gina_principal",
+      "kind": "project_wiki",
+      "checked_date": "2026-10-23",
+      "finding": "PokeXGames wiki uses PXG branding and links its own client download. Confirms distinct Pokemon project."
+    },
+    {
+      "id": "baiak",
+      "url": "https://baiakidle.com/",
+      "kind": "operator_search_cache",
+      "checked_date": "2026-10-23",
+      "finding": "Direct page403; search index exposes project title and gameplay changelog. Existence corroborated, full primary page not fetched."
+    },
+    {
+      "id": "poke-io",
+      "url": "https://pokeidle.io/",
+      "kind": "operator",
+      "checked_date": "2026-10-23",
+      "finding": "Distinct Pokemon browser MMO with automated hunts. Do not merge its name with every other Poke Idle project.",
+      "response_sha256": "24bfc5d531fbfd7f3f571eee94457731f34810c567c456f4b65c1c87f4057052"
+    },
+    {
+      "id": "poke-world",
+      "url": "https://poke.idleworld.online/",
+      "kind": "operator",
+      "checked_date": "2026-10-23",
+      "finding": "Separate browser-based Pokemon idle MMO; its footer identifies it as an unofficial fan project.",
+      "response_sha256": "6eb8758ad09555393b0171cbd1842c5157d888058c55f88e2c03bb02e308eea3"
+    },
+    {
+      "id": "antica-retro",
+      "url": "https://otservlist.org/ots/1664981",
+      "kind": "catalogue_entry",
+      "checked_date": "2026-10-23",
+      "finding": "Antica Retro is listed at server.anticaretro.com with protocol7.4: real collision with an official-world name."
+    },
+    {
+      "id": "antica-copy",
+      "url": "https://otservlist.org/list-server_players_online-desc-7",
+      "kind": "catalogue_entry",
+      "checked_date": "2026-10-23",
+      "finding": "Indexed catalogue includes anticarpg.pl marketed as ANTICA; bare Antica cannot safely inherit this private-server label."
+    },
+    {
+      "id": "refugia-copy",
+      "url": "https://quartzzgames.com.br/",
+      "kind": "operator",
+      "checked_date": "2026-10-23",
+      "finding": "PixelOT project description names its world Refugia, also an official-world name. The project links a Poke Idle World domain that differs from the accessible .idleworld.online host; relationship not assumed."
+    },
+    {
+      "id": "deus",
+      "url": "https://deusot.com/",
+      "kind": "operator",
+      "checked_date": "2026-10-23",
+      "finding": "Entry page separates DeusOT custom and DeusOLD7.4 worlds."
+    },
+    {
+      "id": "medivia",
+      "url": "https://medivia.online/",
+      "kind": "operator",
+      "checked_date": "2026-10-23",
+      "finding": "Independent MMO published by COMADSOFT, formerly Tibianic. Not evidence of legal infringement; private/non-CipSoft scope needs explicit label policy."
+    },
+    {
+      "id": "kasteria",
+      "url": "https://kasteria.online/",
+      "kind": "unavailable",
+      "checked_date": "2026-10-23",
+      "finding": "Direct403. Corpus contains an explicit opening advertisement; active gameplay and current operator details not verified."
+    },
+    {
+      "id": "future",
+      "url": "https://futureot.com/",
+      "kind": "unavailable",
+      "checked_date": "2026-10-23",
+      "finding": "No accessible primary source at this guessed host. Actual FutureOT spellings are in captures. Do not present guessed domain as verified identity."
+    },
+    {
+      "id": "user-requirements",
+      "kind": "user_supplied_examples",
+      "date": "2026-10-23",
+      "finding": "Seven exact examples supplied in this chat. Not public observed stream records; approval of intended evidence is separate from approval of proposed labels."
+    },
+    {
+      "id": "constructed-contrast",
+      "kind": "assistant_created_challenges",
+      "date": "2026-10-23",
+      "finding": "Controlled counterexamples with explicit invented context. Never held-out field accuracy evidence."
+    },
+    {
+      "id": "constructed-invariance",
+      "kind": "counterfactual_checks",
+      "date": "2026-10-23",
+      "finding": "Language-tag transformations of existing review examples; keep with parent, never count as independent observations."
+    }
+  ]
+}

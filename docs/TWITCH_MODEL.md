@@ -1,3 +1,5 @@
+> Rebuild status: the rejected rebuild was discarded. [Milestone A: sources and annotation proposals](../research/twitch/rebuild/REVIEW.md) awaits maintainer review before any new training. The model description below is the pre-rebuild baseline, not the approved replacement.
+
 # Twitch private-server model, 1.5.0
 
 Tibia Anti-Ad uses supervised probabilistic machine learning to estimate `P(private-server stream | full title, tags)`. Safari displays `1 - P(private-server stream | full title, tags)` as the Tibia percentage. Learned parameters determine every decision; no hand-maintained server blacklist, official-world override, channel identity or heuristic point total decides a card. Show/Hide corrections still apply only to the current broadcast.
