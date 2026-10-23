@@ -62,3 +62,40 @@ class SafariUpdateTests(unittest.TestCase):
             Path("/Users/me/Code/Adblock/local/safari/previous.noindex/Tibia Anti-Ad.app"),
             Path("/Users/me/Downloads/Tibia Anti-Ad.app"),
         ])
+
+    def test_registration_removes_duplicate_uuids_at_the_same_path(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            app = Path(temporary) / "Installed.app"
+            appex = app / "Contents/PlugIns/Filter.appex"
+            appex.mkdir(parents=True)
+            listing = f"            Path = {appex}\n"
+            with patch.object(updater, "bundle_identifier", return_value="test.Filter"), patch.object(
+                    updater, "output", side_effect=[listing * 2, "", "", listing]) as command:
+                updater.reconcile_registration(app)
+            self.assertEqual(command.call_args_list, [
+                (("pluginkit", "-mADvvv", "-i", "test.Filter"),),
+                (("pluginkit", "-r", appex),),
+                (("pluginkit", "-a", appex),),
+                (("pluginkit", "-mADvvv", "-i", "test.Filter"),),
+            ])
+
+    def test_registration_preserves_an_already_unique_instance(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            app = Path(temporary) / "Installed.app"
+            appex = app / "Contents/PlugIns/Filter.appex"
+            appex.mkdir(parents=True)
+            with patch.object(updater, "bundle_identifier", return_value="test.Filter"), patch.object(
+                    updater, "output", return_value=f"Path = {appex}\n") as command:
+                updater.reconcile_registration(app)
+            command.assert_called_once_with("pluginkit", "-mADvvv", "-i", "test.Filter")
+
+    def test_registration_rejects_a_failed_repair(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            app = Path(temporary) / "Installed.app"
+            appex = app / "Contents/PlugIns/Filter.appex"
+            appex.mkdir(parents=True)
+            listing = f"Path = {appex}\n" * 2
+            with patch.object(updater, "bundle_identifier", return_value="test.Filter"), patch.object(
+                    updater, "output", side_effect=[listing, "", "", listing]):
+                with self.assertRaisesRegex(RuntimeError, "still duplicated"):
+                    updater.reconcile_registration(app)

@@ -109,6 +109,23 @@ private final class Fixture: NSObject, WKURLSchemeHandler {
                     .write(to: output.appendingPathComponent("\(width)-\(dark ? "dark" : "light").png"))
             }
         }
+        // Twitch can regroup cards after filtering. The old grid cell must not
+        // keep hiding newly inserted cards, or survive disabling the filter.
+        _ = try await view.evaluateJavaScript("""
+        setTestSettings({tibiaFilter:true});true
+        """)
+        try await wait(view, "document.querySelector('[data-twitch-clean-hidden]')!==null")
+        _ = try await view.evaluateJavaScript("""
+        window.regrouped=document.querySelector('[data-twitch-clean-hidden]');
+        window.extraCard=document.querySelectorAll('article')[2].cloneNode(true);
+        regrouped.append(extraCard);true
+        """)
+        try await wait(view, "extraCard.getClientRects().length>0")
+        _ = try await view.evaluateJavaScript("setTestSettings({tibiaFilter:false});true")
+        try await wait(view, "document.querySelectorAll('[data-twitch-clean-hidden]').length===0")
+        _ = try await view.evaluateJavaScript("extraCard.remove(); const stale=document.querySelector('section'); stale.setAttribute('data-twitch-clean-hidden',''); document.body.append(document.createComment('rescan'));true")
+        try await wait(view, "document.querySelectorAll('[data-twitch-clean-hidden]').length===0")
+        try await wait(view, all)
         _ = try await view.evaluateJavaScript("setTestSettings({enabled:false});true")
         try await wait(view, "document.querySelectorAll('[data-tibia-official-probability]').length===0")
         _ = try await view.evaluateJavaScript("setTestSettings({enabled:true});true")

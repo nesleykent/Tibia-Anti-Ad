@@ -104,15 +104,15 @@ def containing_app(path):
 
 def stale_copies(listing, installed=INSTALLED):
     """Other Tibia Anti-Ad apps whose extensions Safari can still see, from
-    `pluginkit -mAvvv` output. Safari lists one extension entry per copy."""
+    `pluginkit -mADvvv` output, including copies of the same version."""
     apps = {containing_app(path) for path in re.findall(r"^\s*Path = (.+\.appex)$", listing, re.M)}
     return sorted(app for app in apps if app and app.resolve() != installed.resolve())
 
 
 def remove_stale_copies():
     """Unregister and trash every other copy (old builds, downloaded previews,
-    backups), so Safari shows Tibia Anti-Ad once."""
-    listing = "".join(subprocess.run(["pluginkit", "-mAvvv", "-i", identifier], capture_output=True, text=True).stdout
+    backups), retaining only the installed app's two components."""
+    listing = "".join(output("pluginkit", "-mADvvv", "-i", identifier)
                       for identifier in (WEB_EXTENSION_ID, TOOLBAR_ID))
     trash = Path.home() / ".Trash"
     for app in stale_copies(listing):
@@ -123,6 +123,28 @@ def remove_stale_copies():
             target = trash / f"{app.stem} {hashlib.sha1(str(app).encode()).hexdigest()[:8]}.app"
             shutil.move(str(app), str(target))
             print(f"Moved an old copy to the Trash: {app}")
+
+
+def reconcile_registration(app=INSTALLED):
+    """Replacing an app can leave multiple UUIDs at the same installed path.
+
+    All-versions matching alone hides same-version duplicates. Repair only
+    affected components, then verify the full physical-instance listing.
+    """
+    for appex in sorted((app / "Contents/PlugIns").glob("*.appex")):
+        identifier = bundle_identifier(appex)
+        def paths():
+            listing = output("pluginkit", "-mADvvv", "-i", identifier)
+            return re.findall(r"^\s*Path = (.+\.appex)$", listing, re.M)
+        expected = [str(appex)]
+        registered = paths()
+        if registered != expected:
+            # Remove all UUIDs for this path, rather than adding another copy.
+            output("pluginkit", "-r", appex)
+            output("pluginkit", "-a", appex)
+            if paths() != expected:
+                raise RuntimeError(f"Safari registration is still duplicated for {identifier}.")
+        print(f"Safari registration verified: {identifier} (1 instance)")
 
 
 def archive_backup(backup):
@@ -161,6 +183,7 @@ def main():
         hide_from_system(backup)
         backup = archive_backup(backup)
         remove_stale_copies()
+        reconcile_registration()
         # The installed app is all that is needed; the build cache is about 1 GB.
         remove_build_files()
         print(f"Updated and verified: {INSTALLED}\nPrevious app: {backup}")

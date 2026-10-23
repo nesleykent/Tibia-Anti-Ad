@@ -58,9 +58,20 @@
     // Only the top frame asks; the background ignores the request outside Safari.
     const topFrame = typeof window !== 'undefined' && window === window.top;
     if (topFrame && api.runtime?.sendMessage) {
-        const sync = () => api.runtime.sendMessage({ type: 'tibia-anti-ad:native-sync' }).catch(() => {});
+        let syncing = false;
+        const sync = () => {
+            if (syncing) { return; }
+            syncing = true;
+            api.runtime.sendMessage({ type: 'tibia-anti-ad:native-sync' }).catch(() => {})
+                .finally(() => { syncing = false; });
+        };
         sync();
         window.addEventListener('focus', sync);
         document.addEventListener('visibilitychange', () => { if (!document.hidden) { sync(); } });
+        // A native Safari popover need not change the page's focus. Keep visible
+        // pages current while it stays open; Chrome uses storage events directly.
+        if (api.runtime.getURL?.('').startsWith('safari-web-extension:')) {
+            window.setInterval(() => { if (!document.hidden) { sync(); } }, 1000);
+        }
     }
 })();

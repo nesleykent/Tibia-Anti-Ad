@@ -150,6 +150,24 @@ print(json.dumps({'cases':cases,'toy':toy}))
         observations: observed
       });
     }
+    // Regrouping makes a previously hidden wrapper contain another card.
+    // Only the current private stream may stay hidden; disabling restores all.
+    await page.evaluate(() => {
+      const wrapper = document.querySelector('[data-twitch-clean-hidden=""]');
+      window.extraCard = document.createElement('article');
+      extraCard.innerHTML = '<a data-a-target="preview-card-channel-link" href="/neutral_fixture">neutral</a><h4 title="">🦋</h4>';
+      wrapper.append(extraCard);
+    });
+    await page.waitForFunction(() => extraCard.getClientRects().length > 0);
+    await worker.evaluate(() => chrome.storage.local.set({
+      tibiaFilter: false
+    }));
+    await page.waitForFunction(() => document.querySelectorAll('[data-twitch-clean-hidden=""]').length === 0);
+    assert.ok(await page.locator('article').evaluateAll(cards => cards.every(card => card.getClientRects().length > 0)));
+    await page.evaluate(() => extraCard.remove());
+    await worker.evaluate(() => chrome.storage.local.set({
+      tibiaFilter: true
+    }));
     // A controlled learned model proves the real card flow uses both fields,
     // independently of every server name in the fixtures or training corpus.
     await worker.evaluate(data => chrome.storage.local.set({

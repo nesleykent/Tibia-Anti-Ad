@@ -19,7 +19,7 @@ The maintainer's installed app uses the third method. **Do not call that install
 3. Built the shared source as a universal Mac app and signed the embedded `.appex` first, then its containing `.app`, with the same development identity and the repository's sandbox entitlements.
 4. Installed the result in `/Applications/Tibia Anti-Ad.app`. Deep, strict code-signature verification passed, and `pluginkit` reported the extension at that installed location.
 
-Bundle identifiers: `com.nesleykent.tibiaantiad` (app) and `com.nesleykent.tibiaantiad.Extension` (extension). Personal certificate identifiers and private keys are intentionally excluded from this record.
+Bundle identifiers: `com.nesleykent.tibiaantiad` (app), `com.nesleykent.tibiaantiad.Extension` (web filter) and `com.nesleykent.tibiaantiad.Toolbar` (native settings). The app currently has two Safari components, so two settings entries are expected. Four entries indicate duplication, not four required components. Personal certificate identifiers and private keys are intentionally excluded from this record.
 
 ## Automatic local updates for Claude and Codex
 
@@ -29,7 +29,9 @@ After updating the code in the current checkout and running the repository check
 PYTHONDONTWRITEBYTECODE=1 python3 tools/update_safari_extension.py
 ```
 
-This discovers the installed app's Apple team and a valid Apple Development identity from that team in the local keychain, including a renewed certificate if available. It builds the current source, signs and verifies both bundles, stages the app and updates the existing Applications location. The previous app is retained under `local/safari/previous/Tibia Anti-Ad.app`; failed installed-copy verification restores the previous installation. Concurrent runs are rejected. No personal identity needs to be stored in repository configuration.
+This discovers the installed app's Apple team and a valid Apple Development identity from that team in the local keychain, including a renewed certificate if available. It builds the current source, signs and verifies the app and both extensions, stages the app and updates the existing Applications location. The previous app is retained as a ZIP under the ignored local Safari backup folder, keeping the rollback copy out of extension discovery; failed installed-copy verification restores the previous installation. Concurrent runs are rejected. No personal identity needs to be stored in repository configuration.
+
+After installation, the updater queries all versions and physical instances using `pluginkit -mADvvv`. All-versions matching without `-D` omits duplicate registrations of the same version. If replacing the app left multiple UUIDs at one installed extension path, the updater removes and re-registers that component, then verifies exactly one instance per component. Safari's already-open settings window may need reopening to refresh its list. This registry verification does not establish browser activation or restart persistence.
 
 The agent should perform this update itself instead of delegating certificate selection, signing or file copying to the maintainer. The tool does not pull source, publish assets, change Safari preferences or close the user's Safari tabs. It opens the installed host app after the update. Reload affected pages; Safari may need to be restarted to load the updated extension. Preservation of enabled state and settings across updates has not yet been verified in Safari.
 

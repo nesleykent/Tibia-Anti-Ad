@@ -18,7 +18,10 @@ final class SafariExtensionHandler: SFSafariExtensionHandler {
     }
 
     override func popoverWillShow(in window: SFSafariWindow) {
-        Task { @MainActor in PopoverViewController.shared.model.reload(pageURL: nil) }
+        Task { @MainActor in
+            PopoverViewController.shared.model.reload(pageURL: nil)
+            PopoverViewController.shared.beginUpdates()
+        }
         window.getActiveTab { tab in
             tab?.getActivePage { page in
                 page?.getPropertiesWithCompletionHandler { properties in
@@ -30,6 +33,7 @@ final class SafariExtensionHandler: SFSafariExtensionHandler {
     }
 
     override func popoverDidClose(in window: SFSafariWindow) {
+        Task { @MainActor in PopoverViewController.shared.endUpdates() }
         // The master switch changes the button's image.
         SFSafariApplication.setToolbarItemsNeedUpdate()
     }
@@ -39,6 +43,19 @@ final class SafariExtensionHandler: SFSafariExtensionHandler {
 final class PopoverViewController: SFSafariExtensionViewController {
     static let shared = PopoverViewController()
     let model = SettingsModel()
+    private var refreshTimer: Timer?
+
+    func beginUpdates() {
+        endUpdates()
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            Task { @MainActor in self?.model.reload(pageURL: nil) }
+        }
+    }
+
+    func endUpdates() {
+        refreshTimer?.invalidate()
+        refreshTimer = nil
+    }
 
     override func loadView() {
         view = NSHostingView(rootView: SettingsView(model: model))

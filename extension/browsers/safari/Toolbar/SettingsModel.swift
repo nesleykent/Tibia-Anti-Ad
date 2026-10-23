@@ -60,18 +60,24 @@ struct BlockedStream: Identifiable, Hashable {
     private(set) var rulesFetchedAt: Date?
     private(set) var rulesError: String?
     private(set) var rulesRequested = false
+    private let defaults: UserDefaults
+    private var pageURL: URL?
 
-    nonisolated static func storedValue(_ key: String) -> Bool {
-        let defaults = SharedStore.defaults
+    init(defaults: UserDefaults = SharedStore.defaults) {
+        self.defaults = defaults
+    }
+
+    nonisolated static func storedValue(_ key: String, defaults: UserDefaults = SharedStore.defaults) -> Bool {
         let edited = defaults.dictionary(forKey: SharedStore.Key.settings)?[key] as? Bool
         let web = defaults.dictionary(forKey: SharedStore.Key.webSettings)?[key] as? Bool
         return edited ?? web ?? !defaultsOff.contains(key)
     }
 
-    func value(_ key: String) -> Bool { values[key] ?? Self.storedValue(key) }
+    func value(_ key: String) -> Bool { values[key] ?? Self.storedValue(key, defaults: defaults) }
 
     func reload(pageURL: URL?) {
-        let defaults = SharedStore.defaults
+        if let pageURL { self.pageURL = pageURL }
+        let pageURL = self.pageURL
         let keys = ["enabled", Self.tibiaFilter.id] + Self.sections.flatMap { $0.settings.map(\.id) } + Self.fansites.map(\.key)
         // Edits newer than the web extension's last report win.
         let edited = defaults.dictionary(forKey: SharedStore.Key.settings) ?? [:]
@@ -85,7 +91,7 @@ struct BlockedStream: Identifiable, Hashable {
         let samePage = pageURL == nil || reportURL.map { $0.host == pageURL?.host && $0.path == pageURL?.path } == true
         if pageURL != nil || hidden.isEmpty {
             onTibiaDirectory = samePage && report["onDirectory"] as? Bool == true
-            hidden = !onTibiaDirectory ? [] : (report["hidden"] as? [[String: Any]] ?? []).compactMap { card in
+            hidden = !onTibiaDirectory || !value("enabled") || !value("tibiaFilter") ? [] : (report["hidden"] as? [[String: Any]] ?? []).compactMap { card in
                 guard let channel = card["channel"] as? String, shown[channel] == nil else { return nil }
                 return BlockedStream(channel: channel, title: card["title"] as? String ?? "",
                                      reason: card["reason"] as? String ?? "", game: card["game"] as? String ?? "Other games")
@@ -99,7 +105,7 @@ struct BlockedStream: Identifiable, Hashable {
 
     func set(_ key: String, _ on: Bool) {
         values[key] = on
-        let defaults = SharedStore.defaults
+        if !value("enabled") || !value("tibiaFilter") { hidden = [] }
         var edited = defaults.dictionary(forKey: SharedStore.Key.settings) ?? [:]
         for (k, v) in values { edited[k] = v }
         defaults.set(edited, forKey: SharedStore.Key.settings)
@@ -110,13 +116,12 @@ struct BlockedStream: Identifiable, Hashable {
     func setShown(_ channel: String, title: String?) {
         shown[channel] = title
         if title != nil { hidden.removeAll { $0.channel == channel } }
-        let defaults = SharedStore.defaults
         defaults.set(shown, forKey: SharedStore.Key.shown)
         defaults.set(Date().timeIntervalSince1970 * 1000, forKey: SharedStore.Key.shownChangedAt)
     }
 
     func requestRulesUpdate() {
-        SharedStore.defaults.set(Date().timeIntervalSince1970 * 1000, forKey: SharedStore.Key.rulesRequestedAt)
+        defaults.set(Date().timeIntervalSince1970 * 1000, forKey: SharedStore.Key.rulesRequestedAt)
         rulesRequested = true
     }
 }

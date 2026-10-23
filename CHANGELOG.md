@@ -29,6 +29,7 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 ### Changed
 
 - Private-server inference (1.5.0): supervised text-presence likelihoods and channel-separated logistic calibration replace the model that depended heavily on official-world references. Missing official references add no piracy evidence; titles and tags jointly supply present patterns. Unrelated games are excluded from positive training labels. Safari continues to display the complement of the private-server estimate. Automatic hiding now requires 98% estimated piracy probability. Documentation describes the model, cutoff, development comparisons and limits explicitly.
+
 - Tibia filtering (1.3.0): learned statistical inference over complete titles and tags now directly decides card visibility. Manual name lists, channel rules and lexical score overrides are removed from the live classifier. Shared word, phrase and character features are fitted from audited labels; old filter predictions are excluded from training. Uncertain results remain visible. See the [model card](docs/TWITCH_MODEL.md) for input comparisons, provenance and current detection limits.
 - Title extraction recovers visible heading text when React metadata has an empty title or the heading lacks a title attribute. Text-node updates trigger reclassification, and reused cards discard stale metadata when React props are unavailable.
 
@@ -49,6 +50,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Fixed
 
+- Safari 1.5.1: Blocked Streams has a fixed Settings back button, search and category controls. Returning preserves the settings scroll position. Native toggle edits reach visible pages without waiting for focus or the one-minute alarm, and disabled filtering clears stale blocked counts. Twitch grid regrouping no longer leaves hidden wrappers behind; turning filtering off removes all Tibia-filter marks while preserving other prompt rules.
+- Personal Safari updates detect and repair duplicate registrations of the same version, verifying one instance of each of the app's two components.
 - Tibia title filtering (1.2.4): recognize `otponline.com` and `Ibaiak-idle` even without server tags. A direct, affirmative server declaration such as `[DEUSOT]` now outweighs the generic word "global"; official worlds, "Tibia Global", negation, comparisons and sponsor commands retain their evidence handling. The statistical model already uses title words and is unchanged.
 - Updated extensions reject cached or downloaded evidence older than their bundled revision, so old rules cannot undo newly bundled corrections. Compatible current/newer revisions still update normally.
 

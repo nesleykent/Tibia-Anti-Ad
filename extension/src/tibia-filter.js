@@ -88,19 +88,36 @@
             hiddenByUs.add(cell);
         }
         else if (hiddenByUs.has(cell)) { cell.removeAttribute(MARK); hiddenByUs.delete(cell); }
+        return { cell, classified: enabled && Boolean(info), hidden: verdict === 'other' };
+    };
+
+    // Twitch can reuse or regroup grid wrappers, and copied marks outlive the
+    // WeakSet that created them. Reconcile our empty-valued marks against the
+    // cells classified in this scan; preserve nags.js's nonempty marks.
+    const reconcile = (classified = new Set(), hidden = new Set()) => {
+        for (const cell of document.querySelectorAll(`[${VERDICT}], [${MARK}=""]`)) {
+            if (!classified.has(cell)) { cell.removeAttribute(VERDICT); }
+            if (!hidden.has(cell) && cell.getAttribute(MARK) === '') {
+                cell.removeAttribute(MARK);
+                hiddenByUs.delete(cell);
+            }
+        }
     };
 
     const scan = () => {
         if ((!enabled && !probabilityEnabled) || !onTibiaDirectory()) {
             probabilityView?.clear();
+            reconcile();
             scheduleReport();
-            for (const el of document.querySelectorAll(`[${VERDICT}]`)) {
-                el.removeAttribute(VERDICT);
-                if (hiddenByUs.has(el)) { el.removeAttribute(MARK); hiddenByUs.delete(el); }
-            }
             return;
         }
-        for (const article of document.querySelectorAll('article')) { apply(article); }
+        const classified = new Set(), hidden = new Set();
+        for (const article of document.querySelectorAll('article')) {
+            const result = apply(article);
+            if (result.classified) { classified.add(result.cell); }
+            if (result.hidden) { hidden.add(result.cell); }
+        }
+        reconcile(classified, hidden);
         scheduleReport();
     };
 
@@ -120,7 +137,7 @@
         nudgeTimer = setTimeout(() => {
             nudgeTimer = 0;
             const scroller = document.querySelector('[data-a-target="root-scroller"]');
-            if (!scroller || !onTibiaDirectory()) { return; }
+            if (!scroller || !enabled || !onTibiaDirectory()) { return; }
             scroller.dispatchEvent(new Event('scroll'));
             const count = document.querySelectorAll('article').length;
             if (count !== lastCount) { lastCount = count; retries = 0; }
@@ -174,8 +191,8 @@
     // Report the hidden cards for the Safari app's popover whenever they change.
     let lastReport = '';
     const report = () => {
-        const onDirectory = enabled && onTibiaDirectory();
-        const hidden = onDirectory ? hiddenCards() : [];
+        const onDirectory = onTibiaDirectory();
+        const hidden = enabled && onDirectory ? hiddenCards() : [];
         const value = JSON.stringify([onDirectory, hidden]);
         if (value === lastReport) { return; }
         lastReport = value;
