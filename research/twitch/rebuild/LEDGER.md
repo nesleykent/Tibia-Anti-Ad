@@ -6,7 +6,7 @@ Done:
 
 - Discarded the rejected f8833f9 rebuild with a normal Git revert, retaining public history. Discarded the uncommitted classifier test experiment. Original input captures and controls remain unchanged; unrelated existing untracked files were not included.
 - Re-read original data instead of importing the rejected annotation overlay or model. Checked catalogue/project sources, protocol/launch examples, command ambiguity, spelling controls, Pokemon/idle projects and actual copied-world collisions.
-- Prepared 221 records: 114 captured metadata rows, all 65 original controls, 7 initial user examples, 1 new maintainer-reported stream, 18 constructed contrasts and 16 language counterfactuals. Current targets: 121 private, 43 not-private, 57 lacking an established target. Two individual labels are maintainer-confirmed; 219 remain pending. Every source, reason, target/context distinction and historical-label disagreement is explicit.
+- Prepared 221 records: 114 captured metadata rows, all 65 original controls, 7 initial user examples, 1 new maintainer-reported stream, 18 constructed contrasts and 16 language counterfactuals. Current targets: 121 private, 43 not-private, 57 lacking an established target. Two individual labels are maintainer-confirmed; 89 explicit-project private records are now bulk-approved and 130 remain pending. Every source, reason, target/context distinction and historical-label disagreement is explicit.
 - Imported 50 first-page catalogue host/protocol facts automatically. No catalogue candidate or annotation is approved for training.
 
 Results:
@@ -28,7 +28,9 @@ Maintainer review update, 2026-10-23:
 Files changed:
 
 - Revert of the rejected rebuild's runtime/model/report/test changes back to the pre-rebuild baseline.
-- `research/twitch/rebuild/REVIEW.md`: complete human-readable review packet and source links.
+- `research/twitch/rebuild/REVIEW.md`: compact 4-column review queue; prior full packet archived in ANNOTATION_BACKGROUND.md.
+- `research/twitch/rebuild/review-queue.json`: exact grouping, 89 bulk approvals and one deferred historical no-evidence positive.
+- `research/twitch/rebuild/DATA_GAP.md`: real-context counts and proposed additional capture before B.
 - `research/twitch/rebuild/annotation-proposals.json`: proposed labels, contexts, exact provenance and approval flags.
 - `research/twitch/rebuild/sources.json`: source manifest, hashes, coverage and limitations.
 - `research/twitch/rebuild/catalogue-candidates.json`: automatically extracted candidate facts, unapproved.
@@ -38,7 +40,7 @@ Files changed:
 
 Exact next step:
 
-**Stop. Ask the maintainer to review the proposed labels in REVIEW.md. Do not run any new training before that review.** Apply explicit corrections to this packet, then freeze approved labels and grouped separation before starting milestone B. Do not automatically treat approval of the process as approval of every unresolved target.
+**Stop at A. Await review only of the compact queue in REVIEW.md and collect the missing real sponsorship negatives before B. Do not run any new training before review.** Apply explicit corrections to this packet, then freeze approved labels and grouped separation before starting milestone B. Do not automatically treat approval of the process as approval of every unresolved target.
 
 Remaining milestones:
 
@@ -46,3 +48,17 @@ Remaining milestones:
 - C: Python/JS parity, complement percentage and hiding integration, browser checks, signed Safari update, commit/push. Stop with an updated ledger.
 
 The installed Safari app was not changed during the data milestone. Reverting repository source is not installation of a new classifier. All three milestone changes must be committed and pushed directly to main without force-pushing.
+
+Compact review update, 2026-10-23:
+
+- Done: replaced the 219-pending-row review burden with one ordered 4-column table: 122 groups cover 131 requested records (57 missing targets, 43 not-private, 18 command-based private and 13 spelling/format-variant private). Two already-confirmed examples remain marked for reference. Exact duplicates and language-only children are grouped.
+- Results: 89 explicit-project private records bulk-approved under the maintainer instruction, preserving all targets/reasons and training gates. audit:7 has no observable private identifier, stays deferred/pending, and is excluded from the bulk approval.
+- Data gap: 115 real records, 107 identified channels; 14 promotion records comprise 13 proposed private primary presentations and only 1 confirmed original-session sponsorship negative. No natural negation; the lone natural comparison is against monsters. Insufficient to learn session vs sponsorship reliably.
+- Next: review the compact queue, gather independently verified real sponsorship-list negatives and matched session-command positives, then return with the new annotations before any model fitting. Proposed initial enrichment: 50 of each, with negative examples from at least 30 channels over at least 3 days. Reserve a separate natural sample for calibration/testing.
+- Files: REVIEW.md, ANNOTATION_BACKGROUND.md, review-queue.json, DATA_GAP.md, annotation-proposals.json, sources.json, validate_review.py, LEDGER.md. No runtime/model/extension changes.
+
+Context acceptance update:
+
+- Recorded the maintainer's exact session-command title and the full confirmed sponsor-list title in `tests/data/tibia-private-context-acceptance.json`. Same `!rubinot`, opposite required probability behavior; no fixed per-term contribution is acceptable.
+- Added `check_context_acceptance.py`, an executable output checker for each future runtime. Acceptance bounds: session >=95%, sponsorship <=5%. These are test bounds, not hiding thresholds or measured calibration. Fixtures remain outside training and held-out metrics. No classifier acceptance pass is claimed yet.
+- Next B/C verification must run actual inference on these exact title/tag inputs and pass the checker independently for Python and JS. No fit or runtime changes made now.

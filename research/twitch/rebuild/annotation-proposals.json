@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "PROPOSED: maintainer review required before training",
-  "approval_gate": "Two individual labels confirmed by maintainer; all other labels pending. No record is authorized for training and milestone B has not been approved.",
+  "approval_gate": "Explicit-project private labels approved in bulk; two individual labels confirmed. Remaining compact queue awaits review. No record authorized for training; milestone B not approved.",
   "annotation_method": "Fresh explicit per-example proposals from original source inputs and cited public facts; no rejected model, predictions, weights or label overlays read.",
   "target": "P(private server), not all unrelated games and not P(official Tibia)",
   "source_files": {
@@ -43,7 +43,8 @@
       "None": 21
     },
     "review_status": {
-      "pending": 219,
+      "maintainer_bulk_approved": 89,
+      "pending": 130,
       "maintainer_confirmed": 2
     }
   },
@@ -74,7 +75,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -87,7 +88,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:1",
@@ -115,7 +118,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -128,7 +131,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:2",
@@ -157,7 +162,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -170,7 +175,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:3",
@@ -198,7 +205,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -211,7 +218,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:4",
@@ -239,7 +248,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -252,7 +261,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:5",
@@ -375,7 +386,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -388,7 +399,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:9",
@@ -416,7 +429,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -429,7 +442,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:10",
@@ -457,7 +472,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -470,7 +485,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:11",
@@ -578,7 +595,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -591,7 +608,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:15",
@@ -619,7 +638,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -632,7 +651,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:17",
@@ -660,7 +681,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -673,7 +694,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:20",
@@ -755,7 +778,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -768,7 +791,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:23",
@@ -799,7 +824,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -812,7 +837,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:24",
@@ -838,7 +865,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -851,7 +878,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:25",
@@ -1037,7 +1066,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1050,7 +1079,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:31",
@@ -1078,7 +1109,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1091,7 +1122,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:32",
@@ -1120,7 +1153,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1133,7 +1166,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:37",
@@ -1161,7 +1196,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1174,7 +1209,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:39",
@@ -1243,7 +1280,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1256,7 +1293,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:42",
@@ -1362,7 +1401,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1375,7 +1414,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:50",
@@ -1440,7 +1481,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1462,7 +1503,9 @@
           "focus": "secondary",
           "reason": "Referral link for another project; not the primary SOE session declaration."
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:53",
@@ -1491,7 +1534,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1504,7 +1547,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:55",
@@ -1573,7 +1618,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1586,7 +1631,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:80",
@@ -1612,7 +1659,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1625,7 +1672,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:86",
@@ -1731,7 +1780,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1753,7 +1802,9 @@
           "focus": "secondary",
           "reason": "Future opening mentioned beside a separate primary server."
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:95",
@@ -1820,7 +1871,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1842,7 +1893,9 @@
           "focus": "secondary",
           "reason": "Proposed incidental server command beside explicit KoliseuOT declaration; human review required."
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:98",
@@ -1868,7 +1921,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1881,7 +1934,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:107",
@@ -1910,7 +1965,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -1923,7 +1978,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:109",
@@ -2156,7 +2213,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2169,7 +2226,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:132",
@@ -2368,7 +2427,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2381,7 +2440,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:164",
@@ -2410,7 +2471,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2423,7 +2484,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:172",
@@ -2449,7 +2512,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2462,7 +2525,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:175",
@@ -2586,7 +2651,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2599,7 +2664,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:213",
@@ -2627,7 +2694,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2640,7 +2707,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:218",
@@ -2789,7 +2858,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2802,7 +2871,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:257",
@@ -2881,7 +2952,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2894,7 +2965,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:260",
@@ -2963,7 +3036,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -2976,7 +3049,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:271",
@@ -3002,7 +3077,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3015,7 +3090,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:272",
@@ -3177,7 +3254,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3190,7 +3267,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:297",
@@ -3257,7 +3336,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3270,7 +3349,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:326",
@@ -3491,7 +3572,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3504,7 +3585,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:384",
@@ -3571,7 +3654,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3584,7 +3667,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:396",
@@ -3731,7 +3816,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3744,7 +3829,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "audit:429",
@@ -3971,7 +4058,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -3984,7 +4071,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:1",
@@ -4010,7 +4099,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -4023,7 +4112,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:2",
@@ -4049,7 +4140,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -4062,7 +4153,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:3",
@@ -4208,7 +4301,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -4221,7 +4314,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:7",
@@ -4940,7 +5035,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -4953,7 +5048,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:25",
@@ -5062,7 +5159,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -5075,7 +5172,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:28",
@@ -5142,7 +5241,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -5155,7 +5254,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:30",
@@ -5181,7 +5282,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -5194,7 +5295,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:31",
@@ -6019,7 +6122,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -6032,7 +6135,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:52",
@@ -6101,7 +6206,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -6114,7 +6219,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:54",
@@ -6142,7 +6249,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -6155,7 +6262,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:55",
@@ -6307,7 +6416,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -6320,7 +6429,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "cases:59",
@@ -6586,7 +6697,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -6599,7 +6710,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "live2115:121",
@@ -6625,7 +6738,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -6638,7 +6751,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "live2115:154",
@@ -6664,7 +6779,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -6677,7 +6792,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "live2115:196",
@@ -6703,7 +6820,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -6716,7 +6833,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "live2115:237",
@@ -6841,7 +6960,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -6854,7 +6973,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "live2115:402",
@@ -6882,7 +7003,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -6895,7 +7016,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "live2115:528",
@@ -6923,7 +7046,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -6936,7 +7059,9 @@
           "context": "promotion",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "live2115:551",
@@ -7005,7 +7130,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -7018,7 +7143,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "live2115:460",
@@ -7074,10 +7201,12 @@
       "evidence_sources": [],
       "reason": "User explicitly designated this as affirmative private-launch evidence; not a captured/independently observed live stream.",
       "annotation_author": "assistant proposal grounded in explicit user example",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "user_supplied_challenge"
+      "data_role": "user_supplied_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "user:1",
@@ -7092,10 +7221,12 @@
       "evidence_sources": [],
       "reason": "User-supplied unseen-name/version/open-beta evidence example.",
       "annotation_author": "assistant proposal grounded in explicit user example",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "user_supplied_challenge"
+      "data_role": "user_supplied_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "user:2",
@@ -7110,10 +7241,12 @@
       "evidence_sources": [],
       "reason": "User opening example; corroborating real captures exist but no active gameplay verification.",
       "annotation_author": "assistant proposal grounded in explicit user example",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "user_supplied_challenge"
+      "data_role": "user_supplied_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "user:3",
@@ -7128,10 +7261,12 @@
       "evidence_sources": [],
       "reason": "User-supplied OT-name example, also appears in captures.",
       "annotation_author": "assistant proposal grounded in explicit user example",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "user_supplied_challenge"
+      "data_role": "user_supplied_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "user:4",
@@ -7229,10 +7364,12 @@
       ],
       "reason": "Distinct catalogued endpoint plus protocol disambiguates private Antica Retro.",
       "annotation_author": "assistant-created controlled contrast for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "constructed_challenge"
+      "data_role": "constructed_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "contrast:2",
@@ -7270,10 +7407,12 @@
       ],
       "reason": "Project/domain context resolves Refugia to an independent server.",
       "annotation_author": "assistant-created controlled contrast for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "constructed_challenge"
+      "data_role": "constructed_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "contrast:4",
@@ -7403,10 +7542,12 @@
       ],
       "reason": "Pokemon project acronym must remain covered.",
       "annotation_author": "assistant-created controlled contrast for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "constructed_challenge"
+      "data_role": "constructed_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "contrast:11",
@@ -7423,10 +7564,12 @@
       ],
       "reason": "Pokemon project acronym must remain covered.",
       "annotation_author": "assistant-created controlled contrast for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "constructed_challenge"
+      "data_role": "constructed_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "contrast:12",
@@ -7443,10 +7586,12 @@
       ],
       "reason": "Idle project must remain covered.",
       "annotation_author": "assistant-created controlled contrast for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "constructed_challenge"
+      "data_role": "constructed_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "contrast:13",
@@ -7464,10 +7609,12 @@
       ],
       "reason": "Idle family must remain covered, exact project unresolved.",
       "annotation_author": "assistant-created controlled contrast for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
-      "data_role": "constructed_challenge"
+      "data_role": "constructed_challenge",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "contrast:14",
@@ -7517,9 +7664,11 @@
       "proposed_stream_private": "private",
       "proposed_affirmative_private_evidence": true,
       "reason": "Counterfactual language-tag check, not new independent truth or evaluation observation.",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
-      "data_role": "constructed_invariance"
+      "data_role": "constructed_invariance",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Language-only counterfactual inherits bulk-approved explicit-project parent."
     },
     {
       "id": "invariance:audit:14:English",
@@ -7533,9 +7682,11 @@
       "proposed_stream_private": "private",
       "proposed_affirmative_private_evidence": true,
       "reason": "Counterfactual language-tag check, not new independent truth or evaluation observation.",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
-      "data_role": "constructed_invariance"
+      "data_role": "constructed_invariance",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Language-only counterfactual inherits bulk-approved explicit-project parent."
     },
     {
       "id": "invariance:audit:14:Español",
@@ -7549,9 +7700,11 @@
       "proposed_stream_private": "private",
       "proposed_affirmative_private_evidence": true,
       "reason": "Counterfactual language-tag check, not new independent truth or evaluation observation.",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
-      "data_role": "constructed_invariance"
+      "data_role": "constructed_invariance",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Language-only counterfactual inherits bulk-approved explicit-project parent."
     },
     {
       "id": "invariance:audit:14:Polski",
@@ -7565,9 +7718,11 @@
       "proposed_stream_private": "private",
       "proposed_affirmative_private_evidence": true,
       "reason": "Counterfactual language-tag check, not new independent truth or evaluation observation.",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
-      "data_role": "constructed_invariance"
+      "data_role": "constructed_invariance",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Language-only counterfactual inherits bulk-approved explicit-project parent."
     },
     {
       "id": "invariance:cases:31:Português",
@@ -7645,9 +7800,11 @@
       "proposed_stream_private": "private",
       "proposed_affirmative_private_evidence": true,
       "reason": "Counterfactual language-tag check, not new independent truth or evaluation observation.",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
-      "data_role": "constructed_invariance"
+      "data_role": "constructed_invariance",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Language-only counterfactual inherits bulk-approved explicit-project parent."
     },
     {
       "id": "invariance:user:0:English",
@@ -7661,9 +7818,11 @@
       "proposed_stream_private": "private",
       "proposed_affirmative_private_evidence": true,
       "reason": "Counterfactual language-tag check, not new independent truth or evaluation observation.",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
-      "data_role": "constructed_invariance"
+      "data_role": "constructed_invariance",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Language-only counterfactual inherits bulk-approved explicit-project parent."
     },
     {
       "id": "invariance:user:0:Español",
@@ -7677,9 +7836,11 @@
       "proposed_stream_private": "private",
       "proposed_affirmative_private_evidence": true,
       "reason": "Counterfactual language-tag check, not new independent truth or evaluation observation.",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
-      "data_role": "constructed_invariance"
+      "data_role": "constructed_invariance",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Language-only counterfactual inherits bulk-approved explicit-project parent."
     },
     {
       "id": "invariance:user:0:Polski",
@@ -7693,9 +7854,11 @@
       "proposed_stream_private": "private",
       "proposed_affirmative_private_evidence": true,
       "reason": "Counterfactual language-tag check, not new independent truth or evaluation observation.",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
-      "data_role": "constructed_invariance"
+      "data_role": "constructed_invariance",
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Language-only counterfactual inherits bulk-approved explicit-project parent."
     },
     {
       "id": "invariance:contrast:14:Português",
@@ -7785,12 +7948,14 @@
       ],
       "reason": "Explicit named private project; title-only capture, no tags available.",
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "raw1400:11",
@@ -7910,12 +8075,14 @@
       ],
       "reason": "Explicit playing-on-private phrasing, not command-only inference.",
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "raw1400:119",
@@ -7988,12 +8155,14 @@
       ],
       "reason": "Named world matches catalogue RubinOT endpoint; exact referent is public server fact, not a common-word fragment.",
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "raw1400:239",
@@ -8017,12 +8186,14 @@
       "evidence_sources": [],
       "reason": "Affirmative domain/protocol declaration; no independent operator verification yet.",
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "raw1400:333",
@@ -8092,12 +8263,14 @@
       "evidence_sources": [],
       "reason": "Affirmative bracketed OT-bearing project without a known-name requirement.",
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "raw1400:453",
@@ -8123,12 +8296,14 @@
       ],
       "reason": "Same launch template in another capture; must group with duplicates for later evaluation, not count as independent proof.",
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
       "label_disagreement": false,
-      "historical_label_not_usable_as_binary_truth": false
+      "historical_label_not_usable_as_binary_truth": false,
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "contrast:16",
@@ -8146,7 +8321,7 @@
       ],
       "reason": "Negation applies to RubinOT only. DeusOT is a separate affirmative current-session declaration. Whole-title negation filtering would be incorrect.",
       "annotation_author": "assistant-created controlled scope contrast for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "constructed_challenge",
@@ -8167,7 +8342,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "contrast:17",
@@ -8185,7 +8362,7 @@
       ],
       "reason": "Comparison clause does not erase separate affirmative DeusOT session. Whole-title comparison filtering would be incorrect.",
       "annotation_author": "assistant-created controlled scope contrast for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_bulk_approved",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "constructed_challenge",
@@ -8206,7 +8383,9 @@
           "context": "session",
           "focus": "primary"
         }
-      ]
+      ],
+      "review_source": "maintainer-compact-review-2026-10-23",
+      "bulk_approval_basis": "Explicit project identifier; language-only counterfactuals inherit parent approval."
     },
     {
       "id": "maintainer-example:0",

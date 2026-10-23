@@ -216,6 +216,12 @@
       "kind": "explicit_maintainer_label_review",
       "date": "2026-10-23",
       "finding": "Maintainer resolves raw1400:16 as private and supplies a contrasting original-server title with multiple sponsorship commands. This review labels these inputs only; it is not a per-channel rule or blanket rule based on command counts."
+    },
+    {
+      "id": "maintainer-compact-review-2026-10-23",
+      "kind": "explicit_maintainer_bulk_label_review",
+      "date": "2026-10-23",
+      "finding": "Maintainer bulk-approves private rows with explicit project identifiers unless flagged, requests all missing targets, all not-private rows and command-only or spelling-variant private rows in a compact queue. Approval of labels does not authorize training; source/operator verification limitations remain recorded."
     }
   ]
 }

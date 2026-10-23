@@ -26,10 +26,15 @@ def main():
     ids = {row['id'] for row in annotations}
     for row in annotations:
         assert row['source_id'] in known_sources, row['id']
-        assert row['approval'] in {'pending', 'maintainer_confirmed'} and not row['use_in_training'], row['id']
+        assert row['approval'] in {'pending', 'maintainer_confirmed', 'maintainer_bulk_approved'} and not row['use_in_training'], row['id']
         if row['approval'] == 'maintainer_confirmed':
             assert row['review_source'] in known_sources, row['id']
             assert next(source for source in sources if source['id'] == row['review_source'])['kind'] == 'explicit_maintainer_label_review'
+        if row['approval'] == 'maintainer_bulk_approved':
+            assert row['proposed_stream_private'] == 'private'
+            assert row['review_source'] in known_sources
+            assert next(source for source in sources if source['id'] == row['review_source'])['kind'] == 'explicit_maintainer_bulk_label_review'
+            assert row['bulk_approval_basis']
         assert row['proposed_context'] in {'session', 'promotion', 'negation', 'comparison', 'unresolved', 'no_evidence'}
         assert row['proposed_stream_private'] in {'private', 'not_private', None}
         assert row['proposed_affirmative_private_evidence'] in {True, False, None}
@@ -67,10 +72,35 @@ def main():
     assert confirmed['maintainer-example:0']['proposed_affirmative_private_evidence'] is False
     assert confirmed['raw1400:16']['contrast_group'] == confirmed['maintainer-example:0']['contrast_group']
     assert sum(row['data_role'] == 'historical_control' for row in annotations) == 65
+    queue = json.loads((DIRECTORY / 'review-queue.json').read_text())
+    queued = [identifier for group in queue['groups'] for identifier in group['ids']]
+    assert len(queued) == len(set(queued)) == 131
+    assert len(queue['groups']) == 122
+    assert [group['category'] for group in queue['groups']] == sorted(group['category'] for group in queue['groups'])
+    by_id = {row['id']: row for row in annotations}
+    assert {row['id'] for row in annotations if row['proposed_stream_private'] in {None, 'not_private'}} <= set(queued)
+    assert set(queue['bulk_approved_ids']) == {row['id'] for row in annotations if row['approval'] == 'maintainer_bulk_approved'}
+    assert len(queue['bulk_approved_ids']) == 89
+    assert set(queued).isdisjoint(queue['bulk_approved_ids'])
+    assert set(queued) | set(queue['bulk_approved_ids']) | set(queue['deferred_ids']) == ids
+    assert queue['deferred_ids'] == ['audit:7']
+    assert by_id['audit:7']['approval'] == 'pending'
+    for group in queue['groups']:
+        for identifier in group['ids']:
+            row = by_id[identifier]
+            assert row['proposed_stream_private'] == group['proposed_label']
+            assert row['proposed_context'] == group['context']
+    for row in annotations:
+        if row['approval'] == 'maintainer_bulk_approved' and 'parent_id' in row:
+            assert by_id[row['parent_id']]['approval'] == 'maintainer_bulk_approved'
+    real = [row for row in annotations if row['data_role'] in {'captured_metadata', 'maintainer_reported_stream_example'}]
+    assert len(real) == 115
+    assert Counter(row['proposed_context'] for row in real) == {'session': 79, 'promotion': 14, 'no_evidence': 9, 'unresolved': 12, 'comparison': 1}
+    assert [row['id'] for row in real if row['proposed_context'] == 'promotion' and row['proposed_stream_private'] == 'not_private'] == ['maintainer-example:0']
     catalogue = json.loads((DIRECTORY / 'catalogue-candidates.json').read_text())
     assert len(catalogue['entries']) == 50
     assert all(not row['approved'] and row['catalogue_url'].startswith('https://otservlist.net/') for row in catalogue['entries'])
-    print(f'PASS {len(annotations)} review records (2 maintainer-confirmed), exact source spans/hashes, 50 unapproved catalogue facts; no training approvals')
+    print(f'PASS {len(annotations)} review records (2 individually confirmed, 89 bulk-approved), 122 compact groups / 131 records, exact source spans/hashes, 50 unapproved catalogue facts; no training approvals')
 
 
 if __name__ == '__main__':

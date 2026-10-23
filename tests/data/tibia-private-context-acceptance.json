@@ -1,0 +1,27 @@
+{
+  "target": "P(private server)",
+  "status": "Acceptance contract for the new model; not a held-out evaluation dataset or training data.",
+  "provenance": "Maintainer explicitly requires the same server command to have different contributions according to title context. Probability bounds operationalize high and low for these acceptance examples; they are not fitted calibration results or hiding thresholds.",
+  "cases": [
+    {
+      "id": "server-command-as-session",
+      "title": "WAR?? KKKK | !rubinot",
+      "tags": [],
+      "context": "session",
+      "private_probability_min": 0.95,
+      "private_probability_max": 1.0,
+      "reason": "The server command is essentially the only identifier and identifies the private session.",
+      "source": "Exact title supplied and labelled by the maintainer in the context-acceptance instruction."
+    },
+    {
+      "id": "server-command-as-sponsor",
+      "title": "baratuca tryhard + radinho 🪳 MS 2850 ⭐ !LOJA 50 tc/mês SEM SUB - SUB 100 TC/mês !yt👈🏻 !exitlag !golden !moedaz !rubinot",
+      "tags": [],
+      "context": "promotion",
+      "private_probability_min": 0.0,
+      "private_probability_max": 0.05,
+      "reason": "The same server command is incidental within sponsorship/shop commands during a maintainer-confirmed original-server session.",
+      "source": "annotation-proposals.json:maintainer-example:0; original tags were not supplied. Acceptance input deliberately uses an empty tag field."
+    }
+  ]
+}

@@ -1,0 +1,2191 @@
+{
+  "selection": "All missing targets, all not-private targets, private command-only or spelling-variant candidates. Exact duplicate metadata and language-only counterfactuals grouped, with every ID preserved. This is an annotation-review selection, not an inference rule.",
+  "groups": [
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:25"
+      ],
+      "title": "O BEM SEMPRE VENCE ⚔️ ❗Dracoins ❗soe ❗shadow ❗rubinot",
+      "tags": [
+        "Dropshabilitados",
+        "Tibia",
+        "English"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Several server commands; title does not identify session or advertisement scope.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:27"
+      ],
+      "title": "[ESP][PT][EN] - Feliz cumple @gene_art - 10 dias para 1Y de stream -",
+      "tags": [
+        "Druid",
+        "Monk",
+        "portugués",
+        "English"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Personal title and vocations/languages cannot identify server; historical unresolved category retained as missing annotation, not runtime state.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:28"
+      ],
+      "title": "Dia de phosporito :p bosses y hunt",
+      "tags": [
+        "EliteKnight",
+        "MMORPG",
+        "ADC",
+        "Jungla"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Generic gameplay cannot determine private status.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:29"
+      ],
+      "title": "[KING ASLAN] MARKET GLOBAL !KINGASLAN !MOEDAZ !LOJA !AJUDA... @riickgamez",
+      "tags": [
+        "Ravendawn",
+        "tibia",
+        "Português",
+        "tutoriais"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "session",
+      "reason": "Named project, but operator identity not independently sourced in this packet. global does not establish officialness.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:42"
+      ],
+      "title": "✋🤪🤚 - EK 2450 -❗!loja❗😱50tc/mês😱⚠️não reseta⚠️ !rubinot - !neo !exitlag",
+      "tags": [
+        "Tibia",
+        "Inglês",
+        "TDAH",
+        "twinkmaldito"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "No corroborating server declaration; role/level and generic command context are insufficient to settle session vs promotion.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:50"
+      ],
+      "title": "[1280 EK/ 501 Monk] Gnomprona hunt 3 voc// FLASHING LIGHTS⚠️ LOUD VOLUME⚠️⚠️ GRUMPY STREAMER⚠️⚠️⚠️",
+      "tags": [
+        "englìsh",
+        "knight",
+        "grumpy",
+        "English"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Content exists in copied servers; do not turn probable-official into verified negative.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:90"
+      ],
+      "title": "ENG / SWE / PL - Wtb 1800-2000 ED, Optional Pvp GBE",
+      "tags": [
+        "English",
+        "Sweden",
+        "Diablo",
+        "Polski"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Generic trade/vocation terminology is not server evidence.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:155"
+      ],
+      "title": "[ENG] Tibia | Kalante EU - lvl 100?",
+      "tags": [
+        "deutsch",
+        "tibiagameplay",
+        "polish",
+        "English"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "session",
+      "reason": "Kalante is not Kalanta. Cannot validate private identity by one-letter similarity to an official world or old audit assertion.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:159"
+      ],
+      "title": "Tibia - Elder Druid -Projeto druid dos sonhos terribra. - Ferobra/Terribra - 1050/500",
+      "tags": [
+        "ED",
+        "rubinot",
+        "quelibra",
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "session",
+      "reason": "Official-world title and RubinOT tag conflict. Do not manufacture active-session truth.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:179"
+      ],
+      "title": "@Pulgazin [+18] ED 1600/2100 - Terribra/Ferobra !pix baiak-idle",
+      "tags": [
+        "Português",
+        "baiakidle",
+        "BAIAKIDLE"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Two official world declarations plus idle-game title/tag. Historical official label is not established.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:218"
+      ],
+      "title": "RUMO AO LVL 500 TIBIA GLOBAL INABRA| OT:FANTASYDREAM.ONLINE_/_/_/_/ SO OTHERS MAY LIFE_/_/_/_/_/ !COINS !LOJA !OT",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Two incompatible declarations, no authoritative active-session fact.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:257"
+      ],
+      "title": "Tibia Global - Etebra - ED 990+ Solo - ED 400 JOGABILIDADE DUVIDOSA e HUNTED",
+      "tags": [
+        "Druid",
+        "hunted",
+        "rubinot",
+        "Tibia",
+        "idle"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "session",
+      "reason": "Title declaration with RubinOT tag contradiction; target not independently confirmed.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:281"
+      ],
+      "title": "A melhor estratégia para você ter sucesso nessa jornada é...",
+      "tags": [
+        "tibiaglobal",
+        "English",
+        "Português",
+        "pobre"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Generic official-looking tag with personal title does not establish private/not-private truth.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:283"
+      ],
+      "title": "Rubinot, Aion 2, COD, LOL e Muita Resenha, cola ai!!",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Mixes private project and standalone games. Binary on-private status remains unverified.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:326"
+      ],
+      "title": "Farm..",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "No observable private identity. Neither language nor farm may be labelled a private signal.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:384"
+      ],
+      "title": "𝐓𝐢𝐛𝐢𝐚 𝐆𝐥𝐨𝐛𝐚𝐥 𝐞 𝐑𝐮𝐛𝐢𝐧𝐨𝐭 !𝐣𝐚𝐩𝐚𝐜𝐨𝐢𝐧𝐬",
+      "tags": [
+        "Português",
+        "Reposição"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Parallel official/private declarations; do not infer active session from word order.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:396"
+      ],
+      "title": "SÓ TRABALHO COM SOULWAR, ROTTEN BLOOD, MAKE BELIVE & GRAVEBORN [MIC OFF]",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Copied game content can occur on private servers; no official probability bonus.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:422"
+      ],
+      "title": "MOXTRAO Br gameplays ED /EK/MS . Jogando: Tibia e The Elder Scroll Online.",
+      "tags": [
+        "conversas",
+        "EK",
+        "Português",
+        "humor"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Two games, neither establishes a private-server session.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:429"
+      ],
+      "title": "SERVICE DO RICHAO- FARM SEUS PONTOS - TITAN 3 -- AGENDE SEEU HORARIO! TENTANDO VIVER DE GAMES --- COLAAA",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Old evidence says PKA tag, but actual original tag is only Portugues. Service/Titan alone does not identify private server.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:433"
+      ],
+      "title": "Mais uma semana começando !social !discord !pix",
+      "tags": [
+        "Português",
+        "Tibia",
+        "rubinot"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Only server tag with neutral title. Could be stale/promotion; no channel-based resolution.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:450"
+      ],
+      "title": "Tibia - Dreamer's challenge Quest with Lore",
+      "tags": [
+        "English",
+        "projectfibula",
+        "Repetir",
+        "Tibiawar"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Historical probable-official content conflicts with named-project tag; project source not verified.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "audit:452"
+      ],
+      "title": "@igaobraga - Linked || MS 1050+ Bounty e umas Linked com muita resenha ||",
+      "tags": [
+        "chatting",
+        "igão",
+        "chat",
+        "RUBINIOT"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Only variant server tag; proposed alias needs review and session/promotion cannot be assumed.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:3"
+      ],
+      "title": "@Pulgazin [+18] ED 1600/2100 - Terribra/Ferobra !pix baiak-idle",
+      "tags": [
+        "baiakidle",
+        "BAIAKIDLE"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Official-world and private-idle declarations conflict.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:4"
+      ],
+      "title": "Bora de LAWL NEW ERA! RPG 2D + resenha",
+      "tags": [
+        "RPG"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "session",
+      "reason": "Game identity and private-server status need a source; old other verdict is not truth.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:7"
+      ],
+      "title": "troyale.online | colheitafeliz.farm | tibia.farm | tfight.online | glober.click",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Several domains, unclear project types and active session. Do not label solely by TLD.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:8"
+      ],
+      "title": "Project Fibula?",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Question-style project mention; current operator identity not verified.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:9"
+      ],
+      "title": "24H | LOJINHA COM PONTOS SEM RESET! | DASHcoins.com.br/Loja | [CADA 250TC R$ 51,00]",
+      "tags": [
+        "TibiaCoins"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Merchant/loyalty programme URL is not a game-server identity.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:23"
+      ],
+      "title": "Kingaslam - farm",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "session",
+      "reason": "Possible misspelling of King Aslan; operator identity not verified in packet.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:25"
+      ],
+      "title": "SERVICE FARM - TITAN 2 - agende",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Without PKA identifier, service and Titan do not establish private-server status. Disagree with certainty of old other label.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:28"
+      ],
+      "title": "farm 24h",
+      "tags": [
+        "Tibia"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Channel name ignored; title/tag do not identify a private server.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:33"
+      ],
+      "title": "Tibia Global vs RubinOT: qual e melhor?",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "comparison",
+      "reason": "Comparison does not specify active session. Stream target unknown; affirmative-private-evidence annotation is false.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:36"
+      ],
+      "title": "Hunters de Venore",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Shared game-city name is not a server identifier.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:37"
+      ],
+      "title": "Rubino jogando Tibia",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Rubino may be a person; approximate spelling must not convert it into a private-server name automatically.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:38"
+      ],
+      "title": "Medicina e Tibia",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Unrelated ordinary word must not become Medivia through fuzzy matching.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:39"
+      ],
+      "title": "Winter update hunts",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Generic gameplay/update context must not become Wintera or private evidence.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:44"
+      ],
+      "title": "bom dia galera, hunt de EK",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Generic gameplay/vocation, no server assertion.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:45"
+      ],
+      "title": "double xp 2x exp event",
+      "tags": [
+        "tibiaglobal"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Normal event/rate wording not enough to assert private server; tibiaglobal tag not truth.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:47"
+      ],
+      "title": "(DROPS ON) SERVER novo",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "promotion",
+      "reason": "Generic new-server phrase lacks an identified project/protocol. Official servers also open. Review needed before treating this alone as private.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:48",
+        "cases:49"
+      ],
+      "title": "EK 2500 hunt",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Historical target depended on image-derived input. Metadata alone has no private evidence; image fields excluded.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:55"
+      ],
+      "title": "Tibia Global vs DeusOT: qual é melhor?",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "comparison",
+      "reason": "Comparison does not assert current private session.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:59"
+      ],
+      "title": "Global! de 0 a 500",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Bare global does not establish private/not-private status. Earlier official verdict is unsupported.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:62"
+      ],
+      "title": "live do shiny",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Generic Pokemon/gameplay word and language do not identify private server.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "cases:64"
+      ],
+      "title": "[DROPS ON] SUN - LVL 533 HZ 14 // !metagross // CUPOM \"MAD\" 10% DE BONUS NO DD! //",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "No PKA tag in this input. Coupon, Sun, level, hazard and chat command cannot silently substitute for missing project identity.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "live2115:237"
+      ],
+      "title": "BORA DE HUNT,  !kingaslan",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Single server-like command with generic hunt context; unresolved operator identity and session role.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "live2115:551"
+      ],
+      "title": "[BUFF ON] Poke Idle World - 50% AFK Tô no DOTA ~ [NO ADS]",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "unresolved",
+      "reason": "Idle game and DOTA simultaneously mentioned; actual streamed session needs review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "user:6"
+      ],
+      "title": "Tibia Global vs RubinOT",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "comparison",
+      "reason": "User-supplied comparison, not an active-session claim.",
+      "roles": [
+        "user_supplied_challenge"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "contrast:0"
+      ],
+      "title": "Antica",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "session",
+      "reason": "Bare copied world name has no disambiguating context.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "contrast:2"
+      ],
+      "title": "Refugia",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "session",
+      "reason": "Official world and independent PixelOT project use the same name.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "contrast:4"
+      ],
+      "title": "shadow no monitor, vou ajustar a luz",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Ordinary-word collision control. No project is asserted.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "contrast:9"
+      ],
+      "title": "Perdi o loot, !loot !pix !hunt",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Generic command and ordinary OT-letter suffixes must not become server names.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "contrast:14",
+        "invariance:contrast:14:Português",
+        "invariance:contrast:14:English",
+        "invariance:contrast:14:Español",
+        "invariance:contrast:14:Polski"
+      ],
+      "title": "hunt bosses",
+      "tags": [],
+      "tag_variants": [
+        "Português",
+        "English",
+        "Español",
+        "Polski"
+      ],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Required neutral gameplay control; no target truth inferred.",
+      "roles": [
+        "constructed_challenge",
+        "constructed_invariance"
+      ]
+    },
+    {
+      "category": "1_sem_alvo",
+      "ids": [
+        "contrast:15"
+      ],
+      "title": "Português",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": null,
+      "context": "no_evidence",
+      "reason": "Required neutral language control; no target truth inferred.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:11"
+      ],
+      "title": "Paladin 3100+ xD Tibia Global !essences !hk",
+      "tags": [
+        "Paladin",
+        "Português",
+        "Tibia"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Proposed negative from self-declaration only, not verified live gameplay. Not an official-looking predictor feature.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:13"
+      ],
+      "title": "[294/365] Rasteibra [GLOBAL] EK's 1460+/1300+ RP DO ZERO DIA 45! !coins !exitlag !nobreak !loja",
+      "tags": [
+        "MMORPG",
+        "Conversação",
+        "Rasteibra",
+        "EK"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official-world session declaration used only to propose a negative label, never to score officialness.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:39"
+      ],
+      "title": "Ferobra !exitlag !bday !patxoken COMPRO TODOS OS EDS 1500+ PVP AMARELO",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official-world declaration for negative annotation only.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:45"
+      ],
+      "title": "[TIBIA GLOBAL] BORA PRO RUSH !projeto",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Proposed negative self-declaration, not independent active-game verification.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:55"
+      ],
+      "title": "[PT-BR/ENG] FEROBRA WAR - LOJA RESETADA - !tracklay !selltc !coins !farm !exitlag !livepix !playlists !loja !ad !points #tsbot.io",
+      "tags": [
+        "Inabra",
+        "English",
+        "Tibia",
+        "Jadebra"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "World declaration is negative annotation evidence only.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:86"
+      ],
+      "title": "[GLOBAL] ED 1900+",
+      "tags": [
+        "Gentebra",
+        "Brasil",
+        "Português",
+        "cipsoft"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Full card has Gentebra and cipsoft tags. Negative proposal; none becomes a predictive official feature.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:95"
+      ],
+      "title": "é o RUSHAS e não para | WAR FEROBRA !exitlag !service !ts",
+      "tags": [
+        "RPG",
+        "IRL",
+        "MMORPG",
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official-world declaration; target proposal requires human review like every other example.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:115"
+      ],
+      "title": "{GLOBAL} PARTIU X4!!| !SORTEIO | !LOJA | !ZAP | !EXITLAG",
+      "tags": [
+        "bounty",
+        "conversando",
+        "EK",
+        "tibiaglobal"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Historical proposed negative self-declaration; weak because global is also used by private servers. Needs review, not a feature.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:132"
+      ],
+      "title": "(18+)[PT/BR] ELDRIUS ONLINE MMORPG || TOP LEVEL WARRIOR. !eldrius !pix",
+      "tags": [
+        "helmoonline",
+        "Kakele",
+        "cambria"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Earlier category is other game, not proof of a private Tibia server. Proposed target exclusion; identity needs independent verification.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:230"
+      ],
+      "title": "farmando nas bounty e resenhando !coins !tibiacoins !coin",
+      "tags": [
+        "Português",
+        "floribra",
+        "yubra",
+        "knight"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official-world tag overlooked in old audit; proposed negative, not a reward in model.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:249"
+      ],
+      "title": "Ek 1190+ skills 140/125 -- !service Ek 830+",
+      "tags": [
+        "PortuguêsBR",
+        "Português",
+        "inabra"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Negative proposed from official-world tag; generic hunt/role alone not useful.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:260"
+      ],
+      "title": "War Win Quidera - Runera - Xymera - War Wintera - NEW server Westera",
+      "tags": [
+        "lol",
+        "Tibia",
+        "Repetir",
+        "Español"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Counterexample to treating every new-server phrase as private: roster identifies Westera. Used for labels/collision safety only.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:297"
+      ],
+      "title": "bora dormi",
+      "tags": [
+        "Bosses",
+        "Português",
+        "Serdebra",
+        "knight"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official-world tag was overlooked in historical unresolved classification; proposed negative label only.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:351"
+      ],
+      "title": "🟢WRÓCIŁĘM Z WYJAZDU 🟢18:00 PROJECT ZOMBOID🟢WALKA O KICK PARTNERA!",
+      "tags": [
+        "Polski",
+        "chill",
+        "rage",
+        "SafeSpace"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Standalone other game, not a private Tibia server. Direct target change versus old all-other category; title-only proposal, not observed gameplay.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:411"
+      ],
+      "title": "Vacila EK 500+ Services EK ...",
+      "tags": [
+        "gamingchilling",
+        "Español",
+        "Quidera",
+        "Tibia"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official-world tag overlooked by historical audit; label fact only.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "audit:448"
+      ],
+      "title": "COBRA BASTION DUO - Tibia - Kalanta",
+      "tags": [
+        "Polski",
+        "English",
+        "tibia",
+        "gaming"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Kalanta appears in fetched official roster; earlier audit confused it with Kalante OT. Explicit label disagreement.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:10"
+      ],
+      "title": "Solidera / Havera Intentando llegar a la meta #tsbot.io",
+      "tags": [
+        "solidera"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Negative control declaration; not officialness features.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:11"
+      ],
+      "title": "Proyecto Monk Tibia RL Server Luzibra! camino al LVL 600",
+      "tags": [
+        "tibiaglobal"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official-session assertion in historical fixture; retired/unverified world name, maintainer review required.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:31",
+        "invariance:cases:31:Português",
+        "invariance:cases:31:English",
+        "invariance:cases:31:Español",
+        "invariance:cases:31:Polski"
+      ],
+      "title": "nao jogo rubinot, so global antica",
+      "tags": [],
+      "tag_variants": [
+        "Português",
+        "English",
+        "Español",
+        "Polski"
+      ],
+      "proposed_label": "not_private",
+      "context": "negation",
+      "reason": "RubinOT is negated as current session. No positive official feature needed to suppress negated evidence.",
+      "roles": [
+        "historical_control",
+        "constructed_invariance"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:32"
+      ],
+      "title": "ex-rubinot agora so Tibia Global",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "negation",
+      "reason": "Historical private play explicitly left behind; current private assertion is false in this fixture.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:34"
+      ],
+      "title": "Tibia Global Etebra !rubinot",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Fixture intends incidental sponsor command during nonprivate session; proposed negative from fixture semantics, not independent observation.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:35"
+      ],
+      "title": "Primera vez en Antica",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official fixture interpretation; bare Antica is ambiguous against catalog copies and must not score either identity alone.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:40"
+      ],
+      "title": "EK 1000 Kalanta boss",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Negative world-declaration fixture; no official score.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:41"
+      ],
+      "title": "TORNABRAAAAA war",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Intended official-world spelling control, never a numerical bonus for official-looking text.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:42"
+      ],
+      "title": "Etebraa hunt",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Intended historical world spelling control; retired roster/name requires review.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:43"
+      ],
+      "title": "[CELEBRA - RP 1700+]",
+      "tags": [
+        "Bakragore"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "no_evidence",
+      "reason": "Fixture stipulates official Celebra session. Boss tag must not become Baiak through fragments.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:46"
+      ],
+      "title": "War Win Quidera - NEW server",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Negative counterexample: official new-server announcement also exists.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:50"
+      ],
+      "title": "Tibia Global EK",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Fixture self-declaration negative; historical image field excluded.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:56"
+      ],
+      "title": "não jogo DeusOT, só global Antica",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "negation",
+      "reason": "Explicitly negated private session.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:57"
+      ],
+      "title": "Tibia Global Antica !deusot",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Fixture-intended incidental private sponsor command; review required.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:60"
+      ],
+      "title": "[Yonabra][Global][EK/MS] !coin !exitlag",
+      "tags": [
+        "Etebra",
+        "Português",
+        "Yonabra"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Negative fixture; server fact is annotation-only.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:61"
+      ],
+      "title": "UMA TIBIANA SEM DEDO EM WINTERA",
+      "tags": [
+        "wintera",
+        "FREEFIRE"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "session",
+      "reason": "Official-world fixture; FreeFire tag may be stale and does not identify a private Tibia session.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "cases:63"
+      ],
+      "title": "Global Antica dashcoins.com.br/Loja",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Merchant link during fixture-intended Antica session; not private server evidence.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "live2115:460"
+      ],
+      "title": "EM 730+ vs Dragoncitos de Zao | 9kk Raw Solo Hunt | Server: Yovera",
+      "tags": [
+        "Español",
+        "Repetir",
+        "Tibia",
+        "tibiagameplay",
+        "tibiahunt"
+      ],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "comparison",
+      "reason": "vs can compare a character against monsters, not two servers. Scope must be labelled rather than banning every occurrence of vs.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "user:5"
+      ],
+      "title": "não jogo RubinOT, só Antica",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "negation",
+      "reason": "User-supplied explicit negation of private play.",
+      "roles": [
+        "user_supplied_challenge"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "contrast:6"
+      ],
+      "title": "Hoje só Antica. Link do patrocinador: !rubinot",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Constructed incidental sponsor-negative contrast to same command. Not independently observed gameplay.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "contrast:7"
+      ],
+      "title": "Meu patrocinador anuncia DARKORIA 8.60 OPEN BETA; hoje jogo Antica",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Launch phrase embedded in incidental ad must not inherit primary private-presentation label.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "contrast:8"
+      ],
+      "title": "Tibia 7.4: documentário sobre a história do jogo",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "comparison",
+      "reason": "Historical protocol mentioned without private-server assertion. Contrast to current7.4 launch.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "2_nao_privada",
+      "ids": [
+        "maintainer-example:0"
+      ],
+      "title": "baratuca tryhard + radinho 🪳 MS 2850 ⭐ !LOJA 50 tc/mês SEM SUB - SUB 100 TC/mês !yt👈🏻 !exitlag !golden !moedaz !rubinot",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Maintainer explicitly reports an original-server stream. RubinOT appears within a collection of sponsorship/shop commands; this mention is incidental promotion, not an affirmative private-session declaration. The title contains no official-world identifier: a negative private label must not depend on official-looking points.",
+      "roles": [
+        "maintainer_reported_stream_example"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:5"
+      ],
+      "title": "RP DO ZERO + MONK BOUNTY ! - !RUBINOT",
+      "tags": [
+        "Português",
+        "rubini",
+        "Reposição",
+        "Tibia"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:20"
+      ],
+      "title": "» Drops On !RubinOT | !parceiro| !rubinot | !coins",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:109"
+      ],
+      "title": "(SERVICES ON) [DROPS ON] @mtsgamertv Farme seus live points em lives do !rubinot !spanter !coins || SERVICE=15R$/H 🥵",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "promotion",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:110"
+      ],
+      "title": "BOUNTY TASK - MONK 1100 + RP BUSCANDO OS 30% DE ATK - !RUBINOT !DC !RTC",
+      "tags": [
+        "profit",
+        "Tibia",
+        "Monk",
+        "MMORPG"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:112"
+      ],
+      "title": "[+18]!RubinOT - TO PARALIZADO DE UM LADO! MAS BORA JOGAR !spanter !pix",
+      "tags": [
+        "mundoaberto",
+        "tibiahunt",
+        "MMO",
+        "Tibia"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:147"
+      ],
+      "title": "(+18) DRUID LEVEL 1027 >> !BELARIA !INFERNUM I !INFERNUM II >> BOSSES << QUESTS >> <<WAR>> PIOR DA BATTLE !RUBINOT !TIBIA",
+      "tags": [
+        "Português",
+        "Reposição"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Full input has Belaria and Infernum identifiers tied to RubinOT; commands alone are not the sole evidence.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:175"
+      ],
+      "title": "+18 !Rubinot !pix !vendinhadogesseiro",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:272"
+      ],
+      "title": "18+🔥 !Rubinot",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:355"
+      ],
+      "title": "!Rubinot 18+|MS 1.7k| !help !comandos | Barattas",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "audit:363"
+      ],
+      "title": "❗pokeidle ❗discord ❗donate ❗loja ❗pontos ❗itens ❗comandos",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "cases:5"
+      ],
+      "title": "DIA 2: IMPETUS | RETRO OPEN PVP | !hegalot",
+      "tags": [
+        "Español",
+        "hegal",
+        "PVP",
+        "Tibia"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Private-style named realm and OT command, but identity source not independently checked.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "live2115:277"
+      ],
+      "title": "❗pokeidle ❗discord  ❗donate  ❗loja  ❗pontos  ❗itens  ❗comandos",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "user:4"
+      ],
+      "title": "WAR?? ... | !rubinot",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "User says many actual RubinOT titles look like this. Proposed session-positive for review, not a rule that all !server commands are session-positive.",
+      "roles": [
+        "user_supplied_challenge"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "contrast:5"
+      ],
+      "title": "WAR?? !rubinot",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Constructed session-positive command control; intended private session stipulated, not inferred as live truth.",
+      "roles": [
+        "constructed_challenge"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "raw1400:11"
+      ],
+      "title": "borA >>> COMPRE RCs no brabo !P4 // !RUBINOT !RTC !FARM",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "raw1400:16"
+      ],
+      "title": "+18 - MS 1300+ DROPS [ON] !rubinot PROJETO MS DO ZERO! !comandos / Coins com o brabo !p4",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer explicitly adjudicated this OT-server-command title as a private session. The private identifier functions as the session identifier here, not as one sponsor among a collection of unrelated sponsorship commands. No channel identity or official-looking reward is used.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "raw1400:119"
+      ],
+      "title": "[ Sorteio de 1k RC ao chegar 3k de view ] - RP 1000 - !rubinot !loja - Ganco após acabar a live!",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "3_comando",
+      "ids": [
+        "raw1400:333"
+      ],
+      "title": "!RUBINOT RP 1400+ RANK 2 BOUNTY TASK.",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
+      "roles": [
+        "captured_metadata"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:12"
+      ],
+      "title": "rubimot ek 500 farm",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic spelling variant intended by original fixture. Alias/target proposals are not independently observed streams.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:13"
+      ],
+      "title": "RUBINOTT war hoje",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic spelling-variant proposal, one added letter.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:14"
+      ],
+      "title": "rub1n0t hunt",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic digit-substitution variant; approval required before learning.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:15"
+      ],
+      "title": "R U B I N O T - hunt",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic spaced-letter identity variant.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:16"
+      ],
+      "title": "R.U.B.I.N.O.T elite knight",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic punctuated identity variant.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:17"
+      ],
+      "title": "ʀᴜʙɪɴᴏᴛ war",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic small-cap variant, not generic subword evidence.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:18"
+      ],
+      "title": "𝐑𝐮𝐛𝐢𝐧𝐎𝐓 farm",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic mathematical-bold variant.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:19"
+      ],
+      "title": "Rubinto infernum",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic name transposition plus independently catalogued RubinOT world; weak word infernum must not signal alone.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:20"
+      ],
+      "title": "pokealianca 300+ shiny",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic spelling-variant intent; label/alias still pending human review.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:21"
+      ],
+      "title": "Poke Aliance hunt",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic spelling-variant intent.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:22"
+      ],
+      "title": "pokexgamez magma",
+      "tags": [],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Synthetic spelling-variant intent.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:26"
+      ],
+      "title": "lvl 500 hunt",
+      "tags": [
+        "rubiniot"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Server tag spelling variant intended by fixture, session vs stale tag needs review.",
+      "roles": [
+        "historical_control"
+      ]
+    },
+    {
+      "category": "4_variante",
+      "ids": [
+        "cases:52"
+      ],
+      "title": "Ibaiak-idle [18+] BOSS/HUNT/WAR",
+      "tags": [
+        "Português"
+      ],
+      "tag_variants": [],
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Fixture intended leading-letter variant; check alias safely without broad Baiak substring inference.",
+      "roles": [
+        "historical_control"
+      ]
+    }
+  ],
+  "bulk_approved_ids": [
+    "audit:0",
+    "audit:1",
+    "audit:2",
+    "audit:3",
+    "audit:4",
+    "audit:8",
+    "audit:9",
+    "audit:10",
+    "audit:14",
+    "audit:15",
+    "audit:17",
+    "audit:21",
+    "audit:23",
+    "audit:24",
+    "audit:30",
+    "audit:31",
+    "audit:32",
+    "audit:37",
+    "audit:41",
+    "audit:47",
+    "audit:51",
+    "audit:53",
+    "audit:62",
+    "audit:80",
+    "audit:92",
+    "audit:97",
+    "audit:98",
+    "audit:107",
+    "audit:124",
+    "audit:163",
+    "audit:164",
+    "audit:172",
+    "audit:198",
+    "audit:213",
+    "audit:256",
+    "audit:258",
+    "audit:270",
+    "audit:271",
+    "audit:296",
+    "audit:317",
+    "audit:381",
+    "audit:389",
+    "audit:427",
+    "cases:0",
+    "cases:1",
+    "cases:2",
+    "cases:6",
+    "cases:24",
+    "cases:27",
+    "cases:29",
+    "cases:30",
+    "cases:51",
+    "cases:53",
+    "cases:54",
+    "cases:58",
+    "live2115:30",
+    "live2115:121",
+    "live2115:154",
+    "live2115:196",
+    "live2115:396",
+    "live2115:402",
+    "live2115:528",
+    "live2115:560",
+    "user:0",
+    "user:1",
+    "user:2",
+    "user:3",
+    "contrast:1",
+    "contrast:3",
+    "contrast:10",
+    "contrast:11",
+    "contrast:12",
+    "contrast:13",
+    "invariance:audit:14:Português",
+    "invariance:audit:14:English",
+    "invariance:audit:14:Español",
+    "invariance:audit:14:Polski",
+    "invariance:user:0:Português",
+    "invariance:user:0:English",
+    "invariance:user:0:Español",
+    "invariance:user:0:Polski",
+    "raw1400:10",
+    "raw1400:73",
+    "raw1400:199",
+    "raw1400:239",
+    "raw1400:411",
+    "raw1400:453",
+    "contrast:16",
+    "contrast:17"
+  ],
+  "deferred_ids": [
+    "audit:7"
+  ]
+}
