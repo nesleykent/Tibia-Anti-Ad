@@ -65,3 +65,10 @@ In Safari, turn **Allow unsigned extensions** off, enable the installed Tibia An
 - [Apple: missing intermediate certificate](https://help.apple.com/xcode/mac/current/en.lproj/devc4c7101d8.html) and [WWDR certificate purposes](https://developer.apple.com/help/account/certificates/wwdr-intermediate-certificates/).
 - [Apple: running a Safari web extension](https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension).
 - [Installation guide](INSTALL_SAFARI.md) and [verification record](VERIFICATION.md).
+
+Personal updates now launch the containing app with `--update-filter-rules`.
+The signed app writes the existing rules-refresh request in its App Group, so a
+compatible already-running classifier can receive published model data without
+waiting six hours. This is a model refresh request, not proof that Safari reloaded
+changed JavaScript. Do not equate installed files or native registration with the
+classifier executing in an open page.

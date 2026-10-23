@@ -22,7 +22,7 @@ class BrowserParityTests(unittest.TestCase):
         rows.extend({'title': title, 'tags': tags} for title, tags in [
             ('😀 !rubinot', []), ('não jogo RubinOT, só Antica', []),
             ('Tibia Global vs RubinOT', []), ('WAR?? KKKK | !rubinot', ['Português']),
-            ('FutureOT', []), ('TRIMERA 7.4 LAUNCH SOON', []),
+            ('FutureOT', []), ('playing Feruots & Retronic', []), ('TSBot', []), ('TRIMERA 7.4 LAUNCH SOON', []),
             ('😀 hunt bosses', ['Português']), ('R U B I N O T', ['RUBINIOT']),
             ('xРubinOTy', []), ('aRubinOTz', []), ('50 TC / mês !rubinot', []),
         ])

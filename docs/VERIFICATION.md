@@ -222,3 +222,22 @@ download, popup persistence and export with the real unpacked extension.
 Build/signature verification, separately: the signed Safari updater completed
 successfully, installed 1.7.0 and retained the prior app. This does not establish
 Safari activation with unsigned extensions disabled or restart persistence.
+
+## Bare server identifiers, 1.7.1
+
+2026-10-23: a live title containing the bare names Feruots and Retronic reproduced
+99% official under revision 5. Revision 6 assigned 10.2% official to the same full
+title and tags in the real Chrome Beta unpacked extension. This capture covered
+45 unique live inputs, not the entire category. Domain-derived training views
+
+All 399 labelled export controls still pass: 271 private, none above 50% official.
+Leave-one-server-identity-out recall is 364/394 pairs across 68 folds (92.4%);
+all six mandatory unseen-server controls pass. These remain development controls.
+Repository checks passed 71 Python tests, JavaScript acceptance, inference parity
+and generated-source consistency. Browser checks separately passed full metadata
+transport, probability complement, hiding, regrouping, diagnostics retention and
+saved downloads at desktop/mobile sizes.
+
+Build/signature verification, separately: the personal Safari updater installed
+and verified 1.7.1, retaining the previous signed app. Its containing app can
+request an immediate rules refresh through the existing App Group bridge.

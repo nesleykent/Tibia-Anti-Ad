@@ -31,7 +31,7 @@
       "server": "020c70f726586ad3f054e1f25b422f2079c472b0a039f57f98821a2f4e343933",
       "train_rows": 625,
       "private_total": 1,
-      "caught": 1
+      "caught": 0
     },
     {
       "server": "04e84b3a86c2a0163fbad3c88dc6b8dc987faad300b456195703f93e137e0130",
@@ -67,7 +67,7 @@
       "server": "0ed6923f100c14d5faeca037143a636e8303c6ac094bf9b9e0f695c96b175f13",
       "train_rows": 625,
       "private_total": 1,
-      "caught": 1
+      "caught": 0
     },
     {
       "server": "11b71f4855fb9a8b938ca79360317432bf6a572d1498bd6a1d250ccc43301ff8",
@@ -223,7 +223,7 @@
       "server": "858861db043b9ee798066d5e269ef9cf0b5767d921e3a878b02bb500aaf92a6d",
       "train_rows": 594,
       "private_total": 27,
-      "caught": 15
+      "caught": 17
     },
     {
       "server": "889ec99961b30c0385b80cd4b8d38760babe6eb21fdc775d0855b57f71121cd1",
@@ -319,7 +319,7 @@
       "server": "b7c7997280064d893373e3ead83358b2b91059d637830f69a2b3bab87716c3a3",
       "train_rows": 523,
       "private_total": 95,
-      "caught": 88
+      "caught": 91
     },
     {
       "server": "b88cb340d92ced61450a574084e16780a37ef17b59a767e7f1000b24dd559425",
@@ -343,7 +343,7 @@
       "server": "bf5901fa8fb49e1824d219797132bf345e2bc9a8ae04a9866d1ec341079cdaa4",
       "train_rows": 608,
       "private_total": 12,
-      "caught": 11
+      "caught": 10
     },
     {
       "server": "c19260faecdc092ef00c3928fb13125caaff0c3d9fb8e4f332e52a11f2636280",
@@ -385,7 +385,7 @@
       "server": "e2dfa2320e5ae0926c3ad9360b452cf6eb40d7e6a4ae3a9a2abb4b415225d3eb",
       "train_rows": 625,
       "private_total": 1,
-      "caught": 0
+      "caught": 1
     },
     {
       "server": "e39d5da591d7265dfe998038b0fe9cbc812e000b51e826895648ddd1f5b77adf",
@@ -397,7 +397,7 @@
       "server": "e442ea6c4fa89fe674c1675bf6da9cd5125d4349d147b7e7424789754035e1d9",
       "train_rows": 620,
       "private_total": 6,
-      "caught": 5
+      "caught": 4
     },
     {
       "server": "f25840398142aa5df7cd709a34c1d860caa71c3acd92efdf9c9787b7601b6306",
@@ -436,6 +436,6 @@
       "caught": 2
     }
   ],
-  "caught": 362,
+  "caught": 364,
   "private_total": 394
 }

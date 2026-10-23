@@ -8,9 +8,9 @@ from train_tibia_private import fit_weights, acceptance
 ROOT = Path(__file__).resolve().parents[1]
 SEED = ROOT / 'research/twitch/model/span-supervision.json'
 MODEL = ROOT / 'research/twitch/model/private-span-model.json'
-CHAR_RIDGE = 3e-05
+CHAR_RIDGE = 2e-05
 STRUCTURE_RIDGE = 1e-05
-ITERATIONS = 2000
+ITERATIONS = 6000
 STEP = 8
 
 def fit_identifier(rows):
@@ -18,11 +18,9 @@ def fit_identifier(rows):
     examples = {}
     for row in rows:
         for c in row['candidates']:
-            key = tuple(c['features'].items())
-            examples[key] = max(examples.get(key, 0), int(c['positive']))
-            if c['positive']:
-                for variant in c.get('augmentations', []):
-                    examples[tuple(variant.items())] = 1
+            for features in [c['features'], *c.get('augmentations', [])]:
+                key = tuple(features.items())
+                examples[key] = max(examples.get(key, 0), int(c['positive']))
     names = sorted({f for fs in examples for f, _ in fs})
     lookup = {f: i for i, f in enumerate(names)}
     rr, cc, vv = ([], [], [])
@@ -37,7 +35,8 @@ def fit_identifier(rows):
     y = np.array(list(examples.values()), dtype=float)
     balance = np.where(y, 0.5 / max(1, sum(y)), 0.5 / max(1, len(y) - sum(y)))
     w = np.zeros(len(names))
-    ridge = np.array([STRUCTURE_RIDGE if name.startswith('s:') else CHAR_RIDGE for name in names])
+    frequency = np.bincount(cc, minlength=len(names))
+    ridge = np.array([STRUCTURE_RIDGE if name.startswith('s:') else CHAR_RIDGE * (1 + np.log1p(frequency[i])) for i, name in enumerate(names)])
     for _ in range(ITERATIONS):
         z = np.bincount(rr, weights=vv * w[cc], minlength=len(y))
         p = 1 / (1 + np.exp(-np.clip(z, -40, 40)))
@@ -70,7 +69,7 @@ def probability(row, model):
     return max(BASE, 1 / (1 + math.exp(-max(-40, min(40, z)))))
 
 def fit(rows):
-    data = {'format': 'identifier-span-logit-v3', 'base_private_probability': BASE, 'identifier_weights': fit_identifier(rows), 'identifier_cutoffs': {}, 'fitting': {'character_ridge': CHAR_RIDGE, 'structure_ridge': STRUCTURE_RIDGE, 'iterations': ITERATIONS, 'step': STEP, 'cutoffs': 'training negative-only metadata maxima within identifier shape'}, 'weights': {}, 'hide_threshold': 0.95, 'calibration': {'slope': 1.0, 'intercept': 0.0}}
+    data = {'format': 'identifier-span-logit-v3', 'base_private_probability': BASE, 'identifier_weights': fit_identifier(rows), 'identifier_cutoffs': {}, 'fitting': {'character_ridge': CHAR_RIDGE, 'frequency_scaled_character_ridge': True, 'structure_ridge': STRUCTURE_RIDGE, 'iterations': ITERATIONS, 'step': STEP, 'cutoffs': 'training negative-only metadata maxima within identifier shape'}, 'weights': {}, 'hide_threshold': 0.95, 'calibration': {'slope': 1.0, 'intercept': 0.0}}
     for r in rows:
         if any((c['positive'] for c in r['candidates'])):
             continue
@@ -125,7 +124,7 @@ def main():
     rows = pack['rows']
     if args.action == 'fit':
         data = fit(rows)
-        data['revision'] = 5
+        data['revision'] = 6
         data['training'] = {'data_sha256': hashlib.sha256(args.data.read_bytes()).hexdigest(), 'rows': len(rows), 'features': 'candidate identifier characters and structure only; no channel, language or whole-title vocabulary'}
         MODEL.write_text(json.dumps(data, indent=2) + '\n')
         print('Identifier model fitted')

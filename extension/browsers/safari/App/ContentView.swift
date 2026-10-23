@@ -8,6 +8,12 @@ private let repositoryURL = URL(string: "https://github.com/nesleykent/Tibia-Ant
 
 @main
 struct TibiaAntiAdApp: App {
+    init() {
+        if ProcessInfo.processInfo.arguments.contains("--update-filter-rules") {
+            SharedStore.requestRulesUpdate()
+        }
+    }
+
     var body: some Scene {
         Window("Tibia Anti-Ad", id: "main") {
             ContentView()

@@ -88,16 +88,32 @@ def span_features(span):
     return dict(sorted(values.items()))
 
 
-def augmentations(span):
-    """Spacing equivalence inside annotated identifiers, fitted within each fold."""
-    value=span['text'].lstrip('!').split('/')[0]
-    variants=[]
-    if span['kind']=='domain' and value.endswith('.online'):
-        variants.append(value.rsplit('.',1)[0].split('.')[-1]+' online')
-    for part in ('online','idle','ot'):
-        if value.endswith(part) and len(value)>len(part)+2 and ' ' not in value and '.' not in value:
-            variants.append(value[:-len(part)]+' '+part)
-    return [span_features(dict(span,text=v,kind='name')) for v in variants]
+def augmentations(span, positive=True):
+    """Train identity-preserving spelling/transport variants within each fold.
+
+    A server domain and its bare brand identify the same entity. These examples
+    are generated only from annotated training spans, never a runtime alias list.
+    Negative identifiers receive the same transformation to preserve tool/shop
+    controls. The public suffix shape stays a separate structural feature.
+    """
+    value = span['text'].lstrip('!').split('/')[0]
+    variants = set()
+    if span['kind'] == 'domain':
+        labels = value.split('.')
+        if len(labels) > 1:
+            labels.pop()  # TLD
+            if len(labels) > 1 and labels[-1] in {'co', 'com', 'net', 'org', 'gov', 'edu', 'ac'}:
+                labels.pop()
+            brand = labels[-1]
+            variants.add(brand)
+            if value.endswith('.online'):
+                variants.add(brand + ' online')
+    if not positive and span['kind'] != 'domain':
+        return []
+    for part in ('online', 'idle', 'ot'):
+        if value.endswith(part) and len(value) > len(part) + 2 and ' ' not in value and '.' not in value:
+            variants.add(value[:-len(part)] + ' ' + part)
+    return [span_features(dict(span, text=v, kind='name')) for v in sorted(variants)]
 
 
 def bucket(span):

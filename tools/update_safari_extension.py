@@ -178,7 +178,7 @@ def main():
         # A closed host app is safe to replace. Do not close the user's Safari tabs.
         subprocess.run(["pkill", "-x", "Tibia Anti-Ad"], check=False)
         backup = install(built, INSTALLED, team)
-        subprocess.run(["open", str(INSTALLED)], check=True)
+        subprocess.run(["open", "-n", str(INSTALLED), "--args", "--update-filter-rules"], check=True)
         # The backup is for rollback only; keep it out of Launchpad and Safari.
         hide_from_system(backup)
         backup = archive_backup(backup)

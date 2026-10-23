@@ -146,9 +146,30 @@ def label_batch(rows, model_name=MODEL_NAME):
             raise StageError('Private label without an identifier span')
         packet = {'id': input_id(r), 'private': answer['private'], 'target': 0.99 if answer['private'] else 0.01, 'label_provenance': {'model': response.get('model', model_name), 'response_id': response.get('id'), 'rules_sha256': hashlib.sha256(rules.encode()).hexdigest()}, 'supervision': 'private' if answer['private'] else 'no_private_server_evidence', 'groups': sorted(set(selected.values())), 'candidates': []}
         for i, c in enumerate(cs):
-            packet['candidates'].append({'features': span_features(c), 'augmentations': augmentations(c) if i in selected else [], 'positive': i in selected, 'group': selected.get(i, server_group(c['text'])), 'kind': c['kind'], 'field': c['field'], 'start': c['start'], 'context': context(r['title'], [c])})
+            packet['candidates'].append({'features': span_features(c), 'augmentations': augmentations(c, positive=i in selected), 'positive': i in selected, 'group': selected.get(i, server_group(c['text'])), 'kind': c['kind'], 'field': c['field'], 'start': c['start'], 'context': context(r['title'], [c])})
         packets.append(packet)
     return packets
+
+def refresh_augmentations(history):
+    """Recompute derived views from retained captures without changing labels."""
+    if history.get('augmentation_revision') == 2:
+        return
+    pending = {row['id']: row for row in history['rows']}
+    for path in sorted((WORK / 'captures').glob('*.json')):
+        for raw in json.loads(path.read_text())['streams']:
+            row = pending.get(input_id(raw))
+            if row is None:
+                continue
+            spans = {tuple(span_features(c).items()): c for c in candidates(raw['title'], raw['tags'])}
+            for candidate in row['candidates']:
+                span = spans.get(tuple(candidate['features'].items()))
+                if span is None:
+                    raise StageError('Retained identifier feature provenance mismatch')
+                candidate['augmentations'] = augmentations(span, positive=candidate['positive'])
+            del pending[row['id']]
+    if pending:
+        raise StageError('A retained label is missing its source capture')
+    history['augmentation_revision'] = 2
 
 def label():
     cap = json.loads((WORK / 'capture.json').read_text())
@@ -157,6 +178,7 @@ def label():
     digest = hashlib.sha256((ROOT / 'DECISIONS.md').read_bytes()).hexdigest()
     if history['decisions_sha256'] not in {None, digest}:
         raise StageError('Decisions changed; stored labels require a deliberate migration')
+    refresh_augmentations(history)
     previous = {r['id']: r for r in history['rows']}
     unique = {input_id(r): r for r in cap['streams']}
     fresh = [r for key, r in unique.items() if key not in previous]

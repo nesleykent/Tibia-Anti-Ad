@@ -35,6 +35,8 @@ MainActor.assumeIsolated {
     let model = SettingsModel(defaults: defaults)
     let url = URL(string: "https://www.twitch.tv/directory/category/tibia")!
     model.reload(pageURL: url)
+    model.requestRulesUpdate()
+    precondition(defaults.double(forKey: SharedStore.Key.rulesRequestedAt) > 0)
     model.requestExport()
     precondition(defaults.string(forKey: SharedStore.Key.exportURL) == url.absoluteString)
     precondition(model.mode == "bottom" && model.threshold == 0.5 && model.hidden.count == 1)

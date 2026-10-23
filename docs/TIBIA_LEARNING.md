@@ -96,3 +96,18 @@ Sources: [Twitch app tokens](https://dev.twitch.tv/docs/authentication/getting-t
 [Get Streams](https://dev.twitch.tv/docs/api/reference/#get-streams),
 [OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs),
 [Responses](https://developers.openai.com/api/reference/resources/responses/methods/create).
+
+## Domain/name equivalence regression
+
+An observed live title containing two bare server brands was assigned 99% official,
+although both corresponding domains were already recognized. Domain supervision
+now produces the bare registered brand as a derived training view, including
+multi-label suffixes such as `.com.br`. Negative tool/shop domains get the same
+transformation. Spacing views remain restricted to annotated identifiers.
+
+The trainer deduplicates these views and regularizes frequent character fragments
+more strongly than rare character fragments. This retains structural recognition
+for servers excluded from training while fitting the derived names. These are
+training transformations; runtime inference still has no name/alias inventory.
+Retained API captures can refresh derived views without changing existing labels,
+identities or provenance; missing source captures fail the migration closed.

@@ -22,6 +22,13 @@ enum SharedStore {
         static let rulesRequestedAt = "rulesRequestedAt"
     }
 
+    // The containing app and toolbar use the same authenticated App Group.
+    // A plain command-line UserDefaults suite does not address this container.
+    static func requestRulesUpdate(defaults: UserDefaults = SharedStore.defaults) {
+        defaults.set(Date().timeIntervalSince1970 * 1000, forKey: Key.rulesRequestedAt)
+        defaults.synchronize()
+    }
+
     // A native message from the web extension's background script.
     static func handle(_ message: [String: Any], defaults: UserDefaults = SharedStore.defaults) -> [String: Any] {
         switch message["type"] as? String {

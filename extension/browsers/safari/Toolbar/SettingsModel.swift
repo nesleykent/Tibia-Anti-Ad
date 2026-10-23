@@ -157,7 +157,7 @@ struct BlockedStream: Identifiable, Hashable {
     }
 
     func requestRulesUpdate() {
-        defaults.set(Date().timeIntervalSince1970 * 1000, forKey: SharedStore.Key.rulesRequestedAt)
+        SharedStore.requestRulesUpdate(defaults: defaults)
         rulesRequested = true
     }
 }

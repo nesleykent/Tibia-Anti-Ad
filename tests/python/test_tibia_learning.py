@@ -10,7 +10,7 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/'tools'))
 import tibia_learning as learning
-from tibia_spans import SpanModel,candidates,span_features,LANGUAGES
+from tibia_spans import SpanModel,candidates,span_features,LANGUAGES,augmentations
 from train_tibia_spans import SEED,MODEL,probability
 
 
@@ -44,6 +44,24 @@ class IdentifierTests(unittest.TestCase):
             expected=model.predict(title)['private_probability']
             for language in LANGUAGES:
                 self.assertEqual(model.predict(title,[language])['private_probability'],expected)
+
+    def test_domain_identifiers_also_work_without_transport(self):
+        model=SpanModel.load(MODEL)
+        for title in ['Feruots','Retronic','playing Feruots & Retronic']:
+            self.assertGreater(model.predict(title)['private_probability'],.5)
+        for title in ['TSBot','dashcoins','Perdi o loot, !loot !pix !hunt']:
+            self.assertEqual(model.predict(title)['private_probability'],.01)
+        for source,brand in [('https://examplegame.com.br/path','examplegame'),('examplegame.online','examplegame')]:
+            span=next(c for c in candidates(source) if c['kind'] in {'domain','command'})
+            expected=span_features(dict(span,kind='name',text=brand))
+            self.assertIn(expected,augmentations(span))
+
+    def test_all_labelled_export_rows_remain_acceptance_controls(self):
+        pack=json.loads(SEED.read_text());model=json.loads(MODEL.read_text())
+        for row in pack['rows'][pack['historical_count']:]:
+            p=probability(row,model)
+            if row['private']:self.assertGreater(p,.5)
+            else:self.assertEqual(p,.01)
 
     def test_feature_replay_matches_live_inference(self):
         # Raw public acceptance metadata exercises the same context reducer used
@@ -96,6 +114,21 @@ class PipelineTests(unittest.TestCase):
         for labels in [[],[{'id':learning.input_id(row),'private':True,'identifiers':[]}],[{'id':'wrong','private':False,'identifiers':[]}]]:
             response={'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps({'labels':labels})}]}]}
             with patch.dict('os.environ',{'OPENAI_API_KEY':'sentinel'}),patch.object(learning,'request_json',return_value=response),self.assertRaises(learning.StageError):learning.label_batch([row])
+
+    def test_history_augmentation_migration_preserves_labels_and_provenance(self):
+        from tibia_spans import context
+        raw={'title':'Examplegame.online','tags':[]}
+        span=next(c for c in candidates(raw['title'],raw['tags']) if c['kind']=='domain')
+        candidate={'features':span_features(span),'positive':True,'augmentations':[]}
+        row={'id':learning.input_id(raw),'private':True,'groups':['unchanged'],'candidates':[candidate]}
+        history={'rows':[row]}
+        with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)):
+            learning.save(Path(directory)/'captures/first.json',{'streams':[raw]})
+            learning.refresh_augmentations(history)
+        self.assertEqual(history['augmentation_revision'],2)
+        self.assertEqual(row['id'],learning.input_id(raw));self.assertTrue(row['private'])
+        self.assertEqual(row['groups'],['unchanged'])
+        self.assertTrue(candidate['augmentations'])
 
     def test_newest_failure_does_not_replace_model(self):
         packet={'id':'new-input','private':True,'candidates':[]}
