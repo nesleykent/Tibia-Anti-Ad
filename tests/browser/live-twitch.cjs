@@ -48,6 +48,25 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
       await page.screenshot({ path: path.join(output, `directory-${enabled ? 'filtered' : 'baseline'}.png`) });
       if (directoryOnly) {
         if (enabled) {
+          const metadata = await page.locator('article').evaluateAll(articles => articles.filter(article =>
+            article.querySelector('a[data-a-target="preview-card-channel-link"], a[data-a-target="preview-card-image-link"]')
+          ).map(article => ({
+            meta: JSON.parse(article.getAttribute('data-twitch-clean-meta') || 'null'),
+            title: article.querySelector('h4[title], h3[title]')?.getAttribute('title'),
+          })));
+          assert.ok(metadata.length > 0, 'No directory cards to verify');
+          for (const { meta, title } of metadata) {
+            assert.ok(meta?.title, 'Full stream title missing from React metadata');
+            assert.equal(meta.title, title, `Title mismatch for ${meta.channel}`);
+          }
+          run.titles = await worker.evaluate(rows => {
+            const classify = TwitchCleanTibiaClassify.create(TWITCH_CLEAN_TIBIA_EVIDENCE);
+            return rows.map(({ meta }) => {
+              const result = classify(meta.title, []);
+              return { channel: meta.channel, title: meta.title, withoutTags: result.verdict, reason: result.reason };
+            });
+          }, metadata);
+          assert.ok(run.titles.some(row => row.withoutTags === 'other'), 'No title-only hiding evidence');
           assert.ok(run.directory.hidden > 0, 'No stream was classified as other');
           const stream = await page.locator('[data-twitch-clean-hidden] article').first().evaluate(article =>
             JSON.parse(article.getAttribute('data-twitch-clean-meta')));

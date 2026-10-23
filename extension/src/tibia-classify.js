@@ -350,6 +350,9 @@
       const found = mentions(tokens, 2);
       const signals = [];
       const servers = found.filter(m => m.side === 'other');
+      // "Global" also describes OTServers. An exact, affirmative server
+      // declaration outranks that generic word; commands/comparisons do not.
+      const declaredServer = servers.some(s => s.kind === 'name' && !s.command && !s.distance && W.title * modifier(title, tokens, s) >= threshold);
       for (const m of found) {
         let weight;
         if (m.side === 'other') {
@@ -359,6 +362,9 @@
           }
         } else {
           if (m.command || m.kind === 'bracketed' && !m.bracket) {
+            continue;
+          }
+          if (m.kind === 'global' && declaredServer) {
             continue;
           }
           // "Future OT Global": "global" right after a server is part of its name.

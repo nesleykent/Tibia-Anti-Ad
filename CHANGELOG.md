@@ -44,6 +44,9 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Fixed
 
+- Tibia title filtering (1.2.4): recognize `otponline.com` and `Ibaiak-idle` even without server tags. A direct, affirmative server declaration such as `[DEUSOT]` now outweighs the generic word "global"; official worlds, "Tibia Global", negation, comparisons and sponsor commands retain their evidence handling. The statistical model already uses title words and is unchanged.
+- Updated extensions reject cached or downloaded evidence older than their bundled revision, so old rules cannot undo newly bundled corrections. Compatible current/newer revisions still update normally.
+
 - Safari toolbar icon stays tinted on every page: the extension now has access to all sites (`<all_urls>`), because Safari greys an extension's icon wherever it has no access. Content scripts and network rules still apply only to Twitch and the 15 fansites; Safari will show its broader access prompt once.
 
 - Settings popover: no more collapsible sections; every option is visible in grouped sections with a header, and every row keeps the same layout (text on the left, switch or button on the right). The on-counts next to headers are gone.

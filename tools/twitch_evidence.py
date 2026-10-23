@@ -222,6 +222,7 @@ class Evidence:
         tokens = tokenize(title)
         found = self.mentions(tokens, 2)
         servers = [m for m in found if m['side'] == 'other']
+        declared_server = any((s['kind'] == 'name' and (not s['command']) and (not s['distance']) and (w['title'] * self.modifier(title, tokens, s) >= self.threshold) for s in servers))
         signals = []
         for m in found:
             if m['side'] == 'other':
@@ -230,6 +231,8 @@ class Evidence:
                     weight -= w['title'] - w['command']
             else:
                 if m['command'] or (m['kind'] == 'bracketed' and (not m['bracket'])):
+                    continue
+                if m['kind'] == 'global' and declared_server:
                     continue
                 if m['kind'] == 'global' and any((s['index'] + s['n'] == m['index'] and (not title[s['end']:m['start']].strip()) for s in servers)):
                     continue

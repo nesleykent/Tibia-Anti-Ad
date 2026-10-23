@@ -36,6 +36,13 @@ class EvidenceTests(unittest.TestCase):
         self.assertEqual(EV.classify('RASTEIBRA monk do 0', ['rubinot'])[0], 'undetermined')
         self.assertEqual(EV.classify('Global! de 0 a 500', ['rubinot'])[0], 'undetermined')
 
+    def test_statistical_model_reads_title_without_server_tags(self):
+        title = '[DROPS ON] SUN - LVL 533 HZ 14 // !metagross // CUPOM "MAD" 10% DE BONUS NO DD! //'
+        verdict, _, found = EV.classify(title, ['Português'])
+        self.assertEqual(verdict, 'other')
+        self.assertTrue(any((s['source'] == 'model' and s['side'] == 'other' for s in found['signals'])))
+        self.assertEqual(EV.classify('bom dia galera', ['Português'])[0], 'undetermined')
+
     def test_ambiguous_world_in_brackets_and_boss_tag(self):
         self.assertEqual(EV.classify('[CELEBRA - RP 1700+] !comandos', ['Bakragore'])[0], 'tibia')
         self.assertEqual(EV.classify('um newba !! PXG Magma', [])[0], 'other')

@@ -15,6 +15,9 @@
 
     const valid = data => {
         try {
+            // An older cached/downloaded ruleset must not undo an app update.
+            const revision = data.revision ?? 0;
+            if (!Number.isSafeInteger(revision) || revision < (globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE.revision || 0)) { return false; }
             const classify = globalThis.TwitchCleanTibiaClassify.create(data);
             return classify('RubinOT war', []).verdict === 'other' && classify('Antica hunt', []).verdict === 'tibia';
         } catch {

@@ -235,6 +235,92 @@
     {
       "title": "(DROPS ON) SERVER novo",
       "expect": "other"
+    },
+    {
+      "title": "otponline.com - NOVA QUEST, NOVO BOSS E MUDANÇA NAS MEGAS!",
+      "tags": [
+        "brasil",
+        "Português"
+      ],
+      "expect": "other"
+    },
+    {
+      "title": "Ibaiak-idle [18+] BOSS/HUNT/WAR",
+      "tags": [
+        "Português"
+      ],
+      "expect": "other"
+    },
+    {
+      "title": "[DEUSOT] - Melhor global custom",
+      "tags": [
+        "Reposição",
+        "Português"
+      ],
+      "expect": "other"
+    },
+    {
+      "title": "[DEUSOT] - Melhor global custom",
+      "tags": [
+        "tibiaglobal",
+        "global"
+      ],
+      "expect": "other"
+    },
+    {
+      "title": "Tibia Global vs DeusOT: qual é melhor?",
+      "expect": "undetermined"
+    },
+    {
+      "title": "não jogo DeusOT, só global Antica",
+      "expect": "tibia"
+    },
+    {
+      "title": "Tibia Global Antica !deusot",
+      "expect": "tibia"
+    },
+    {
+      "title": "[DEUSOT] Antica hunt",
+      "expect": "undetermined"
+    },
+    {
+      "title": "Global! de 0 a 500",
+      "expect": "tibia"
+    },
+    {
+      "title": "[Yonabra][Global][EK/MS] !coin !exitlag",
+      "tags": [
+        "Etebra",
+        "Português",
+        "Yonabra"
+      ],
+      "expect": "tibia"
+    },
+    {
+      "title": "UMA TIBIANA SEM DEDO EM WINTERA",
+      "tags": [
+        "wintera",
+        "FREEFIRE"
+      ],
+      "expect": "tibia"
+    },
+    {
+      "title": "live do shiny",
+      "tags": [
+        "Português"
+      ],
+      "expect": "undetermined"
+    },
+    {
+      "title": "Global Antica dashcoins.com.br/Loja",
+      "expect": "tibia"
+    },
+    {
+      "title": "[DROPS ON] SUN - LVL 533 HZ 14 // !metagross // CUPOM \"MAD\" 10% DE BONUS NO DD! //",
+      "tags": [
+        "Português"
+      ],
+      "expect": "other"
     }
   ]
 }
