@@ -25,7 +25,7 @@ struct BlockedStreamsView: View {
         VStack(spacing: 0) {
             VStack(spacing: 10) {
                 ZStack {
-                    Text("Blocked Streams").font(.headline)
+                    Text(model.mode == "bottom" ? "Moved Streams" : "Blocked Streams").font(.headline)
                     HStack {
                         Button(action: onBack) { Label("Settings", systemImage: "chevron.left") }
                             .buttonStyle(.borderless)
@@ -54,7 +54,7 @@ struct BlockedStreamsView: View {
                     Text("Open the Tibia category on Twitch to see the streams hidden there.")
                         .foregroundStyle(.secondary)
                 } else if groups.isEmpty {
-                    Text(model.hidden.isEmpty ? "No streams are hidden on this page." : "No blocked streams match.")
+                    Text(model.hidden.isEmpty ? "No streams are affected on this page." : "No blocked streams match.")
                         .foregroundStyle(.secondary)
                 }
                 ForEach(groups, id: \.game) { group in

@@ -4,7 +4,6 @@
     'use strict';
     const ROW = 'data-tibia-probability-row';
     const BADGE = 'data-tibia-official-probability';
-    const formatter = new Intl.NumberFormat(undefined, { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
     const remove = article => {
         for (const badge of article.querySelectorAll(`[${BADGE}]`)) { badge.remove(); }
@@ -37,8 +36,7 @@
             row.append(badge);
         }
         const probability = result.display_probability;
-        const text = Number.isFinite(probability) ? probability < 0.0005 ? `<${formatter.format(0.001)}`
-            : probability >= 0.9995 ? `>${formatter.format(0.999)}` : formatter.format(probability) : 'n/a';
+        const text = globalThis.TwitchCleanTibiaClassify.formatDisplay(probability);
         const value = badge.querySelector('.tibia-probability-value');
         if (value.textContent !== text) { value.textContent = text; }
         const raw = String(probability);

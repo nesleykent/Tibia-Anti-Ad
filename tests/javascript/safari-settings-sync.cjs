@@ -8,7 +8,7 @@ const read = name => fs.readFileSync(path.join(__dirname, '../../extension/src',
 const flush = async () => { for (let i = 0; i < 8; i++) await new Promise(resolve => setImmediate(resolve)); };
 
 (async () => {
-  let stored = {}, nativeSettings = {}, changedAt = 0, nativeCalls = 0;
+  let stored = {}, nativeSettings = {}, changedAt = 0, nativeCalls = 0, exportRequestedAt = 0, exported = 0, exportStatus = '';
   const changes = [], messages = [], timers = [], attributes = new Map();
   const window = { addEventListener() {}, setInterval: (callback, delay) => timers.push({ callback, delay }) };
   window.top = window;
@@ -26,13 +26,18 @@ const flush = async () => { for (let i = 0; i < 8; i++) await new Promise(resolv
         changes.forEach(listener => listener(Object.fromEntries(Object.entries(values).map(([key, newValue]) => [key, { newValue }])), 'local'));
       },
     }, onChanged: { addListener: listener => changes.push(listener) } },
+    tabs: {query: async () => [{id: 8, active:true, url:'https://example.org/'}, {id:7, url:'https://www.twitch.tv/directory/category/tibia'}], sendMessage: async (id, message) => {
+      assert.equal(id, 7); assert.equal(message.type, 'tibia-anti-ad:export-diagnostics');
+      exported++; return {ok: true, count: 3};
+    }},
     runtime: {
       getURL: () => 'safari-web-extension://test/',
       onInstalled: { addListener() {} }, onStartup: { addListener() {} },
       onMessage: { addListener: listener => { handler = listener; } },
-      sendNativeMessage: async () => {
+      sendNativeMessage: async (_app, message) => {
+        if (message.type === 'export-result') { exportStatus = message.status; return {}; }
         nativeCalls++;
-        return { settings: nativeSettings, settingsChangedAt: changedAt };
+        return { settings: nativeSettings, settingsChangedAt: changedAt, exportRequestedAt, exportURL:'https://www.twitch.tv/directory/category/tibia' };
       },
       sendMessage: message => {
         messages.push(message);
@@ -74,5 +79,15 @@ const flush = async () => { for (let i = 0; i < 8; i++) await new Promise(resolv
   await api.storage.local.set({ tibiaFilter: false });
   timers[0].callback(); await flush();
   assert.equal(stored.tibiaFilter, true, 'reconcile an acknowledged native setting after web storage diverges');
+  nativeSettings = {tibiaMode: 'bottom', tibiaThreshold: 0.7, tibiaFilter: true}; changedAt++;
+  timers[0].callback(); await flush();
+  assert.equal(stored.tibiaMode, 'bottom');
+  assert.equal(stored.tibiaThreshold, 0.7);
+  exportRequestedAt = Date.now();
+  timers[0].callback(); await flush();
+  assert.equal(exported, 1);
+  assert.ok(exportStatus.includes('3 streams'));
+  timers[0].callback(); await flush();
+  assert.equal(exported, 1, 'acknowledged export must not run again');
   console.log('PASS Safari: native popover toggles reach a focused page, restore the CSS group, and skip hidden/in-flight checks');
 })().catch(error => { console.error(error); process.exitCode = 1; });

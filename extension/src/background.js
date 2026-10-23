@@ -73,12 +73,32 @@ if (typeof importScripts === 'function' && !globalThis.TibiaAntiAdSettings) {
             const nativeMismatch = reply?.settingsChangedAt > 0 && Object.entries(reply.settings || {})
                 .some(([key, value]) => key in S.DEFAULTS && stored[key] !== value);
             if (reply?.settingsChangedAt > seen.settings || nativeMismatch) {
-                Object.assign(changes, S.resolve({ ...S.resolve(stored), ...reply.settings }));
+                const merged = {...S.resolve(stored), ...reply.settings};
+                if (typeof reply.settings?.tibiaFilter === 'boolean' && !reply.settings?.tibiaMode) { delete merged.tibiaMode; }
+                Object.assign(changes, S.resolve(merged));
                 seen.settings = reply.settingsChangedAt;
             }
             if (reply?.tibiaShownChangedAt > seen.shown) {
                 changes.tibiaShown = reply.tibiaShown || {};
                 seen.shown = reply.tibiaShownChangedAt;
+            }
+            if (reply?.exportRequestedAt > (seen.export || 0)) {
+                seen.export = reply.exportRequestedAt;
+                if (Date.now() - reply.exportRequestedAt < 30000) {
+                    let status;
+                    try {
+                        // Safari's native popover knows the page that opened it.
+                        // Focus can belong to another window while the bridge polls.
+                        const tabs = await api.tabs.query({});
+                        const matches = tabs.filter(tab => tab.url === reply.exportURL);
+                        const tab = matches.find(tab => tab.active) || matches[0];
+                        if (!tab?.id) { throw new Error('Open the Twitch Tibia category first.'); }
+                        const result = await api.tabs.sendMessage(tab.id, {type: 'tibia-anti-ad:export-diagnostics'});
+                        if (!result?.ok) { throw new Error(result?.error || 'Reload the Twitch Tibia category first.'); }
+                        status = `Download requested: ${result.count} streams. Check Safari\u2019s downloads.`;
+                    } catch (error) { status = `Export failed: ${error.message}`; }
+                    await globalThis.browser.runtime.sendNativeMessage('application.id', {type: 'export-result', status});
+                }
             }
             if (reply?.rulesRequestedAt > seen.rules) {
                 seen.rules = reply.rulesRequestedAt;

@@ -27,7 +27,9 @@
             const props = fiber.memoizedProps;
             if (props && typeof props.channelLogin === 'string' && typeof props.title === 'string') {
                 const tags = props.tagListProps?.freeformTags?.map(t => t?.name).filter(t => typeof t === 'string') || [];
-                return { channel: props.channelLogin.toLowerCase(), title: props.title, tags };
+                const viewers = props.currentViewerCount ?? props.viewersCount ?? props.viewerCount ?? props.viewers;
+                return { channel: props.channelLogin.toLowerCase(), title: props.title, tags,
+                    ...(Number.isSafeInteger(viewers) && viewers >= 0 ? {viewers} : {}) };
             }
         }
         return null;

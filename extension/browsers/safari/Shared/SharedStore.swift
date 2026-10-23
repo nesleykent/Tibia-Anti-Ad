@@ -9,6 +9,9 @@ enum SharedStore {
     static var defaults: UserDefaults { UserDefaults(suiteName: group) ?? .standard }
 
     enum Key {
+        static let exportRequestedAt = "exportRequestedAt"
+        static let exportStatus = "exportStatus"
+        static let exportURL = "exportURL"
         static let webSettings = "webSettings"          // resolved settings, written by the web extension
         static let settings = "settings"                // settings edited in the popover
         static let settingsChangedAt = "settingsChangedAt"
@@ -41,10 +44,24 @@ enum SharedStore {
                 "tibiaShown": defaults.dictionary(forKey: Key.shown) ?? [:],
                 "tibiaShownChangedAt": defaults.double(forKey: Key.shownChangedAt),
                 "rulesRequestedAt": defaults.double(forKey: Key.rulesRequestedAt),
+                "exportRequestedAt": defaults.double(forKey: Key.exportRequestedAt),
+                "exportURL": defaults.string(forKey: Key.exportURL) ?? "",
             ]
+        case "export-result":
+            defaults.set(message["status"] as? String ?? "Export failed.", forKey: Key.exportStatus)
+            return [:]
         case "hidden":
-            defaults.set(["url": message["url"] as? String ?? "", "hidden": message["hidden"] as? [Any] ?? [],
-                          "onDirectory": message["onDirectory"] as? Bool ?? false], forKey: Key.hidden)
+            // Keep only the fields consumed by the native list. Model results
+            // contain JSON nulls (for example reference.origin), which cannot
+            // be persisted in UserDefaults and abort the native request.
+            let cards = (message["hidden"] as? [[String: Any]] ?? []).compactMap { card -> [String: String]? in
+                guard let channel = card["channel"] as? String else { return nil }
+                return ["channel": channel, "title": card["title"] as? String ?? "",
+                        "reason": card["reason"] as? String ?? "", "game": card["game"] as? String ?? "Other games"]
+            }
+            defaults.set(["url": message["url"] as? String ?? "", "hidden": cards,
+                          "onDirectory": message["onDirectory"] as? Bool ?? false,
+                          "mode": message["mode"] as? String ?? "hide"], forKey: Key.hidden)
             return [:]
         default:
             return [:]

@@ -21,3 +21,53 @@ Paridade: os 221 exemplos revisados e controles adicionais de Unicode/contexto t
 O teste offline de navegador verifica transporte de metadados completos, ocultação, complemento, desativação do filtro e layout em 1280 e 375 pixels. A atualização pessoal Safari verifica assinatura e registro, separadamente da ativação no navegador e da persistência após reinício.
 
 `tests/browser/capture-tibia.cjs` faz uma única navegação à categoria ao vivo com a extensão real em perfil Chrome isolado, percorrendo a lista e preservando a primeira observação de cada canal. Recusa sobrescrever a captura e mantém os metadados no diretório ignorado `local/`. O diagnóstico registra ocultação efetiva, probabilidade e explicações. Não chama treinamento nem atribui rótulos. Ver [registro do marco C](../research/twitch/model/MILESTONE_C.md).
+
+## Directory controls and diagnostics (1.6.3)
+
+Both browsers offer Show, Move to bottom and Hide. The slider is the minimum
+displayed complement, `1 - P(private server)`, from 0% to 100%. Streams below it
+are affected; streams equal to or above it stay in the first group. The default
+is 1%, corresponding to the frozen model's conservative 99% private-server
+policy. Show keeps Twitch order and reports zero affected streams. Move to bottom
+counts the affected streams without hiding them; Hide counts hidden streams.
+Per-broadcast Show overrides apply in both modes.
+
+Move to bottom sets CSS order on Twitch's existing flex/grid cells. It preserves
+Twitch order inside each group. When the list has been scrolled, the visual prefix
+through the visible row stays in place and only the remaining suffix is regrouped
+when new cards load. This means a newly loaded preferred stream does not jump ahead
+of streams already reached by the reader. No React-owned node is moved. Keyboard
+and assistive navigation retain Twitch's DOM order.
+
+Export JSON in the Diagnostics section saves a local JSON object. Its header
+contains `captured_at` (UTC ISO 8601), `url`, `extension_version`, `model_revision`,
+`model_sha256`, `threshold`, `threshold_metric`, `mode` and `enabled` (whether
+filtering is active). `streams` contains the existing capture fields `channel`,
+`title`, `tags` and `viewers` (null when unavailable), plus:
+
+- `private_probability`, `display_probability`, `displayed_percentage` (0 to 100),
+  `displayed_text` (the shared localized formatting) and `percentage_shown`
+  (Safari's existing probability badge is separate from Chrome's presentation).
+- `references`, `contributions` with feature, value, weight and raw-logit
+  contribution, and `raw_logit`. Calibration parameters belong to the model
+  identified by the hash.
+- `hide` (below the active threshold), `affected` (after mode and Show overrides),
+  `hidden` (actually hidden by this filter) and `present_on_page`.
+
+Titles and tag arrays retain the text, ordering and duplicates read from Twitch,
+without truncation or inference normalization. Viewer counts come from the card’s
+`currentViewerCount` integer, not rounded display strings such as `3.7K`. They
+refresh as Twitch updates its card data. Each channel retains its most
+recently evaluated metadata in page memory, including after Twitch unmounts its
+card. Leaving the category or reloading clears this session. Removed cards retain
+their last evaluated state; `present_on_page` distinguishes them. A model or
+settings change recalculates retained results with the exported header's policy.
+Exports are user-initiated and are not uploaded or stored in extension storage.
+
+Both the evaluation CLI (`python3 tools/twitch_evidence.py capture.json`) and
+annotation source loading accept this envelope as well as historical bare arrays.
+The download is initiated inside the Twitch page, using a JSON Blob and an anchor
+with `download`, without the extension downloads API. The native Safari popover
+requests that same operation through its existing native settings bridge and
+reports success or errors from the active tab. A download request alone does not
+prove that Safari saved the file; browser verification is recorded separately.

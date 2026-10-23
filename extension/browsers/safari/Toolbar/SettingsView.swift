@@ -51,12 +51,33 @@ struct SettingsView: View {
                 }
             }
             Section {
-                toggle(SettingsModel.tibiaFilter)
+                Picker("Other games", selection: Binding(get: { model.mode }, set: { model.setMode($0) })) {
+                    Text("Show").tag("show")
+                    Text("Move to bottom").tag("bottom")
+                    Text("Hide").tag("hide")
+                }
+                .disabled(!model.value("enabled"))
+                LabeledContent("Minimum probability:") {
+                    HStack(spacing: 8) {
+                        Slider(value: Binding(get: { model.threshold }, set: { model.setThreshold(($0 * 100).rounded() / 100) }), in: 0...1) {
+                            Text("Minimum probability")
+                        }
+                        .labelsHidden()
+                        .accessibilityLabel("Minimum displayed probability")
+                        .accessibilityValue("\(Int((model.threshold * 100).rounded())) percent")
+                        .help("0% to 100% of 1 − P(private server)")
+                        Text("\(Int((model.threshold * 100).rounded()))%")
+                            .monospacedDigit()
+                            .foregroundStyle(.secondary)
+                            .frame(width: 36, alignment: .trailing)
+                    }
+                }
+                .disabled(!model.value("enabled") || model.mode == "show")
                 Button {
                     showingBlocked = true
                 } label: {
                     HStack {
-                        LabeledContent("Blocked streams", value: model.onTibiaDirectory ? "\(model.hidden.count)" : "")
+                        LabeledContent(model.mode == "bottom" ? "Moved streams" : "Blocked streams", value: model.onTibiaDirectory ? "\(model.hidden.count)" : "")
                         Image(systemName: "chevron.right").foregroundStyle(.secondary)
                     }
                 }
@@ -72,13 +93,18 @@ struct SettingsView: View {
             } header: {
                 Text("Tibia Category")
             } footer: {
-                Text("Video options apply when Twitch reloads.")
+                Text("Streams below this 1 − P(private server) value move to bottom or hide. While scrolling, the visited part stays in place. Video options apply when Twitch reloads.")
             }
             Section("Fansites") {
                 ForEach(SettingsModel.fansites) { site in
                     toggle(Setting(id: site.key, title: site.domain,
                                    detail: "\(site.rules) network rules, \(site.selectors) hidden elements"))
                 }
+            }
+            Section("Diagnostics") {
+                Button("Export JSON…") { model.requestExport() }
+                    .disabled(!model.onTibiaDirectory)
+                Text(model.exportStatus).font(.caption).foregroundStyle(.secondary)
             }
         }
         .formStyle(.grouped)

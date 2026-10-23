@@ -137,3 +137,37 @@ The preceding 1.2.4 change added lexical cases; it did not replace the rule-domi
 - The maintainer confirmed 1.5.3 still did not hide streams after restarting. Live macOS logs then established repeated native extension failures while storing rule status containing `error = null` in UserDefaults. That exception occurred before the settings reply. Prior JavaScript-only tests mocked away the native persistence boundary.
 - SharedStore now persists only the typed rule timestamp and optional string error, omitting JSON null. The real Swift handler was tested with a disposable defaults suite: a null-error sync returns the enabled native filter edit without aborting, while a string error is retained. Swift 6 native navigation checks and all repository checks pass. Logs remain ignored locally.
 - The personally signed 1.5.4 update passed installed-resource, universal-binary and deep strict signature checks. Without another Safari restart, fresh shared state showed both native and web filtering enabled and the directory reporting 51 hidden streams, compared with zero before the fix. This is actual installed-browser reporting; direct rendered visibility inspection remained unavailable because macOS denied Safari automation.
+
+## Popup diagnostics and directory modes, 2026-10-23
+
+- Repository checks: all 56 Python tests, JavaScript smoke tests, model evaluation
+  and generated-resource checks passed. Swift-capable hosts additionally execute
+  the real native report persistence and SettingsModel regression case. That case
+  reproduced the abort caused by JSON nulls before the fix, then verified the
+  moved-stream count, mode switching and title-scoped overrides after the fix.
+- Chrome Beta: real unpacked-extension tests saved and parsed JSON files from both
+  the isolated content script and the actual action popup. Full React titles,
+  duplicate tags, exact integer viewer counts and viewer updates were verified.
+  Popup changes persisted the mode and threshold. Page-session exports retained
+  streams whose cards had been removed.
+- Browser regression fixtures verified two stable groups, Hide and Show behavior,
+  Show overrides, and unchanged card positions above and inside the viewport when
+  additional streams loaded. Rendered desktop and phone-size views were inspected.
+- Live Twitch in isolated Chrome: 30 cards used flex cells and received CSS order;
+  Move to bottom affected 27 while hiding none. Desktop (1280 by 800) and phone
+  (375 by 667) screenshots were inspected. Viewer data was located in Twitch's
+  `currentViewerCount` property, preserving integers instead of rounded labels.
+- Safari 27.0.1: the maintainer saved real diagnostics JSON through the native
+  popup, including a 407-stream capture. Both captures parsed successfully and
+  entered the evaluation CLI directly. The maintainer also confirmed that the
+  moved-stream count and list populated after the native report fix. Restarting
+  Safari resolved a stale-script export failure following an app update.
+- Safari WebDriver could not establish a session despite remote automation being
+  enabled. Safari file saving and the affected-stream list were therefore checked
+  with the maintainer; automated scroll stability used Chrome. The final inline
+  native slider was separately rendered and visually inspected in a SwiftUI
+  preview. Real Safari scrolling remains a manual verification limit.
+- Packaging/signing is separate: the local Safari updater builds, personally signs,
+  verifies and installs the current source with a retained local backup. No signed
+  personal app or captured stream data is published with this change. Signature
+  verification does not establish Safari restart persistence or certificate lifetime.

@@ -21,7 +21,7 @@ const loadSettings = (context = vm.createContext({})) => {
   const defaults = S.resolve();
   assert.equal(defaults.enabled, true);
   assert.equal(defaults.hideAdBreakBanner, false);
-  assert.deepEqual(plain(S.resolve({ blockAds: 'no', tibiaFilter: false, unknown: true })), { ...plain(defaults), tibiaFilter: false });
+  assert.deepEqual(plain(S.resolve({ blockAds: 'no', tibiaFilter: false, unknown: true })), { ...plain(defaults), tibiaFilter: false, tibiaMode: 'show' });
   assert.deepEqual(plain(S.cssState(defaults)), { off: [], on: [] });
   assert.deepEqual(plain(S.cssState({ ...defaults, hideUpsells: false, hideAdBreakBanner: true }).off), ['upsells']);
   assert.deepEqual(plain(S.cssState({ ...defaults, hideAdBreakBanner: true }).on), ['adbreak']);
@@ -31,6 +31,12 @@ const loadSettings = (context = vm.createContext({})) => {
   assert.deepEqual(plain((S.rulesetState(defaults))), { enableRulesetIds: ['twitch_ads', 'twitch_tracking'], disableRulesetIds: [] });
   assert.deepEqual(plain((S.rulesetState({ ...defaults, blockTracking: false }))), { enableRulesetIds: ['twitch_ads'], disableRulesetIds: ['twitch_tracking'] });
   assert.deepEqual(plain((S.rulesetState(paused))), { enableRulesetIds: [], disableRulesetIds: ['twitch_ads', 'twitch_tracking'] });
+  assert.equal(S.resolve({tibiaMode: 'bottom'}).tibiaMode, 'bottom');
+  assert.equal(S.resolve({tibiaMode: 'invalid', tibiaFilter: false}).tibiaMode, 'show');
+  assert.equal(S.resolve({tibiaThreshold: NaN}).tibiaThreshold, 0.01);
+  assert.equal(S.resolve({tibiaThreshold: true}).tibiaThreshold, 0.01);
+  assert.equal(S.resolve({tibiaThreshold: 2}).tibiaThreshold, 0.01);
+  assert.equal(S.resolve({tibiaThreshold: 0.5}).tibiaThreshold, 0.5);
   console.log('PASS settings.js: defaults, master switch, CSS groups and rulesets');
 }
 

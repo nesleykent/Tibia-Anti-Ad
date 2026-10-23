@@ -6,6 +6,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Added
 
+- 1.6.3: diagnostics JSON export at the bottom of both popups, with complete stream metadata, exact viewer counts from Twitch card data when available, model contributions and weights, visibility, timestamp, version, model revision and threshold. Evaluated streams remain available after Twitch removes their cards. The evaluation CLI accepts exports directly.
+
 - Safari 1.4.0 displays the model's estimated probability of official Tibia beside every stream's channel name in the Tibia directory. Estimates remain visible with **Hide other games** on or off; the master switch pauses them. Chrome does not include this presentation.
 - Safari toolbar status: `infinity.circle` when blocking is disabled and `infinity.circle.fill` when enabled, synchronized on changes and background startup. Toolbar titles describe the state in text.
 - Chrome uses original outlined/filled infinity-in-circle vectors for the same two states, with dual-tone edges for light/dark themes. Both browsers' popup status indicators match their toolbar state. Imported shield branding is replaced with original circular infinity artwork.
@@ -28,6 +30,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Changed
 
+- 1.6.3: Other games offers Show, Move to bottom and Hide, with a persisted minimum displayed-probability slider. Move to bottom preserves Twitch order within both groups using CSS order; incremental loads preserve the visible prefix while regrouping the unvisited suffix. Per-broadcast Show overrides apply in both filtering modes.
+
 - Private-server inference (1.5.0): supervised text-presence likelihoods and channel-separated logistic calibration replace the model that depended heavily on official-world references. Missing official references add no piracy evidence; titles and tags jointly supply present patterns. Unrelated games are excluded from positive training labels. Safari continues to display the complement of the private-server estimate. Automatic hiding now requires 98% estimated piracy probability. Documentation describes the model, cutoff, development comparisons and limits explicitly.
 
 - Tibia filtering (1.3.0): learned statistical inference over complete titles and tags now directly decides card visibility. Manual name lists, channel rules and lexical score overrides are removed from the live classifier. Shared word, phrase and character features are fitted from audited labels; old filter predictions are excluded from training. Uncertain results remain visible. See the [model card](docs/TWITCH_MODEL.md) for input comparisons, provenance and current detection limits.
@@ -49,6 +53,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 - CI uses pinned actions, a bounded runtime and a Python compatibility matrix.
 
 ### Fixed
+
+- 1.6.3: Safari persists only the display fields of stream reports, preventing JSON nulls in model evidence from aborting the native handler and leaving affected-stream counts and lists empty. Exports target the page that opened the native popover. The threshold uses a continuous native slider in the standard inline form layout.
 
 - Safari 1.5.4: omit JSON null from persisted rule status. Saving a null error in UserDefaults raised a native exception before settings edits could return to the web extension, leaving Hide other games ineffective.
 - Safari 1.5.3: detect native messaging by the Safari extension URL, independently of the action API. An available action namespace must not disable synchronization with native controls.

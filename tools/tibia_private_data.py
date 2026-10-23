@@ -20,7 +20,10 @@ def load_rows():
         if key == 'cases':
             continue  # inputs frozen in annotations; old fixture is now an index
         raw = json.loads((ROOT / name).read_text())
-        sources[key] = raw['classificacao'] if key == 'audit' else raw
+        if key == 'audit':
+            sources[key] = raw['classificacao']
+        else:
+            sources[key] = raw.get('streams', raw) if isinstance(raw, dict) else raw
     by_id = {r['id']: r for r in packet['annotations']}
     def material(row):
         if 'parent_id' in row:

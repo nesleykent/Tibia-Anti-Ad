@@ -80,6 +80,12 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
         $('d-backgroundQuality').textContent = settings.removeStreamAds
             ? 'Included with Remove stream ads.'
             : 'Stops Twitch lowering the quality in hidden tabs.';
+        $('tibiaMode').value = settings.tibiaMode;
+        $('tibiaMode').disabled = !settings.enabled;
+        $('tibiaThreshold').value = settings.tibiaThreshold * 100;
+        $('tibiaThreshold').disabled = !settings.enabled || settings.tibiaMode === 'show';
+        $('threshold-value').textContent = `${Math.round(settings.tibiaThreshold * 100)}%`;
+        $('export-button').disabled = !twitchTab || !TIBIA_DIRECTORY.test(twitchTab.url || '');
         $('status').textContent = settings.enabled ? 'On' : 'Paused. Every feature is off.';
     };
 
@@ -93,20 +99,20 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
 
     // A one-line summary; the streams themselves are listed in manage.html.
     const renderSummary = response => {
-        const hidden = response?.hidden || [];
-        const onDirectory = S.active(settings, 'tibiaFilter') && Boolean(response?.onDirectory);
+        const hidden = settings.enabled && settings.tibiaMode !== 'show' ? response?.hidden || [] : [];
+        const onDirectory = Boolean(response?.onDirectory);
         const restored = Object.keys(shown).length;
         $('tibia-summary').hidden = !onDirectory && !restored;
         if (onDirectory) {
             const counts = new Map();
             for (const card of hidden) { counts.set(card.game, (counts.get(card.game) || 0) + 1); }
             const top = [...counts].sort((a, b) => b[1] - a[1]);
-            $('tibia-summary-title').textContent = hidden.length ? `${plural(hidden.length, 'stream')} hidden on this page` : 'No streams hidden on this page';
+            $('tibia-summary-title').textContent = hidden.length ? `${plural(hidden.length, 'stream')} ${settings.tibiaMode === 'bottom' ? 'moved to bottom' : 'hidden'} on this page` : 'No streams affected on this page';
             $('tibia-summary-detail').textContent = [
                 ...top.slice(0, 2).map(([game, count]) => `${game} ${count}`),
                 top.length > 2 ? `${top.length - 2} more` : '',
                 restored ? `${restored} shown by you` : '',
-            ].filter(Boolean).join(' \u00b7 ');
+            ].filter(Boolean).join('; ');
         } else {
             $('tibia-summary-title').textContent = `${plural(restored, 'stream')} shown by you`;
             $('tibia-summary-detail').textContent = 'Each stays visible until its title changes.';
@@ -115,7 +121,7 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
 
     // Asks the Tibia filter in the active Twitch tab which cards it hides.
     const refreshHidden = () => {
-        if (!twitchTab || !S.active(settings, 'tibiaFilter')) { renderSummary(null); return Promise.resolve(); }
+        if (!twitchTab) { renderSummary(null); return Promise.resolve(); }
         return api.tabs.sendMessage(twitchTab.id, { type: 'tibia-anti-ad:tibia-hidden' })
             .then(renderSummary, () => renderSummary(null));
     };
@@ -139,7 +145,27 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
         api.tabs.create({ url: api.runtime.getURL(`manage.html${query}`) }).then(() => window.close(), () => {});
     };
 
+    const exportDiagnostics = async () => {
+        if (!twitchTab) { return; }
+        $('export-button').disabled = true;
+        try {
+            const response = await api.tabs.sendMessage(twitchTab.id, {type: 'tibia-anti-ad:export-diagnostics'});
+            if (!response?.ok) { throw new Error(response?.error || 'Export unavailable. Reload the Twitch page.'); }
+            $('diagnostics-detail').textContent = `Download requested: ${response.count} streams. Check your browser\u2019s downloads.`;
+        } catch (error) { $('diagnostics-detail').textContent = error.message; }
+        finally { $('export-button').disabled = false; }
+    };
+
     const onChange = event => {
+        if (event.target.id === 'tibiaMode' || event.target.id === 'tibiaThreshold') {
+            const key = event.target.id;
+            const value = key === 'tibiaMode' ? event.target.value : Number(event.target.value) / 100;
+            settings = S.resolve({...settings, [key]: value});
+            api.storage.local.set({[key]: value, ...(key === 'tibiaMode' ? {tibiaFilter: value !== 'show'} : {})});
+            renderSwitches();
+            setTimeout(refreshHidden, 150);
+            return;
+        }
         const input = event.target.closest?.('input[data-setting]');
         if (!input) { return; }
         const key = input.dataset.setting;
@@ -177,6 +203,8 @@ document.documentElement.classList.toggle('native-switch', 'switch' in HTMLInput
         document.addEventListener('change', onChange);
         $('reload-button').addEventListener('click', reloadTwitch);
         $('manage-button').addEventListener('click', manage);
+        $('export-button').addEventListener('click', exportDiagnostics);
+        $('tibiaThreshold').addEventListener('input', () => { $('threshold-value').textContent = `${$('tibiaThreshold').value}%`; });
         $('rules-button').addEventListener('click', updateRules);
         api.storage.onChanged.addListener((changes, area) => {
             if (area === 'local') { load(); }

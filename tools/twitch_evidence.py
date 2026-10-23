@@ -50,7 +50,9 @@ def main():
         parser.error('streams is required')
     model = PrivateModel.load(PRIVATE_MODEL)
     results = []
-    for stream in json.loads(Path(args.streams).read_text()):
+    capture = json.loads(Path(args.streams).read_text())
+    streams = capture["streams"] if isinstance(capture, dict) else capture
+    for stream in streams:
         results.append({'channel': stream.get('channel'), **model.predict(stream.get('title') or '', stream.get('tags') or [])})
     print(json.dumps(results, ensure_ascii=False, indent=2))
 

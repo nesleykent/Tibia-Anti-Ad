@@ -53,6 +53,9 @@ struct BlockedStream: Identifiable, Hashable {
         return (try? JSONDecoder().decode([Fansite].self, from: data)) ?? []
     }()
 
+    private(set) var mode = "hide"
+    private(set) var threshold = 0.01
+    private(set) var exportStatus = "Full titles, tags and model evidence from this page."
     private(set) var values: [String: Bool] = [:]
     private(set) var shown: [String: String] = [:]
     private(set) var hidden: [BlockedStream] = []
@@ -85,14 +88,19 @@ struct BlockedStream: Identifiable, Hashable {
         values = Dictionary(uniqueKeysWithValues: keys.map { key in
             (key, (edited[key] as? Bool) ?? (web[key] as? Bool) ?? !Self.defaultsOff.contains(key))
         })
+        let storedMode = (edited["tibiaMode"] ?? web["tibiaMode"]) as? String
+        mode = ["show", "bottom", "hide"].contains(storedMode ?? "") ? storedMode! : value("tibiaFilter") ? "hide" : "show"
+        let storedThreshold = (edited["tibiaThreshold"] ?? web["tibiaThreshold"]) as? Double ?? 0.01
+        threshold = storedThreshold.isFinite && (0...1).contains(storedThreshold) ? storedThreshold : 0.01
+        exportStatus = defaults.string(forKey: SharedStore.Key.exportStatus) ?? "Full titles, tags and model evidence from this page."
         shown = defaults.dictionary(forKey: SharedStore.Key.shown) as? [String: String] ?? [:]
         let report = defaults.dictionary(forKey: SharedStore.Key.hidden) ?? [:]
         let reportURL = (report["url"] as? String).flatMap(URL.init(string:))
         let samePage = pageURL == nil || reportURL.map { $0.host == pageURL?.host && $0.path == pageURL?.path } == true
         if pageURL != nil || hidden.isEmpty {
             onTibiaDirectory = samePage && report["onDirectory"] as? Bool == true
-            hidden = !onTibiaDirectory || !value("enabled") || !value("tibiaFilter") ? [] : (report["hidden"] as? [[String: Any]] ?? []).compactMap { card in
-                guard let channel = card["channel"] as? String, shown[channel] == nil else { return nil }
+            hidden = !onTibiaDirectory || !value("enabled") || mode == "show" ? [] : (report["hidden"] as? [[String: Any]] ?? []).compactMap { card in
+                guard let channel = card["channel"] as? String, shown[channel] != card["title"] as? String else { return nil }
                 return BlockedStream(channel: channel, title: card["title"] as? String ?? "",
                                      reason: card["reason"] as? String ?? "", game: card["game"] as? String ?? "Other games")
             }
@@ -110,6 +118,34 @@ struct BlockedStream: Identifiable, Hashable {
         for (k, v) in values { edited[k] = v }
         defaults.set(edited, forKey: SharedStore.Key.settings)
         defaults.set(Date().timeIntervalSince1970 * 1000, forKey: SharedStore.Key.settingsChangedAt)
+    }
+
+    func setMode(_ mode: String) {
+        guard ["show", "bottom", "hide"].contains(mode) else { return }
+        self.mode = mode
+        set("tibiaFilter", mode != "show")
+        editPreference("tibiaMode", mode)
+    }
+
+    func setThreshold(_ threshold: Double) {
+        guard threshold.isFinite && (0...1).contains(threshold) else { return }
+        self.threshold = threshold
+        editPreference("tibiaThreshold", threshold)
+    }
+
+    private func editPreference(_ key: String, _ value: Any) {
+        var edited = defaults.dictionary(forKey: SharedStore.Key.settings) ?? [:]
+        edited[key] = value
+        defaults.set(edited, forKey: SharedStore.Key.settings)
+        defaults.set(Date().timeIntervalSince1970 * 1000, forKey: SharedStore.Key.settingsChangedAt)
+    }
+
+    func requestExport() {
+        guard let pageURL else { return }
+        defaults.set(pageURL.absoluteString, forKey: SharedStore.Key.exportURL)
+        exportStatus = "Preparing download…"
+        defaults.set(exportStatus, forKey: SharedStore.Key.exportStatus)
+        defaults.set(Date().timeIntervalSince1970 * 1000, forKey: SharedStore.Key.exportRequestedAt)
     }
 
     // channel -> title keeps that broadcast visible until its title changes; nil undoes it.

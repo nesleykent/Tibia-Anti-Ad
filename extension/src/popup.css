@@ -311,3 +311,7 @@ body.manage.loading .toolbar { visibility: hidden; }
 .children .row { padding-left: var(--space-m); }
 .children .row::before { left: var(--space-m); }
 .children > .row:first-child::before { display: none; }
+
+/* Directory controls keep the compact settings rhythm on narrow popups. */
+#tibiaMode { width: 100%; margin: 6px 0; font: inherit; padding: 5px; }
+#tibiaThreshold { width: 100%; margin: 8px 0; accent-color: var(--accent, #007aff); }

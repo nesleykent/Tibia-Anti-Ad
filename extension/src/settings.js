@@ -10,7 +10,7 @@
     const SITES = globalThis.TibiaAntiAdSites || [];
     const fromSites = field => Object.fromEntries(SITES.map(site => [site.key, field(site)]));
 
-    // Every option is a boolean in storage.local under the same key.
+    // Boolean feature switches and typed directory preferences in storage.local.
     const DEFAULTS = Object.freeze({
         enabled: true,
         blockAds: true,
@@ -24,7 +24,9 @@
         hidePrompts: true,
         hideSignupPrompts: true,
         hideCookieBanner: true,
-        tibiaFilter: true,
+        tibiaFilter: true, // Legacy preference, retained for migration.
+        tibiaMode: 'hide',
+        tibiaThreshold: 0.01, // Minimum displayed complement, preserving the model policy.
         ...fromSites(() => true),
     });
 
@@ -63,7 +65,13 @@
     const resolve = (stored = {}) => {
         const settings = { ...DEFAULTS };
         for (const key of Object.keys(DEFAULTS)) {
-            if (typeof stored?.[key] === 'boolean') { settings[key] = stored[key]; }
+            if (typeof DEFAULTS[key] === 'boolean' && typeof stored?.[key] === 'boolean') { settings[key] = stored[key]; }
+        }
+        settings.tibiaMode = ['show', 'bottom', 'hide'].includes(stored?.tibiaMode)
+            ? stored.tibiaMode : stored?.tibiaFilter === false ? 'show' : 'hide';
+        settings.tibiaFilter = settings.tibiaMode !== 'show';
+        if (Number.isFinite(stored?.tibiaThreshold) && stored.tibiaThreshold >= 0 && stored.tibiaThreshold <= 1) {
+            settings.tibiaThreshold = stored.tibiaThreshold;
         }
         return settings;
     };
@@ -84,7 +92,7 @@
         };
     };
 
-    const load = api => api.storage.local.get(DEFAULTS).then(resolve);
+    const load = api => api.storage.local.get({...DEFAULTS, tibiaMode: null}).then(resolve);
 
     globalThis.TibiaAntiAdSettings = Object.freeze({
         SITES, DEFAULTS, RULESETS, CSS_OPT_OUT, CSS_OPT_IN, PAGE_KEY, RELOAD_KEYS,

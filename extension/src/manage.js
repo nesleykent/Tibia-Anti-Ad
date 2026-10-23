@@ -93,11 +93,11 @@
         const empty = $('empty');
         empty.hidden = sections.length > 0;
         empty.textContent = !reachable ? 'Open the Tibia category on Twitch, then choose Manage Blocked Streams again to see the streams hidden there.'
-            : !S.active(settings, 'tibiaFilter') ? 'Hide other games is off.'
-            : hidden.length ? 'No blocked streams match.' : 'No streams are hidden on this page.';
+            : !S.active(settings, 'tibiaFilter') ? 'Other games are shown in Twitch order.'
+            : hidden.length ? 'No blocked streams match.' : 'No streams are affected on this page.';
         const showing = sections.reduce((sum, s) => sum + s.querySelectorAll('li').length, 0);
         $('status').textContent = !reachable ? '' : showing === hidden.length
-            ? `${plural(hidden.length, 'stream')} hidden on the Twitch page`
+            ? `${plural(hidden.length, 'stream')} ${settings.tibiaMode === 'bottom' ? 'moved to bottom' : 'hidden'} on the Twitch page`
             : `${showing} of ${plural(hidden.length, 'stream')} shown`;
     };
 
@@ -152,7 +152,7 @@
             if (event.key === 'f' && (event.metaKey || event.ctrlKey)) { event.preventDefault(); $('search').focus(); }
         });
         api.storage.onChanged.addListener((changes, area) => {
-            if (area === 'local' && (changes.tibiaShown || changes.tibiaFilter || changes.enabled)) { load().then(refresh); }
+            if (area === 'local' && (changes.tibiaShown || changes.tibiaFilter || changes.tibiaMode || changes.tibiaThreshold || changes.enabled)) { load().then(refresh); }
         });
         load().then(refresh).finally(() => {
             document.body.classList.remove('loading');

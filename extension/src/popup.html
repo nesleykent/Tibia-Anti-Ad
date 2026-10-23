@@ -84,8 +84,20 @@
     <h2 class="group-header" id="h-tibia">Tibia category</h2>
     <div class="group children" role="group" aria-labelledby="h-tibia">
         <div class="row">
-          <label class="row-text" for="tibiaFilter"><span class="row-title">Hide other games</span><span class="detail" id="d-tibiaFilter">OTServers, Pokémon servers and idle games. Undecided streams stay visible.</span></label>
-          <input type="checkbox" switch role="switch" id="tibiaFilter" data-setting="tibiaFilter" aria-describedby="d-tibiaFilter">
+          <div class="row-text">
+            <label class="row-title" for="tibiaMode">Other games</label>
+            <select id="tibiaMode" aria-describedby="d-tibiaMode">
+              <option value="show">Show</option><option value="bottom">Move to bottom</option><option value="hide">Hide</option>
+            </select>
+            <span class="detail" id="d-tibiaMode">Keeps Twitch’s order within each group. While scrolling, the visited part stays in place.</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row-text">
+            <label class="row-title" for="tibiaThreshold">Minimum probability: <output id="threshold-value" for="tibiaThreshold">1%</output></label>
+            <input type="range" id="tibiaThreshold" min="0" max="100" step="1" aria-describedby="d-threshold">
+            <span class="detail" id="d-threshold">Below this 1 − P(private server) value, move to bottom or hide. Show overrides stay visible.</span>
+          </div>
         </div>
         <div class="row" id="tibia-summary" hidden>
           <div class="row-text">
@@ -106,6 +118,13 @@
   <section class="section" id="s-sites" data-section="sites" aria-labelledby="h-sites">
     <h2 class="group-header" id="h-sites">Tibia fansites</h2>
     <div class="group children" id="sites" role="group" aria-labelledby="h-sites"></div>
+  </section>
+  <section class="section" aria-labelledby="h-diagnostics">
+    <h2 class="group-header" id="h-diagnostics">Diagnostics</h2>
+    <div class="group"><div class="row">
+      <div class="row-text"><span class="detail" id="diagnostics-detail" role="status">Full titles, tags and model evidence from this page.</span></div>
+      <button type="button" class="button" id="export-button">Export JSON…</button>
+    </div></div>
   </section>
 </main>
 
