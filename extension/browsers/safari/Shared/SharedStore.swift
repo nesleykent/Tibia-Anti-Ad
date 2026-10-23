@@ -20,15 +20,21 @@ enum SharedStore {
     }
 
     // A native message from the web extension's background script.
-    static func handle(_ message: [String: Any]) -> [String: Any] {
-        let defaults = defaults
+    static func handle(_ message: [String: Any], defaults: UserDefaults = SharedStore.defaults) -> [String: Any] {
         switch message["type"] as? String {
         case "sync":
             if let settings = message["settings"] as? [String: Any] { defaults.set(settings, forKey: Key.webSettings) }
             if let shown = message["tibiaShown"] as? [String: Any], defaults.double(forKey: Key.shownChangedAt) == 0 {
                 defaults.set(shown, forKey: Key.shown)
             }
-            if let rules = message["rules"] as? [String: Any] { defaults.set(rules, forKey: Key.rules) }
+            if let rules = message["rules"] as? [String: Any] {
+                // JSON null bridges as NSNull, which UserDefaults cannot store.
+                // Persist the known property-list fields before returning edits.
+                var stored: [String: Any] = [:]
+                if let fetchedAt = rules["fetchedAt"] as? NSNumber { stored["fetchedAt"] = fetchedAt }
+                if let error = rules["error"] as? String { stored["error"] = error }
+                defaults.set(stored, forKey: Key.rules)
+            }
             return [
                 "settings": defaults.dictionary(forKey: Key.settings) ?? [:],
                 "settingsChangedAt": defaults.double(forKey: Key.settingsChangedAt),

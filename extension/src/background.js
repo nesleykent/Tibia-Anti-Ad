@@ -14,6 +14,7 @@ if (typeof importScripts === 'function' && !globalThis.TibiaAntiAdSettings) {
     const api = globalThis.browser || globalThis.chrome;
     const S = globalThis.TibiaAntiAdSettings;
     const R = globalThis.TibiaAntiAdRules;
+    const safari = api.runtime.getURL('').startsWith('safari-web-extension:');
 
     const syncToolbar = async settings => {
         // The Safari app shows its own native toolbar button instead.
@@ -23,7 +24,6 @@ if (typeof importScripts === 'function' && !globalThis.TibiaAntiAdSettings) {
             title: `Tibia Anti-Ad \u2014 Blocking ${settings.enabled ? 'enabled' : 'disabled'}`,
         })];
         // Safari uses SF Symbols; Chrome has independent vector-based artwork.
-        const safari = api.runtime.getURL('').startsWith('safari-web-extension:');
         const sizes = safari ? [16, 19, 32, 38] : [16, 32, 48, 128];
         const platform = safari ? 'safari' : 'chrome';
         tasks.push(api.action.setIcon({ path: Object.fromEntries(
@@ -56,7 +56,7 @@ if (typeof importScripts === 'function' && !globalThis.TibiaAntiAdSettings) {
     // App Group. Exchange them with this extension's storage by native
     // messaging (SafariWebExtensionHandler): send what the scripts use, take
     // edits newer than the last ones applied.
-    const native = Boolean(globalThis.browser?.runtime?.sendNativeMessage) && !api.action;
+    const native = safari && Boolean(globalThis.browser?.runtime?.sendNativeMessage);
     let pendingNative = Promise.resolve();
     const syncNative = () => {
         if (!native) { return Promise.resolve(); }

@@ -29,6 +29,14 @@ import SwiftUI
         model.reload(pageURL: nil)
         precondition(model.hidden.isEmpty, "An old report must not restore the blocked count while filtering is off")
         model.set("tibiaFilter", true)
+        let reply = SharedStore.handle(["type": "sync", "settings": ["tibiaFilter": false],
+                                       "rules": ["fetchedAt": 0, "error": NSNull()]], defaults: defaults)
+        precondition((reply["settings"] as? [String: Bool])?["tibiaFilter"] == true,
+                     "A JSON-null rule error must not abort returning native edits")
+        precondition(defaults.dictionary(forKey: SharedStore.Key.rules)?["error"] == nil)
+        _ = SharedStore.handle(["type": "sync", "rules": ["fetchedAt": 1, "error": "synthetic error"]], defaults: defaults)
+        precondition(defaults.dictionary(forKey: SharedStore.Key.rules)?["error"] as? String == "synthetic error")
+        defaults.removeObject(forKey: SharedStore.Key.rules)
         model.reload(pageURL: nil)
         precondition(model.hidden.count == cards.count)
         model.set("enabled", false)

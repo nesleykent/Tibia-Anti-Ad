@@ -17,6 +17,8 @@ const flush = async () => { for (let i = 0; i < 8; i++) await new Promise(resolv
   } };
   let handler;
   const api = {
+    // Safari exposes the namespace even though the toolbar is native.
+    action: { setTitle: async () => {}, setIcon: async () => {} },
     storage: { local: {
       get: async defaults => defaults ? { ...defaults, ...stored } : { ...stored },
       set: async values => {
