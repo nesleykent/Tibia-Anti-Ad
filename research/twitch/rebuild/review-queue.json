@@ -291,14 +291,14 @@
         "BAIAKIDLE"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Two official world declarations plus idle-game title/tag. Historical official label is not established. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Maintainer identifies two original-world ED sessions (Terribra/Ferobra) in the title. Baiak Idle is incidental promotion, not a private-session declaration.",
       "roles": [
         "captured_metadata"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": [
         {
@@ -319,14 +319,14 @@
         "Português"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Two incompatible declarations, no authoritative active-session fact. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Maintainer identifies the explicit playing declaration TIBIA GLOBAL INABRA as the session; the OT domain is incidental promotion.",
       "roles": [
         "captured_metadata"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": [
         {
@@ -410,14 +410,14 @@
         "Português"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Mixes private project and standalone games. Binary on-private status remains unverified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer identifies RubinOT as private-session evidence in this multi-game title; listing other games does not erase that declaration.",
       "roles": [
         "captured_metadata"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": [
         {
@@ -467,14 +467,14 @@
         "Reposição"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Parallel official/private declarations; do not infer active session from word order. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "mixed",
+      "context": "mixed",
+      "reason": "Maintainer says the title declares both original Tibia and RubinOT play and explicitly assigns 50% private probability. Preserve fractional supervision, not a binary private label or the 1% no-evidence baseline.",
       "roles": [
         "captured_metadata"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": [
         {
@@ -584,14 +584,14 @@
         "rubinot"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Only server tag with neutral title. Could be stale/promotion; no channel-based resolution. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer identifies the RubinOT tag as the session identifier; the title supplies no competing session or sponsor-list context.",
       "roles": [
         "captured_metadata"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": [
         {
@@ -615,14 +615,14 @@
         "Tibiawar"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Historical probable-official content conflicts with named-project tag; project source not verified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer identifies Project Fibula as OT and its tag as the private-session identifier. Generic quest vocabulary does not invalidate that evidence.",
       "roles": [
         "captured_metadata"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": [
         {
@@ -646,14 +646,14 @@
         "RUBINIOT"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Only variant server tag; proposed alias needs review and session/promotion cannot be assumed. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer identifies RUBINIOT as a private-session tag variant; generic title content does not erase the server identifier.",
       "roles": [
         "captured_metadata"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": [
         {
@@ -675,14 +675,14 @@
         "BAIAKIDLE"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Official-world and private-idle declarations conflict. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Maintainer applies the same not-private adjudication to the Pulgazin historical control. The original-world session declaration scopes the idle mention as incidental.",
       "roles": [
         "historical_control"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": []
     },
@@ -698,12 +698,12 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "session",
-      "reason": "Game identity and private-server status need a source; old other verdict is not truth. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Historical LAWL test has no source channel supplied for session adjudication. Apply the maintainer no-private-evidence policy: retain at 1%, never ask the maintainer to infer missing provenance.",
       "roles": [
         "historical_control"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_baseline_confirmed"
       ],
       "source_links": []
     },
@@ -734,14 +734,14 @@
       "title": "Project Fibula?",
       "tags": [],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Question-style project mention; current operator identity not verified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer identifies Project Fibula as OT/private in this historical control.",
       "roles": [
         "historical_control"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": []
     },
@@ -1687,12 +1687,12 @@
       "tag_variants": [],
       "proposed_label": "not_private",
       "context": "session",
-      "reason": "Standalone other game, not a private Tibia server. Direct target change versus old all-other category; title-only proposal, not observed gameplay.",
+      "reason": "Maintainer adjudicates this input as not-private/visible. This records the private-server target, not an independently verified game identity.",
       "roles": [
         "captured_metadata"
       ],
       "approval_statuses": [
-        "pending"
+        "maintainer_confirmed"
       ],
       "source_links": [
         {
@@ -3138,39 +3138,18 @@
   "deferred_ids": [
     "audit:7"
   ],
-  "pending_decision_ids": [
-    "audit:179",
-    "audit:218",
-    "audit:283",
-    "audit:351",
-    "audit:384",
-    "audit:433",
-    "audit:450",
-    "audit:452",
-    "cases:3",
-    "cases:4",
-    "cases:8"
-  ],
+  "pending_decision_ids": [],
   "no_private_evidence_ids": [
     "audit:7",
     "audit:27",
     "audit:28",
     "audit:50",
     "audit:90",
-    "audit:179",
-    "audit:218",
     "audit:281",
-    "audit:283",
     "audit:326",
-    "audit:384",
     "audit:396",
     "audit:422",
-    "audit:433",
-    "audit:450",
-    "audit:452",
-    "cases:3",
     "cases:4",
-    "cases:8",
     "cases:28",
     "cases:33",
     "cases:36",
@@ -3287,5 +3266,8 @@
     "raw1400:453",
     "contrast:16",
     "contrast:17"
+  ],
+  "mixed_session_ids": [
+    "audit:384"
   ]
 }

@@ -228,6 +228,12 @@
       "kind": "explicit_maintainer_label_review",
       "date": "2026-10-23",
       "finding": "Maintainer approves private command/variant and not-private blocks, adjudicates named missing-target rows, identifies Eldrius as OT, and subsequently corrects audit:155 to not-private after consulting its Twitch channel. Project Zomboid hiding scope and ten listed ambiguous inputs remain unresolved. Every unresolved input must receive explicit no-private-evidence supervision and 1% probability, never be dropped or silently become positive."
+    },
+    {
+      "id": "maintainer-round3-context-review-2026-10-23",
+      "kind": "explicit_maintainer_label_review",
+      "date": "2026-10-23",
+      "finding": "Maintainer resolves Pulgazin/world declarations and Inabra as not-private, RubinOT in the multi-game title as private, Project Fibula as OT/private, standalone RubinOT/RUBINIOT tags as private, and Project Zomboid input as not-private. Explicit Global-and-RubinOT title receives 50% mixed-session supervision. LAWL has no usable provenance for adjudication and stays at the no-private-evidence baseline."
     }
   ]
 }

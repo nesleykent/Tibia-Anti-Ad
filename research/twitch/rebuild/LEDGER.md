@@ -1,6 +1,6 @@
 # Rebuild ledger
 
-## Milestone A: reviewed labels recorded; data enrichment remains
+## Current milestone A: existing annotation review complete; data enrichment remains
 
 Done:
 
@@ -80,3 +80,14 @@ Channel links update:
 - Machine-readable review groups now retain channel/url and source index for each available capture link. Constructed examples without a real source channel remain marked as tests. Approved rows are consultation-only, not a new approval request.
 
 Pending-only navigation update: placed the 10 unresolved session records in 8 grouped rows plus Project Zomboid scope at the top of REVIEW.md, with direct channel links, full titles/tags and the specific open question. Unknown cases already have mandatory 1% supervision; do not ask again for approved blocks. Additional real sponsor-negative collection is agent work remaining before B. No annotation or runtime changes in this navigation edit.
+
+Round 3, current state, 2026-10-23:
+
+- Done: latest maintainer adjudications applied to all remaining rows. Pulgazin (audit:179/cases:3), explicit Inabra (audit:218) and Project Zomboid (audit:351) are not-private. audit:283, audit:433, audit:450/cases:8 and audit:452 are private. Context is promotion for private mentions incidental to the Pulgazin/Inabra sessions and session for private-only identifiers/tags. No officialness reward is authorized.
+- Mixed case: audit:384 explicitly declares both sessions and receives fractional target 0.5 with expected P(private)=50%, exactly as requested. This is supervised annotation, not a calibration result; it must not be collapsed to private or no-evidence. Added its acceptance fixture and extended the checker.
+- LAWL: cases:4 has no usable source channel for adjudication. It stays in mandatory 1% no-evidence supervision; do not ask the maintainer to infer absent provenance. Historical audit:7 also keeps 1% evidence supervision, with historical truth assertion preserved.
+- Results: 221 records: 136 private targets, 50 not-private, 1 mixed, 34 missing historical truth targets. The 34 missing targets plus audit:7 yield 35 mandatory baseline cases. Approvals: 159 bulk, 27 individual, 35 baseline; no remaining pending approvals or scope questions in this packet. All original inputs/hashes/labels and superseded decisions preserved.
+- Real sample: 115 records; 87 session, 17 promotion, 8 no-evidence, 1 unresolved-context, 1 comparison, 1 mixed. Only 4 real confirmed incidental-promotion negatives, including the original 2 sponsor lists. More real sponsor-list negatives and a disjoint natural evaluation sample remain needed.
+- Files: annotation-proposals.json, review-queue.json, sources.json, REVIEW.md, DATA_GAP.md, validate_review.py, check_context_acceptance.py, tests/data/tibia-no-private-evidence-acceptance.json, tests/data/tibia-mixed-context-acceptance.json, LEDGER.md.
+- Validation: exact provenance and source spans, schema including fractional target, current label decisions, 35 retained baseline cases, mixed excluded from baseline, synthetic output-checker self-checks, unchanged original source fields and diff/link checks. No actual new-model inference or fitting. No full repository/model-fitting test pass claimed before B.
+- Exact next step: agent gathers additional real sponsor-list negatives and matched command-session positives, with independent session provenance and natural held-out sampling; return with only newly collected annotations for review before fitting. Do not reopen the resolved rows or repeat the full table review. Milestones B (fit/calibration/held-out metrics) and C (JS parity/integration) remain unstarted.

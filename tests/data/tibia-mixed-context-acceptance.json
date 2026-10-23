@@ -1,0 +1,17 @@
+{
+  "source": "maintainer-round3-context-review-2026-10-23",
+  "instruction": "Explicit maintainer 50% mixed-session target; neither no-evidence nor fully private. Acceptance is not held-out evaluation.",
+  "cases": [
+    {
+      "id": "audit:384",
+      "title": "𝐓𝐢𝐛𝐢𝐚 𝐆𝐥𝐨𝐛𝐚𝐥 𝐞 𝐑𝐮𝐛𝐢𝐧𝐨𝐭 !𝐣𝐚𝐩𝐚𝐜𝐨𝐢𝐧𝐬",
+      "tags": [
+        "Português",
+        "Reposição"
+      ],
+      "private_probability_min": 0.499999999999,
+      "private_probability_max": 0.500000000001,
+      "annotation_id": "audit:384"
+    }
+  ]
+}

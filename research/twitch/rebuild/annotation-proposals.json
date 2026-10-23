@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "status": "PROPOSED: maintainer review required before training",
-  "approval_gate": "Round 2 label approvals recorded. All unresolved inputs have explicit 1% no-private-evidence supervision and must be retained. No new model fitting authorized while milestone A data gaps and remaining decisions are open.",
+  "approval_gate": "Current review decisions complete, including 50% mixed-session target and mandatory no-evidence baseline. New real sponsor-negative collection and review remain before milestone B; no fitting performed.",
   "annotation_method": "Fresh explicit per-example proposals from original source inputs and cited public facts; no rejected model, predictions, weights or label overlays read.",
   "target": "P(private server), not all unrelated games and not P(official Tibia)",
   "source_files": {
@@ -25,27 +25,28 @@
       "maintainer-command-review-2026-10-23": 1
     },
     "contexts": {
-      "session": 140,
+      "session": 145,
       "no_evidence": 29,
-      "promotion": 29,
-      "unresolved": 10,
+      "promotion": 32,
+      "mixed": 1,
+      "unresolved": 1,
       "negation": 8,
       "comparison": 5
     },
     "private_proposals": {
-      "private": 131,
-      "not_private": 47,
-      "None": 43
+      "private": 136,
+      "not_private": 50,
+      "None": 34,
+      "mixed": 1
     },
     "affirmative_evidence": {
-      "True": 130,
-      "False": 91
+      "True": 136,
+      "False": 85
     },
     "review_status": {
       "maintainer_bulk_approved": 159,
-      "pending": 12,
-      "maintainer_confirmed": 17,
-      "maintainer_baseline_confirmed": 33
+      "maintainer_baseline_confirmed": 35,
+      "maintainer_confirmed": 27
     }
   },
   "annotations": [
@@ -358,7 +359,7 @@
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_baseline_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -377,7 +378,7 @@
         "private_evidence_target": 0,
         "expected_private_probability": 0.01,
         "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
+        "source": "maintainer-round3-context-review-2026-10-23"
       },
       "review_history": [
         {
@@ -390,8 +391,27 @@
             "reason": "Historical audit records direct maintainer confirmation of RubinOT, but metadata has no affirmative identifier. Keep true-positive assertion separate from observable evidence; do not learn gameplay/language as substitutes."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": "private",
+            "proposed_context": "no_evidence",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Historical audit records direct maintainer confirmation of RubinOT, but metadata has no affirmative identifier. Keep true-positive assertion separate from observable evidence; do not learn gameplay/language as substitutes. Under the latest observable-evidence policy, retain this as 1% baseline supervision; the historical private-session assertion must not teach gameplay/language features."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "audit:8",
@@ -3007,20 +3027,20 @@
       "input_sha256": "559ab5dcc0aed5e87f4e0ac4e324b89ce4aca83e2ad192e1dab1997a9fcf5890",
       "original_label": "Tibia",
       "historical_binary_interpretation": "not_private",
-      "proposed_context": "unresolved",
-      "focus": "primary",
+      "proposed_context": "promotion",
+      "focus": "secondary",
       "proposed_referent_private": null,
-      "proposed_stream_private": null,
+      "proposed_stream_private": "not_private",
       "proposed_affirmative_private_evidence": false,
       "evidence_sources": [
         "worlds",
         "baiak"
       ],
-      "reason": "Two official world declarations plus idle-game title/tag. Historical official label is not established. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer identifies two original-world ED sessions (Terribra/Ferobra) in the title. Baiak Idle is incidental promotion, not a private-session declaration.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": true,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3030,17 +3050,11 @@
           "start": 31,
           "end": 63,
           "text": "Terribra/Ferobra !pix baiak-idle",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "promotion",
+          "focus": "secondary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
-        "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
-      },
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -3052,8 +3066,27 @@
             "reason": "Two official world declarations plus idle-game title/tag. Historical official label is not established."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Two official world declarations plus idle-game title/tag. Historical official label is not established. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "audit:198",
@@ -3153,19 +3186,19 @@
       "input_sha256": "8c9175356bae8cdf699d155ecf72c78051f1d7ea8f8644d12937090ede89795e",
       "original_label": "Múltiplos jogos",
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
-      "focus": "primary",
+      "proposed_context": "promotion",
+      "focus": "secondary",
       "proposed_referent_private": null,
-      "proposed_stream_private": null,
+      "proposed_stream_private": "not_private",
       "proposed_affirmative_private_evidence": false,
       "evidence_sources": [
         "worlds"
       ],
-      "reason": "Two incompatible declarations, no authoritative active-session fact. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer identifies the explicit playing declaration TIBIA GLOBAL INABRA as the session; the OT domain is incidental promotion.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3175,17 +3208,11 @@
           "start": 16,
           "end": 59,
           "text": "TIBIA GLOBAL INABRA| OT:FANTASYDREAM.ONLINE",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "promotion",
+          "focus": "secondary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
-        "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
-      },
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -3197,8 +3224,27 @@
             "reason": "Two incompatible declarations, no authoritative active-session fact."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Two incompatible declarations, no authoritative active-session fact. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "audit:230",
@@ -3744,19 +3790,19 @@
       "input_sha256": "1fb1d2c3f0e69e369b9eb3d251082096253ee0d53b17df8ae777ce8cc7518b33",
       "original_label": "Múltiplos jogos",
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
-      "proposed_referent_private": null,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": false,
+      "proposed_referent_private": true,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
         "rubinot"
       ],
-      "reason": "Mixes private project and standalone games. Binary on-private status remains unverified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer identifies RubinOT as private-session evidence in this multi-game title; listing other games does not erase that declaration.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -3766,17 +3812,11 @@
           "start": 0,
           "end": 25,
           "text": "Rubinot, Aion 2, COD, LOL",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "session",
+          "focus": "primary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
-        "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
-      },
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -3788,8 +3828,27 @@
             "reason": "Mixes private project and standalone games. Binary on-private status remains unverified."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Mixes private project and standalone games. Binary on-private status remains unverified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "audit:296",
@@ -4009,11 +4068,11 @@
       "proposed_stream_private": "not_private",
       "proposed_affirmative_private_evidence": false,
       "evidence_sources": [],
-      "reason": "Standalone other game, not a private Tibia server. Direct target change versus old all-other category; title-only proposal, not observed gameplay.",
+      "reason": "Maintainer adjudicates this input as not-private/visible. This records the private-server target, not an independently verified game identity.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -4024,10 +4083,11 @@
           "end": 42,
           "text": "PROJECT ZOMBOID",
           "context": "session",
-          "focus": "primary"
+          "focus": "primary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "hiding_scope_status": "pending",
+      "hiding_scope_status": "maintainer_keep_visible",
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -4039,8 +4099,21 @@
             "reason": "Standalone other game, not a private Tibia server. Direct target change versus old all-other category; title-only proposal, not observed gameplay."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": "not_private",
+            "proposed_context": "session",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": null,
+            "approval": "pending",
+            "reason": "Standalone other game, not a private Tibia server. Direct target change versus old all-other category; title-only proposal, not observed gameplay."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "audit:355",
@@ -4240,19 +4313,19 @@
       "input_sha256": "54f92b51fc772eb848a4822b0e88a94c9e994de80c895e25c84f68fa92fd45cc",
       "original_label": "Múltiplos jogos",
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
+      "proposed_context": "mixed",
       "focus": "primary",
-      "proposed_referent_private": null,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": false,
+      "proposed_referent_private": true,
+      "proposed_stream_private": "mixed",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
         "rubinot"
       ],
-      "reason": "Parallel official/private declarations; do not infer active session from word order. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer says the title declares both original Tibia and RubinOT play and explicitly assigns 50% private probability. Preserve fractional supervision, not a binary private label or the 1% no-evidence baseline.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -4262,16 +4335,17 @@
           "start": 0,
           "end": 22,
           "text": "𝐓𝐢𝐛𝐢𝐚 𝐆𝐥𝐨𝐛𝐚𝐥 𝐞 𝐑𝐮𝐛𝐢𝐧𝐨𝐭",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "mixed",
+          "focus": "primary",
+          "reason": "Both sessions explicitly declared per maintainer; 50% target."
         }
       ],
       "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
+        "kind": "mixed_session",
+        "private_evidence_target": 0.5,
+        "expected_private_probability": 0.5,
         "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
+        "source": "maintainer-round3-context-review-2026-10-23"
       },
       "review_history": [
         {
@@ -4284,8 +4358,27 @@
             "reason": "Parallel official/private declarations; do not infer active session from word order."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Parallel official/private declarations; do not infer active session from word order. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "audit:389",
@@ -4614,19 +4707,19 @@
       "input_sha256": "2564519bc534d47cfde2c179b6b731754ddb4b30045615ee4c3ec0bb4a0202e9",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": false,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
         "rubinot"
       ],
-      "reason": "Only server tag with neutral title. Could be stale/promotion; no channel-based resolution. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer identifies the RubinOT tag as the session identifier; the title supplies no competing session or sponsor-list context.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": true,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -4636,17 +4729,11 @@
           "start": 0,
           "end": 7,
           "text": "rubinot",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "session",
+          "focus": "primary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
-        "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
-      },
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -4658,8 +4745,27 @@
             "reason": "Only server tag with neutral title. Could be stale/promotion; no channel-based resolution."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Only server tag with neutral title. Could be stale/promotion; no channel-based resolution. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "audit:448",
@@ -4731,17 +4837,17 @@
       "input_sha256": "1b4640c5190a5d923f1f1ce624ec5668b111ae00327f68dd26306f82d3b25cbb",
       "original_label": "Tibia provável",
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
-      "proposed_referent_private": null,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": false,
+      "proposed_referent_private": true,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [],
-      "reason": "Historical probable-official content conflicts with named-project tag; project source not verified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer identifies Project Fibula as OT and its tag as the private-session identifier. Generic quest vocabulary does not invalidate that evidence.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -4751,17 +4857,11 @@
           "start": 0,
           "end": 13,
           "text": "projectfibula",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "session",
+          "focus": "primary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
-        "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
-      },
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -4773,8 +4873,27 @@
             "reason": "Historical probable-official content conflicts with named-project tag; project source not verified."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Historical probable-official content conflicts with named-project tag; project source not verified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "audit:452",
@@ -4790,19 +4909,19 @@
       "input_sha256": "c7de62aca09fa17782728e495900a788e784d82e6d404358163cf0bbb364b780",
       "original_label": "RubinOT",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
       "proposed_referent_private": true,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": false,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [
         "rubinot"
       ],
-      "reason": "Only variant server tag; proposed alias needs review and session/promotion cannot be assumed. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer identifies RUBINIOT as a private-session tag variant; generic title content does not erase the server identifier.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": true,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "captured_metadata",
@@ -4812,17 +4931,11 @@
           "start": 0,
           "end": 8,
           "text": "RUBINIOT",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "session",
+          "focus": "primary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
-        "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
-      },
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -4834,8 +4947,27 @@
             "reason": "Only variant server tag; proposed alias needs review and session/promotion cannot be assumed."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Only variant server tag; proposed alias needs review and session/promotion cannot be assumed. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "cases:0",
@@ -4974,20 +5106,20 @@
       "input_sha256": "8b8aaeec41e1ffdd50a87099d1175cb2f7410b69c93eb9b00415d94810f6e54e",
       "original_label": "undetermined",
       "historical_binary_interpretation": null,
-      "proposed_context": "unresolved",
-      "focus": "primary",
+      "proposed_context": "promotion",
+      "focus": "secondary",
       "proposed_referent_private": null,
-      "proposed_stream_private": null,
+      "proposed_stream_private": "not_private",
       "proposed_affirmative_private_evidence": false,
       "evidence_sources": [
         "worlds",
         "baiak"
       ],
-      "reason": "Official-world and private-idle declarations conflict. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer applies the same not-private adjudication to the Pulgazin historical control. The original-world session declaration scopes the idle mention as incidental.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": false,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -4997,17 +5129,11 @@
           "start": 31,
           "end": 63,
           "text": "Terribra/Ferobra !pix baiak-idle",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "promotion",
+          "focus": "secondary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
-        "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
-      },
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -5019,8 +5145,27 @@
             "reason": "Official-world and private-idle declarations conflict."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Official-world and private-idle declarations conflict. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "cases:4",
@@ -5042,11 +5187,11 @@
       "proposed_stream_private": null,
       "proposed_affirmative_private_evidence": false,
       "evidence_sources": [],
-      "reason": "Game identity and private-server status need a source; old other verdict is not truth. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Historical LAWL test has no source channel supplied for session adjudication. Apply the maintainer no-private-evidence policy: retain at 1%, never ask the maintainer to infer missing provenance.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": true,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_baseline_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -5065,7 +5210,7 @@
         "private_evidence_target": 0,
         "expected_private_probability": 0.01,
         "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
+        "source": "maintainer-round3-context-review-2026-10-23"
       },
       "review_history": [
         {
@@ -5078,8 +5223,27 @@
             "reason": "Game identity and private-server status need a source; old other verdict is not truth."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "session",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Game identity and private-server status need a source; old other verdict is not truth. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "cases:5",
@@ -5243,17 +5407,17 @@
       "input_sha256": "263f4dac4456b1f4b26fb2fcb78b9b569f89ce92f06baf748406f41d1909e157",
       "original_label": "other",
       "historical_binary_interpretation": "private",
-      "proposed_context": "unresolved",
+      "proposed_context": "session",
       "focus": "primary",
-      "proposed_referent_private": null,
-      "proposed_stream_private": null,
-      "proposed_affirmative_private_evidence": false,
+      "proposed_referent_private": true,
+      "proposed_stream_private": "private",
+      "proposed_affirmative_private_evidence": true,
       "evidence_sources": [],
-      "reason": "Question-style project mention; current operator identity not verified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
+      "reason": "Maintainer identifies Project Fibula as OT/private in this historical control.",
       "label_disagreement": false,
       "historical_label_not_usable_as_binary_truth": true,
       "annotation_author": "assistant proposal for maintainer review",
-      "approval": "pending",
+      "approval": "maintainer_confirmed",
       "use_in_training": false,
       "active_session_independently_verified": false,
       "data_role": "historical_control",
@@ -5263,17 +5427,11 @@
           "start": 0,
           "end": 15,
           "text": "Project Fibula?",
-          "context": "unresolved",
-          "focus": "primary"
+          "context": "session",
+          "focus": "primary",
+          "reason": "Context adjudicated by maintainer in round 3."
         }
       ],
-      "model_supervision": {
-        "kind": "no_private_server_evidence",
-        "private_evidence_target": 0,
-        "expected_private_probability": 0.01,
-        "must_preserve_in_dataset": true,
-        "source": "maintainer-round2-label-review-2026-10-23"
-      },
       "review_history": [
         {
           "source": "maintainer-round2-label-review-2026-10-23",
@@ -5285,8 +5443,27 @@
             "reason": "Question-style project mention; current operator identity not verified."
           },
           "decision": "Apply explicit label review or observable-no-evidence supervision; original source input and historical label unchanged."
+        },
+        {
+          "source": "maintainer-round3-context-review-2026-10-23",
+          "previous": {
+            "proposed_stream_private": null,
+            "proposed_context": "unresolved",
+            "proposed_affirmative_private_evidence": false,
+            "model_supervision": {
+              "kind": "no_private_server_evidence",
+              "private_evidence_target": 0,
+              "expected_private_probability": 0.01,
+              "must_preserve_in_dataset": true,
+              "source": "maintainer-round2-label-review-2026-10-23"
+            },
+            "approval": "pending",
+            "reason": "Question-style project mention; current operator identity not verified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row."
+          },
+          "decision": "Apply latest maintainer context adjudication; retain original input and historical labels."
         }
-      ]
+      ],
+      "review_source": "maintainer-round3-context-review-2026-10-23"
     },
     {
       "id": "cases:9",

@@ -35,8 +35,8 @@ def main():
             assert row['review_source'] in known_sources
             assert next(source for source in sources if source['id'] == row['review_source'])['kind'] in {'explicit_maintainer_bulk_label_review', 'explicit_maintainer_label_review'}
             assert row['bulk_approval_basis']
-        assert row['proposed_context'] in {'session', 'promotion', 'negation', 'comparison', 'unresolved', 'no_evidence'}
-        assert row['proposed_stream_private'] in {'private', 'not_private', None}
+        assert row['proposed_context'] in {'session', 'promotion', 'negation', 'comparison', 'unresolved', 'no_evidence', 'mixed'}
+        assert row['proposed_stream_private'] in {'private', 'not_private', 'mixed', None}
         assert row['proposed_affirmative_private_evidence'] in {True, False, None}
         assert set(row.get('evidence_sources', [])) <= known_sources, row['id']
         assert row['reason']
@@ -86,7 +86,7 @@ def main():
     assert set(queued).isdisjoint(queue['round1_bulk_approved_ids'])
     assert set(queued) | set(queue['round1_bulk_approved_ids']) | set(queue['deferred_ids']) == ids
     assert queue['deferred_ids'] == ['audit:7']
-    assert by_id['audit:7']['approval'] == 'pending'
+    assert by_id['audit:7']['approval'] == 'maintainer_baseline_confirmed'
     for group in queue['groups']:
         for identifier in group['ids']:
             row = by_id[identifier]
@@ -97,8 +97,8 @@ def main():
             assert by_id[row['parent_id']]['approval'] == 'maintainer_bulk_approved'
     real = [row for row in annotations if row['data_role'] in {'captured_metadata', 'maintainer_reported_stream_example'}]
     assert len(real) == 115
-    assert Counter(row['proposed_context'] for row in real) == {'session': 83, 'promotion': 15, 'no_evidence': 8, 'unresolved': 8, 'comparison': 1}
-    assert [row['id'] for row in real if row['proposed_context'] == 'promotion' and row['proposed_stream_private'] == 'not_private'] == ['audit:42', 'maintainer-example:0']
+    assert Counter(row['proposed_context'] for row in real) == {'session': 87, 'promotion': 17, 'no_evidence': 8, 'mixed': 1, 'unresolved': 1, 'comparison': 1}
+    assert [row['id'] for row in real if row['proposed_context'] == 'promotion' and row['proposed_stream_private'] == 'not_private'] == ['audit:42', 'audit:179', 'audit:218', 'maintainer-example:0']
     for group in queue['groups']:
         expected_links = set()
         for identifier in group['ids']:
@@ -114,7 +114,7 @@ def main():
         assert actual_links == expected_links
     baseline = json.loads((ROOT / 'tests/data/tibia-no-private-evidence-acceptance.json').read_text())
     assert baseline['expected_private_probability'] == packet['no_private_evidence_contract']['private_probability'] == 0.01
-    assert len(baseline['annotation_ids']) == len(set(baseline['annotation_ids'])) == 44
+    assert len(baseline['annotation_ids']) == len(set(baseline['annotation_ids'])) == 35
     assert set(baseline['annotation_ids']) == set(queue['no_private_evidence_ids'])
     assert {row['id'] for row in annotations if row['proposed_stream_private'] is None} | {'audit:7'} == set(baseline['annotation_ids'])
     for identifier in baseline['annotation_ids']:
@@ -125,10 +125,27 @@ def main():
         assert supervision['must_preserve_in_dataset'] is True
         assert supervision['source'] in known_sources
         assert by_id[identifier]['proposed_affirmative_private_evidence'] is False
+    assert not queue['pending_decision_ids']
+    assert queue['mixed_session_ids'] == ['audit:384']
+    mixed = by_id['audit:384']
+    assert mixed['proposed_stream_private'] == mixed['proposed_context'] == 'mixed'
+    assert mixed['model_supervision']['private_evidence_target'] == 0.5
+    assert mixed['model_supervision']['expected_private_probability'] == 0.5
+    assert mixed['model_supervision']['must_preserve_in_dataset'] is True
+    assert mixed['approval'] == 'maintainer_confirmed'
+    assert 'audit:384' not in baseline['annotation_ids']
+    mixed_fixture = json.loads((ROOT / 'tests/data/tibia-mixed-context-acceptance.json').read_text())['cases'][0]
+    assert mixed_fixture['id'] == 'audit:384'
+    assert mixed_fixture['private_probability_min'] <= 0.5 <= mixed_fixture['private_probability_max']
+    for identifier in ['audit:179', 'cases:3', 'audit:218', 'audit:351']:
+        assert by_id[identifier]['proposed_stream_private'] == 'not_private'
+    for identifier in ['audit:283', 'audit:433', 'audit:450', 'cases:8', 'audit:452']:
+        assert by_id[identifier]['proposed_stream_private'] == 'private'
+    assert by_id['cases:4']['model_supervision']['expected_private_probability'] == 0.01
     catalogue = json.loads((DIRECTORY / 'catalogue-candidates.json').read_text())
     assert len(catalogue['entries']) == 50
     assert all(not row['approved'] and row['catalogue_url'].startswith('https://otservlist.net/') for row in catalogue['entries'])
-    print(f'PASS {len(annotations)} review records with current maintainer adjudications and 44 mandatory 1% baseline cases, 122 compact groups / 131 records, exact source spans/hashes, 50 unapproved catalogue facts; no training approvals')
+    print(f'PASS {len(annotations)} review records with current maintainer adjudications and 35 mandatory 1% baseline cases and one 50% mixed-session target, 122 compact groups / 131 records, exact source spans/hashes, 50 unapproved catalogue facts; no training approvals')
 
 
 if __name__ == '__main__':

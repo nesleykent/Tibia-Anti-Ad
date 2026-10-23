@@ -11,11 +11,13 @@ import sys
 from pathlib import Path
 
 BASELINE = Path(__file__).resolve().parents[3] / 'tests/data/tibia-no-private-evidence-acceptance.json'
+MIXED = Path(__file__).resolve().parents[3] / 'tests/data/tibia-mixed-context-acceptance.json'
 FIXTURES = Path(__file__).resolve().parents[3] / 'tests/data/tibia-private-context-acceptance.json'
 
 
 def check(predictions):
     cases = json.loads(FIXTURES.read_text())['cases']
+    cases += json.loads(MIXED.read_text())['cases']
     baseline = json.loads(BASELINE.read_text())
     cases += [{'id': identifier, 'private_probability_min': baseline['expected_private_probability'] - 1e-12, 'private_probability_max': baseline['expected_private_probability'] + 1e-12} for identifier in baseline['annotation_ids']]
     if set(predictions) != {case['id'] for case in cases}:
@@ -26,7 +28,7 @@ def check(predictions):
             raise AssertionError(f"{case['id']}: invalid probability")
         if not case['private_probability_min'] <= probability <= case['private_probability_max']:
             raise AssertionError(f"{case['id']}: P(private)={probability} outside acceptance bounds")
-    print('PASS 2 context-dependent acceptance cases and 44 required 1% baseline cases')
+    print(f"PASS 2 context contrasts, 1 mixed-session 50% target and {len(baseline['annotation_ids'])} required 1% baseline cases")
 
 
 if __name__ == '__main__':
