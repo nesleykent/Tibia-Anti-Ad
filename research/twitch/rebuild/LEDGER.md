@@ -1,3 +1,19 @@
+# Current progress
+
+## Milestone B complete, stop before C
+
+- A is closed. No further annotation packets or collection gate. Trained immediately from the existing reviewed labels; missing sponsor examples are a reported limitation. Retired the old hard-coded-count validator.
+- Removed image input/download/CLI paths and the browser's corresponding inference argument. Replaced whole-text training and old-label evaluation entry points. The old case fixture is now only an index; historical inputs are frozen alongside their reviewed annotations, with all input hashes preserved. Tests no longer read its rejected expectations. Browser title test now tests metadata transport only; classifier integration/parity waits for C.
+- New files: tools/tibia_private.py (standard-library inference), tools/tibia_private_data.py (reviewed inputs/group split), tools/train_tibia_private.py (NumPy fitting), research/twitch/model/private-model.json, results.json and short REPORT.md. Updated relevant tests, tools entry points and docs/TWITCH_MODEL.md.
+- Fixed seed/group split: 173 train, 23 calibration, 25 test; all 221 examples retained. Names/aliases learned from train only. Known acceptance and explicit no-evidence/mixed supervision are development controls, not claimed held-out performance. Features were refined on training controls before opening the test; no parameters changed afterward.
+- Held-out: 19/20 private caught, 0/5 non-private flagged, 25 real captures / 23 groups. Threshold 0.9893686926628219 from calibration. Brier 0.0380683, log loss 0.150986, 4-bin ECE 0.0391265.
+- Acceptance: session command 0.9969732, baratuca 0.0252214, all 35 no-evidence controls exactly0.01, mixed0.5; adding/removing language and generic-only vocabulary checks pass.
+- Material limitation: held-out sponsor negative audit:42 gets private probability0.9752085 but is kept visible by the threshold. Only two real sponsor lists plus two other incidental-promotion negatives; no production calibration/near-zero-risk guarantee.
+- Validation: full tools/check_project.py passed (50 Python tests, JS checks and generated-asset verification); browser execution, JS model parity, Safari build/signature/install not performed. Actual model inference tests use reviewed probability labels, not legacy verdicts. No new classifier was installed in the extension.
+- Exact next step: stop for milestone B review. C, if authorized, ports the frozen model to JS, checks parity, integrates the complement/threshold UI, verifies browser behavior and updates the signed Safari app. Do not gather more review packets or refit based on the held-out error without explicitly treating that set as development data.
+
+## Historical ledger
+
 # Rebuild ledger
 
 ## Current milestone A: existing annotation review complete; data enrichment remains

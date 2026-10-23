@@ -1,83 +1,26 @@
-"""Classify full title and tag metadata."""
+"""Metadata-only inference for the reviewed private-server model.
+
+--write-js retains the existing browser asset until the explicit milestone-C
+integration. It does not train or install the milestone-B model in the browser.
+"""
 import argparse
-import collections
 import json
-import math
-from tibia_text import normalize, features, feature_fields
-import re
-import subprocess
-import tempfile
-import urllib.request
 from pathlib import Path
+from tibia_private import PrivateModel
+
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'filters/sources/twitch/tibia-evidence.json'
 EXTENSION_DATA = ROOT / 'extension/src/tibia-evidence.js'
-AUDIT = ROOT / 'research/twitch/data/2026-10-21/analysis/classificacao.json'
-AUDIT_OTHER = {'RubinOT', 'PokeAlliance (PKA)', 'PokeXGames (PXG)', 'Outros OTServers', 'Jogos Idle', 'DeusOT / DeusOld', 'Outros Pokémon', 'Pokémon misto'}
-AUDIT_TIBIA = {'Tibia'}
+PRIVATE_MODEL = ROOT / 'research/twitch/model/private-model.json'
 
-class Evidence:
-    """Portable presence inference, plus compatibility with the previous model."""
-
-    def __init__(self, data):
-        self.model = data['model']
-        model = self.model
-        if model.get('format') not in {'joint-text-logistic-v1', 'piracy-presence-logit-v1'}:
-            raise ValueError('Unsupported statistical model format')
-        self.presence = model['format'] == 'piracy-presence-logit-v1'
-        if self.presence and model['bias'] != 0:
-            raise ValueError('Presence inference requires neutral odds without text evidence')
-        if not math.isfinite(model['bias']) or not math.isfinite(model['threshold']) or model['threshold'] <= 0:
-            raise ValueError('Invalid statistical model decision parameters')
-        self.weights = model['weights']
-        for key, value in self.weights.items():
-            if not re.fullmatch('[0-9a-f]{8}', key) or len(value) != 2 or (not all((math.isfinite(v) for v in value))) or (value[1] <= 0):
-                raise ValueError('Invalid statistical model weights')
-
-    def classify(self, title, tags, channel=''):
-        title_features, tag_features = feature_fields(title, tags)
-        known = sorted(set(title_features | tag_features) & self.weights.keys())
-        norm = 1 if self.presence else math.sqrt(sum((self.weights[key][1] ** 2 for key in known)))
-        contributions = {'title': 0.0, 'tags': 0.0}
-        for key in known:
-            value = self.weights[key][0] / norm
-            shared = key in title_features and key in tag_features
-            if key in title_features:
-                contributions['title'] += value / (2 if shared else 1)
-            if key in tag_features:
-                contributions['tags'] += value / (2 if shared else 1)
-        logit = self.model['bias'] + sum(contributions.values())
-        probability = 1 / (1 + math.exp(-max(-40, min(40, logit))))
-        threshold = self.model['threshold']
-        verdict = 'other' if known and logit >= threshold else 'tibia' if known and logit <= -threshold else 'undetermined'
-        rounded = lambda value: math.floor(value * 1000000 + 0.5) / 1000000
-        score = {'other': rounded(probability), 'tibia': rounded(1 - probability)}
-        inputs = 'title and tags' if title_features and tag_features else 'title' if title_features else 'tags' if tag_features else 'no text'
-        target = 'private-server' if self.presence else 'other-game'
-        reason = f'statistical model from {inputs}: {math.floor(probability * 100 + 0.5)}% {target} estimate'
-        model_info = {'logit': rounded(logit), 'title': rounded(contributions['title']), 'tags': rounded(contributions['tags']), 'bias': self.model['bias'], 'matched': len(known)}
-        found = {'signals': [{'side': 'other' if logit >= 0 else 'tibia', 'source': 'model', 'game': 'Other games' if logit >= 0 else 'Tibia', 'text': inputs, 'weight': rounded(abs(logit))}], 'model': model_info, 'score': score}
-        return (verdict, reason, found)
-
-def evaluate(evidence):
-    """Compare metadata verdicts with the audit's categories; returns official streams hidden."""
-    table = collections.Counter()
-    wrong = []
-    for row in json.loads(AUDIT.read_text())['classificacao']:
-        tags = [t.strip() for t in row['tags_originais'].split('|') if t.strip()]
-        verdict, reason, _ = evidence.classify(row['titulo_original'], tags, channel=row['canal'])
-        truth = 'other' if row['categoria'] in AUDIT_OTHER else 'tibia' if row['categoria'] in AUDIT_TIBIA else 'unclear'
-        table[truth, verdict] += 1
-        if verdict == 'other' and truth != 'other':
-            wrong.append((truth, row['canal'], reason, row['titulo_original'][:70], row['tags_originais']))
-    for truth in ('other', 'tibia', 'unclear'):
-        print(truth.ljust(8), {v: table[truth, v] for v in ('other', 'undetermined', 'tibia')})
-    for item in wrong:
-        print('HIDDEN', *item, sep=' | ')
-    return [w for w in wrong if w[0] == 'tibia']
 
 def extension_data(data):
-    return f'// Generated by tools/twitch_evidence.py --write-js from filters/sources/twitch/tibia-evidence.json. Do not edit.\nglobalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {json.dumps(data, ensure_ascii=True, indent=2)};\n'
+    # ASCII only: Safari may read extension scripts as Latin-1.
+    return (
+        '// Generated by tools/twitch_evidence.py --write-js from filters/sources/twitch/tibia-evidence.json. Do not edit.\n'
+        f'globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE = {json.dumps(data, ensure_ascii=True, indent=2)};\n'
+    )
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -85,22 +28,21 @@ def main():
     parser.add_argument('--evaluate', action='store_true')
     parser.add_argument('--write-js', action='store_true')
     args = parser.parse_args()
-    data = json.loads(EVIDENCE.read_text())
-    evidence = Evidence(data)
     if args.write_js:
-        EXTENSION_DATA.write_text(extension_data(data))
+        EXTENSION_DATA.write_text(extension_data(json.loads(EVIDENCE.read_text())))
         return
     if args.evaluate:
-        raise SystemExit(1 if evaluate(evidence) else 0)
+        from train_tibia_private import evaluate
+        evaluate()
+        return
     if not args.streams:
         parser.error('streams is required')
+    model = PrivateModel.load(PRIVATE_MODEL)
     results = []
     for stream in json.loads(Path(args.streams).read_text()):
-        channel, title, tags = (stream['channel'], stream.get('title') or '', stream.get('tags') or [])
-        verdict, reason, found = evidence.classify(title, tags, channel=channel)
-        if verdict == 'undetermined':
-            verdict, reason, found = evidence.classify(title, tags, channel)
-        results.append({'channel': channel, 'verdict': verdict, 'reason': reason, 'evidence': found})
+        results.append({'channel': stream.get('channel'), **model.predict(stream.get('title') or '', stream.get('tags') or [])})
     print(json.dumps(results, ensure_ascii=False, indent=2))
+
+
 if __name__ == '__main__':
     main()

@@ -1,57 +1,55 @@
-"""The learned joint model, rather than a name rule, controls every verdict."""
-import copy
+"""Experiment integrity: no fitting or hard-coded dataset totals."""
+import json
 import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools'))
-from twitch_evidence import Evidence
-from tibia_text import feature_id
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'tools'))
+from tibia_private import FEATURES, PrivateModel, learn_references
+from tibia_private_data import load_rows, partitions
 
 
-class StatisticalDecisionTests(unittest.TestCase):
-    def test_piracy_evidence_is_not_diluted_by_uninformative_text(self):
-        classifier = Evidence({'model': {'format': 'piracy-presence-logit-v1', 'bias': 0, 'threshold': 2,
-            'weights': {feature_id('w:alpha'): [4, 1], feature_id('w:context'): [0, 100]}}})
-        original = classifier.classify('alpha', [])
-        longer = classifier.classify('alpha context', ['context'])
-        self.assertEqual(original[0], 'other')
-        self.assertEqual(original[2]['score'], longer[2]['score'])
-        self.assertEqual(classifier.classify('context', [])[2]['score']['other'], 0.5)
-        self.assertEqual(classifier.classify('unknown', [])[2]['score']['other'], 0.5)
+class ExperimentIntegrityTests(unittest.TestCase):
+    def test_grouped_partitions_and_all_reviewed_examples_are_retained(self):
+        rows = load_rows()
+        model = PrivateModel.load(ROOT / 'research/twitch/model/private-model.json').data
+        split = partitions(rows, model['training']['seed'])
+        ids = [{r['id'] for r in subset} for subset in split.values()]
+        self.assertEqual(set.union(*ids), {r['id'] for r in rows})
+        for i, subset in enumerate(ids):
+            for other in ids[i+1:]:
+                self.assertFalse(subset & other)
+        groups = [{r['group'] for r in subset} for subset in split.values()]
+        for i, subset in enumerate(groups):
+            for other in groups[i+1:]:
+                self.assertFalse(subset & other)
+        for name, subset in split.items():
+            self.assertEqual([r['id'] for r in subset], model['training']['split'][name])
 
-    def test_a_model_with_no_learned_weights_cannot_ban_any_name(self):
-        data = {'revision': 2, 'model': {'format': 'joint-text-logistic-v1', 'bias': 0,
-                'threshold': 1, 'weights': {}}}
-        classifier = Evidence(data)
-        for title, tags in [('RubinOT', []), ('Tibia Global', ['rubinot']), ('anything', ['deusot'])]:
-            self.assertEqual(classifier.classify(title, tags)[0], 'undetermined')
+    def test_identity_inventory_is_derived_from_training_only(self):
+        model = PrivateModel.load(ROOT / 'research/twitch/model/private-model.json').data
+        rows = {r['id']: r for r in load_rows()}
+        sources = json.loads((ROOT / 'research/twitch/rebuild/sources.json').read_text())['sources']
+        inventory = learn_references([rows[i] for i in model['training']['split']['train']], {s['id']: s for s in sources})
+        self.assertEqual(inventory, model['references'])
+        self.assertEqual(set(model['weights']), set(FEATURES))
 
-    def test_channel_names_never_affect_the_statistical_decision(self):
-        data = {'revision': 2, 'model': {'format': 'joint-text-logistic-v1', 'bias': 0,
-                'threshold': 1, 'weights': {}}}
-        classifier = Evidence(copy.deepcopy(data))
-        self.assertEqual(classifier.classify('stream', [], channel='rubinot'),
-                         classifier.classify('stream', [], channel='anyone'))
+    def test_saved_held_out_results_match_frozen_inference(self):
+        model = PrivateModel.load(ROOT / 'research/twitch/model/private-model.json')
+        results = json.loads((ROOT / 'research/twitch/model/results.json').read_text())
+        rows = {r['id']: r for r in load_rows()}
+        self.assertEqual({r['id'] for r in results['test_predictions']}, set(model.data['training']['split']['test']))
+        for expected in results['test_predictions']:
+            row = rows[expected['id']]
+            self.assertEqual(model.predict(row['title'], row['tags'])['private_probability'], expected['private_probability'])
+            self.assertEqual(row['proposed_stream_private'], expected['truth'])
 
-    def test_identical_tags_and_a_different_title_change_the_decision(self):
-        weights = {feature_id('w:alpha'): [-4, 1], feature_id('w:beta'): [4, 1]}
-        classifier = Evidence({'model': {'format': 'joint-text-logistic-v1', 'bias': 0, 'threshold': 1, 'weights': weights}})
-        self.assertEqual(classifier.classify('alpha', ['language'])[0], 'tibia')
-        self.assertEqual(classifier.classify('beta', ['language'])[0], 'other')
-        self.assertEqual(classifier.classify('alpha', ['beta'])[0], 'undetermined')
-        self.assertEqual(classifier.classify('neutral', ['beta'])[0], 'other')
-        found = classifier.classify('alpha', ['beta'])[2]['model']
-        self.assertLess(found['title'], 0)
-        self.assertGreater(found['tags'], 0)
-        self.assertAlmostEqual(found['logit'], found['title'] + found['tags'], places=5)
-
-    def test_learned_subwords_apply_to_unseen_whole_words_in_either_field(self):
-        model = {'format': 'joint-text-logistic-v1', 'bias': 0, 'threshold': 1,
-                 'weights': {feature_id('c:abc'): [4, 1]}}
-        classifier = Evidence({'model': model})
-        self.assertEqual(classifier.classify('abcbrandnew', [])[0], 'other')
-        self.assertEqual(classifier.classify('', ['abcbrandnew'])[0], 'other')
+    def test_reference_names_generalize_to_unseen_ot_names(self):
+        model = PrivateModel.load(ROOT / 'research/twitch/model/private-model.json')
+        reference = 'NeverSeenExampleOT'
+        self.assertNotIn(reference.lower(), model.data['references']['aliases'])
+        self.assertGreater(model.predict(reference)['private_probability'], 0.5)
 
 
 if __name__ == '__main__':

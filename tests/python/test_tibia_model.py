@@ -1,79 +1,45 @@
-"""Prevent the same Twitch channel leaking between model training and evaluation."""
-import contextlib
-import io
+"""Calibration uses its reserved rows, without refitting the evidence model."""
+import json
+import math
 import sys
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tools'))
-import train_tibia_model as model
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / 'tools'))
+from tibia_private import PrivateModel
+from tibia_private_data import load_rows
+from train_tibia_private import temperature
 
 
-class ModelValidationTests(unittest.TestCase):
-    def test_training_uses_audit_labels_not_filter_predictions(self):
-        rows = model.observations()
-        self.assertEqual(len(rows), 370)
-        self.assertTrue(all(set(row) == {'channel', 'title', 'tags', 'label'} for row in rows))
-        self.assertEqual(set(model.dataset()), {row['channel'] for row in rows})
-        self.assertNotEqual(model.dataset('title'), model.dataset('tags'))
+class CalibrationTests(unittest.TestCase):
+    def test_temperature_reproduces_export_from_calibration_rows_only(self):
+        model = PrivateModel.load(ROOT / 'research/twitch/model/private-model.json')
+        rows = {r['id']: r for r in load_rows()}
+        selected = [rows[i] for i in model.data['training']['split']['calibration']]
+        seen = []
+        class TracedModel:
+            def predict(self, title, tags):
+                seen.append((title, tags))
+                return model.predict(title, tags)
+        fitted = temperature(TracedModel(), selected, model.data['calibration']['minimum_slope_from_training_baseline'])
+        self.assertEqual(seen, [(r['title'], r['tags']) for r in selected])
+        self.assertAlmostEqual(fitted['slope'], model.data['calibration']['slope'], places=10)
 
-    def test_wilson_interval_does_not_claim_certainty_from_small_samples(self):
-        self.assertIsNone(model.wilson_interval(0, 0))
-        lower, upper = model.wilson_interval(10, 10)
-        self.assertAlmostEqual(lower, 0.722467, places=5)
-        self.assertAlmostEqual(upper, 1.0)
-        lower, upper = model.wilson_interval(50, 100)
-        self.assertAlmostEqual(lower, 0.403832, places=5)
-        self.assertAlmostEqual(upper, 0.596168, places=5)
+    def test_temperature_can_reduce_overconfidence_with_mixed_outcomes(self):
+        class FixedModel:
+            def predict(self, title, tags):
+                return {'raw_logit': 10.0}
+        calibration = temperature(FixedModel(), [{'title': '', 'tags': [], 'target': y} for y in [0, 1]], 0.01)
+        self.assertGreater(calibration['slope'], 0)
+        self.assertLess(calibration['slope'], 1)
+        self.assertEqual(calibration['intercept'], 0)
 
-    def test_cross_validation_keeps_all_channel_captures_in_one_fold(self):
-        rows = {
-            'alice': ({'alice-audit'}, 1), 'live:alice': ({'alice-live'}, 1),
-            'bob': ({'bob-audit'}, 0), 'live:bob': ({'bob-live'}, 0),
-            'carol': ({'carol-audit'}, 1), 'live:carol': ({'carol-live'}, 1),
-        }
-        trained = []
-        def train(training):
-            trained[:] = [feature.split('-')[0] for features, _ in training for feature in features]
-            return {}
-        def score(_, features):
-            channel = next(iter(features)).split('-')[0]
-            self.assertNotIn(channel, trained, f'{channel} leaked from training into evaluation')
-            return 0
-        with patch.object(model, 'train', train), patch.object(model, 'score', score):
-            with contextlib.redirect_stdout(io.StringIO()):
-                result = model.cross_validate(rows, folds=2, calibrated=False)
-        self.assertEqual(len(result), len(rows))
-
-    def test_presence_rates_do_not_learn_absence_of_official_features(self):
-        fitted = model.train([({'shared': 1, 'private': 1}, 1), ({'shared': 1, 'official': 1}, 0)])
-        self.assertEqual(fitted['bias'], 0)
-        self.assertEqual(model.score(fitted, {'shared': 1}), 0)
-        self.assertEqual(model.score(fitted, {'unknown': 1}), 0)
-        self.assertGreater(model.score(fitted, {'private': 1}), 0)
-        self.assertLess(model.score(fitted, {'official': 1}), 0)
-        self.assertEqual(model.score(fitted, {'private': 1}), model.score(fitted, {'private': 1, 'shared': 1}))
-
-    def test_calibration_preserves_neutral_odds_and_reduces_overconfidence(self):
-        slope = model.calibration_slope([(10, 1), (10, 0), (-10, 0), (-10, 1)])
-        self.assertGreaterEqual(slope, 0)
-        self.assertLess(slope, 1)
-
-    def test_calibration_uses_inner_held_out_channels(self):
-        rows = {f'channel{i}': ({str(i): 1}, i % 2) for i in range(12)}
-        training_sets = []
-        def train(training):
-            names = {key for values, _ in training for key in values}
-            training_sets.append(names)
-            return {'weights': {}, 'training': names}
-        def score(fitted, values):
-            self.assertTrue(set(values).isdisjoint(fitted['training']))
-            return 1
-        with patch.object(model, 'train', train), patch.object(model, 'score', score):
-            fitted = model.fit(rows)
-        self.assertEqual(len(training_sets), model.CALIBRATION_FOLDS + 1)
-        self.assertEqual(fitted['calibration']['method'], 'channel-cross-fitted-zero-intercept-logistic')
+    def test_export_parameters_are_finite(self):
+        data = json.loads((ROOT / 'research/twitch/model/private-model.json').read_text())
+        self.assertTrue(all(math.isfinite(w) for w in data['weights'].values()))
+        self.assertGreater(data['hide_threshold'], data['base_private_probability'])
+        self.assertLessEqual(data['hide_threshold'], 1)
 
 
 if __name__ == '__main__':

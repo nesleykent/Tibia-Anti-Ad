@@ -61,12 +61,14 @@
     },
     {
       "id": "cases",
-      "kind": "historical_rule_fixture",
+      "kind": "reviewed_annotation_index",
       "path": "tests/data/tibia-classify-cases.json",
-      "sha256": "52849c137a9a106ecf24d404c44135223466b8089434a88c461b171f0fe7a631",
+      "sha256": "9f81546674919267d88f5b4a93205b00438308b2dc0b165bc614c4c9df2e1fb8",
       "records": 65,
       "label_status": "Original labels are untrusted historical assertions; not approved supervision.",
-      "image_data_used": false
+      "image_data_used": false,
+      "original_source_sha256": "52849c137a9a106ecf24d404c44135223466b8089434a88c461b171f0fe7a631",
+      "finding": "The historical fixture was retired in milestone B. This file now contains annotation IDs only; reviewed labels and frozen title/tag inputs live in annotation-proposals.json. The original source hash is preserved separately."
     },
     {
       "id": "ots-org",

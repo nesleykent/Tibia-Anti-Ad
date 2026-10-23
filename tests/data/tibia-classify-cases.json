@@ -1,326 +1,201 @@
 {
-  "_comment": "Hand-labelled titles for the Tibia filter: spelling variations, lookalike letters, negations and legitimate Tibia streams that must stay visible. tests/python/test_twitch_evidence.py runs them through both classifiers. expect is the verdict; 'visible' means tibia or undetermined.",
+  "_comment": "Index only. Inputs and labels resolve exclusively from the reviewed annotations; no independent expectations.",
+  "annotation_source": "research/twitch/rebuild/annotation-proposals.json",
   "cases": [
     {
-      "title": "Tibia Mobile Mau-Ot - Kina 800+ Soul War!",
-      "expect": "other"
+      "annotation_id": "cases:0"
     },
     {
-      "title": "!soe !shadow Shadow dia 22 lançamento, usa meu link pra criação de conta!",
-      "tags": [
-        "MMO",
-        "tibia"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:1"
     },
     {
-      "title": "PokeHero! https://pokehero.online",
-      "tags": [
-        "Tibia",
-        "Ravendawn"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:2"
     },
     {
-      "title": "@Pulgazin [+18] ED 1600/2100 - Terribra/Ferobra !pix baiak-idle",
-      "tags": [
-        "baiakidle",
-        "BAIAKIDLE"
-      ],
-      "expect": "undetermined"
+      "annotation_id": "cases:3"
     },
     {
-      "title": "Bora de LAWL NEW ERA! RPG 2D + resenha",
-      "tags": [
-        "RPG"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:4"
     },
     {
-      "title": "DIA 2: IMPETUS | RETRO OPEN PVP | !hegalot",
-      "tags": [
-        "Español",
-        "hegal",
-        "PVP",
-        "Tibia"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:5"
     },
     {
-      "title": "Tibiapirate.duckdns.org",
-      "expect": "other"
+      "annotation_id": "cases:6"
     },
     {
-      "title": "troyale.online | colheitafeliz.farm | tibia.farm | tfight.online | glober.click",
-      "expect": "other"
+      "annotation_id": "cases:7"
     },
     {
-      "title": "Project Fibula?",
-      "expect": "other"
+      "annotation_id": "cases:8"
     },
     {
-      "title": "24H | LOJINHA COM PONTOS SEM RESET! | DASHcoins.com.br/Loja | [CADA 250TC R$ 51,00]",
-      "tags": [
-        "TibiaCoins"
-      ],
-      "expect": "undetermined"
+      "annotation_id": "cases:9"
     },
     {
-      "title": "Solidera / Havera Intentando llegar a la meta #tsbot.io",
-      "tags": [
-        "solidera"
-      ],
-      "expect": "tibia"
+      "annotation_id": "cases:10"
     },
     {
-      "title": "Proyecto Monk Tibia RL Server Luzibra! camino al LVL 600",
-      "tags": [
-        "tibiaglobal"
-      ],
-      "expect": "tibia"
+      "annotation_id": "cases:11"
     },
     {
-      "title": "rubimot ek 500 farm",
-      "expect": "other"
+      "annotation_id": "cases:12"
     },
     {
-      "title": "RUBINOTT war hoje",
-      "expect": "other"
+      "annotation_id": "cases:13"
     },
     {
-      "title": "rub1n0t hunt",
-      "expect": "other"
+      "annotation_id": "cases:14"
     },
     {
-      "title": "R U B I N O T - hunt",
-      "expect": "other"
+      "annotation_id": "cases:15"
     },
     {
-      "title": "R.U.B.I.N.O.T elite knight",
-      "expect": "other"
+      "annotation_id": "cases:16"
     },
     {
-      "title": "ʀᴜʙɪɴᴏᴛ war",
-      "expect": "other"
+      "annotation_id": "cases:17"
     },
     {
-      "title": "𝐑𝐮𝐛𝐢𝐧𝐎𝐓 farm",
-      "expect": "other"
+      "annotation_id": "cases:18"
     },
     {
-      "title": "Rubinto infernum",
-      "expect": "other"
+      "annotation_id": "cases:19"
     },
     {
-      "title": "pokealianca 300+ shiny",
-      "expect": "other"
+      "annotation_id": "cases:20"
     },
     {
-      "title": "Poke Aliance hunt",
-      "expect": "other"
+      "annotation_id": "cases:21"
     },
     {
-      "title": "pokexgamez magma",
-      "expect": "other"
+      "annotation_id": "cases:22"
     },
     {
-      "title": "Kingaslam - farm",
-      "expect": "other"
+      "annotation_id": "cases:23"
     },
     {
-      "title": "DROPS ON - PKA TITAN 3 service",
-      "expect": "other"
+      "annotation_id": "cases:24"
     },
     {
-      "title": "SERVICE FARM - TITAN 2 - agende",
-      "expect": "other"
+      "annotation_id": "cases:25"
     },
     {
-      "title": "lvl 500 hunt",
-      "tags": [
-        "rubiniot"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:26"
     },
     {
-      "title": "Pokemon idle farm 24h",
-      "expect": "other"
+      "annotation_id": "cases:27"
     },
     {
-      "title": "farm 24h",
-      "tags": [
-        "Tibia"
-      ],
-      "channel": "rubinotplayer",
-      "expect": "undetermined"
+      "annotation_id": "cases:28"
     },
     {
-      "title": "exp x50 server 8.60",
-      "expect": "undetermined"
+      "annotation_id": "cases:29"
     },
     {
-      "title": "Future OT Global",
-      "expect": "other"
+      "annotation_id": "cases:30"
     },
     {
-      "title": "nao jogo rubinot, so global antica",
-      "expect": "tibia"
+      "annotation_id": "cases:31"
     },
     {
-      "title": "ex-rubinot agora so Tibia Global",
-      "expect": "tibia"
+      "annotation_id": "cases:32"
     },
     {
-      "title": "Tibia Global vs RubinOT: qual e melhor?",
-      "expect": "undetermined"
+      "annotation_id": "cases:33"
     },
     {
-      "title": "Tibia Global Etebra !rubinot",
-      "expect": "tibia"
+      "annotation_id": "cases:34"
     },
     {
-      "title": "Primera vez en Antica",
-      "expect": "tibia"
+      "annotation_id": "cases:35"
     },
     {
-      "title": "Hunters de Venore",
-      "expect": "undetermined"
+      "annotation_id": "cases:36"
     },
     {
-      "title": "Rubino jogando Tibia",
-      "expect": "undetermined"
+      "annotation_id": "cases:37"
     },
     {
-      "title": "Medicina e Tibia",
-      "expect": "undetermined"
+      "annotation_id": "cases:38"
     },
     {
-      "title": "Winter update hunts",
-      "expect": "undetermined"
+      "annotation_id": "cases:39"
     },
     {
-      "title": "EK 1000 Kalanta boss",
-      "expect": "tibia"
+      "annotation_id": "cases:40"
     },
     {
-      "title": "TORNABRAAAAA war",
-      "expect": "tibia"
+      "annotation_id": "cases:41"
     },
     {
-      "title": "Etebraa hunt",
-      "expect": "tibia"
+      "annotation_id": "cases:42"
     },
     {
-      "title": "[CELEBRA - RP 1700+]",
-      "tags": [
-        "Bakragore"
-      ],
-      "expect": "tibia"
+      "annotation_id": "cases:43"
     },
     {
-      "title": "bom dia galera, hunt de EK",
-      "expect": "undetermined"
+      "annotation_id": "cases:44"
     },
     {
-      "title": "double xp 2x exp event",
-      "tags": [
-        "tibiaglobal"
-      ],
-      "expect": "tibia"
+      "annotation_id": "cases:45"
     },
     {
-      "title": "War Win Quidera - NEW server",
-      "expect": "tibia"
+      "annotation_id": "cases:46"
     },
     {
-      "title": "(DROPS ON) SERVER novo",
-      "expect": "other"
+      "annotation_id": "cases:47"
     },
     {
-      "title": "otponline.com - NOVA QUEST, NOVO BOSS E MUDANÇA NAS MEGAS!",
-      "tags": [
-        "brasil",
-        "Português"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:48"
     },
     {
-      "title": "Ibaiak-idle [18+] BOSS/HUNT/WAR",
-      "tags": [
-        "Português"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:49"
     },
     {
-      "title": "[DEUSOT] - Melhor global custom",
-      "tags": [
-        "Reposição",
-        "Português"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:50"
     },
     {
-      "title": "[DEUSOT] - Melhor global custom",
-      "tags": [
-        "tibiaglobal",
-        "global"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:51"
     },
     {
-      "title": "Tibia Global vs DeusOT: qual é melhor?",
-      "expect": "undetermined"
+      "annotation_id": "cases:52"
     },
     {
-      "title": "não jogo DeusOT, só global Antica",
-      "expect": "tibia"
+      "annotation_id": "cases:53"
     },
     {
-      "title": "Tibia Global Antica !deusot",
-      "expect": "tibia"
+      "annotation_id": "cases:54"
     },
     {
-      "title": "[DEUSOT] Antica hunt",
-      "expect": "undetermined"
+      "annotation_id": "cases:55"
     },
     {
-      "title": "Global! de 0 a 500",
-      "expect": "tibia"
+      "annotation_id": "cases:56"
     },
     {
-      "title": "[Yonabra][Global][EK/MS] !coin !exitlag",
-      "tags": [
-        "Etebra",
-        "Português",
-        "Yonabra"
-      ],
-      "expect": "tibia"
+      "annotation_id": "cases:57"
     },
     {
-      "title": "UMA TIBIANA SEM DEDO EM WINTERA",
-      "tags": [
-        "wintera",
-        "FREEFIRE"
-      ],
-      "expect": "tibia"
+      "annotation_id": "cases:58"
     },
     {
-      "title": "live do shiny",
-      "tags": [
-        "Português"
-      ],
-      "expect": "undetermined"
+      "annotation_id": "cases:59"
     },
     {
-      "title": "Global Antica dashcoins.com.br/Loja",
-      "expect": "tibia"
+      "annotation_id": "cases:60"
     },
     {
-      "title": "[DROPS ON] SUN - LVL 533 HZ 14 // !metagross // CUPOM \"MAD\" 10% DE BONUS NO DD! //",
-      "tags": [
-        "Português"
-      ],
-      "expect": "other"
+      "annotation_id": "cases:61"
+    },
+    {
+      "annotation_id": "cases:62"
+    },
+    {
+      "annotation_id": "cases:63"
+    },
+    {
+      "annotation_id": "cases:64"
     }
   ]
 }
