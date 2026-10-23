@@ -212,6 +212,7 @@ print(json.dumps({'cases':cases,'toy':toy}))
       }
     });
     assert.deepEqual(errors, []);
+    assert.equal(await page.locator('[data-tibia-official-probability]').count(), 0, 'Safari probability UI must not appear in Chrome');
     await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({
       browser: (await session.send('Browser.getVersion')).product,
       results,

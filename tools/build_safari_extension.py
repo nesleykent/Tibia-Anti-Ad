@@ -16,6 +16,7 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from safari_web_resources import content_manifest, resources
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "extension/src"
@@ -111,7 +112,7 @@ def write_entitlements(path, group, network=False):
 def safari_manifest(manifest):
     """The web extension's manifest for Safari, whose toolbar button and settings
     come from the native toolbar extension instead of popup.html."""
-    manifest = dict(manifest)
+    manifest = content_manifest(manifest)
     manifest.pop("action", None)
     manifest.pop("options_ui", None)
     manifest["permissions"] = [*manifest["permissions"], "nativeMessaging"]
@@ -119,7 +120,11 @@ def safari_manifest(manifest):
 
 
 def stage_web_extension(destination):
-    shutil.copytree(SOURCE, destination)
+    destination.mkdir(parents=True)
+    for source, relative in resources():
+        target = destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
     manifest = json.loads((SOURCE / "manifest.json").read_text())
     (destination / "manifest.json").write_text(json.dumps(safari_manifest(manifest), indent=2) + "\n")
 
@@ -203,9 +208,11 @@ def sign(identity, group):
 
 def verify(app):
     web_resources = extension_bundles(app)[WEB_EXTENSION_ID] / "Contents/Resources"
-    for original in SOURCE.rglob("*"):
-        relative = original.relative_to(SOURCE)
-        if original.is_file() and relative.name != "manifest.json" and original.read_bytes() != (web_resources / relative).read_bytes():
+    expected_manifest = safari_manifest(json.loads((SOURCE / 'manifest.json').read_text()))
+    if json.loads((web_resources / 'manifest.json').read_text()) != expected_manifest:
+        raise RuntimeError('Packaged Safari manifest differs from the Safari configuration')
+    for original, relative in resources():
+        if relative.name != "manifest.json" and original.read_bytes() != (web_resources / relative).read_bytes():
             raise RuntimeError(f"Packaged extension resource differs: {relative}")
     for bundle in [app, *extension_bundles(app).values()]:
         info = plistlib.loads((bundle / "Contents/Info.plist").read_bytes())

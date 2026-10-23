@@ -4,8 +4,9 @@
 // Each card is classified from its full title and tags (copied from Twitch's own
 // data by tibia-props.js) by the learned statistical model in tibia-classify.js.
 // The joint model directly decides; names and tags have no manual override. Only "other"
-// hides a card. Runs only on the Tibia category directory, and only while the
-// "Hide other games" setting (tibiaFilter) and the master switch are on.
+// hides a card while "Hide other games" (tibiaFilter) and the master switch are on.
+// On Safari the same result also supplies a probability label with hiding off.
+// Both features run only on the Tibia category directory; the master pauses both.
 //
 // Corrections: "Show" in the settings page stores {channel: title} in
 // tibiaShown. That broadcast stays visible until its title changes, so the
@@ -20,9 +21,11 @@
     const VERDICT = 'data-twitch-clean-tibia';
     const META = 'data-twitch-clean-meta';
     const R = globalThis.TibiaAntiAdRules;
+    const probabilityView = globalThis.TibiaAntiAdProbability;
     // The bundled evidence until storage answers with a newer download (tibia-rules.js).
     let classify = globalThis.TwitchCleanTibiaClassify.create(globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE);
     let enabled = true;
+    let probabilityEnabled = Boolean(probabilityView);
     let shown = {};
     const hiddenByUs = new WeakSet();
     // Verdicts by channel, title and tags: Twitch re-renders the same cards often.
@@ -71,11 +74,14 @@
         let verdict = null;
         if (info) {
             const result = classifyCard(info);
-            verdict = result.verdict;
+            if (probabilityEnabled) { probabilityView.render(article, result); }
+            verdict = enabled ? result.verdict : null;
             const overridden = verdict === 'other' && shown[info.channel] === info.title;
-            cell.setAttribute(VERDICT, `${verdict}: ${result.reason}${overridden ? ' (shown by you)' : ''}`);
+            if (enabled) { cell.setAttribute(VERDICT, `${verdict}: ${result.reason}${overridden ? ' (shown by you)' : ''}`); }
+            else { cell.removeAttribute(VERDICT); }
             if (overridden) { verdict = 'shown'; }
         }
+        else { probabilityView?.remove(article); }
         if (verdict === 'other') {
             if (!hiddenByUs.has(cell)) { requestMore(); }
             cell.setAttribute(MARK, '');
@@ -85,7 +91,8 @@
     };
 
     const scan = () => {
-        if (!enabled || !onTibiaDirectory()) {
+        if ((!enabled && !probabilityEnabled) || !onTibiaDirectory()) {
+            probabilityView?.clear();
             scheduleReport();
             for (const el of document.querySelectorAll(`[${VERDICT}]`)) {
                 el.removeAttribute(VERDICT);
@@ -188,6 +195,8 @@
             classify = globalThis.TwitchCleanTibiaClassify.create(R.current(stored[R.KEY]));
             verdicts.clear();
             enabled = S.active(settings, 'tibiaFilter');
+            probabilityEnabled = Boolean(probabilityView) && settings.enabled;
+            if (!probabilityEnabled) { probabilityView?.clear(); }
             shown = tibiaShown && typeof tibiaShown === 'object' ? tibiaShown : {};
             scan();
         });

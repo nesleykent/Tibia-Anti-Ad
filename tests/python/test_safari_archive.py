@@ -11,6 +11,7 @@ from zipfile import ZipFile
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 import package_safari_extension as packager
+from safari_web_resources import content_manifest, resources
 
 
 class SafariArchiveTests(unittest.TestCase):
@@ -28,8 +29,9 @@ class SafariArchiveTests(unittest.TestCase):
                 self.assertIsNone(archive.testzip())
                 manifest = json.loads(archive.read("tibia-anti-ad-safari/manifest.json"))
                 self.assertIn("safari", manifest["browser_specific_settings"])
-                for source in (ROOT / "extension/src").rglob("*"):
-                    if source.is_file():
-                        self.assertEqual(archive.read("tibia-anti-ad-safari/" + source.relative_to(ROOT / "extension/src").as_posix()), source.read_bytes())
+                self.assertEqual(manifest, content_manifest(json.loads((ROOT / 'extension/src/manifest.json').read_text())))
+                for source, relative in resources():
+                    if relative.name != 'manifest.json':
+                        self.assertEqual(archive.read('tibia-anti-ad-safari/' + relative.as_posix()), source.read_bytes())
                 self.assertIn("tibia-anti-ad-safari/LICENSE", archive.namelist())
                 self.assertIn("tibia-anti-ad-safari/THIRD_PARTY_NOTICES.md", archive.namelist())

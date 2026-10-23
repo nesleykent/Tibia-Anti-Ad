@@ -75,6 +75,8 @@ The main script runs before the player in the page context. Cosmetic filters alo
 
 To inspect a Tibia-filter decision, check the `data-twitch-clean-tibia` attribute on a card's grid cell. Learned weights live in `filters/sources/twitch/tibia-evidence.json`; train and evaluate them as described in the [model card](../docs/TWITCH_MODEL.md). They are generated from labelled data, not edited as a wordlist.
 
+Safari additionally shows the estimated probability of **official Tibia** at the right of every channel-name row in the Tibia directory, with **Hide other games** on or off. The estimate comes from the same joint title/tag model used for hiding. It is a model estimate, not a p-value or a measured accuracy rate. Hover for its meaning; very small/large estimates display as `<0.1%` / `>99.9%` rather than rounding to certainty. The master switch pauses these labels. This presentation is packaged only for Safari in `extension/browsers/safari/web/`; the inference and filtering source remains shared.
+
 ## References
 
 - [TwitchAdSolutions / vaft](https://github.com/pixeltris/TwitchAdSolutions) and the MIT notice embedded in `page.js`.

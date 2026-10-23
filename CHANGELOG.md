@@ -6,6 +6,7 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Added
 
+- Safari 1.4.0 displays the model's estimated probability of official Tibia beside every stream's channel name in the Tibia directory. Estimates remain visible with **Hide other games** on or off; the master switch pauses them. Chrome does not include this presentation.
 - Safari toolbar status: `infinity.circle` when blocking is disabled and `infinity.circle.fill` when enabled, synchronized on changes and background startup. Toolbar titles describe the state in text.
 - Chrome uses original outlined/filled infinity-in-circle vectors for the same two states, with dual-tone edges for light/dark themes. Both browsers' popup status indicators match their toolbar state. Imported shield branding is replaced with original circular infinity artwork.
 - Native Safari host fixes: handle malformed messages safely, avoid retaining the controller through its message handler, and show settings/status errors instead of silently quitting or hiding failures.

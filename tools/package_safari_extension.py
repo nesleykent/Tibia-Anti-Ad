@@ -1,8 +1,10 @@
 """Package the built Safari app and a temporary-extension ZIP with checksums."""
 import hashlib
+import json
 import subprocess
 from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
+from safari_web_resources import content_manifest, resources
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "extension/src"
@@ -19,15 +21,17 @@ def checksum(path):
 def package_source():
     SOURCE_ZIP.parent.mkdir(parents=True, exist_ok=True)
     with ZipFile(SOURCE_ZIP, "w", compression=ZIP_DEFLATED) as archive:
-        files = [(p, Path("tibia-anti-ad-safari") / p.relative_to(SOURCE))
-                 for p in sorted(SOURCE.rglob("*")) if p.is_file()]
+        files = [(p, Path("tibia-anti-ad-safari") / relative) for p, relative in resources()]
         files += [(ROOT / name, Path("tibia-anti-ad-safari") / name)
                   for name in ("LICENSE", "THIRD_PARTY_NOTICES.md")]
         for path, relative in files:
             entry = ZipInfo(relative.as_posix())
             entry.compress_type = ZIP_DEFLATED
             entry.external_attr = 0o100644 << 16
-            archive.writestr(entry, path.read_bytes())
+            data = path.read_bytes()
+            if relative.name == 'manifest.json':
+                data = (json.dumps(content_manifest(json.loads(data)), indent=2) + '\n').encode()
+            archive.writestr(entry, data)
     checksum(SOURCE_ZIP)
     return SOURCE_ZIP
 
