@@ -6,6 +6,9 @@ const {
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const {
+  execFileSync
+} = require('node:child_process');
 const root = path.resolve(__dirname, '../..');
 const output = path.join(root, 'local/verification/twitch-titles');
 const escape = text => text.replace(/[&<>"']/g, c => ({
@@ -19,11 +22,29 @@ const escape = text => text.replace(/[&<>"']/g, c => ({
   await fs.mkdir(output, {
     recursive: true
   });
-  const cases = JSON.parse(await fs.readFile(path.join(root, 'tests/data/tibia-classify-cases.json'), 'utf8')).cases;
+  const reference = JSON.parse(execFileSync(process.env.PYTHON || 'python3', ['-c', `
+import json,sys
+from pathlib import Path
+sys.path.insert(0,'tools')
+from twitch_evidence import Evidence,EVIDENCE
+from tibia_text import feature_id
+classifier=Evidence(json.loads(EVIDENCE.read_text()))
+cases=json.loads(Path('tests/data/tibia-classify-cases.json').read_text())['cases']
+for row in cases:
+    row['expect']=classifier.classify(row['title'],row.get('tags',[]))[0]
+toy={'revision':2,'model':{'format':'joint-text-logistic-v1','bias':0,'threshold':1,'weights':{feature_id('w:alpha'):[-4,1],feature_id('w:beta'):[4,1]}}}
+print(json.dumps({'cases':cases,'toy':toy}))
+`], {
+    cwd: root,
+    encoding: 'utf8'
+  }));
+  const cases = reference.cases;
   const stale = JSON.parse(await fs.readFile(path.join(root, 'filters/sources/twitch/tibia-evidence.json'), 'utf8'));
   delete stale.revision;
-  stale.games['Other Pok\u00e9mon servers'].words = stale.games['Other Pok\u00e9mon servers'].words.filter(w => w !== 'otponline');
-  stale.games['Idle games'].words = stale.games['Idle games'].words.filter(w => !w.startsWith('ibaiak'));
+  stale.model = {
+    confident: 6,
+    features: {}
+  };
   const profile = await fs.mkdtemp(path.join(output, 'profile-'));
   let context;
   try {
@@ -128,13 +149,75 @@ const escape = text => text.replace(/[&<>"']/g, c => ({
         observations: observed
       });
     }
+    // A controlled learned model proves the real card flow uses both fields,
+    // independently of every server name in the fixtures or training corpus.
+    await worker.evaluate(data => chrome.storage.local.set({
+      tibiaEvidence: {
+        data,
+        fetchedAt: Date.now()
+      }
+    }), reference.toy);
+    const change = async (title, tags, expected) => {
+      await page.locator('#case-0 article').evaluate((article, row) => {
+        article.__reactFiberFixture.memoizedProps.title = row.title;
+        article.__reactFiberFixture.memoizedProps.tagListProps.freeformTags = row.tags.map(name => ({
+          name
+        }));
+        article.querySelector('h4').setAttribute('title', row.title);
+        article.querySelector('h4').textContent = row.title;
+      }, {
+        title,
+        tags
+      });
+      await page.waitForFunction(verdict => document.querySelector('#case-0').getAttribute('data-twitch-clean-tibia')?.startsWith(`${verdict}:`), expected);
+      assert.equal(await page.locator('#case-0').evaluate(cell => getComputedStyle(cell).display === 'none'), expected === 'other');
+    };
+    await change('alpha', ['language'], 'tibia');
+    await change('beta', ['language'], 'other');
+    await change('beta', ['alpha'], 'undetermined');
+    await page.locator('#case-0 article').evaluate(article => {
+      delete article.__reactFiberFixture;
+      const heading = article.querySelector('h4');
+      heading.removeAttribute('title');
+      heading.firstChild.nodeValue = 'beta';
+    });
+    await page.waitForFunction(() => document.querySelector('#case-0').getAttribute('data-twitch-clean-tibia')?.startsWith('other:'));
+    await page.locator('#case-0 h4').evaluate(heading => {
+      heading.firstChild.nodeValue = 'alpha';
+    });
+    await page.waitForFunction(() => document.querySelector('#case-0').getAttribute('data-twitch-clean-tibia')?.startsWith('tibia:'));
+    await page.locator('#case-0 article').evaluate(article => {
+      document.querySelector('#case-0').removeAttribute('data-twitch-clean-tibia');
+      article.setAttribute('data-twitch-clean-meta', JSON.stringify({
+        channel: 'fixture0',
+        title: '',
+        tags: ['language']
+      }));
+    });
+    await page.waitForFunction(() => document.querySelector('#case-0').getAttribute('data-twitch-clean-tibia')?.startsWith('tibia:'));
+    await page.locator('#case-0 article').evaluate(article => {
+      article.querySelector('h4').firstChild.nodeValue = 'beta';
+    });
+    await page.waitForFunction(() => document.querySelector('#case-0').getAttribute('data-twitch-clean-tibia')?.startsWith('other:'));
+    await page.screenshot({
+      path: path.join(output, 'joint-input-proof.png'),
+      fullPage: true
+    });
+    results.push({
+      inputChanges: {
+        sameTagsDifferentTitle: 'passed',
+        sameTitleDifferentTags: 'passed',
+        textOnlyTitle: 'passed',
+        emptyMetadataTitle: 'passed'
+      }
+    });
     assert.deepEqual(errors, []);
     await fs.writeFile(path.join(output, 'results.json'), JSON.stringify({
       browser: (await session.send('Browser.getVersion')).product,
       results,
       errors
     }, null, 2) + '\n');
-    console.log(`PASS title filtering: ${fixture.length} cases through DOM and React metadata, no page errors`);
+    console.log(`PASS statistical title/tag filtering: ${fixture.length} cases through DOM and React metadata, no page errors`);
   } finally {
     await context?.close();
     await fs.rm(profile, {

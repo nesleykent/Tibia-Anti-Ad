@@ -30,7 +30,11 @@ The report's method is the reference for this project:
 
 Every directory card is rendered by React with props that include the complete `title`, **every** freeform tag (`tagListProps.freeformTags`), `channelLogin` and the viewer count. These are the same fields the audited JSON capture contained, available without any extra network request. Because React props live in the page's JavaScript world, Tibia Anti-Ad reads them from a small page-world script (`tibia-props.js`) and hands them to the filter through a data attribute. If the props cannot be found, the filter falls back to the visible card text.
 
-## Classification rules
+## Current classification, 1.3.0
+
+The live filter now uses a statistical model of the complete title and tags. Manual name rules and weighted lexical overrides described below are historical and no longer decide cards. See the [model card](../../docs/TWITCH_MODEL.md) for the algorithm, training provenance, comparison of inputs and limits.
+
+## Historical classification rules, before 1.3.0
 
 Implemented in `tools/twitch_evidence.py` (reference) and `extension/src/tibia-classify.js` (extension), configured in `filters/sources/twitch/tibia-evidence.json`:
 

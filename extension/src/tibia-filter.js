@@ -2,9 +2,8 @@
 // (OTServers such as RubinOT, Pok\u00e9mon servers, idle games).
 //
 // Each card is classified from its full title and tags (copied from Twitch's own
-// data by tibia-props.js) with the rules in tibia-classify.js: a server declared
-// in the title or tags hides the card, unless an official world or "Tibia
-// Global" is also present; a "!server" chat command counts like the name. Only "other"
+// data by tibia-props.js) by the learned statistical model in tibia-classify.js.
+// The joint model directly decides; names and tags have no manual override. Only "other"
 // hides a card. Runs only on the Tibia category directory, and only while the
 // "Hide other games" setting (tibiaFilter) and the master switch are on.
 //
@@ -42,15 +41,20 @@
     const onTibiaDirectory = () => /^\/directory\/category\/tibia(\/|$)/i.test(location.pathname);
 
     const cardInfo = article => {
-        try {
-            const meta = JSON.parse(article.getAttribute(META) || 'null');
-            if (meta && typeof meta.channel === 'string') { return meta; }
-        } catch { /* fall back to the visible card */ }
         const href = article.querySelector('a[data-a-target="preview-card-channel-link"], a[data-a-target="preview-card-image-link"]')?.getAttribute('href') || '';
         const channel = href.match(/^\/([a-z0-9_]{1,25})\/?$/i)?.[1]?.toLowerCase();
+        let meta = null;
+        try {
+            meta = JSON.parse(article.getAttribute(META) || 'null');
+            if (meta && typeof meta.channel === 'string' && (!channel || meta.channel === channel)
+                && typeof meta.title === 'string' && meta.title.trim()
+                && Array.isArray(meta.tags) && meta.tags.every(tag => typeof tag === 'string')) { return meta; }
+        } catch { /* fall back to the visible card */ }
         if (!channel) { return null; }
-        const title = article.querySelector('h4[title], h3[title]')?.getAttribute('title') || '';
-        const tags = [...article.querySelectorAll('[data-a-target="tw-tag"], .tw-tag')].map(t => t.textContent.trim()).filter(Boolean);
+        const heading = article.querySelector('h4[title], h3[title], h4, h3');
+        const title = heading?.getAttribute('title')?.trim() || heading?.textContent.trim() || '';
+        const tags = meta?.channel === channel && Array.isArray(meta.tags) && meta.tags.every(tag => typeof tag === 'string') ? meta.tags
+            : [...article.querySelectorAll('[data-a-target="tw-tag"], .tw-tag')].map(t => t.textContent.trim()).filter(Boolean);
         return { channel, title, tags };
     };
 
@@ -134,7 +138,7 @@
         const wanted = onTibiaDirectory();
         if (wanted === observing) { return; }
         observing = wanted;
-        if (wanted) { observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title', META] }); }
+        if (wanted) { observer.observe(document.body, { childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ['href', 'title', META] }); }
         else { observer.disconnect(); }
         scan();
     };

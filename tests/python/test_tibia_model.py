@@ -11,6 +11,13 @@ import train_tibia_model as model
 
 
 class ModelValidationTests(unittest.TestCase):
+    def test_training_uses_audit_labels_not_filter_predictions(self):
+        rows = model.observations()
+        self.assertEqual(len(rows), 373)
+        self.assertTrue(all(set(row) == {'channel', 'title', 'tags', 'label'} for row in rows))
+        self.assertEqual(set(model.dataset()), {row['channel'] for row in rows})
+        self.assertNotEqual(model.dataset('title'), model.dataset('tags'))
+
     def test_wilson_interval_does_not_claim_certainty_from_small_samples(self):
         self.assertIsNone(model.wilson_interval(0, 0))
         lower, upper = model.wilson_interval(10, 10)

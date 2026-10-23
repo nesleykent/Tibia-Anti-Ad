@@ -40,6 +40,7 @@
             const value = meta ? JSON.stringify(meta) : null;
             // Cards are reused on scroll, so refresh whenever the props change.
             if (value && article.getAttribute(ATTR) !== value) { article.setAttribute(ATTR, value); }
+            else if (!value && article.hasAttribute(ATTR)) { article.removeAttribute(ATTR); }
         }
     };
 
@@ -56,7 +57,7 @@
         if (wanted === observing) { return; }
         observing = wanted;
         if (wanted) {
-            observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href', 'title'] });
+            observer.observe(document.body, { childList: true, characterData: true, subtree: true, attributes: true, attributeFilter: ['href', 'title'] });
             scan();
         } else {
             observer.disconnect();

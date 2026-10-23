@@ -1,8 +1,8 @@
-// Tibia Anti-Ad: keeps the Tibia filter's evidence (server names, worlds, weights,
-// sites) current without a reinstall. The background script downloads
+// Tibia Anti-Ad: keeps the Tibia filter's learned statistical model current
+// without a reinstall. The background script downloads
 // filters/sources/twitch/tibia-evidence.json from the repository's main branch
 // at browser start and every six hours; a copy is kept only when the bundled
-// classifier can run it and it still tells a server from an official world.
+// classifier accepts its model format and finite numeric parameters.
 // Only this data is downloaded, never code; the bundled copy
 // (tibia-evidence.js) is used until a valid update arrives.
 (() => {
@@ -18,8 +18,10 @@
             // An older cached/downloaded ruleset must not undo an app update.
             const revision = data.revision ?? 0;
             if (!Number.isSafeInteger(revision) || revision < (globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE.revision || 0)) { return false; }
+            if (!data.model?.weights || !Object.keys(data.model.weights).length) { return false; }
             const classify = globalThis.TwitchCleanTibiaClassify.create(data);
-            return classify('RubinOT war', []).verdict === 'other' && classify('Antica hunt', []).verdict === 'tibia';
+            const empty = classify('', []);
+            return empty.verdict === 'undetermined' && Number.isFinite(empty.score.other);
         } catch {
             return false;
         }

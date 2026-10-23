@@ -7,7 +7,7 @@ const bundled = globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE;
 const R = globalThis.TibiaAntiAdRules;
 const old = structuredClone(bundled);
 delete old.revision;
-old.games['Other Pok\u00e9mon servers'].words = old.games['Other Pok\u00e9mon servers'].words.filter(w => w !== 'otponline');
+old.model = { confident: 6, features: {} }; // The old rule-assisted format is incompatible.
 assert.equal(R.current({ data: old }), bundled, 'Older cached evidence must fall back to bundled rules');
 assert.equal(R.valid(old), false, 'Older downloads must be rejected');
 for (const revision of [-1, 1.5, '999', Infinity]) {
@@ -15,6 +15,8 @@ for (const revision of [-1, 1.5, '999', Infinity]) {
 }
 const newer = { ...bundled, revision: bundled.revision + 1 };
 assert.equal(R.current({ data: newer }), newer, 'Newer compatible rules must still update');
+assert.equal(R.valid({ ...bundled, model: { ...bundled.model, format: 'unsupported' } }), false);
+assert.equal(R.valid({ ...bundled, model: { ...bundled.model, weights: {} } }), false);
 assert.equal(R.current(null), bundled);
 
 (async () => {

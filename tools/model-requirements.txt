@@ -1,0 +1,2 @@
+# Training only; not needed by the extension or standard repository checks.
+scikit-learn==1.9.1
