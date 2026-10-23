@@ -3,8 +3,8 @@
 //
 // Each card is classified from its full title and tags (copied from Twitch's own
 // data by tibia-props.js) by the learned statistical model in tibia-classify.js.
-// The joint model directly decides; names and tags have no manual override. Only "other"
-// hides a card while "Hide other games" (tibiaFilter) and the master switch are on.
+// P(private server) is compared with the frozen threshold while the filter
+// and master switch are on. The percentage view uses its complement.
 // On Safari the same result also supplies a probability label with hiding off.
 // Both features run only on the Tibia category directory; the master pauses both.
 //
@@ -24,6 +24,7 @@
     const probabilityView = globalThis.TibiaAntiAdProbability;
     // The bundled evidence until storage answers with a newer download (tibia-rules.js).
     let classify = globalThis.TwitchCleanTibiaClassify.create(globalThis.TWITCH_CLEAN_TIBIA_EVIDENCE);
+    let activeEvidence = null;
     let enabled = true;
     let probabilityEnabled = Boolean(probabilityView);
     let shown = {};
@@ -35,7 +36,7 @@
         let result = verdicts.get(key);
         if (!result) {
             if (verdicts.size >= 1000) { verdicts.clear(); }
-            result = classify(info.title, info.tags, info.channel);
+            result = classify(info.title, info.tags);
             verdicts.set(key, result);
         }
         return result;
@@ -75,20 +76,21 @@
         if (info) {
             const result = classifyCard(info);
             if (probabilityEnabled) { probabilityView.render(article, result); }
-            verdict = enabled ? result.verdict : null;
-            const overridden = verdict === 'other' && shown[info.channel] === info.title;
-            if (enabled) { cell.setAttribute(VERDICT, `${verdict}: ${result.reason}${overridden ? ' (shown by you)' : ''}`); }
+            article.setAttribute('data-tibia-private-result', JSON.stringify(result));
+            verdict = enabled ? (result.hide ? 'hidden' : 'shown') : null;
+            const overridden = verdict === 'hidden' && shown[info.channel] === info.title;
+            if (enabled) { cell.setAttribute(VERDICT, `${verdict}: ${(result.private_probability * 100).toFixed(2)}% private server${overridden ? ' (shown by you)' : ''}`); }
             else { cell.removeAttribute(VERDICT); }
             if (overridden) { verdict = 'shown'; }
         }
         else { probabilityView?.remove(article); }
-        if (verdict === 'other') {
+        if (verdict === 'hidden') {
             if (!hiddenByUs.has(cell)) { requestMore(); }
             cell.setAttribute(MARK, '');
             hiddenByUs.add(cell);
         }
         else if (hiddenByUs.has(cell)) { cell.removeAttribute(MARK); hiddenByUs.delete(cell); }
-        return { cell, classified: enabled && Boolean(info), hidden: verdict === 'other' };
+        return { cell, classified: enabled && Boolean(info), hidden: verdict === 'hidden' };
     };
 
     // Twitch can reuse or regroup grid wrappers, and copied marks outlive the
@@ -172,21 +174,14 @@
         globalThis.navigation?.addEventListener?.('currententrychange', follow);
         setInterval(follow, 1000);
     };
-    // The game behind a hidden card's strongest evidence, for grouping; weak
-    // context (server rates, "OT") names no game.
-    const gameOf = result => {
-        const best = result.found.signals.filter(s => s.side === 'other' && s.source !== 'context')
-            .sort((a, b) => b.weight - a.weight)[0];
-        return !best ? 'Other games' : best.game === 'OTServer client' ? 'Other OTServers' : best.game;
-    };
     // Cards this script hides on the current page, for the settings pages.
     const hiddenCards = () => [...document.querySelectorAll('article')].flatMap(article => {
         const cell = cellOf(article);
         if (!hiddenByUs.has(cell)) { return []; }
         const info = cardInfo(article);
         if (!info) { return []; }
-        const reason = (cell.getAttribute(VERDICT) || '').replace(/^other: /, '');
-        return [{ channel: info.channel, title: info.title, reason, game: gameOf(classifyCard(info)) }];
+        const reason = (cell.getAttribute(VERDICT) || '').replace(/^hidden: /, '');
+        return [{ channel: info.channel, title: info.title, reason, game: 'Private servers', ...classifyCard(info) }];
     });
     // Report the hidden cards for the Safari app's popover whenever they change.
     let lastReport = '';
@@ -201,6 +196,15 @@
     let reportTimer = 0;
     const scheduleReport = () => { clearTimeout(reportTimer); reportTimer = setTimeout(report, 500); };
     api.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        if (message?.type === 'tibia-anti-ad:tibia-diagnostics') {
+            const rows = onTibiaDirectory() ? [...document.querySelectorAll('article')].flatMap(article => {
+                const info = cardInfo(article);
+                return info ? [{...info, ...classifyCard(info), hidden: hiddenByUs.has(cellOf(article))}] : [];
+            }) : [];
+            sendResponse({captured_at: new Date().toISOString(), model_sha256: R.current(activeEvidence).model_sha256,
+                enabled, rows});
+            return false;
+        }
         if (message?.type !== 'tibia-anti-ad:tibia-hidden') { return false; }
         sendResponse({ onDirectory: onTibiaDirectory(), enabled, hidden: enabled && onTibiaDirectory() ? hiddenCards() : [] });
         return false;
@@ -209,7 +213,8 @@
     const load = () => Promise.all([S.load(api), api.storage.local.get({ tibiaShown: {}, [R.KEY]: null })])
         .then(([settings, stored]) => {
             const { tibiaShown } = stored;
-            classify = globalThis.TwitchCleanTibiaClassify.create(R.current(stored[R.KEY]));
+            activeEvidence = stored[R.KEY];
+            classify = globalThis.TwitchCleanTibiaClassify.create(R.current(activeEvidence));
             verdicts.clear();
             enabled = S.active(settings, 'tibiaFilter');
             probabilityEnabled = Boolean(probabilityView) && settings.enabled;

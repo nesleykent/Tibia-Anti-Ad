@@ -21,7 +21,7 @@
             if (!data.model?.weights || !Object.keys(data.model.weights).length) { return false; }
             const classify = globalThis.TwitchCleanTibiaClassify.create(data);
             const empty = classify('', []);
-            return empty.verdict === 'undetermined' && Number.isFinite(empty.score.other);
+            return empty.private_probability === 0.01 && empty.display_probability === 0.99 && empty.hide === false;
         } catch {
             return false;
         }

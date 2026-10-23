@@ -1,4 +1,4 @@
-// Safari-only presentation of the shared model's official-Tibia estimate.
+// Safari-only presentation of the complement of the shared model's private-server probability.
 // tibia-filter.js supplies the same result used for hiding, even when hiding is off.
 (() => {
     'use strict';
@@ -30,20 +30,20 @@
             badge.setAttribute(BADGE, '');
             const label = document.createElement('span');
             label.className = 'tibia-probability-accessible-label';
-            label.textContent = 'Estimated probability of official Tibia: ';
+            label.textContent = '1 \u2212 P(private server): ';
             const value = document.createElement('span');
             value.className = 'tibia-probability-value';
             badge.append(label, value);
             row.append(badge);
         }
-        const probability = result.score.tibia;
+        const probability = result.display_probability;
         const text = Number.isFinite(probability) ? probability < 0.0005 ? `<${formatter.format(0.001)}`
             : probability >= 0.9995 ? `>${formatter.format(0.999)}` : formatter.format(probability) : 'n/a';
         const value = badge.querySelector('.tibia-probability-value');
         if (value.textContent !== text) { value.textContent = text; }
         const raw = String(probability);
         if (badge.getAttribute(BADGE) !== raw) { badge.setAttribute(BADGE, raw); }
-        const title = `Estimated probability of official Tibia: ${text} (model estimate)`;
+        const title = `1 \u2212 P(private server): ${text} (complement of model estimate)`;
         if (badge.title !== title) { badge.title = title; }
     };
     globalThis.TibiaAntiAdProbability = Object.freeze({ render, remove, clear });

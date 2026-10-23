@@ -2,7 +2,7 @@
 
 No full-text bag of words. Recognition proposes server references; a supervised
 context logit determines their contribution. Without a reference P=0.01 exactly.
-This milestone-B module does not replace browser inference until milestone C.
+The browser port consumes the same exported model and recognition patterns.
 """
 import json
 import math
@@ -29,6 +29,18 @@ OT = re.compile(r'\b[a-z][a-z0-9_-]{2,}[- ]?ot\b')
 NEW_OT = re.compile(r'\b[A-Za-z][A-Za-z0-9_-]{1,}[a-z0-9_-]OT\b')
 LAUNCH = re.compile(r'\b(?:launch\w*|opening|open beta|public test|abertura|lancamento|testserver)\b')
 DESCRIPTORS = {'online', 'mmorpg', 'server', 'world', 'global', 'rpg'}
+CONTEXT = {
+    'negated_reference': r'\b(?:nao jogo|nao estou|not playing|nao|nunca)\b[^.!;]{0,30}$',
+    'comparison': r'\b(?:vs|versus)\b',
+    'past_reference': r'\b(?:ex[- ]|histor\w*|document\w*)',
+    'sponsor_context': r'\b(?:patrocin\w*|sponsor\w*|meu link|link do)\b',
+    'commercial_context': r'(?:[!❗]\s*(?:loja|shop)|(?<![a-z])tc\s*/|\bsub\b)',
+    'separate_session_declaration': r'\b(?:tibia global|hoje so|hoje jogo|jogo em)\b',
+    'commercial_offer': r'(?:(?<![a-z])tc\s*/\s*mes|\bsem sub\b|\bsub\s+[0-9]+)',
+    'coordinated_reference': r'\b(?:e|and)\s*$',
+    'current_session_relation': r'\b(?:jogo|jogando|estou no|playing|no|on)\s*$',
+}
+
 
 
 def canonical(value):
@@ -167,18 +179,28 @@ def context_features(title, tags, inventory):
         ot_name=float(any(OT.fullmatch(m['text']) for m in matches)),
         protocol=float(any(m['kind'] == 'protocol' for m in titles)),
         launch_context=float(bool(LAUNCH.search(text))),
-        negated_reference=float(bool(re.search(r'\b(?:nao jogo|nao estou|not playing|nao|nunca)\b[^.!;]{0,30}$', prefix))),
-        comparison=float(bool(re.search(r'\b(?:vs|versus)\b', text))),
-        past_reference=float(bool(re.search(r'\b(?:ex[- ]|histor\w*|document\w*)', text))),
-        sponsor_context=float(bool(re.search(r'\b(?:patrocin\w*|sponsor\w*|meu link|link do)\b', text))),
-        commercial_context=float(bool(re.search(r'(?:[!❗]\s*(?:loja|shop)|(?<![a-z])tc\s*/|\bsub\b)', text))),
+        negated_reference=float(bool(re.search(CONTEXT['negated_reference'], prefix))),
+        comparison=float(bool(re.search(CONTEXT['comparison'], text))),
+        past_reference=float(bool(re.search(CONTEXT['past_reference'], text))),
+        sponsor_context=float(bool(re.search(CONTEXT['sponsor_context'], text))),
+        commercial_context=float(bool(re.search(CONTEXT['commercial_context'], text))),
         bracketed_reference=float(any(m['start'] and text[m['start'] - 1] == '[' for m in titles)),
-        separate_session_declaration=float(bool(re.search(r'\b(?:tibia global|hoje so|hoje jogo|jogo em)\b', prefix if titles else text))),
-        commercial_offer=float(bool(re.search(r'(?:(?<![a-z])tc\s*/\s*mes|\bsem sub\b|\bsub\s+[0-9]+)', text))),
-        coordinated_reference=float(bool(re.search(r'\b(?:e|and)\s*$', prefix))),
-        current_session_relation=float(bool(re.search(r'\b(?:jogo|jogando|estou no|playing|no|on)\s*$', prefix))),
+        separate_session_declaration=float(bool(re.search(CONTEXT['separate_session_declaration'], prefix if titles else text))),
+        commercial_offer=float(bool(re.search(CONTEXT['commercial_offer'], text))),
+        coordinated_reference=float(bool(re.search(CONTEXT['coordinated_reference'], prefix))),
+        current_session_relation=float(bool(re.search(CONTEXT['current_session_relation'], prefix))),
     )
     return values, matches
+
+
+def portable_sum(values):
+    """Compensated float sum, identical to the browser on older Python too."""
+    hi = lo = 0.0
+    for value in values:
+        total = hi + value
+        lo += (hi - total) + value if abs(hi) >= abs(value) else (value - total) + hi
+        hi = total
+    return hi + lo
 
 
 class PrivateModel:
@@ -201,7 +223,7 @@ class PrivateModel:
             contributions = [{'feature': name, 'value': value,
                               'contribution': value * self.data['weights'][name]}
                              for name, value in values.items() if value]
-            raw = sum(item['contribution'] for item in contributions)
+            raw = portable_sum(item['contribution'] for item in contributions)
             a, b = self.data['calibration']['slope'], self.data['calibration']['intercept']
             logit = a * raw + b
             probability = max(BASE, 1 / (1 + math.exp(-max(-40, min(40, logit)))))

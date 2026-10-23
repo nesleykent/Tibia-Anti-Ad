@@ -1,4 +1,4 @@
-// Metadata transport only. Model behavior/parity belongs to milestone C.
+// Offline browser verification of full metadata, model hiding and Safari complement.
 const { chromium } = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
@@ -27,5 +27,53 @@ const root = path.resolve(__dirname, '../..');
         }));
         assert.deepEqual(actual, inputs);
         console.log('PASS full reviewed title/tag metadata transport');
+        const cases = JSON.parse(await fs.readFile(path.join(root, 'tests/data/tibia-private-context-acceptance.json'), 'utf8')).cases;
+        await page.evaluate(rows => {
+            document.body.replaceChildren();
+            window.fixtureSettings = {};
+            window.fixtureChanges = [];
+            window.fixtureMessages = [];
+            window.browser = {storage: {local: {get: async defaults => ({...defaults, ...window.fixtureSettings})},
+                onChanged: {addListener: fn => window.fixtureChanges.push(fn)}},
+                runtime: {sendMessage: async () => {}, onMessage: {addListener: fn => window.fixtureMessages.push(fn)}}};
+            rows.forEach((row, i) => {
+                const section = document.createElement('section');
+                const article = document.createElement('article');
+                article.innerHTML = `<a data-a-target="preview-card-channel-link" href="/fixture${i}"><h4></h4><div><p>fixture${i}</p></div></a>`;
+                article.querySelector('h4').textContent = row.title;
+                article.querySelector('h4').title = row.title;
+                article.__reactFiberFixture = {memoizedProps: {channelLogin: `fixture${i}`, title: row.title,
+                    tagListProps: {freeformTags: row.tags.map(name => ({name}))}}};
+                section.append(article); document.body.append(section);
+            });
+        }, cases);
+        for (const file of ['extension/src/tibia-evidence.js', 'extension/src/tibia-classify.js', 'extension/src/tibia-rules.js',
+            'extension/src/settings.js', 'extension/browsers/safari/web/tibia-probability.js', 'extension/src/tibia-filter.js']) {
+            await page.addScriptTag({path: path.join(root, file)});
+        }
+        await page.addStyleTag({path: path.join(root, 'extension/browsers/safari/web/tibia-probability.css')});
+        await page.addStyleTag({content: '[data-twitch-clean-hidden] {display:none} section {width:300px} h4 {overflow:hidden;white-space:nowrap}'});
+        await page.waitForFunction(() => document.querySelectorAll('article[data-tibia-private-result]').length === 3);
+        const result = await page.locator('article').evaluateAll(articles => articles.map(a => ({
+            ...JSON.parse(a.getAttribute('data-tibia-private-result')), hidden: Boolean(a.closest('[data-twitch-clean-hidden]')),
+            displayed: Number(a.querySelector('[data-tibia-official-probability]').getAttribute('data-tibia-official-probability')),
+        })));
+        cases.forEach((c, i) => {
+            assert.ok(result[i].private_probability >= c.private_probability_min && result[i].private_probability <= c.private_probability_max);
+            assert.equal(result[i].hidden, result[i].hide);
+            assert.equal(result[i].displayed, result[i].display_probability);
+        });
+        for (const width of [1280, 375]) {
+            await page.setViewportSize({width, height: 800});
+            assert.equal(await page.locator('.tibia-probability-value').nth(1).textContent(), '99.0%');
+            assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+        }
+        await page.evaluate(() => {
+            window.fixtureSettings = {tibiaFilter: false};
+            window.fixtureChanges.forEach(fn => fn({tibiaFilter: {newValue: false}}, 'local'));
+        });
+        await page.waitForFunction(() => !document.querySelector('[data-twitch-clean-hidden]'));
+        assert.equal(await page.locator('[data-tibia-official-probability]').count(), cases.length);
+        console.log('PASS browser hiding, complement, disabling filter, desktop/mobile layout');
     } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exit(1); });

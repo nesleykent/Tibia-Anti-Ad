@@ -1,5 +1,15 @@
 # Current progress
 
+## Milestone C complete, first capture frozen
+
+- Done: replaced the browser whole-text model with milestone B entity/context inference; exported model/patterns/normalization from Python; revision 4 rejects incompatible caches. Hiding uses P>=99%; Safari displays its complement. Diagnostics expose probabilities, references, contributions and actual hidden state.
+- Frozen model SHA-256: 55b7b0a019dd811895bf8388b3b2604ab8d419e9133482f38405fb9d1b5ccb50. No fitting, labels, aliases, calibration or threshold tuning in C.
+- Validation: full repository checks passed (55 Python tests); exact reference/contribution/logit/decision parity on 221 reviewed inputs plus Unicode controls. Offline Chrome checks passed at 1280/375 pixels. Personally signed Safari update installed and registration verified; Safari activation/restart persistence remain unverified.
+- First live capture: one isolated Chrome Beta navigation, 2026-10-23 16:53:32–16:53:51 UTC. 30 loaded cards, 26 hidden, 1 shown above 50%, 3 at base. Full results and table retained in ignored local/verification/tibia-first-c; aggregate/hash/protocol in research/twitch/model/MILESTONE_C.md. Snapshot is unlabelled; loaded-card scope does not prove full category coverage.
+- Files: shared classifier/filter/rules and generated runtime assets, Safari percentage presentation, Python exporter/shared regex specification, parity tests, browser integration/capture tools, model docs. No raw capture or personal signing details staged.
+- Exact next step: publish verified C to main and show the 27-row table, then wait for maintainer review. Do not tune on the capture or recapture it.
+
+
 ## Milestone B sponsor correction, stop before C
 
 - Done: corrected attached TC pricing, removed position/reference-count/command-count features, constrained identification coefficients nonnegative, repaired source-derived aliases. No label changes. Added audit:42 acceptance and invariance coverage.

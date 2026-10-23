@@ -1,77 +1,113 @@
-// Portable supervised text inference. Weights are learned from labelled
-// titles and tags; no name list, channel feature or heuristic decides a card.
-// Keep feature extraction and scoring in step with tools/tibia_text.py and
-// tools/twitch_evidence.py; the full captures are checked for numeric parity.
+// Portable entity/context inference. Parameters, patterns and normalization are
+// exported from Python by tools/twitch_evidence.py. No channel enters inference.
 (() => {
     'use strict';
-
-    // Lookalike letters NFKD keeps: Cyrillic, Greek and small capitals.
-    const LOOKALIKE = {
-        \u0430: 'a', \u0432: 'b', \u0435: 'e', \u043a: 'k', \u043c: 'm', \u043d: 'h', \u043e: 'o', \u0440: 'p', \u0441: 'c', \u0442: 't', \u0443: 'y', \u0445: 'x', \u0456: 'i', \u0458: 'j', \u0455: 's', \u0501: 'd', \u0261: 'g',
-        \u03b1: 'a', \u03b2: 'b', \u03b5: 'e', \u03b9: 'i', \u03ba: 'k', \u03bd: 'v', \u03bf: 'o', \u03c1: 'p', \u03c4: 't', \u03c5: 'u', \u03c7: 'x',
-        \u1d00: 'a', \u0299: 'b', \u1d04: 'c', \u1d05: 'd', \u1d07: 'e', \u0262: 'g', \u029c: 'h', \u026a: 'i', \u1d0a: 'j', \u1d0b: 'k', \u029f: 'l', \u1d0d: 'm', \u0274: 'n', \u1d0f: 'o', \u1d18: 'p', \u0280: 'r', \ua731: 's', \u1d1b: 't', \u1d1c: 'u', \u1d20: 'v', \u1d21: 'w', \u028f: 'y', \u1d22: 'z',
-    };
-    const LOOKALIKE_RE = new RegExp(`[${Object.keys(LOOKALIKE).join('')}]`, 'g');
-    const normalize = s => String(s).normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase()
-        .replace(LOOKALIKE_RE, c => LOOKALIKE[c]).replace(/\s+/g, ' ').trim();
-
-    const featureId = text => {
-        let result = 2166136261;
-        for (let i = 0; i < text.length; i++) { result = Math.imul(result ^ text.charCodeAt(i), 16777619) >>> 0; }
-        return result.toString(16).padStart(8, '0');
-    };
-    const textFeatures = text => {
-        const tokens = (normalize(text).match(/[a-z0-9]+/g) || []).map(word => word.replace(/[0-9]+/g, '#'));
-        const raw = new Set(tokens.map(word => `w:${word}`));
-        for (let i = 1; i < tokens.length; i++) { raw.add(`b:${tokens[i - 1]} ${tokens[i]}`); }
-        for (const word of new Set(tokens)) {
-            const padded = `^${word}$`;
-            for (const n of [3, 4, 5]) {
-                for (let i = 0; i <= padded.length - n; i++) { raw.add(`c:${padded.slice(i, i + n)}`); }
-            }
+    const points = s => Array.from(s);
+    const slice = (s, a, b) => points(s).slice(a, b).join('');
+    const length = s => points(s).length;
+    const alphaNumeric = c => Boolean(c && /[\p{L}\p{N}]/u.test(c));
+    // Python's Unicode word boundaries and \w differ from JavaScript's ASCII ones.
+    const regex = (pattern, flags = '') => new RegExp(pattern
+        .replace(/\\b/g, '(?:(?<![\\p{L}\\p{N}_])(?=[\\p{L}\\p{N}_])|(?<=[\\p{L}\\p{N}_])(?![\\p{L}\\p{N}_]))')
+        .replace(/\[\\w\.\]/g, '[\\p{L}\\p{N}_.]')
+        .replace(/\\w/g, '[\\p{L}\\p{N}_]'), flags + 'u');
+    const matches = (s, pattern) => [...s.matchAll(regex(pattern, 'g'))].map(m => ({
+        text: m[0], group: m[1], start: length(s.substring(0, m.index)), end: length(s.substring(0, m.index + m[0].length)),
+    }));
+    // CPython 3.12+ uses compensated float summation.
+    const sum = values => {
+        let hi = 0, lo = 0;
+        for (const x of values) {
+            const t = hi + x;
+            lo += Math.abs(hi) >= Math.abs(x) ? (hi - t) + x : (x - t) + hi;
+            hi = t;
         }
-        return new Set([...raw].map(featureId));
+        return hi + lo;
     };
-    const featureFields = (title, tags) => {
-        const tagFeatures = new Set();
-        for (const tag of tags) { for (const feature of textFeatures(tag)) { tagFeatures.add(feature); } }
-        return [textFeatures(title), tagFeatures];
-    };
-    const rounded = value => Math.round(value * 1000000) / 1000000;
-
     const create = data => {
-        const model = data?.model;
-        const presence = model?.format === 'piracy-presence-logit-v1';
-        if ((!presence && model?.format !== 'joint-text-logistic-v1') || !Number.isFinite(model.bias) || (presence && model.bias !== 0) || !Number.isFinite(model.threshold) || model.threshold <= 0
-            || !model.weights || typeof model.weights !== 'object' || Array.isArray(model.weights)) { throw new Error('Invalid statistical model'); }
-        for (const [key, value] of Object.entries(model.weights)) {
-            if (!/^[0-9a-f]{8}$/.test(key) || !Array.isArray(value) || value.length !== 2 || !value.every(Number.isFinite) || value[1] <= 0) {
-                throw new Error('Invalid statistical model weights');
+        const model = data?.model, spec = data?.inference;
+        if (model?.format !== 'entity-context-logit-v2' || model.base_private_probability !== 0.01
+            || !spec?.features?.length || !spec.context || !spec.patterns || !spec.lookalike
+            || !model.references?.aliases || !Array.isArray(model.references.domains)
+            || !Number.isFinite(model.hide_threshold) || model.hide_threshold <= 0 || model.hide_threshold > 1
+            || !Number.isFinite(model.calibration?.slope) || model.calibration.slope <= 0
+            || !Number.isFinite(model.calibration.intercept)
+            || spec.features.some(f => !Number.isFinite(model.weights?.[f]))) { throw new Error('Invalid private-server model'); }
+        const normalize = s => String(s).normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase()
+            .split('').map(c => spec.lookalike[c] || c).join('').replace(/[\s\u001c-\u001f]+/g, ' ').trim();
+        const canonical = s => normalize(s).replace(/[^a-z0-9]/g, '').replace(/1/g, 'i').replace(/0/g, 'o');
+        const pat = spec.patterns;
+        const test = (s, p) => regex(p).test(s);
+        const references = (title, tags) => {
+            const text = normalize(title), commands = matches(text, pat.command), found = [];
+            const put = (kind, start, end, name, field = 'title', origin = null) => {
+                if (!found.some(m => m.field === field && m.start === start && m.end === end && m.text === name && m.origin === origin)) {
+                    found.push({kind, start, end, text: name, field, origin});
+                }
+            };
+            for (const [field, value] of [['title', text], ...[...new Set(tags)].sort().map(t => ['tag', normalize(t)])]) {
+                const chars = [], positions = [];
+                points(value).forEach((char, i) => { const c = canonical(char); if (c) { chars.push(c); positions.push(i); } });
+                const compact = chars.join('');
+                for (const [alias, commandOnly] of Object.entries(model.references.aliases)) {
+                    let begin = 0, at;
+                    while ((at = compact.indexOf(alias, begin)) >= 0) {
+                        const start = positions[at], end = positions[at + alias.length - 1] + 1;
+                        begin = at + alias.length;
+                        if ((start && alphaNumeric(slice(value, start - 1, start))) || (end < length(value) && alphaNumeric(slice(value, end, end + 1)))) { continue; }
+                        const command = field === 'title' && commands.some(c => c.start <= start && end <= c.end);
+                        if (commandOnly && !command) { continue; }
+                        put(command ? 'command' : 'name', start, end, slice(value, start, end), field, field === 'tag' ? value : null);
+                    }
+                }
             }
-        }
-        const classify = (title, tags, channel = '') => {
-            const [titleFeatures, tagFeatures] = featureFields(title, tags);
-            const known = [...new Set([...titleFeatures, ...tagFeatures])].filter(key => Object.hasOwn(model.weights, key)).sort();
-            const norm = presence ? 1 : Math.sqrt(known.reduce((sum, key) => sum + model.weights[key][1] ** 2, 0));
-            let titleValue = 0, tagValue = 0;
-            for (const key of known) {
-                const value = model.weights[key][0] / norm;
-                const shared = titleFeatures.has(key) && tagFeatures.has(key);
-                if (titleFeatures.has(key)) { titleValue += value / (shared ? 2 : 1); }
-                if (tagFeatures.has(key)) { tagValue += value / (shared ? 2 : 1); }
+            const caseText = String(title).normalize('NFKD').replace(/\p{M}/gu, '').replace(/[\s\u001c-\u001f]+/g, ' ').trim();
+            for (const m of matches(caseText, pat.new_ot)) { put('ot_name', m.start, m.end, slice(text, m.start, m.end)); }
+            if (test(text, pat.launch) || test(text, pat.protocol)) {
+                for (const m of matches(text, pat.ot)) { put('ot_name', m.start, m.end, m.text); }
             }
-            const logit = model.bias + titleValue + tagValue;
-            const probability = 1 / (1 + Math.exp(-Math.max(-40, Math.min(40, logit))));
-            const verdict = known.length && logit >= model.threshold ? 'other' : known.length && logit <= -model.threshold ? 'tibia' : 'undetermined';
-            const score = { other: rounded(probability), tibia: rounded(1 - probability) };
-            const inputs = titleFeatures.size && tagFeatures.size ? 'title and tags' : titleFeatures.size ? 'title' : tagFeatures.size ? 'tags' : 'no text';
-            const reason = `statistical model from ${inputs}: ${Math.round(probability * 100)}% ${presence ? 'private-server' : 'other-game'} estimate`;
-            return { verdict, reason, score, found: {
-                signals: [{ side: logit >= 0 ? 'other' : 'tibia', source: 'model', game: logit >= 0 ? 'Other games' : 'Tibia', text: inputs, weight: rounded(Math.abs(logit)) }],
-                model: { logit: rounded(logit), title: rounded(titleValue), tags: rounded(tagValue), bias: model.bias, matched: known.length }, score,
-            } };
+            for (const m of matches(text, pat.domain)) {
+                if (model.references.domains.includes(m.text.split('/')[0]) || test(text, pat.launch)) { put('domain', m.start, m.end, m.text); }
+            }
+            for (const m of matches(text, pat.protocol)) { put('protocol', m.start, m.end, m.text); }
+            const unique = [];
+            found.sort((a, b) => a.field.localeCompare(b.field) || (b.end - b.start) - (a.end - a.start) || a.start - b.start);
+            for (const m of found) {
+                if (!unique.some(n => n.field === m.field && n.origin === m.origin && n.start <= m.start && m.end <= n.end)) { unique.push(m); }
+            }
+            return {text, commands, found: unique.sort((a, b) => a.field.localeCompare(b.field) || a.start - b.start)};
+        };
+        const classify = (title, tags = []) => {
+            const {text, commands, found} = references(title, tags);
+            const values = Object.fromEntries(spec.features.map(f => [f, 0]));
+            if (found.length) {
+                const titles = found.filter(m => m.field === 'title');
+                const prefix = slice(text, 0, titles.length ? Math.min(...titles.map(m => m.start)) : 0);
+                const pair = String(title).normalize('NFKC').match(regex('\\b[A-Z][a-z]{3,}\\s*/\\s*[A-Z][a-z]{3,}\\b'));
+                Object.assign(values, {
+                    identified_reference: 1,
+                    competing_named_pair: Number(Boolean(pair && (!titles.length || prefix.includes(normalize(pair[0]))))),
+                    server_command: Number(commands.some(c => titles.some(m => m.start >= c.start && m.end <= c.end))),
+                    server_domain: Number(titles.some(m => m.kind === 'domain')),
+                    ot_name: Number(found.some(m => test(m.text, `^(?:${pat.ot})$`))),
+                    protocol: Number(titles.some(m => m.kind === 'protocol')),
+                    launch_context: Number(test(text, pat.launch)),
+                    bracketed_reference: Number(titles.some(m => m.start && slice(text, m.start - 1, m.start) === '[')),
+                });
+                for (const [name, pattern] of Object.entries(spec.context)) {
+                    const input = ['negated_reference', 'coordinated_reference', 'current_session_relation'].includes(name) ? prefix
+                        : name === 'separate_session_declaration' ? (titles.length ? prefix : text) : text;
+                    values[name] = Number(test(input, pattern));
+                }
+            }
+            let contributions = spec.features.filter(f => values[f]).map(feature => ({feature, value: values[feature], contribution: values[feature] * model.weights[feature]}));
+            const raw = found.length ? sum(contributions.map(c => c.contribution)) : null;
+            const p = found.length ? Math.max(model.base_private_probability, 1 / (1 + Math.exp(-Math.max(-40, Math.min(40, model.calibration.slope * raw + model.calibration.intercept))))) : model.base_private_probability;
+            contributions = contributions.sort((a, b) => Math.abs(b.contribution) - Math.abs(a.contribution));
+            return {private_probability: p, display_probability: 1 - p, hide: p >= model.hide_threshold,
+                references: found, contributions, raw_logit: raw};
         };
         return classify;
     };
-    globalThis.TwitchCleanTibiaClassify = { create, normalize, featureFields };
+    globalThis.TwitchCleanTibiaClassify = {create};
 })();

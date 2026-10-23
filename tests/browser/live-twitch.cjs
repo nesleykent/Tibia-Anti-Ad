@@ -63,10 +63,10 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
             const classify = TwitchCleanTibiaClassify.create(TWITCH_CLEAN_TIBIA_EVIDENCE);
             return rows.map(({ meta }) => {
               const result = classify(meta.title, []);
-              return { channel: meta.channel, title: meta.title, withoutTags: result.verdict, reason: result.reason };
+              return { channel: meta.channel, title: meta.title, withoutTagsHide: result.hide, private_probability: result.private_probability };
             });
           }, metadata);
-          assert.ok(run.titles.some(row => row.withoutTags === 'other'), 'No title-only hiding evidence');
+          assert.ok(run.titles.some(row => row.withoutTagsHide), 'No title-only hiding evidence');
           assert.ok(run.directory.hidden > 0, 'No stream was classified as other');
           const stream = await page.locator('[data-twitch-clean-hidden] article').first().evaluate(article =>
             JSON.parse(article.getAttribute('data-twitch-clean-meta')));
