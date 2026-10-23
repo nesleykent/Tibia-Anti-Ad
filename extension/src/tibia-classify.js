@@ -26,9 +26,11 @@
     };
     const create = data => {
         const model = data?.model, spec = data?.inference;
-        if (model?.format !== 'entity-context-logit-v2' || model.base_private_probability !== 0.01
+        if (model?.format !== 'identifier-span-logit-v3' || model.base_private_probability !== 0.01
             || !spec?.features?.length || !spec.context || !spec.patterns || !spec.lookalike
-            || !model.references?.aliases || !Array.isArray(model.references.domains)
+            || !model.identifier_weights || !model.identifier_cutoffs || Object.values(model.identifier_cutoffs).some(w => !Number.isFinite(w))
+            || !Array.isArray(spec.languages) || spec.hash_size !== 4096
+            || Object.values(model.identifier_weights).some(w => !Number.isFinite(w))
             || !Number.isFinite(model.hide_threshold) || model.hide_threshold <= 0 || model.hide_threshold > 1
             || !Number.isFinite(model.calibration?.slope) || model.calibration.slope <= 0
             || !Number.isFinite(model.calibration.intercept)
@@ -38,44 +40,70 @@
         const canonical = s => normalize(s).replace(/[^a-z0-9]/g, '').replace(/1/g, 'i').replace(/0/g, 'o');
         const pat = spec.patterns;
         const test = (s, p) => regex(p).test(s);
-        const references = (title, tags) => {
-            const text = normalize(title), commands = matches(text, pat.command), found = [];
-            const put = (kind, start, end, name, field = 'title', origin = null) => {
-                if (!found.some(m => m.field === field && m.start === start && m.end === end && m.text === name && m.origin === origin)) {
-                    found.push({kind, start, end, text: name, field, origin});
+        const hash = s => { let h = 2166136261; for (const c of points(s)) { h = Math.imul(h ^ c.codePointAt(0), 16777619) >>> 0; } return h; };
+        const spanFeatures = span => {
+            let value = span.kind === 'domain' ? span.text.split('/')[0] : span.text;
+            const key = canonical(value), padded = '^' + key + '$', grams = new Set();
+            for (const n of [2, 3, 4]) { for (let i = 0; i <= padded.length - n; i++) { grams.add(padded.slice(i, i + n)); } }
+            const features = {};
+            for (const gram of [...grams].sort()) { const i = String(hash('span:' + gram) % spec.hash_size); features[i] = (features[i] || 0) + 1 / Math.sqrt(Math.max(1, grams.size)); }
+            const structure = ['bias', 'kind:' + span.kind];
+            if (span.protocol_context && ['name', 'domain'].includes(span.kind)) { structure.push('protocol_context:' + span.kind); }
+            for (const [part, pattern] of [['ot', 'ot$'], ['online', 'online'], ['idle', 'idle'], ['poke', '^poke'], ['baiak', 'baiak'], ['server', 'server'], ['arena', 'arena']]) {
+                if (test(key, pattern)) {
+                    structure.push('part:' + part);
+                    if (value.includes(' ') && part !== 'poke') { structure.push('compound:' + part); }
+                    if (span.launch) { structure.push('launch:' + part); }
                 }
+            }
+            if (span.kind === 'domain') { structure.push(span.text.split('/')[0].split('.').length > 2 ? 'domain:multi' : 'domain:single'); }
+            for (const name of structure) { features['s:' + name] = 1; }
+            return features;
+        };
+        const references = (title, tags) => {
+            const text = normalize(title), commands = matches(text, pat.command), proposed = [];
+            const raw = String(title).normalize('NFKD').replace(/\p{M}/gu, '').replace(/[\s\u001c-\u001f]+/g, ' ').trim();
+            const put = (kind, m, field, value) => {
+                let {start, end} = m, name = m.text;
+                if (name.startsWith('ex-')) { start += 3; name = name.slice(3); }
+                if (spec.languages.includes(name)) { return; }
+                const item = {kind, start, end, text: name, field, origin: field === 'tag' ? value : null, launch: test(text, pat.launch), protocol_context: test(text, pat.protocol)};
+                if (!proposed.some(c => JSON.stringify(c) === JSON.stringify(item))) { proposed.push(item); }
             };
-            for (const [field, value] of [['title', text], ...[...new Set(tags)].sort().map(t => ['tag', normalize(t)])]) {
-                const chars = [], positions = [];
-                points(value).forEach((char, i) => { const c = canonical(char); if (c) { chars.push(c); positions.push(i); } });
-                const compact = chars.join('');
-                for (const [alias, commandOnly] of Object.entries(model.references.aliases)) {
-                    let begin = 0, at;
-                    while ((at = compact.indexOf(alias, begin)) >= 0) {
-                        const start = positions[at], end = positions[at + alias.length - 1] + 1;
-                        begin = at + alias.length;
-                        if ((start && alphaNumeric(slice(value, start - 1, start))) || (end < length(value) && alphaNumeric(slice(value, end, end + 1)))) { continue; }
-                        const command = field === 'title' && commands.some(c => c.start <= start && end <= c.end);
-                        if (commandOnly && !command) { continue; }
-                        put(command ? 'command' : 'name', start, end, slice(value, start, end), field, field === 'tag' ? value : null);
+            for (const [field, value] of [['title', text], ...[...new Set(tags)].sort().filter(t => !spec.languages.includes(normalize(t))).map(t => ['tag', normalize(t)])]) {
+                const occupied = [];
+                if (field === 'title') {
+                    for (const project of matches(raw, pat.project)) {
+                        const name = normalize(project.text);
+                        if (slice(value, project.start, project.start + length(name)) === name) {
+                            put('name', {start: project.start, end: project.start + length(name), text: name}, field, value);
+                        }
                     }
                 }
+                for (const kind of ['domain', 'command', 'compound', 'spaced', 'protocol']) {
+                    for (const m of matches(value, pat[kind])) {
+                        if (occupied.some(([a, b]) => a <= m.start && m.end <= b)) { continue; }
+                        put(['compound', 'spaced'].includes(kind) ? 'name' : kind, m, field, value);
+                        occupied.push([m.start, m.end]);
+                    }
+                }
+                for (const m of matches(value, pat.word)) {
+                    if (occupied.some(([a, b]) => a <= m.start && m.end <= b)) { continue; }
+                    const c = slice(raw, m.start, m.start + 1);
+                    const capital = field === 'title' && c && c.toUpperCase() === c && c.toLowerCase() !== c;
+                    const bracket = m.start > 0 && '[({'.includes(slice(value, m.start - 1, m.start));
+                    if (field === 'tag' || capital || bracket || test(m.text, pat.parts)) { put('name', m, field, value); }
+                }
             }
-            const caseText = String(title).normalize('NFKD').replace(/\p{M}/gu, '').replace(/[\s\u001c-\u001f]+/g, ' ').trim();
-            for (const m of matches(caseText, pat.new_ot)) { put('ot_name', m.start, m.end, slice(text, m.start, m.end)); }
-            if (test(text, pat.launch) || test(text, pat.protocol)) {
-                for (const m of matches(text, pat.ot)) { put('ot_name', m.start, m.end, m.text); }
-            }
-            for (const m of matches(text, pat.domain)) {
-                if (model.references.domains.includes(m.text.split('/')[0]) || test(text, pat.launch)) { put('domain', m.start, m.end, m.text); }
-            }
-            for (const m of matches(text, pat.protocol)) { put('protocol', m.start, m.end, m.text); }
-            const unique = [];
-            found.sort((a, b) => a.field.localeCompare(b.field) || (b.end - b.start) - (a.end - a.start) || a.start - b.start);
-            for (const m of found) {
-                if (!unique.some(n => n.field === m.field && n.origin === m.origin && n.start <= m.start && m.end <= n.end)) { unique.push(m); }
-            }
-            return {text, commands, found: unique.sort((a, b) => a.field.localeCompare(b.field) || a.start - b.start)};
+            const cmp = (a, b) => a < b ? -1 : a > b ? 1 : 0;
+            const found = proposed.filter(c => {
+                const fs = spanFeatures(c);
+                const part = ['ot', 'online', 'idle', 'poke', 'baiak', 'server', 'arena'].find(p => Object.hasOwn(fs, 's:part:' + p));
+                const bucket = c.kind === 'name' ? 'name:' + (part || 'other') : c.kind;
+                return sum(Object.keys(fs).sort().map(f => fs[f] * (model.identifier_weights[f] || 0))) >= (model.identifier_cutoffs[bucket] || 0);
+            });
+            found.sort((a, b) => cmp(a.field, b.field) || cmp(a.origin || '', b.origin || '') || a.start - b.start || a.end - b.end);
+            return {text, commands, found};
         };
         const classify = (title, tags = []) => {
             const {text, commands, found} = references(title, tags);
@@ -83,10 +111,10 @@
             if (found.length) {
                 const titles = found.filter(m => m.field === 'title');
                 const prefix = slice(text, 0, titles.length ? Math.min(...titles.map(m => m.start)) : 0);
-                const pair = String(title).normalize('NFKC').match(regex('\\b[A-Z][a-z]{3,}\\s*/\\s*[A-Z][a-z]{3,}\\b'));
                 Object.assign(values, {
                     identified_reference: 1,
-                    competing_named_pair: Number(Boolean(pair && (!titles.length || prefix.includes(normalize(pair[0]))))),
+                    tag_identifier: Number(found.some(m => m.field === 'tag')),
+                    competing_named_pair: 0,
                     server_command: Number(commands.some(c => titles.some(m => m.start >= c.start && m.end <= c.end))),
                     server_domain: Number(titles.some(m => m.kind === 'domain')),
                     ot_name: Number(found.some(m => test(m.text, `^(?:${pat.ot})$`))),
@@ -100,6 +128,8 @@
                     values[name] = Number(test(input, pattern));
                 }
             }
+            if (!found.some(m => m.field === 'title')) { values.separate_session_declaration = 0; }
+            if (found.some(m => m.field === 'tag' || m.kind !== 'command') && !values.sponsor_context) { values.commercial_context = values.commercial_offer = 0; }
             let contributions = spec.features.filter(f => values[f]).map(feature => ({feature, value: values[feature], contribution: values[feature] * model.weights[feature]}));
             const raw = found.length ? sum(contributions.map(c => c.contribution)) : null;
             const p = found.length ? Math.max(model.base_private_probability, 1 / (1 + Math.exp(-Math.max(-40, Math.min(40, model.calibration.slope * raw + model.calibration.intercept))))) : model.base_private_probability;

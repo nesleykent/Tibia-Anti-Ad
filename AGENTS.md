@@ -1,5 +1,7 @@
 # Project instructions
 
+- Read [settled maintainer decisions](DECISIONS.md) before classification, popup or model-pipeline work. These decisions must not be re-asked.
+
 - Preserve the public filter-list URLs and the shared extension source in `extension/src/`.
 - Keep local originals, captures and caches in the visible, ignored `local/` folder. Build output belongs in `dist/`.
 - Run `PYTHONDONTWRITEBYTECODE=1 python3 tools/check_project.py` for repository checks. Record browser verification separately from build and signature verification.

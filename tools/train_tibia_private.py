@@ -23,19 +23,19 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-np.clip(x, -40, 40)))
 
 
-def fit_weights(rows, inventory):
+def fit_weights(rows, inventory, matrix=None, features=FEATURES):
     import numpy as np
-    X = np.array([[context_features(r['title'], r['tags'], inventory)[0][f] for f in FEATURES] for r in rows])
+    X = np.array(matrix) if matrix is not None else np.array([[context_features(r['title'], r['tags'], inventory)[0][f] for f in features] for r in rows])
     y = np.array([r['target'] for r in rows])
     active = (X[:, 0] != 0).astype(float)
     A = X[[r.get('model_supervision', {}).get('kind') == 'mixed_session' for r in rows]]
     B = X[[r.get('model_supervision', {}).get('kind') == 'no_private_server_evidence' and bool(X[i, 0]) for i, r in enumerate(rows)]]
     cap = math.log(BASE / (1 - BASE))
-    w = np.zeros(len(FEATURES))
+    w = np.zeros(len(features))
     locked = set()
     # Active constraints are chosen from coefficient signs, not example IDs.
     # Context can reduce evidence; an OT-name/command/domain cue cannot do so.
-    for _active in range(len(FEATURES) + 1):
+    for _active in range(len(features) + 1):
         equality = np.vstack([A, np.eye(len(w))[sorted(locked)]]) if locked else A
         for _ in range(150):
             p = np.where(active, sigmoid(X @ w), BASE)
@@ -54,14 +54,14 @@ def fit_weights(rows, inventory):
             w -= delta * min(1, 5 / max(5, float(np.linalg.norm(delta))))
             if float(np.linalg.norm(delta)) < 1e-8:
                 break
-        violated_signs = {i for i, name in enumerate(FEATURES)
+        violated_signs = {i for i, name in enumerate(features)
                           if (name in NONNEGATIVE and w[i] < -1e-9) or (name in NONPOSITIVE and w[i] > 1e-9)}
         if not violated_signs - locked:
             break
         locked |= violated_signs
     for i in locked:
         w[i] = 0.0
-    return dict(zip(FEATURES, map(float, w)))
+    return dict(zip(features, map(float, w)))
 
 
 def temperature(model, rows, minimum_slope):

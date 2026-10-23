@@ -189,3 +189,36 @@ affected cards at 85%. Desktop and phone-sized screenshots were inspected.
 Repository checks and real unpacked-popup/export regressions passed. Safari
 1.6.4 was built, signed, verified and installed; WebDriver again timed out when
 opening a session, so the final Safari visual confirmation remains manual.
+
+### Identifier-span learning and scheduled publication, 1.7.0
+
+2026-10-23: all 399 supplied metadata inputs were labelled from title/tags only.
+The feature-only packet retains supervision without raw local titles, channels,
+images or filenames. Of 271 private inputs, 44 previously displayed more than
+50% official; the fitted identifier model reduces that count to 0. Every runtime
+prediction also agrees with replay from the feature-only packet.
+
+Leave-one-server-identity-out refits exclude all matching historical and supplied
+examples, including aliases and candidate identity matches. The final benchmark
+caught 362/394 stream/identity pairs across 68 folds, 91.9% recall. All six required
+new-name controls passed. These are development acceptance controls, not untouched
+validation claims. Aggregate results and supervision digest are recorded in
+[the evaluation report](../research/twitch/model/span-evaluation.json).
+
+Repository verification: 68 Python tests, JavaScript checks, active acceptance,
+Python/JavaScript inference parity and generated-source consistency passed.
+The frozen model reproduced exactly from its feature-only supervision with
+NumPy 2.3.5. Workflow YAML parsed. API pagination, strict LLM coverage and span
+validation, secret-safe failures, newest-capture separation and concurrent-main
+publication rejection passed mocked integration tests. Live Twitch/OpenAI calls
+and a scheduled publication await the repository secrets described in
+[the pipeline guide](TIBIA_LEARNING.md).
+
+Browser verification, separately: Chrome Beta passed full metadata transport,
+probability complement and hiding at desktop/mobile sizes, explicit mode and
+threshold regrouping, stable incremental loads, diagnostics history, actual file
+download, popup persistence and export with the real unpacked extension.
+
+Build/signature verification, separately: the signed Safari updater completed
+successfully, installed 1.7.0 and retained the prior app. This does not establish
+Safari activation with unsigned extensions disabled or restart persistence.

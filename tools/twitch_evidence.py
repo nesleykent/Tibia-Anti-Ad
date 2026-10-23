@@ -2,25 +2,25 @@
 import argparse
 import json
 from pathlib import Path
-from tibia_private import PrivateModel, FEATURES, CONTEXT, DOMAIN, COMMAND, PROTOCOL, OT, NEW_OT, LAUNCH
+from tibia_private import CONTEXT, OT
+from tibia_spans import SpanModel as PrivateModel, PATTERNS, LANGUAGES, SIZE, FEATURES
 from tibia_text import LOOKALIKE
 import hashlib
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE = ROOT / 'filters/sources/twitch/tibia-evidence.json'
 EXTENSION_DATA = ROOT / 'extension/src/tibia-evidence.js'
-PRIVATE_MODEL = ROOT / 'research/twitch/model/private-model.json'
+PRIVATE_MODEL = ROOT / 'research/twitch/model/private-span-model.json'
 
 
 def browser_data():
     frozen = PRIVATE_MODEL.read_bytes()
     data = json.loads(frozen)
-    runtime = {key: data[key] for key in ('format', 'base_private_probability', 'references', 'weights', 'calibration', 'hide_threshold')}
-    return {'revision': 4, 'model_sha256': hashlib.sha256(frozen).hexdigest(), 'model': runtime,
+    runtime = {key: data[key] for key in ('format', 'base_private_probability', 'identifier_weights', 'identifier_cutoffs', 'weights', 'calibration', 'hide_threshold')}
+    return {'revision': data['revision'], 'model_sha256': hashlib.sha256(frozen).hexdigest(), 'model': runtime,
             'inference': {'features': list(FEATURES), 'context': CONTEXT, 'lookalike': LOOKALIKE,
-                          'patterns': {name: pattern.pattern for name, pattern in
-                                       [('domain', DOMAIN), ('command', COMMAND), ('protocol', PROTOCOL),
-                                        ('ot', OT), ('new_ot', NEW_OT), ('launch', LAUNCH)]}}}
+                          'languages': LANGUAGES, 'hash_size': SIZE,
+                          'patterns': dict(PATTERNS, ot=OT.pattern)}}
 
 
 def extension_data(data):
@@ -43,7 +43,7 @@ def main():
         EXTENSION_DATA.write_text(extension_data(data))
         return
     if args.evaluate:
-        from train_tibia_private import evaluate
+        from train_tibia_spans import evaluate
         evaluate()
         return
     if not args.streams:
