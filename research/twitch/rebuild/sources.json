@@ -222,6 +222,12 @@
       "kind": "explicit_maintainer_bulk_label_review",
       "date": "2026-10-23",
       "finding": "Maintainer bulk-approves private rows with explicit project identifiers unless flagged, requests all missing targets, all not-private rows and command-only or spelling-variant private rows in a compact queue. Approval of labels does not authorize training; source/operator verification limitations remain recorded."
+    },
+    {
+      "id": "maintainer-round2-label-review-2026-10-23",
+      "kind": "explicit_maintainer_label_review",
+      "date": "2026-10-23",
+      "finding": "Maintainer approves private command/variant and not-private blocks, adjudicates named missing-target rows, identifies Eldrius as OT, and subsequently corrects audit:155 to not-private after consulting its Twitch channel. Project Zomboid hiding scope and ten listed ambiguous inputs remain unresolved. Every unresolved input must receive explicit no-private-evidence supervision and 1% probability, never be dropped or silently become positive."
     }
   ]
 }

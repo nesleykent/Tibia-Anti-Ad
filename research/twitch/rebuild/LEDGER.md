@@ -1,6 +1,6 @@
 # Rebuild ledger
 
-## Milestone A: complete, waiting for annotation review
+## Milestone A: reviewed labels recorded; data enrichment remains
 
 Done:
 
@@ -62,3 +62,19 @@ Context acceptance update:
 - Recorded the maintainer's exact session-command title and the full confirmed sponsor-list title in `tests/data/tibia-private-context-acceptance.json`. Same `!rubinot`, opposite required probability behavior; no fixed per-term contribution is acceptable.
 - Added `check_context_acceptance.py`, an executable output checker for each future runtime. Acceptance bounds: session >=95%, sponsorship <=5%. These are test bounds, not hiding thresholds or measured calibration. Fixtures remain outside training and held-out metrics. No classifier acceptance pass is claimed yet.
 - Next B/C verification must run actual inference on these exact title/tag inputs and pass the checker independently for Python and JS. No fit or runtime changes made now.
+
+Round 2 review and channel correction, 2026-10-23:
+
+- Done: applied the private command/variant and not-private block approvals. Recorded 9 new private adjudications from missing targets, 4 new not-private adjudications plus the latest audit:155 correction to not-private. Eldrius (audit:132) corrected to private from the maintainer reply. Source inputs, original labels and every superseded proposal remain intact.
+- Results: 131 proposed private session targets, 47 not-private, 43 missing historical session targets. Approvals: 159 bulk, 17 individually confirmed, 33 baseline-confirmed, 12 with historical/scope decisions pending. Missing historical targets do not mean missing supervision: all 43 get no-private-evidence target 0 and required P(private)=1%. audit:7 also gets that baseline supervision rather than a positive loss from its historical asserted private label. All 44 must remain in dataset/split accounting.
+- audit:155: maintainer inspected https://www.twitch.tv/adaismad and says it appears to be original Tibia. Latest not-private adjudication supersedes the intermediate private suggestion. A misspelling by itself is not OT evidence.
+- Data gap: 115 real examples; session83, promotion15, no-evidence8, unresolved8, comparison1, negation0. Only 2 real confirmed original-session sponsorship-list negatives (baratuca and audit:42). Enrichment before B is still required.
+- Scope: Project Zomboid hiding remains unresolved; the reply identifying Eldrius as OT is not silently applied to Project Zomboid. Ten listed ambiguous session targets remain absent, with the mandatory 1% behavior already specified. Do not repeatedly ask for the approved blocks.
+- Files: annotation-proposals.json, sources.json, review-queue.json, REVIEW.md, DATA_GAP.md, validate_review.py, check_context_acceptance.py, tests/data/tibia-no-private-evidence-acceptance.json and this ledger. The acceptance checker now covers the 2 context contrasts and 44 baseline cases.
+- Validation: provenance, original hashes/spans, approvals, baseline retention contract, fixture/output checker synthetic self-checks, Python syntax and diff hygiene. No new model inference, fit, calibration, extension integration or browser verification. Full repository tests that fit models remain deferred at the pre-training gate; no full-check pass is claimed.
+- Exact next step: retain the reviewed packet, complete real sponsorship-negative capture/annotation preparation and settle the remaining Project Zomboid scope. Review new captured annotations before any fitting. At B, use explicit no-private-evidence supervision rather than filtering missing historical targets; verify actual outputs for all 46 acceptance cases and use disjoint held-out data for metrics.
+
+Channel links update:
+
+- Added source-backed Twitch channel URLs directly to the compact consultation table, including adaismad/audit:155. Historical capture titles are distinguished from the channel's present live content. No VOD identity or current live status is invented.
+- Machine-readable review groups now retain channel/url and source index for each available capture link. Constructed examples without a real source channel remain marked as tests. Approved rows are consultation-only, not a new approval request.

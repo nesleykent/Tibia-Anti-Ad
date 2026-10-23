@@ -26,14 +26,14 @@ def main():
     ids = {row['id'] for row in annotations}
     for row in annotations:
         assert row['source_id'] in known_sources, row['id']
-        assert row['approval'] in {'pending', 'maintainer_confirmed', 'maintainer_bulk_approved'} and not row['use_in_training'], row['id']
+        assert row['approval'] in {'pending', 'maintainer_confirmed', 'maintainer_bulk_approved', 'maintainer_baseline_confirmed'} and not row['use_in_training'], row['id']
         if row['approval'] == 'maintainer_confirmed':
             assert row['review_source'] in known_sources, row['id']
             assert next(source for source in sources if source['id'] == row['review_source'])['kind'] == 'explicit_maintainer_label_review'
         if row['approval'] == 'maintainer_bulk_approved':
-            assert row['proposed_stream_private'] == 'private'
+            assert row['proposed_stream_private'] in {'private', 'not_private'}
             assert row['review_source'] in known_sources
-            assert next(source for source in sources if source['id'] == row['review_source'])['kind'] == 'explicit_maintainer_bulk_label_review'
+            assert next(source for source in sources if source['id'] == row['review_source'])['kind'] in {'explicit_maintainer_bulk_label_review', 'explicit_maintainer_label_review'}
             assert row['bulk_approval_basis']
         assert row['proposed_context'] in {'session', 'promotion', 'negation', 'comparison', 'unresolved', 'no_evidence'}
         assert row['proposed_stream_private'] in {'private', 'not_private', None}
@@ -62,7 +62,9 @@ def main():
     assert packet['counts']['affirmative_evidence'] == dict(Counter(str(row['proposed_affirmative_private_evidence']) for row in annotations))
     assert packet['counts']['review_status'] == dict(Counter(row['approval'] for row in annotations))
     confirmed = {row['id']: row for row in annotations if row['approval'] == 'maintainer_confirmed'}
-    assert set(confirmed) == {'raw1400:16', 'maintainer-example:0'}
+    assert {'raw1400:16', 'maintainer-example:0', 'audit:155', 'audit:132'} <= set(confirmed)
+    assert confirmed['audit:155']['proposed_stream_private'] == 'not_private'
+    assert confirmed['audit:132']['proposed_stream_private'] == 'private'
     assert confirmed['raw1400:16']['proposed_context'] == 'session'
     assert confirmed['raw1400:16']['proposed_stream_private'] == 'private'
     assert confirmed['raw1400:16']['proposed_affirmative_private_evidence'] is True
@@ -80,9 +82,9 @@ def main():
     by_id = {row['id']: row for row in annotations}
     assert {row['id'] for row in annotations if row['proposed_stream_private'] in {None, 'not_private'}} <= set(queued)
     assert set(queue['bulk_approved_ids']) == {row['id'] for row in annotations if row['approval'] == 'maintainer_bulk_approved'}
-    assert len(queue['bulk_approved_ids']) == 89
-    assert set(queued).isdisjoint(queue['bulk_approved_ids'])
-    assert set(queued) | set(queue['bulk_approved_ids']) | set(queue['deferred_ids']) == ids
+    assert len(queue['round1_bulk_approved_ids']) == 89
+    assert set(queued).isdisjoint(queue['round1_bulk_approved_ids'])
+    assert set(queued) | set(queue['round1_bulk_approved_ids']) | set(queue['deferred_ids']) == ids
     assert queue['deferred_ids'] == ['audit:7']
     assert by_id['audit:7']['approval'] == 'pending'
     for group in queue['groups']:
@@ -95,12 +97,38 @@ def main():
             assert by_id[row['parent_id']]['approval'] == 'maintainer_bulk_approved'
     real = [row for row in annotations if row['data_role'] in {'captured_metadata', 'maintainer_reported_stream_example'}]
     assert len(real) == 115
-    assert Counter(row['proposed_context'] for row in real) == {'session': 79, 'promotion': 14, 'no_evidence': 9, 'unresolved': 12, 'comparison': 1}
-    assert [row['id'] for row in real if row['proposed_context'] == 'promotion' and row['proposed_stream_private'] == 'not_private'] == ['maintainer-example:0']
+    assert Counter(row['proposed_context'] for row in real) == {'session': 83, 'promotion': 15, 'no_evidence': 8, 'unresolved': 8, 'comparison': 1}
+    assert [row['id'] for row in real if row['proposed_context'] == 'promotion' and row['proposed_stream_private'] == 'not_private'] == ['audit:42', 'maintainer-example:0']
+    for group in queue['groups']:
+        expected_links = set()
+        for identifier in group['ids']:
+            row = by_id[identifier]
+            if 'parent_id' in row:
+                row = by_id[row['parent_id']]
+            if row['data_role'] == 'captured_metadata':
+                original = corpus[row['source_id']][row['source_index']]
+                channel = original.get('canal', original.get('channel'))
+                url = original.get('url') or 'https://www.twitch.tv/' + channel
+                expected_links.add((channel, url, row['source_id'], row['source_index']))
+        actual_links = {(link['channel'], link['url'], link['source_id'], link['source_index']) for link in group['source_links']}
+        assert actual_links == expected_links
+    baseline = json.loads((ROOT / 'tests/data/tibia-no-private-evidence-acceptance.json').read_text())
+    assert baseline['expected_private_probability'] == packet['no_private_evidence_contract']['private_probability'] == 0.01
+    assert len(baseline['annotation_ids']) == len(set(baseline['annotation_ids'])) == 44
+    assert set(baseline['annotation_ids']) == set(queue['no_private_evidence_ids'])
+    assert {row['id'] for row in annotations if row['proposed_stream_private'] is None} | {'audit:7'} == set(baseline['annotation_ids'])
+    for identifier in baseline['annotation_ids']:
+        supervision = by_id[identifier]['model_supervision']
+        assert supervision['kind'] == 'no_private_server_evidence'
+        assert supervision['expected_private_probability'] == 0.01
+        assert supervision['private_evidence_target'] == 0
+        assert supervision['must_preserve_in_dataset'] is True
+        assert supervision['source'] in known_sources
+        assert by_id[identifier]['proposed_affirmative_private_evidence'] is False
     catalogue = json.loads((DIRECTORY / 'catalogue-candidates.json').read_text())
     assert len(catalogue['entries']) == 50
     assert all(not row['approved'] and row['catalogue_url'].startswith('https://otservlist.net/') for row in catalogue['entries'])
-    print(f'PASS {len(annotations)} review records (2 individually confirmed, 89 bulk-approved), 122 compact groups / 131 records, exact source spans/hashes, 50 unapproved catalogue facts; no training approvals')
+    print(f'PASS {len(annotations)} review records with current maintainer adjudications and 44 mandatory 1% baseline cases, 122 compact groups / 131 records, exact source spans/hashes, 50 unapproved catalogue facts; no training approvals')
 
 
 if __name__ == '__main__':

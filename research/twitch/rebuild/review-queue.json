@@ -1,5 +1,5 @@
 {
-  "selection": "All missing targets, all not-private targets, private command-only or spelling-variant candidates. Exact duplicate metadata and language-only counterfactuals grouped, with every ID preserved. This is an annotation-review selection, not an inference rule.",
+  "selection": "Historical compact review round-1 grouping, with current adjudications overlaid; not a new request to review approved rows.",
   "groups": [
     {
       "category": "1_sem_alvo",
@@ -13,11 +13,22 @@
         "English"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Several server commands; title does not identify session or advertisement scope.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer adjudicates this full metadata input as a private-server session. This is a reviewed label, not independent operator verification or a rule making generic gameplay/commands positive.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "beltranctz",
+          "url": "https://www.twitch.tv/beltranctz",
+          "source_id": "audit",
+          "source_index": 25
+        }
       ]
     },
     {
@@ -35,9 +46,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Personal title and vocations/languages cannot identify server; historical unresolved category retained as missing annotation, not runtime state.",
+      "reason": "Personal title and vocations/languages cannot identify server; historical unresolved category retained as missing annotation, not runtime state. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "yuyiplays",
+          "url": "https://www.twitch.tv/yuyiplays",
+          "source_id": "audit",
+          "source_index": 27
+        }
       ]
     },
     {
@@ -55,9 +77,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Generic gameplay cannot determine private status.",
+      "reason": "Generic gameplay cannot determine private status. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "breisomtvs",
+          "url": "https://www.twitch.tv/breisomtvs",
+          "source_id": "audit",
+          "source_index": 28
+        }
       ]
     },
     {
@@ -73,11 +106,22 @@
         "tutoriais"
       ],
       "tag_variants": [],
-      "proposed_label": null,
+      "proposed_label": "private",
       "context": "session",
-      "reason": "Named project, but operator identity not independently sourced in this packet. global does not establish officialness.",
+      "reason": "Maintainer adjudicates this full metadata input as a private-server session. This is a reviewed label, not independent operator verification or a rule making generic gameplay/commands positive.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "riickgamez",
+          "url": "https://www.twitch.tv/riickgamez",
+          "source_id": "audit",
+          "source_index": 29
+        }
       ]
     },
     {
@@ -93,11 +137,22 @@
         "twinkmaldito"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "No corroborating server declaration; role/level and generic command context are insufficient to settle session vs promotion.",
+      "proposed_label": "not_private",
+      "context": "promotion",
+      "reason": "Maintainer labels this original-session sponsorship/shop command list not-private; !rubinot is incidental promotion, as in the baratuca contrast.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "radizao",
+          "url": "https://www.twitch.tv/radizao",
+          "source_id": "audit",
+          "source_index": 42
+        }
       ]
     },
     {
@@ -115,9 +170,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Content exists in copied servers; do not turn probable-official into verified negative.",
+      "reason": "Content exists in copied servers; do not turn probable-official into verified negative. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "keirissa",
+          "url": "https://www.twitch.tv/keirissa",
+          "source_id": "audit",
+          "source_index": 50
+        }
       ]
     },
     {
@@ -135,9 +201,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Generic trade/vocation terminology is not server evidence.",
+      "reason": "Generic trade/vocation terminology is not server evidence. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "angrysebbe",
+          "url": "https://www.twitch.tv/angrysebbe",
+          "source_id": "audit",
+          "source_index": 90
+        }
       ]
     },
     {
@@ -153,11 +230,22 @@
         "English"
       ],
       "tag_variants": [],
-      "proposed_label": null,
+      "proposed_label": "not_private",
       "context": "session",
-      "reason": "Kalante is not Kalanta. Cannot validate private identity by one-letter similarity to an official world or old audit assertion.",
+      "reason": "Maintainer reviewed the Twitch channel adaismad and says it appears to be original Tibia. This latest negative adjudication supersedes the earlier private proposal; Kalante spelling alone is not evidence of an OT.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "adaismad",
+          "url": "https://www.twitch.tv/adaismad",
+          "source_id": "audit",
+          "source_index": 155
+        }
       ]
     },
     {
@@ -173,11 +261,22 @@
         "Português"
       ],
       "tag_variants": [],
-      "proposed_label": null,
+      "proposed_label": "not_private",
       "context": "session",
-      "reason": "Official-world title and RubinOT tag conflict. Do not manufacture active-session truth.",
+      "reason": "Maintainer labels this session not-private despite the RubinOT tag. Do not turn world names into officialness rewards; the review supplies the target and the tag is not affirmative private-session evidence here.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "vick_healer",
+          "url": "https://www.twitch.tv/vick_healer",
+          "source_id": "audit",
+          "source_index": 159
+        }
       ]
     },
     {
@@ -194,9 +293,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Two official world declarations plus idle-game title/tag. Historical official label is not established.",
+      "reason": "Two official world declarations plus idle-game title/tag. Historical official label is not established. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": [
+        {
+          "channel": "pulgazin",
+          "url": "https://www.twitch.tv/pulgazin",
+          "source_id": "audit",
+          "source_index": 179
+        }
       ]
     },
     {
@@ -211,9 +321,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Two incompatible declarations, no authoritative active-session fact.",
+      "reason": "Two incompatible declarations, no authoritative active-session fact. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": [
+        {
+          "channel": "lirryk",
+          "url": "https://www.twitch.tv/lirryk",
+          "source_id": "audit",
+          "source_index": 218
+        }
       ]
     },
     {
@@ -230,11 +351,22 @@
         "idle"
       ],
       "tag_variants": [],
-      "proposed_label": null,
+      "proposed_label": "not_private",
       "context": "session",
-      "reason": "Title declaration with RubinOT tag contradiction; target not independently confirmed.",
+      "reason": "Maintainer labels this session not-private despite the RubinOT tag. Do not turn world names into officialness rewards; the review supplies the target and the tag is not affirmative private-session evidence here.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "barbudo_tv",
+          "url": "https://www.twitch.tv/barbudo_tv",
+          "source_id": "audit",
+          "source_index": 257
+        }
       ]
     },
     {
@@ -252,9 +384,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Generic official-looking tag with personal title does not establish private/not-private truth.",
+      "reason": "Generic official-looking tag with personal title does not establish private/not-private truth. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "canseidesered",
+          "url": "https://www.twitch.tv/canseidesered",
+          "source_id": "audit",
+          "source_index": 281
+        }
       ]
     },
     {
@@ -269,9 +412,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Mixes private project and standalone games. Binary on-private status remains unverified.",
+      "reason": "Mixes private project and standalone games. Binary on-private status remains unverified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": [
+        {
+          "channel": "leomacare",
+          "url": "https://www.twitch.tv/leomacare",
+          "source_id": "audit",
+          "source_index": 283
+        }
       ]
     },
     {
@@ -286,9 +440,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "No observable private identity. Neither language nor farm may be labelled a private signal.",
+      "reason": "No observable private identity. Neither language nor farm may be labelled a private signal. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "thiagobacaninha",
+          "url": "https://www.twitch.tv/thiagobacaninha",
+          "source_id": "audit",
+          "source_index": 326
+        }
       ]
     },
     {
@@ -304,9 +469,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Parallel official/private declarations; do not infer active session from word order.",
+      "reason": "Parallel official/private declarations; do not infer active session from word order. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": [
+        {
+          "channel": "noobziiinhoo",
+          "url": "https://www.twitch.tv/noobziiinhoo",
+          "source_id": "audit",
+          "source_index": 384
+        }
       ]
     },
     {
@@ -321,9 +497,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Copied game content can occur on private servers; no official probability bonus.",
+      "reason": "Copied game content can occur on private servers; no official probability bonus. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "macaense_",
+          "url": "https://www.twitch.tv/macaense_",
+          "source_id": "audit",
+          "source_index": 396
+        }
       ]
     },
     {
@@ -341,9 +528,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Two games, neither establishes a private-server session.",
+      "reason": "Two games, neither establishes a private-server session. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "moxtrao",
+          "url": "https://www.twitch.tv/moxtrao",
+          "source_id": "audit",
+          "source_index": 422
+        }
       ]
     },
     {
@@ -356,11 +554,22 @@
         "Português"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "no_evidence",
-      "reason": "Old evidence says PKA tag, but actual original tag is only Portugues. Service/Titan alone does not identify private server.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer identifies this full Titan/Sun input as PKA. Preserve this reviewed positive; do not generalize service, levels, coupons or generic commands into private evidence on their own.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "richardolindo",
+          "url": "https://www.twitch.tv/richardolindo",
+          "source_id": "audit",
+          "source_index": 429
+        }
       ]
     },
     {
@@ -377,9 +586,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Only server tag with neutral title. Could be stale/promotion; no channel-based resolution.",
+      "reason": "Only server tag with neutral title. Could be stale/promotion; no channel-based resolution. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": [
+        {
+          "channel": "darthey",
+          "url": "https://www.twitch.tv/darthey",
+          "source_id": "audit",
+          "source_index": 433
+        }
       ]
     },
     {
@@ -397,9 +617,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Historical probable-official content conflicts with named-project tag; project source not verified.",
+      "reason": "Historical probable-official content conflicts with named-project tag; project source not verified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": [
+        {
+          "channel": "reylevi5",
+          "url": "https://www.twitch.tv/reylevi5",
+          "source_id": "audit",
+          "source_index": 450
+        }
       ]
     },
     {
@@ -417,9 +648,20 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Only variant server tag; proposed alias needs review and session/promotion cannot be assumed.",
+      "reason": "Only variant server tag; proposed alias needs review and session/promotion cannot be assumed. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": [
+        {
+          "channel": "igaobraga",
+          "url": "https://www.twitch.tv/igaobraga",
+          "source_id": "audit",
+          "source_index": 452
+        }
       ]
     },
     {
@@ -435,10 +677,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Official-world and private-idle declarations conflict.",
+      "reason": "Official-world and private-idle declarations conflict. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -452,10 +698,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "session",
-      "reason": "Game identity and private-server status need a source; old other verdict is not truth.",
+      "reason": "Game identity and private-server status need a source; old other verdict is not truth. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -465,12 +715,16 @@
       "title": "troyale.online | colheitafeliz.farm | tibia.farm | tfight.online | glober.click",
       "tags": [],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Several domains, unclear project types and active session. Do not label solely by TLD.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer adjudicates this full metadata input as a private-server session. This is a reviewed label, not independent operator verification or a rule making generic gameplay/commands positive.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -482,10 +736,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "unresolved",
-      "reason": "Question-style project mention; current operator identity not verified.",
+      "reason": "Question-style project mention; current operator identity not verified. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -497,12 +755,16 @@
         "TibiaCoins"
       ],
       "tag_variants": [],
-      "proposed_label": null,
+      "proposed_label": "not_private",
       "context": "no_evidence",
-      "reason": "Merchant/loyalty programme URL is not a game-server identity.",
+      "reason": "Maintainer labels this merchant-link example not-private. A Tibia Coins shop URL is not a private-server identifier.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -512,12 +774,16 @@
       "title": "Kingaslam - farm",
       "tags": [],
       "tag_variants": [],
-      "proposed_label": null,
+      "proposed_label": "private",
       "context": "session",
-      "reason": "Possible misspelling of King Aslan; operator identity not verified in packet.",
+      "reason": "Maintainer adjudicates this full metadata input as a private-server session. This is a reviewed label, not independent operator verification or a rule making generic gameplay/commands positive.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -527,12 +793,16 @@
       "title": "SERVICE FARM - TITAN 2 - agende",
       "tags": [],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "no_evidence",
-      "reason": "Without PKA identifier, service and Titan do not establish private-server status. Disagree with certainty of old other label.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer identifies this full Titan/Sun input as PKA. Preserve this reviewed positive; do not generalize service, levels, coupons or generic commands into private evidence on their own.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -546,10 +816,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Channel name ignored; title/tag do not identify a private server.",
+      "reason": "Channel name ignored; title/tag do not identify a private server. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -561,10 +835,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "comparison",
-      "reason": "Comparison does not specify active session. Stream target unknown; affirmative-private-evidence annotation is false.",
+      "reason": "Comparison does not specify active session. Stream target unknown; affirmative-private-evidence annotation is false. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -576,10 +854,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Shared game-city name is not a server identifier.",
+      "reason": "Shared game-city name is not a server identifier. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -591,10 +873,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Rubino may be a person; approximate spelling must not convert it into a private-server name automatically.",
+      "reason": "Rubino may be a person; approximate spelling must not convert it into a private-server name automatically. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -606,10 +892,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Unrelated ordinary word must not become Medivia through fuzzy matching.",
+      "reason": "Unrelated ordinary word must not become Medivia through fuzzy matching. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -621,10 +911,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Generic gameplay/update context must not become Wintera or private evidence.",
+      "reason": "Generic gameplay/update context must not become Wintera or private evidence. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -636,10 +930,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Generic gameplay/vocation, no server assertion.",
+      "reason": "Generic gameplay/vocation, no server assertion. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -653,10 +951,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Normal event/rate wording not enough to assert private server; tibiaglobal tag not truth.",
+      "reason": "Normal event/rate wording not enough to assert private server; tibiaglobal tag not truth. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -668,10 +970,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "promotion",
-      "reason": "Generic new-server phrase lacks an identified project/protocol. Official servers also open. Review needed before treating this alone as private.",
+      "reason": "Generic new-server phrase lacks an identified project/protocol. Official servers also open. Review needed before treating this alone as private. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -684,10 +990,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Historical target depended on image-derived input. Metadata alone has no private evidence; image fields excluded.",
+      "reason": "Historical target depended on image-derived input. Metadata alone has no private evidence; image fields excluded. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -699,10 +1009,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "comparison",
-      "reason": "Comparison does not assert current private session.",
+      "reason": "Comparison does not assert current private session. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -714,10 +1028,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Bare global does not establish private/not-private status. Earlier official verdict is unsupported.",
+      "reason": "Bare global does not establish private/not-private status. Earlier official verdict is unsupported. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -731,10 +1049,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Generic Pokemon/gameplay word and language do not identify private server.",
+      "reason": "Generic Pokemon/gameplay word and language do not identify private server. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -746,12 +1068,16 @@
         "Português"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "no_evidence",
-      "reason": "No PKA tag in this input. Coupon, Sun, level, hazard and chat command cannot silently substitute for missing project identity.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer identifies this full Titan/Sun input as PKA. Preserve this reviewed positive; do not generalize service, levels, coupons or generic commands into private evidence on their own.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -763,11 +1089,22 @@
         "Português"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Single server-like command with generic hunt context; unresolved operator identity and session role.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer adjudicates this full metadata input as a private-server session. This is a reviewed label, not independent operator verification or a rule making generic gameplay/commands positive.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "breuus",
+          "url": "https://www.twitch.tv/breuus",
+          "source_id": "live2115",
+          "source_index": 237
+        }
       ]
     },
     {
@@ -780,11 +1117,22 @@
         "Português"
       ],
       "tag_variants": [],
-      "proposed_label": null,
-      "context": "unresolved",
-      "reason": "Idle game and DOTA simultaneously mentioned; actual streamed session needs review.",
+      "proposed_label": "private",
+      "context": "session",
+      "reason": "Maintainer adjudicates this full metadata input as a private-server session. This is a reviewed label, not independent operator verification or a rule making generic gameplay/commands positive.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "unholynirsu",
+          "url": "https://www.twitch.tv/unholynirsu",
+          "source_id": "live2115",
+          "source_index": 551
+        }
       ]
     },
     {
@@ -797,10 +1145,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "comparison",
-      "reason": "User-supplied comparison, not an active-session claim.",
+      "reason": "User-supplied comparison, not an active-session claim. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "user_supplied_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -812,10 +1164,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "session",
-      "reason": "Bare copied world name has no disambiguating context.",
+      "reason": "Bare copied world name has no disambiguating context. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -827,10 +1183,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "session",
-      "reason": "Official world and independent PixelOT project use the same name.",
+      "reason": "Official world and independent PixelOT project use the same name. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -842,10 +1202,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Ordinary-word collision control. No project is asserted.",
+      "reason": "Ordinary-word collision control. No project is asserted. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -857,10 +1221,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Generic command and ordinary OT-letter suffixes must not become server names.",
+      "reason": "Generic command and ordinary OT-letter suffixes must not become server names. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -881,11 +1249,15 @@
       ],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Required neutral gameplay control; no target truth inferred.",
+      "reason": "Required neutral gameplay control; no target truth inferred. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "constructed_challenge",
         "constructed_invariance"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "1_sem_alvo",
@@ -897,10 +1269,14 @@
       "tag_variants": [],
       "proposed_label": null,
       "context": "no_evidence",
-      "reason": "Required neutral language control; no target truth inferred.",
+      "reason": "Required neutral language control; no target truth inferred. Maintainer policy: unresolved input is explicit no-private-evidence supervision at 1%, never a private example or a discarded unlabeled row.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_baseline_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -919,6 +1295,17 @@
       "reason": "Proposed negative from self-declaration only, not verified live gameplay. Not an official-looking predictor feature.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "veyllor",
+          "url": "https://www.twitch.tv/veyllor",
+          "source_id": "audit",
+          "source_index": 11
+        }
       ]
     },
     {
@@ -939,6 +1326,17 @@
       "reason": "Official-world session declaration used only to propose a negative label, never to score officialness.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "mutilinha",
+          "url": "https://www.twitch.tv/mutilinha",
+          "source_id": "audit",
+          "source_index": 13
+        }
       ]
     },
     {
@@ -956,6 +1354,17 @@
       "reason": "Official-world declaration for negative annotation only.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "khalilzinsz",
+          "url": "https://www.twitch.tv/khalilzinsz",
+          "source_id": "audit",
+          "source_index": 39
+        }
       ]
     },
     {
@@ -973,6 +1382,17 @@
       "reason": "Proposed negative self-declaration, not independent active-game verification.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "vexcraw",
+          "url": "https://www.twitch.tv/vexcraw",
+          "source_id": "audit",
+          "source_index": 45
+        }
       ]
     },
     {
@@ -993,6 +1413,17 @@
       "reason": "World declaration is negative annotation evidence only.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "vepeoh",
+          "url": "https://www.twitch.tv/vepeoh",
+          "source_id": "audit",
+          "source_index": 55
+        }
       ]
     },
     {
@@ -1013,6 +1444,17 @@
       "reason": "Full card has Gentebra and cipsoft tags. Negative proposal; none becomes a predictive official feature.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "nxxxte",
+          "url": "https://www.twitch.tv/nxxxte",
+          "source_id": "audit",
+          "source_index": 86
+        }
       ]
     },
     {
@@ -1033,6 +1475,17 @@
       "reason": "Official-world declaration; target proposal requires human review like every other example.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "rickvitti",
+          "url": "https://www.twitch.tv/rickvitti",
+          "source_id": "audit",
+          "source_index": 95
+        }
       ]
     },
     {
@@ -1053,6 +1506,17 @@
       "reason": "Historical proposed negative self-declaration; weak because global is also used by private servers. Needs review, not a feature.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "mestreronnys",
+          "url": "https://www.twitch.tv/mestreronnys",
+          "source_id": "audit",
+          "source_index": 115
+        }
       ]
     },
     {
@@ -1067,11 +1531,22 @@
         "cambria"
       ],
       "tag_variants": [],
-      "proposed_label": "not_private",
+      "proposed_label": "private",
       "context": "session",
-      "reason": "Earlier category is other game, not proof of a private Tibia server. Proposed target exclusion; identity needs independent verification.",
+      "reason": "Maintainer explicitly corrects Eldrius Online to OT/private; supersedes the earlier assistant other-game exclusion. Independent engine/operator verification is not claimed.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "didaziktv",
+          "url": "https://www.twitch.tv/didaziktv",
+          "source_id": "audit",
+          "source_index": 132
+        }
       ]
     },
     {
@@ -1092,6 +1567,17 @@
       "reason": "Official-world tag overlooked in old audit; proposed negative, not a reward in model.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "gago1001",
+          "url": "https://www.twitch.tv/gago1001",
+          "source_id": "audit",
+          "source_index": 230
+        }
       ]
     },
     {
@@ -1111,6 +1597,17 @@
       "reason": "Negative proposed from official-world tag; generic hunt/role alone not useful.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "wafstuart",
+          "url": "https://www.twitch.tv/wafstuart",
+          "source_id": "audit",
+          "source_index": 249
+        }
       ]
     },
     {
@@ -1131,6 +1628,17 @@
       "reason": "Counterexample to treating every new-server phrase as private: roster identifies Westera. Used for labels/collision safety only.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "poxenitvv",
+          "url": "https://www.twitch.tv/poxenitvv",
+          "source_id": "audit",
+          "source_index": 260
+        }
       ]
     },
     {
@@ -1151,6 +1659,17 @@
       "reason": "Official-world tag was overlooked in historical unresolved classification; proposed negative label only.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "twesleee",
+          "url": "https://www.twitch.tv/twesleee",
+          "source_id": "audit",
+          "source_index": 297
+        }
       ]
     },
     {
@@ -1171,6 +1690,17 @@
       "reason": "Standalone other game, not a private Tibia server. Direct target change versus old all-other category; title-only proposal, not observed gameplay.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "pending"
+      ],
+      "source_links": [
+        {
+          "channel": "dixusowaty",
+          "url": "https://www.twitch.tv/dixusowaty",
+          "source_id": "audit",
+          "source_index": 351
+        }
       ]
     },
     {
@@ -1191,6 +1721,17 @@
       "reason": "Official-world tag overlooked by historical audit; label fact only.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "kevin_caribe",
+          "url": "https://www.twitch.tv/kevin_caribe",
+          "source_id": "audit",
+          "source_index": 411
+        }
       ]
     },
     {
@@ -1211,6 +1752,17 @@
       "reason": "Kalanta appears in fetched official roster; earlier audit confused it with Kalante OT. Explicit label disagreement.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "stare_tibijczyki",
+          "url": "https://www.twitch.tv/stare_tibijczyki",
+          "source_id": "audit",
+          "source_index": 448
+        }
       ]
     },
     {
@@ -1228,7 +1780,11 @@
       "reason": "Negative control declaration; not officialness features.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1245,7 +1801,11 @@
       "reason": "Official-session assertion in historical fixture; retired/unverified world name, maintainer review required.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1270,7 +1830,11 @@
       "roles": [
         "historical_control",
         "constructed_invariance"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1285,7 +1849,11 @@
       "reason": "Historical private play explicitly left behind; current private assertion is false in this fixture.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1300,7 +1868,11 @@
       "reason": "Fixture intends incidental sponsor command during nonprivate session; proposed negative from fixture semantics, not independent observation.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1315,7 +1887,11 @@
       "reason": "Official fixture interpretation; bare Antica is ambiguous against catalog copies and must not score either identity alone.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1330,7 +1906,11 @@
       "reason": "Negative world-declaration fixture; no official score.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1345,7 +1925,11 @@
       "reason": "Intended official-world spelling control, never a numerical bonus for official-looking text.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1360,7 +1944,11 @@
       "reason": "Intended historical world spelling control; retired roster/name requires review.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1377,7 +1965,11 @@
       "reason": "Fixture stipulates official Celebra session. Boss tag must not become Baiak through fragments.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1392,7 +1984,11 @@
       "reason": "Negative counterexample: official new-server announcement also exists.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1407,7 +2003,11 @@
       "reason": "Fixture self-declaration negative; historical image field excluded.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1422,7 +2022,11 @@
       "reason": "Explicitly negated private session.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1437,7 +2041,11 @@
       "reason": "Fixture-intended incidental private sponsor command; review required.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1456,7 +2064,11 @@
       "reason": "Negative fixture; server fact is annotation-only.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1474,7 +2086,11 @@
       "reason": "Official-world fixture; FreeFire tag may be stale and does not identify a private Tibia session.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1489,7 +2105,11 @@
       "reason": "Merchant link during fixture-intended Antica session; not private server evidence.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1510,6 +2130,17 @@
       "reason": "vs can compare a character against monsters, not two servers. Scope must be labelled rather than banning every occurrence of vs.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "soygamma",
+          "url": "https://www.twitch.tv/soygamma",
+          "source_id": "live2115",
+          "source_index": 460
+        }
       ]
     },
     {
@@ -1525,7 +2156,11 @@
       "reason": "User-supplied explicit negation of private play.",
       "roles": [
         "user_supplied_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1540,7 +2175,11 @@
       "reason": "Constructed incidental sponsor-negative contrast to same command. Not independently observed gameplay.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1555,7 +2194,11 @@
       "reason": "Launch phrase embedded in incidental ad must not inherit primary private-presentation label.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1570,7 +2213,11 @@
       "reason": "Historical protocol mentioned without private-server assertion. Contrast to current7.4 launch.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "2_nao_privada",
@@ -1585,7 +2232,11 @@
       "reason": "Maintainer explicitly reports an original-server stream. RubinOT appears within a collection of sponsorship/shop commands; this mention is incidental promotion, not an affirmative private-session declaration. The title contains no official-world identifier: a negative private label must not depend on official-looking points.",
       "roles": [
         "maintainer_reported_stream_example"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": []
     },
     {
       "category": "3_comando",
@@ -1605,6 +2256,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "pacifistatibiano",
+          "url": "https://www.twitch.tv/pacifistatibiano",
+          "source_id": "audit",
+          "source_index": 5
+        }
       ]
     },
     {
@@ -1622,6 +2284,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "guidoparamax",
+          "url": "https://www.twitch.tv/guidoparamax",
+          "source_id": "audit",
+          "source_index": 20
+        }
       ]
     },
     {
@@ -1639,6 +2312,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "mtsgamertv",
+          "url": "https://www.twitch.tv/mtsgamertv",
+          "source_id": "audit",
+          "source_index": 109
+        }
       ]
     },
     {
@@ -1659,6 +2343,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "yilinn_",
+          "url": "https://www.twitch.tv/yilinn_",
+          "source_id": "audit",
+          "source_index": 110
+        }
       ]
     },
     {
@@ -1679,6 +2374,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "trolzinhorp",
+          "url": "https://www.twitch.tv/trolzinhorp",
+          "source_id": "audit",
+          "source_index": 112
+        }
       ]
     },
     {
@@ -1697,6 +2403,17 @@
       "reason": "Full input has Belaria and Infernum identifiers tied to RubinOT; commands alone are not the sole evidence.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "brn__tv",
+          "url": "https://www.twitch.tv/brn__tv",
+          "source_id": "audit",
+          "source_index": 147
+        }
       ]
     },
     {
@@ -1714,6 +2431,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "richarddonodoauroria",
+          "url": "https://www.twitch.tv/richarddonodoauroria",
+          "source_id": "audit",
+          "source_index": 175
+        }
       ]
     },
     {
@@ -1731,6 +2459,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "okimbocao",
+          "url": "https://www.twitch.tv/okimbocao",
+          "source_id": "audit",
+          "source_index": 272
+        }
       ]
     },
     {
@@ -1748,6 +2487,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "kachowtibia",
+          "url": "https://www.twitch.tv/kachowtibia",
+          "source_id": "audit",
+          "source_index": 355
+        }
       ]
     },
     {
@@ -1765,6 +2515,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "benksbr",
+          "url": "https://www.twitch.tv/benksbr",
+          "source_id": "audit",
+          "source_index": 363
+        }
       ]
     },
     {
@@ -1785,7 +2546,11 @@
       "reason": "Private-style named realm and OT command, but identity source not independently checked.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "3_comando",
@@ -1802,6 +2567,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "benksbr",
+          "url": "https://www.twitch.tv/benksbr",
+          "source_id": "live2115",
+          "source_index": 277
+        }
       ]
     },
     {
@@ -1817,7 +2593,11 @@
       "reason": "User says many actual RubinOT titles look like this. Proposed session-positive for review, not a rule that all !server commands are session-positive.",
       "roles": [
         "user_supplied_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "3_comando",
@@ -1832,7 +2612,11 @@
       "reason": "Constructed session-positive command control; intended private session stipulated, not inferred as live truth.",
       "roles": [
         "constructed_challenge"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "3_comando",
@@ -1847,6 +2631,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "miguelnutt",
+          "url": "https://www.twitch.tv/miguelnutt",
+          "source_id": "raw1400",
+          "source_index": 11
+        }
       ]
     },
     {
@@ -1862,6 +2657,17 @@
       "reason": "Maintainer explicitly adjudicated this OT-server-command title as a private session. The private identifier functions as the session identifier here, not as one sponsor among a collection of unrelated sponsorship commands. No channel identity or official-looking reward is used.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_confirmed"
+      ],
+      "source_links": [
+        {
+          "channel": "settzzofc",
+          "url": "https://www.twitch.tv/settzzofc",
+          "source_id": "raw1400",
+          "source_index": 16
+        }
       ]
     },
     {
@@ -1877,6 +2683,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "kikobortolotti",
+          "url": "https://www.twitch.tv/kikobortolotti",
+          "source_id": "raw1400",
+          "source_index": 119
+        }
       ]
     },
     {
@@ -1892,6 +2709,17 @@
       "reason": "Revised proposal under maintainer command-context criterion: the named private-project command supplies the primary server reference, with generic gameplay/reward commands rather than a contextual list of unrelated sponsors. No official-looking points or command-count threshold. This individual target still awaits review.",
       "roles": [
         "captured_metadata"
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": [
+        {
+          "channel": "krankkthetank",
+          "url": "https://www.twitch.tv/krankkthetank",
+          "source_id": "raw1400",
+          "source_index": 333
+        }
       ]
     },
     {
@@ -1907,7 +2735,11 @@
       "reason": "Synthetic spelling variant intended by original fixture. Alias/target proposals are not independently observed streams.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -1922,7 +2754,11 @@
       "reason": "Synthetic spelling-variant proposal, one added letter.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -1937,7 +2773,11 @@
       "reason": "Synthetic digit-substitution variant; approval required before learning.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -1952,7 +2792,11 @@
       "reason": "Synthetic spaced-letter identity variant.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -1967,7 +2811,11 @@
       "reason": "Synthetic punctuated identity variant.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -1982,7 +2830,11 @@
       "reason": "Synthetic small-cap variant, not generic subword evidence.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -1997,7 +2849,11 @@
       "reason": "Synthetic mathematical-bold variant.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -2012,7 +2868,11 @@
       "reason": "Synthetic name transposition plus independently catalogued RubinOT world; weak word infernum must not signal alone.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -2027,7 +2887,11 @@
       "reason": "Synthetic spelling-variant intent; label/alias still pending human review.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -2042,7 +2906,11 @@
       "reason": "Synthetic spelling-variant intent.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -2057,7 +2925,11 @@
       "reason": "Synthetic spelling-variant intent.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -2074,7 +2946,11 @@
       "reason": "Server tag spelling variant intended by fixture, session vs stale tag needs review.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     },
     {
       "category": "4_variante",
@@ -2091,10 +2967,237 @@
       "reason": "Fixture intended leading-letter variant; check alias safely without broad Baiak substring inference.",
       "roles": [
         "historical_control"
-      ]
+      ],
+      "approval_statuses": [
+        "maintainer_bulk_approved"
+      ],
+      "source_links": []
     }
   ],
   "bulk_approved_ids": [
+    "audit:0",
+    "audit:1",
+    "audit:2",
+    "audit:3",
+    "audit:4",
+    "audit:5",
+    "audit:8",
+    "audit:9",
+    "audit:10",
+    "audit:11",
+    "audit:13",
+    "audit:14",
+    "audit:15",
+    "audit:17",
+    "audit:20",
+    "audit:21",
+    "audit:23",
+    "audit:24",
+    "audit:30",
+    "audit:31",
+    "audit:32",
+    "audit:37",
+    "audit:39",
+    "audit:41",
+    "audit:45",
+    "audit:47",
+    "audit:51",
+    "audit:53",
+    "audit:55",
+    "audit:62",
+    "audit:80",
+    "audit:86",
+    "audit:92",
+    "audit:95",
+    "audit:97",
+    "audit:98",
+    "audit:107",
+    "audit:109",
+    "audit:110",
+    "audit:112",
+    "audit:115",
+    "audit:124",
+    "audit:147",
+    "audit:163",
+    "audit:164",
+    "audit:172",
+    "audit:175",
+    "audit:198",
+    "audit:213",
+    "audit:230",
+    "audit:249",
+    "audit:256",
+    "audit:258",
+    "audit:260",
+    "audit:270",
+    "audit:271",
+    "audit:272",
+    "audit:296",
+    "audit:297",
+    "audit:317",
+    "audit:355",
+    "audit:363",
+    "audit:381",
+    "audit:389",
+    "audit:411",
+    "audit:427",
+    "audit:448",
+    "cases:0",
+    "cases:1",
+    "cases:2",
+    "cases:5",
+    "cases:6",
+    "cases:10",
+    "cases:11",
+    "cases:12",
+    "cases:13",
+    "cases:14",
+    "cases:15",
+    "cases:16",
+    "cases:17",
+    "cases:18",
+    "cases:19",
+    "cases:20",
+    "cases:21",
+    "cases:22",
+    "cases:24",
+    "cases:26",
+    "cases:27",
+    "cases:29",
+    "cases:30",
+    "cases:31",
+    "cases:32",
+    "cases:34",
+    "cases:35",
+    "cases:40",
+    "cases:41",
+    "cases:42",
+    "cases:43",
+    "cases:46",
+    "cases:50",
+    "cases:51",
+    "cases:52",
+    "cases:53",
+    "cases:54",
+    "cases:56",
+    "cases:57",
+    "cases:58",
+    "cases:60",
+    "cases:61",
+    "cases:63",
+    "live2115:30",
+    "live2115:121",
+    "live2115:154",
+    "live2115:196",
+    "live2115:277",
+    "live2115:396",
+    "live2115:402",
+    "live2115:528",
+    "live2115:560",
+    "live2115:460",
+    "user:0",
+    "user:1",
+    "user:2",
+    "user:3",
+    "user:4",
+    "user:5",
+    "contrast:1",
+    "contrast:3",
+    "contrast:5",
+    "contrast:6",
+    "contrast:7",
+    "contrast:8",
+    "contrast:10",
+    "contrast:11",
+    "contrast:12",
+    "contrast:13",
+    "invariance:audit:14:Português",
+    "invariance:audit:14:English",
+    "invariance:audit:14:Español",
+    "invariance:audit:14:Polski",
+    "invariance:cases:31:Português",
+    "invariance:cases:31:English",
+    "invariance:cases:31:Español",
+    "invariance:cases:31:Polski",
+    "invariance:user:0:Português",
+    "invariance:user:0:English",
+    "invariance:user:0:Español",
+    "invariance:user:0:Polski",
+    "raw1400:10",
+    "raw1400:11",
+    "raw1400:73",
+    "raw1400:119",
+    "raw1400:199",
+    "raw1400:239",
+    "raw1400:333",
+    "raw1400:411",
+    "raw1400:453",
+    "contrast:16",
+    "contrast:17"
+  ],
+  "deferred_ids": [
+    "audit:7"
+  ],
+  "pending_decision_ids": [
+    "audit:179",
+    "audit:218",
+    "audit:283",
+    "audit:351",
+    "audit:384",
+    "audit:433",
+    "audit:450",
+    "audit:452",
+    "cases:3",
+    "cases:4",
+    "cases:8"
+  ],
+  "no_private_evidence_ids": [
+    "audit:7",
+    "audit:27",
+    "audit:28",
+    "audit:50",
+    "audit:90",
+    "audit:179",
+    "audit:218",
+    "audit:281",
+    "audit:283",
+    "audit:326",
+    "audit:384",
+    "audit:396",
+    "audit:422",
+    "audit:433",
+    "audit:450",
+    "audit:452",
+    "cases:3",
+    "cases:4",
+    "cases:8",
+    "cases:28",
+    "cases:33",
+    "cases:36",
+    "cases:37",
+    "cases:38",
+    "cases:39",
+    "cases:44",
+    "cases:45",
+    "cases:47",
+    "cases:48",
+    "cases:49",
+    "cases:55",
+    "cases:59",
+    "cases:62",
+    "user:6",
+    "contrast:0",
+    "contrast:2",
+    "contrast:4",
+    "contrast:9",
+    "contrast:14",
+    "contrast:15",
+    "invariance:contrast:14:Português",
+    "invariance:contrast:14:English",
+    "invariance:contrast:14:Español",
+    "invariance:contrast:14:Polski"
+  ],
+  "round1_bulk_approved_ids": [
     "audit:0",
     "audit:1",
     "audit:2",
@@ -2184,8 +3287,5 @@
     "raw1400:453",
     "contrast:16",
     "contrast:17"
-  ],
-  "deferred_ids": [
-    "audit:7"
   ]
 }
