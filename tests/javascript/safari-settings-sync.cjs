@@ -67,5 +67,10 @@ const flush = async () => { for (let i = 0; i < 8; i++) await new Promise(resolv
   timers[0].callback(); timers[0].callback(); timers[0].callback();
   await flush();
   assert.equal(messages.length, sent + 1, 'coalesce checks while a native sync is pending');
+  // A restored/reset web setting can disagree with an already acknowledged
+  // native edit. Its timestamp has not changed, but the edit still applies.
+  await api.storage.local.set({ tibiaFilter: false });
+  timers[0].callback(); await flush();
+  assert.equal(stored.tibiaFilter, true, 'reconcile an acknowledged native setting after web storage diverges');
   console.log('PASS Safari: native popover toggles reach a focused page, restore the CSS group, and skip hidden/in-flight checks');
 })().catch(error => { console.error(error); process.exitCode = 1; });

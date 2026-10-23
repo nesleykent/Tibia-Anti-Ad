@@ -50,6 +50,7 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Fixed
 
+- Safari 1.5.2: reconcile native settings when web storage diverges even after the native edit's timestamp has been acknowledged, preventing an enabled Hide other games control from leaving the web filter disabled.
 - Safari 1.5.1: Blocked Streams has a fixed Settings back button, search and category controls. Returning preserves the settings scroll position. Native toggle edits reach visible pages without waiting for focus or the one-minute alarm, and disabled filtering clears stale blocked counts. Twitch grid regrouping no longer leaves hidden wrappers behind; turning filtering off removes all Tibia-filter marks while preserving other prompt rules.
 - Personal Safari updates detect and repair duplicate registrations of the same version, verifying one instance of each of the app's two components.
 - Tibia title filtering (1.2.4): recognize `otponline.com` and `Ibaiak-idle` even without server tags. A direct, affirmative server declaration such as `[DEUSOT]` now outweighs the generic word "global"; official worlds, "Tibia Global", negation, comparisons and sponsor commands retain their evidence handling. The statistical model already uses title words and is unchanged.

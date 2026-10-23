@@ -68,7 +68,11 @@ if (typeof importScripts === 'function' && !globalThis.TibiaAntiAdSettings) {
             });
             const seen = { settings: 0, shown: 0, rules: 0, ...stored.nativeSeen };
             const changes = {};
-            if (reply?.settingsChangedAt > seen.settings) {
+            // Native controls remain authoritative after an acknowledged edit:
+            // restored web storage can diverge without a new native timestamp.
+            const nativeMismatch = reply?.settingsChangedAt > 0 && Object.entries(reply.settings || {})
+                .some(([key, value]) => key in S.DEFAULTS && stored[key] !== value);
+            if (reply?.settingsChangedAt > seen.settings || nativeMismatch) {
                 Object.assign(changes, S.resolve({ ...S.resolve(stored), ...reply.settings }));
                 seen.settings = reply.settingsChangedAt;
             }
