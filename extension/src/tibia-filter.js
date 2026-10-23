@@ -292,12 +292,15 @@
         return false;
     });
 
-    const load = () => Promise.all([S.load(api), api.storage.local.get({ tibiaShown: {}, [R.KEY]: null })])
+    const load = (resetOrder = false) => Promise.all([S.load(api), api.storage.local.get({ tibiaShown: {}, [R.KEY]: null })])
         .then(([settings, stored]) => {
             const { tibiaShown } = stored;
             evidence = R.current(stored[R.KEY]);
             classify = globalThis.TwitchCleanTibiaClassify.create(evidence);
             verdicts.clear();
+            // Automatic card loads preserve the visited prefix. A deliberate
+            // settings edit must apply its new grouping to the whole list.
+            if (resetOrder) { restoreOrder(); }
             mode = settings.tibiaMode;
             threshold = settings.tibiaThreshold;
             enabled = settings.enabled && mode !== 'show';
@@ -315,7 +318,9 @@
             scan();
         });
     api.storage.onChanged.addListener((changes, area) => {
-        if (area === 'local' && (changes.tibiaFilter || changes.tibiaMode || changes.tibiaThreshold || changes.enabled || changes.tibiaShown || changes[R.KEY])) { load(); }
+        if (area === 'local' && (changes.tibiaFilter || changes.tibiaMode || changes.tibiaThreshold || changes.enabled || changes.tibiaShown || changes[R.KEY])) {
+            load(Boolean(changes.tibiaFilter || changes.tibiaMode || changes.tibiaThreshold || changes.enabled || changes.tibiaShown));
+        }
     });
     load();
     if (document.body) { start(); }

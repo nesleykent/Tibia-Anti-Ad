@@ -171,3 +171,21 @@ The preceding 1.2.4 change added lexical cases; it did not replace the rule-domi
   verifies and installs the current source with a retained local backup. No signed
   personal app or captured stream data is published with this change. Signature
   verification does not establish Safari restart persistence or certificate lifetime.
+
+### Directory regrouping regression, 1.6.4
+
+The maintainer supplied Safari screenshots showing below-threshold cards before
+preferred cards at an 85% threshold. A browser regression reproduced the stale
+order when changing the threshold after scrolling: the visited-prefix rule also
+applied to deliberate settings edits. The fix resets ordering for explicit mode,
+threshold and Show-override changes, while automatic card updates retain the
+existing scroll-stability behavior. The test now checks full regrouping after
+threshold edits and then unchanged viewport positions on incremental loading.
+A separate native regression verifies that a non-directory Twitch tab cannot
+replace the category’s affected-stream report with an empty report.
+The live Chrome check changed the threshold after actual wheel scrolling, then
+asserted the rendered top/left order: all 3 preferred cards preceded all 27
+affected cards at 85%. Desktop and phone-sized screenshots were inspected.
+Repository checks and real unpacked-popup/export regressions passed. Safari
+1.6.4 was built, signed, verified and installed; WebDriver again timed out when
+opening a session, so the final Safari visual confirmation remains manual.

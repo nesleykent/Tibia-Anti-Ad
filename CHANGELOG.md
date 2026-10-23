@@ -54,6 +54,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Fixed
 
+- 1.6.4: changing a directory mode, threshold or Show override regroups every loaded card even after scrolling. Prefix preservation is limited to automatic card updates. Reports from non-directory Twitch tabs no longer clear Safari’s affected-stream list.
+
 - 1.6.3: Safari persists only the display fields of stream reports, preventing JSON nulls in model evidence from aborting the native handler and leaving affected-stream counts and lists empty. Exports target the page that opened the native popover. The threshold uses a continuous native slider in the standard inline form layout.
 
 - Safari 1.5.4: omit JSON null from persisted rule status. Saving a null error in UserDefaults raised a native exception before settings edits could return to the web extension, leaving Hide other games ineffective.

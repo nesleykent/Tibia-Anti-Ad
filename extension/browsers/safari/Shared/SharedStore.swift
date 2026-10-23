@@ -51,6 +51,10 @@ enum SharedStore {
             defaults.set(message["status"] as? String ?? "Export failed.", forKey: Key.exportStatus)
             return [:]
         case "hidden":
+            // The native popover matches the retained directory report against
+            // its active page URL. Reports from channel/other Twitch tabs must
+            // not erase it just because those pages have no directory cards.
+            guard message["onDirectory"] as? Bool == true else { return [:] }
             // Keep only the fields consumed by the native list. Model results
             // contain JSON nulls (for example reference.origin), which cannot
             // be persisted in UserDefaults and abort the native request.

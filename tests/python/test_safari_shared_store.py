@@ -22,6 +22,9 @@ let stream: [String: Any] = ["channel": "fixture", "title": "Full title", "reaso
     "references": [["origin": NSNull()]], "raw_logit": NSNull()]
 _ = SharedStore.handle(["type": "hidden", "url": "https://www.twitch.tv/directory/category/tibia", "onDirectory": true,
     "mode": "bottom", "hidden": [stream]], defaults: defaults)
+// A different Twitch tab must not erase the directory report.
+_ = SharedStore.handle(["type": "hidden", "url": "https://www.twitch.tv/fixture", "onDirectory": false,
+    "mode": "bottom", "hidden": []], defaults: defaults)
 let report = defaults.dictionary(forKey: SharedStore.Key.hidden)!
 let rows = report["hidden"] as! [[String: String]]
 precondition(rows.count == 1 && rows[0]["channel"] == "fixture")

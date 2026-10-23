@@ -48,6 +48,13 @@ const root = path.resolve(__dirname, '../..');
         assert.equal(report.hidden.length, 12);
         assert.equal(await page.locator('[data-twitch-clean-hidden]').count(), 0);
         await page.evaluate(() => { document.querySelector('[data-a-target="root-scroller"]').scrollTop = 450; });
+        // Explicit policy changes must regroup the entire loaded list even
+        // when the reader has already scrolled through some cards.
+        await page.evaluate(() => window.setting({tibiaThreshold:0}));
+        assert.deepEqual(await order(), Array.from({length:24},(_,i)=>`fixture${i}`));
+        await page.evaluate(() => window.setting({tibiaThreshold:0.5}));
+        assert.deepEqual(await order(), [...Array.from({length:12},(_,i)=>`fixture${i*2+1}`), ...Array.from({length:12},(_,i)=>`fixture${i*2}`)]);
+        await page.evaluate(() => { document.querySelector('[data-a-target="root-scroller"]').scrollTop = 450; });
         const before = await page.locator('#grid > section').evaluateAll(cells => cells.map(c => ({channel:JSON.parse(c.firstElementChild.getAttribute('data-twitch-clean-meta')).channel, top:c.getBoundingClientRect().top})).filter(c => c.top < 700));
         await page.evaluate(() => window.appendCards(24, 8));
         await page.waitForFunction(() => document.querySelectorAll('article[data-tibia-private-result]').length === 32);

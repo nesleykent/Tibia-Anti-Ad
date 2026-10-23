@@ -35,8 +35,10 @@ Per-broadcast Show overrides apply in both modes.
 Move to bottom sets CSS order on Twitch's existing flex/grid cells. It preserves
 Twitch order inside each group. When the list has been scrolled, the visual prefix
 through the visible row stays in place and only the remaining suffix is regrouped
-when new cards load. This means a newly loaded preferred stream does not jump ahead
-of streams already reached by the reader. No React-owned node is moved. Keyboard
+when new cards load. Changing the mode, threshold or a Show override explicitly
+regroups the complete loaded list, including the visited prefix. During automatic
+loads, a newly loaded preferred stream does not jump ahead of streams already
+reached by the reader. No React-owned node is moved. Keyboard
 and assistive navigation retain Twitch's DOM order.
 
 Export JSON in the Diagnostics section saves a local JSON object. Its header
