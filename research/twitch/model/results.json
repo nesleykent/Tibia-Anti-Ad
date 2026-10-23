@@ -2,22 +2,25 @@
   "split_rows": {
     "train": 173,
     "calibration": 23,
-    "test": 25
+    "development": 25,
+    "test": 0
   },
-  "held_out": {
-    "private_caught": 19,
+  "evaluation_status": "Former test used for error-driven feature correction, now development regression only. These rows remain excluded from fitting and calibration; no untouched post-fix test is available.",
+  "held_out": null,
+  "development_regression": {
+    "private_caught": 20,
     "private_total": 20,
     "non_private_wrongly_flagged": 0,
     "non_private_total": 5,
-    "brier": 0.03806826942017189,
-    "log_loss": 0.15098557118463513,
+    "brier": 2.0064675460748907e-05,
+    "log_loss": 0.0021642521051136866,
     "calibration_bins": [
       {
         "range": [
           0,
           0.1
         ],
-        "n": 4,
+        "n": 5,
         "mean_probability": 0.01,
         "fraction_private": 0.0
       },
@@ -26,27 +29,29 @@
           0.9,
           1
         ],
-        "n": 21,
-        "mean_probability": 0.9970553540192074,
-        "fraction_private": 0.9523809523809523
+        "n": 20,
+        "mean_probability": 0.9998073092660468,
+        "fraction_private": 1.0
       }
     ],
-    "ece": 0.03912649737613428,
+    "ece": 0.0021541525871625815,
     "no_evidence_rows": 0
   },
   "acceptance": {
     "checks": {
       "server-command-as-session": true,
       "server-command-as-sponsor": true,
+      "sponsor-list-attached-currency": true,
       "audit:384": true,
       "no_evidence_all_at_base": true,
       "language_invariance": true,
       "generic_gameplay": true
     },
     "probabilities": {
-      "server-command-as-session": 0.9969732255594688,
-      "server-command-as-sponsor": 0.02522140112342319,
-      "audit:384": 0.5000000000000001,
+      "server-command-as-session": 0.9999996827280285,
+      "server-command-as-sponsor": 0.01,
+      "sponsor-list-attached-currency": 0.01,
+      "audit:384": 0.5,
       "audit:7": 0.01,
       "audit:27": 0.01,
       "audit:28": 0.01,
@@ -84,94 +89,157 @@
       "invariance:contrast:14:Polski": 0.01
     }
   },
+  "threshold_selection": {
+    "method": "fixed-grid group-mean calibration cost",
+    "false_hide_cost": 50.0,
+    "miss_cost": 1,
+    "tie_break_cost_cutoff": 0.9803921568627451,
+    "tie_break": "nearest grid value at or above the cost-ratio cutoff, among equal-risk choices",
+    "minimum_risk_thresholds": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      0.95,
+      0.975,
+      0.99,
+      0.995,
+      0.999
+    ],
+    "calibration_groups": 23,
+    "candidates": [
+      {
+        "threshold": 0.5,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.6,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.7,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.8,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.9,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.95,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.975,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.99,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.995,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.999,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      }
+    ],
+    "selected": 0.99
+  },
   "weights": [
     [
-      "multiple_references",
-      16.976568054649892
-    ],
-    [
       "coordinated_reference",
-      6.7263379370675125
-    ],
-    [
-      "server_command",
-      5.937930709368796
-    ],
-    [
-      "protocol",
-      2.831599047823379
-    ],
-    [
-      "bracketed_reference",
-      2.5560613995647987
-    ],
-    [
-      "launch_context",
-      2.2222136871838494
-    ],
-    [
-      "comparison",
-      1.8777531131082292
+      7.5701029650511495
     ],
     [
       "identified_reference",
-      1.5554772916560695
+      5.0833026761936955
     ],
     [
-      "other_commands",
-      0.9434108531323864
+      "server_command",
+      4.777568317248793
+    ],
+    [
+      "comparison",
+      2.978233048024057
+    ],
+    [
+      "bracketed_reference",
+      2.9340545556436854
     ],
     [
       "server_domain",
-      0.7817946514618209
+      1.8842044460885963
     ],
     [
-      "command_share",
-      0.38724632629171524
-    ],
-    [
-      "title_reference",
-      -0.13610766781149156
+      "launch_context",
+      0.22238666030512422
     ],
     [
       "ot_name",
-      -1.4016633523410509
+      0.0
     ],
     [
-      "commercial_context",
-      -2.3055965416469375
-    ],
-    [
-      "tag_reference",
-      -2.6826714754516057
+      "protocol",
+      0.0
     ],
     [
       "current_session_relation",
-      -3.4281715635980667
+      -3.355006796864847
     ],
     [
       "negated_reference",
-      -3.6520828206646003
+      -3.653490374880862
     ],
     [
-      "commercial_offer",
-      -5.050634511484269
-    ],
-    [
-      "separate_session_declaration",
-      -8.328388785383224
-    ],
-    [
-      "late_reference",
-      -9.309842483904989
+      "commercial_context",
+      -3.688298108309296
     ],
     [
       "sponsor_context",
-      -10.253736869727778
+      -7.453849095926567
     ],
     [
       "past_reference",
-      -13.622014458863205
+      -7.674768878950422
+    ],
+    [
+      "competing_named_pair",
+      -8.86970220108304
+    ],
+    [
+      "commercial_offer",
+      -9.204125243547079
+    ],
+    [
+      "separate_session_declaration",
+      -12.653405641244845
     ]
   ],
   "recognition_anchors": {
@@ -184,20 +252,18 @@
       "fortisot": false,
       "futureot": false,
       "hegalot": false,
-      "httpspokehero": false,
       "ibaiakidle": false,
-      "idleworld": false,
       "kingaslam": false,
       "kingaslan": true,
       "koliseuot": false,
       "mauot": false,
-      "otponlinecom": false,
       "papot": false,
       "pixelot": false,
       "pka": false,
       "pokealianca": false,
       "pokealiance": false,
       "pokeidle": false,
+      "pokeidleworld": false,
       "pokemonidle": false,
       "pokexgamez": false,
       "projectfibula": false,
@@ -206,7 +272,7 @@
       "rubiniot": false,
       "rubinot": false,
       "rubinott": false,
-      "rubintoinfernum": false,
+      "rubinto": false,
       "shadow": true,
       "soe": true,
       "wot": true
@@ -224,14 +290,15 @@
       "troyale.online"
     ]
   },
-  "test_predictions": [
+  "test_predictions": [],
+  "development_regression_predictions": [
     {
       "id": "audit:107",
       "group": "b574755d64a4aaa9",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.994941893014779,
-      "display_probability": 0.0050581069852210225,
+      "private_probability": 0.9999996827280285,
+      "display_probability": 3.1727197147279895e-07,
       "hide": true,
       "references": [
         {
@@ -239,60 +306,36 @@
           "start": 90,
           "end": 97,
           "text": "rubinot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "late_reference",
-          "value": 0.7563025210084033,
-          "contribution": -7.041057340768479
+          "feature": "identified_reference",
+          "value": 1.0,
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "server_command",
           "value": 1.0,
-          "contribution": 5.937930709368796
-        },
-        {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 4.777568317248793
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.6666666666666666,
-          "contribution": 0.6289405687549242
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
-        },
-        {
-          "feature": "command_share",
-          "value": 0.2,
-          "contribution": 0.07744926525834306
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 5.279825492333742
+      "raw_logit": 9.86087099344249
     },
     {
       "id": "audit:110",
       "group": "0492e73535aa8572",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9922162961564127,
-      "display_probability": 0.007783703843587286,
+      "private_probability": 0.9999996827280285,
+      "display_probability": 3.1727197147279895e-07,
       "hide": true,
       "references": [
         {
@@ -300,60 +343,36 @@
           "start": 55,
           "end": 62,
           "text": "rubinot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "late_reference",
-          "value": 0.7746478873239436,
-          "contribution": -7.2118498114756955
+          "feature": "identified_reference",
+          "value": 1.0,
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "server_command",
           "value": 1.0,
-          "contribution": 5.937930709368796
-        },
-        {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 4.777568317248793
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.3333333333333333,
-          "contribution": 0.3144702843774621
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
-        },
-        {
-          "feature": "command_share",
-          "value": 0.3333333333333333,
-          "contribution": 0.12908210876390508
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 4.8461955807546255
+      "raw_logit": 9.86087099344249
     },
     {
       "id": "audit:112",
       "group": "372e2e375de3458e",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999886813608074,
-      "display_probability": 1.1318639192570146e-05,
+      "private_probability": 0.9999996827280285,
+      "display_probability": 3.1727197147279895e-07,
       "hide": true,
       "references": [
         {
@@ -361,52 +380,28 @@
           "start": 6,
           "end": 13,
           "text": "rubinot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "server_command",
-          "value": 1.0,
-          "contribution": 5.937930709368796
-        },
-        {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 5.0833026761936955
+        },
+        {
+          "feature": "server_command",
+          "value": 1.0,
+          "contribution": 4.777568317248793
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.08571428571428572,
-          "contribution": -0.7979864986204276
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.5,
-          "contribution": 0.4717054265661932
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
-        },
-        {
-          "feature": "command_share",
-          "value": 0.25,
-          "contribution": 0.09681158157292881
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 11.385023508607647
+      "raw_logit": 9.86087099344249
     },
     {
       "id": "audit:155",
@@ -425,8 +420,8 @@
       "group": "7eea45ad40606ece",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9995091042969421,
-      "display_probability": 0.0004908957030579364,
+      "private_probability": 0.999553544092027,
+      "display_probability": 0.00044645590797298684,
       "hide": true,
       "references": [
         {
@@ -434,45 +429,31 @@
           "start": 17,
           "end": 20,
           "text": "7.4",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
+          "feature": "identified_reference",
+          "value": 1.0,
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "protocol",
           "value": 1.0,
-          "contribution": 2.831599047823379
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.2463768115942029,
-          "contribution": -2.2937293076287655
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 7.616095382255821
+      "raw_logit": 5.0833026761936955
     },
     {
       "id": "audit:172",
       "group": "8ac276a086b5900c",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999106055324102,
-      "display_probability": 8.939446758982061e-05,
+      "private_probability": 0.9999996827280285,
+      "display_probability": 3.1727197147279895e-07,
       "hide": true,
       "references": [
         {
@@ -480,69 +461,52 @@
           "start": 0,
           "end": 8,
           "text": "futureot",
-          "field": "title"
-        },
-        {
-          "kind": "command",
-          "start": 28,
-          "end": 36,
-          "text": "futureot",
-          "field": "title"
+          "field": "tag",
+          "origin": "futureot"
         },
         {
           "kind": "name",
           "start": 0,
           "end": 8,
           "text": "futureot",
-          "field": "tag"
+          "field": "title",
+          "origin": null
+        },
+        {
+          "kind": "command",
+          "start": 28,
+          "end": 36,
+          "text": "futureot",
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "server_command",
-          "value": 1.0,
-          "contribution": 5.937930709368796
-        },
-        {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
-          "feature": "tag_reference",
-          "value": 1.0,
-          "contribution": -2.6826714754516057
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 5.0833026761936955
+        },
+        {
+          "feature": "server_command",
+          "value": 1.0,
+          "contribution": 4.777568317248793
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
-        },
-        {
-          "feature": "command_share",
-          "value": 1.0,
-          "contribution": 0.38724632629171524
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 9.319067849929063
+      "raw_logit": 9.86087099344249
     },
     {
       "id": "audit:198",
       "group": "7ba1ae5426c705d5",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999815285713867,
-      "display_probability": 1.8471428613331398e-05,
+      "private_probability": 0.9999947958156596,
+      "display_probability": 5.2041843403571875e-06,
       "hide": true,
       "references": [
         {
@@ -550,67 +514,49 @@
           "start": 36,
           "end": 44,
           "text": "fulgorot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         },
         {
           "kind": "protocol",
           "start": 51,
           "end": 55,
           "text": "7.92",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.6666666666666666,
-          "contribution": 11.31771203643326
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.6428571428571429,
-          "contribution": -5.984898739653207
-        },
-        {
-          "feature": "protocol",
+          "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 2.831599047823379
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "bracketed_reference",
           "value": 1.0,
-          "contribution": 2.5560613995647987
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 2.9340545556436854
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
+          "contribution": 0.0
         },
         {
-          "feature": "other_commands",
-          "value": 0.16666666666666666,
-          "contribution": 0.15723514218873105
-        },
-        {
-          "feature": "title_reference",
+          "feature": "protocol",
           "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 10.895415157860489
+      "raw_logit": 8.01735723183738
     },
     {
       "id": "audit:2",
       "group": "02f7e4d84e6d8084",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9998161201065725,
-      "display_probability": 0.00018387989342749655,
+      "private_probability": 0.999553544092027,
+      "display_probability": 0.00044645590797298684,
       "hide": true,
       "references": [
         {
@@ -618,122 +564,76 @@
           "start": 0,
           "end": 3,
           "text": "pka",
-          "field": "tag"
+          "field": "tag",
+          "origin": "pka"
         },
         {
           "kind": "protocol",
           "start": 53,
           "end": 56,
           "text": "1.5",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.6666666666666666,
-          "contribution": 11.31771203643326
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.4774774774774775,
-          "contribution": -4.445240104927607
+          "feature": "identified_reference",
+          "value": 1.0,
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "protocol",
           "value": 1.0,
-          "contribution": 2.831599047823379
-        },
-        {
-          "feature": "tag_reference",
-          "value": 1.0,
-          "contribution": -2.6826714754516057
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.16666666666666666,
-          "contribution": 0.15723514218873105
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 8.598004269910735
+      "raw_logit": 5.0833026761936955
     },
     {
       "id": "audit:24",
       "group": "b2103d7edca8b409",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999999975413758,
-      "display_probability": 2.4586241931245922e-09,
+      "private_probability": 0.9999996827280285,
+      "display_probability": 3.1727197147279895e-07,
       "hide": true,
       "references": [
-        {
-          "kind": "command",
-          "start": 90,
-          "end": 96,
-          "text": "shadow",
-          "field": "title"
-        },
         {
           "kind": "protocol",
           "start": 22,
           "end": 26,
           "text": "7.72",
-          "field": "title"
+          "field": "title",
+          "origin": null
+        },
+        {
+          "kind": "command",
+          "start": 90,
+          "end": 96,
+          "text": "shadow",
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.6666666666666666,
-          "contribution": 11.31771203643326
+          "feature": "identified_reference",
+          "value": 1.0,
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "server_command",
           "value": 1.0,
-          "contribution": 5.937930709368796
+          "contribution": 4.777568317248793
         },
         {
           "feature": "protocol",
           "value": 1.0,
-          "contribution": 2.831599047823379
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.22916666666666666,
-          "contribution": -2.1335055692282263
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.3333333333333333,
-          "contribution": 0.3144702843774621
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
-        },
-        {
-          "feature": "command_share",
-          "value": 0.3333333333333333,
-          "contribution": 0.12908210876390508
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 19.816658241383156
+      "raw_logit": 9.86087099344249
     },
     {
       "id": "audit:249",
@@ -764,8 +664,8 @@
       "group": "95d63f441e0034da",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999990977121801,
-      "display_probability": 9.022878199038686e-07,
+      "private_probability": 0.9999144779262155,
+      "display_probability": 8.552207378453858e-05,
       "hide": true,
       "references": [
         {
@@ -773,79 +673,57 @@
           "start": 13,
           "end": 20,
           "text": "rubinot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         },
         {
           "kind": "command",
           "start": 39,
           "end": 46,
           "text": "rubinot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         },
         {
           "kind": "command",
           "start": 48,
           "end": 51,
           "text": "soe",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.6666666666666666,
-          "contribution": 11.31771203643326
+          "feature": "identified_reference",
+          "value": 1.0,
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "server_command",
           "value": 1.0,
-          "contribution": 5.937930709368796
+          "contribution": 4.777568317248793
         },
         {
           "feature": "commercial_context",
           "value": 1.0,
-          "contribution": -2.3055965416469375
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.18055555555555555,
-          "contribution": -1.6809437818161785
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": -3.688298108309296
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.5,
-          "contribution": 0.4717054265661932
-        },
-        {
-          "feature": "command_share",
-          "value": 0.4,
-          "contribution": 0.15489853051668612
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 13.913412650925347
+      "raw_logit": 6.172572885133192
     },
     {
       "id": "audit:363",
       "group": "9c53be155e8968c2",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999903644618632,
-      "display_probability": 9.63553813682072e-06,
+      "private_probability": 0.9999144779262155,
+      "display_probability": 8.552207378453858e-05,
       "hide": true,
       "references": [
         {
@@ -853,60 +731,36 @@
           "start": 1,
           "end": 9,
           "text": "pokeidle",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "server_command",
+          "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 5.937930709368796
+          "contribution": 5.0833026761936955
         },
         {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
+          "feature": "server_command",
+          "value": 1.0,
+          "contribution": 4.777568317248793
         },
         {
           "feature": "commercial_context",
           "value": 1.0,
-          "contribution": -2.3055965416469375
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "other_commands",
-          "value": 1.0,
-          "contribution": 0.9434108531323864
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.017543859649122806,
-          "contribution": -0.16333056989306996
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
-        },
-        {
-          "feature": "command_share",
-          "value": 0.14285714285714285,
-          "contribution": 0.055320903755959314
+          "contribution": -3.688298108309296
         }
       ],
-      "raw_logit": 11.545960996778343
+      "raw_logit": 6.172572885133192
     },
     {
       "id": "audit:4",
       "group": "c9824264a9c13400",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9944232776805952,
-      "display_probability": 0.005576722319404759,
+      "private_probability": 0.999553544092027,
+      "display_probability": 0.00044645590797298684,
       "hide": true,
       "references": [
         {
@@ -914,52 +768,34 @@
           "start": 0,
           "end": 3,
           "text": "pxg",
-          "field": "title"
+          "field": "tag",
+          "origin": "pxg"
         },
         {
           "kind": "name",
           "start": 0,
           "end": 3,
           "text": "pxg",
-          "field": "tag"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
-          "feature": "tag_reference",
-          "value": 1.0,
-          "contribution": -2.6826714754516057
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.8333333333333334,
-          "contribution": 0.7861757109436553
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 5.0833026761936955
         }
       ],
-      "raw_logit": 5.181729877553257
+      "raw_logit": 5.0833026761936955
     },
     {
       "id": "audit:42",
       "group": "4e8bad79db198280",
       "truth": "not_private",
       "supervision": 0.0,
-      "private_probability": 0.9752084782804704,
-      "display_probability": 0.024791521719529586,
+      "private_probability": 0.01,
+      "display_probability": 0.99,
       "hide": false,
       "references": [
         {
@@ -967,65 +803,46 @@
           "start": 46,
           "end": 53,
           "text": "rubinot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "late_reference",
-          "value": 0.6666666666666666,
-          "contribution": -6.2065616559366585
-        },
-        {
-          "feature": "server_command",
+          "feature": "commercial_offer",
           "value": 1.0,
-          "contribution": 5.937930709368796
-        },
-        {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
-          "feature": "commercial_context",
-          "value": 1.0,
-          "contribution": -2.3055965416469375
+          "contribution": -9.204125243547079
         },
         {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 5.0833026761936955
+        },
+        {
+          "feature": "server_command",
+          "value": 1.0,
+          "contribution": 4.777568317248793
+        },
+        {
+          "feature": "commercial_context",
+          "value": 1.0,
+          "contribution": -3.688298108309296
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.5,
-          "contribution": 0.4717054265661932
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
-        },
-        {
-          "feature": "command_share",
-          "value": 0.25,
-          "contribution": 0.09681158157292881
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 3.6708518096444793
+      "raw_logit": -3.031552358413886
     },
     {
       "id": "audit:433",
       "group": "b82722303b279fa6",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9933412075980534,
-      "display_probability": 0.006658792401946556,
+      "private_probability": 0.999553544092027,
+      "display_probability": 0.00044645590797298684,
       "hide": true,
       "references": [
         {
@@ -1033,76 +850,58 @@
           "start": 0,
           "end": 7,
           "text": "rubinot",
-          "field": "tag"
+          "field": "tag",
+          "origin": "rubinot"
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
-          "feature": "tag_reference",
-          "value": 1.0,
-          "contribution": -2.6826714754516057
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 5.0833026761936955
         },
         {
-          "feature": "other_commands",
-          "value": 0.5,
-          "contribution": 0.4717054265661932
+          "feature": "ot_name",
+          "value": 1.0,
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 5.003367260987287
+      "raw_logit": 5.0833026761936955
     },
     {
       "id": "audit:450",
       "group": "0aef4451206f1b43",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9893686926628218,
-      "display_probability": 0.010631307337178209,
-      "hide": false,
+      "private_probability": 0.999553544092027,
+      "display_probability": 0.00044645590797298684,
+      "hide": true,
       "references": [
         {
           "kind": "name",
           "start": 0,
           "end": 13,
           "text": "projectfibula",
-          "field": "tag"
+          "field": "tag",
+          "origin": "projectfibula"
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
-          "feature": "tag_reference",
-          "value": 1.0,
-          "contribution": -2.6826714754516057
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 5.0833026761936955
         }
       ],
-      "raw_logit": 4.531661834421094
+      "raw_logit": 5.0833026761936955
     },
     {
       "id": "audit:47",
       "group": "d4a1a0f87a5c74eb",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999999999703071,
-      "display_probability": 2.969291479359981e-11,
+      "private_probability": 0.9999817330205649,
+      "display_probability": 1.82669794350776e-05,
       "hide": true,
       "references": [
         {
@@ -1110,56 +909,49 @@
           "start": 0,
           "end": 13,
           "text": "voidcores.com",
-          "field": "title"
-        },
-        {
-          "kind": "domain",
-          "start": 101,
-          "end": 121,
-          "text": "www.dsc.gg/voidcores",
-          "field": "title"
+          "field": "title",
+          "origin": null
         },
         {
           "kind": "protocol",
           "start": 78,
           "end": 83,
           "text": "10.98",
-          "field": "title"
+          "field": "title",
+          "origin": null
+        },
+        {
+          "kind": "domain",
+          "start": 101,
+          "end": 121,
+          "text": "www.dsc.gg/voidcores",
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 1.0,
-          "contribution": 16.976568054649892
-        },
-        {
-          "feature": "protocol",
-          "value": 1.0,
-          "contribution": 2.831599047823379
-        },
-        {
-          "feature": "launch_context",
-          "value": 1.0,
-          "contribution": 2.2222136871838494
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "server_domain",
           "value": 1.0,
-          "contribution": 0.7817946514618209
+          "contribution": 1.8842044460885963
         },
         {
-          "feature": "title_reference",
+          "feature": "launch_context",
           "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.22238666030512422
+        },
+        {
+          "feature": "protocol",
+          "value": 1.0,
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 24.23154506496352
+      "raw_logit": 7.189893782587416
     },
     {
       "id": "audit:95",
@@ -1178,95 +970,74 @@
       "group": "11eb7612d49cc6fa",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999999999797848,
-      "display_probability": 2.0215162876979775e-11,
+      "private_probability": 0.999999773601677,
+      "display_probability": 2.2639832297777218e-07,
       "hide": true,
       "references": [
         {
-          "kind": "command",
-          "start": 101,
-          "end": 109,
-          "text": "futureot",
-          "field": "title"
+          "kind": "ot_name",
+          "start": 15,
+          "end": 20,
+          "text": "redot",
+          "field": "title",
+          "origin": null
         },
         {
           "kind": "command",
           "start": 85,
           "end": 91,
           "text": "shadow",
-          "field": "title"
+          "field": "title",
+          "origin": null
         },
         {
-          "kind": "ot_name",
-          "start": 15,
-          "end": 20,
-          "text": "redot",
-          "field": "title"
+          "kind": "command",
+          "start": 101,
+          "end": 109,
+          "text": "futureot",
+          "field": "title",
+          "origin": null
         },
         {
           "kind": "ot_name",
           "start": 111,
           "end": 116,
           "text": "redot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
+          "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 16.976568054649892
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "server_command",
           "value": 1.0,
-          "contribution": 5.937930709368796
+          "contribution": 4.777568317248793
         },
         {
           "feature": "launch_context",
           "value": 1.0,
-          "contribution": 2.2222136871838494
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 0.22238666030512422
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.12931034482758622,
-          "contribution": -1.2038589418842658
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.5,
-          "contribution": 0.4717054265661932
-        },
-        {
-          "feature": "command_share",
-          "value": 0.5,
-          "contribution": 0.19362316314585762
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 24.61588837053385
+      "raw_logit": 10.083257653747612
     },
     {
       "id": "live2115:277",
       "group": "9c53be155e8968c2",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999903644618632,
-      "display_probability": 9.63553813682072e-06,
+      "private_probability": 0.9999144779262155,
+      "display_probability": 8.552207378453858e-05,
       "hide": true,
       "references": [
         {
@@ -1274,151 +1045,90 @@
           "start": 1,
           "end": 9,
           "text": "pokeidle",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "server_command",
+          "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 5.937930709368796
+          "contribution": 5.0833026761936955
         },
         {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
+          "feature": "server_command",
+          "value": 1.0,
+          "contribution": 4.777568317248793
         },
         {
           "feature": "commercial_context",
           "value": 1.0,
-          "contribution": -2.3055965416469375
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "other_commands",
-          "value": 1.0,
-          "contribution": 0.9434108531323864
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.017543859649122806,
-          "contribution": -0.16333056989306996
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
-        },
-        {
-          "feature": "command_share",
-          "value": 0.14285714285714285,
-          "contribution": 0.055320903755959314
+          "contribution": -3.688298108309296
         }
       ],
-      "raw_logit": 11.545960996778343
+      "raw_logit": 6.172572885133192
     },
     {
       "id": "live2115:551",
       "group": "dbf60de5d51d70a9",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999850038402703,
-      "display_probability": 1.4996159729663283e-05,
+      "private_probability": 0.999553544092027,
+      "display_probability": 0.00044645590797298684,
       "hide": true,
       "references": [
         {
           "kind": "name",
-          "start": 15,
-          "end": 25,
-          "text": "idle world",
-          "field": "title"
-        },
-        {
-          "kind": "name",
           "start": 10,
-          "end": 19,
-          "text": "poke idle",
-          "field": "title"
+          "end": 25,
+          "text": "poke idle world",
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.6666666666666666,
-          "contribution": 11.31771203643326
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.17543859649122806,
-          "contribution": -1.6333056989306998
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 5.0833026761936955
         }
       ],
-      "raw_logit": 11.103775961347138
+      "raw_logit": 5.0833026761936955
     },
     {
       "id": "live2115:560",
       "group": "ad21bdfcb3333ce0",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999970731606863,
-      "display_probability": 2.926839313688312e-06,
+      "private_probability": 0.999553544092027,
+      "display_probability": 0.00044645590797298684,
       "hide": true,
       "references": [
         {
           "kind": "name",
-          "start": 5,
-          "end": 15,
-          "text": "idle world",
-          "field": "title"
-        },
-        {
-          "kind": "name",
           "start": 0,
-          "end": 9,
-          "text": "poke idle",
-          "field": "title"
+          "end": 15,
+          "text": "poke idle world",
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.6666666666666666,
-          "contribution": 11.31771203643326
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 5.0833026761936955
         }
       ],
-      "raw_logit": 12.737081660277838
+      "raw_logit": 5.0833026761936955
     },
     {
       "id": "raw1400:199",
       "group": "fd69eac025fabf3f",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9999855437168331,
-      "display_probability": 1.4456283166874861e-05,
+      "private_probability": 0.9999996827280285,
+      "display_probability": 3.1727197147279895e-07,
       "hide": true,
       "references": [
         {
@@ -1426,60 +1136,36 @@
           "start": 7,
           "end": 14,
           "text": "rubinot",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "server_command",
-          "value": 1.0,
-          "contribution": 5.937930709368796
-        },
-        {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
-        },
-        {
           "feature": "identified_reference",
           "value": 1.0,
-          "contribution": 1.5554772916560695
+          "contribution": 5.0833026761936955
+        },
+        {
+          "feature": "server_command",
+          "value": 1.0,
+          "contribution": 4.777568317248793
         },
         {
           "feature": "ot_name",
           "value": 1.0,
-          "contribution": -1.4016633523410509
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.08860759493670886,
-          "contribution": -0.8249227517384167
-        },
-        {
-          "feature": "command_share",
-          "value": 0.5,
-          "contribution": 0.19362316314585762
-        },
-        {
-          "feature": "other_commands",
-          "value": 0.16666666666666666,
-          "contribution": 0.15723514218873105
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 11.140428552685126
+      "raw_logit": 9.86087099344249
     },
     {
       "id": "raw1400:239",
       "group": "7eea45ad40606ece",
       "truth": "private",
       "supervision": 1.0,
-      "private_probability": 0.9995091042969421,
-      "display_probability": 0.0004908957030579364,
+      "private_probability": 0.999553544092027,
+      "display_probability": 0.00044645590797298684,
       "hide": true,
       "references": [
         {
@@ -1487,37 +1173,23 @@
           "start": 17,
           "end": 20,
           "text": "7.4",
-          "field": "title"
+          "field": "title",
+          "origin": null
         }
       ],
       "contributions": [
         {
-          "feature": "multiple_references",
-          "value": 0.3333333333333333,
-          "contribution": 5.65885601821663
+          "feature": "identified_reference",
+          "value": 1.0,
+          "contribution": 5.0833026761936955
         },
         {
           "feature": "protocol",
           "value": 1.0,
-          "contribution": 2.831599047823379
-        },
-        {
-          "feature": "late_reference",
-          "value": 0.2463768115942029,
-          "contribution": -2.2937293076287655
-        },
-        {
-          "feature": "identified_reference",
-          "value": 1.0,
-          "contribution": 1.5554772916560695
-        },
-        {
-          "feature": "title_reference",
-          "value": 1.0,
-          "contribution": -0.13610766781149156
+          "contribution": 0.0
         }
       ],
-      "raw_logit": 7.616095382255821
+      "raw_logit": 5.0833026761936955
     }
   ]
 }

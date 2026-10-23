@@ -1,6 +1,16 @@
 # Current progress
 
-## Milestone B complete, stop before C
+## Milestone B sponsor correction, stop before C
+
+- Done: corrected attached TC pricing, removed position/reference-count/command-count features, constrained identification coefficients nonnegative, repaired source-derived aliases. No label changes. Added audit:42 acceptance and invariance coverage.
+- Results: audit:42 97.52085% -> 1%; baratuca 1%; sole !rubinot 99.99997%; all no-evidence controls exactly 1%. Same 173 fit / 23 calibration rows. Former 25-row test is explicitly development regression after error-driven feature correction, still excluded from fitting/calibration: 20/20 private caught, 0/5 non-private flagged. No fresh post-fix held-out evaluation exists.
+- Threshold: fixed-grid mean group cost on calibration; all candidates tie, 16/18 caught and 0/5 false hides. Explicit assumed cost ratio 50:1 breaks the tie at 99%; no maximum-negative or single-stream adjustment.
+- Files: tools/tibia_private.py, tibia_private_data.py, train_tibia_private.py; model JSON/results/sponsor decomposition and report; acceptance fixture and focused tests; docs/TWITCH_MODEL.md. Full feature decomposition is in research/twitch/model/SPONSOR_FIX.md.
+- Validation: full tools/check_project.py passed (54 Python tests, JS checks and generated-asset verification). Reviewed focused diff for correctness, provenance and accidental local/private files. Browser execution, JS model parity and Safari build/signature/install were not performed.
+- Exact next step: publish the verified correction to main, then stop for milestone B review. C is not started. Preserve the dataset gap (2 real sponsor lists plus 2 incidental-promotion negatives) for future diagnostic exports.
+
+## Previous milestone B checkpoint (superseded by correction above)
+
 
 - A is closed. No further annotation packets or collection gate. Trained immediately from the existing reviewed labels; missing sponsor examples are a reported limitation. Retired the old hard-coded-count validator.
 - Removed image input/download/CLI paths and the browser's corresponding inference argument. Replaced whole-text training and old-label evaluation entry points. The old case fixture is now only an index; historical inputs are frozen alongside their reviewed annotations, with all input hashes preserved. Tests no longer read its rejected expectations. Browser title test now tests metadata transport only; classifier integration/parity waits for C.

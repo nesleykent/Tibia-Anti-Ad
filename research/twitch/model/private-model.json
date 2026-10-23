@@ -1,5 +1,5 @@
 {
-  "format": "entity-context-logit-v1",
+  "format": "entity-context-logit-v2",
   "base_private_probability": 0.01,
   "references": {
     "aliases": {
@@ -11,20 +11,18 @@
       "fortisot": false,
       "futureot": false,
       "hegalot": false,
-      "httpspokehero": false,
       "ibaiakidle": false,
-      "idleworld": false,
       "kingaslam": false,
       "kingaslan": true,
       "koliseuot": false,
       "mauot": false,
-      "otponlinecom": false,
       "papot": false,
       "pixelot": false,
       "pka": false,
       "pokealianca": false,
       "pokealiance": false,
       "pokeidle": false,
+      "pokeidleworld": false,
       "pokemonidle": false,
       "pokexgamez": false,
       "projectfibula": false,
@@ -33,7 +31,7 @@
       "rubiniot": false,
       "rubinot": false,
       "rubinott": false,
-      "rubintoinfernum": false,
+      "rubinto": false,
       "shadow": true,
       "soe": true,
       "wot": true
@@ -52,41 +50,37 @@
     ]
   },
   "weights": {
-    "identified_reference": 1.5554772916560695,
-    "title_reference": -0.13610766781149156,
-    "tag_reference": -2.6826714754516057,
-    "server_command": 5.937930709368796,
-    "server_domain": 0.7817946514618209,
-    "ot_name": -1.4016633523410509,
-    "protocol": 2.831599047823379,
-    "launch_context": 2.2222136871838494,
-    "other_commands": 0.9434108531323864,
-    "command_share": 0.38724632629171524,
-    "late_reference": -9.309842483904989,
-    "negated_reference": -3.6520828206646003,
-    "comparison": 1.8777531131082292,
-    "past_reference": -13.622014458863205,
-    "sponsor_context": -10.253736869727778,
-    "commercial_context": -2.3055965416469375,
-    "bracketed_reference": 2.5560613995647987,
-    "multiple_references": 16.976568054649892,
-    "current_session_relation": -3.4281715635980667,
-    "coordinated_reference": 6.7263379370675125,
-    "commercial_offer": -5.050634511484269,
-    "separate_session_declaration": -8.328388785383224
+    "identified_reference": 5.0833026761936955,
+    "server_command": 4.777568317248793,
+    "server_domain": 1.8842044460885963,
+    "ot_name": 0.0,
+    "protocol": 0.0,
+    "launch_context": 0.22238666030512422,
+    "negated_reference": -3.653490374880862,
+    "comparison": 2.978233048024057,
+    "past_reference": -7.674768878950422,
+    "sponsor_context": -7.453849095926567,
+    "commercial_context": -3.688298108309296,
+    "bracketed_reference": 2.9340545556436854,
+    "current_session_relation": -3.355006796864847,
+    "coordinated_reference": 7.5701029650511495,
+    "commercial_offer": -9.204125243547079,
+    "separate_session_declaration": -12.653405641244845,
+    "competing_named_pair": -8.86970220108304
   },
   "calibration": {
     "method": "temperature",
-    "slope": 1.000353523886994,
+    "slope": 1.5174629268861481,
     "intercept": 0.0,
     "active_calibration_rows": 17,
-    "minimum_slope_from_training_baseline": 1.000353523886994
+    "minimum_slope_from_training_baseline": 1.000707758195552
   },
-  "hide_threshold": 0.9893686926628219,
+  "hide_threshold": 0.99,
   "training": {
     "annotations_sha256": "5e73667bd015f6ff60f8a7c4427bdf54d985e10a9ce3cdf402c3d70be3342d33",
     "seed": 23102026,
     "ridge": 0.005,
+    "previous_test_promoted_to_development": true,
     "split": {
       "train": [
         "audit:0",
@@ -288,7 +282,7 @@
         "audit:9",
         "raw1400:333"
       ],
-      "test": [
+      "development": [
         "audit:107",
         "audit:110",
         "audit:112",
@@ -314,7 +308,8 @@
         "live2115:560",
         "raw1400:199",
         "raw1400:239"
-      ]
+      ],
+      "test": []
     },
     "groups": {
       "audit:0": "e1ac77f6a374493e",
@@ -540,5 +535,88 @@
       "maintainer-example:0": "b0754857128d8ead"
     },
     "policy": "All reviewed examples retained. Constructed/historical/user controls are training only. Channel, normalized title template, contrast and parent groups are disjoint across partitions."
+  },
+  "threshold_selection": {
+    "method": "fixed-grid group-mean calibration cost",
+    "false_hide_cost": 50.0,
+    "miss_cost": 1,
+    "tie_break_cost_cutoff": 0.9803921568627451,
+    "tie_break": "nearest grid value at or above the cost-ratio cutoff, among equal-risk choices",
+    "minimum_risk_thresholds": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      0.95,
+      0.975,
+      0.99,
+      0.995,
+      0.999
+    ],
+    "calibration_groups": 23,
+    "candidates": [
+      {
+        "threshold": 0.5,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.6,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.7,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.8,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.9,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.95,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.975,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.99,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.995,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.999,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      }
+    ],
+    "selected": 0.99
   }
 }

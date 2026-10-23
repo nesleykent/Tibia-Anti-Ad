@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools'))
 from tibia_private import PrivateModel
 from tibia_private_data import load_rows
-from train_tibia_private import temperature
+from train_tibia_private import temperature, select_threshold, THRESHOLD_GRID
 
 
 class CalibrationTests(unittest.TestCase):
@@ -34,6 +34,19 @@ class CalibrationTests(unittest.TestCase):
         self.assertGreater(calibration['slope'], 0)
         self.assertLess(calibration['slope'], 1)
         self.assertEqual(calibration['intercept'], 0)
+
+    def test_threshold_uses_all_calibration_groups_and_fixed_grid(self):
+        model = PrivateModel.load(ROOT / 'research/twitch/model/private-model.json')
+        rows = {r['id']: r for r in load_rows()}
+        for r in rows.values():
+            r['group'] = model.data['training']['groups'][r['id']]
+        selected = [rows[i] for i in model.data['training']['split']['calibration']]
+        policy = select_threshold(model, selected)
+        self.assertEqual(policy, model.data['threshold_selection'])
+        self.assertEqual([r['threshold'] for r in policy['candidates']], list(THRESHOLD_GRID))
+        self.assertEqual(policy['calibration_groups'], len({r['group'] for r in selected}))
+        selected_cost = next(r['group_mean_cost'] for r in policy['candidates'] if r['threshold'] == policy['selected'])
+        self.assertEqual(selected_cost, min(r['group_mean_cost'] for r in policy['candidates']))
 
     def test_export_parameters_are_finite(self):
         data = json.loads((ROOT / 'research/twitch/model/private-model.json').read_text())

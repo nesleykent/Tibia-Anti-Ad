@@ -60,7 +60,7 @@ def load_rows():
     return rows
 
 
-def partitions(rows, seed=23102026):
+def partitions(rows, seed=23102026, promote_test=False):
     parent = {r['id']: r['id'] for r in rows}
     def find(i):
         while parent[i] != i:
@@ -101,6 +101,11 @@ def partitions(rows, seed=23102026):
         for name, chosen in [('test', bucket[:n]), ('calibration', bucket[n:2*n]), ('train', bucket[2*n:])]:
             for group in chosen:
                 split[name].extend(group)
+    if promote_test:
+        for row in split['test']:
+            row['previous_split'] = 'test'
+        split['development'] = split.pop('test')
+        split['test'] = []
     for name, subset in split.items():
         subset.sort(key=lambda row: row['id'])
         for row in subset:

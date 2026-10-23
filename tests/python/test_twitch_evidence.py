@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools'))
-from tibia_private import BASE, PrivateModel
+from tibia_private import BASE, FEATURES, NONNEGATIVE, PrivateModel
 from tibia_private_data import load_rows
 
 MODEL = PrivateModel.load(ROOT / 'research/twitch/model/private-model.json')
@@ -21,12 +21,42 @@ class PrivateProbabilityTests(unittest.TestCase):
                     p = MODEL.predict(case['title'], case['tags'])['private_probability']
                     self.assertGreaterEqual(p, case['private_probability_min'])
                     self.assertLessEqual(p, case['private_probability_max'])
+                    if case.get('require_excluded_from_fit'):
+                        self.assertNotIn(case['annotation_id'], MODEL.data['training']['split']['train'])
+                        self.assertNotIn(case['annotation_id'], MODEL.data['training']['split']['calibration'])
 
     def test_every_reviewed_no_evidence_input_stays_at_base(self):
         fixture = json.loads((ROOT / 'tests/data/tibia-no-private-evidence-acceptance.json').read_text())
         for identifier in fixture['annotation_ids']:
             row = ROWS[identifier]
             self.assertEqual(MODEL.predict(row['title'], row['tags'])['private_probability'], fixture['expected_private_probability'], identifier)
+
+    def test_joined_spaced_and_case_varied_prices_have_identical_context(self):
+        fixtures = json.loads((ROOT / 'tests/data/tibia-private-context-acceptance.json').read_text())['cases']
+        for case in fixtures:
+            if '50tc/mês' not in case['title']:
+                continue
+            expected = MODEL.predict(case['title'], case['tags'])['private_probability']
+            for form in ['50tc/mês', '50 tc/mês', '50 TC / mês']:
+                self.assertEqual(MODEL.predict(case['title'].replace('50tc/mês', form), case['tags'])['private_probability'], expected)
+
+    def test_neutral_padding_and_duplicate_references_do_not_create_weight(self):
+        title = 'WAR?? KKKK | !rubinot'
+        expected = MODEL.predict(title)['private_probability']
+        for candidate, tags in [('hunt bosses ' * 20 + title, []),
+                                (title + ' rubinot rubinot', ['rubinot']),
+                                (title + ' !pix !hunt !comandos !discord', [])]:
+            self.assertEqual(MODEL.predict(candidate, tags)['private_probability'], expected)
+        self.assertNotIn('late_reference', FEATURES)
+        self.assertNotIn('multiple_references', FEATURES)
+
+    def test_reference_features_cannot_be_negative_and_aliases_are_entities(self):
+        self.assertTrue(all(MODEL.data['weights'][f] >= 0 for f in NONNEGATIVE))
+        self.assertTrue(all(not name.startswith(('http', 'https')) for name in MODEL.data['references']['aliases']))
+        self.assertNotIn('rubintoinfernum', MODEL.data['references']['aliases'])
+        self.assertIn('rubinto', MODEL.data['references']['aliases'])
+        for title in ['Forgot loot', 'shoot robot', 'shadow no monitor, vou ajustar a luz']:
+            self.assertEqual(MODEL.predict(title)['private_probability'], BASE)
 
     def test_generic_gameplay_and_commands_do_not_supply_evidence(self):
         for title in ['hunt bosses', 'hunt de EK', 'bosses loot quest', 'farm 24h', '!pix !hunt !comandos', 'Global!', 'Medicina e Tibia']:

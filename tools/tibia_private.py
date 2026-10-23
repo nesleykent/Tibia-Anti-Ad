@@ -7,21 +7,26 @@ This milestone-B module does not replace browser inference until milestone C.
 import json
 import math
 import re
+import unicodedata
 from pathlib import Path
 from tibia_text import normalize
 
 BASE = 0.01
 FEATURES = (
-    'identified_reference', 'title_reference', 'tag_reference', 'server_command',
+    'identified_reference', 'server_command',
     'server_domain', 'ot_name', 'protocol', 'launch_context',
-    'other_commands', 'command_share', 'late_reference', 'negated_reference',
+    'negated_reference',
     'comparison', 'past_reference', 'sponsor_context', 'commercial_context',
-    'bracketed_reference', 'multiple_references', 'current_session_relation', 'coordinated_reference', 'commercial_offer', 'separate_session_declaration',
+    'bracketed_reference', 'current_session_relation', 'coordinated_reference', 'commercial_offer', 'separate_session_declaration', 'competing_named_pair',
 )
+NONNEGATIVE = {'identified_reference', 'server_command', 'server_domain', 'ot_name', 'protocol', 'launch_context'}
+NONPOSITIVE = set()
+
 DOMAIN = re.compile(r'(?<![a-z0-9])(?:[a-z0-9-]+\.)+[a-z]{2,}(?:/[a-z0-9_/-]*)?')
 COMMAND = re.compile(r'[!❗]\s*([a-z][a-z0-9_-]+)')
 PROTOCOL = re.compile(r'(?<![\w.])(?:[1-9]|1[0-9])\.[0-9]{1,2}(?![\w.])')
 OT = re.compile(r'\b[a-z][a-z0-9_-]{2,}[- ]?ot\b')
+NEW_OT = re.compile(r'\b[A-Za-z][A-Za-z0-9_-]{1,}[a-z0-9_-]OT\b')
 LAUNCH = re.compile(r'\b(?:launch\w*|opening|open beta|public test|abertura|lancamento|testserver)\b')
 DESCRIPTORS = {'online', 'mmorpg', 'server', 'world', 'global', 'rpg'}
 
@@ -57,9 +62,11 @@ No per-channel or manually maintained server-name table.
             add(match.group())
         words = re.findall(r'[a-z0-9]+', text)
         meaningful = [w for w in words if w not in DESCRIPTORS]
+        if DOMAIN.search(text):
+            continue  # host facts only; never turn https/TLD pieces into aliases
         if len(meaningful) == 1 and not meaningful[0].isdigit() and not DOMAIN.search(text):
             add(meaningful[0])
-        elif len(meaningful) == 2 and not any(w.isdigit() for w in meaningful):
+        elif len(meaningful) == 2 and not COMMAND.search(text) and not any(w.isdigit() for w in meaningful):
             phrases.append(meaningful)
         if len(words) > 2 and all(len(w) == 1 for w in words):
             add(''.join(words))
@@ -70,9 +77,22 @@ No per-channel or manually maintained server-name table.
                 if 3 <= len(identifier) <= 4 and canonical(identifier) in words:
                     add(identifier)
                 host = re.sub(r'^https?://', '', source.get('url', '')).split('/')[0]
-                for word in host.split('.'):
-                    if len(word) >= 5 and word not in DESCRIPTORS and canonical(word) in compact:
-                        add(word)
+                parts = host.split('.')
+                while parts and (len(parts[-1]) <= 3 or parts[-1] in DESCRIPTORS):
+                    parts.pop()
+                parts = [w for w in parts if w not in {'www', 'wiki'}]
+                brand = canonical(''.join(parts))
+                if len(brand) >= 5 and brand in compact:
+                    add(brand)
+                # An explicitly annotated spelling variant can name the brand
+                # beside a world; retain the name, not the invented whole phrase.
+                for word in meaningful:
+                    if len(word) == len(brand) and len(word) >= 6:
+                        different = [i for i, (a, b) in enumerate(zip(word, brand)) if a != b]
+                        if len(different) == 2 and different[1] == different[0] + 1:
+                            i = different[0]
+                            if word[i:i+2] == brand[i:i+2][::-1]:
+                                add(word)
     # Do not learn adjacent gameplay/context as part of an already known name.
     for words in phrases:
         if not any(canonical(word) in aliases for word in words):
@@ -84,9 +104,9 @@ def references(title, tags, inventory):
     text = normalize(title)
     commands = list(COMMAND.finditer(text))
     matches = []
-    def put(kind, start, end, name, field='title'):
-        if not any(m['field'] == field and m['start'] == start and m['end'] == end and m['text'] == name for m in matches):
-            matches.append({'kind': kind, 'start': start, 'end': end, 'text': name, 'field': field})
+    def put(kind, start, end, name, field='title', origin=None):
+        if not any(m['field'] == field and m['start'] == start and m['end'] == end and m['text'] == name and m.get('origin') == origin for m in matches):
+            matches.append({'kind': kind, 'start': start, 'end': end, 'text': name, 'field': field, 'origin': origin})
     # Names may be spaced/punctuated and use reviewed digit/homoglyph variants.
     for field, value in [('title', text)] + [('tag', normalize(t)) for t in sorted(set(tags))]:
         chars, positions = [], []
@@ -105,16 +125,27 @@ def references(title, tags, inventory):
                 is_command = field == 'title' and any(c.start() <= start and end <= c.end() for c in commands)
                 if command_only and not is_command:
                     continue
-                put('command' if is_command else 'name', start, end, value[start:end], field)
-    for match in OT.finditer(text):
-        put('ot_name', match.start(), match.end(), match.group())
+                put('command' if is_command else 'name', start, end, value[start:end], field, value if field == 'tag' else None)
+    case_text = unicodedata.normalize('NFKD', str(title))
+    case_text = ' '.join(''.join(c for c in case_text if not unicodedata.category(c).startswith('M')).split())
+    for match in NEW_OT.finditer(case_text):
+        put('ot_name', match.start(), match.end(), text[match.start():match.end()])
+    if LAUNCH.search(text) or PROTOCOL.search(text):
+        for match in OT.finditer(text):
+            put('ot_name', match.start(), match.end(), match.group())
     for match in DOMAIN.finditer(text):
         domain = match.group().split('/')[0]
         if domain in inventory['domains'] or LAUNCH.search(text):
             put('domain', match.start(), match.end(), match.group())
     for match in PROTOCOL.finditer(text):
         put('protocol', match.start(), match.end(), match.group())
-    return text, commands, matches
+    # A domain/name or known/OT-pattern overlap is one reference, not two.
+    unique = []
+    for match in sorted(matches, key=lambda m: (m['field'], -(m['end'] - m['start']), m['start'])):
+        if any(m['field'] == match['field'] and m.get('origin') == match.get('origin') and m['start'] <= match['start'] and match['end'] <= m['end'] for m in unique):
+            continue
+        unique.append(match)
+    return text, commands, sorted(unique, key=lambda m: (m['field'], m['start']))
 
 
 def context_features(title, tags, inventory):
@@ -126,26 +157,24 @@ def context_features(title, tags, inventory):
     private_commands = [c for c in commands if any(m['start'] >= c.start() and m['end'] <= c.end() for m in titles)]
     first = min((m['start'] for m in titles), default=0)
     prefix = text[:first]
+    raw = unicodedata.normalize('NFKC', str(title))
+    competing_pair = re.search(r'\b[A-Z][a-z]{3,}\s*/\s*[A-Z][a-z]{3,}\b', raw)
+    pair_before_reference = bool(competing_pair and (not titles or normalize(competing_pair.group()) in prefix))
     values.update(
-        identified_reference=1.0, title_reference=float(bool(titles)),
-        tag_reference=float(any(m['field'] == 'tag' for m in matches)),
+        identified_reference=1.0, competing_named_pair=float(pair_before_reference),
         server_command=float(bool(private_commands)),
         server_domain=float(any(m['kind'] == 'domain' for m in titles)),
-        ot_name=float(any(OT.fullmatch(m['text']) for m in titles)),
+        ot_name=float(any(OT.fullmatch(m['text']) for m in matches)),
         protocol=float(any(m['kind'] == 'protocol' for m in titles)),
         launch_context=float(bool(LAUNCH.search(text))),
-        other_commands=min(6, len(commands) - len(private_commands)) / 6,
-        command_share=len(private_commands) / max(1, len(commands)),
-        late_reference=first / max(1, len(text)),
         negated_reference=float(bool(re.search(r'\b(?:nao jogo|nao estou|not playing|nao|nunca)\b[^.!;]{0,30}$', prefix))),
         comparison=float(bool(re.search(r'\b(?:vs|versus)\b', text))),
         past_reference=float(bool(re.search(r'\b(?:ex[- ]|histor\w*|document\w*)', text))),
         sponsor_context=float(bool(re.search(r'\b(?:patrocin\w*|sponsor\w*|meu link|link do)\b', text))),
-        commercial_context=float(bool(re.search(r'(?:[!❗]\s*(?:loja|shop)|\btc\s*/|\bsub\b)', text))),
+        commercial_context=float(bool(re.search(r'(?:[!❗]\s*(?:loja|shop)|(?<![a-z])tc\s*/|\bsub\b)', text))),
         bracketed_reference=float(any(m['start'] and text[m['start'] - 1] == '[' for m in titles)),
-        multiple_references=min(3, len({canonical(m['text']) for m in matches})) / 3,
         separate_session_declaration=float(bool(re.search(r'\b(?:tibia global|hoje so|hoje jogo|jogo em)\b', prefix if titles else text))),
-        commercial_offer=float(bool(re.search(r'(?:\btc\s*/\s*mes|\bsem sub\b|\bsub\s+[0-9]+)', text))),
+        commercial_offer=float(bool(re.search(r'(?:(?<![a-z])tc\s*/\s*mes|\bsem sub\b|\bsub\s+[0-9]+)', text))),
         coordinated_reference=float(bool(re.search(r'\b(?:e|and)\s*$', prefix))),
         current_session_relation=float(bool(re.search(r'\b(?:jogo|jogando|estou no|playing|no|on)\s*$', prefix))),
     )
@@ -154,7 +183,7 @@ def context_features(title, tags, inventory):
 
 class PrivateModel:
     def __init__(self, data):
-        if data['format'] != 'entity-context-logit-v1':
+        if data['format'] != 'entity-context-logit-v2':
             raise ValueError('Unsupported private-evidence model')
         self.data = data
 

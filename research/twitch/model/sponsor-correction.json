@@ -1,0 +1,454 @@
+{
+  "source_commit": "43f963b",
+  "annotation_id": "audit:42",
+  "title": "✋🤪🤚 - EK 2450 -❗!loja❗😱50tc/mês😱⚠️não reseta⚠️ !rubinot - !neo !exitlag",
+  "tags": [
+    "Tibia",
+    "Inglês",
+    "TDAH",
+    "twinkmaldito"
+  ],
+  "channel_url": "https://www.twitch.tv/radizao",
+  "before": {
+    "private_probability": 0.9752084782804704,
+    "raw_logit": 3.6708518096444793,
+    "calibration": {
+      "method": "temperature",
+      "slope": 1.000353523886994,
+      "intercept": 0.0,
+      "active_calibration_rows": 17,
+      "minimum_slope_from_training_baseline": 1.000353523886994
+    },
+    "hide_threshold": 0.9893686926628219,
+    "features": [
+      {
+        "feature": "identified_reference",
+        "value": 1.0,
+        "weight": 1.5554772916560695,
+        "logit_contribution": 1.5554772916560695,
+        "probability_without_feature": 0.8924603387984957
+      },
+      {
+        "feature": "title_reference",
+        "value": 1.0,
+        "weight": -0.13610766781149156,
+        "logit_contribution": -0.13610766781149156,
+        "probability_without_feature": 0.9782957796264
+      },
+      {
+        "feature": "tag_reference",
+        "value": 0.0,
+        "weight": -2.6826714754516057,
+        "logit_contribution": -0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "server_command",
+        "value": 1.0,
+        "weight": 5.937930709368796,
+        "logit_contribution": 5.937930709368796,
+        "probability_without_feature": 0.09381826077429391
+      },
+      {
+        "feature": "server_domain",
+        "value": 0.0,
+        "weight": 0.7817946514618209,
+        "logit_contribution": 0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "ot_name",
+        "value": 1.0,
+        "weight": -1.4016633523410509,
+        "logit_contribution": -1.4016633523410509,
+        "probability_without_feature": 0.9937834758357741
+      },
+      {
+        "feature": "protocol",
+        "value": 0.0,
+        "weight": 2.831599047823379,
+        "logit_contribution": 0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "launch_context",
+        "value": 0.0,
+        "weight": 2.2222136871838494,
+        "logit_contribution": 0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "other_commands",
+        "value": 0.5,
+        "weight": 0.9434108531323864,
+        "logit_contribution": 0.4717054265661932,
+        "probability_without_feature": 0.9608447133317559
+      },
+      {
+        "feature": "command_share",
+        "value": 0.25,
+        "weight": 0.38724632629171524,
+        "logit_contribution": 0.09681158157292881,
+        "probability_without_feature": 0.9727560999146143
+      },
+      {
+        "feature": "late_reference",
+        "value": 0.6666666666666666,
+        "weight": -9.309842483904989,
+        "logit_contribution": -6.2065616559366585,
+        "probability_without_feature": 0.9999488606607106
+      },
+      {
+        "feature": "negated_reference",
+        "value": 0.0,
+        "weight": -3.6520828206646003,
+        "logit_contribution": -0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "comparison",
+        "value": 0.0,
+        "weight": 1.8777531131082292,
+        "logit_contribution": 0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "past_reference",
+        "value": 0.0,
+        "weight": -13.622014458863205,
+        "logit_contribution": -0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "sponsor_context",
+        "value": 0.0,
+        "weight": -10.253736869727778,
+        "logit_contribution": -0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "commercial_context",
+        "value": 1.0,
+        "weight": -2.3055965416469375,
+        "logit_contribution": -2.3055965416469375,
+        "probability_without_feature": 0.9974739297248512
+      },
+      {
+        "feature": "bracketed_reference",
+        "value": 0.0,
+        "weight": 2.5560613995647987,
+        "logit_contribution": 0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "multiple_references",
+        "value": 0.3333333333333333,
+        "weight": 16.976568054649892,
+        "logit_contribution": 5.65885601821663,
+        "probability_without_feature": 0.12039372113002539
+      },
+      {
+        "feature": "current_session_relation",
+        "value": 0.0,
+        "weight": -3.4281715635980667,
+        "logit_contribution": -0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "coordinated_reference",
+        "value": 0.0,
+        "weight": 6.7263379370675125,
+        "logit_contribution": 0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "commercial_offer",
+        "value": 0.0,
+        "weight": -5.050634511484269,
+        "logit_contribution": -0.0,
+        "probability_without_feature": 0.9752084782804704
+      },
+      {
+        "feature": "separate_session_declaration",
+        "value": 0.0,
+        "weight": -8.328388785383224,
+        "logit_contribution": -0.0,
+        "probability_without_feature": 0.9752084782804704
+      }
+    ],
+    "aliases": {
+      "amonot": false,
+      "baiakidle": false,
+      "deusold": false,
+      "deusot": false,
+      "eldrius": false,
+      "fortisot": false,
+      "futureot": false,
+      "hegalot": false,
+      "httpspokehero": false,
+      "ibaiakidle": false,
+      "idleworld": false,
+      "kingaslam": false,
+      "kingaslan": true,
+      "koliseuot": false,
+      "mauot": false,
+      "otponlinecom": false,
+      "papot": false,
+      "pixelot": false,
+      "pka": false,
+      "pokealianca": false,
+      "pokealiance": false,
+      "pokeidle": false,
+      "pokemonidle": false,
+      "pokexgamez": false,
+      "projectfibula": false,
+      "pxg": false,
+      "rubimot": false,
+      "rubiniot": false,
+      "rubinot": false,
+      "rubinott": false,
+      "rubintoinfernum": false,
+      "shadow": true,
+      "soe": true,
+      "wot": true
+    }
+  },
+  "after": {
+    "private_probability": 0.01,
+    "display_probability": 0.99,
+    "raw_logit": -3.031552358413886,
+    "calibration": {
+      "method": "temperature",
+      "slope": 1.5174629268861481,
+      "intercept": 0.0,
+      "active_calibration_rows": 17,
+      "minimum_slope_from_training_baseline": 1.000707758195552
+    },
+    "hide_threshold": 0.99,
+    "references": [
+      {
+        "kind": "command",
+        "start": 46,
+        "end": 53,
+        "text": "rubinot",
+        "field": "title",
+        "origin": null
+      }
+    ],
+    "features": [
+      {
+        "feature": "identified_reference",
+        "value": 1.0,
+        "weight": 5.0833026761936955,
+        "logit_contribution": 5.0833026761936955
+      },
+      {
+        "feature": "server_command",
+        "value": 1.0,
+        "weight": 4.777568317248793,
+        "logit_contribution": 4.777568317248793
+      },
+      {
+        "feature": "server_domain",
+        "value": 0.0,
+        "weight": 1.8842044460885963,
+        "logit_contribution": 0.0
+      },
+      {
+        "feature": "ot_name",
+        "value": 1.0,
+        "weight": 0.0,
+        "logit_contribution": 0.0
+      },
+      {
+        "feature": "protocol",
+        "value": 0.0,
+        "weight": 0.0,
+        "logit_contribution": 0.0
+      },
+      {
+        "feature": "launch_context",
+        "value": 0.0,
+        "weight": 0.22238666030512422,
+        "logit_contribution": 0.0
+      },
+      {
+        "feature": "negated_reference",
+        "value": 0.0,
+        "weight": -3.653490374880862,
+        "logit_contribution": -0.0
+      },
+      {
+        "feature": "comparison",
+        "value": 0.0,
+        "weight": 2.978233048024057,
+        "logit_contribution": 0.0
+      },
+      {
+        "feature": "past_reference",
+        "value": 0.0,
+        "weight": -7.674768878950422,
+        "logit_contribution": -0.0
+      },
+      {
+        "feature": "sponsor_context",
+        "value": 0.0,
+        "weight": -7.453849095926567,
+        "logit_contribution": -0.0
+      },
+      {
+        "feature": "commercial_context",
+        "value": 1.0,
+        "weight": -3.688298108309296,
+        "logit_contribution": -3.688298108309296
+      },
+      {
+        "feature": "bracketed_reference",
+        "value": 0.0,
+        "weight": 2.9340545556436854,
+        "logit_contribution": 0.0
+      },
+      {
+        "feature": "current_session_relation",
+        "value": 0.0,
+        "weight": -3.355006796864847,
+        "logit_contribution": -0.0
+      },
+      {
+        "feature": "coordinated_reference",
+        "value": 0.0,
+        "weight": 7.5701029650511495,
+        "logit_contribution": 0.0
+      },
+      {
+        "feature": "commercial_offer",
+        "value": 1.0,
+        "weight": -9.204125243547079,
+        "logit_contribution": -9.204125243547079
+      },
+      {
+        "feature": "separate_session_declaration",
+        "value": 0.0,
+        "weight": -12.653405641244845,
+        "logit_contribution": -0.0
+      },
+      {
+        "feature": "competing_named_pair",
+        "value": 0.0,
+        "weight": -8.86970220108304,
+        "logit_contribution": -0.0
+      }
+    ]
+  },
+  "fixes": {
+    "ot_name_weight": 0.0,
+    "removed_features": [
+      "late_reference",
+      "multiple_references",
+      "title_reference",
+      "tag_reference",
+      "other_commands",
+      "command_share"
+    ],
+    "aliases_removed": [
+      "httpspokehero",
+      "idleworld",
+      "otponlinecom",
+      "rubintoinfernum"
+    ],
+    "aliases_added": [
+      "pokeidleworld",
+      "rubinto"
+    ],
+    "example_excluded_from_fit": true,
+    "example_excluded_from_calibration": true,
+    "pricing_formats": {
+      "50tc/mês": 0.01,
+      "50 tc/mês": 0.01,
+      "50 TC / mês": 0.01
+    }
+  },
+  "threshold_selection": {
+    "method": "fixed-grid group-mean calibration cost",
+    "false_hide_cost": 50.0,
+    "miss_cost": 1,
+    "tie_break_cost_cutoff": 0.9803921568627451,
+    "tie_break": "nearest grid value at or above the cost-ratio cutoff, among equal-risk choices",
+    "minimum_risk_thresholds": [
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      0.95,
+      0.975,
+      0.99,
+      0.995,
+      0.999
+    ],
+    "calibration_groups": 23,
+    "candidates": [
+      {
+        "threshold": 0.5,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.6,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.7,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.8,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.9,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.95,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.975,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.99,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.995,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      },
+      {
+        "threshold": 0.999,
+        "group_mean_cost": 0.08695652173913043,
+        "non_private_flagged": 0,
+        "private_caught": 16
+      }
+    ],
+    "selected": 0.99
+  }
+}
