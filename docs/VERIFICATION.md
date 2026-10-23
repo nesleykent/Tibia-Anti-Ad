@@ -241,3 +241,11 @@ saved downloads at desktop/mobile sizes.
 Build/signature verification, separately: the personal Safari updater installed
 and verified 1.7.1, retaining the previous signed app. Its containing app can
 request an immediate rules refresh through the existing App Group bridge.
+
+Safari runtime verification, separately: after publication and opening the real
+Tibia directory, the native rules report recorded a successful fresh download
+without the previous validation error. All 85 metadata inputs matched against
+the earlier export had revision-6 probabilities; only 14 also matched revision 5.
+The live bare-name regression appeared in the native affected-stream report at
+89.79% private (10.21% official). This verifies that the running directory received
+the model, without claiming unsigned-extension or restart-persistence acceptance.
