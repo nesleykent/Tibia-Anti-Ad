@@ -78,3 +78,5 @@ Channel links update:
 
 - Added source-backed Twitch channel URLs directly to the compact consultation table, including adaismad/audit:155. Historical capture titles are distinguished from the channel's present live content. No VOD identity or current live status is invented.
 - Machine-readable review groups now retain channel/url and source index for each available capture link. Constructed examples without a real source channel remain marked as tests. Approved rows are consultation-only, not a new approval request.
+
+Pending-only navigation update: placed the 10 unresolved session records in 8 grouped rows plus Project Zomboid scope at the top of REVIEW.md, with direct channel links, full titles/tags and the specific open question. Unknown cases already have mandatory 1% supervision; do not ask again for approved blocks. Additional real sponsor-negative collection is agent work remaining before B. No annotation or runtime changes in this navigation edit.

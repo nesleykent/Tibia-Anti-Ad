@@ -2,6 +2,24 @@
 
 Rodada 2: os blocos privada (comandos/variantes) e não privada foram aprovados, com as adjudicações abaixo. Nenhum novo modelo foi treinado. O [histórico completo por registro](annotation-proposals.json) preserva propostas anteriores e rótulos originais. A [fila histórica compacta](review-queue.json) contém os estados atuais, sem solicitar nova revisão de blocos aprovados.
 
+## O que ainda falta
+
+**Para sua consulta: os 10 registros sem adjudicação de sessão abaixo, agrupados em 8 linhas, e o escopo de Project Zomboid.** Se não der para determinar a sessão, a regra de 1% já está decidida; não precisa inventar rótulo nem revisar novamente os blocos aprovados.
+
+| Título e canal/live | Tags | Estado atual | O que falta esclarecer |
+| --- | --- | --- | --- |
+| @Pulgazin [+18] ED 1600/2100 - Terribra/Ferobra !pix baiak-idle<br>audit:179, cases:3; [pulgazin](https://www.twitch.tv/pulgazin) | Português, baiakidle, BAIAKIDLE; baiakidle, BAIAKIDLE | sem alvo; P(privado)=1% | Baiak Idle identifica a sessão ou é divulgação incidental? |
+| RUMO AO LVL 500 TIBIA GLOBAL INABRA&#124; OT:FANTASYDREAM.ONLINE_/_/_/_/ SO OTHERS MAY LIFE_/_/_/_/_/ !COINS !LOJA !OT<br>audit:218; [lirryk](https://www.twitch.tv/lirryk) | Português | sem alvo; P(privado)=1% | O OT anunciado é a sessão atual ou uma divulgação? |
+| Rubinot, Aion 2, COD, LOL e Muita Resenha, cola ai!!<br>audit:283; [leomacare](https://www.twitch.tv/leomacare) | Português | sem alvo; P(privado)=1% | Qual dos jogos/servidores está sendo transmitido neste input? |
+| 𝐓𝐢𝐛𝐢𝐚 𝐆𝐥𝐨𝐛𝐚𝐥 𝐞 𝐑𝐮𝐛𝐢𝐧𝐨𝐭 !𝐣𝐚𝐩𝐚𝐜𝐨𝐢𝐧𝐬<br>audit:384; [noobziiinhoo](https://www.twitch.tv/noobziiinhoo) | Português, Reposição | sem alvo; P(privado)=1% | RubinOT é sessão, patrocínio ou alternância? |
+| Mais uma semana começando !social !discord !pix<br>audit:433; [darthey](https://www.twitch.tv/darthey) | Português, Tibia, rubinot | sem alvo; P(privado)=1% | A tag RubinOT identifica a sessão? |
+| Tibia - Dreamer's challenge Quest with Lore<br>Project Fibula?<br>audit:450, cases:8; [reylevi5](https://www.twitch.tv/reylevi5) | English, projectfibula, Repetir, Tibiawar; ∅ | sem alvo; P(privado)=1% | O Project Fibula mencionado identifica a sessão privada? |
+| @igaobraga - Linked &#124;&#124; MS 1050+ Bounty e umas Linked com muita resenha &#124;&#124;<br>audit:452; [igaobraga](https://www.twitch.tv/igaobraga) | chatting, igão, chat, RUBINIOT | sem alvo; P(privado)=1% | A tag RUBINIOT identifica a sessão? |
+| Bora de LAWL NEW ERA! RPG 2D + resenha<br>cases:4; teste histórico; sem canal fornecido | RPG | sem alvo; P(privado)=1% | Falta adjudicação do exemplo histórico LAWL; não há canal de origem fornecido. |
+| 🟢WRÓCIŁĘM Z WYJAZDU 🟢18:00 PROJECT ZOMBOID🟢WALKA O KICK PARTNERA!<br>audit:351; [dixusowaty](https://www.twitch.tv/dixusowaty) | Polski, chill, rage, SafeSpace | não privada proposta; escopo pendente | Decisão de escopo: esconder esse outro jogo ou mantê-lo visível? |
+
+**Trabalho que falta para mim antes de B:** completar a coleta de negativos reais com listas de patrocínio (há apenas 2 confirmados), apresentar as novas anotações e preparar separação de treino/calibração/teste sem vazamento. O modelo ainda não foi treinado. [Plano de coleta](DATA_GAP.md).
+
 ## Decisões registradas
 
 - Privadas: audit:25, audit:29, live2115:237, cases:23, cases:7, audit:429, cases:25, cases:64 e live2115:551. Eldrius Online (audit:132) foi corrigido para privada conforme a mantenedora.
