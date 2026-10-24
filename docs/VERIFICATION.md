@@ -290,3 +290,45 @@ data. The signed updater completed again, and Safari's native rules status
 recorded a fresh successful download without a validation error. This download
 check is separate from the saved running-classifier diagnostic above. The
 maintainer's current Show mode and threshold were preserved.
+
+## Project plus game descriptor and protocol, 1.7.3
+
+2026-10-24: reproduced the reported title/tag input, which revision 7 displayed
+as 99% official. A domain-only regression had missed this separate spelling.
+Revision 8 proposes the full project/protocol span, including an optional game
+descriptor, and displays this input as 2.3% official. The exact title, tags,
+case variants and generic gameplay/version controls are now regression tests.
+The original 399 raw metadata inputs retain 271 private labels, no private input
+above 50% official and no negative input above the exact 1% private baseline.
+The original export's recorded comparison remains 44 to 0 private errors.
+
+The initial retrain failed the required held-out country-suffix domain case and
+was not published. Domain transport augmentation and signed maximum-negative
+calibration repair that regression. A zero floor had discarded a valid learned
+boundary even though the held-out domain scored above all training negatives.
+Shapes with no positive supervision, including bare protocols, keep zero.
+Historical session labels, targets, identifier features and groups are preserved;
+new protocol annotations and nine regression controls extend the feature packet.
+
+Repository validation passed 79 Python tests, JavaScript acceptance, generated
+consistency and the complete active acceptance suite. The frozen fit reproduces
+exactly. Python/JavaScript reference, contribution and logit parity passed all
+544 original and supplemental raw metadata inputs. Chrome Beta separately passed
+the reported title's actual displayed complement, generic protocol control,
+filtering, desktop/mobile layout, grouping and a saved diagnostics download.
+
+The reported spelling is supervised development acceptance. It does not establish
+recognition of every unseen brand: an additional exploratory holdout excluding
+the Olympic identity still missed its title. The server-name acceptance report
+below concerns all server identities in the original export and the six required
+unseen-name cases, not an untouched external benchmark.
+
+The final complete server-name holdout caught 376/400 stream/identity pairs
+(94.0%) across 70 folds. All six mandatory unseen-name cases passed. Every fold
+excludes all matching historical and new examples, including derived views,
+before fitting from zero.
+
+Build/signature verification, separately: the personal updater installed and
+verified Safari 1.7.3 with the final model, retaining the previous signed app.
+These offline browser and signature checks do not establish the probability in
+an already-open live Safari card or restart persistence.

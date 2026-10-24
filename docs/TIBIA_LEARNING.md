@@ -137,6 +137,25 @@ The prefix indexed by `historical_count` also contains supplemental
 controls; the original 399-input export remains the final block. The supplement
 contains 145 newly reviewed metadata inputs and four protocol controls.
 
+Revision 8 adds nine project/protocol regression controls, including the reported
+project plus Tibia plus protocol title. The project proposal retains that full
+identifier span rather than dropping the version. Numeric brand and protocol
+spellings produce training views with and without the game descriptor; domain
+brands also produce single and country-suffix domain views. Both identifier
+classes receive transport views. Negative protocol proposals also vary the
+version spelling, so changing a gameplay title from 7.4 to 8.60 cannot supply
+server evidence. Each held-out server loses all its derived
+views with its original examples. These transformations do not add a runtime
+name inventory or change the v4 inference contract.
+
+Identifier shapes with both positive and negative supervision retain their signed
+maximum-negative calibration boundary. A forced zero floor was rejecting valid
+held-out domains even when their scores exceeded every training negative. Shapes
+without positive examples, including bare protocols, retain the zero floor.
+History augmentation revision 4 reconstructs prior capitalized project proposals
+from retained source metadata when a longer protocol proposal supersedes them.
+It preserves existing identifier annotations and session outcomes.
+
 Format v4 makes this feature contract explicit. A v3 runtime rejects v4 model
 downloads instead of silently ignoring structural features; it needs the updated
 extension source. New v4 installations reject older cached rules and use their

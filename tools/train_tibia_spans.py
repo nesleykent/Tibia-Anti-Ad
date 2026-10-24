@@ -71,15 +71,21 @@ def probability(row,model):
 def fit(rows):
     data={'format':'identifier-span-logit-v4','base_private_probability':BASE,
           'identifier_weights':fit_identifier(rows),'identifier_cutoffs':{},
-          'fitting':{'character_ridge':CHAR_RIDGE,'frequency_scaled_character_ridge':True,'structure_ridge':STRUCTURE_RIDGE,'iterations':ITERATIONS,'step':STEP,'cutoffs':'training negative-only metadata maxima within identifier shape'},
+          'fitting':{'character_ridge':CHAR_RIDGE,'frequency_scaled_character_ridge':True,'structure_ridge':STRUCTURE_RIDGE,'iterations':ITERATIONS,'step':STEP,'cutoffs':'training negative-only metadata maxima within identifier shape; signed cutoffs when both identifier classes are present'},
           'weights':{},'hide_threshold':.95,'calibration':{'slope':1.0,'intercept':0.0}}
+    positive_buckets={feature_bucket(c['kind'],c['features']) for r in rows for c in r['candidates'] if c['positive']}
     for r in rows:
         # Missing identifier annotations on a private input are not negative
         # identifier evidence. Session and identifier labels are distinct.
         if r['private'] or any(c['positive'] for c in r['candidates']):continue
         for c in r['candidates']:
             key=feature_bucket(c['kind'],c['features'])
-            data['identifier_cutoffs'][key]=max(data['identifier_cutoffs'].get(key,0.0),score(c['features'],data['identifier_weights'])+1e-8)
+            # A fitted logit has no universal zero boundary after structural
+            # calibration. Preserve the learned negative maximum even below
+            # zero when the shape has affirmative training examples. Shapes
+            # without any positives (such as bare protocols) retain zero.
+            floor=-float('inf') if key in positive_buckets else 0.0
+            data['identifier_cutoffs'][key]=max(data['identifier_cutoffs'].get(key,floor),score(c['features'],data['identifier_weights'])+1e-8)
     matrix=[list(vector(selected(r,data)).values()) for r in rows]
     supervision=[{'target':r['target'],'model_supervision':{'kind':r['supervision']}} for r in rows]
     data['weights']=fit_weights(supervision,None,matrix,FEATURES)
@@ -121,7 +127,7 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('action',choices=['fit','evaluate','holdout']);parser.add_argument('--data',type=Path,default=SEED);args=parser.parse_args()
     pack=json.loads(args.data.read_text());rows=pack['rows']
     if args.action=='fit':
-        data=fit(rows);data['revision']=7;data['training']={'data_sha256':hashlib.sha256(args.data.read_bytes()).hexdigest(),'rows':len(rows),'features':'candidate identifier characters and structure only; no channel, language or whole-title vocabulary'}
+        data=fit(rows);data['revision']=8;data['training']={'data_sha256':hashlib.sha256(args.data.read_bytes()).hexdigest(),'rows':len(rows),'features':'candidate identifier characters and structure only; no channel, language or whole-title vocabulary'}
         MODEL.write_text(json.dumps(data,indent=2)+'\n')
         print('Identifier model fitted')
     elif args.action=='evaluate':

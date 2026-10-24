@@ -30,6 +30,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Changed
 
+- 1.7.3: recognize project names followed by a legacy protocol, including an intervening Tibia descriptor. Train spelling and domain transport variants within each server fold, preserve signed identifier calibration boundaries, and retain existing annotations during history migration.
+
 - 1.6.3: Other games offers Show, Move to bottom and Hide, with a persisted minimum displayed-probability slider. Move to bottom preserves Twitch order within both groups using CSS order; incremental loads preserve the visible prefix while regrouping the unvisited suffix. Per-broadcast Show overrides apply in both filtering modes.
 
 - Private-server inference (1.5.0): supervised text-presence likelihoods and channel-separated logistic calibration replace the model that depended heavily on official-world references. Missing official references add no piracy evidence; titles and tags jointly supply present patterns. Unrelated games are excluded from positive training labels. Safari continues to display the complement of the private-server estimate. Automatic hiding now requires 98% estimated piracy probability. Documentation describes the model, cutoff, development comparisons and limits explicitly.

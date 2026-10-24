@@ -28,6 +28,10 @@ const root = path.resolve(__dirname, '../..');
         assert.deepEqual(actual, inputs);
         console.log('PASS full reviewed title/tag metadata transport');
         const cases = JSON.parse(await fs.readFile(path.join(root, 'tests/data/tibia-private-context-acceptance.json'), 'utf8')).cases;
+        cases.push(
+            {title: 'Olympic Tibia 7.4', tags: ['Gaming4Fun', 'VenezuelaStreamer'], private_probability_min: .5, private_probability_max: 1},
+            {title: 'Hunt Tibia 7.4', tags: [], private_probability_min: .01, private_probability_max: .01},
+        );
         await page.evaluate(rows => {
             document.body.replaceChildren();
             window.fixtureSettings = {};
@@ -53,14 +57,14 @@ const root = path.resolve(__dirname, '../..');
         }
         await page.addStyleTag({path: path.join(root, 'extension/browsers/safari/web/tibia-probability.css')});
         await page.addStyleTag({content: '[data-twitch-clean-hidden] {display:none} section {width:300px} h4 {overflow:hidden;white-space:nowrap}'});
-        await page.waitForFunction(() => document.querySelectorAll('article[data-tibia-private-result]').length === 3);
+        await page.waitForFunction(count => document.querySelectorAll('article[data-tibia-private-result]').length === count, cases.length);
         const result = await page.locator('article').evaluateAll(articles => articles.map(a => ({
             ...JSON.parse(a.getAttribute('data-tibia-private-result')), hidden: Boolean(a.closest('[data-twitch-clean-hidden]')),
             displayed: Number(a.querySelector('[data-tibia-official-probability]').getAttribute('data-tibia-official-probability')),
         })));
         cases.forEach((c, i) => {
             assert.ok(result[i].private_probability >= c.private_probability_min && result[i].private_probability <= c.private_probability_max);
-            assert.equal(result[i].hidden, result[i].hide);
+            assert.equal(result[i].hidden, result[i].display_probability < .01);
             assert.equal(result[i].displayed, result[i].display_probability);
         });
         for (const width of [1280, 375]) {

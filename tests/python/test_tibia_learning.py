@@ -15,6 +15,24 @@ from train_tibia_spans import SEED,MODEL,probability
 
 
 class IdentifierTests(unittest.TestCase):
+    def test_project_game_descriptor_and_protocol(self):
+        model=SpanModel.load(MODEL)
+        for title in ['Olympic Tibia 7.4', 'Olympic 7.4', 'olympic tibia 7.4',
+                      'OLYMPIC TIBIA 7.4']:
+            with self.subTest(title=title):
+                self.assertGreater(model.predict(title,['Gaming4Fun','VenezuelaStreamer'])['private_probability'],.5)
+        for title in ['Tibia 7.4', 'Hunt Tibia 7.4', 'Global Tibia 7.4',
+                      'Tibia 8.60', 'OBS 8.60', 'Hunt 7.4', 'Level 8.60',
+                      'Hunt 8.60', 'Hunt Tibia 8.60', 'Global Tibia 8.60']:
+            with self.subTest(title=title):
+                self.assertEqual(model.predict(title)['private_probability'],.01)
+        for source in ['Examplegame74.com','Examplegame74.com.br','Examplegame74']:
+            span=next(c for c in candidates(source) if c['kind']!='protocol')
+            for variant in ['examplegame 7.4','examplegame tibia 7.4']:
+                expected=span_features(dict(span,text=variant,kind='name',protocol_context=True))
+                self.assertIn(expected,augmentations(span))
+                self.assertIn(expected,augmentations(span,positive=False))
+
     def test_protocol_project_regressions_and_hosting_control(self):
         model=SpanModel.load(MODEL)
         for title in ['Trimera 7.4 | True Vanilla | LAUNCH SOON',
@@ -38,6 +56,25 @@ class IdentifierTests(unittest.TestCase):
         row={'private':True,'target':.99,'supervision':'private','candidates':[candidate]}
         with patch('train_tibia_spans.fit_identifier',return_value={}),patch('train_tibia_spans.fit_weights',return_value=dict.fromkeys(FEATURES,0.0)):
             self.assertEqual(fit([row])['identifier_cutoffs'],{})
+
+    def test_calibration_preserves_signed_boundary_for_supervised_shapes(self):
+        from tibia_spans import FEATURES,context,accepted
+        from train_tibia_spans import fit
+        def row(title,positive):
+            span=candidates(title)[0]
+            features=span_features(span)
+            if positive:features['s:test_positive']=1.0
+            candidate=dict(features=features,positive=positive,kind=span['kind'],
+                           field='title',start=0,context=context(title,[span]))
+            return dict(private=positive,target=.99 if positive else .01,
+                        supervision='private' if positive else 'no_private_server_evidence',candidates=[candidate])
+        yes,no,protocol=row('examplegame.com',True),row('exampletool.com',False),row('7.4',False)
+        with patch('train_tibia_spans.fit_identifier',return_value={'s:bias':-1.,'s:kind:domain':.5,'s:test_positive':2.}),patch('train_tibia_spans.fit_weights',return_value=dict.fromkeys(FEATURES,0.)):
+            model=fit([yes,no,protocol])
+        self.assertAlmostEqual(model['identifier_cutoffs']['domain'],-.5+1e-8)
+        self.assertEqual(model['identifier_cutoffs']['protocol'],0.)
+        self.assertFalse(accepted(no['candidates'][0]['features'],'domain',model))
+        self.assertTrue(accepted(yes['candidates'][0]['features'],'domain',model))
 
     def test_active_acceptance(self):
         from train_tibia_spans import evaluate
@@ -79,6 +116,11 @@ class IdentifierTests(unittest.TestCase):
             span=next(c for c in candidates(source) if c['kind'] in {'domain','command'})
             expected=span_features(dict(span,kind='name',text=brand))
             self.assertIn(expected,augmentations(span))
+            for suffix in ('.com','.com.br'):
+                expected=span_features(dict(span,kind='domain',text=brand+suffix))
+                if span['text'].split('/')[0]!=brand+suffix:
+                    self.assertIn(expected,augmentations(span))
+                    self.assertIn(expected,augmentations(span,positive=False))
 
     def test_all_labelled_export_rows_remain_acceptance_controls(self):
         pack=json.loads(SEED.read_text());model=json.loads(MODEL.read_text())
@@ -188,10 +230,27 @@ class PipelineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)):
             learning.save(Path(directory)/'captures/first.json',{'streams':[raw]})
             learning.refresh_augmentations(history)
-        self.assertEqual(history['augmentation_revision'],3)
+        self.assertEqual(history['augmentation_revision'],4)
         self.assertEqual(row['id'],learning.input_id(raw));self.assertTrue(row['private'])
         self.assertEqual(row['groups'],['unchanged'])
         self.assertTrue(candidate['augmentations'])
+
+    def test_protocol_proposal_migration_retains_prior_project_span(self):
+        from tibia_spans import LEGACY_PROJECT
+        raw={'title':'Examplegame Tibia 7.4','tags':[]}
+        span=next(c for c in candidates(raw['title'],project_pattern=LEGACY_PROJECT) if c['text']=='examplegame tibia')
+        candidate={'features':span_features(span),'positive':True,'augmentations':[],
+                   **{k:span[k] for k in ('kind','field','start')}}
+        original=dict(candidate['features'])
+        row={'id':learning.input_id(raw),'private':True,'groups':['retained'],'candidates':[candidate]}
+        history={'rows':[row],'augmentation_revision':3}
+        with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)):
+            learning.save(Path(directory)/'captures/first.json',{'streams':[raw]})
+            learning.refresh_augmentations(history)
+        self.assertEqual(candidate['features'],original)
+        self.assertTrue(candidate['positive'])
+        self.assertEqual(row['groups'],['retained'])
+        self.assertEqual(history['augmentation_revision'],4)
 
     def test_newest_failure_does_not_replace_model(self):
         packet={'id':'new-input','private':True,'candidates':[]}

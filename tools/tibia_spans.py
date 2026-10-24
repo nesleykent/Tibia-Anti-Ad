@@ -7,12 +7,13 @@ from tibia_private import BASE, FEATURES as CONTEXT_FEATURES, CONTEXT, DOMAIN, C
 # Language metadata is discarded before feature extraction, independently of fit.
 LANGUAGES = 'portugues portuguesbr portuguesbrasil portuguese english ingles espanhol espanol spanish polski polish polska svensk svenska swedish deutsch german francais french italiano italian nederlands dutch catalan catala turkce turkish norsk norwegian dansk danish suomi finnish russian russkiy ukrainian arabic japanese korean chinese pt br en eng esp es pl swe ptbr'.split()
 LANGUAGES = sorted(set(LANGUAGES + [normalize(v) for v in ('Englisch|EspañolLatinoamerica|EspañolLatinoamericano|SpanishAndEnglish|EnglishOnly|PolishOnly|Portoguês|PortuguêsBrasil|PortuguêsPT|PortugueseBR|Brasileiro|Inglés|PolishLanguage|Čeština|Czech|Ελληνικά|Greek|Magyar|Hungarian|Bahasa Indonesia|Indonesian|Bahasa Melayu|Malay|ไทย|Thai|Tiếng Việt|Vietnamese|Română|Romanian|Русский|Українська|العربية|日本語|한국어|中文|漢語|简体中文|繁體中文|Türkçe|Turkish|Català|Norsk|Suomi|Dansk|Filipino|Tagalog|Slovenčina|Slovak|Hrvatski|Croatian|Српски|Serbian|Български|Bulgarian|עברית|Hebrew|हिन्दी|Hindi').split('|')]))
+LEGACY_PROJECT = r'\b(?:[A-Z][a-z]+(?:\s+(?:of\s+)?[A-Z][a-z]+){1,2}|[A-Z]{3,}\s+[A-Z]{3,})\b'
 PATTERNS = {
  'domain': DOMAIN.pattern, 'command': COMMAND.pattern, 'protocol': PROTOCOL.pattern,
  'word': r'(?<![a-z0-9])[a-z][a-z0-9_-]{2,}(?![a-z0-9])',
  'compound': r'\b(?:[a-z][a-z0-9_-]*\s+(?:online|idle|idd le|ot)|(?:poke|pokemon|baiak|idle)\s+[a-z][a-z0-9_-]*(?:\s+(?:world|moon))?)\b',
  'spaced': r'\b(?:[a-z]\s+){3,}[a-z]\b',
- 'project': r'\b(?:[A-Z][a-z]+(?:\s+(?:of\s+)?[A-Z][a-z]+){1,2}|[A-Z]{3,}\s+[A-Z]{3,})\b',
+ 'project': r'(?<![a-zA-Z0-9_.-])[a-zA-Z][a-zA-Z0-9_-]{2,}\s+(?:[Tt][Ii][Bb][Ii][Aa]\s+)?[78]\.[0-9]{1,2}\b|' + LEGACY_PROJECT,
  'parts': r'(?:ot$|^ot|online|idle|^poke|baiak|server|arena)',
  'launch': LAUNCH.pattern,
 }
@@ -30,7 +31,7 @@ def domain_brand(value):
     return labels[-1]
 
 
-def candidates(title, tags=()):
+def candidates(title, tags=(), *, project_pattern=None):
     text = normalize(title)
     found = []
     def put(kind, m, field, value):
@@ -53,7 +54,7 @@ def candidates(title, tags=()):
     for field, value in [('title', text)] + [('tag', normalize(t)) for t in sorted(set(tags)) if normalize(t) not in LANGUAGES]:
         occupied = []
         if field == 'title':
-            for project in re.finditer(PATTERNS['project'], raw):
+            for project in re.finditer(project_pattern or PATTERNS['project'], raw):
                 m = re.compile(re.escape(normalize(project.group()))).search(value, project.start())
                 if m and m.start() == project.start():
                     put('name', m, field, value)
@@ -136,14 +137,35 @@ def augmentations(span, positive=True):
     if span['kind'] == 'domain':
         brand = domain_brand(value)
         variants.add(brand)
+        # Public suffix spelling must not become a server-name proxy. Keep
+        # the registered brand and label while varying the transport shape.
+        for suffix in ('.com', '.com.br'):
+            host = brand + suffix
+            if host != value:
+                transport.append(span_features(dict(span, text=host, kind='domain')))
         if value.endswith('.online'):
             variants.add(brand + ' online')
-    if not positive and span['kind'] != 'domain':
-        return transport
-    for part in ('online', 'idle', 'ot'):
-        if value.endswith(part) and len(value) > len(part) + 2 and ' ' not in value and '.' not in value:
-            variants.add(value[:-len(part)] + ' ' + part)
-    return transport + [span_features(dict(span, text=v, kind='name')) for v in sorted(variants)]
+    # A numeric server brand can spell its protocol separately, with or
+    # without the game descriptor. Apply the same views to negative entities.
+    # These views are generated inside each training fold, never at inference.
+    brand = domain_brand(value) if span['kind'] == 'domain' else value
+    protocol_brand = re.fullmatch(r'([a-z][a-z_-]{2,})(?:\s+(?:tibia\s+)?)?([78])\.?([0-9]{1,2})', brand)
+    if protocol_brand:
+        stem, major, minor = protocol_brand.groups()
+        variants.update({stem + ' ' + major + '.' + minor,
+                         stem + ' tibia ' + major + '.' + minor})
+        if not positive:
+            # A non-identifier does not become a project when its version
+            # changes. Cover short/long legacy version spellings so numeric
+            # character grams cannot turn generic gameplay into evidence.
+            for version in ('7.4', '7.6', '7.72', '8.0', '8.6', '8.60'):
+                variants.update({stem + ' ' + version, stem + ' tibia ' + version})
+    if positive or span['kind'] == 'domain':
+        for part in ('online', 'idle', 'ot'):
+            if value.endswith(part) and len(value) > len(part) + 2 and ' ' not in value and '.' not in value:
+                variants.add(value[:-len(part)] + ' ' + part)
+    return transport + [span_features(dict(span, text=v, kind='name',
+        protocol_context=bool(span.get('protocol_context') or PROTOCOL.search(v)))) for v in sorted(variants)]
 
 
 def bucket(span):

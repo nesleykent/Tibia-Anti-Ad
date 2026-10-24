@@ -71,7 +71,7 @@ const root = path.resolve(__dirname, '../..');
         const data = await page.evaluate(() => window.message('tibia-anti-ad:tibia-diagnostics'));
         assert.equal(data.streams.length, 32);
         assert.equal(data.threshold, 0.5);
-        assert.equal(data.model_revision, 7);
+        assert.equal(data.model_revision, 8);
         assert.equal(data.extension_version, 'test');
         assert.ok(data.model_sha256 && data.captured_at);
         for (const row of data.streams) {

@@ -11,7 +11,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
-from tibia_spans import candidates, span_features, context, augmentations
+from tibia_spans import candidates, span_features, context, augmentations, LEGACY_PROJECT
 from tibia_text import normalize
 from train_tibia_spans import ROOT, SEED, MODEL, fit, probability, holdout, evaluate
 
@@ -146,7 +146,7 @@ def label_batch(rows, model_name=MODEL_NAME):
 
 def refresh_augmentations(history):
     """Recompute structural features/views without changing source labels."""
-    if history.get('augmentation_revision') == 3:
+    if history.get('augmentation_revision') == 4:
         return
     def legacy_features(features):
         return tuple((key, value) for key, value in features.items()
@@ -158,7 +158,12 @@ def refresh_augmentations(history):
             if row is None:
                 continue
             spans = {}
-            for span in candidates(raw['title'], raw['tags']):
+            # A longer protocol proposal can subsume an older capitalized
+            # project span. Recover that annotated span from its source too;
+            # migration must retain labels rather than invent a new annotation.
+            source_spans = candidates(raw['title'], raw['tags'])
+            source_spans += candidates(raw['title'], raw['tags'], project_pattern=LEGACY_PROJECT)
+            for span in source_spans:
                 spans.setdefault(legacy_features(span_features(span)), []).append(span)
             for candidate in row['candidates']:
                 matches = [span for span in spans.get(legacy_features(candidate['features']), [])
@@ -171,7 +176,7 @@ def refresh_augmentations(history):
             del pending[row['id']]
     if pending:
         raise StageError('A retained label is missing its source capture')
-    history['augmentation_revision'] = 3
+    history['augmentation_revision'] = 4
 
 
 def label():
