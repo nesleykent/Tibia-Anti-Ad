@@ -11,11 +11,13 @@ def smoke():
         dict(title='Padventures - Event Halloween', tags=['PAD', 'PadventuresDiamond', 'Español'], private=True),
         dict(title='hunt bosses', tags=['English'], private=False),
     ])
+    failures = []
     for start in range(0, len(cases), 4):
         batch = cases[start:start + 4]
         results = label_batch(batch)
-        if any(r['private'] != c['private'] for r, c in zip(results, batch)):
-            raise StageError('Local labeller semantic smoke check failed')
+        failures.extend(start+i+1 for i,(r,c) in enumerate(zip(results,batch)) if r['private'] != c['private'])
+    if failures:
+        raise StageError('Local labeller semantic controls failed: '+','.join(map(str,failures)))
     print('Local inference passed 8 public semantic controls without API credentials')
 
 

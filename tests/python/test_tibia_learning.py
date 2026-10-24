@@ -253,6 +253,16 @@ class PipelineTests(unittest.TestCase):
             self.assertEqual(json.loads((path/'history.json').read_text())['rows'],completed)
             self.assertFalse((path/'newest.json').exists())
 
+    def test_seed_metadata_is_not_relabelled(self):
+        raw={'title':'Known fixture','tags':[]}
+        with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)),patch.object(learning,'SEED',Path(directory)/'seed.json'),patch.object(learning,'verify_labeller') as verify,patch.object(learning,'label_batch') as label:
+            path=Path(directory)
+            learning.save(path/'capture.json',{'streams':[raw]})
+            learning.save(path/'seed.json',{'rows':[{'id':'source-id','input_id':learning.input_id(raw)}]})
+            learning.label()
+            self.assertEqual(json.loads((path/'newest.json').read_text())['rows'],[])
+            verify.assert_not_called();label.assert_not_called()
+
     def test_local_provider_policy_migration_preserves_labels(self):
         with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)),patch.object(learning,'verify_labeller') as verify:
             path=Path(directory)

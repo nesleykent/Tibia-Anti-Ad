@@ -114,8 +114,11 @@ def label_batch(rows, model_name=MODEL_NAME):
         'Return every input exactly once. private means affirmative current private-server, Pokemon derivative or idle game evidence. '
         'Select only candidate indices that are actual server/project identifiers. Include actual identifiers even when sponsored, negated or compared; '
         'private describes the session, not mere mention. Generic commands/gameplay/languages are never identifiers. '
+        'Server identifiers need not contain the literal words Tibia or Pokemon. Consider OT/OTS naming, dedicated game domains, '
+        'and independently branded Pokemon/idle projects. An unfamiliar brand is not automatically generic gameplay. '
         'Use a consistent canonical brand in server for all spacing, domain, command and abbreviation variants. '
-        'For example PKA and Poke Alliance share canonical pokealliance. REDOT and redotserver.com share redot. '
+        'For example PKA and Poke Alliance identify the private Pokemon project canonical pokealliance. '
+        'REDOT and redotserver.com identify the private Tibia project canonical redot. '
         'A server command alone identifies the session; in a commercial/sponsor list it does not. '
         'No evidence in the supplied title and tags means private=false. Do not invent a span or identifier.\n'+rules)
     inputs=[{'id':input_id(r),'title':r['title'],'tags':r['tags'],'candidates':[{'index':i,'text':c['text'],'field':c['field']} for i,c in enumerate(cs)]} for r,cs in zip(rows,proposed)]
@@ -140,7 +143,7 @@ def label_batch(rows, model_name=MODEL_NAME):
             selected[index]=server_group(item['server'])
         if answer['private'] and not selected:raise StageError('Private label without an identifier span')
         packet={'id':input_id(r),'private':answer['private'],'target':.99 if answer['private'] else .01,
-                'label_provenance':{'provider':'ollama-local','model':response.get('model',model_name),'model_digest':MODEL_DIGEST,'rules_sha256':hashlib.sha256(rules.encode()).hexdigest()},
+                'label_provenance':{'provider':'ollama-local','model':response.get('model',model_name),'model_digest':MODEL_DIGEST,'prompt_sha256':hashlib.sha256(system.encode()).hexdigest(),'rules_sha256':hashlib.sha256(rules.encode()).hexdigest()},
                 'supervision':'private' if answer['private'] else 'no_private_server_evidence','groups':sorted(set(selected.values())),'candidates':[]}
         for i,c in enumerate(cs):
             packet['candidates'].append({'features':span_features(c),'augmentations':augmentations(c,positive=i in selected),'positive':i in selected,'group':selected.get(i,server_group(c['text'])),'kind':c['kind'],'field':c['field'],'start':c['start'],'context':context(r['title'],[c])})
@@ -201,8 +204,9 @@ def label():
         history.setdefault('decision_migrations',[]).append({'from':history['decisions_sha256'],'to':digest,'reason':'Local labeller replaces paid API; classification policy unchanged'})
     refresh_augmentations(history)
     previous={r['id']:r for r in history['rows']}
+    known=set(previous)|{r.get('input_id',r['id']) for r in json.loads(SEED.read_text())['rows']}
     unique={input_id(r):r for r in cap['streams']}
-    fresh=[r for key,r in unique.items() if key not in previous]
+    fresh=[r for key,r in unique.items() if key not in known]
     additions=[]
     if fresh:verify_labeller()
     for start in range(0,len(fresh),4):
