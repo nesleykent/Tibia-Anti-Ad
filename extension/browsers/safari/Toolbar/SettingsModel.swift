@@ -142,10 +142,8 @@ struct BlockedStream: Identifiable, Hashable {
 
     func requestExport() {
         guard let pageURL else { return }
-        defaults.set(pageURL.absoluteString, forKey: SharedStore.Key.exportURL)
-        exportStatus = "Preparing download…"
-        defaults.set(exportStatus, forKey: SharedStore.Key.exportStatus)
-        defaults.set(Date().timeIntervalSince1970 * 1000, forKey: SharedStore.Key.exportRequestedAt)
+        SharedStore.requestDiagnostics(url: pageURL, defaults: defaults)
+        exportStatus = defaults.string(forKey: SharedStore.Key.exportStatus) ?? "Preparing download…"
     }
 
     // channel -> title keeps that broadcast visible until its title changes; nil undoes it.

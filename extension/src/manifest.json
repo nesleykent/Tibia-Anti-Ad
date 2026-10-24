@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tibia Anti-Ad",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "description": "Blocks ads, trackers and anti-adblock walls on Twitch and 15 Tibia fansites: network rules, cosmetic fixes, Source quality and stitched video ad removal on Twitch. Every feature and site has its own switch.",
   "icons": {
     "16": "icons/icon-16.png",

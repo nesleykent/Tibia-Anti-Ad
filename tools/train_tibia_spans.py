@@ -8,9 +8,9 @@ from train_tibia_private import fit_weights, acceptance
 ROOT = Path(__file__).resolve().parents[1]
 SEED = ROOT / 'research/twitch/model/span-supervision.json'
 MODEL = ROOT / 'research/twitch/model/private-span-model.json'
-CHAR_RIDGE = 2e-05
+CHAR_RIDGE = 1e-05
 STRUCTURE_RIDGE = 1e-05
-ITERATIONS = 6000
+ITERATIONS = 12000
 STEP = 8
 
 def fit_identifier(rows):
@@ -69,9 +69,9 @@ def probability(row, model):
     return max(BASE, 1 / (1 + math.exp(-max(-40, min(40, z)))))
 
 def fit(rows):
-    data = {'format': 'identifier-span-logit-v3', 'base_private_probability': BASE, 'identifier_weights': fit_identifier(rows), 'identifier_cutoffs': {}, 'fitting': {'character_ridge': CHAR_RIDGE, 'frequency_scaled_character_ridge': True, 'structure_ridge': STRUCTURE_RIDGE, 'iterations': ITERATIONS, 'step': STEP, 'cutoffs': 'training negative-only metadata maxima within identifier shape'}, 'weights': {}, 'hide_threshold': 0.95, 'calibration': {'slope': 1.0, 'intercept': 0.0}}
+    data = {'format': 'identifier-span-logit-v4', 'base_private_probability': BASE, 'identifier_weights': fit_identifier(rows), 'identifier_cutoffs': {}, 'fitting': {'character_ridge': CHAR_RIDGE, 'frequency_scaled_character_ridge': True, 'structure_ridge': STRUCTURE_RIDGE, 'iterations': ITERATIONS, 'step': STEP, 'cutoffs': 'training negative-only metadata maxima within identifier shape'}, 'weights': {}, 'hide_threshold': 0.95, 'calibration': {'slope': 1.0, 'intercept': 0.0}}
     for r in rows:
-        if any((c['positive'] for c in r['candidates'])):
+        if r['private'] or any((c['positive'] for c in r['candidates'])):
             continue
         for c in r['candidates']:
             key = feature_bucket(c['kind'], c['features'])
@@ -124,7 +124,7 @@ def main():
     rows = pack['rows']
     if args.action == 'fit':
         data = fit(rows)
-        data['revision'] = 6
+        data['revision'] = 7
         data['training'] = {'data_sha256': hashlib.sha256(args.data.read_bytes()).hexdigest(), 'rows': len(rows), 'features': 'candidate identifier characters and structure only; no channel, language or whole-title vocabulary'}
         MODEL.write_text(json.dumps(data, indent=2) + '\n')
         print('Identifier model fitted')

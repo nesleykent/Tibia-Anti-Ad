@@ -20,8 +20,8 @@ an independent server even when another part of the title contains a shop comman
 packet: all 399 supplied inputs, historical supervision and generic controls.
 Historical targets remain unchanged. Explicit acceptance baselines are hard
 constraints; other historical disagreements remain soft targets alongside the
-new annotations. The old v2 model and its original experiments remain historical
-artifacts, separate from the active v3 model.
+new annotations. The old v2/v3 models and their original experiments remain
+historical artifacts, separate from the active v4 model.
 
 ## Reproduce
 
@@ -111,3 +111,34 @@ for servers excluded from training while fitting the derived names. These are
 training transformations; runtime inference still has no name/alias inventory.
 Retained API captures can refresh derived views without changing existing labels,
 identities or provenance; missing source captures fail the migration closed.
+
+## Protocol and project regression
+
+Revision 7 adds learned structural features for the relationship between a
+candidate project name and its adjacent protocol version, launch context,
+identifier length and numeric protocol suffix. Domain suffix analysis uses the
+registered brand label, including common multi-label country suffixes. Numeric
+brand/domain transport views are generated within the training fold for both
+positive identifiers and negative controls. Runtime inference still contains no
+name inventory.
+
+Recognition cutoffs distinguish compound project names from generic standalone
+suffix words, and a Poke/Pokemon prefix with a brand tail from the generic prefix
+alone. This keeps generic negative examples from setting the cutoff for a
+different identifier shape.
+
+Private session rows with missing identifier annotations cannot calibrate
+negative identifier cutoffs. Metadata review completed 18 missing identifier
+annotations in existing rows; the packet records those corrections and prior
+groups explicitly. Original session labels, targets and input identities remain
+unchanged. Canonical server aliases share a holdout identity, including protocol
+suffix variants; changed grouping retains the previous groups in the packet.
+The prefix indexed by `historical_count` also contains supplemental
+controls; the original 399-input export remains the final block. The supplement
+contains 145 newly reviewed metadata inputs and four protocol controls.
+
+Format v4 makes this feature contract explicit. A v3 runtime rejects v4 model
+downloads instead of silently ignoring structural features; it needs the updated
+extension source. New v4 installations reject older cached rules and use their
+bundled model. Scheduled history migration re-derives features from retained
+captures while preserving original labels, groups and label provenance.

@@ -3,7 +3,7 @@ import argparse
 import json
 from pathlib import Path
 from tibia_private import CONTEXT, OT
-from tibia_spans import SpanModel as PrivateModel, PATTERNS, LANGUAGES, SIZE, FEATURES
+from tibia_spans import SpanModel as PrivateModel, PATTERNS, LANGUAGES, SIZE, FEATURES, DOMAIN_SECOND_LEVELS
 from tibia_text import LOOKALIKE
 import hashlib
 
@@ -20,6 +20,7 @@ def browser_data():
     return {'revision': data['revision'], 'model_sha256': hashlib.sha256(frozen).hexdigest(), 'model': runtime,
             'inference': {'features': list(FEATURES), 'context': CONTEXT, 'lookalike': LOOKALIKE,
                           'languages': LANGUAGES, 'hash_size': SIZE,
+                          'domain_second_levels': list(DOMAIN_SECOND_LEVELS),
                           'patterns': dict(PATTERNS, ot=OT.pattern)}}
 
 

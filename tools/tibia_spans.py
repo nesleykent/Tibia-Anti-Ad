@@ -18,6 +18,16 @@ PATTERNS = {
 }
 SIZE = 4096
 FEATURES = CONTEXT_FEATURES + ('tag_identifier',)
+DOMAIN_SECOND_LEVELS = ('co', 'com', 'net', 'org', 'gov', 'edu', 'ac')
+
+
+def domain_brand(value):
+    labels = value.split('/')[0].split('.')
+    if len(labels) > 1:
+        labels.pop()
+        if len(labels) > 1 and labels[-1] in DOMAIN_SECOND_LEVELS:
+            labels.pop()
+    return labels[-1]
 
 
 def candidates(title, tags=()):
@@ -31,7 +41,10 @@ def candidates(title, tags=()):
             name = name[3:]
         if name in LANGUAGES:
             return
-        item = dict(kind=kind, start=start, end=end, text=name, field=field, origin=value if field == 'tag' else None, launch=bool(LAUNCH.search(text)), protocol_context=bool(PROTOCOL.search(text)))
+        adjacent = field == 'title' and kind in {'name', 'domain'} and any(
+            end <= p.start() and text[end:p.start()].strip() in {'', '-', 'v', 'version'}
+            for p in PROTOCOL.finditer(text))
+        item = dict(kind=kind, start=start, end=end, text=name, field=field, origin=value if field == 'tag' else None, launch=bool(LAUNCH.search(text)), protocol_context=bool(PROTOCOL.search(text)), protocol_adjacent=adjacent)
         if item not in found:
             found.append(item)
     # Capitalization is used only to propose a span, never as a language feature.
@@ -75,11 +88,28 @@ def span_features(span):
     structure = ['bias', 'kind:' + span['kind']]
     if span.get('protocol_context') and span['kind'] in {'name','domain'}:
         structure.append('protocol_context:' + span['kind'])
+    if span.get('protocol_adjacent'):
+        structure.append('protocol_adjacent:' + span['kind'])
+        if span.get('launch'):
+            structure.append('launch:protocol_adjacent:' + span['kind'])
+            size = len(re.sub('[^a-z]', '', value))
+            structure.append('launch:protocol_length:' + ('short' if size <= 6 else 'long'))
+    suffix_source = domain_brand(value) if span['kind'] == 'domain' else value
+    if span['kind'] != 'protocol' and re.search(r'(?:7[0-9]{1,2}|8[0-9]{1,2})$', re.sub('[^a-z0-9]', '', suffix_source)):
+        structure.append('protocol_suffix')
+        structure.append('protocol_suffix:' + span['kind'])
     for part, pattern in [('ot', r'ot$'), ('online', 'online'), ('idle', 'idle'), ('poke', r'^poke'), ('baiak', 'baiak'), ('server', 'server'), ('arena', 'arena')]:
         if re.search(pattern, key):
             structure.append('part:' + part)
-            if ' ' in value and part != 'poke':structure.append('compound:' + part)
+            if ' ' in value and part != 'poke':
+                structure.append('compound:' + part)
+                if part in {'online', 'idle'} and key.endswith(part):
+                    values['s:compound_stem_length:' + part] = min(16, len(key) - len(part)) / 8
             if span.get('launch'):structure.append('launch:' + part)
+    if key.startswith('poke'):
+        prefix = 'pokemon' if key.startswith('pokemon') else 'poke'
+        if len(key) > len(prefix) + 2:
+            structure.append('brand_tail:poke')
     if span['kind'] == 'domain':
         host = span['text'].split('/')[0]
         structure.extend(['domain:multi' if host.count('.') > 1 else 'domain:single'])
@@ -98,22 +128,22 @@ def augmentations(span, positive=True):
     """
     value = span['text'].lstrip('!').split('/')[0]
     variants = set()
+    # Numeric protocol suffixes can travel as a brand or a domain. Fit the
+    # transport shape on training identities only, including negative controls.
+    transport = []
+    if span['kind'] in {'name', 'command'} and re.fullmatch(r'[a-z][a-z0-9_-]*(?:7[0-9]{1,2}|8[0-9]{1,2})', value):
+        transport.append(span_features(dict(span, text=value + '.com', kind='domain')))
     if span['kind'] == 'domain':
-        labels = value.split('.')
-        if len(labels) > 1:
-            labels.pop()  # TLD
-            if len(labels) > 1 and labels[-1] in {'co', 'com', 'net', 'org', 'gov', 'edu', 'ac'}:
-                labels.pop()
-            brand = labels[-1]
-            variants.add(brand)
-            if value.endswith('.online'):
-                variants.add(brand + ' online')
+        brand = domain_brand(value)
+        variants.add(brand)
+        if value.endswith('.online'):
+            variants.add(brand + ' online')
     if not positive and span['kind'] != 'domain':
-        return []
+        return transport
     for part in ('online', 'idle', 'ot'):
         if value.endswith(part) and len(value) > len(part) + 2 and ' ' not in value and '.' not in value:
             variants.add(value[:-len(part)] + ' ' + part)
-    return [span_features(dict(span, text=v, kind='name')) for v in sorted(variants)]
+    return transport + [span_features(dict(span, text=v, kind='name')) for v in sorted(variants)]
 
 
 def bucket(span):
@@ -122,8 +152,13 @@ def bucket(span):
 
 def feature_bucket(kind, features):
     if kind != 'name':return kind
+    if 's:launch:protocol_adjacent:name' in features:
+        return 'name:protocol-launch:' + ('short' if 's:launch:protocol_length:short' in features else 'long')
     for part in ('ot','online','idle','poke','baiak','server','arena'):
-        if 's:part:'+part in features:return 'name:'+part
+        if 's:part:'+part in features:
+            if part == 'poke' and 's:brand_tail:poke' in features:return 'name:branded:poke'
+            if 's:compound:'+part in features:return 'name:compound:'+part
+            return 'name:'+part
     return 'name:other'
 
 
@@ -165,7 +200,7 @@ def context(title, matches):
 
 class SpanModel:
     def __init__(self, data):
-        if data['format'] != 'identifier-span-logit-v3':
+        if data['format'] != 'identifier-span-logit-v4':
             raise ValueError('Unsupported identifier model')
         self.data = data
 

@@ -23,6 +23,8 @@ class BrowserParityTests(unittest.TestCase):
             ('😀 !rubinot', []), ('não jogo RubinOT, só Antica', []),
             ('Tibia Global vs RubinOT', []), ('WAR?? KKKK | !rubinot', ['Português']),
             ('FutureOT', []), ('playing Feruots & Retronic', []), ('TSBot', []), ('TRIMERA 7.4 LAUNCH SOON', []),
+            ('DARKORIA 8.60 OPEN BETA', []), ('Olympic74.com', []), ('!Ts /!moedaz !pix !exitlag #tsxhost.com', []),
+            ('Examplegame74.com.br', []),
             ('😀 hunt bosses', ['Português']), ('R U B I N O T', ['RUBINIOT']),
             ('xРubinOTy', []), ('aRubinOTz', []), ('50 TC / mês !rubinot', []),
         ])

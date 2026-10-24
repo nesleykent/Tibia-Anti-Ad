@@ -15,6 +15,30 @@ from train_tibia_spans import SEED,MODEL,probability
 
 
 class IdentifierTests(unittest.TestCase):
+    def test_protocol_project_regressions_and_hosting_control(self):
+        model=SpanModel.load(MODEL)
+        for title in ['Trimera 7.4 | True Vanilla | LAUNCH SOON',
+                      'DARKORIA 8.60 | OPEN BETA OCT 24', 'Olympic74.com']:
+            with self.subTest(title=title):
+                self.assertGreater(model.predict(title)['private_probability'],.5)
+        for title in ['!Ts /!moedaz !pix !exitlag #tsxhost.com',
+                      'Tibia 15.00 update launch soon', 'OBS 8.60 open beta']:
+            with self.subTest(title=title):
+                self.assertEqual(model.predict(title)['private_probability'],.01)
+        for title in ['Examplegame74.com','Examplegame74.com.br']:
+            domain=next(c for c in candidates(title) if c['kind']=='domain')
+            self.assertIn('s:protocol_suffix:domain',span_features(domain))
+
+    def test_private_inputs_cannot_calibrate_negative_identifier_cutoffs(self):
+        from tibia_spans import FEATURES,context
+        from train_tibia_spans import fit
+        span=candidates('Fixture')[0]
+        candidate={'features':span_features(span),'positive':False,'kind':span['kind'],
+                   'field':'title','start':0,'context':context('Fixture',[span])}
+        row={'private':True,'target':.99,'supervision':'private','candidates':[candidate]}
+        with patch('train_tibia_spans.fit_identifier',return_value={}),patch('train_tibia_spans.fit_weights',return_value=dict.fromkeys(FEATURES,0.0)):
+            self.assertEqual(fit([row])['identifier_cutoffs'],{})
+
     def test_active_acceptance(self):
         from train_tibia_spans import evaluate
         self.assertTrue(all(evaluate()['checks'].values()))
@@ -63,6 +87,15 @@ class IdentifierTests(unittest.TestCase):
             if row['private']:self.assertGreater(p,.5)
             else:self.assertEqual(p,.01)
 
+    def test_supplemental_capture_and_protocol_controls(self):
+        pack=json.loads(SEED.read_text());model=json.loads(MODEL.read_text())
+        end=pack['historical_count'];start=end-pack['supplemental_count']
+        for row in pack['rows'][start:end]:
+            with self.subTest(input_id=row['id']):
+                p=probability(row,model)
+                if row['private']:self.assertGreater(p,.5)
+                else:self.assertEqual(p,.01)
+
     def test_feature_replay_matches_live_inference(self):
         # Raw public acceptance metadata exercises the same context reducer used
         # by retained hashed captures, including sponsor and mixed controls.
@@ -84,6 +117,36 @@ class IdentifierTests(unittest.TestCase):
 
 
 class PipelineTests(unittest.TestCase):
+    def test_structural_feature_migration_keeps_original_annotations(self):
+        raw={'title':'Examplegame 8.60 OPEN BETA','tags':[]}
+        span=next(c for c in candidates(raw['title']) if c['text']=='examplegame')
+        features=span_features(span)
+        legacy={k:v for k,v in features.items() if not k.startswith(('s:protocol_adjacent:', 's:launch:protocol_adjacent:', 's:launch:protocol_length:', 's:protocol_suffix', 's:brand_tail:poke', 's:compound_stem_length:'))}
+        candidate={'features':legacy,'positive':True,'augmentations':[]}
+        row={'id':learning.input_id(raw),'private':True,'groups':['original'],'label_provenance':{'source':'original'},'candidates':[candidate]}
+        history={'rows':[row],'augmentation_revision':2}
+        with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)):
+            learning.save(Path(directory)/'captures/source.json',{'streams':[raw]})
+            learning.refresh_augmentations(history)
+        self.assertEqual(candidate['features'],features)
+        self.assertEqual(row['groups'],['original'])
+        self.assertEqual(row['label_provenance'],{'source':'original'})
+        self.assertTrue(candidate['positive']);self.assertTrue(row['private'])
+
+    def test_repeated_identifier_migration_preserves_span_positions(self):
+        raw={'title':'Examplegame 8.60 OPEN BETA / Examplegame','tags':[]}
+        spans=[c for c in candidates(raw['title']) if c['text']=='examplegame']
+        self.assertEqual(len(spans),2)
+        cs=[]
+        for span in spans:
+            fs={k:v for k,v in span_features(span).items() if not k.startswith(('s:protocol_adjacent:', 's:launch:protocol_adjacent:', 's:launch:protocol_length:', 's:protocol_suffix', 's:brand_tail:poke', 's:compound_stem_length:'))}
+            cs.append(dict(features=fs,positive=True,augmentations=[],**{k:span[k] for k in ('kind','field','start')}))
+        history={'rows':[{'id':learning.input_id(raw),'candidates':cs}],'augmentation_revision':2}
+        with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)):
+            learning.save(Path(directory)/'captures/source.json',{'streams':[raw]})
+            learning.refresh_augmentations(history)
+        self.assertEqual([c['features'] for c in cs],[span_features(span) for span in spans])
+
     def test_twitch_pagination_keeps_only_metadata(self):
         responses=[{'access_token':'sentinel-token'}, {'data':[{'id':'509975'}]},
             {'data':[{'id':'1','game_id':'509975','title':'First','tags':['a'],'user_name':'excluded'}],'pagination':{'cursor':'next'}},
@@ -125,7 +188,7 @@ class PipelineTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)):
             learning.save(Path(directory)/'captures/first.json',{'streams':[raw]})
             learning.refresh_augmentations(history)
-        self.assertEqual(history['augmentation_revision'],2)
+        self.assertEqual(history['augmentation_revision'],3)
         self.assertEqual(row['id'],learning.input_id(raw));self.assertTrue(row['private'])
         self.assertEqual(row['groups'],['unchanged'])
         self.assertTrue(candidate['augmentations'])

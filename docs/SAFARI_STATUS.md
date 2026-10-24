@@ -72,3 +72,9 @@ compatible already-running classifier can receive published model data without
 waiting six hours. This is a model refresh request, not proof that Safari reloaded
 changed JavaScript. Do not equate installed files or native registration with the
 classifier executing in an open page.
+
+The containing app also accepts `--export-tibia-diagnostics` followed by an open
+Twitch Tibia category URL. This reuses the native popover's export request and
+the page-origin JSON download. It does not enable Apple Events, inspect images,
+change filter settings or write captures into the repository. Verify the saved
+file and its runtime/model revision before using it as activation evidence.

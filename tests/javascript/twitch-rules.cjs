@@ -16,6 +16,7 @@ for (const revision of [-1, 1.5, '999', Infinity]) {
 const newer = { ...bundled, revision: bundled.revision + 1 };
 assert.equal(R.current({ data: newer }), newer, 'Newer compatible rules must still update');
 assert.equal(R.valid({ ...bundled, model: { ...bundled.model, format: 'unsupported' } }), false);
+assert.equal(R.valid({ ...bundled, model: { ...bundled.model, format: 'identifier-span-logit-v3' } }), false, 'Structural feature changes require a compatible runtime');
 assert.equal(R.valid({ ...bundled, model: { ...bundled.model, weights: {} } }), false);
 assert.equal(R.current(null), bundled);
 

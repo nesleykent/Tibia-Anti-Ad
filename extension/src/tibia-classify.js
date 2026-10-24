@@ -26,10 +26,10 @@
     };
     const create = data => {
         const model = data?.model, spec = data?.inference;
-        if (model?.format !== 'identifier-span-logit-v3' || model.base_private_probability !== 0.01
+        if (model?.format !== 'identifier-span-logit-v4' || model.base_private_probability !== 0.01
             || !spec?.features?.length || !spec.context || !spec.patterns || !spec.lookalike
             || !model.identifier_weights || !model.identifier_cutoffs || Object.values(model.identifier_cutoffs).some(w => !Number.isFinite(w))
-            || !Array.isArray(spec.languages) || spec.hash_size !== 4096
+            || !Array.isArray(spec.languages) || !Array.isArray(spec.domain_second_levels) || spec.hash_size !== 4096
             || Object.values(model.identifier_weights).some(w => !Number.isFinite(w))
             || !Number.isFinite(model.hide_threshold) || model.hide_threshold <= 0 || model.hide_threshold > 1
             || !Number.isFinite(model.calibration?.slope) || model.calibration.slope <= 0
@@ -49,13 +49,32 @@
             for (const gram of [...grams].sort()) { const i = String(hash('span:' + gram) % spec.hash_size); features[i] = (features[i] || 0) + 1 / Math.sqrt(Math.max(1, grams.size)); }
             const structure = ['bias', 'kind:' + span.kind];
             if (span.protocol_context && ['name', 'domain'].includes(span.kind)) { structure.push('protocol_context:' + span.kind); }
+            if (span.protocol_adjacent) {
+                structure.push('protocol_adjacent:' + span.kind);
+                if (span.launch) {
+                    structure.push('launch:protocol_adjacent:' + span.kind);
+                    structure.push('launch:protocol_length:' + (value.replace(/[^a-z]/g, '').length <= 6 ? 'short' : 'long'));
+                }
+            }
+            let suffixSource = value;
+            if (span.kind === 'domain') {
+                const labels = value.split('.');
+                if (labels.length > 1) { labels.pop(); }
+                if (labels.length > 1 && spec.domain_second_levels.includes(labels.at(-1))) { labels.pop(); }
+                suffixSource = labels.at(-1);
+            }
+            if (span.kind !== 'protocol' && /(?:7[0-9]{1,2}|8[0-9]{1,2})$/.test(suffixSource.replace(/[^a-z0-9]/g, ''))) { structure.push('protocol_suffix', 'protocol_suffix:' + span.kind); }
             for (const [part, pattern] of [['ot', 'ot$'], ['online', 'online'], ['idle', 'idle'], ['poke', '^poke'], ['baiak', 'baiak'], ['server', 'server'], ['arena', 'arena']]) {
                 if (test(key, pattern)) {
                     structure.push('part:' + part);
-                    if (value.includes(' ') && part !== 'poke') { structure.push('compound:' + part); }
+                    if (value.includes(' ') && part !== 'poke') {
+                        structure.push('compound:' + part);
+                        if (['online', 'idle'].includes(part) && key.endsWith(part)) { features['s:compound_stem_length:' + part] = Math.min(16, key.length - part.length) / 8; }
+                    }
                     if (span.launch) { structure.push('launch:' + part); }
                 }
             }
+            if (key.startsWith('poke') && key.length > (key.startsWith('pokemon') ? 7 : 4) + 2) { structure.push('brand_tail:poke'); }
             if (span.kind === 'domain') { structure.push(span.text.split('/')[0].split('.').length > 2 ? 'domain:multi' : 'domain:single'); }
             for (const name of structure) { features['s:' + name] = 1; }
             return features;
@@ -67,7 +86,9 @@
                 let {start, end} = m, name = m.text;
                 if (name.startsWith('ex-')) { start += 3; name = name.slice(3); }
                 if (spec.languages.includes(name)) { return; }
-                const item = {kind, start, end, text: name, field, origin: field === 'tag' ? value : null, launch: test(text, pat.launch), protocol_context: test(text, pat.protocol)};
+                const adjacent = field === 'title' && ['name', 'domain'].includes(kind) && matches(text, pat.protocol).some(p =>
+                    end <= p.start && ['', '-', 'v', 'version'].includes(slice(text, end, p.start).trim()));
+                const item = {kind, start, end, text: name, field, origin: field === 'tag' ? value : null, launch: test(text, pat.launch), protocol_context: test(text, pat.protocol), protocol_adjacent: adjacent};
                 if (!proposed.some(c => JSON.stringify(c) === JSON.stringify(item))) { proposed.push(item); }
             };
             for (const [field, value] of [['title', text], ...[...new Set(tags)].sort().filter(t => !spec.languages.includes(normalize(t))).map(t => ['tag', normalize(t)])]) {
@@ -99,7 +120,15 @@
             const found = proposed.filter(c => {
                 const fs = spanFeatures(c);
                 const part = ['ot', 'online', 'idle', 'poke', 'baiak', 'server', 'arena'].find(p => Object.hasOwn(fs, 's:part:' + p));
-                const bucket = c.kind === 'name' ? 'name:' + (part || 'other') : c.kind;
+                let bucket = c.kind;
+                if (c.kind === 'name') {
+                    bucket = 'name:' + (part || 'other');
+                    if (part === 'poke' && Object.hasOwn(fs, 's:brand_tail:poke')) { bucket = 'name:branded:poke'; }
+                    else if (part && Object.hasOwn(fs, 's:compound:' + part)) { bucket = 'name:compound:' + part; }
+                    if (Object.hasOwn(fs, 's:launch:protocol_adjacent:name')) {
+                        bucket = 'name:protocol-launch:' + (Object.hasOwn(fs, 's:launch:protocol_length:short') ? 'short' : 'long');
+                    }
+                }
                 return sum(Object.keys(fs).sort().map(f => fs[f] * (model.identifier_weights[f] || 0))) >= (model.identifier_cutoffs[bucket] || 0);
             });
             found.sort((a, b) => cmp(a.field, b.field) || cmp(a.origin || '', b.origin || '') || a.start - b.start || a.end - b.end);

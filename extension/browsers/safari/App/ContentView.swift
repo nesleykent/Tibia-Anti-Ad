@@ -12,6 +12,11 @@ struct TibiaAntiAdApp: App {
         if ProcessInfo.processInfo.arguments.contains("--update-filter-rules") {
             SharedStore.requestRulesUpdate()
         }
+        let arguments = ProcessInfo.processInfo.arguments
+        if let index = arguments.firstIndex(of: "--export-tibia-diagnostics"),
+           arguments.indices.contains(index + 1), let url = URL(string: arguments[index + 1]) {
+            SharedStore.requestDiagnostics(url: url)
+        }
     }
 
     var body: some Scene {

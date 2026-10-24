@@ -80,3 +80,4 @@ Live website preservation, cross-browser enforcement and Twitch ad-break behavio
 
 - 1.7.0: recognize learned identifier spans without a server alias inventory, preserve metadata-only acceptance controls, and add gated twice-daily capture, API labelling and model publication.
 - 1.7.1: train bare project names from annotated domains, retaining negative tool/shop controls and server-name holdouts. Personal Safari updates request fresh rules through the containing app's App Group.
+- 1.7.2: learn project/protocol and numeric domain structure, correct negative-cutoff calibration, and retain the additional metadata regressions. The signed Safari app can request the existing local diagnostics export.

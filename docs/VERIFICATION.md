@@ -249,3 +249,37 @@ the earlier export had revision-6 probabilities; only 14 also matched revision 5
 The live bare-name regression appeared in the native affected-stream report at
 89.79% private (10.21% official). This verifies that the running directory received
 the model, without claiming unsigned-extension or restart-persistence acceptance.
+
+## Project/protocol recognition, 1.7.2
+
+2026-10-24: metadata review of a newly saved Safari diagnostic covered 145 inputs,
+112 labelled private. One private input previously displayed more than 50%
+official; revision 7 reduces that count to 0. One hosting-domain false positive
+also returns to the exact 1% private baseline. Two additional historical launch
+and protocol regressions now pass.
+
+The trainer no longer calibrates negative identifier cutoffs from private session
+rows with missing identifier annotations. Eighteen missing identifier annotations
+were completed with corrections and prior groups retained in the feature-only
+packet. Historical session labels and targets remain unchanged. Canonical aliases
+share a holdout identity. All original 399 controls still pass, including the 271
+private inputs and the original 44-to-0 count above 50% official.
+
+The complete server-name holdout caught 367/400 stream/identity pairs across 70
+folds (91.8%), with all six mandatory cases passing. The identity annotations and
+canonical alias grouping are more complete than in the earlier 68-fold report;
+these remain development acceptance results, not untouched validation claims.
+
+Repository checks passed 76 Python tests, JavaScript acceptance, inference parity
+and generated-source consistency. The frozen model reproduced exactly from its
+supervision. Python/JavaScript parity also passed all 544 raw metadata inputs from
+the original and supplemental captures. Browser verification separately passed
+full metadata transport, complement/hiding, grouping, session retention and an
+actual saved diagnostics download at desktop/mobile sizes in Chrome Beta.
+
+Build/signature verification, separately: the personal updater installed and
+verified Safari 1.7.2. Runtime verification, separately: a saved diagnostic from
+a real Safari category page reported extension 1.7.2 and model 7; all 54 loaded
+inputs matched the final model's predictions. This checks the active classifier,
+without claiming whole-category coverage, unsigned-extension acceptance or
+restart persistence. Format v4 requires the updated extension source.

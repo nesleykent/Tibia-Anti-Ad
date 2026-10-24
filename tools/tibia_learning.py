@@ -151,25 +151,32 @@ def label_batch(rows, model_name=MODEL_NAME):
     return packets
 
 def refresh_augmentations(history):
-    """Recompute derived views from retained captures without changing labels."""
-    if history.get('augmentation_revision') == 2:
+    """Recompute structural features/views without changing source labels."""
+    if history.get('augmentation_revision') == 3:
         return
+
+    def legacy_features(features):
+        return tuple(((key, value) for key, value in features.items() if not key.startswith(('s:protocol_adjacent:', 's:launch:protocol_adjacent:', 's:launch:protocol_length:', 's:protocol_suffix', 's:brand_tail:poke', 's:compound_stem_length:'))))
     pending = {row['id']: row for row in history['rows']}
     for path in sorted((WORK / 'captures').glob('*.json')):
         for raw in json.loads(path.read_text())['streams']:
             row = pending.get(input_id(raw))
             if row is None:
                 continue
-            spans = {tuple(span_features(c).items()): c for c in candidates(raw['title'], raw['tags'])}
+            spans = {}
+            for span in candidates(raw['title'], raw['tags']):
+                spans.setdefault(legacy_features(span_features(span)), []).append(span)
             for candidate in row['candidates']:
-                span = spans.get(tuple(candidate['features'].items()))
-                if span is None:
+                matches = [span for span in spans.get(legacy_features(candidate['features']), []) if all((key not in candidate or candidate[key] == span[key] for key in ('kind', 'field', 'start')))]
+                if not matches or any((span_features(span) != span_features(matches[0]) for span in matches[1:])):
                     raise StageError('Retained identifier feature provenance mismatch')
+                span = matches[0]
+                candidate['features'] = span_features(span)
                 candidate['augmentations'] = augmentations(span, positive=candidate['positive'])
             del pending[row['id']]
     if pending:
         raise StageError('A retained label is missing its source capture')
-    history['augmentation_revision'] = 2
+    history['augmentation_revision'] = 3
 
 def label():
     cap = json.loads((WORK / 'capture.json').read_text())

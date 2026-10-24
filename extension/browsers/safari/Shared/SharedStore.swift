@@ -29,6 +29,18 @@ enum SharedStore {
         defaults.synchronize()
     }
 
+    static func requestDiagnostics(url: URL, defaults: UserDefaults = SharedStore.defaults) {
+        guard url.scheme == "https", ["twitch.tv", "www.twitch.tv"].contains(url.host ?? ""),
+              url.path.lowercased().trimmingCharacters(in: CharacterSet(charactersIn: "/")) == "directory/category/tibia" else {
+            defaults.set("Open the Twitch Tibia category first.", forKey: Key.exportStatus)
+            return
+        }
+        defaults.set(url.absoluteString, forKey: Key.exportURL)
+        defaults.set("Preparing download…", forKey: Key.exportStatus)
+        defaults.set(Date().timeIntervalSince1970 * 1000, forKey: Key.exportRequestedAt)
+        defaults.synchronize()
+    }
+
     // A native message from the web extension's background script.
     static func handle(_ message: [String: Any], defaults: UserDefaults = SharedStore.defaults) -> [String: Any] {
         switch message["type"] as? String {
