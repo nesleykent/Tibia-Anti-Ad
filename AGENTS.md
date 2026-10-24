@@ -2,6 +2,9 @@
 
 - Read [settled maintainer decisions](DECISIONS.md) before classification, popup or model-pipeline work. These decisions must not be re-asked.
 
+- Classification, training and labelling use complete stream titles and tag arrays as their only evidence. Keep implementation, research, plans and output within that scope.
+- Describe implemented behavior directly in release notes, documentation, commit messages and replies. Do not enumerate unused inputs, discarded approaches or historical alternatives, even as exclusions.
+
 - Preserve the public filter-list URLs and the shared extension source in `extension/src/`.
 - Keep local originals and captures in the visible, ignored `local/` folder. Build output belongs in `dist/`. Remove disposable browser profiles in `finally`, including launch/close failures. After verification, discard compiler intermediates and temporary caches; retain diagnostic evidence, training data, current ZIPs and the Safari rollback backup. Reuse an available Python runtime instead of leaving a duplicate training environment in the repository.
 - Run `PYTHONDONTWRITEBYTECODE=1 python3 tools/check_project.py` for repository checks. Record browser verification separately from build and signature verification.
