@@ -30,7 +30,7 @@ The median differences were 517 requests and 4,342,628 bytes. Other browser prob
 - **#1:** HakaiMarket `/monsters/dragon` produced a reproducible blank page at narrow width in the filtered sequence, with `getCharmPointsValue is not defined`. The unfiltered sequence remained visible. This is an unresolved compatibility failure; no claim of full preservation is made. A subsequent public-source request returned HTTP 429, so further requests were stopped. A fresh profile without any extension also retained visible content and reported no script error. Next step: isolate the two blocked requests and the cosmetic rules separately before changing a rule.
 - **#2:** exploratory before/after measurements exist; a complete assessment protocol and verified positive examples remain open. No unknown result was converted into a zero or an award.
 - **#3:** real network blocking and a short playback check passed; served video-ad transitions, caption/sign-in preservation, stalls and fallback behavior still need verification in Safari.
-- **#4:** channel leakage is fixed and reversible controls were exercised. No existing model was retrained or automatic hiding behavior changed in this patch.
+- **#4:** channel leakage is fixed and reversible controls were exercised. Independently reviewed, channel-separated holdout data with full titles, tags and capture timestamps are still missing. No existing model was retrained or automatic hiding behavior changed in this patch.
 
 ## Reproduce and resume without repeating completed work
 

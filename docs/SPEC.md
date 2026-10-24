@@ -36,7 +36,7 @@ Use small functions, explicit output fields and deterministic UTF-8 output. Exam
 - Portable bundle omits procedural/parent selectors; advanced bundle is separate.
 - Installation distinguishes Safari, Chrome and Firefox and includes rollback.
 - Assessments require dated evidence for intrusiveness, tracking, performance and usability; unknown measurements remain unknown.
-
+- Twitch precision takes priority: ambiguous, conflicting and language-only cases stay visible; live integration remains tracked work.
 - Tests verify scope, exclusions, deterministic build and conservative classifications.
 - Commit and push directly to GitHub `main`, then verify the remote commit and CI.
 

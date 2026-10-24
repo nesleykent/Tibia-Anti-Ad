@@ -3,7 +3,7 @@
 All 562 streams in the Tibia category directory, with complete title, every freeform tag and viewer count, read from Twitch's React props (the same data the extension uses). Used to audit the Tibia filter in both directions.
 
 - `streams.json`: the capture.
-
+- `verdicts.json`: `tools/twitch_evidence.py` verdicts with evidence (title/tag metadata).
 - `review.txt`: every stream grouped by verdict, sorted by viewers, for manual review.
 
 ## Result (current rules)

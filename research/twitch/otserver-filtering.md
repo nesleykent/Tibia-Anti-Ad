@@ -41,7 +41,6 @@ Implemented in `tools/twitch_evidence.py` (reference) and `extension/src/tibia-c
 1. **Other game:** a server declared in the title (not as a `!command`) or in a tag, including server domains and RubinOT's own world names (Infernum, Bellum, Belaria…), with no official evidence → hide.
 2. **Tibia:** an official world name (from [TibiaData](https://api.tibiadata.com/v4/worlds)), "Tibia Global" or the `tibiaglobal` tag, with no server evidence → keep. World names that are also ordinary words (Dia, Sombra, Bona…) count only as tags.
 3. **Undetermined** (kept visible): evidence both ways, a server only as a chat command, or nothing decisive.
-4. A custom OTServer client element — the titled "Map View" minimap, Battle Pass, Daily Missions — never appears in the official client and marks the stream as another game. This resolves streams that tag both `rubinot` and `tibiaglobal`, and `!server`-only titles.
 
 ### Weighted classification (2026-10-22)
 
@@ -65,8 +64,9 @@ The rules above are now weighted signals rather than exact keyword tests (`weigh
 | Tibia (92) | **0** | 6 | 86 |
 | Unclear (83) | 9 | 69 | 5 |
 
-The 9 unclear streams hidden all list several servers, none of them Tibia. On the 562-stream live capture the weighted rules agree with the reviewed verdicts on 560 streams: TORNABRAAAA (official) is now kept as Tibia, and one stream with only a `!rubinot` command and two official world tags is now undetermined. In Chrome Beta 157 on 2026-10-22 the extension hid 29 of the 30 first cards, each with its reason, and kept the official `WAR FEROBRA` stream. In WebKit (WKWebView on macOS 27 with Safari 27.0.1's engine, content scripts in an isolated world, metadata reader in the page world) the same 29 of 30 were hidden through `hide.css`, and the load-more nudge filled the list to 107 cards (96 hidden, 11 visible: 9 official-world streams, 2 undetermined). Twitch refused load-more in the DevTools-driven Chrome profile with `failed integrity check`, with or without the extension, so that run could not exercise it.
+Title/tag metadata with the weighted rules (exact keyword rules before 2026-10-22: 257 / 0 / 84). The 9 unclear streams hidden all list several servers, none of them Tibia. On the 562-stream live capture the weighted rules agree with the reviewed verdicts on 560 streams: TORNABRAAAA (official) is now kept as Tibia, and one stream with only a `!rubinot` command and two official world tags is now undetermined. In Chrome Beta 157 on 2026-10-22 the extension hid 29 of the 30 first cards, each with its reason, and kept the official `WAR FEROBRA` stream. In WebKit (WKWebView on macOS 27 with Safari 27.0.1's engine, content scripts in an isolated world, metadata reader in the page world) the same 29 of 30 were hidden through `hide.css`, and the load-more nudge filled the list to 107 cards (96 hidden, 11 visible: 9 official-world streams, 2 undetermined). Twitch refused load-more in the DevTools-driven Chrome profile with `failed integrity check`, with or without the extension, so that run could not exercise it. The rules were tuned on this same capture, so live accuracy will be lower; the live check on 2026-10-21 ~21:00 hid 25 of the first 30 cards, leaving 3 RubinOT streams and 1 official stream visible.
 
 ## Known gaps
 
-- A streamer can mislabel deliberately (tagging `tibiaglobal` on an OTServer); only the screen check catches that.
+- Server names not in the list are missed until added; titles that name nothing may lack sufficient evidence.
+- A streamer can mislabel deliberately (tagging `tibiaglobal` on an OTServer); title/tag evidence may not resolve that.

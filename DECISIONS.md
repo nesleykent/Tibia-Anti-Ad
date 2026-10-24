@@ -11,7 +11,7 @@ new decision would contradict this document; otherwise implement and verify it.
 - Private Tibia servers, Pokemon servers and idle derivatives are in filtering scope,
   including independently branded derivatives identified in the reviewed metadata.
 - No insufficient-evidence state. Without affirmative private-server evidence,
-  return exactly P(private) = 0.01, displaying 99%. Never invent evidence from an image.
+  return exactly P(private) = 0.01, displaying 99%. Require affirmative evidence in the supplied title and tags.
 - Language never changes inference. Generic gameplay (hunt, bosses, farm, levels,
   vocations) and generic commands (pix, hunt, discord, shop, socials) are not evidence.
 - A server command alone identifies the session. The same command in a sponsorship

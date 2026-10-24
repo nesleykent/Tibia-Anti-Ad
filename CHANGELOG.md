@@ -49,7 +49,7 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 - Repository layout separates extension source/browser overrides, filter sources/generated lists, fansite research and Python/JavaScript tests. Subscription URLs now use `filters/lists/`; update existing subscriptions to the links in the README.
 
 - Public setup instructions and subscriptions use the canonical `nesleykent/Tibia-Anti-Ad` repository.
-
+- Documentation explains the extension's title/tag filtering and experimental fansite repairs.
 - CI uses pinned actions, a bounded runtime and a Python compatibility matrix.
 
 ### Fixed
@@ -67,6 +67,7 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 - Updated extensions reject cached or downloaded evidence older than their bundled revision, so old rules cannot undo newly bundled corrections. Compatible current/newer revisions still update normally.
 
 - Safari toolbar icon stays tinted on every page: the extension now has access to all sites (`<all_urls>`), because Safari greys an extension's icon wherever it has no access. Content scripts and network rules still apply only to Twitch and the 15 fansites; Safari will show its broader access prompt once.
+
 
 - Settings popover: no more collapsible sections; every option is visible in grouped sections with a header, and every row keeps the same layout (text on the left, switch or button on the right). The on-counts next to headers are gone.
 

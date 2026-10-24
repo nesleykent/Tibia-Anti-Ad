@@ -24,9 +24,8 @@
 - [x] Integrate supplied Tibia Anti-Ad extension and standalone vaft script with English instructions.
 - [ ] Validate display-ad and telemetry filters without breaking playback or chat.
 - [ ] Investigate pre-roll/mid-roll neutralization and measure stalls, latency and ad exposure.
-
+- [x] Preserve dated stream snapshots and labels.
 - [ ] Collect an independently reviewed holdout set using supported metadata sources.
-
 - [x] Add reversible hiding with decision reasons and per-broadcast corrections.
 - [ ] Meet the precision target on independent data and complete real-browser checks before a stable release.
 

@@ -21,7 +21,7 @@ Labels: **Tibia**, **OTServ**, **undetermined**. Classify the current broadcast,
 | Language | Context for interpreting text; never an OTServ signal by itself |
 | Metadata | Category, description, known server and world references; category Tibia alone is inconclusive |
 
-The offline prototype requires matching unambiguous declarations in both title and tag: title exactly `OTServ`, `OTServer` or `Open Tibia` plus an equivalent tag yields `OTServ`; title exactly `Official Tibia` or `Tibia Global` plus an equivalent tag yields `Tibia`. Other text, missing fields, mixed declarations and uncertain statements yield `undetermined`. This intentionally has low recall. It is a synthetic demonstration, not a validated detector. Language and other metadata are preserved in input but do not affect this prototype's label.
+The offline prototype requires matching unambiguous declarations in both title and tag: title exactly `OTServ`, `OTServer` or `Open Tibia` plus an equivalent tag yields `OTServ`; title exactly `Official Tibia` or `Tibia Global` plus an equivalent tag yields `Tibia`. Other text, missing fields, mixed declarations and uncertain statements yield `undetermined`. This intentionally has low recall. It is a synthetic demonstration, not a validated detector. Language and other metadata are preserved in input but do not affect this prototype's label. This prototype does not integrate with live pages; the extension uses title/tag evidence, as described below.
 
 Input example:
 ```json
@@ -32,9 +32,9 @@ Every prototype output sets `hide: false`, even for OTServ: this synthetic proto
 
 ## Validation gate for future integration
 
-Separate channels between tuning and holdout sets. Measure OTServ precision, false positives among official streams, recall and abstention by language. Target at least 99% OTServ precision with a reported confidence interval; a small sample cannot establish the target. Do not enable automatic hiding until the target and functional playback checks pass. Any known false positive requires investigation before release.
+Build an independently reviewed, timestamped labeled set containing multilingual titles, real official broadcasts, OTServ, mixed sessions, negations, promotions and ambiguous title/tag combinations. Separate channels between tuning and holdout sets. Measure OTServ precision, false positives among official streams, recall and abstention by language. Target at least 99% OTServ precision with a reported confidence interval; a small sample cannot establish the target. Do not enable automatic hiding until the target and functional playback checks pass. Any known false positive requires investigation before release.
 
-Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/reference), consulted 2026-10-21.
+Official reference: [Twitch API reference](https://dev.twitch.tv/docs/api/reference), consulted 2026-10-21. Stream metadata exposes titles, language and tags; none is authoritative proof of official Tibia versus OTServ.
 
 ## OTServer filtering
 
