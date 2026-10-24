@@ -33,6 +33,6 @@
 
 - [x] Preserve and publish the full manifesto; align contribution and release standards with it.
 - [x] Add licensing and provenance notices, security reporting, conduct, issue forms and ownership routing.
-- [x] Provide one local/CI verification command, pinned actions, compatibility checks and development build artifacts.
+- [x] Provide one verification command, compatibility checks and development packages. GitHub Actions removed at maintainer request.
 - [ ] Confirm redistribution rights for all supplied assets before publishing packaged releases.
 - [ ] Complete the live behavior and preservation checks in [RELEASING.md](RELEASING.md) before declaring stable support.

@@ -143,25 +143,8 @@ def prepare():
     subprocess.run(['python3','tools/twitch_evidence.py','--write-js'],cwd=ROOT,check=True)
 
 
-def restore():
-    # gh handles GitHub artifact redirects without forwarding credentials to
-    # arbitrary locations. Only this workflow's main-branch captures are read.
-    repo=os.environ['GITHUB_REPOSITORY']
-    result=subprocess.run(['gh','api',f'repos/{repo}/actions/workflows/learn-tibia.yml/runs?branch=main&per_page=30'],capture_output=True,text=True)
-    if result.returncode:raise StageError('Cannot list learning history')
-    for run in json.loads(result.stdout)['workflow_runs']:
-        if run['event'] not in {'schedule','workflow_dispatch'}:continue
-        listed=subprocess.run(['gh','api',f'repos/{repo}/actions/runs/{run["id"]}/artifacts'],capture_output=True,text=True)
-        if listed.returncode:raise StageError('Cannot inspect learning history')
-        if any(a['name']=='tibia-learning-history' and not a['expired'] for a in json.loads(listed.stdout)['artifacts']):
-            WORK.mkdir(parents=True,exist_ok=True)
-            downloaded=subprocess.run(['gh','run','download',str(run['id']),'-R',repo,'-n','tibia-learning-history','-D',str(WORK)],capture_output=True)
-            if downloaded.returncode:raise StageError('Cannot restore learning history')
-            return
-
-
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('stage',choices=['restore','capture','prepare']);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('stage',choices=['capture','prepare']);args=parser.parse_args()
     try:
         globals()[args.stage]()
         print('Learning stage completed: '+args.stage)

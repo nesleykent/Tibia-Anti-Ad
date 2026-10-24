@@ -15,6 +15,14 @@ from train_tibia_spans import SEED,MODEL,probability
 
 
 class IdentifierTests(unittest.TestCase):
+    def test_live_independent_identifiers(self):
+        model=SpanModel.load(MODEL)
+        for title,tags in [('', ['tibiantis']), ('Jugando Weare tibia', []),
+                           ('VESPERIA - INFERNUM [+18] - SELL FERUMBRAS HAT', [])]:
+            self.assertGreater(model.predict(title,tags)['private_probability'],.5)
+        for title in ['We are live', 'Antica', 'Vunira', 'Global']:
+            self.assertEqual(model.predict(title)['private_probability'],.01)
+
     def test_pokemon_project_and_tags(self):
         model=SpanModel.load(MODEL)
         for title,tags in [('Padventures - Event Halloween',['PAD','PadventuresDiamond','Español']),
@@ -270,17 +278,6 @@ class PipelineTests(unittest.TestCase):
             with patch.object(publisher,'ROOT',root),patch.dict('os.environ',{'MODEL_PUBLISH_TOKEN':'sentinel','GITHUB_REPOSITORY':'owner/repo'}),patch.object(publisher,'request_json',return_value={'object':{'sha':'b'*40}}) as request,self.assertRaises(learning.StageError):
                 publisher.publish()
             self.assertEqual(request.call_count,1)
-
-    def test_capture_workflow_has_no_inference_or_publication(self):
-        text=(ROOT/'.github/workflows/learn-tibia.yml').read_text()
-        self.assertIn("cron: '17 5,17 * * *'",text)
-        self.assertIn('tools/tibia_learning.py capture',text)
-        self.assertIn('tibia-learning-history',text)
-        for forbidden in ['ollama', 'qwen', 'labeller', 'MODEL_PUBLISH_TOKEN',
-                          'OPENAI_API_KEY', 'publish_tibia_model.py', 'actions/cache']:
-            self.assertNotIn(forbidden,text)
-        self.assertFalse((ROOT/'tools/start_tibia_labeller.py').exists())
-        self.assertFalse((ROOT/'tools/smoke_tibia_labeller.py').exists())
 
 
 if __name__=='__main__':unittest.main()

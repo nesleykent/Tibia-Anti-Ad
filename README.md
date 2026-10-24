@@ -2,7 +2,6 @@
 
 _Sorry for the inconvenience, we just want Tibia._
 
-[![Validate project](https://github.com/nesleykent/Tibia-Anti-Ad/actions/workflows/check.yml/badge.svg)](https://github.com/nesleykent/Tibia-Anti-Ad/actions/workflows/check.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Browser extensions, content-blocking filters and transparent research for a cleaner Tibia community. Find actual Tibia streams on Twitch and browse fansites without advertising and tracking, while keeping the articles, calculators, maps and tools you came for.

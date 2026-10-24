@@ -31,6 +31,9 @@ const root = path.resolve(__dirname, '../..');
         cases.push(
             {title: 'Olympic Tibia 7.4', tags: ['Gaming4Fun', 'VenezuelaStreamer'], private_probability_min: .5, private_probability_max: 1},
             {title: 'Padventures - Event Halloween', tags: ['PAD', 'PadventuresDiamond', 'Español'], private_probability_min: .5, private_probability_max: 1},
+            {title: 'Jugando Weare tibia', tags: [], private_probability_min: .5, private_probability_max: 1},
+            {title: 'VESPERIA - INFERNUM', tags: [], private_probability_min: .5, private_probability_max: 1},
+            {title: 'Tibia', tags: ['tibiantis'], private_probability_min: .5, private_probability_max: 1},
             {title: 'Hunt Tibia 7.4', tags: [], private_probability_min: .01, private_probability_max: .01},
         );
         await page.evaluate(rows => {

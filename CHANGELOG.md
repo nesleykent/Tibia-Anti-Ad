@@ -1,88 +1,34 @@
 # Changelog
 
-Changes are recorded for users. Unreleased entries describe `main`, not a stable release or a browser-store publication.
+## 1.7.5 - 2026-10-24
 
-## Unreleased
+- Correct three metadata-identifiable private streams that still displayed 99% official in revision 9. Revision 10 recognizes their independent server tag, branded server name and private-world declaration, displaying 4.0%, 2.3% and 2.3% official respectively.
+- Preserve all previous labels and server identities. The original 399-input acceptance still has 271 private inputs and none above 50% official. Server-name holdout remains 376/400 pairs (94.0%), with all 6 mandatory controls passing.
+- Remove GitHub Actions workflows, the workflow badge and remote artifact restoration. GitHub Actions is disabled for the repository. No replacement scheduler is introduced.
+- Publish releases through the maintainer account with written change descriptions and verified Chrome/Safari ZIPs and checksums. Correct the authorship and notes of 1.7.4 while retaining identical download bytes.
 
-### Added
+## 1.7.4 - 2026-10-24
 
-- 1.6.3: diagnostics JSON export at the bottom of both popups, with complete stream metadata, exact viewer counts from Twitch card data when available, model contributions and weights, visibility, timestamp, version, model revision and threshold. Evaluated streams remain available after Twitch removes their cards. The evaluation CLI accepts exports directly.
+- Rebuilt Tibia-directory classification around learned identifier spans from complete titles and tags. The model uses character and structural features of domains, server commands and project names, without a runtime server-name list.
+- Added recognition for spacing and Unicode variants, Pokemon and idle projects, project names beside legacy protocols, and bare brands derived from annotated domains. Revision 9 includes the reported Padventures title and tag correction.
+- Preserved sponsor-list, negation and mixed-session handling. Language, generic gameplay and channel identity are excluded from classification. Titles/tags without private-server evidence remain at 99% displayed Tibia probability.
+- Added Show, Move to bottom and Hide modes, a persisted probability threshold, stable Twitch ordering and per-stream Show overrides. Explicit setting changes regroup all loaded cards.
+- Added diagnostics export with complete metadata, probabilities, model evidence, version and rule revision. Safari exports through the page instead of the unsupported extension download API.
+- Fixed Safari native settings synchronization, rule-status persistence, affected-stream reports and duplicate extension registration during personal updates.
+- Added native Safari controls and outlined/filled circular infinity status icons. Chrome uses matching original vector icons.
+- Installation links now select the latest published packages.
 
-- Safari 1.4.0 displays the model's estimated probability of official Tibia beside every stream's channel name in the Tibia directory. Estimates remain visible with **Hide other games** on or off; the master switch pauses them. Chrome does not include this presentation.
-- Safari toolbar status: `infinity.circle` when blocking is disabled and `infinity.circle.fill` when enabled, synchronized on changes and background startup. Toolbar titles describe the state in text.
-- Chrome uses original outlined/filled infinity-in-circle vectors for the same two states, with dual-tone edges for light/dark themes. Both browsers' popup status indicators match their toolbar state. Imported shield branding is replaced with original circular infinity artwork.
-- Native Safari host fixes: handle malformed messages safely, avoid retaining the controller through its message handler, and show settings/status errors instead of silently quitting or hiding failures.
+## 1.2.3 - 2026-10-22
 
-- Safari downloads: a temporary-extension ZIP and a universal macOS development app built with Xcode, with checksums and clear signing limitations.
-- Reproducible Safari build/package tools and a local build-and-run entrypoint.
+- Added the earlier context-aware Tibia filter and downloaded filter-rule updates.
+- Added searchable affected-stream management with Show overrides.
+- Added the native SwiftUI Safari host window and corrected its first settings launch.
+- Fixed Safari parsing by keeping extension JavaScript ASCII-compatible.
 
-- Public Chrome ZIP download on GitHub Releases, with a checksum and a predictable folder to select during installation.
+## 1.0.0-alpha.2 - 2026-10-22
 
-- Plain-English Chrome installation guide with a ready-to-use download, folder-selection help, updates, removal and troubleshooting.
+- Published Chrome and Safari development-preview downloads with installation guides and checksums.
 
-- Friendly-fansite collection with 23 original screenshots, user-confirmed unblocked capture conditions, visual notes and SHA-256 provenance. Tibia-Statistic remains included with its small affiliate placement documented.
+## 1.0.0-alpha.1 - 2026-10-22
 
-- Full Tibia Anti-Ad Manifesto and project principles connecting viewer choice, content preservation and transparent evidence.
-- MIT license for project-authored work, third-party notices, security policy, community conduct and maintainer guidance.
-- Structured breakage and false-positive reports, contribution review checklist and release acceptance gates.
-- One local/CI check command covering syntax, tests, offline evaluation, documentation links and reproducible generated artifacts.
-- Automated Chrome package resource checks and CI artifacts for development builds.
-
-### Changed
-
-- 1.7.4: train the reported Pokémon project/title and tag spellings with generic pad-word controls. Scheduled labelling uses pinned open-weight inference on the Actions runner, with cloud features disabled and no paid inference API key.
-
-- 1.7.3: recognize project names followed by a legacy protocol, including an intervening Tibia descriptor. Train spelling and domain transport variants within each server fold, preserve signed identifier calibration boundaries, and retain existing annotations during history migration.
-
-- 1.6.3: Other games offers Show, Move to bottom and Hide, with a persisted minimum displayed-probability slider. Move to bottom preserves Twitch order within both groups using CSS order; incremental loads preserve the visible prefix while regrouping the unvisited suffix. Per-broadcast Show overrides apply in both filtering modes.
-
-- Private-server inference (1.5.0): supervised text-presence likelihoods and channel-separated logistic calibration replace the model that depended heavily on official-world references. Missing official references add no piracy evidence; titles and tags jointly supply present patterns. Unrelated games are excluded from positive training labels. Safari continues to display the complement of the private-server estimate. Automatic hiding now requires 98% estimated piracy probability. Documentation describes the model, cutoff, development comparisons and limits explicitly.
-
-- Tibia filtering (1.3.0): learned statistical inference over complete titles and tags now directly decides card visibility. Manual name lists, channel rules and lexical score overrides are removed from the live classifier. Shared word, phrase and character features are fitted from audited labels; old filter predictions are excluded from training. Uncertain results remain visible. See the [model card](docs/TWITCH_MODEL.md) for input comparisons, provenance and current detection limits.
-- Title extraction recovers visible heading text when React metadata has an empty title or the heading lacks a title attribute. Text-node updates trigger reclassification, and reused cards discard stale metadata when React props are unavailable.
-
-- Safari is native: the toolbar button and its popover come from a Safari app extension written in SwiftUI (every setting in a grouped form, the blocked streams with search, categories, **Show** and **Shown by You**, filter rules with **Update Now**). The web extension keeps blocking and syncs settings with the app through an App Group by native messaging. The Xcode project is generated by XcodeGen from `extension/browsers/safari/project.yml` instead of patching the converter's project. Chrome keeps the HTML popover.
-- Tibia category filter: weighted, context-aware classification replaces exact keyword rules. Titles and tags are normalized (accents, lookalike Cyrillic/Greek letters, small capitals and fancy Unicode fonts, leetspeak, repeated and spaced-out letters), listed server names also match one spelling mistake away (`rubimot`, `pokealianca`, `rubiniot`), PokeAlliance's Titan servers count as its worlds, and negation, leaving, comparison and "later" words weaken a mention (`não jogo rubinot`, `ex-rubinot`, `Tibia vs RubinOT`). Weak context (server rates, old client versions, "OT", Pokémon words, the channel name) only adds to other evidence. Signals combine with diminishing returns and a stream is hidden only with a clear lead; undecided streams stay visible. Against the audited capture it hides 276 of 281 other-game streams (was 274) and no official stream, and keeps 86 of 92 official streams as Tibia (was 84). Hidden-stream reasons in the settings page name the evidence.
-- Settings page follows the macOS System Settings grouped form (Apple HIG): the master switch in its own group, Twitch options in collapsible Ads and tracking, Video player, Page clutter and Tibia category rows with leading disclosure triangles and indented options, and the fansites in their own group; each section shows how many switches are on. Colors and text styles are the system's semantic ones (Safari's `-apple-system-*` colors and text styles, CSS system colors elsewhere) and follow light/dark, Increase Contrast, Reduce Transparency and Reduce Motion. The section for the active tab (Tibia directory, fansite) opens automatically and the sections you open are remembered on this device.
-- Tibia filter learns from data: a naive Bayes model over title words and tags, trained on the 857 labelled channels of the audited and reviewed live captures (`tools/train_tibia_model.py`), adds a signal when it is confident (log-odds ≥ 6 for another game, ≤ −6 for Tibia). Its prior is balanced so that the large share of OTServer streams does not push neutral titles towards hiding. Cross-validated by channel it hid no official stream at that threshold (recall 57% on its own). The model travels with the synced rules, so retraining updates installations.
-- Tibia filter rules update themselves: the extension downloads `filters/sources/twitch/tibia-evidence.json` from the repository's `main` branch when the browser starts and every 6 hours, keeps it only if the bundled classifier runs it correctly, and otherwise keeps the last good copy or the built-in rules. Only this data is downloaded, never code. The settings popover shows when the rules were last updated and has **Update Now**. Adds the `alarms` permission and access to `raw.githubusercontent.com`.
-- Tibia filter: any known server name or server world in a tag now counts (`hegal`), a name written with "ot" counts as that server (`!hegalot`), and websites in the title count as evidence: an unknown site adds a little and several add up (`troyale.online | tfight.online`), a dynamic-DNS host (`tibiapirate.duckdns.org`) is a self-hosted server. Project Fibula added. Tibia, fansite, social and streaming-tool sites are ignored.
-- Blocked streams: the settings popover now shows a one-line summary (streams hidden on the page, top categories, corrections) and a **Manage Blocked Streams…** button instead of the full list. The new Blocked Streams page groups the hidden streams by category with each one's title and reason, filters them with a search field (Command-F) and a category pop-up menu, and keeps **Show** and the **Shown by You** list with **Hide**. It uses native search fields, pop-up and push buttons, keeps keyboard focus in place after Show or Hide, and follows the same system colors and text styles.
-- The Tibia filter and its metadata reader observe the page only on the Tibia directory and cache verdicts, instead of watching every Twitch page.
-
-- Repository layout separates extension source/browser overrides, filter sources/generated lists, fansite research and Python/JavaScript tests. Subscription URLs now use `filters/lists/`; update existing subscriptions to the links in the README.
-
-- Public setup instructions and subscriptions use the canonical `nesleykent/Tibia-Anti-Ad` repository.
-- Documentation explains the extension's title/tag filtering and experimental fansite repairs.
-- CI uses pinned actions, a bounded runtime and a Python compatibility matrix.
-
-### Fixed
-
-- 1.6.4: changing a directory mode, threshold or Show override regroups every loaded card even after scrolling. Prefix preservation is limited to automatic card updates. Reports from non-directory Twitch tabs no longer clear Safari’s affected-stream list.
-
-- 1.6.3: Safari persists only the display fields of stream reports, preventing JSON nulls in model evidence from aborting the native handler and leaving affected-stream counts and lists empty. Exports target the page that opened the native popover. The threshold uses a continuous native slider in the standard inline form layout.
-
-- Safari 1.5.4: omit JSON null from persisted rule status. Saving a null error in UserDefaults raised a native exception before settings edits could return to the web extension, leaving Hide other games ineffective.
-- Safari 1.5.3: detect native messaging by the Safari extension URL, independently of the action API. An available action namespace must not disable synchronization with native controls.
-- Safari 1.5.2: reconcile native settings when web storage diverges even after the native edit's timestamp has been acknowledged, preventing an enabled Hide other games control from leaving the web filter disabled.
-- Safari 1.5.1: Blocked Streams has a fixed Settings back button, search and category controls. Returning preserves the settings scroll position. Native toggle edits reach visible pages without waiting for focus or the one-minute alarm, and disabled filtering clears stale blocked counts. Twitch grid regrouping no longer leaves hidden wrappers behind; turning filtering off removes all Tibia-filter marks while preserving other prompt rules.
-- Personal Safari updates detect and repair duplicate registrations of the same version, verifying one instance of each of the app's two components.
-- Tibia title filtering (1.2.4): recognize `otponline.com` and `Ibaiak-idle` even without server tags. A direct, affirmative server declaration such as `[DEUSOT]` now outweighs the generic word "global"; official worlds, "Tibia Global", negation, comparisons and sponsor commands retain their evidence handling. The statistical model already uses title words and is unchanged.
-- Updated extensions reject cached or downloaded evidence older than their bundled revision, so old rules cannot undo newly bundled corrections. Compatible current/newer revisions still update normally.
-
-- Safari toolbar icon stays tinted on every page: the extension now has access to all sites (`<all_urls>`), because Safari greys an extension's icon wherever it has no access. Content scripts and network rules still apply only to Twitch and the 15 fansites; Safari will show its broader access prompt once.
-
-
-- Settings popover: no more collapsible sections; every option is visible in grouped sections with a header, and every row keeps the same layout (text on the left, switch or button on the right). The on-counts next to headers are gone.
-
-- Safari app window is native SwiftUI instead of the converter's web page: extension status that refreshes when you return from Safari Settings, **Open Safari Settings…** as the default button, a link to the GitHub repository, and system fonts, colors and Dark Mode.
-
-- Safari: "SyntaxError: Invalid character" in tibia-classify.js. Safari can read extension scripts as Latin-1, so every extension script is now plain ASCII (non-ASCII characters escaped), and a test keeps it that way.
-
-- The nag hider no longer clears the Tibia filter's marks when it starts, which could briefly show hidden streams again.
-
-Live website preservation, cross-browser enforcement and Twitch ad-break behavior remain unverified. No stable release is declared by this change.
-
-- 1.7.0: recognize learned identifier spans without a server alias inventory, preserve metadata-only acceptance controls, and add gated twice-daily capture, API labelling and model publication.
-- 1.7.1: train bare project names from annotated domains, retaining negative tool/shop controls and server-name holdouts. Personal Safari updates request fresh rules through the containing app's App Group.
-- 1.7.2: learn project/protocol and numeric domain structure, correct negative-cutoff calibration, and retain the additional metadata regressions. The signed Safari app can request the existing local diagnostics export.
+- Published the initial Chrome development preview.

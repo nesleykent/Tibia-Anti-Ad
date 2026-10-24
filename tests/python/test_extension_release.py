@@ -32,9 +32,6 @@ class ReleaseTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 release.verify(folder, '1.7.4')
 
-    def test_publication_requires_both_successful_build_jobs(self):
-        workflow = (release.ROOT / '.github/workflows/check.yml').read_text()
-        self.assertIn('needs: [check, safari]', workflow)
-        self.assertIn("github.event_name == 'push' && github.ref == 'refs/heads/main'", workflow)
-        self.assertNotIn('continue-on-error', workflow)
-        self.assertIn('dist/tibia-anti-ad-chrome.zip*', workflow)
+    def test_no_github_actions_workflows(self):
+        self.assertEqual(list((release.ROOT/'.github/workflows').glob('*.yml')), [])
+        self.assertEqual(list((release.ROOT/'.github/workflows').glob('*.yaml')), [])

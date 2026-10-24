@@ -41,27 +41,20 @@ including candidate identity matches, before fitting or choosing cutoffs.
 `span-holdout.json` reports stream/identity pairs, since one stream can identify
 multiple servers. The six requested new-name controls must all pass. This is an
 explicit development acceptance benchmark, not a claim of untouched evaluation.
-The newest scheduled capture provides a separate pre-training check.
+A newly labelled capture can provide a separate pre-training check.
 
-## Scheduled captures and agent labelling
+## Capture and agent labelling
 
-[Capture Tibia metadata](../.github/workflows/learn-tibia.yml) runs at 05:17 and
-17:17 UTC and supports manual dispatch. It uses Twitch client credentials to
-resolve the Tibia category and paginate live streams. Captures contain titles and
-tags only and are retained in cumulative Actions artifacts for 90 days.
-
-The coding agent labels new metadata itself during project work, following
+The coding agent labels metadata itself during project work, following
 DECISIONS.md. There is no separate inference model, server, API or weight cache.
-Scheduled captures do not automatically label, retrain or publish. Existing
-supervision, training tools, acceptance gates and the published classifier remain.
-The agent must run the full acceptance and server-name holdout checks before
-publishing an updated classifier. The extension continues downloading the stable
-public rules URL.
+GitHub Actions and scheduled captures are disabled by maintainer instruction.
+The existing reproduction commands verify the model. Publish verified ZIPs and
+checksums through the maintainer's authenticated GitHub account, with written
+release notes. No replacement scheduler is introduced. Preserve source captures and labels in ignored local storage.
 
-Required capture secrets are `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET`.
-`GITHUB_TOKEN` is supplied automatically for artifact access. No inference key or
-publication credential is used by the capture workflow. Credentials are never
-stored in captures or committed, and API response bodies are excluded from logs.
+The Twitch capture CLI remains available for authorized local capture using
+Twitch client credentials. No credentials are committed or printed. The extension
+continues downloading the stable public rules URL.
 
 ## Domain/name equivalence regression
 

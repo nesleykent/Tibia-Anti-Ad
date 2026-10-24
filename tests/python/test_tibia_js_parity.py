@@ -22,6 +22,7 @@ class BrowserParityTests(unittest.TestCase):
         rows.extend({'title': title, 'tags': tags} for title, tags in [
             ('😀 !rubinot', []), ('não jogo RubinOT, só Antica', []),
             ('Tibia Global vs RubinOT', []), ('WAR?? KKKK | !rubinot', ['Português']),
+            ('Jugando Weare tibia', []), ('VESPERIA - INFERNUM', []), ('Tibia', ['tibiantis']),
             ('FutureOT', []), ('playing Feruots & Retronic', []), ('TSBot', []), ('TRIMERA 7.4 LAUNCH SOON', []),
             ('DARKORIA 8.60 OPEN BETA', []), ('Olympic74.com', []), ('!Ts /!moedaz !pix !exitlag #tsxhost.com', []),
             ('Examplegame74.com.br', []), ('Padventures - Event Halloween', ['PAD','PadventuresDiamond','Español']),

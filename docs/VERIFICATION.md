@@ -398,3 +398,32 @@ Safari build succeed. Publication checks ZIP checksums and manifest versions,
 uses only CI-built public packages, and never overwrites an existing Release.
 Local checks passed, including 80 Python tests and JavaScript acceptance.
 Classifier artifacts and extension source remain unchanged in this delivery fix.
+
+## Identifier regressions and maintainer releases, 1.7.5
+
+2026-10-24: a fresh saved Safari diagnostic confirmed extension 1.7.4/model 9
+and 282 evaluated streams. Three independently identifiable private-server
+metadata inputs still displayed 99% official. Agent-reviewed identifier
+annotations correct them to 4.0%, 2.3% and 2.3% official with revision 10.
+The comparison of all 282 metadata inputs changes the 50% decision only for
+those three inputs. Original supervision, labels, targets and identity groups
+are retained; the original 399-input block still contains 271 private inputs
+with none above 50% official. No raw local capture or character name is published.
+
+The frozen fit reproduces exactly. The full server-name holdout remains 376/400
+pairs across 70 folds (94.0%), including all six required unseen-name controls.
+Chrome Beta verifies metadata transport, hiding/complement, responsive layout,
+mode changes, retained diagnostics and an actual downloaded JSON file.
+The personally signed updater installed and verified 1.7.5; this does not prove
+Safari restart persistence. Public packaging uses a separate ad-hoc build.
+
+At the maintainer's explicit request, GitHub Actions is disabled at repository
+level, both workflows are removed and the Actions badge/active restoration code
+are removed. This supersedes the automatic publication entry above. Releases
+are published through the maintainer account with written notes, never generated
+compare-link substitutes. Removing Actions does not create a replacement scheduler.
+The previous bot-authored release is republished with identical ZIP/checksum bytes.
+
+Final verification after workflow removal passed all 80 Python tests, JavaScript
+acceptance, inference parity and generated-source checks. Public Safari package
+signature inspection confirms ad-hoc signing with no team identity.

@@ -11,7 +11,7 @@ Write project documentation, code comments and issue reports in English. Origina
 
 For Twitch, prioritize precision over recall. Never infer OTServ from language, country or category alone. Do not add permanent channel blacklists from a single broadcast. Preserve the existing correction and undo behavior when changing filtering UI.
 
-Do not commit cookies, tokens, full personal session captures, copied website bundles or opaque archives. Generated lists are committed because users subscribe to their raw URLs. Keep CI read-only and dependency-light. Initial publication goes directly to `main` at the owner's request; contributors should submit reviewable pull requests.
+Do not commit cookies, tokens, full personal session captures, copied website bundles or opaque archives. Generated lists are committed because users subscribe to their raw URLs. Keep verification reproducible and dependency-light. GitHub Actions is disabled. Initial publication goes directly to `main` at the owner's request; contributors should submit reviewable pull requests.
 
 ## Workflow and shared principles
 
@@ -19,6 +19,6 @@ Read the [manifesto](MANIFESTO.md) and [Code of Conduct](CODE_OF_CONDUCT.md). Th
 
 Fork the repository, make a focused branch and submit a pull request describing the player problem, resulting behavior, evidence and rollback. Add regression tests for behavior changes. Edit filter inputs and evidence sources rather than hand-editing generated files. The check command rebuilds website bundles, extension site rules and classifier evidence. Historical source hashes must not be updated to conceal unintended imported-file changes.
 
-Before requesting review, update the changelog and relevant guides. Declare live behavior unverified when only mocks or offline tests were run. Maintainer review considers correctness, content preservation, privacy, clarity and reproducibility; passing CI alone does not certify browser behavior. See [release gates](docs/RELEASING.md).
+Before requesting review, update the changelog and relevant guides. Declare live behavior unverified when only mocks or offline tests were run. Maintainer review considers correctness, content preservation, privacy, clarity and reproducibility; passing automated checks alone does not certify browser behavior. See [release gates](docs/RELEASING.md).
 
 New original contributions are submitted under the project's [MIT license](LICENSE). Keep third-party notices and disclose imported material and its license. Do not copy code or media with unknown redistribution rights into new contributions. Report vulnerabilities privately using [SECURITY.md](SECURITY.md).

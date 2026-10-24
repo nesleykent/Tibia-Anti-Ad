@@ -1,7 +1,7 @@
-"""Publish CI-built extension archives after all build/check jobs have passed."""
+"""Verify extension packages and publish written release notes through the maintainer account."""
 import hashlib
 import json
-import os
+import argparse
 from pathlib import Path
 import subprocess
 from zipfile import ZipFile
@@ -29,27 +29,23 @@ def verify(folder, version):
     return assets
 
 
-def publish():
+def publish(notes, commit):
     version = json.loads((ROOT / 'extension/src/manifest.json').read_text())['version']
-    tag = 'v' + version
-    folder = ROOT / 'dist/release'
-    assets = verify(folder, version)
-    # Do not silently replace downloads or move an existing release/tag.
-    existing = subprocess.run(['gh', 'release', 'list', '--limit', '100', '--json', 'tagName'],
-                              check=True, capture_output=True, text=True)
-    if any(release['tagName'] == tag for release in json.loads(existing.stdout)):
-        print('Release already published: ' + tag)
-        return
-    notes = folder / 'release-notes.md'
-    notes.write_text('Chrome and Safari downloads built from the verified commit. '
-                     'Each ZIP includes a SHA-256 checksum.\n\n'
-                     'The public Safari Mac app is ad-hoc signed and requires '
-                     'Safari development settings. It does not include the '
-                     'maintainer\'s personal signing certificate.\n')
-    subprocess.run(['gh', 'release', 'create', tag, '--target', os.environ['GITHUB_SHA'],
-                    '--title', 'Tibia Anti-Ad ' + version, '--generate-notes',
+    assets = verify(ROOT / 'dist/release', version)
+    if not notes.read_text().strip():
+        raise ValueError('Written release notes are required')
+    login = subprocess.run(['gh', 'api', 'user', '--jq', '.login'],
+                           check=True, capture_output=True, text=True).stdout.strip()
+    if login != 'nesleykent':
+        raise ValueError('Publish through the maintainer account')
+    subprocess.run(['gh', 'release', 'create', 'v' + version, '--target', commit,
+                    '--title', 'Tibia Anti-Ad ' + version,
                     '--notes-file', str(notes), *map(str, assets)], check=True)
 
 
 if __name__ == '__main__':
-    publish()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--notes-file', type=Path, required=True)
+    parser.add_argument('--commit', required=True)
+    args = parser.parse_args()
+    publish(args.notes_file, args.commit)
