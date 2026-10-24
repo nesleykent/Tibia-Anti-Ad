@@ -330,5 +330,12 @@ before fitting from zero.
 
 Build/signature verification, separately: the personal updater installed and
 verified Safari 1.7.3 with the final model, retaining the previous signed app.
-These offline browser and signature checks do not establish the probability in
-an already-open live Safari card or restart persistence.
+
+Safari runtime verification, separately: after publication, the exact stable
+rules URL returned revision 8 matching the frozen model digest. Safari's native
+rules status then recorded a fresh successful download without a validation
+error. An actual saved diagnostic from a fresh live Tibia category tab reported
+Safari extension 1.7.3, model 8 and the same model digest. All 120 captured
+probabilities matched final Python inference. The originally reported title was
+absent from this live capture; its 2.3% complement is verified by the exact-metadata
+browser regression above. Restart persistence remains unverified.
