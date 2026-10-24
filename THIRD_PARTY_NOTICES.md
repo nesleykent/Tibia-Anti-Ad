@@ -28,11 +28,3 @@ Tibia and Twitch names, marks, game imagery and third-party broadcast or website
 ## Friendly-fansite screenshots
 
 The [friendly-fansite collection](research/fansites/friendly/README.md) contains 23 user-supplied website screenshots received on 2026-10-22. Their original bytes and filenames are recorded in its manifest. The screenshots are research evidence; third-party website designs, text, imagery and marks retain their respective owners’ rights. The root MIT license does not grant rights to these underlying works.
-
-## Optional scheduled local teacher
-
-The learning workflow downloads [Ollama](https://github.com/ollama/ollama)
-(MIT) and [Qwen3.5 9B](https://huggingface.co/Qwen/Qwen3.5-9B)
-(Apache-2.0), using the published Q4_K_M quantization. Their binaries and model
-weights are not committed or included in extension downloads. Pinned runtime and
-model digests are recorded in the learning tools.

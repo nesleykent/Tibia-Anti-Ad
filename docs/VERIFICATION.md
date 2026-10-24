@@ -374,3 +374,16 @@ publish or persist smoke-test labels. The replacement teacher uses only the
 classification section of the decisions, records an instruction digest, disables
 thinking output and reuses seed labels as well as cumulative history. The label
 step has a separate time bound so later artifact retention can run after failure.
+
+## Removal of separate inference infrastructure, 2026-10-24
+
+The maintainer clarified that the coding agent performs labelling itself. Removed
+the separate inference runtime, model downloads, smoke runner and scheduled
+labelling/publication steps. Scheduled metadata capture remains. Revision 9 and
+its Pokemon regression supervision are unchanged. Earlier local-teacher entries
+above are historical experiments, not the current project architecture.
+
+After removal, all repository checks passed, including 78 Python tests and
+JavaScript acceptance. Classifier artifacts, revision 9 supervision and extension
+source are unchanged. GitHub reported no saved Actions caches; the inference
+runtime and weights were not installed on the maintainer Mac.

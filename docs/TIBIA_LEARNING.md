@@ -43,67 +43,25 @@ multiple servers. The six requested new-name controls must all pass. This is an
 explicit development acceptance benchmark, not a claim of untouched evaluation.
 The newest scheduled capture provides a separate pre-training check.
 
-## Scheduled workflow
+## Scheduled captures and agent labelling
 
-[Learn Tibia identifiers](../.github/workflows/learn-tibia.yml) runs at 05:17 and
-17:17 UTC and supports manual dispatch. It obtains an app access token using
-Twitch's client-credentials flow, resolves Tibia through Get Games, and paginates
-Get Streams. Only title and tags enter the labeller. Twitch category captures,
-input hashes, labels and hashed features are retained in cumulative Actions
-artifacts, including labels from failed gates. Each successive artifact includes
-all previous captures and supervision; retention is 90 days per artifact. Thus
-failed novel-name checks can supply training data for the next run without
-publishing an unverified model.
+[Capture Tibia metadata](../.github/workflows/learn-tibia.yml) runs at 05:17 and
+17:17 UTC and supports manual dispatch. It uses Twitch client credentials to
+resolve the Tibia category and paginate live streams. Captures contain titles and
+tags only and are retained in cumulative Actions artifacts for 90 days.
 
-The labeller runs Qwen3.5 9B locally on the Linux Actions runner through
-Ollama, bound to loopback with cloud features disabled. No paid inference API,
-OpenAI account or inference key is used. The runtime archive has a pinned SHA-256
-and the model manifest digest is checked before labelling. Model weights are
-cached separately from captured metadata. There is no cloud fallback.
+The coding agent labels new metadata itself during project work, following
+DECISIONS.md. There is no separate inference model, server, API or weight cache.
+Scheduled captures do not automatically label, retrain or publish. Existing
+supervision, training tools, acceptance gates and the published classifier remain.
+The agent must run the full acceptance and server-name holdout checks before
+publishing an updated classifier. The extension continues downloading the stable
+public rules URL.
 
-Requests use JSON-schema-constrained output, deterministic decoding and small
-batches. Metadata remains untrusted input. Every new input must have exactly one
-label; a private label must cite an extracted identifier candidate. Invalid,
-missing or truncated output fails the run. Labels from both the historical seed and retained history are reused by exact
-title and deduplicated/sorted tag hash. Completed batches are retained before
-requesting the next batch, including when a later generation fails. Provenance records the local model, manifest digest and instruction hash. The policy migration accepts the previous decisions hash only while the
-classification section is unchanged; it preserves previous labels and provenance.
-The `labeller_smoke_only` manual input runs eight public semantic controls with
-real local inference, without Twitch credentials or model publication.
-
-Training excludes every newly labelled input from both historical seed and
-retained history for the newest-capture check. Every new binary label must agree
-with the pre-training model at 50%. After this check, all labelled data is fitted,
-the complete repository acceptance suite runs, and the six server holdouts are
-checked again. A failed stage fails the workflow; it cannot reach the publication
-job. GitHub failure email follows the maintainer's Actions notification settings.
-
-Publication has a separate job and credential. Its allowlist contains only the
-active model JSON, the existing public `tibia-evidence.json` and its bundled JS
-copy. It checks the validated main commit and uses a non-forced GitHub ref update.
-Concurrent main changes cancel publication instead of overwriting changes. The
-existing background updater downloads the public model every six hours. v3 needs
-the extension version that supports identifier-span inference; older extensions
-reject the incompatible format and retain their last valid model.
-
-## Repository secrets
-
-- `TWITCH_CLIENT_ID`: Twitch application client ID.
-- `TWITCH_CLIENT_SECRET`: secret for that Twitch application.
-- `MODEL_PUBLISH_TOKEN`: fine-grained GitHub token limited to this repository,
-  Contents read/write, owned by an administrator allowed to bypass the existing
-  main branch protection. The workflow does not weaken branch protection.
-
-`GITHUB_TOKEN` is supplied automatically for artifact access. Credentials are
-passed only to their steps, never stored in captures or committed. API response
-bodies and exception representations are excluded from logs. Missing secrets fail
-closed. Configure these in GitHub Settings, Secrets and variables, Actions.
-
-Sources: [Twitch app tokens](https://dev.twitch.tv/docs/authentication/getting-tokens-oauth/#client-credentials-grant-flow),
-[Get Streams](https://dev.twitch.tv/docs/api/reference/#get-streams),
-[Ollama structured output](https://docs.ollama.com/api/generate),
-[Qwen3 model](https://ollama.com/library/qwen3.5:9b),
-[Ollama cloud disabling](https://github.com/ollama/ollama/blob/main/docs/faq.mdx).
+Required capture secrets are `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET`.
+`GITHUB_TOKEN` is supplied automatically for artifact access. No inference key or
+publication credential is used by the capture workflow. Credentials are never
+stored in captures or committed, and API response bodies are excluded from logs.
 
 ## Domain/name equivalence regression
 
