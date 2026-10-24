@@ -339,3 +339,31 @@ Safari extension 1.7.3, model 8 and the same model digest. All 120 captured
 probabilities matched final Python inference. The originally reported title was
 absent from this live capture; its 2.3% complement is verified by the exact-metadata
 browser regression above. Restart persistence remains unverified.
+
+## Pokemon identifier regression and local teacher, 1.7.4
+
+2026-10-24: reproduced the reported Pokemon project's full title and tags at the
+99% official baseline. The extractor already proposed its identifiers; missing
+supervision caused recognition to reject them. Six new feature-only supervision
+rows cover the reported metadata, project spellings and generic pad-word
+controls. Historical labels and identity groups are retained. Revision 9 displays
+the exact reported metadata at approximately 4.0% official. Chrome Beta verified
+that complement through the real extension path at desktop and mobile sizes.
+
+The full server-name holdout remains 376/400 stream/identity pairs across 70 folds
+(94.0%), with all six mandatory unseen-name cases passing. The original 399-input
+acceptance still includes 271 private inputs with zero above 50% official.
+
+Scheduled labelling no longer calls a paid inference API. It uses a SHA-256-pinned
+Ollama runtime and manifest-pinned Qwen3 4B Instruct model locally on the Linux
+runner, with cloud features disabled. A dedicated manual smoke mode checks real
+inference without Twitch secrets or publication. Unit coverage checks loopback
+requests without credentials, strict output validation, pinned model/runtime
+failures, successful batch retention after later failure and the explicit policy
+migration preserving the classification section.
+
+Repository checks passed 84 Python tests, JavaScript acceptance, inference parity
+and generated-source consistency. The frozen fit reproduces exactly; the
+historical feature packet is retained byte-for-byte at row level. The personal
+Safari updater installed and verified 1.7.4 with revision 9, separately from
+browser behavior verification.

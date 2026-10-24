@@ -15,6 +15,14 @@ from train_tibia_spans import SEED,MODEL,probability
 
 
 class IdentifierTests(unittest.TestCase):
+    def test_pokemon_project_and_tags(self):
+        model=SpanModel.load(MODEL)
+        for title,tags in [('Padventures - Event Halloween',['PAD','PadventuresDiamond','Español']),
+                           ('Padventures',[]),('PAdventures Diamond',[]),('PadventuresDiamond',[])]:
+            self.assertGreater(model.predict(title,tags)['private_probability'],.5)
+        for title in ['Gamepad','Sketchpad','Diamond painting','Event Halloween']:
+            self.assertEqual(model.predict(title)['private_probability'],.01)
+
     def test_project_game_descriptor_and_protocol(self):
         model=SpanModel.load(MODEL)
         for title in ['Olympic Tibia 7.4', 'Olympic 7.4', 'olympic tibia 7.4',
@@ -203,22 +211,63 @@ class PipelineTests(unittest.TestCase):
 
     def test_strict_llm_contract_no_channels_tools_or_images(self):
         row={'title':'REDOT','tags':['English']}
-        response={'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps({'labels':[{'id':learning.input_id(row),'private':True,'identifiers':[{'candidate':0,'server':'redot'}]}]})}]}]}
-        with patch.dict('os.environ',{'OPENAI_API_KEY':'sentinel'}),patch.object(learning,'request_json',return_value=response) as req:
+        response={'done':True,'done_reason':'stop','response':json.dumps({'labels':[{'id':learning.input_id(row),'private':True,'identifiers':[{'candidate':0,'server':'redot'}]}]})}
+        with patch.dict('os.environ',{},clear=True),patch.object(learning,'request_json',return_value=response) as req:
             result=learning.label_batch([row])
             self.assertTrue(result[0]['private'])
             payload=req.call_args.kwargs['payload']
-            self.assertFalse(payload['store']);self.assertTrue(payload['text']['format']['strict'])
+            self.assertFalse(payload['stream']);self.assertFalse(payload['format']['additionalProperties'])
+            self.assertEqual(req.call_args.args[0],'http://127.0.0.1:11434/api/generate')
+            self.assertNotIn('headers',req.call_args.kwargs)
             self.assertNotIn('tools',payload)
-            inputs=json.loads(payload['input'])
+            inputs=json.loads(payload['prompt'])
             self.assertEqual(set(inputs[0]),{'id','title','tags','candidates'})
             self.assertNotIn('title',result[0])
 
     def test_bad_llm_coverage_and_missing_spans_fail(self):
         row={'title':'REDOT','tags':[]}
         for labels in [[],[{'id':learning.input_id(row),'private':True,'identifiers':[]}],[{'id':'wrong','private':False,'identifiers':[]}]]:
-            response={'status':'completed','output':[{'type':'message','content':[{'type':'output_text','text':json.dumps({'labels':labels})}]}]}
-            with patch.dict('os.environ',{'OPENAI_API_KEY':'sentinel'}),patch.object(learning,'request_json',return_value=response),self.assertRaises(learning.StageError):learning.label_batch([row])
+            response={'done':True,'done_reason':'stop','response':json.dumps({'labels':labels})}
+            with patch.object(learning,'request_json',return_value=response),self.assertRaises(learning.StageError):learning.label_batch([row])
+
+    def test_local_model_digest_and_incomplete_generation_fail_closed(self):
+        with patch.object(learning,'request_json',return_value={'models':[{'name':learning.MODEL_NAME,'digest':'changed'}]}),self.assertRaises(learning.StageError):
+            learning.verify_labeller()
+        with patch.object(learning,'request_json',return_value={'done':True,'done_reason':'length','response':'{}'}),self.assertRaises(learning.StageError):
+            learning.label_batch([{'title':'REDOT','tags':[]}])
+
+    def test_runtime_checksum_failure_never_executes_download(self):
+        import io
+        import start_tibia_labeller as runtime
+        with tempfile.TemporaryDirectory() as directory,patch.object(runtime,'WORK',Path(directory)),patch.object(runtime.urllib.request,'urlopen',return_value=io.BytesIO(b'wrong archive')),patch.object(runtime.subprocess,'run') as run,self.assertRaises(learning.StageError):
+            runtime.start()
+        run.assert_not_called()
+
+    def test_completed_label_batches_survive_a_later_failure(self):
+        rows=[{'title':f'Fixture {i}','tags':[]} for i in range(5)]
+        completed=[{'id':learning.input_id(r),'private':False} for r in rows[:4]]
+        with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)),patch.object(learning,'verify_labeller'),patch.object(learning,'label_batch',side_effect=[completed,learning.StageError('incomplete')]):
+            path=Path(directory)
+            learning.save(path/'capture.json',{'streams':rows})
+            with self.assertRaises(learning.StageError):learning.label()
+            self.assertEqual(json.loads((path/'history.json').read_text())['rows'],completed)
+            self.assertFalse((path/'newest.json').exists())
+
+    def test_local_provider_policy_migration_preserves_labels(self):
+        with tempfile.TemporaryDirectory() as directory,patch.object(learning,'WORK',Path(directory)),patch.object(learning,'verify_labeller') as verify:
+            path=Path(directory)
+            learning.save(path/'capture.json',{'streams':[]})
+            learning.save(path/'history.json',{'rows':[],'decisions_sha256':learning.LEGACY_DECISIONS_SHA256})
+            learning.label()
+            history=json.loads((path/'history.json').read_text())
+            self.assertEqual(history['rows'],[])
+            self.assertEqual(history['decision_migrations'][0]['from'],learning.LEGACY_DECISIONS_SHA256)
+            self.assertEqual(history['decisions_sha256'],hashlib.sha256((ROOT/'DECISIONS.md').read_bytes()).hexdigest())
+            verify.assert_not_called()
+            history['decisions_sha256']=learning.LEGACY_DECISIONS_SHA256
+            learning.save(path/'history.json',history)
+            with patch.object(learning,'CLASSIFICATION_SHA256','changed'),self.assertRaises(learning.StageError):
+                learning.label()
 
     def test_history_augmentation_migration_preserves_labels_and_provenance(self):
         from tibia_spans import context
@@ -265,9 +314,9 @@ class PipelineTests(unittest.TestCase):
     def test_api_failure_does_not_expose_body_or_credentials(self):
         import urllib.error
         import io
-        error=urllib.error.HTTPError('https://api.openai.com/v1/responses',401,'denied',{},io.BytesIO(b'sentinel-secret'))
+        error=urllib.error.HTTPError('https://example.invalid/api',401,'denied',{},io.BytesIO(b'sentinel-secret'))
         with patch('urllib.request.urlopen',side_effect=error),self.assertRaises(learning.StageError) as caught:
-            learning.request_json('https://api.openai.com/v1/responses',{'Authorization':'Bearer sentinel-secret'})
+            learning.request_json('https://example.invalid/api',{'Authorization':'Bearer sentinel-secret'})
         self.assertEqual(str(caught.exception),'API request failed (HTTP 401)')
         self.assertNotIn('sentinel',str(caught.exception))
 
@@ -288,6 +337,8 @@ class PipelineTests(unittest.TestCase):
         self.assertIn("cron: '17 5,17 * * *'",text)
         self.assertEqual(text.count('secrets.MODEL_PUBLISH_TOKEN'),1)
         self.assertNotIn('continue-on-error',text)
+        self.assertNotIn('OPENAI_API_KEY',text)
+        self.assertIn('tools/start_tibia_labeller.py',text)
         self.assertIn('force\':False',(ROOT/'tools/publish_tibia_model.py').read_text())
 
 if __name__=='__main__':unittest.main()

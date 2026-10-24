@@ -30,6 +30,7 @@ const root = path.resolve(__dirname, '../..');
         const cases = JSON.parse(await fs.readFile(path.join(root, 'tests/data/tibia-private-context-acceptance.json'), 'utf8')).cases;
         cases.push(
             {title: 'Olympic Tibia 7.4', tags: ['Gaming4Fun', 'VenezuelaStreamer'], private_probability_min: .5, private_probability_max: 1},
+            {title: 'Padventures - Event Halloween', tags: ['PAD', 'PadventuresDiamond', 'Español'], private_probability_min: .5, private_probability_max: 1},
             {title: 'Hunt Tibia 7.4', tags: [], private_probability_min: .01, private_probability_max: .01},
         );
         await page.evaluate(rows => {

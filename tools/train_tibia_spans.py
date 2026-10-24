@@ -127,7 +127,7 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('action',choices=['fit','evaluate','holdout']);parser.add_argument('--data',type=Path,default=SEED);args=parser.parse_args()
     pack=json.loads(args.data.read_text());rows=pack['rows']
     if args.action=='fit':
-        data=fit(rows);data['revision']=8;data['training']={'data_sha256':hashlib.sha256(args.data.read_bytes()).hexdigest(),'rows':len(rows),'features':'candidate identifier characters and structure only; no channel, language or whole-title vocabulary'}
+        data=fit(rows);data['revision']=9;data['training']={'data_sha256':hashlib.sha256(args.data.read_bytes()).hexdigest(),'rows':len(rows),'features':'candidate identifier characters and structure only; no channel, language or whole-title vocabulary'}
         MODEL.write_text(json.dumps(data,indent=2)+'\n')
         print('Identifier model fitted')
     elif args.action=='evaluate':

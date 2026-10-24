@@ -55,13 +55,21 @@ all previous captures and supervision; retention is 90 days per artifact. Thus
 failed novel-name checks can supply training data for the next run without
 publishing an unverified model.
 
-The labeller uses OpenAI Responses with `store: false`, strict Structured Outputs
-and no tools. Metadata is explicitly untrusted input. The default model is
-`gpt-5.4-mini`; repository variable `LLM_LABEL_MODEL` can select another compatible
-model. Every new input must have exactly one label; a private label must cite an
-extracted identifier candidate. Invalid, missing, refused or incomplete output
-fails the run. Labels are reused by exact title and deduplicated/sorted tag hash.
-The decisions hash prevents silently reusing labels after a policy change.
+The labeller runs Qwen3 4B Instruct locally on the Linux Actions runner through
+Ollama, bound to loopback with cloud features disabled. No paid inference API,
+OpenAI account or inference key is used. The runtime archive has a pinned SHA-256
+and the model manifest digest is checked before labelling. Model weights are
+cached separately from captured metadata. There is no cloud fallback.
+
+Requests use JSON-schema-constrained output, deterministic decoding and small
+batches. Metadata remains untrusted input. Every new input must have exactly one
+label; a private label must cite an extracted identifier candidate. Invalid,
+missing or truncated output fails the run. Labels are reused by exact title and
+deduplicated/sorted tag hash. Provenance records the local model and manifest
+digest. The policy migration accepts the previous decisions hash only while the
+classification section is unchanged; it preserves previous labels and provenance.
+The `labeller_smoke_only` manual input runs eight public semantic controls with
+real local inference, without Twitch credentials or model publication.
 
 Training excludes every newly labelled input from both historical seed and
 retained history for the newest-capture check. Every new binary label must agree
@@ -82,7 +90,6 @@ reject the incompatible format and retain their last valid model.
 
 - `TWITCH_CLIENT_ID`: Twitch application client ID.
 - `TWITCH_CLIENT_SECRET`: secret for that Twitch application.
-- `OPENAI_API_KEY`: OpenAI API project key with Responses API access and billing.
 - `MODEL_PUBLISH_TOKEN`: fine-grained GitHub token limited to this repository,
   Contents read/write, owned by an administrator allowed to bypass the existing
   main branch protection. The workflow does not weaken branch protection.
@@ -94,8 +101,9 @@ closed. Configure these in GitHub Settings, Secrets and variables, Actions.
 
 Sources: [Twitch app tokens](https://dev.twitch.tv/docs/authentication/getting-tokens-oauth/#client-credentials-grant-flow),
 [Get Streams](https://dev.twitch.tv/docs/api/reference/#get-streams),
-[OpenAI Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs),
-[Responses](https://developers.openai.com/api/reference/resources/responses/methods/create).
+[Ollama structured output](https://docs.ollama.com/api/generate),
+[Qwen3 model](https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M),
+[Ollama cloud disabling](https://github.com/ollama/ollama/blob/main/docs/faq.mdx).
 
 ## Domain/name equivalence regression
 

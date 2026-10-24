@@ -16,21 +16,25 @@ from tibia_text import normalize
 from train_tibia_spans import ROOT, SEED, MODEL, fit, probability, holdout, evaluate
 
 WORK = ROOT / 'local/learning'
-MODEL_NAME = 'gpt-5.4-mini'
+MODEL_NAME = 'qwen3:4b-instruct-2507-q4_K_M'
+MODEL_DIGEST = '0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0'
+LABELLER_URL = 'http://127.0.0.1:11434'
+LEGACY_DECISIONS_SHA256 = 'c24eb9f7b2d4765fc32f7dcb496fd9a2a416194301579886b84f9c0d4aac69e4'
+CLASSIFICATION_SHA256 = '0fc0c9fff265f88a0a47d90e2098eaa07b2fceef6d126a2025caf33f2513c941'
 
 
 class StageError(RuntimeError):
     """A safe diagnostic that contains neither credentials nor remote response text."""
 
 
-def request_json(url, headers=None, payload=None, form=False):
+def request_json(url, headers=None, payload=None, form=False, timeout=90):
     body = urllib.parse.urlencode(payload).encode() if form else json.dumps(payload).encode() if payload is not None else None
     hdr = dict(headers or {})
     if body is not None:hdr['Content-Type'] = 'application/x-www-form-urlencoded' if form else 'application/json'
     for attempt in range(4):
         try:
             req=urllib.request.Request(url, data=body, headers=hdr)
-            with urllib.request.urlopen(req, timeout=90) as response:
+            with urllib.request.urlopen(req, timeout=timeout) as response:
                 return json.load(response)
         except urllib.error.HTTPError as error:
             status=error.code
@@ -115,12 +119,12 @@ def label_batch(rows, model_name=MODEL_NAME):
         'A server command alone identifies the session; in a commercial/sponsor list it does not. '
         'No evidence in the supplied title and tags means private=false. Do not invent a span or identifier.\n'+rules)
     inputs=[{'id':input_id(r),'title':r['title'],'tags':r['tags'],'candidates':[{'index':i,'text':c['text'],'field':c['field']} for i,c in enumerate(cs)]} for r,cs in zip(rows,proposed)]
-    response=request_json('https://api.openai.com/v1/responses',headers={'Authorization':'Bearer '+required_secret('OPENAI_API_KEY')},payload={
-        'model':model_name,'store':False,'instructions':system,'input':json.dumps(inputs,ensure_ascii=True),
-        'text':{'format':{'type':'json_schema','name':'tibia_labels','strict':True,'schema':schema}},'max_output_tokens':12000})
-    if response.get('status')!='completed':raise StageError('Labeller response incomplete')
-    texts=[c.get('text','') for o in response.get('output',[]) if o.get('type')=='message' for c in o.get('content',[]) if c.get('type')=='output_text']
-    try:labels=json.loads(''.join(texts))['labels']
+    response=request_json(LABELLER_URL+'/api/generate',payload={
+        'model':model_name,'system':system,'prompt':json.dumps(inputs,ensure_ascii=True),
+        'format':schema,'stream':False,'keep_alive':'30m',
+        'options':{'temperature':0,'seed':0,'num_ctx':16384,'num_predict':4096}},timeout=600)
+    if response.get('done') is not True or response.get('done_reason')!='stop':raise StageError('Labeller response incomplete')
+    try:labels=json.loads(response['response'])['labels']
     except (ValueError,KeyError,TypeError):raise StageError('Invalid labeller structure') from None
     if not isinstance(labels,list) or len(labels)!=len(rows) or len({r.get('id') for r in labels})!=len(rows):raise StageError('Labeller coverage mismatch')
     by_id={r['id']:r for r in labels}
@@ -136,12 +140,18 @@ def label_batch(rows, model_name=MODEL_NAME):
             selected[index]=server_group(item['server'])
         if answer['private'] and not selected:raise StageError('Private label without an identifier span')
         packet={'id':input_id(r),'private':answer['private'],'target':.99 if answer['private'] else .01,
-                'label_provenance':{'model':response.get('model',model_name),'response_id':response.get('id'),'rules_sha256':hashlib.sha256(rules.encode()).hexdigest()},
+                'label_provenance':{'provider':'ollama-local','model':response.get('model',model_name),'model_digest':MODEL_DIGEST,'rules_sha256':hashlib.sha256(rules.encode()).hexdigest()},
                 'supervision':'private' if answer['private'] else 'no_private_server_evidence','groups':sorted(set(selected.values())),'candidates':[]}
         for i,c in enumerate(cs):
             packet['candidates'].append({'features':span_features(c),'augmentations':augmentations(c,positive=i in selected),'positive':i in selected,'group':selected.get(i,server_group(c['text'])),'kind':c['kind'],'field':c['field'],'start':c['start'],'context':context(r['title'],[c])})
         packets.append(packet)
     return packets
+
+
+def verify_labeller():
+    models=request_json(LABELLER_URL+'/api/tags').get('models',[])
+    if not any(m.get('name')==MODEL_NAME and m.get('digest')==MODEL_DIGEST for m in models):
+        raise StageError('Pinned local labeller model is missing or changed')
 
 
 def refresh_augmentations(history):
@@ -184,16 +194,27 @@ def label():
     path=WORK/'history.json'
     history=json.loads(path.read_text()) if path.exists() else {'rows':[],'decisions_sha256':None}
     digest=hashlib.sha256((ROOT/'DECISIONS.md').read_bytes()).hexdigest()
-    if history['decisions_sha256'] not in {None,digest}:raise StageError('Decisions changed; stored labels require a deliberate migration')
+    if history['decisions_sha256'] not in {None,digest}:
+        classification=(ROOT/'DECISIONS.md').read_text().split('## Classification\n',1)[1].split('## Controls and diagnostics',1)[0]
+        if history['decisions_sha256']!=LEGACY_DECISIONS_SHA256 or hashlib.sha256(classification.encode()).hexdigest()!=CLASSIFICATION_SHA256:
+            raise StageError('Decisions changed; stored labels require a deliberate migration')
+        history.setdefault('decision_migrations',[]).append({'from':history['decisions_sha256'],'to':digest,'reason':'Local labeller replaces paid API; classification policy unchanged'})
     refresh_augmentations(history)
     previous={r['id']:r for r in history['rows']}
     unique={input_id(r):r for r in cap['streams']}
     fresh=[r for key,r in unique.items() if key not in previous]
     additions=[]
-    for start in range(0,len(fresh),20):
-        additions.extend(label_batch(fresh[start:start+20],os.environ.get('LLM_LABEL_MODEL') or MODEL_NAME))
+    if fresh:verify_labeller()
+    for start in range(0,len(fresh),4):
+        batch=label_batch(fresh[start:start+4])
+        additions.extend(batch)
+        history['rows'].extend(batch)
+        history['decisions_sha256']=digest
+        # Successful batches survive a later local inference failure. They
+        # become prior history next run, without publishing this failed run.
+        save(path,history)
     save(WORK/'newest.json',{'rows':additions,'capture_sha256':hashlib.sha256((WORK/'capture.json').read_bytes()).hexdigest()})
-    history['rows'].extend(additions);history['decisions_sha256']=digest
+    history['decisions_sha256']=digest
     save(path,history)
 
 

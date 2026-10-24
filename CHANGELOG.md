@@ -30,6 +30,8 @@ Changes are recorded for users. Unreleased entries describe `main`, not a stable
 
 ### Changed
 
+- 1.7.4: train the reported Pokémon project/title and tag spellings with generic pad-word controls. Scheduled labelling uses pinned open-weight inference on the Actions runner, with cloud features disabled and no paid inference API key.
+
 - 1.7.3: recognize project names followed by a legacy protocol, including an intervening Tibia descriptor. Train spelling and domain transport variants within each server fold, preserve signed identifier calibration boundaries, and retain existing annotations during history migration.
 
 - 1.6.3: Other games offers Show, Move to bottom and Hide, with a persisted minimum displayed-probability slider. Move to bottom preserves Twitch order within both groups using CSS order; incremental loads preserve the visible prefix while regrouping the unvisited suffix. Per-broadcast Show overrides apply in both filtering modes.

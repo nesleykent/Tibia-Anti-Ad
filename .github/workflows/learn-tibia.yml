@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '17 5,17 * * *'
   workflow_dispatch:
+    inputs:
+      labeller_smoke_only:
+        description: Verify real local inference without Twitch credentials or publishing
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -18,8 +23,9 @@ env:
 
 jobs:
   learn:
+    if: ${{ !inputs.labeller_smoke_only }}
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -42,10 +48,14 @@ jobs:
           TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
           TWITCH_CLIENT_SECRET: ${{ secrets.TWITCH_CLIENT_SECRET }}
         run: python3 tools/tibia_learning.py capture
+      - name: Cache pinned local teacher weights
+        uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+        with:
+          path: local/learning/ollama-models
+          key: tibia-teacher-qwen3-4b-0edcdef34593-linux-amd64
+      - name: Start open-weight teacher on this runner, without API billing
+        run: python3 tools/start_tibia_labeller.py
       - name: Label previously unseen metadata
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          LLM_LABEL_MODEL: ${{ vars.LLM_LABEL_MODEL }}
         run: python3 tools/tibia_learning.py label
       - name: Retain cumulative captures and labels before gating
         if: always()
@@ -103,3 +113,24 @@ jobs:
         env:
           MODEL_PUBLISH_TOKEN: ${{ secrets.MODEL_PUBLISH_TOKEN }}
         run: python3 tools/publish_tibia_model.py
+
+  labeller-smoke:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.labeller_smoke_only }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+        with:
+          path: local/learning/ollama-models
+          key: tibia-teacher-qwen3-4b-0edcdef34593-linux-amd64
+      - name: Start local teacher without API credentials
+        run: python3 tools/start_tibia_labeller.py
+      - name: Verify real inference against public semantic controls
+        run: python3 tools/smoke_tibia_labeller.py
