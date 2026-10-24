@@ -427,3 +427,9 @@ The previous bot-authored release is republished with identical ZIP/checksum byt
 Final verification after workflow removal passed all 80 Python tests, JavaScript
 acceptance, inference parity and generated-source checks. Public Safari package
 signature inspection confirms ad-hoc signing with no team identity.
+
+A subsequent actual Safari export reports extension 1.7.5/model 10 with 125
+evaluated streams. The corrected server-tag case is present and displays 4.0%
+official. The other two regression cases were absent from that capture; their
+exact metadata is covered by the Chrome and Python tests. Removed the remaining
+Dependabot configuration, whose only ecosystem was the deleted GitHub Actions.
