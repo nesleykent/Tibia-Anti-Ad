@@ -10,7 +10,7 @@ Date: 2026-10-21. Verification concerns repository setup, artifact construction 
 - Local documentation links checked for missing files.
 - Original root assets retained unchanged; ZIP archives and local session artifacts excluded from publication.
 
-No website was opened or audited anew for this release. These remain open work in the roadmap. Historical report claims remain attributed to their supplied source, not to this verification run.
+No website was opened or audited anew for this release. No live Safari/Chrome/Firefox blocker enforcement, performance benchmarks, accessibility audit, real-stream accuracy evaluation or live verification of Twitch video-ad neutralization was performed. These remain open work in the roadmap. Historical report claims remain attributed to their supplied source, not to this verification run.
 
 ## Twitch package integration
 
@@ -229,6 +229,7 @@ Safari activation with unsigned extensions disabled or restart persistence.
 99% official under revision 5. Revision 6 assigned 10.2% official to the same full
 title and tags in the real Chrome Beta unpacked extension. This capture covered
 45 unique live inputs, not the entire category. Domain-derived training views
+fix the bare-name gap without adding runtime aliases.
 
 All 399 labelled export controls still pass: 271 private, none above 50% official.
 Leave-one-server-identity-out recall is 364/394 pairs across 68 folds (92.4%);
@@ -283,3 +284,9 @@ a real Safari category page reported extension 1.7.2 and model 7; all 54 loaded
 inputs matched the final model's predictions. This checks the active classifier,
 without claiming whole-category coverage, unsigned-extension acceptance or
 restart persistence. Format v4 requires the updated extension source.
+
+After publication, the public revision and model digest matched the frozen local
+data. The signed updater completed again, and Safari's native rules status
+recorded a fresh successful download without a validation error. This download
+check is separate from the saved running-classifier diagnostic above. The
+maintainer's current Show mode and threshold were preserved.
