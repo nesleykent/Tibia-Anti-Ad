@@ -355,15 +355,22 @@ The full server-name holdout remains 376/400 stream/identity pairs across 70 fol
 acceptance still includes 271 private inputs with zero above 50% official.
 
 Scheduled labelling no longer calls a paid inference API. It uses a SHA-256-pinned
-Ollama runtime and manifest-pinned Qwen3 4B Instruct model locally on the Linux
+Ollama runtime and manifest-pinned Qwen3.5 9B model locally on the Linux
 runner, with cloud features disabled. A dedicated manual smoke mode checks real
 inference without Twitch secrets or publication. Unit coverage checks loopback
 requests without credentials, strict output validation, pinned model/runtime
 failures, successful batch retention after later failure and the explicit policy
 migration preserving the classification section.
 
-Repository checks passed 84 Python tests, JavaScript acceptance, inference parity
+Repository checks passed 85 Python tests, JavaScript acceptance, inference parity
 and generated-source consistency. The frozen fit reproduces exactly; the
 historical feature packet is retained byte-for-byte at row level. The personal
 Safari updater installed and verified 1.7.4 with revision 9, separately from
 browser behavior verification.
+
+The initial 4B local teacher was rejected by real inference: it missed the
+reported Pokemon project even after the required six controls passed. It did not
+publish or persist smoke-test labels. The replacement teacher uses only the
+classification section of the decisions, records an instruction digest, disables
+thinking output and reuses seed labels as well as cumulative history. The label
+step has a separate time bound so later artifact retention can run after failure.

@@ -55,7 +55,7 @@ all previous captures and supervision; retention is 90 days per artifact. Thus
 failed novel-name checks can supply training data for the next run without
 publishing an unverified model.
 
-The labeller runs Qwen3 4B Instruct locally on the Linux Actions runner through
+The labeller runs Qwen3.5 9B locally on the Linux Actions runner through
 Ollama, bound to loopback with cloud features disabled. No paid inference API,
 OpenAI account or inference key is used. The runtime archive has a pinned SHA-256
 and the model manifest digest is checked before labelling. Model weights are
@@ -64,9 +64,9 @@ cached separately from captured metadata. There is no cloud fallback.
 Requests use JSON-schema-constrained output, deterministic decoding and small
 batches. Metadata remains untrusted input. Every new input must have exactly one
 label; a private label must cite an extracted identifier candidate. Invalid,
-missing or truncated output fails the run. Labels are reused by exact title and
-deduplicated/sorted tag hash. Provenance records the local model and manifest
-digest. The policy migration accepts the previous decisions hash only while the
+missing or truncated output fails the run. Labels from both the historical seed and retained history are reused by exact
+title and deduplicated/sorted tag hash. Completed batches are retained before
+requesting the next batch, including when a later generation fails. Provenance records the local model, manifest digest and instruction hash. The policy migration accepts the previous decisions hash only while the
 classification section is unchanged; it preserves previous labels and provenance.
 The `labeller_smoke_only` manual input runs eight public semantic controls with
 real local inference, without Twitch credentials or model publication.
@@ -102,7 +102,7 @@ closed. Configure these in GitHub Settings, Secrets and variables, Actions.
 Sources: [Twitch app tokens](https://dev.twitch.tv/docs/authentication/getting-tokens-oauth/#client-credentials-grant-flow),
 [Get Streams](https://dev.twitch.tv/docs/api/reference/#get-streams),
 [Ollama structured output](https://docs.ollama.com/api/generate),
-[Qwen3 model](https://ollama.com/library/qwen3:4b-instruct-2507-q4_K_M),
+[Qwen3 model](https://ollama.com/library/qwen3.5:9b),
 [Ollama cloud disabling](https://github.com/ollama/ollama/blob/main/docs/faq.mdx).
 
 ## Domain/name equivalence regression

@@ -52,10 +52,11 @@ jobs:
         uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
         with:
           path: local/learning/ollama-models
-          key: tibia-teacher-qwen3-4b-0edcdef34593-linux-amd64
+          key: tibia-teacher-qwen35-9b-56671c2ab938-linux-amd64
       - name: Start open-weight teacher on this runner, without API billing
         run: python3 tools/start_tibia_labeller.py
       - name: Label previously unseen metadata
+        timeout-minutes: 60
         run: python3 tools/tibia_learning.py label
       - name: Retain cumulative captures and labels before gating
         if: always()
@@ -129,7 +130,7 @@ jobs:
       - uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
         with:
           path: local/learning/ollama-models
-          key: tibia-teacher-qwen3-4b-0edcdef34593-linux-amd64
+          key: tibia-teacher-qwen35-9b-56671c2ab938-linux-amd64
       - name: Start local teacher without API credentials
         run: python3 tools/start_tibia_labeller.py
       - name: Verify real inference against public semantic controls

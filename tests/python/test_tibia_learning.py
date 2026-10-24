@@ -217,6 +217,10 @@ class PipelineTests(unittest.TestCase):
             self.assertTrue(result[0]['private'])
             payload=req.call_args.kwargs['payload']
             self.assertFalse(payload['stream']);self.assertFalse(payload['format']['additionalProperties'])
+            self.assertFalse(payload['think'])
+            self.assertIn('No insufficient-evidence state.',payload['system'])
+            self.assertNotIn('## Controls and diagnostics',payload['system'])
+            self.assertNotIn('## Delivery and recurring learning',payload['system'])
             self.assertEqual(req.call_args.args[0],'http://127.0.0.1:11434/api/generate')
             self.assertNotIn('headers',req.call_args.kwargs)
             self.assertNotIn('tools',payload)

@@ -32,7 +32,7 @@ The [friendly-fansite collection](research/fansites/friendly/README.md) contains
 ## Optional scheduled local teacher
 
 The learning workflow downloads [Ollama](https://github.com/ollama/ollama)
-(MIT) and [Qwen3 4B Instruct 2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507)
+(MIT) and [Qwen3.5 9B](https://huggingface.co/Qwen/Qwen3.5-9B)
 (Apache-2.0), using the published Q4_K_M quantization. Their binaries and model
 weights are not committed or included in extension downloads. Pinned runtime and
 model digests are recorded in the learning tools.

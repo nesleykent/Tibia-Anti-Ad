@@ -28,7 +28,8 @@ def start():
     archive.unlink()
     binary = runtime / 'bin/ollama'
     env = dict(os.environ, OLLAMA_HOST='127.0.0.1:11434', OLLAMA_NO_CLOUD='1',
-               OLLAMA_MODELS=str(WORK / 'ollama-models'), CUDA_VISIBLE_DEVICES='-1')
+               OLLAMA_MODELS=str(WORK / 'ollama-models'), CUDA_VISIBLE_DEVICES='-1',
+               OLLAMA_NUM_PARALLEL='1', OLLAMA_MAX_LOADED_MODELS='1')
     with (runtime / 'server.log').open('wb') as log:
         process = subprocess.Popen([str(binary), 'serve'], env=env, stdout=log,
                                    stderr=subprocess.STDOUT, start_new_session=True)
