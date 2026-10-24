@@ -170,7 +170,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     }
     if (results.runs.some(run => run.error || run.status >= 400 || run.page?.challenge || run.page?.bodyCharacters === 0)) process.exitCode = 2;
   } finally {
-    await context?.close();
-    await fs.rm(profile, { recursive: true, force: true });
+    try { await context?.close(); }
+    finally { await fs.rm(profile, { recursive: true, force: true }); }
   }
 })().catch(error => { console.error(error); process.exitCode = 1; });

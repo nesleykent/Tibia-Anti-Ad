@@ -3,7 +3,7 @@
 - Read [settled maintainer decisions](DECISIONS.md) before classification, popup or model-pipeline work. These decisions must not be re-asked.
 
 - Preserve the public filter-list URLs and the shared extension source in `extension/src/`.
-- Keep local originals, captures and caches in the visible, ignored `local/` folder. Build output belongs in `dist/`.
+- Keep local originals and captures in the visible, ignored `local/` folder. Build output belongs in `dist/`. Remove disposable browser profiles in `finally`, including launch/close failures. After verification, discard compiler intermediates and temporary caches; retain diagnostic evidence, training data, current ZIPs and the Safari rollback backup. Reuse an available Python runtime instead of leaving a duplicate training environment in the repository.
 - Run `PYTHONDONTWRITEBYTECODE=1 python3 tools/check_project.py` for repository checks. Record browser verification separately from build and signature verification.
 - Commit verified changes and push directly to `main`, as requested by the maintainer. Integrate concurrent remote changes without force-pushing.
 

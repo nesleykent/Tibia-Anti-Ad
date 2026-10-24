@@ -122,8 +122,8 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
       await fs.writeFile(path.join(output, 'results.json'), JSON.stringify(results, null, 2) + '\n');
       console.log(JSON.stringify(run));
     } finally {
-      await context?.close();
-      await fs.rm(profile, { recursive: true, force: true });
+      try { await context?.close(); }
+      finally { await fs.rm(profile, { recursive: true, force: true }); }
     }
   }
 })().catch(error => { console.error(error); process.exitCode = 1; });

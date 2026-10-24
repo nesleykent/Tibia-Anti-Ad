@@ -71,7 +71,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
         await fs.writeFile(file, JSON.stringify(capture, null, 2));
         throw error;
     } finally {
-        await context?.close();
-        await fs.rm(profile, {recursive: true, force: true});
+        try { await context?.close(); }
+        finally { await fs.rm(profile, {recursive: true, force: true}); }
     }
 })().catch(error => {console.error(error); process.exit(1);});

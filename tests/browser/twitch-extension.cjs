@@ -8,12 +8,13 @@ const output = path.join(root, 'local/verification');
 (async () => {
     await fs.mkdir(output, {recursive:true});
     const profile = await fs.mkdtemp(path.join(output, 'diagnostics-profile-'));
-    const context = await chromium.launchPersistentContext(profile, {
-        executablePath: process.env.CHROME_BETA_BINARY || '/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta',
-        headless:true, ignoreDefaultArgs:['--disable-extensions'], args:['--enable-unsafe-extension-debugging'],
-        acceptDownloads:true, viewport:{width:1280,height:800},
-    });
+    let context;
     try {
+        context = await chromium.launchPersistentContext(profile, {
+            executablePath: process.env.CHROME_BETA_BINARY || '/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta',
+            headless:true, ignoreDefaultArgs:['--disable-extensions'], args:['--enable-unsafe-extension-debugging'],
+            acceptDownloads:true, viewport:{width:1280,height:800},
+        });
         const cdp = await context.browser().newBrowserCDPSession();
         const {id} = await cdp.send('Extensions.loadUnpacked', {path:path.join(root,'dist/tibia-anti-ad-chrome')});
         const worker = context.serviceWorkers().find(w => w.url().includes(id)) || await context.waitForEvent('serviceworker');
@@ -94,5 +95,8 @@ const output = path.join(root, 'local/verification');
         await (await popupDownload).saveAs(path.join(output,'chrome-popup-diagnostics.json'));
         assert.equal(JSON.parse(await fs.readFile(path.join(output,'chrome-popup-diagnostics.json'),'utf8')).mode,'show');
         console.log('PASS real Chrome extension: full React metadata, isolated content download, real popup modes, threshold persistence and popup export');
-    } finally { await context.close(); }
+    } finally {
+        try { await context?.close(); }
+        finally { await fs.rm(profile, {recursive:true, force:true}); }
+    }
 })().catch(error => {console.error(error);process.exit(1)});
