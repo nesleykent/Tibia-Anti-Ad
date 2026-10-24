@@ -32,7 +32,7 @@ See [Apple's Personal Team signing workflow](https://help.apple.com/xcode/mac/cu
 
 ## Quickest option: download the extension folder
 
-**[Download for Safari (.zip)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-safari-extension.zip)**
+**[Download for Safari (.zip)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/latest/download/tibia-anti-ad-safari-extension.zip)**
 
 This option does not need Xcode or a GitHub account.
 
@@ -47,7 +47,7 @@ Safari removes temporary extensions **after 24 hours or when you quit Safari**. 
 
 ## macOS app download
 
-**[Download the Safari Mac app (.zip, development preview)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/download/v1.0.0-alpha.2/tibia-anti-ad-safari-macos.zip)**
+**[Download the Safari Mac app (.zip, development preview)](https://github.com/nesleykent/Tibia-Anti-Ad/releases/latest/download/tibia-anti-ad-safari-macos.zip)**
 
 The ZIP contains **Tibia Anti-Ad.app**, with the Safari extension embedded. It is compiled for **Apple Silicon and Intel**, with a macOS 14 minimum build target. Its local ad-hoc signature is not an Apple Developer ID signature, and the app is not notarized. Gatekeeper may block a downloaded copy; the app is not presented as a normally trusted public installer.
 
@@ -107,4 +107,4 @@ For distribution without the unsigned-extension setting, configure Apple Develop
 
 - [Apple: running a Safari web extension](https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension) — temporary installation, unsigned-extension settings and their lifetime.
 - [Apple: distributing a Safari web extension](https://developer.apple.com/documentation/safariservices/distributing-your-safari-web-extension) — development previews and signed distribution.
-- [Release details and checksums](https://github.com/nesleykent/Tibia-Anti-Ad/releases/tag/v1.0.0-alpha.2).
+- [Release details and checksums](https://github.com/nesleykent/Tibia-Anti-Ad/releases/latest).

@@ -37,7 +37,7 @@ jobs:
       - name: Run repository checks
         run: python3 tools/check_project.py
       - name: Build Chrome development package
-        run: python3 tools/build_chrome_extension.py
+        run: python3 tools/package_chrome_extension.py
       - name: Confirm generated sources are committed
         run: git diff --exit-code -- filters/ extension/src/
       - name: Upload Chrome development package
@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: tibia-anti-ad-chrome-${{ github.sha }}
-          path: dist/tibia-anti-ad-chrome/
+          path: dist/tibia-anti-ad-chrome.zip*
           if-no-files-found: error
           retention-days: 14
 
@@ -75,3 +75,31 @@ jobs:
           path: dist/tibia-anti-ad-safari-*.zip*
           if-no-files-found: error
           retention-days: 14
+
+  release:
+    name: Publish verified extension downloads
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [check, safari]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      actions: read
+    concurrency:
+      group: extension-release-publication
+      cancel-in-progress: false
+    steps:
+      - name: Check out verified source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Download this run's verified Chrome and Safari packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download "$GITHUB_RUN_ID" -n "tibia-anti-ad-chrome-$GITHUB_SHA" -D dist/release
+          gh run download "$GITHUB_RUN_ID" -n "tibia-anti-ad-safari-$GITHUB_SHA" -D dist/release
+      - name: Verify packages and publish a missing version
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 tools/release_extension.py

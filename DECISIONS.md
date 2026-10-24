@@ -52,6 +52,9 @@ new decision would contradict this document; otherwise implement and verify it.
 ## Delivery and recurring learning
 
 - Shared extension source remains in extension/src; public filter URLs stay stable.
+- Every new extension version must have a GitHub Release with verified Chrome and
+  Safari ZIPs and checksums. Publishing follows both CI check/build jobs; user
+  download links resolve to the latest Release. Never replace existing versioned assets.
 - Run the project checks, commit verified work and push directly to main without
   force-pushing. Integrate concurrent changes. Keep private/local files uncommitted.
 - Use the personally signed Safari updater after local extension changes. Do not

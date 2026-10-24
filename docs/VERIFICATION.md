@@ -387,3 +387,14 @@ After removal, all repository checks passed, including 78 Python tests and
 JavaScript acceptance. Classifier artifacts, revision 9 supervision and extension
 source are unchanged. GitHub reported no saved Actions caches; the inference
 runtime and weights were not installed on the maintainer Mac.
+
+## Restore public extension releases, 2026-10-24
+
+The latest Release remained 1.2.3 while main and CI packages reached 1.7.4.
+README and installation links still selected an even older preview. Download
+links now resolve to the latest Release. CI packages both browsers and publishes
+a missing manifest version only after both Python/Node checks and the universal
+Safari build succeed. Publication checks ZIP checksums and manifest versions,
+uses only CI-built public packages, and never overwrites an existing Release.
+Local checks passed, including 80 Python tests and JavaScript acceptance.
+Classifier artifacts and extension source remain unchanged in this delivery fix.
